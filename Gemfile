@@ -43,3 +43,5 @@ group :development, :test do
   gem 'spring'
 end
 
+# Use Devise for user authentication.
+gem 'devise'
