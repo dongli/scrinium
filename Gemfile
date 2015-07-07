@@ -48,3 +48,6 @@ gem 'devise'
 
 # Use CanCanCan for user role.
 gem 'cancancan'
+
+# 
+gem 'bootstrap-sass'
