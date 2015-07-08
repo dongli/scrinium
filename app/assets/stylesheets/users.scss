@@ -1,3 +1,42 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+img.gravatar {
+  border-radius: 15px;
+}
+
+.user-profile {
+  .name {
+    color: #999;
+    font-weight: normal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .affiliation {
+    color: #999;
+    font-weight: normal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .position {
+    color: #999;
+    font-weight: normal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .role {
+    color: #999;
+    font-weight: normal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .others {
+    .glyphicon {
+      color: #CCC;
+    }
+    p {
+      margin-bottom: 5px;
+    }
+  }
+}

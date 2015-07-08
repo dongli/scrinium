@@ -16,10 +16,6 @@ ActiveRecord::Schema.define(version: 20150708065733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "organization", force: :cascade do |t|
-    t.string "name", default: "", null: false
-  end
-
   create_table "organizations", force: :cascade do |t|
     t.string   "name",       default: "", null: false
     t.datetime "created_at",              null: false
@@ -27,8 +23,13 @@ ActiveRecord::Schema.define(version: 20150708065733) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "full_name",              default: "", null: false
+    t.string   "gender",                 default: "", null: false
+    t.string   "affiliation",            default: "", null: false
+    t.string   "position",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.integer  "role"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -39,10 +40,6 @@ ActiveRecord::Schema.define(version: 20150708065733) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "full_name"
-    t.string   "gender"
-    t.string   "affiliation"
-    t.string   "position"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

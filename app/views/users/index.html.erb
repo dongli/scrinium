@@ -1,0 +1,21 @@
+<table>
+      <thead>
+        <tr>
+          <th width="200">Name</th>
+          <th width="200">Mail</th>
+          <th width="200">Join Date</th>
+          <th width="200">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% User.all.each do |u| %>
+          <tr>
+            <td>
+              <a href="<%= user_path(u) %>"><%= u.full_name %></a>
+            </td>
+            <td><%= u.email %></td>
+            <td><%= u.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

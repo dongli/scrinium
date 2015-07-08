@@ -1,0 +1,18 @@
+<div class="user-profile">
+  <%= get_gravatar @user, 90 %>
+  <div class="name">
+    <%= @user.full_name %>
+  </div>
+  <div class="affiliation">
+    <%= @user.affiliation %>
+  </div>
+  <div class="position">
+    <%= @user.position %>
+  </div>
+  <div class="role">
+    <%= User::Roles[@user.role] %>
+  </div>
+  <div class="others">
+    <p><span class="glyphicon glyphicon-time"></span> <%= t('user.joined_at', date: @user.created_at.strftime("%Y-%-m")) %></p>
+  </div>
+</div>

@@ -22,7 +22,6 @@ default: &default
   pool: 5
   username: <%= ENV['SCRINIUM_DATABASE_USERNAME'] %>
   password: <%= ENV['SCRINIUM_DATABASE_PASSWORD'] %>
-  template: template0
 
 development:
   <<: *default

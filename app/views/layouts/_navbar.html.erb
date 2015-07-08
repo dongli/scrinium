@@ -15,7 +15,7 @@
         <li><%= link_to t('scrinium.organization'), organizations_index_path, class: 'navbar-link' %></li>
         <li><a class='navbar-link' href='/'><%= t('scrinium.research') %></a></li>
         <% if user_signed_in? %>
-          <li><%= link_to t('user.edit'), edit_user_registration_path, :class => 'navbar-link' %></li>
+          <li><%= link_to t('user.profile'), user_path(current_user), :class => 'navbar-link' %></li>
           <li><%= link_to t('user.signout'), destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
         <% else %>
           <li><%= link_to t('user.signup'), new_user_registration_path, :class => 'navbar-link' %></li>
