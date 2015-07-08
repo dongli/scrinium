@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'organizations/index'
+
   devise_for :users
   get 'home/index'
 
