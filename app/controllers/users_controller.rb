@@ -11,7 +11,6 @@ before_filter :authenticate_user!, :except => [:index, :show]
 
   def create
     @user = User.new(user_params)
-    @user.figures = []
 
     if @user.save
       redirect_to @user

@@ -21,7 +21,21 @@ class User < ActiveRecord::Base
     3 => I18n.t('user.roles.guest')
   }.freeze
 
+  def super_admin?
+    self.role == 0
+  end
+
+  def admin?
+    self.role == 1
+  end
+
+  def guest?
+    self.role == 3
+  end
+
   before_save :set_user_defaults
+
+  protected
 
   def set_user_defaults
     if self.id == 1
