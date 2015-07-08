@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150708065733) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name",       default: "", null: false
+    t.string   "short_name", default: "", null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

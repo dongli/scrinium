@@ -6,6 +6,19 @@ img.gravatar {
   border-radius: 15px;
 }
 
+.devise-form {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  #user_remember_me {
+    margin-left: 0;
+  }
+}
+
 .user-profile {
   .name {
     color: #999;

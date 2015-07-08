@@ -1,2 +1,24 @@
-<h1>Organizations#index</h1>
-<p>Find me in app/views/organizations/index.html.erb</p>
+<% content_for :left_side do %>
+  &nbsp;
+<% end %>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width="100"><%= t('organization.short_name') %></th>
+      <th width="300"><%= t('organization.name') %></th>
+      <th width="200"><%= t('organization.create_time') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Organization.all.each do |o| %>
+      <tr>
+        <td>
+          <%= link_to o.short_name, organization_path(o) %>
+        </td>
+        <td><%= o.name %></td>
+        <td><%= o.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -3,6 +3,7 @@ zh-CN:
     scrinium: '科研信息管理平台'
     title: '标题'
     content: '内容'
+    add: '添加'
 
   scrinium:
     organization: '机构'
@@ -45,3 +46,11 @@ zh-CN:
 
   organization:
     profile: '机构信息'
+    name: '机构名称'
+    short_name: '机构简称'
+    add: '添加机构'
+    create_time: '添加时间'
+
+  dashboard:
+    super_admin: '超级控制台'
+    create_organization: '添加机构'

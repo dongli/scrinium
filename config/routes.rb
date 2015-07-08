@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
+  get 'dashboard/super_admin'
+  get 'dashboard/create_organization'
   
   devise_for :users, path_prefix: 'd', :controllers => { registrations: 'registrations' }
   resources :users
