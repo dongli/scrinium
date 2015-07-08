@@ -1,0 +1,27 @@
+zh-CN:
+  global:
+    scrinium: '科研信息管理平台'
+    title: '标题'
+    content: '内容'
+
+  scrinium:
+    lab: '实验室'
+    research: '研究'
+
+  user:
+    joined_at: '加入于 %{date}'
+    sign_in: '用户登录'
+    sign_up: '新用户注册'
+    update_user: '更新用户信息'
+    full_name: '全名'
+    user_name_hint: '4-20个小写英文字母、数字或下划线'
+    gender: '性别'
+    female: '女'
+    male: '男'
+    affiliation: '单位'
+    email: '邮箱地址'
+    email_hint: '格式：user@domain.com'
+    signup: '注册'
+    signin: '登录'
+    password: '密码'
+    remember_me: '记住我'

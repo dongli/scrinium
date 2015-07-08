@@ -1,0 +1,11 @@
+<div class='col-sm-2 left-side-layout hidden-sm hidden-xs'>
+  <% if content_for?(:left_side) %>
+    <%= yield :left_side %>
+  <% else %>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        Blank
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -49,5 +49,7 @@ gem 'devise'
 # Use CanCanCan for user role.
 gem 'cancancan'
 
-# 
+# UI gems.
 gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'country_select'

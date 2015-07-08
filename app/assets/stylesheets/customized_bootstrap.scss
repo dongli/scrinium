@@ -1,6 +1,52 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+.button {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.right {
+  float: right !important;
+}
+
 body {
   padding-top: 60px;
+}
+
+.register-form {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  form {
+    @extend .well;
+    @extend .well-lg;
+    padding-bottom: 60px;
+  }
+  .user_gender {
+    label {
+      display: block;
+    }
+    .radio {
+      display: inline-block;
+      margin-right: 15px;
+    }
+  }
+}
+
+.login-form {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  #user_remember_me {
+    margin-left: 0;
+  }
 }
