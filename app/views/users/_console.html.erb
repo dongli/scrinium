@@ -1,0 +1,6 @@
+<div class='user-console'>
+  <% if current_user.super_admin? %>
+    <a href="<%= dashboard_super_admin_path %>" class='button'><%= t('dashboard.super_admin') %></a>
+    <a href="<%= users_path %>" class='button'>查看所有用户</a>
+  <% end %>
+</div>

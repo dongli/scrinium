@@ -1,0 +1,13 @@
+<% if content_for?(:left_side) %>
+  <div class="row">
+    <div id="content" class="col-xs-9">
+      <%= yield :main_block %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div id="content" class="col-xs-12">
+      <%= yield :main_block %>
+    </div>
+  </div>
+<% end %>

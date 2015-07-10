@@ -6,6 +6,11 @@
   @extend .btn-primary;
 }
 
+.table {
+  @extend .table;
+  @extend .table-striped;
+}
+
 .right {
   float: right !important;
 }

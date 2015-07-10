@@ -1,21 +1,24 @@
-<table>
-  <thead>
-    <tr>
-      <th width="200">Name</th>
-      <th width="200">Mail</th>
-      <th width="200">Join Date</th>
-      <th width="200">Role</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% User.all.each do |u| %>
+<% content_for :main_block do %>
+  <table class='table'>
+    <thead>
       <tr>
-        <td>
-          <a href="<%= user_path(u) %>"><%= u.full_name %></a>
-        </td>
-        <td><%= u.email %></td>
-        <td><%= u.created_at %></td>
+        <th width="200"><%= t('user.full_name') %></th>
+        <th width="200"><%= t('user.email') %></th>
+        <th width="200"><%= t('user.join_time') %></th>
+        <th width="200"><%= t('user.role') %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% User.all.each do |u| %>
+        <tr>
+          <td>
+            <a href="<%= user_path(u) %>"><%= u.full_name %></a>
+          </td>
+          <td><%= u.email %></td>
+          <td><%= u.created_at %></td>
+          <td><%= u.role %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

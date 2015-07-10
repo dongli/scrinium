@@ -1,20 +1,22 @@
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th width="100"><%= t('organization.short_name') %></th>
-      <th width="300"><%= t('organization.name') %></th>
-      <th width="200"><%= t('organization.create_time') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Organization.all.each do |o| %>
+<% content_for :main_block do %>
+  <table class='table'>
+    <thead>
       <tr>
-        <td>
-          <%= link_to o.short_name, organization_path(o) %>
-        </td>
-        <td><%= o.name %></td>
-        <td><%= o.created_at %></td>
+        <th width="100"><%= t('organization.short_name') %></th>
+        <th width="300"><%= t('organization.name') %></th>
+        <th width="200"><%= t('organization.create_time') %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% Organization.all.each do |o| %>
+        <tr>
+          <td>
+            <%= link_to o.short_name, organization_path(o) %>
+          </td>
+          <td><%= o.name %></td>
+          <td><%= o.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
