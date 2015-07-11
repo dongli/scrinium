@@ -4,6 +4,8 @@
 .button {
   @extend .btn;
   @extend .btn-primary;
+  white-space: normal;
+  width: 120px;
 }
 
 .table {

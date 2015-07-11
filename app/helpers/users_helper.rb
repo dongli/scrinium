@@ -6,4 +6,19 @@ module UsersHelper
     gravatar_url << "&size=160px"
     image_tag(gravatar_url, alt: user.full_name, class: "gravatar")
   end
+
+  def get_role_string role
+    case role
+    when 0
+      t('user.roles.super_admin')
+    when 1
+      t('user.roles.admin')
+    when 2
+      t('user.roles.user')
+    when 3
+      t('user.roles.guest')
+    else
+      t('user.roles.unknown')
+    end
+  end
 end

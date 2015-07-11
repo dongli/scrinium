@@ -1,7 +1,6 @@
 <% content_for :title, t('dashboard.super_admin') %>
 
-<% content_for :left_side do %>
-  &nbsp;
+<% content_for :main_block do %>
+  <a href="<%= new_organization_path %>" class='button'><%= t('dashboard.create_organization') %></a>
+  <a href="<%= users_path %>" class='button'><%= t('dashboard.manage_users') %></a>
 <% end %>
-
-<button class='btn btn-default'><%= link_to t('dashboard.create_organization'), new_organization_path %></button>

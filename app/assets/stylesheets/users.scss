@@ -55,5 +55,29 @@ img.gravatar {
 }
 
 .user-console {
-  margin-top: 2em
+  margin-top: 2em;
+  .title {
+    border-bottom: solid 1px #EEE;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    span {
+      font-weight: bold;
+      font-size: 120%;
+      color: #999;
+    }
+  }
+}
+
+.user-latest-research-record {
+  margin-top: 2em;
+  .title {
+    border-bottom: solid 1px #EEE;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    span {
+      font-weight: bold;
+      font-size: 120%;
+      color: #999;
+    }
+  }
 }

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   Genders = {
-    0 => I18n.t('user.female'),
-    1 => I18n.t('user.male')
+    0 => I18n.t('user.genders.female'),
+    1 => I18n.t('user.genders.male')
   }.freeze
   Positions = {
     :researcher => I18n.t('user.positions.researcher'),

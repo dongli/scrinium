@@ -1,6 +1,23 @@
 <div class='user-console'>
+  <div class='title'>
+    <span><%= t('global.console') %></span>
+  </div>
+  <div class='row'>
   <% if current_user.super_admin? %>
-    <a href="<%= dashboard_super_admin_path %>" class='button'><%= t('dashboard.super_admin') %></a>
-    <a href="<%= users_path %>" class='button'>查看所有用户</a>
+    <div class='col-md-2'>
+      <a href="<%= dashboard_super_admin_path %>" class='button'><%= t('dashboard.super_admin') %></a>
+    </div>
   <% end %>
+  <div class='col-md-2'>
+    <a href="#" class='button'><%= t('user.console.edit_info') %></a>
+  </div>
+  <div class='col-md-2'>
+    <a href="#" class='button'><%= t('user.console.create_research_record') %></a>
+  </div>
+</div>
+
+<div class='user-latest-research-record'>
+  <div class='title'>
+    <span><%= t('user.latest_research_records') %></span>
+  </div>
 </div>

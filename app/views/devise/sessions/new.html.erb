@@ -1,19 +1,17 @@
 <% content_for :title, t('user.sign_in') %>
 
-<% content_for :left_side do %>
-  &nbsp;
+<% content_for :main_block do %>
+  <div class='devise-form'>
+    <%= simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+      <h3><%= t('user.sign_in') %></h3>
+      <%= f.input :email, label: t('user.email'), autofocus: true %>
+      <%= f.input :password, label: t('user.password') %>
+
+      <% if devise_mapping.rememberable? -%>
+        <%= f.input :remember_me, label: t('user.remember_me'), as: :boolean, boolean_style: :inline %>
+      <% end -%>
+
+      <%= f.button :submit, t('user.signin'), class: 'button right' %>
+    <% end %>
+  </div>
 <% end %>
-
-<div class='devise-form'>
-  <%= simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
-    <h3><%= t('user.sign_in') %></h3>
-    <%= f.input :email, label: t('user.email'), autofocus: true %>
-    <%= f.input :password, label: t('user.password') %>
-
-    <% if devise_mapping.rememberable? -%>
-      <%= f.input :remember_me, label: t('user.remember_me'), as: :boolean, boolean_style: :inline %>
-    <% end -%>
-
-    <%= f.button :submit, t('user.signin'), class: 'button right' %>
-  <% end %>
-</div>

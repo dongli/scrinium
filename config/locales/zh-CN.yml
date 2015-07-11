@@ -4,7 +4,9 @@ zh-CN:
     scrinium: '科研信息管理平台'
     title: '标题'
     content: '内容'
+    console: '控制台'
     add: '添加'
+    delete: '删除'
 
   scrinium:
     organization: '机构'
@@ -16,12 +18,13 @@ zh-CN:
     sign_in: '用户登录'
     sign_up: '新用户注册'
     edit: '个人设置'
-    update_user: '更新用户信息'
+    update: '更新用户信息'
     full_name: '名字'
     user_name_hint: '4-20个小写英文字母、数字或下划线'
     gender: '性别'
-    female: '女'
-    male: '男'
+    genders:
+      female: '女'
+      male: '男'
     affiliation: '单位'
     position: '职位'
     positions:
@@ -35,6 +38,7 @@ zh-CN:
       admin: '普通管理员'
       user: '用户'
       guest: '访客'
+      unknown: '未知用户角色'
     email: '邮箱地址'
     email_hint: '格式：user@domain.com'
     signup: '注册'
@@ -46,6 +50,10 @@ zh-CN:
     password_confirmation_hint: '重复输入一次密码'
     remember_me: '记住我'
     profile: '个人信息'
+    console:
+      edit_info: '修改信息'
+      create_research_record: '添加科研记录'
+    latest_research_records: '最近科研记录'
 
   organization:
     profile: '机构信息'
@@ -56,4 +64,5 @@ zh-CN:
 
   dashboard:
     super_admin: '超级控制台'
+    manage_users: '管理用户'
     create_organization: '添加机构'

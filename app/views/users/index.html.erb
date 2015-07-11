@@ -16,7 +16,7 @@
           </td>
           <td><%= u.email %></td>
           <td><%= u.created_at %></td>
-          <td><%= u.role %></td>
+          <td><%= get_role_string u.role %></td>
         </tr>
       <% end %>
     </tbody>
