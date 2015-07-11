@@ -1,3 +1,17 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.super-admin-dashboard {
+  margin-top: 2em;
+  .title {
+    border-bottom: solid 1px #EEE;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    span {
+      font-weight: bold;
+      font-size: 120%;
+      color: #999;
+    }
+  }
+}

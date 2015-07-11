@@ -3,16 +3,17 @@
     <span><%= t('global.console') %></span>
   </div>
   <div class='row'>
-  <% if current_user.super_admin? %>
+    <% if current_user.super_admin? %>
+      <div class='col-md-2'>
+        <a href="<%= dashboard_super_admin_path %>" class='button'><%= t('dashboard.super_admin') %></a>
+      </div>
+    <% end %>
     <div class='col-md-2'>
-      <a href="<%= dashboard_super_admin_path %>" class='button'><%= t('dashboard.super_admin') %></a>
+      <a href="#" class='button'><%= t('user.console.edit_info') %></a>
     </div>
-  <% end %>
-  <div class='col-md-2'>
-    <a href="#" class='button'><%= t('user.console.edit_info') %></a>
-  </div>
-  <div class='col-md-2'>
-    <a href="#" class='button'><%= t('user.console.create_research_record') %></a>
+    <div class='col-md-2'>
+      <a href="#" class='button'><%= t('user.console.create_research_record') %></a>
+    </div>
   </div>
 </div>
 

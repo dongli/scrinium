@@ -1,1 +1,5 @@
-<%= render 'form' %>
+<% content_for :title, t('organization.add') %>
+
+<% content_for :main_block do %>
+  <%= render 'form' %>
+<% end %>
