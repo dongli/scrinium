@@ -3,3 +3,8 @@
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
 <% end %>
+
+<% content_for :main_block do %>
+  <h1><%= t('organization.description') %></h1>
+  <p><%= @organization.description %></p>
+<% end %>

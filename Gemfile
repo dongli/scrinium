@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -53,3 +53,6 @@ gem 'cancancan'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'country_select'
+
+# ActiveRecord model/data translation.
+gem 'globalize', '~> 5.0.0'

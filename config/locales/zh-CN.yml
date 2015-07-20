@@ -59,6 +59,7 @@ zh-CN:
     profile: '机构信息'
     name: '机构名称'
     short_name: '机构简称'
+    description: '机构描述'
     add: '添加机构'
     create_time: '添加时间'
 

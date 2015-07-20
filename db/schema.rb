@@ -16,6 +16,19 @@ ActiveRecord::Schema.define(version: 20150708065733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "organization_translations", force: :cascade do |t|
+    t.integer  "organization_id", null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "short_name"
+    t.text     "description"
+  end
+
+  add_index "organization_translations", ["locale"], name: "index_organization_translations_on_locale", using: :btree
+  add_index "organization_translations", ["organization_id"], name: "index_organization_translations_on_organization_id", using: :btree
+
   create_table "organizations", force: :cascade do |t|
     t.string   "name",       default: "", null: false
     t.string   "short_name", default: "", null: false

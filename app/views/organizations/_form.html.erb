@@ -3,6 +3,7 @@
     <h3><%= t('organization.add') %></h3>
     <%= f.input :name, label: t('organization.name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :short_name, label: t('organization.short_name'), required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
+    <%= f.input :description, label: t('organization.description'), required: true, as: :text %>
     <%= f.button :submit, t('global.add'), class: 'button right' %>
   <% end %>
 </div>
