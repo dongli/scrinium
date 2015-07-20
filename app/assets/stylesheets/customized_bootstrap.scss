@@ -8,6 +8,10 @@
   width: 120px;
 }
 
+a.button:visited {
+  color: white;
+}
+
 .table {
   @extend .table;
   @extend .table-striped;

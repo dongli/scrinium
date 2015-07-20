@@ -1,5 +1,10 @@
 <div class='organization-profile'>
+  <% set_current_organization @organization.id %>
   <div class='name'>
     <%= @organization.name %>
   </div>
+  <% if current_user.super_admin? or current_user.admin? %>
+    <a href="<%= edit_organization_path(@organization) %>" class='button'><%= t('global.edit') %></a><br/>
+    <a href="<%= new_research_team_path %>" class='button'><%= t('organization.create_research_team') %></a>
+  <% end %>
 </div>

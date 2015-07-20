@@ -7,4 +7,8 @@
 <% content_for :main_block do %>
   <h1><%= t('organization.description') %></h1>
   <p><%= @organization.description %></p>
+  <h1><%= t('organization.research_team') %></h1>
+  <% @organization.research_teams.each do |team| %>
+    <%= link_to team.name, research_team_path(team) %>
+  <% end %>
 <% end %>

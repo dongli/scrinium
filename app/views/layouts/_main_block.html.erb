@@ -1,13 +1,15 @@
-<% if content_for?(:left_side) %>
-  <div class="row">
-    <div id="content" class="col-xs-9">
-      <%= yield :main_block %>
+<div class='main-block'>
+  <% if content_for?(:left_side) %>
+    <div class='row'>
+      <div class='col-xs-9'>
+        <%= yield :main_block %>
+      </div>
     </div>
-  </div>
-<% else %>
-  <div class="row">
-    <div id="content" class="col-xs-12">
-      <%= yield :main_block %>
+  <% else %>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <%= yield :main_block %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

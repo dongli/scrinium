@@ -1,0 +1,2 @@
+module ResearchTeamsHelper
+end

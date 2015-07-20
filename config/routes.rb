@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :research_teams
   get 'home/index'
   get 'dashboard/super_admin'
   get 'dashboard/create_organization'

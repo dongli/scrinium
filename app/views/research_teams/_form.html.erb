@@ -1,0 +1,10 @@
+<div class='research-team-form'>
+  <%= simple_form_for @research_team do |f| %>
+    <h3 style="text-align:center"><%= OrganizationsHelper.current_organization.name %></h3>
+    <h3><%= t('research_team.add') %></h3>
+    <%= f.input :name, label: t('research_team.name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
+    <%= f.input :short_name, label: t('research_team.short_name'), required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
+    <%= f.input :description, label: t('research_team.description'), required: true, as: :text %>
+    <%= f.button :submit, t('global.add'), class: 'button right' %>
+  <% end %>
+</div>

@@ -6,7 +6,9 @@ zh-CN:
     content: '内容'
     console: '控制台'
     add: '添加'
+    edit: '修改'
     delete: '删除'
+    to: '到'
 
   scrinium:
     organization: '机构'
@@ -61,7 +63,17 @@ zh-CN:
     short_name: '机构简称'
     description: '机构描述'
     add: '添加机构'
+    edit: '修改机构信息'
     create_time: '添加时间'
+    research_team: '研究组'
+    create_research_team: '添加研究组'
+
+  research_team:
+    profile: '研究组信息'
+    name: '研究组名称'
+    short_name: '研究组简称'
+    description: '研究组描述'
+    add: '添加研究组'
 
   dashboard:
     super_admin: '超级控制台'
