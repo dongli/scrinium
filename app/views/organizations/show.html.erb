@@ -5,10 +5,16 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <h1><%= t('organization.description') %></h1>
-  <p><%= @organization.description %></p>
-  <h1><%= t('organization.research_team') %></h1>
-  <% @organization.research_teams.each do |team| %>
-    <%= link_to team.name, research_team_path(team) %>
-  <% end %>
+  <dl>
+    <dt><%= t('organization.description') %></dt>
+    <dd><%= @organization.description %></dd>
+  </dl>
+  <dl>
+    <dt><%= t('organization.research_team') %></dt>
+    <dd>
+      <% @organization.research_teams.each do |team| %>
+        <%= link_to team.name, research_team_path(team) %>
+      <% end %>
+    </dd>
+  </dl>
 <% end %>

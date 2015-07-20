@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+//= require font-awesome
  *= require_self
  */
 
@@ -40,6 +41,8 @@ footer {
   padding: 2em;
   background-color: white;
   border-radius: 10px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 a:hover {

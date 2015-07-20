@@ -56,3 +56,5 @@ gem 'country_select'
 
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
+
+gem 'font-awesome-rails'

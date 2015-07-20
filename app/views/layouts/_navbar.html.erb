@@ -12,14 +12,14 @@
 
     <div class='collapse navbar-collapse'>
       <ul class='nav navbar-nav navbar-right'>
-        <li><%= link_to t('scrinium.organization'), organizations_path, class: 'navbar-link' %></li>
-        <li><a class='navbar-link' href='/'><%= t('scrinium.research') %></a></li>
+        <li><%= link_to fa_icon('institution', text: t('scrinium.organization')), organizations_path, class: 'navbar-link' %></li>
+        <li><%= link_to fa_icon('mortar-board', text: t('scrinium.research')), '/', class: 'navbar-link' %></li>
         <% if user_signed_in? %>
-          <li><%= link_to t('user.profile'), user_path(current_user), :class => 'navbar-link' %></li>
-          <li><%= link_to t('user.signout'), destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
+          <li><%= link_to fa_icon('user', text: t('user.profile')), user_path(current_user), :class => 'navbar-link' %></li>
+          <li><%= link_to fa_icon('sign-out', text: t('user.signout')), destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
         <% else %>
-          <li><%= link_to t('user.signup'), new_user_registration_path, :class => 'navbar-link' %></li>
-          <li><%= link_to t('user.signin'), new_user_session_path, class: 'navbar-link' %></li>
+          <li><%= link_to fa_icon('pencil-square-o', text: t('user.signup')), new_user_registration_path, :class => 'navbar-link' %></li>
+          <li><%= link_to fa_icon('sign-in', text: t('user.signin')), new_user_session_path, class: 'navbar-link' %></li>
         <% end %>
       </ul>
     </div>

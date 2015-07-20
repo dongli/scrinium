@@ -28,3 +28,15 @@ body {
 .left-side-layout {
   margin: 2em;
 }
+
+dl {
+  dt {
+    border-bottom: solid 1px #EEE;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 150%;
+  }
+  dd {
+    margin: 1em;
+  }
+}

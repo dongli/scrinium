@@ -44,40 +44,10 @@ img.gravatar {
     margin-top: 1em;
     margin-bottom: 1em;
   }
-  .others {
-    .glyphicon {
-      color: #CCC;
-    }
-    p {
-      margin-bottom: 5px;
-    }
-  }
-}
-
-.user-console {
-  margin-top: 2em;
-  .title {
-    border-bottom: solid 1px #EEE;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    span {
-      font-weight: bold;
-      font-size: 120%;
-      color: #999;
-    }
-  }
-}
-
-.user-latest-research-record {
-  margin-top: 2em;
-  .title {
-    border-bottom: solid 1px #EEE;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    span {
-      font-weight: bold;
-      font-size: 120%;
-      color: #999;
-    }
+  .join_time {
+    color: #999;
+    font-weight: normal;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 }

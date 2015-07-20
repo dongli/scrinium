@@ -12,7 +12,13 @@
   <div class="role">
     <%= User::Roles[@user.role] %>
   </div>
-  <div class="others">
-    <p><span class="glyphicon glyphicon-time"></span> <%= t('user.joined_at', date: @user.created_at.strftime("%Y-%-m")) %></p>
+  <div class="join_time">
+    <p><%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %></p>
+  </div>
+  <div class='console'>
+    <a href="<%= edit_user_registration_path(@user) %>"><%= fa_icon('edit', text: t('user.console.edit_info')) %></a><br/>
+    <% if current_user.super_admin? %>
+      <%= link_to fa_icon('dashboard', text: t('dashboard.super_admin')), dashboard_super_admin_path %>
+    <% end %>
   </div>
 </div>

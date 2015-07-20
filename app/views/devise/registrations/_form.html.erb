@@ -1,0 +1,17 @@
+<div class='devise-form'>
+  <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+    <h3><%= content_for :title %></h3>
+    <%= f.input :full_name, label: t('user.full_name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
+    <%= f.input :gender, label: t('user.gender'), required: true, collection: User::Genders.values %>
+    <%= f.input :affiliation, label: t('user.affiliation'), required: true %>
+    <%= f.input :position, label: t('user.position'), required: true, collection: User::Positions.values %>
+    <%= f.input :email, label: t('user.email'), required: true %>
+    <%= f.input :password, label: t('user.password'), hint: t('user.password_hint'), required: false %>
+    <%= f.input :password_confirmation, label: t('user.password_confirmation'), hint: t('user.password_confirmation_hint'), required: false %>
+    <% if current_user %>
+      <%= f.button :submit, t('global.edit'), class: 'button right' %>
+    <% else %>
+      <%= f.button :submit, t('user.signup'), class: 'button right' %>
+    <% end %>
+  <% end %>
+</div>
