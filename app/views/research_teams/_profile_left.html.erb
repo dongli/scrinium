@@ -3,6 +3,6 @@
     <%= @research_team.name %>
   </div>
   <% if current_user.super_admin? or current_user.admin? %>
-    <a href="<%= edit_research_team_path(@research_team) %>" class='button'><%= t('global.edit') %></a><br/>
+    <a href="<%= edit_research_team_path(@research_team) %>"><%= fa_icon('edit', text: t('global.edit')) %></a>
   <% end %>
 </div>

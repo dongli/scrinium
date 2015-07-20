@@ -5,6 +5,8 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <h1><%= t('organization.description') %></h1>
-  <p><%= @research_team.description %></p>
+  <dl>
+    <dt><%= t('organization.description') %></dt>
+    <dd><%= @research_team.description %></dd>
+  </dl>
 <% end %>
