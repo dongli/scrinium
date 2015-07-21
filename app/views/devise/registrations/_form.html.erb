@@ -1,6 +1,11 @@
 <div class='devise-form'>
-  <!-- Check if there is any error -->
-  <% if Organization.all.empty? %>
+  <!-- Check if the user is the first one. -->
+  <% if User.all.empty? %>
+    <% be_super_admin = true %>
+    <% flash[:notice] = t('user.super_admin_born') %>
+  <% end %>
+  <!-- Check if there is any error. -->
+  <% if Organization.all.empty? and not be_super_admin %>
     <% has_error = true %>
     <% flash[:error] = t('user.organization_is_empty') %>
   <% end %>
@@ -8,9 +13,7 @@
     <h3><%= content_for :title %></h3>
     <%= f.input :full_name, label: t('user.full_name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :gender, label: t('user.gender'), required: true, collection: User::Genders.values %>
-    <% if User.all.empty? %>
-      <% flash[:notice] = t('user.super_admin_born') %>
-    <% else %>
+    <% if not be_super_admin %>
       <%= f.input :affiliation, label: t('user.affiliation'), required: true, collection: Organization.all.map { |x| x.name } %>
       <%= f.input :position, label: t('user.position'), required: true, collection: User::Positions.values %>
     <% end %>
