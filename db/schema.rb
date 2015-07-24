@@ -30,10 +30,8 @@ ActiveRecord::Schema.define(version: 20150720020024) do
   add_index "organization_translations", ["organization_id"], name: "index_organization_translations_on_organization_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
-    t.string   "short_name", default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "research_team_translations", force: :cascade do |t|
@@ -51,8 +49,8 @@ ActiveRecord::Schema.define(version: 20150720020024) do
 
   create_table "research_teams", force: :cascade do |t|
     t.integer  "organization_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "research_teams", ["organization_id"], name: "index_research_teams_on_organization_id", using: :btree

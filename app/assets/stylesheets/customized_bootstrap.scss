@@ -8,6 +8,11 @@
   width: 120px;
 }
 
+.error {
+  @extend .alert;
+  @extend .alert-danger;
+}
+
 a.button:visited {
   color: white;
 }
@@ -35,6 +40,7 @@ dl {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 150%;
+    text-align: center;
   }
   dd {
     margin: 1em;
