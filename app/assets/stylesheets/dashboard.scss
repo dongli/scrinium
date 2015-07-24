@@ -2,16 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.super-admin-dashboard {
-  margin-top: 2em;
-  .title {
-    border-bottom: solid 1px #EEE;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    span {
-      font-weight: bold;
-      font-size: 120%;
-      color: #999;
+@import 'bootstrap/variables';
+
+.dashboard {
+  .row {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .sidebar {
+    padding-left: 0px;
+    padding-right: 0px;
+    ul {
+      padding-left: 0px;
+      list-style-type: none;
+    }
+    li:hover {
+      background-color: #EEF1F4;
+      display: block;
+      padding: 1em;
+      @media (max-width: $screen-sm-max) {
+        padding-right: 0em; 
+      }
+    }
+    li {
+      display: block;
+      padding: 1em;
+      @media (max-width: $screen-sm-max) {
+        padding-right: 0em; 
+      }
+      span#menu-text {
+        @media (max-width: $screen-sm-max) {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+  .content {
+    display: none;
+    background-color: #EEF1F4;
+    padding: 1em;
+    margin: 0px;
+    min-height: 300px;
+    .block {
+      border: solid;
+      margin: 1em;
+      padding: 1em;
+      border-radius: 10px;
     }
   }
 }

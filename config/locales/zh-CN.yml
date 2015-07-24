@@ -4,17 +4,19 @@ zh-CN:
     scrinium: '科研信息管理平台'
     title: '标题'
     content: '内容'
-    console: '控制台'
+    dashboard: '控制台'
     add: '添加'
     edit: '修改'
     delete: '删除'
     to: '到'
+    operation: '操作'
 
   scrinium:
     organization: '机构'
     research: '研究'
 
   user:
+    block: '屏蔽'
     join_time: '加入时间'
     joined_at: '加入于 %{date}'
     sign_in: '用户登录'
@@ -78,6 +80,7 @@ zh-CN:
     add: '添加研究组'
 
   dashboard:
-    super_admin: '超级控制台'
+    user: '用户'
+    organization: '机构'
     manage_users: '管理用户'
     create_organization: '添加机构'

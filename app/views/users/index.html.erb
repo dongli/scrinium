@@ -2,10 +2,13 @@
   <table class='table'>
     <thead>
       <tr>
-        <th width="200"><%= t('user.full_name') %></th>
+        <th width="100"><%= t('user.full_name') %></th>
         <th width="200"><%= t('user.email') %></th>
         <th width="200"><%= t('user.join_time') %></th>
-        <th width="200"><%= t('user.role') %></th>
+        <th width="100"><%= t('user.role') %></th>
+        <% if current_user.super_admin? or current_user.admin? %>
+          <th width="200"><%= t('global.operation') %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +20,12 @@
           <td><%= u.email %></td>
           <td><%= u.created_at %></td>
           <td><%= get_role_string u.role %></td>
+          <% if current_user.super_admin? or current_user.admin? %>
+            <td>
+              <a href='#'><%= t('user.block') %></a>
+              <a href='#'><%= t('global.delete') %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

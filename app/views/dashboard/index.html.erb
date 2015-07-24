@@ -1,0 +1,11 @@
+<% content_for :title, t('global.dashboard') %>
+
+<% content_for :main_block do %>
+  <div class='dashboard'>
+    <div class='row'>
+      <%= render 'sidebar' %>
+      <%= render 'manage_user' %>
+      <%= render 'manage_organization' %>
+    </div>
+  </div>
+<% end %>

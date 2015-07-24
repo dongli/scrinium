@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  def super_admin
+  def index
 
   end
 
