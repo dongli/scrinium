@@ -10,6 +10,9 @@ zh-CN:
     delete: '删除'
     to: '到'
     operation: '操作'
+    name: '名称'
+    short_name: '简称'
+    description: '描述'
 
   scrinium:
     organization: '机构'

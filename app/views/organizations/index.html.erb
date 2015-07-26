@@ -19,4 +19,7 @@
       <% end %>
     </tbody>
   </table>
+  <% if current_user.super_admin? %>
+    <%= link_to t('organization.add'), new_organization_path, class: 'button right' %>
+  <% end %>
 <% end %>

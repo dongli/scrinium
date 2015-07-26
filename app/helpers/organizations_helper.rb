@@ -4,10 +4,6 @@ module OrganizationsHelper
     $current_organization = Organization.find(id)
   end
 
-  def self.current_organization_id
-    $organization_id
-  end
-
   def self.current_organization
     $current_organization
   end

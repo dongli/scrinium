@@ -20,7 +20,11 @@
   </div>
 
   <footer>
-    Copyright &copy 2015 <%= t('global.shustone') %>
+    <% if OrganizationsHelper.current_organization %>
+      Copyright &copy 2015 <%= OrganizationsHelper.current_organization.name %> / <%= t('global.shustone') %>
+    <% else %>
+      Copyright &copy 2015 <%= t('global.shustone') %>
+    <% end %>
   </footer>
 </body>
 </html>
