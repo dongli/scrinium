@@ -6,7 +6,7 @@
         <th width="200"><%= t('user.email') %></th>
         <th width="200"><%= t('user.join_time') %></th>
         <th width="100"><%= t('user.role') %></th>
-        <% if current_user.super_admin? or current_user.admin? %>
+        <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
           <th width="200"><%= t('global.operation') %></th>
         <% end %>
       </tr>
@@ -20,10 +20,17 @@
           <td><%= u.email %></td>
           <td><%= u.created_at %></td>
           <td><%= get_role_string u.role %></td>
-          <% if current_user.super_admin? or current_user.admin? %>
+          <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
             <td>
-              <a href='#'><%= t('user.block') %></a>
-              <a href='#'><%= t('global.delete') %>
+              <% if current_user != u %>
+                <%=
+                  link_to t('global.delete'),
+                  user_path(u),
+                  method: :delete,
+                  data: { confirm: t('user.are_you_sure_to_delete_this_user?', name: u.full_name) },
+                  class: 'button btn-xs btn-danger'
+                %>
+              <% end %>
             </td>
           <% end %>
         </tr>

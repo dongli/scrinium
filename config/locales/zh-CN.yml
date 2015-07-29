@@ -13,6 +13,10 @@ zh-CN:
     name: '名称'
     short_name: '简称'
     description: '描述'
+    basic_info: '基本信息'
+    home: '首页'
+    yes_: '是'
+    no: '否'
 
   scrinium:
     organization: '机构'
@@ -20,6 +24,8 @@ zh-CN:
 
   user:
     block: '屏蔽'
+    are_you_sure_to_delete_this_user?: '确定删除该用户“%{name}”吗？'
+    has_been_deleted: '用户“%{name}”已经被删除。'
     join_time: '加入时间'
     joined_at: '加入于 %{date}'
     sign_in: '用户登录'
@@ -65,6 +71,7 @@ zh-CN:
     organization_is_empty: '尚未创建任何机构！请超级管理员创建。'
 
   organization:
+    are_you_sure_to_delete_this_organization?: '确定删除该机构“%{name}”吗？'
     profile: '机构信息'
     name: '机构名称'
     short_name: '机构简称'
@@ -87,3 +94,17 @@ zh-CN:
     organization: '机构'
     manage_users: '管理用户'
     create_organization: '添加机构'
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              blank: '当前密码为空！'
+        organization:
+          attributes:
+            name:
+              taken: '已经有相同名称的机构被注册！'
+            short_name:
+              taken: '已经有相同简称的机构被注册！'

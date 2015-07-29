@@ -1,4 +1,5 @@
 <% content_for :title, t('organization.profile') %>
+<% add_breadcrumb @organization.short_name, organization_path(@organization) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -9,12 +10,16 @@
     <dt><%= t('organization.description') %></dt>
     <dd><%= @organization.description %></dd>
   </dl>
-  <dl>
+  <dl class='research-teams'>
     <dt><%= t('organization.research_team') %></dt>
     <dd>
-      <% @organization.research_teams.each do |team| %>
-        <%= link_to team.name, research_team_path(team) %>
-      <% end %>
+      <div class='row'>
+        <% @organization.research_teams.each do |team| %>
+          <div class='col-md-6 col-sm-12 research-team-entry'>
+            <%= link_to team.name, research_team_path(team) %>
+          </div>
+        <% end %>
+      </div>
     </dd>
   </dl>
 <% end %>

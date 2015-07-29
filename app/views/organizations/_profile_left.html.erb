@@ -3,7 +3,7 @@
   <div class='name'>
     <%= @organization.name %>
   </div>
-  <% if current_user.super_admin? or current_user.admin? %>
+  <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
     <a href="<%= edit_organization_path(@organization) %>"><%= fa_icon('edit', text: t('global.edit')) %></a><br/>
     <a href="<%= new_research_team_path %>"><%= fa_icon('plus-square', text: t('organization.create_research_team')) %></a>
   <% end %>

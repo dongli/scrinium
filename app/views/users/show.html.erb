@@ -1,4 +1,5 @@
 <% content_for :title, t('user.profile') %>
+<% add_breadcrumb t('user.profile'), user_path(@user), on_nav_bar: true %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>

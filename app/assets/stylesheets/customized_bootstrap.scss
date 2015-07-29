@@ -5,7 +5,6 @@
   @extend .btn;
   @extend .btn-primary;
   white-space: normal;
-  width: 120px;
 }
 
 .error {
@@ -17,7 +16,7 @@ a.button:visited {
   color: white;
 }
 
-.table {
+table {
   @extend .table;
   @extend .table-striped;
 }
@@ -28,10 +27,6 @@ a.button:visited {
 
 body {
   padding-top: 60px;
-}
-
-.left-side-layout {
-  margin: 2em;
 }
 
 dl {
@@ -45,4 +40,10 @@ dl {
   dd {
     margin: 1em;
   }
+}
+
+.breadcrumb {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em;
 }

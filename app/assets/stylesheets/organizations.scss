@@ -23,3 +23,16 @@
     margin-bottom: 1em;
   }
 }
+
+.research-teams {
+  .research-team-entry {
+    padding: 1em;
+    margin: 1em;
+    border: solid;
+    border-radius: 10px;
+    text-align: center;
+    a {
+      display: block;
+    }
+  }
+}
