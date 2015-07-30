@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'dashboard/index'
   get 'dashboard/create_organization'
+
+  mount API => '/'
   
   devise_for :users, path_prefix: 'd', :controllers => { registrations: 'registrations' }
   resources :users

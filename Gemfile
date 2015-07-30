@@ -53,8 +53,9 @@ gem 'cancancan'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'country_select'
+gem 'font-awesome-rails'
 
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 
-gem 'font-awesome-rails'
+gem 'grape'

@@ -6,7 +6,7 @@
       <tr>
         <th width="100"><%= t('organization.short_name') %></th>
         <th width="300"><%= t('organization.name') %></th>
-        <th width="200"><%= t('organization.create_time') %></th>
+        <th width="200"><%= t('global.create_time') %></th>
         <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
           <th width="200"><%= t('global.operation') %></th>
         <% end %>
