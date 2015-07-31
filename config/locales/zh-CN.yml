@@ -18,6 +18,7 @@ zh-CN:
     yes_: '是'
     no: '否'
     create_time: '添加时间'
+    edit_time: '修改时间'
 
   scrinium:
     organization: '机构'
@@ -96,6 +97,16 @@ zh-CN:
     organization: '机构'
     manage_users: '管理用户'
     create_organization: '添加机构'
+
+  research_record:
+    add: '添加科研记录'
+    edit: '修改科研记录'
+    title: '记录名称'
+    content: '记录内容'
+    create_success: '成功创建科研记录。'
+    update_success: '成功修改科研记录。'
+    destroy_success: '科研记录被删除。'
+    are_you_sure_to_delete_this_record?: '确定删除该记录吗？'
 
   activerecord:
     errors:

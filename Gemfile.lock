@@ -54,6 +54,7 @@ GEM
     byebug (5.0.0)
       columnize (= 0.9.0)
     cancancan (1.12.0)
+    coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (4.1.0)
@@ -117,6 +118,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mathjax-rails (2.5.1)
+      railties (>= 3.0)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
@@ -159,6 +162,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    redcarpet (3.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.15)
@@ -214,6 +218,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   cancancan
+  coderay
   coffee-rails (~> 4.1.0)
   country_select
   devise
@@ -222,8 +227,10 @@ DEPENDENCIES
   grape
   jbuilder (~> 2.0)
   jquery-rails
+  mathjax-rails (~> 2.5.1)
   pg
   rails (= 4.2.3)
+  redcarpet
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form

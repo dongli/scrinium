@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   belongs_to :organization
   belongs_to :research_team
+  has_many :research_records, dependent: :destroy
+
   Genders = {
     0 => I18n.t('user.genders.female'),
     1 => I18n.t('user.genders.male')

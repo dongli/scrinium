@@ -1,4 +1,8 @@
 <dl>
   <dt><%= t('user.latest_research_records') %></dt>
-  <dd></dd>
+  <dd>
+    <% user.research_records.each do |r| %>
+      <%= link_to "#{r.created_at}: #{r.title}", research_record_path(r) %>
+    <% end %>
+  </dd>
 </dl>

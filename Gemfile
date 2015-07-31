@@ -59,3 +59,7 @@ gem 'font-awesome-rails'
 gem 'globalize', '~> 5.0.0'
 
 gem 'grape'
+
+gem 'mathjax-rails', '~> 2.5.1'
+gem 'redcarpet'
+gem 'coderay'

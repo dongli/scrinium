@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard/create_organization'
 
   mount API => '/'
+  mathjax 'mathjax'
   
   devise_for :users, path_prefix: 'd', :controllers => { registrations: 'registrations' }
   resources :users
