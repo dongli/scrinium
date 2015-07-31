@@ -1,27 +1,18 @@
-<div class="user-profile">
-  <%= get_gravatar @user, 90 %>
-  <div class="name">
-    <%= @user.full_name %>
-  </div>
-  <div class="affiliation">
+<ul class="left-side-list">
+  <li><%= get_gravatar @user, 90 %></li>
+  <li><%= @user.full_name %></li>
+  <li>
     <% if @user.organization %>
       <%= @user.organization.name %>
     <% else %>
       <%= t('user.has_no_affiliation') %>
     <% end %>
-  </div>
-  <div class="position">
-    <%= @user.position %>
-  </div>
-  <div class="role">
-    <%= User::Roles[@user.role] %>
-  </div>
-  <div class="join_time">
-    <p><%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %></p>
-  </div>
-  <div class='console'>
-    <%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_registration_path(@user) %>
-    <br/>
-    <%= link_to fa_icon('dashboard', text: t('global.dashboard')), dashboard_index_path %>
-  </div>
-</div>
+  </li>
+  <li><%= @user.position %></li>
+  <li><%= User::Roles[@user.role] %></li>
+  <li>
+    <%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %>
+  </li>
+  <li><%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_registration_path(@user) %></li>
+  <li><%= link_to fa_icon('dashboard', text: t('global.dashboard')), dashboard_index_path %></li>
+</ul>

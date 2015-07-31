@@ -1,13 +1,11 @@
-<div class='organization-profile'>
+<ul class='left-side-list'>
   <% set_current_organization @organization.id %>
-  <div class='name'>
-    <%= @organization.name %>
-  </div>
+  <li><%= @organization.name %></li>
   <% if current_user and current_user.admin? %>
-    <%= link_to fa_icon('edit', text: t('global.edit')), edit_organization_path(@organization) %><br/>
+    <li><%= link_to fa_icon('edit', text: t('global.edit')), edit_organization_path(@organization) %></li>
   <% end %>
   <% if current_user and current_user.super_admin? %>
-    <%= link_to fa_icon('plus-square', text: t('organization.create_research_team')), new_research_team_path %><br/>
+    <li><%= link_to fa_icon('plus-square', text: t('organization.create_research_team')), new_research_team_path %></li>
   <% end %>
-  <%= fa_icon('users', text: t('organization.people_number'))+': '+@organization.users.size.to_s %>
-</div>
+  <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@organization.users.size.to_s %></li>
+</ul>

@@ -1,9 +1,7 @@
-<div class='research-team-profile'>
-  <div class='name'>
-    <%= @research_team.name %>
-  </div>
+<ul class='left-side-list'>
+  <li><%= @research_team.name %></li>
   <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
-    <%= link_to fa_icon('edit', text: t('global.edit')), edit_research_team_path(@research_team) %><br/>
-    <%= fa_icon('users', text: t('organization.people_number'))+': '+@research_team.users.size.to_s %>
+    <li><%= link_to fa_icon('edit', text: t('global.edit')), edit_research_team_path(@research_team) %></li>
+    <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@research_team.users.size.to_s %></li>
   <% end %>
-</div>
+</ul>

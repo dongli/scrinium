@@ -69,3 +69,12 @@ a:hover {
   position: fixed;
   background-color: white;
 }
+
+ul.left-side-list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  li {
+    margin-top: 1em;
+  }
+}
