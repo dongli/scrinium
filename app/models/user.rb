@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :organization
+  belongs_to :research_team
   Genders = {
     0 => I18n.t('user.genders.female'),
     1 => I18n.t('user.genders.male')
@@ -26,7 +28,11 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    self.role == 1
+    self.role == 1 || super_admin?
+  end
+
+  def user?
+    self.role == 2 || admin?
   end
 
   def guest?

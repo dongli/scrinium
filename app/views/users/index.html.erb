@@ -2,12 +2,12 @@
   <table class='table'>
     <thead>
       <tr>
-        <th width="100"><%= t('user.full_name') %></th>
+        <th width="50"><%= t('user.full_name') %></th>
         <th width="200"><%= t('user.email') %></th>
-        <th width="200"><%= t('user.join_time') %></th>
-        <th width="100"><%= t('user.role') %></th>
+        <th width="200"><%= t('user.affiliation') %></th>
+        <th width="80"><%= t('user.role') %></th>
         <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
-          <th width="200"><%= t('global.operation') %></th>
+          <th width="100"><%= t('global.operation') %></th>
         <% end %>
       </tr>
     </thead>
@@ -18,9 +18,13 @@
             <a href="<%= user_path(u) %>"><%= u.full_name %></a>
           </td>
           <td><%= u.email %></td>
-          <td><%= u.created_at %></td>
+          <td>
+            <% if u.organization %>
+              <%= u.organization.name %>
+            <% end %>
+          </td>
           <td><%= get_role_string u.role %></td>
-          <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
+          <% if current_user and current_user.admin? %>
             <td>
               <% if current_user != u %>
                 <%=
@@ -29,6 +33,11 @@
                   method: :delete,
                   data: { confirm: t('user.are_you_sure_to_delete_this_user?', name: u.full_name) },
                   class: 'button btn-xs btn-danger'
+                %>
+                <%=
+                  link_to t('global.edit'),
+                  edit_user_path(u),
+                  class: 'button btn-xs'
                 %>
               <% end %>
             </td>

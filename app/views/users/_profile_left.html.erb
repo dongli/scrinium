@@ -4,7 +4,11 @@
     <%= @user.full_name %>
   </div>
   <div class="affiliation">
-    <%= @user.affiliation %>
+    <% if @user.organization %>
+      <%= @user.organization.name %>
+    <% else %>
+      <%= t('user.has_no_affiliation') %>
+    <% end %>
   </div>
   <div class="position">
     <%= @user.position %>

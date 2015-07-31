@@ -3,5 +3,6 @@ class Organization < ActiveRecord::Base
   validates :short_name, uniqueness: true
   translates :name, :short_name, :description
 
+  has_many :users
   has_many :research_teams, dependent: :destroy
 end

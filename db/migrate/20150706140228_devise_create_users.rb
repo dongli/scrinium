@@ -1,10 +1,11 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
+      t.belongs_to :organization,   index: true
+      t.belongs_to :research_team, index: true
       ## Database authenticatable
       t.string :full_name,          null: false, default: ''
       t.string :gender,             null: false, default: ''
-      t.string :affiliation,        null: false, default: ''
       t.string :position,           null: false, default: ''
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''

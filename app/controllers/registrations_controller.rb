@@ -10,7 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
   def sign_up_params
     params.require(:user).permit(:full_name,
                                  :gender,
-                                 :affiliation,
+                                 :organization_id,
+                                 :research_team_id,
                                  :position,
                                  :email,
                                  :role,

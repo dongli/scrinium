@@ -1,0 +1,31 @@
+<% content_for :title, t('user.edit') %>
+
+<% content_for :main_block do %>
+  <div class='devise-form'>
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :full_name, label: t('user.full_name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
+      <%= f.input :gender, label: t('user.gender'), required: true, collection: User::Genders.values %>
+      <%=
+        f.association :organization,
+        label: t('user.affiliation'),
+        required: true,
+        label_method: :name,
+        value_method: :id
+      %>
+      <%=
+        f.association :research_team,
+        label: t('organization.research_team'),
+        required: true,
+        label_method: :name,
+        value_method: :id
+      %>
+      <%= f.input :position, label: t('user.position'), required: true, collection: User::Positions.values %>
+      <%= f.input :email, label: t('user.email'), required: true %>
+      <% if current_user %>
+        <%= f.button :submit, t('global.edit'), class: 'button right' %>
+      <% else %>
+        <%= f.button :submit, t('user.signup'), class: 'button right' %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

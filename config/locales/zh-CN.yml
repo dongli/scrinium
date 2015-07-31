@@ -24,6 +24,7 @@ zh-CN:
     research: '研究'
 
   user:
+    has_no_affiliation: '无所属单位'
     block: '屏蔽'
     are_you_sure_to_delete_this_user?: '确定删除该用户“%{name}”吗？'
     has_been_deleted: '用户“%{name}”已经被删除。'
@@ -81,6 +82,7 @@ zh-CN:
     edit: '修改机构信息'
     research_team: '研究组'
     create_research_team: '添加研究组'
+    people_number: '成员数量'
 
   research_team:
     profile: '研究组信息'
