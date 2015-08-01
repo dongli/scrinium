@@ -7,6 +7,7 @@ zh-CN:
     dashboard: '控制台'
     add: '添加'
     edit: '修改'
+    preview: '预览'
     delete: '删除'
     to: '到'
     operation: '操作'

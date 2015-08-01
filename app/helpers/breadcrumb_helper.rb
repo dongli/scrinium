@@ -2,7 +2,6 @@ module BreadcrumbHelper
   @@breadcrumbs ||= [ { title: I18n.t('global.home'), url: '/'} ]
 
   def add_breadcrumb title, url, options = {}
-    # debugger
     title_ = title.to_sym
     if options[:first]
       @@breadcrumbs = [ { title: title_, url: url } ]

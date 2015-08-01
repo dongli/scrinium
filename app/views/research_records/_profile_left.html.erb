@@ -1,0 +1,22 @@
+<ul class='left-side-list'>
+  <li>
+    <%=
+      link_to get_gravatar(current_user, 90),
+      user_path(@research_record.user)
+    %>
+    </li>
+  <li><%= t('global.create_time')+': '+@research_record.created_at.to_s %></li>
+  <li><%= t('global.edit_time')+': '+@research_record.updated_at.to_s %></li>
+  <li>
+    <%=
+      link_to fa_icon('edit', text: t('global.edit')),
+      edit_research_record_path(@research_record)
+    %>
+    <%=
+      link_to fa_icon('trash', text: t('global.delete')),
+      @research_record,
+      method: :delete,
+      data: { confirm: t('research_record.are_you_sure_to_delete_this_record?') }
+    %>
+  </li>
+</ul>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :users, path_prefix: 'd', :controllers => { registrations: 'registrations' }
   resources :users
   resources :organizations
+  resources :research_records
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

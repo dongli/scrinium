@@ -2,7 +2,7 @@
   <dt><%= t('user.latest_research_records') %></dt>
   <dd>
     <% user.research_records.each do |r| %>
-      <%= link_to "#{r.created_at}: #{r.title}", research_record_path(r) %>
+      <%= link_to "#{r.created_at}: 《#{r.title}》 #{r.impressionist_count filter: :session_hash}", research_record_path(r) %>
     <% end %>
   </dd>
 </dl>

@@ -1,0 +1,13 @@
+<% content_for :title, @research_record.title %>
+<% add_breadcrumb @research_record.title, '#' %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl class='research-record-show'>
+    <dt><%= @research_record.title %></dt>
+    <dd class='content'><%= markdown @research_record.content %></dd>
+  </dl>
+<% end %>
