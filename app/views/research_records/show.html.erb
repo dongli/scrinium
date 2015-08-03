@@ -1,5 +1,5 @@
 <% content_for :title, @research_record.title %>
-<% add_breadcrumb @research_record.title, '#' %>
+<% add_breadcrumb @research_record.title, research_record_path(@research_record) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>

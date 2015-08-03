@@ -19,4 +19,7 @@
       data: { confirm: t('research_record.are_you_sure_to_delete_this_record?') }
     %>
   </li>
+  <li>
+    <%= t('research_record.version_number')+': '+@research_record.versions.size.to_s %>
+  </li>
 </ul>

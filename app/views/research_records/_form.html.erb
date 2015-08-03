@@ -1,7 +1,17 @@
 <div class='research-record-form'>
   <%= simple_form_for @research_record do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %> 
-    <%= f.input :title, label: t('research_record.title'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%=
+      f.input :title,
+      label: t('research_record.title'),
+      autofocus: true,
+      required: true,
+      input_html: {
+        autocapitalize: 'off',
+        autocorrect: 'none',
+        spellcheck: 'false'
+      }
+    %>
     <%=
       f.input :content,
       label: t('research_record.content'),
@@ -10,12 +20,14 @@
     %>
     <ul class='list-inline right'>
       <li>
-        <button type='button' class='button'
-          id='research-record-preview'
-          data-toggle='modal'
-          data-target='div#research-record-preview'>
-          <%= t('global.preview') %>
-        </button>
+        <%=
+          link_to t('global.preview'), '#',
+          id: 'research-record-preview',
+          class: 'button'
+        %>
+      </li>
+      <li>
+        <%= f.button :submit, t('global.save'), class: 'button' %>
       </li>
       <li>
         <% if content_for(:title) == t('research_record.edit') %>
@@ -28,14 +40,12 @@
   <% end %>
 </div>
 
+<!-- Preview placeholder -->
 <div class="modal fade" id='research-record-preview'>
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        preview
-      </div>
-      <div class="modal-body">
-      </div>
+      <div class="modal-header"></div>
+      <div class="modal-body"></div>
     </div>
   </div>
 </div>

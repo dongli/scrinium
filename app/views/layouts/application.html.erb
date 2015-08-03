@@ -3,10 +3,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= content_for?(:title) ? yield(:title) + ' - ' + t('global.scrinium') : t('global.scrinium') %></title>
+  <!-- Set ROOT_PATH for querying in JavaScript. -->
+  <script type="text/javascript" charset="utf-8">
+    var ROOT_PATH = '<%= root_url %>';
+  </script>
+  <%= mathjax_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= mathjax_tag %>
 </head>
 <body>
 
@@ -19,7 +23,6 @@
     <%= render_breadcrumbs %>
     <%= render 'layouts/left_side' %>
     <%= render 'layouts/main_block' %>
-    <%= render 'layouts/user_console' %>
   </div>
 
   <footer>

@@ -1,6 +1,6 @@
 class ResearchRecordsController < ApplicationController
   before_action :set_research_record, only: [:show, :edit, :update, :destroy]
-  impressionist actions: [:show], unique: [:session_hash]
+  impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   # GET /research_records
   # GET /research_records.json
@@ -26,6 +26,7 @@ class ResearchRecordsController < ApplicationController
   # POST /research_records.json
   def create
     @research_record = ResearchRecord.new(research_record_params)
+    set_draft_tag
 
     respond_to do |format|
       if @research_record.save
@@ -41,6 +42,7 @@ class ResearchRecordsController < ApplicationController
   # PATCH/PUT /research_records/1
   # PATCH/PUT /research_records/1.json
   def update
+    set_draft_tag
     respond_to do |format|
       if @research_record.update(research_record_params)
         format.html { redirect_to @research_record, notice: t('research_record.update_success') }
@@ -57,12 +59,21 @@ class ResearchRecordsController < ApplicationController
   def destroy
     @research_record.destroy
     respond_to do |format|
-      format.html { redirect_to research_records_url, notice: t('research_record.destroy_success') }
+      format.html { redirect_to user_path(current_user), notice: t('research_record.destroy_success') }
       format.json { head :no_content }
     end
   end
 
   private
+
+  def set_draft_tag
+    case params[:commit]
+    when t('global.add'), t('global.edit')
+      @research_record.tag_draft = false
+    when t('global.save')
+      @research_record.tag_draft = true
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_research_record

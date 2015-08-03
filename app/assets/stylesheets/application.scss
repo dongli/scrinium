@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require font-awesome
+ *= require select2
  *= require_self
  */
 
@@ -54,20 +55,6 @@ a:hover {
   color: inherit;
   font-weight: bold;
   text-decoration: none;
-}
-
-.user-console {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  border: solid;
-  border-left: none;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  position: fixed;
-  background-color: white;
 }
 
 ul.left-side-list {

@@ -8,6 +8,7 @@ zh-CN:
     add: '添加'
     edit: '修改'
     preview: '预览'
+    save: '保存'
     delete: '删除'
     to: '到'
     operation: '操作'
@@ -20,6 +21,7 @@ zh-CN:
     no: '否'
     create_time: '添加时间'
     edit_time: '修改时间'
+    user: '用户'
 
   scrinium:
     organization: '机构'
@@ -108,6 +110,8 @@ zh-CN:
     update_success: '成功修改科研记录。'
     destroy_success: '科研记录被删除。'
     are_you_sure_to_delete_this_record?: '确定删除该记录吗？'
+    browse_count: '浏览次数'
+    version_number: '版本数'
 
   activerecord:
     errors:
@@ -122,3 +126,10 @@ zh-CN:
               taken: '已经有相同名称的机构被注册！'
             short_name:
               taken: '已经有相同简称的机构被注册！'
+        research_record:
+          attributes:
+            title:
+              blank: '记录名称不能为空！'
+              taken: '已经有相同名称的记录！'
+            content:
+              blank: '记录内容不能为空！'

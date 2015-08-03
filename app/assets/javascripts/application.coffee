@@ -14,34 +14,22 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap-sprockets
+#= require select2
 #= require_tree .
 
-setUserConsole = (heightScale, widthScale) ->
-  windowHeight = $(window).innerHeight()
-  userConsole = $('div[id=user-console]')
-  userConsoleHeight = windowHeight*0.1*heightScale
-  userConsoleWdith = 50*widthScale
-  userConsole.css('height', userConsoleHeight)
-  userConsole.css('width', userConsoleWdith)
-  userConsole.css('left', 0)
-  userConsole.css('top', (windowHeight-userConsoleHeight)*0.5)
-
-toggleUserConsoleItems = (visible) ->
-  if visible
-    $('div[id=user-console-items]').css('display', 'block')
-    $('i[id=user-console-icon]').css('display', 'none')
-  else
-    $('div[id=user-console-items]').css('display', 'none')
-    $('i[id=user-console-icon]').css('display', 'block')
-
 $(document).on 'page:change', ->
-  setUserConsole(1, 1)
-  toggleUserConsoleItems(false)
-  $('div[id=user-console]').hover (->
-      setUserConsole(2, 4)
-      toggleUserConsoleItems(true)
-    ), ->
-      setUserConsole(1, 1)
-      toggleUserConsoleItems(false)
-      
-  
+  # Using Select2 to enhance select element.
+  $('select[id=input-user-full-name]').select2(
+    ajax:
+      url: ROOT_PATH+'api/v1/users/full_names'
+      dataType: 'json'
+      delay: 250
+      processResults: (data) ->
+        {
+          results: $.map( data, (d, i) ->
+            { id: d[0], text: d[1] }
+          )
+        }
+      results: (data, page) ->
+        results: data
+  )

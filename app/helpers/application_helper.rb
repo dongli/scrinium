@@ -20,4 +20,7 @@ module ApplicationHelper
   def markdown text
     @@markdown.render(text).html_safe
   end
+  def self.markdown text
+    @@markdown.render(text).html_safe
+  end
 end

@@ -60,7 +60,13 @@ gem 'globalize', '~> 5.0.0'
 
 gem 'grape'
 
+# Use Bower to install asset packages, such as 'select2'.
+gem 'bower-rails'
+
 gem 'mathjax-rails', '~> 2.5.1'
 gem 'redcarpet'
 gem 'coderay'
+
 gem 'impressionist'
+
+gem 'paper_trail', '~> 4.0.0'

@@ -1,8 +1,27 @@
 <dl>
   <dt><%= t('user.latest_research_records') %></dt>
   <dd>
-    <% user.research_records.each do |r| %>
-      <%= link_to "#{r.created_at}: 《#{r.title}》 #{r.impressionist_count filter: :session_hash}", research_record_path(r) %>
-    <% end %>
+    <table class='research-records'>
+      <thead>
+        <tr>
+          <th width='200'><%= t('research_record.title') %></th>
+          <th width='200'><%= t('global.create_time') %></th>
+          <th width='100'><%= t('research_record.browse_count') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% user.research_records.each do |r| %>
+          <tr
+            <% if r.tag_draft %>
+              class='research-record-draft'
+            <% end %>
+          >
+            <td><%= link_to "《#{r.title}》", research_record_path(r) %></td>
+            <td><%= r.created_at %></td>
+            <td><%= r.impressionist_count filter: :session_hash %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </dd>
 </dl>

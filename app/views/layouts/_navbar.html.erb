@@ -12,10 +12,64 @@
 
     <div class='collapse navbar-collapse'>
       <ul class='nav navbar-nav navbar-right'>
-        <li><%= link_to fa_icon('institution', text: t('scrinium.organization')), organizations_path, class: 'navbar-link' %></li>
-        <li><%= link_to fa_icon('mortar-board', text: t('scrinium.research')), '/', class: 'navbar-link' %></li>
+        <li>
+          <%=
+            link_to fa_icon('institution', text: t('scrinium.organization')),
+            organizations_path,
+            class: 'navbar-link'
+          %>
+        </li>
+        <li>
+          <%=
+            link_to fa_icon('mortar-board', text: t('scrinium.research')),
+            '/',
+            class: 'navbar-link'
+          %>
+        </li>
         <% if user_signed_in? %>
-          <li><%= link_to fa_icon('user', text: t('user.profile')), user_path(current_user), :class => 'navbar-link' %></li>
+          <li class='dropdown'>
+            <a href='#'
+              class='dropdown-toggle'
+              data-toggle='dropdown'
+              role='button'
+              aria-haspopup='true'
+              aria-expanded='false'>
+              <%= fa_icon('user', text: t('global.user')) %> <span class='caret'></span>
+            </a>
+            <ul class='dropdown-menu'>
+              <li>
+                <%=
+                  link_to fa_icon('home', text: t('user.profile')),
+                  user_path(current_user)
+                %>
+              </li>
+              <li>
+                <%=
+                  link_to fa_icon('dashboard', text: t('global.dashboard')),
+                  dashboard_index_path
+                %>
+              </li>
+              <li>
+                <%=
+                  link_to fa_icon('plus-square', text: t('research_record.add')),
+                  new_research_record_path
+                %>
+              </li>
+              <li>
+                <%=
+                  link_to fa_icon('plus-square', text: t('experiment.add')),
+                  '#select-experiment-type',
+                  'data-toggle' => 'modal'
+                %>
+              </li>
+              <li>
+                <%=
+                  link_to fa_icon('list', text: t('experiment.list')),
+                  experiments_path
+                %>
+              </li>
+            </ul>
+          </li>
           <li><%= link_to fa_icon('sign-out', text: t('user.signout')), destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
         <% else %>
           <li><%= link_to fa_icon('pencil-square-o', text: t('user.signup')), new_user_registration_path, :class => 'navbar-link' %></li>
@@ -25,3 +79,30 @@
     </div>
   </div>
 </nav>
+
+<!-- Experiment type selection modal -->
+<div class="modal fade experiment-type-modal" id='select-experiment-type'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= t('experiment.type') %></h4>
+      </div>
+      <div class="modal-body">
+        <div class='container-fluid'>
+          <div class='row'>
+            <div class='col-md-3 modal-block'>
+              <%= link_to 'AMIP', new_experiment_with_type_path(0) %>
+            </div>
+            <div class='col-md-3 modal-block'>
+              <%= link_to 'OMIP', new_experiment_with_type_path(1) %>
+            </div>
+            <div class='col-md-3 modal-block'>
+              <%= link_to 'CMIP', new_experiment_with_type_path(2) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

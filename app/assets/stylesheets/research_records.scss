@@ -16,3 +16,14 @@
     height: 200px;
   }
 }
+
+table.research-records {
+  border-collapse: collapse;
+  tr.research-record-draft {
+    background-color: rgba(203, 35, 46, 0.50);
+    color: yellow;
+    a {
+      color: yellow;
+    }
+  }
+}
