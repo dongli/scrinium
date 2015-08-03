@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups
   resources :research_teams
   get 'home/index'
   get 'researches/index'

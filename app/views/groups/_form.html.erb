@@ -1,0 +1,43 @@
+<div class='group-form'>
+  <%= simple_form_for(@group) do |f| %>
+    <%= f.hidden_field :owner_id, value: current_user.id %>
+    <%=
+      f.input :name,
+      label: t('group.name'),
+      autofocus: true,
+      required: true,
+      input_html: {
+        autocapitalize: 'off',
+        autocorrect: 'none',
+        spellcheck: 'false'
+      }
+    %>
+    <%=
+      f.input :privacy,
+      label: t('group.privacy'),
+      required: true,
+      collection: Group::PrivacyTypes.values,
+      default: 0
+    %>
+    <%=
+      f.input :description,
+      label: t('group.description'),
+      required: true,
+      as: :text
+    %>
+    <%=
+      f.association :users,
+      label: t('group.members'),
+      required: true,
+      label_method: :full_name,
+      value_method: :id,
+      collection: [ current_user ],
+      input_html: { id: 'input-user-full-name', multiple: 'multiple' }
+    %>
+    <% if content_for(:title) == t('group.edit') %>
+      <%= f.button :submit, t('global.edit'), class: 'button right' %>
+    <% else %>
+      <%= f.button :submit, t('global.add'), class: 'button right' %>
+    <% end %>
+  <% end %>
+</div>

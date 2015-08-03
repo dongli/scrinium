@@ -13,6 +13,13 @@ User.create(full_name: '董理',
             password: '12345678',
             password_confirmation: '12345678')
 
+User.create(full_name: '张三',
+            gender: '男',
+            position: '',
+            email: 'zhangsan@lasg.iap.ac.cn',
+            password: '12345678',
+            password_confirmation: '12345678')
+
 ResearchRecord.create(user_id: 1,
                       title: '云滴谱的数值求解',
                       content: '\\\\[ \\frac{\\partial n}{\\partial t} = - \\frac{\\partial}{\\partial r} \\frac{d r}{d t} n \\\\]',

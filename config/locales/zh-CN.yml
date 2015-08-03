@@ -26,6 +26,7 @@ zh-CN:
   scrinium:
     organizations: '机构'
     researches: '研究'
+    groups: '团队'
 
   user:
     has_no_affiliation: '无所属单位'
@@ -33,7 +34,8 @@ zh-CN:
     are_you_sure_to_delete_this_user?: '确定删除该用户“%{name}”吗？'
     has_been_deleted: '用户“%{name}”已经被删除。'
     join_time: '加入时间'
-    joined_at: '加入于 %{date}'
+    joined_at: '加入于%{date}'
+    join_groups: '加入%{group_number}个团队'
     sign_in: '用户登录'
     sign_up: '新用户注册'
     edit: '个人设置'
@@ -94,6 +96,19 @@ zh-CN:
     short_name: '研究组简称'
     description: '研究组描述'
     add: '添加研究组'
+
+  group:
+    name: '团队名称'
+    description: '团队描述'
+    add: '组建团队'
+    edit: '修改团队信息'
+    owner: '管理者'
+    members: '成员'
+    privacy: '隐私度'
+    privacy_types:
+      public: '公开'
+      private: '非公开'
+    member_number: '成员人数'
 
   dashboard:
     user: '用户'

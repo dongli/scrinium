@@ -15,4 +15,21 @@
   </li>
   <li><%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_registration_path(@user) %></li>
   <li><%= link_to fa_icon('dashboard', text: t('global.dashboard')), dashboard_index_path %></li>
+  <li>
+    <a href='#group-list'
+      data-toggle='collapse'
+      aria-expanded='false'
+      aria-controls='group-list'>
+      <%= fa_icon('users', text: t('user.join_groups', group_number: @user.groups.all.size)) %>
+    </a>
+  </li>
 </ul>
+
+<!-- Group list placeholder -->
+<div class='collapse' id='group-list'>
+  <ul class='left-side-list'>
+    <% @user.groups.all.each do |g| %>
+      <li><%= link_to fa_icon('chevron-right', text: g.name), group_path(g) %></li>
+    <% end %>
+  </ul>
+</div>

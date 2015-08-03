@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :organization
   belongs_to :research_team
   has_many :research_records, dependent: :destroy
+  has_many :group_user_associations
+  has_many :groups, through: :group_user_associations
 
   Genders = {
     0 => I18n.t('user.genders.female'),

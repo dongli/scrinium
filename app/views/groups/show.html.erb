@@ -1,0 +1,12 @@
+<% content_for :title, @group.name %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl>
+    <dt><%= t('group.description') %></dt>
+    <dd><%= markdown @group.description %></dd>
+  </dl>
+<% end %>

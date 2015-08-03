@@ -28,6 +28,7 @@ class UsersController < ApplicationController
                                  :gender,
                                  :organization_id,
                                  :research_team_id,
+                                 { group_ids: [] },
                                  :position,
                                  :email,
                                  :role)
