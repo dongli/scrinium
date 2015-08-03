@@ -1,0 +1,28 @@
+<% content_for :title, t('scrinium.researches') %>
+
+<% content_for :main_block do %>
+  <table class='research-records'>
+    <thead>
+      <tr>
+        <th width='200'><%= t('research_record.title') %></th>
+        <th width='100'><%= t('research_record.author') %></th>
+        <th width='200'><%= t('global.create_time') %></th>
+        <th width='100'><%= t('research_record.browse_count') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% ResearchRecord.all.each do |r| %>
+        <tr
+          <% if r.tag_draft %>
+            class='research-record-draft'
+          <% end %>
+        >
+          <td><%= link_to "《#{r.title}》", research_record_path(r) %></td>
+          <td><%= link_to r.user.full_name, user_path(r.user) %></td>
+          <td><%= r.created_at %></td>
+          <td><%= r.impressionist_count filter: :session_hash %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

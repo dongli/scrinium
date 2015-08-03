@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :research_teams
   get 'home/index'
+  get 'researches/index'
   get 'dashboard/index'
   get 'dashboard/create_organization'
 

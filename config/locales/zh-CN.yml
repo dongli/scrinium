@@ -25,7 +25,7 @@ zh-CN:
 
   scrinium:
     organization: '机构'
-    research: '研究'
+    researches: '研究'
 
   user:
     has_no_affiliation: '无所属单位'
@@ -106,6 +106,7 @@ zh-CN:
     edit: '修改科研记录'
     title: '记录名称'
     content: '记录内容'
+    author: '作者'
     create_success: '成功创建科研记录。'
     update_success: '成功修改科研记录。'
     destroy_success: '科研记录被删除。'
