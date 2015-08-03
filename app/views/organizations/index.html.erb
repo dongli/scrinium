@@ -1,4 +1,5 @@
-<% add_breadcrumb t('scrinium.organization'), organizations_path, on_nav_bar: true %>
+<% content_for :title, t('scrinium.organizations') %>
+<% add_breadcrumb t('scrinium.organizations'), organizations_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
   <table class='table'>
