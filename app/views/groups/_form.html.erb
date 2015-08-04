@@ -29,7 +29,7 @@
       f.association :users,
       label: t('group.members'),
       required: true,
-      label_method: :full_name,
+      label_method: :name,
       value_method: :id,
       collection: @group.users,
       input_html: { id: 'input-user-full-name', multiple: 'multiple' }

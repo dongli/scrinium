@@ -21,7 +21,7 @@ $(document).on 'page:change', ->
   # Using Select2 to enhance select element.
   $('select[id=input-user-full-name]').select2(
     ajax:
-      url: ROOT_PATH+'api/v1/users/full_names'
+      url: ROOT_PATH+'api/v1/users/names'
       dataType: 'json'
       delay: 250
       processResults: (data) ->

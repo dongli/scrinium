@@ -1,8 +1,8 @@
 class UsersAPI < Grape::API
   resource :users do
     desc 'List all users.'
-    get :full_names do
-      User.all.map { |u| [ u.id, u.full_name ] }
+    get :names do
+      User.all.map { |u| [ u.id, u.name ] }
     end
   end
 end

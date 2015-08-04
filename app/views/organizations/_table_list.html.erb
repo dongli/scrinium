@@ -4,7 +4,7 @@
       <th width="100"><%= t('organization.short_name') %></th>
       <th width="300"><%= t('organization.name') %></th>
       <th width="200"><%= t('global.create_time') %></th>
-      <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
+      <% if is_super_admin_or_admin?(current_user) %>
         <th width="200"><%= t('actions') %></th>
       <% end %>
     </tr>
@@ -17,9 +17,9 @@
         </td>
         <td><%= o.name %></td>
         <td><%= o.created_at %></td>
-        <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
+        <% if is_super_admin_or_admin?(current_user) %>
           <td>
-            <% if current_user.super_admin? %>
+            <% if is_super_admin?(current_user) %>
               <%=
                 link_to t('action.delete'),
                 organization_path(o),

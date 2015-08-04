@@ -1,6 +1,6 @@
 <ul class='left-side-list'>
   <li><%= @research_team.name %></li>
-  <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
+  <% if is_super_admin_or_admin?(current_user) %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),

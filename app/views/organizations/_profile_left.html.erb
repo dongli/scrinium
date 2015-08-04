@@ -1,10 +1,10 @@
 <ul class='left-side-list'>
   <% set_current_organization @organization.id %>
   <li><%= @organization.name %></li>
-  <% if current_user and current_user.admin? %>
+  <% if is_super_admin_or_admin(current_user) %>
     <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_organization_path(@organization) %></li>
   <% end %>
-  <% if current_user and current_user.super_admin? %>
+  <% if is_super_admin?(current_user) %>
     <li><%= link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.research_team')), new_research_team_path %></li>
   <% end %>
   <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@organization.users.size.to_s %></li>

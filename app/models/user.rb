@@ -9,50 +9,44 @@ class User < ActiveRecord::Base
   has_many :research_records, dependent: :destroy
   has_many :group_user_associations
   has_many :groups, through: :group_user_associations
+  # TODO: Below is the special codes for LASG.
+  has_many :experiments
 
-  Genders = {
-    0 => I18n.t('user.genders.female'),
-    1 => I18n.t('user.genders.male')
-  }.freeze
-  Positions = {
-    :researcher => I18n.t('user.positions.researcher'),
-    :associate_researcher => I18n.t('user.positions.associate_researcher'),
-    :post_doctor => I18n.t('user.positions.post_doctor'),
-    :student => I18n.t('user.positions.student')
-  }.freeze
-  Roles = {
-    0 => I18n.t('user.roles.super_admin'),
-    1 => I18n.t('user.roles.admin'),
-    2 => I18n.t('user.roles.user'),
-    3 => I18n.t('user.roles.guest')
-  }.freeze
-
-  def super_admin?
-    self.role == 0
-  end
-
-  def admin?
-    self.role == 1 || super_admin?
-  end
-
-  def user?
-    self.role == 2 || admin?
-  end
-
-  def guest?
-    self.role == 3
-  end
+  enum gender: [
+    :female,
+    :male
+  ].map { |x| I18n.t("user.gender_types.#{x}") }
+  enum role: [
+    :super_admin,
+    :admin,
+    :user,
+    :guest
+  ].map { |x| I18n.t("user.role_types.#{x}") }
+  enum position: [
+    :academician,
+    :researcher,
+    :associate_researcher,
+    :assistant_researcher,
+    :professor,
+    :associate_professor,
+    :assistant_professor,
+    :postdoctoral_researcher,
+    :postgraduate,
+    :undergraduate
+  ].map { |x| I18n.t("user.position_types.#{x}") }
 
   before_save :set_user_defaults
 
   protected
 
   def set_user_defaults
-    if self.id == 1
-      # Set the first user as super admin!
-      self.role = 0
-    else
-      self.role = 3
+    if not self.role
+      if User.all.empty?
+        # Set the first user as super admin!
+        self.role = 0
+      else
+        self.role = 3
+      end
     end
   end
 end

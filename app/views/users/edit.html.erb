@@ -3,8 +3,24 @@
 <% content_for :main_block do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
-      <%= f.input :full_name, label: t('user.full_name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
-      <%= f.input :gender, label: t('user.gender'), required: true, collection: User::Genders.values %>
+      <%=
+        f.input :name,
+        label: t('user.name'),
+        autofocus: true,
+        required: true,
+        input_html: {
+          autocapitalize: 'off',
+          autocorrect: 'none',
+          spellcheck: 'false'
+        }
+      %>
+      <%=
+        f.input :gender,
+        label: t('user.gender'),
+        required: true,
+        collection: User.genders,
+        selected: User.genders[@user.gender]
+      %>
       <%=
         f.association :organization,
         label: t('user.affiliation'),
@@ -19,7 +35,22 @@
         label_method: :name,
         value_method: :id
       %>
-      <%= f.input :position, label: t('user.position'), required: true, collection: User::Positions.values %>
+      <%=
+        f.input :position,
+        label: t('user.position'),
+        required: true,
+        collection: User.positions,
+        selected: User.positions[@user.position]
+      %>
+      <% if is_super_admin_or_admin?(current_user) %>
+        <%=
+          f.input :role,
+          label: t('user.role'),
+          require: true,
+          collection: User.roles,
+          selected: User.roles[@user.role]
+        %>
+      <% end %>
       <%= f.input :email, label: t('user.email'), required: true %>
       <% if current_user %>
         <%= f.button :submit, t('action.edit'), class: 'button right' %>

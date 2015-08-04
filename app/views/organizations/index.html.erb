@@ -6,7 +6,7 @@
     render partial: 'organizations/table_list',
     locals: { organizations: Organization.all }
   %>
-  <% if current_user and current_user.super_admin? %>
+  <% if is_super_admin?(current_user) %>
     <%= link_to t('action.add'), new_organization_path, class: 'button right' %>
   <% end %>
 <% end %>

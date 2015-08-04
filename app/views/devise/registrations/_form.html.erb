@@ -10,8 +10,25 @@
     <% flash[:error] = t('user.organization_is_empty') %>
   <% end %>
   <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
-    <%= f.input :full_name, label: t('user.full_name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
-    <%= f.input :gender, label: t('user.gender'), required: true, collection: User::Genders.values %>
+    <%=
+      f.input :name,
+      label: t('user.name'),
+      placeholder: t('user.need_real_name'),
+      autofocus: true,
+      required: true,
+      input_html: {
+        autocapitalize: 'off',
+        autocorrect: 'none',
+        spellcheck: 'false'
+      }
+    %>
+    <%=
+      f.input :gender,
+      label: t('user.gender'),
+      required: true,
+      collection: User.genders,
+      selected: User.genders[resource.gender]
+    %>
     <% if not be_super_admin %>
       <%=
         f.association :organization,
@@ -27,11 +44,40 @@
         label_method: :name,
         value_method: :id
       %>
-      <%= f.input :position, label: t('user.position'), required: true, collection: User::Positions.values %>
+      <%=
+        f.input :position,
+        label: t('user.position'),
+        required: true,
+        collection: User.positions,
+        selected: User.positions[resource.position]
+      %>
     <% end %>
-    <%= f.input :email, label: t('user.email'), required: true %>
-    <%= f.input :password, label: t('user.password'), hint: t('user.password_hint'), required: false %>
-    <%= f.input :password_confirmation, label: t('user.password_confirmation'), hint: t('user.password_confirmation_hint'), required: false %>
+    <% if is_super_admin_or_admin?(resource) %>
+      <%=
+        f.input :role,
+        label: t('user.role'),
+        require: true,
+        collection: User.roles,
+        selected: User.roles[resource.role]
+      %>
+    <% end %>
+    <%=
+      f.input :email,
+      label: t('user.email'),
+      required: true
+    %>
+    <%=
+      f.input :password,
+      label: t('user.password'),
+      placeholder: t('user.password_hint'),
+      required: false
+    %>
+    <%=
+      f.input :password_confirmation,
+      label: t('user.password_confirmation'),
+      placeholder: t('user.password_confirmation_hint'),
+      required: false
+    %>
     <% if current_user %>
       <%= f.button :submit, t('action.edit'), class: 'button right', disabled: has_error %>
     <% else %>

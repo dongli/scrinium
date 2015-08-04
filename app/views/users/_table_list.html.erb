@@ -1,11 +1,11 @@
 <table class='table'>
   <thead>
     <tr>
-      <th width="50"><%= t('user.full_name') %></th>
+      <th width="50"><%= t('user.name') %></th>
       <th width="200"><%= t('user.email') %></th>
       <th width="200"><%= t('user.affiliation') %></th>
       <th width="80"><%= t('user.role') %></th>
-      <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
+      <% if is_super_admin_or_admin?(current_user) %>
         <th width="100"><%= t('actions') %></th>
       <% end %>
     </tr>
@@ -14,7 +14,7 @@
     <% users.each do |u| %>
       <tr>
         <td>
-          <a href="<%= user_path(u) %>"><%= u.full_name %></a>
+          <a href="<%= user_path(u) %>"><%= u.name %></a>
         </td>
         <td><%= u.email %></td>
         <td>
@@ -22,8 +22,8 @@
             <%= u.organization.name %>
           <% end %>
         </td>
-        <td><%= get_role_string u.role %></td>
-        <% if current_user and current_user.admin? %>
+        <td><%= u.role %></td>
+        <% if is_super_admin_or_admin?(current_user) %>
           <td>
             <% if current_user != u %>
               <%=
