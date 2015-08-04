@@ -1,7 +1,18 @@
 <ul class='left-side-list'>
   <li><%= @research_team.name %></li>
   <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
-    <li><%= link_to fa_icon('edit', text: t('global.edit')), edit_research_team_path(@research_team) %></li>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        edit_research_team_path(@research_team)
+      %>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        @research_team,
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.research_team')) }
+      %>
+    </li>
     <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@research_team.users.size.to_s %></li>
   <% end %>
 </ul>

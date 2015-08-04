@@ -6,18 +6,18 @@
     %>
     </li>
   <li><%= t('global.create_time')+': '+@research_record.created_at.to_s %></li>
-  <li><%= t('global.edit_time')+': '+@research_record.updated_at.to_s %></li>
+  <li><%= t('action.edit_time')+': '+@research_record.updated_at.to_s %></li>
   <% if current_user and current_user == @research_record.user %>
     <li>
       <%=
-        link_to fa_icon('edit', text: t('global.edit')),
+        link_to fa_icon('edit', text: t('action.edit')),
         edit_research_record_path(@research_record)
       %>
       <%=
-        link_to fa_icon('trash', text: t('global.delete')),
+        link_to fa_icon('trash', text: t('action.delete')),
         @research_record,
         method: :delete,
-        data: { confirm: t('research_record.are_you_sure_to_delete_this_record?') }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.research_record')) }
       %>
     </li>
   <% end %>

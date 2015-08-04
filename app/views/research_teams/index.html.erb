@@ -1,27 +1,9 @@
+<% content_for :title, t('scrinium.research_team') %>
+<% add_breadcrumb t('scrinium.research_team'), research_teams_path, on_nav_bar: true %>
+
 <% content_for :main_block do %>
-  <p id="notice"><%= notice %></p>
-
-  <h1>Listing Research Teams</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @research_teams.each do |research_team| %>
-        <tr>
-          <td><%= link_to 'Show', research_team %></td>
-          <td><%= link_to 'Edit', edit_research_team_path(research_team) %></td>
-          <td><%= link_to 'Destroy', research_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Research team', new_research_team_path %>
+  <%=
+    render partial: 'research_teams/table_list',
+    locals: { research_teams: ResearchTeam.all }
+  %>
 <% end %>

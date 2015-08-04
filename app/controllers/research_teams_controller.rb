@@ -1,4 +1,5 @@
 class ResearchTeamsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_action :set_research_team, only: [:show, :edit, :update, :destroy]
 
   # GET /research_teams
@@ -30,7 +31,7 @@ class ResearchTeamsController < ApplicationController
 
     respond_to do |format|
       if @research_team.save
-        format.html { redirect_to @research_team, notice: 'Research team was successfully created.' }
+        format.html { redirect_to @research_team, notice: t('message.create_success', thing: t('scrinium.research_team')) }
         format.json { render :show, status: :created, location: @research_team }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class ResearchTeamsController < ApplicationController
   def update
     respond_to do |format|
       if @research_team.update(research_team_params)
-        format.html { redirect_to @research_team, notice: 'Research team was successfully updated.' }
+        format.html { redirect_to @research_team, notice: t('message.update_success', thing: t('scrinium.research_team')) }
         format.json { render :show, status: :ok, location: @research_team }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class ResearchTeamsController < ApplicationController
   def destroy
     @research_team.destroy
     respond_to do |format|
-      format.html { redirect_to research_teams_url, notice: 'Research team was successfully destroyed.' }
+      format.html { redirect_to research_teams_url, notice: t('message.destroy_success', thing: t('scrinium.research_team')) }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -28,7 +29,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: t('group.create_success') }
+        format.html { redirect_to @group, notice: t('message.create_success', thing: t('scrinium.group')) }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: t('group.update_success') }
+        format.html { redirect_to @group, notice: t('message.update_success', thing: t('scrinium.group')) }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: t('group.destroy_success') }
+      format.html { redirect_to groups_url, notice: t('message.destroy_success', thing: t('scrinium.group')) }
       format.json { head :no_content }
     end
   end

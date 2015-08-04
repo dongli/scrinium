@@ -1,5 +1,5 @@
-<% content_for :title, t('scrinium.organizations') %>
-<% add_breadcrumb t('scrinium.organizations'), organizations_path, on_nav_bar: true %>
+<% content_for :title, t('scrinium.organization') %>
+<% add_breadcrumb t('scrinium.organization'), organizations_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
   <%=
@@ -7,6 +7,6 @@
     locals: { organizations: Organization.all }
   %>
   <% if current_user and current_user.super_admin? %>
-    <%= link_to t('organization.add'), new_organization_path, class: 'button right' %>
+    <%= link_to t('action.add'), new_organization_path, class: 'button right' %>
   <% end %>
 <% end %>

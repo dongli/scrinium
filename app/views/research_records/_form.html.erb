@@ -43,19 +43,19 @@
     <ul class='list-inline right'>
       <li>
         <%=
-          link_to t('global.preview'), '#',
+          link_to t('action.preview'), '#',
           id: 'research-record-preview',
           class: 'button'
         %>
       </li>
       <li>
-        <%= f.button :submit, t('global.save'), class: 'button' %>
+        <%= f.button :submit, t('action.save'), class: 'button' %>
       </li>
       <li>
         <% if content_for(:title) == t('research_record.edit') %>
-          <%= f.button :submit, t('global.edit'), class: 'button' %>
+          <%= f.button :submit, t('action.edit'), class: 'button' %>
         <% else %>
-          <%= f.button :submit, t('global.add'), class: 'button' %>
+          <%= f.button :submit, t('action.add'), class: 'button' %>
         <% end %>
       </li>
     </ul>

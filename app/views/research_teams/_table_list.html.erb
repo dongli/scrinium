@@ -1,8 +1,8 @@
 <table class='table'>
   <thead>
     <tr>
-      <th width="100"><%= t('organization.short_name') %></th>
-      <th width="300"><%= t('organization.name') %></th>
+      <th width="100"><%= t('research_team.short_name') %></th>
+      <th width="300"><%= t('research_team.name') %></th>
       <th width="200"><%= t('global.create_time') %></th>
       <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
         <th width="200"><%= t('actions') %></th>
@@ -10,21 +10,21 @@
     </tr>
   </thead>
   <tbody>
-    <% organizations.each do |o| %>
+    <% research_teams.each do |t| %>
       <tr>
         <td>
-          <%= link_to o.short_name, organization_path(o) %>
+          <%= link_to t.short_name, research_team_path(t) %>
         </td>
-        <td><%= o.name %></td>
-        <td><%= o.created_at %></td>
+        <td><%= t.name %></td>
+        <td><%= t.created_at %></td>
         <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
           <td>
             <% if current_user.super_admin? %>
               <%=
                 link_to t('action.delete'),
-                organization_path(o),
+                research_team_path(t),
                 method: :delete,
-                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.organization')) },
+                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.research_team')) },
                 class: 'button btn-xs btn-danger'
               %>
             <% end %>

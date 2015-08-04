@@ -6,7 +6,7 @@
       <th width="200"><%= t('user.affiliation') %></th>
       <th width="80"><%= t('user.role') %></th>
       <% if current_user and ( current_user.super_admin? or current_user.admin? ) %>
-        <th width="100"><%= t('global.operation') %></th>
+        <th width="100"><%= t('actions') %></th>
       <% end %>
     </tr>
   </thead>
@@ -27,14 +27,14 @@
           <td>
             <% if current_user != u %>
               <%=
-                link_to t('global.delete'),
+                link_to t('action.delete'),
                 user_path(u),
                 method: :delete,
-                data: { confirm: t('user.are_you_sure_to_delete_this_user?', name: u.full_name) },
+                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.user')) },
                 class: 'button btn-xs btn-danger'
               %>
               <%=
-                link_to t('global.edit'),
+                link_to t('action.edit'),
                 edit_user_path(u),
                 class: 'button btn-xs'
               %>

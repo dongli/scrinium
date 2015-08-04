@@ -2,7 +2,7 @@
   <li><%= @group.name %></li>
   <li><%= Group::PrivacyTypes[@group.privacy] %></li>
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
-  <li><%= link_to fa_icon('edit', text: t('group.edit')), edit_group_path(@group) %></li>
+  <li><%= link_to fa_icon('edit', text: t('action.edit')+t('scrinium.group')), edit_group_path(@group) %></li>
   <li>
     <dl class='small'>
       <dt><%= t('group.members') %></dt>

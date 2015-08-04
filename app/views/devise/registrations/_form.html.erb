@@ -22,7 +22,7 @@
       %>
       <%=
         f.association :research_team,
-        label: t('organization.research_team'),
+        label: t('scrinium.research_team'),
         required: true,
         label_method: :name,
         value_method: :id
@@ -33,7 +33,7 @@
     <%= f.input :password, label: t('user.password'), hint: t('user.password_hint'), required: false %>
     <%= f.input :password_confirmation, label: t('user.password_confirmation'), hint: t('user.password_confirmation_hint'), required: false %>
     <% if current_user %>
-      <%= f.button :submit, t('global.edit'), class: 'button right', disabled: has_error %>
+      <%= f.button :submit, t('action.edit'), class: 'button right', disabled: has_error %>
     <% else %>
       <%= f.button :submit, t('user.signup'), class: 'button right', disabled: has_error %>
     <% end %>

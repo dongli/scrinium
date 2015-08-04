@@ -34,10 +34,10 @@
       collection: @group.users,
       input_html: { id: 'input-user-full-name', multiple: 'multiple' }
     %>
-    <% if content_for(:title) == t('group.edit') %>
-      <%= f.button :submit, t('global.edit'), class: 'button right' %>
+    <% if content_for(:title) == t('action.edit')+t('scrinium.group') %>
+      <%= f.button :submit, t('action.edit'), class: 'button right' %>
     <% else %>
-      <%= f.button :submit, t('global.add'), class: 'button right' %>
+      <%= f.button :submit, t('action.add'), class: 'button right' %>
     <% end %>
   <% end %>
 </div>

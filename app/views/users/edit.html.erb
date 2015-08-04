@@ -14,7 +14,7 @@
       %>
       <%=
         f.association :research_team,
-        label: t('organization.research_team'),
+        label: t('scrinium.research_team'),
         required: true,
         label_method: :name,
         value_method: :id
@@ -22,7 +22,7 @@
       <%= f.input :position, label: t('user.position'), required: true, collection: User::Positions.values %>
       <%= f.input :email, label: t('user.email'), required: true %>
       <% if current_user %>
-        <%= f.button :submit, t('global.edit'), class: 'button right' %>
+        <%= f.button :submit, t('action.edit'), class: 'button right' %>
       <% else %>
         <%= f.button :submit, t('user.signup'), class: 'button right' %>
       <% end %>

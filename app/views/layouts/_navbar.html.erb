@@ -14,14 +14,14 @@
       <ul class='nav navbar-nav navbar-right'>
         <li>
           <%=
-            link_to fa_icon('institution', text: t('scrinium.organizations')),
+            link_to fa_icon('institution', text: t('scrinium.organization')),
             organizations_path,
             class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
-            link_to fa_icon('mortar-board', text: t('scrinium.researches')),
+            link_to fa_icon('mortar-board', text: t('scrinium.research')),
             researches_index_path,
             class: 'navbar-link'
           %>
@@ -34,7 +34,7 @@
               role='button'
               aria-haspopup='true'
               aria-expanded='false'>
-              <%= fa_icon('user', text: t('global.user')) %> <span class='caret'></span>
+              <%= fa_icon('user', text: t('scrinium.user')) %> <span class='caret'></span>
             </a>
             <ul class='dropdown-menu'>
               <li>

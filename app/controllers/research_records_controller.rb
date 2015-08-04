@@ -1,4 +1,5 @@
 class ResearchRecordsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_action :set_research_record, only: [:show, :edit, :update, :destroy]
   impressionist actions: [:show], unique: [:session_hash, :user_id]
 
@@ -30,7 +31,7 @@ class ResearchRecordsController < ApplicationController
 
     respond_to do |format|
       if @research_record.save
-        format.html { redirect_to @research_record, notice: t('research_record.create_success') }
+        format.html { redirect_to @research_record, notice: t('message.create_success', thing: t('scrinium.research_record')) }
         format.json { render :show, status: :created, location: @research_record }
       else
         format.html { render :new }
@@ -68,9 +69,9 @@ class ResearchRecordsController < ApplicationController
 
   def set_draft
     case params[:commit]
-    when t('global.add'), t('global.edit')
+    when t('action.add'), t('action.edit')
       @research_record.draft = false
-    when t('global.save')
+    when t('action.save')
       @research_record.draft = true
     end
   end
