@@ -12,6 +12,28 @@
         spellcheck: 'false'
       }
     %>
+    <div class='row'>
+      <div class='col-md-2'>
+        <%=
+          f.input :privacy,
+          label: t('privacy'),
+          required: true,
+          collection: ResearchRecord::PrivacyTypes,
+          default: t('privacy_types.public')
+        %>
+      </div>
+      <div class='col-md-6' id='select-groups'>
+        <%=
+          f.association :groups,
+          label: t('research_record.public_groups'),
+          required: true,
+          label_method: :name,
+          value_method: :id,
+          collection: @research_record.groups,
+          input_html: { id: 'input-group-name' }
+        %>
+      </div>
+    </div>
     <%=
       f.input :content,
       label: t('research_record.content'),

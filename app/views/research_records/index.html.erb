@@ -1,25 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, t('scrinium.research_records') %>
+<% add_breadcrumb t('scrinium.research_records'), research_records_index_path %>
 
-<h1>Listing Research Records</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @research_records.each do |research_record| %>
-      <tr>
-        <td><%= link_to 'Show', research_record %></td>
-        <td><%= link_to 'Edit', edit_research_record_path(research_record) %></td>
-        <td><%= link_to 'Destroy', research_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Research record', new_research_record_path %>
+<% content_for :main_block do %>
+  <%=
+    render partial: 'research_records/table_list',
+    locals: { research_records: ResearchRecord.all }
+  %>
+<% end %>

@@ -1,6 +1,21 @@
-<ul class="left-side-list">
+<ul class='left-side-list'>
   <li><%= @group.name %></li>
   <li><%= Group::PrivacyTypes[@group.privacy] %></li>
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
   <li><%= link_to fa_icon('edit', text: t('group.edit')), edit_group_path(@group) %></li>
+  <li>
+    <dl class='small'>
+      <dt><%= t('group.members') %></dt>
+      <dd>
+        <div class='row'>
+          <% @group.users.each do |u| %>
+            <div class='col-md-4'>
+              <%= get_gravatar u, 36 %><br/>
+              <%= u.full_name %>
+            </div>
+          <% end %>
+        </div>
+      </dd>
+    </dl>
+  </li>
 </ul>

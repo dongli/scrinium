@@ -17,3 +17,10 @@ $(document).on 'page:change', ->
 		$('div#research-record-preview').modal('show')
 	# Reload MathJax to render the math after jumping from other pages.
 	MathJax.Hub.Queue ['Typeset', MathJax.Hub]
+
+	$('#select-groups').hide()
+	$('#research_record_privacy').change ->
+		if this.value == '2'
+			$('#select-groups').show()
+		else
+			$('#select-groups').hide()

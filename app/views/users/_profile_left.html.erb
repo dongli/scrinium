@@ -29,7 +29,12 @@
 <div class='collapse' id='group-list'>
   <ul class='left-side-list'>
     <% @user.groups.all.each do |g| %>
-      <li><%= link_to fa_icon('chevron-right', text: g.name), group_path(g) %></li>
+      <li class='indent'>
+        <%= link_to fa_icon('chevron-right', text: g.name), group_path(g) %>
+      </li>
     <% end %>
+    <li class='indent'>
+      <%= link_to fa_icon('plus-square', text: t('group.add')), new_group_path %>
+    </li>
   </ul>
 </div>

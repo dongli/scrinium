@@ -26,7 +26,7 @@ class ResearchRecordsController < ApplicationController
   # POST /research_records.json
   def create
     @research_record = ResearchRecord.new(research_record_params)
-    set_draft_tag
+    set_draft
 
     respond_to do |format|
       if @research_record.save
@@ -42,7 +42,7 @@ class ResearchRecordsController < ApplicationController
   # PATCH/PUT /research_records/1
   # PATCH/PUT /research_records/1.json
   def update
-    set_draft_tag
+    set_draft
     respond_to do |format|
       if @research_record.update(research_record_params)
         format.html { redirect_to @research_record, notice: t('research_record.update_success') }
@@ -66,12 +66,12 @@ class ResearchRecordsController < ApplicationController
 
   private
 
-  def set_draft_tag
+  def set_draft
     case params[:commit]
     when t('global.add'), t('global.edit')
-      @research_record.tag_draft = false
+      @research_record.draft = false
     when t('global.save')
-      @research_record.tag_draft = true
+      @research_record.draft = true
     end
   end
 
@@ -84,6 +84,9 @@ class ResearchRecordsController < ApplicationController
   def research_record_params
     params.require(:research_record).permit(:title,
                                             :content,
+                                            :privacy,
+                                            { group_ids: [] },
+                                            :tags,
                                             :user_id)
   end
 end

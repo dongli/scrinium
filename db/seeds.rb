@@ -23,7 +23,8 @@ User.create(full_name: '张三',
 ResearchRecord.create(user_id: 1,
                       title: '云滴谱的数值求解',
                       content: '\\\\[ \\frac{\\partial n}{\\partial t} = - \\frac{\\partial}{\\partial r} \\frac{d r}{d t} n \\\\]',
-                      tag_draft: false)
+                      draft: false,
+                      privacy: 0)
 
 Organization.create(name: '中国科学院大气物理研究所LASG实验室',
                     short_name: 'CAS-IAP-LASG',
@@ -35,39 +36,7 @@ ResearchTeam.create(name: '地球系统模式研究组',
                     organization_id: 1,
                     description: '该研究组主要围绕由LASG自主研发的气候系统模式FGOALS展开工作。')
 
-CoupledModel.create(name: 'Flexible Global Ocean-Atmosphere-Land System',
-                    short_name: 'FGOALS',
-                    description: '',
-                    organization_id: 1)
-
-AtmosphereModel.create(coupled_model_id: 1,
-                       name: "Grid-point Atmosphere Model IAP/LASG",
-                       short_name: "GAMIL",
-                       affiliation: "",
-                       license: -1,
-                       references: "",
-                       description: "GAMIL是由LASG王斌课题组研发的格点大气环流模式。",
-                       simulation_region: 0,
-                       simulation_type: 0,
-                       is_hydrostatic: 1,
-                       is_shallow: 1,
-                       horizontal_mesh: 0,
-                       vertical_coordinate: 0,
-                       vertical_mesh: -1,
-                       dynamical_core: "Explicit Quadratic Conservation Finite Difference Dynamical Core",
-                       advection_scheme: "TSPAS")
-
-OceanModel.create(coupled_model_id: 1,
-                  name: "LASG/IAP Climate system Ocean Model",
-                  short_name: "LICOM",
-                  affiliation: "",
-                  license: -1,
-                  references: "",
-                  description: "",
-                  simulation_region: 0,
-                  simulation_type: 0,
-                  horizontal_mesh: 1,
-                  vertical_coordinate: 0,
-                  vertical_mesh: -1,
-                  dynamical_core: "",
-                  advection_scheme: "")
+Group.create(name: '测试团队',
+             privacy: 0,
+             owner_id: 1,
+             description: '请详细描述该团队的信息。')

@@ -21,4 +21,8 @@ module UsersHelper
       t('user.roles.unknown')
     end
   end
+
+  def is_same_user? user
+    current_user and current_user == user
+  end
 end

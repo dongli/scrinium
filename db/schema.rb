@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803081052) do
+ActiveRecord::Schema.define(version: 20150804015541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+
+  create_table "group_research_record_associations", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "research_record_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "group_research_record_associations", ["group_id"], name: "index_group_research_record_associations_on_group_id", using: :btree
+  add_index "group_research_record_associations", ["research_record_id"], name: "index_group_research_record_associations_on_research_record_id", using: :btree
 
   create_table "group_user_associations", force: :cascade do |t|
     t.integer  "group_id"
@@ -80,11 +90,13 @@ ActiveRecord::Schema.define(version: 20150803081052) do
 
   create_table "research_records", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title",                     null: false
-    t.text     "content",                   null: false
-    t.boolean  "tag_draft",  default: true, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",      null: false
+    t.text     "content",    null: false
+    t.boolean  "draft",      null: false
+    t.integer  "privacy",    null: false
+    t.string   "tags",                    array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "research_records", ["user_id"], name: "index_research_records_on_user_id", using: :btree

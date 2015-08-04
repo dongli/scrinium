@@ -33,3 +33,17 @@ $(document).on 'page:change', ->
       results: (data, page) ->
         results: data
   )
+  $('select[id=input-group-name]').select2(
+    ajax:
+      url: ROOT_PATH+'api/v1/groups/names'
+      dataType: 'json'
+      delay: 250
+      processResults: (data) ->
+        {
+          results: $.map( data, (d, i) ->
+            { id: d[0], text: d[1] }
+          )
+        }
+      results: (data, page) ->
+        results: data
+  )

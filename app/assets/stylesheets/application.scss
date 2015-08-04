@@ -65,3 +65,29 @@ ul.left-side-list {
     margin-top: 1em;
   }
 }
+
+dl {
+  dt {
+    border-bottom: solid 1px #EEE;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 150%;
+    text-align: center;
+  }
+  dd {
+    margin: 1em;
+  }
+}
+
+dl.small {
+  @extend dl;
+  dt {
+    font-size: 120%;
+  }
+}
+
+ul.left-side-list {
+  li.indent {
+    padding-left: 1em;
+  }
+}

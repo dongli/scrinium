@@ -31,7 +31,7 @@
       required: true,
       label_method: :full_name,
       value_method: :id,
-      collection: [ current_user ],
+      collection: @group.users,
       input_html: { id: 'input-user-full-name', multiple: 'multiple' }
     %>
     <% if content_for(:title) == t('group.edit') %>

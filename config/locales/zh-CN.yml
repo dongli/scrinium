@@ -28,6 +28,12 @@ zh-CN:
     researches: '研究'
     groups: '团队'
 
+  privacy: '隐私度'
+  privacy_types:
+    public: '公开'
+    private: '非公开'
+    group_public: '团队公开'
+
   user:
     has_no_affiliation: '无所属单位'
     block: '屏蔽'
@@ -100,18 +106,19 @@ zh-CN:
   group:
     name: '团队名称'
     description: '团队描述'
+    research_records: '团队记录'
     add: '组建团队'
     edit: '修改团队信息'
     owner: '管理者'
     members: '成员'
-    privacy: '隐私度'
-    privacy_types:
-      public: '公开'
-      private: '非公开'
     member_number: '成员人数'
+    create_success: '成功创建团队。'
+    update_success: '成功修改团队信息。'
+    destroy_success: '团队被删除。'
 
   dashboard:
     user: '用户'
+    group: '团队'
     organization: '机构'
     manage_users: '管理用户'
     create_organization: '添加机构'
@@ -120,6 +127,7 @@ zh-CN:
     add: '添加科研记录'
     edit: '修改科研记录'
     title: '记录名称'
+    public_groups: '公开组'
     content: '记录内容'
     author: '作者'
     create_success: '成功创建科研记录。'
