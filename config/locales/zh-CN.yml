@@ -38,6 +38,7 @@ zh-CN:
     has_no_affiliation: '无所属单位'
     block: '屏蔽'
     are_you_sure_to_delete_this_user?: '确定删除该用户“%{name}”吗？'
+    destroy_success: '成功删除用户。'
     has_been_deleted: '用户“%{name}”已经被删除。'
     join_time: '加入时间'
     joined_at: '加入于%{date}'
