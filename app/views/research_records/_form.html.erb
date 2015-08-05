@@ -18,8 +18,8 @@
           f.input :privacy,
           label: t('privacy'),
           required: true,
-          collection: ResearchRecord::PrivacyTypes,
-          default: t('privacy_types.public')
+          collection: ResearchRecord.privacies,
+          selected: ResearchRecord.privacies[@research_record.privacy]
         %>
       </div>
       <div class='col-md-6' id='select-groups'>
@@ -30,7 +30,10 @@
           label_method: :name,
           value_method: :id,
           collection: @research_record.groups,
-          input_html: { id: 'input-group-name' }
+          input_html: {
+            id: 'input-group-name-for-user',
+            data: { user_id: current_user.id }
+          }
         %>
       </div>
     </div>

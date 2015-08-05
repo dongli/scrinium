@@ -3,7 +3,7 @@ class MarkdownAPI < Grape::API
   params do
     requires :text, type: String, desc: 'Text to be markdowned.'
   end
-  post 'markdown' do
+  post :markdown do
     ApplicationHelper.markdown params[:text]
   end
 end

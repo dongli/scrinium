@@ -9,7 +9,7 @@ Rails.application.load_tasks
 namespace :grape do
   desc "Grape API Routes"
   task :routes => :environment do
-    mapped_prefix = '/api' # where mounted API in routes.rb
+    mapped_prefix = '' # where mounted API in routes.rb
     params_str = ' params:'
     desc_limit = 45
     route_info = API.routes.map {|r| [r, r.instance_variable_get(:@options)] }

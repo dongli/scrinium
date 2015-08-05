@@ -47,3 +47,23 @@ $(document).on 'page:change', ->
       results: (data, page) ->
         results: data
   )
+  $('select[id=input-group-name-for-user]').select2(
+    ajax:
+      type: 'POST'
+      url: ROOT_PATH+'api/v1/groups/for_user'
+      params: {
+        contentType: 'application/json; charset=utf-8'
+      }
+      dataType: 'json'
+      data: ->
+        user_id: $('select[id=input-group-name-for-user]').data('user-id')
+      delay: 250
+      processResults: (data) ->
+        {
+          results: $.map( data, (d, i) ->
+            { id: d[0], text: d[1] }
+          )
+        }
+      results: (data, page) ->
+        results: data
+  )

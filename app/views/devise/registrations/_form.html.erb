@@ -22,13 +22,22 @@
         spellcheck: 'false'
       }
     %>
-    <%=
-      f.input :gender,
-      label: t('user.gender'),
-      required: true,
-      collection: User.genders,
-      selected: User.genders[resource.gender]
-    %>
+    <% if resource.gender %>
+      <%=
+        f.input :gender,
+        label: t('user.gender'),
+        required: true,
+        collection: User.genders,
+        selected: User.genders[resource.gender]
+      %>
+    <% else %>
+      <%=
+        f.input :gender,
+        label: t('user.gender'),
+        required: true,
+        collection: User.genders
+      %>
+    <% end %>
     <% if not be_super_admin %>
       <%=
         f.association :organization,
@@ -44,13 +53,22 @@
         label_method: :name,
         value_method: :id
       %>
-      <%=
-        f.input :position,
-        label: t('user.position'),
-        required: true,
-        collection: User.positions,
-        selected: User.positions[resource.position]
-      %>
+      <% if resource.position %>
+        <%=
+          f.input :position,
+          label: t('user.position'),
+          required: true,
+          collection: User.positions,
+          selected: User.positions[resource.position]
+        %>
+      <% else %>
+        <%=
+          f.input :position,
+          label: t('user.position'),
+          required: true,
+          collection: User.positions
+        %>
+      <% end %>
     <% end %>
     <% if is_super_admin_or_admin?(resource) %>
       <%=

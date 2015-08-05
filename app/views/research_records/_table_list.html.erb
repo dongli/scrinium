@@ -14,7 +14,7 @@
   <tbody>
     <% research_records.each do |r| %>
     <% if not is_same_user?(r.user) and not is_in_groups?(r.groups) and
-          ResearchRecord::PrivacyTypes[t('privacy_types.public')] != r.privacy %>
+        r.privacy != t('privacy_types.public') %>
       <% next %>
     <% end %>
       <tr

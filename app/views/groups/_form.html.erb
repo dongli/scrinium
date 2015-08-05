@@ -14,10 +14,10 @@
     %>
     <%=
       f.input :privacy,
-      label: t('group.privacy'),
+      label: t('privacy'),
       required: true,
-      collection: Group::PrivacyTypes.values,
-      default: 0
+      collection: Group.privacies,
+      selected: Group.privacies[@group.privacy]
     %>
     <%=
       f.input :description,

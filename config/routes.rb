@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   mount API => '/'
   mathjax 'mathjax'
 
-  devise_for :users, path_prefix: 'd', :controllers => { registrations: 'registrations' }
+  devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
   resources :users
   resources :organizations
   resources :research_records

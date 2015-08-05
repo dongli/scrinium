@@ -7,9 +7,9 @@ class ResearchRecord < ActiveRecord::Base
   has_many :group_research_record_associations
   has_many :groups, through: :group_research_record_associations
 
-  PrivacyTypes = {
-    I18n.t('privacy_types.public')       => 0,
-    I18n.t('privacy_types.private')      => 1,
-    I18n.t('privacy_types.group_public') => 2
-  }.freeze
+  enum privacy: [
+    :public,
+    :private,
+    :group_public
+  ].map { |x| I18n.t("privacy_types.#{x}") }
 end

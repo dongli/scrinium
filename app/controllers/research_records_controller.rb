@@ -83,6 +83,7 @@ class ResearchRecordsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def research_record_params
+    ApplicationHelper.transform_params params, :research_record, [:privacy]
     params.require(:research_record).permit(:title,
                                             :content,
                                             :privacy,

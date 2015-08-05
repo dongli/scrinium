@@ -30,10 +30,4 @@ module UsersHelper
   def is_same_user? user
     current_user and current_user == user
   end
-
-  def self.transform_user_params params
-    [:gender, :role, :position].each do |x|
-      params[:user][x] = params[:user][x].to_i if params[:user].has_key? x
-    end
-  end
 end

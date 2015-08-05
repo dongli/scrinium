@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    UsersHelper.transform_user_params params
+    ApplicationHelper.transform_params params, :user, [:gender, :role, :position]
     params.require(:user).permit(:name,
                                  :gender,
                                  :organization_id,
