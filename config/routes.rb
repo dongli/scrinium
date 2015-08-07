@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
-  resources :groups
-  resources :research_teams
-  get 'home/index'
-  get 'researches/index'
-  get 'dashboard/index'
 
   mount API => '/'
   mathjax 'mathjax'
 
+  get 'home/index'
+  get 'researches/index'
+  get 'dashboard/index'
+
   devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
   resources :users
+  resources :groups
+  resources :research_teams
   resources :organizations
-  resources :research_records
+  concern :commentable do
+    resources :comments, except: [ :new, :show ]
+    get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
+  end
+  resources :research_records, concerns: :commentable
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

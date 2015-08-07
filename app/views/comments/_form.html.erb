@@ -1,0 +1,25 @@
+<%= simple_form_for [commentable, comment], remote: true do |f| %>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= link_to get_gravatar(current_user, 20), user_path(current_user) %>
+      <%= current_user.name %>
+      <% if comment.parent_id %>
+        <%= t('action.reply') %>#<%= Comment.find(comment.parent_id).floor %>
+      <% end %>
+      <%=
+        f.button :submit, t('action.save'),
+        class: 'button btn-xs right', id: 'save-comment',
+        remote: true
+      %>
+    </div>
+    <div class='panel-body'>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :parent_id, value: comment.parent_id %>
+      <% if not comment.floor %>
+        <% floor = commentable.comments.size == 1 ? 1 : commentable.comments.first.leaves.last.floor+1 %>
+        <%= f.hidden_field :floor, value: floor %>
+      <% end %>
+      <%= f.input :content, label: false, as: :text, wrapper_html: { id: 'new-comment-content' } %>
+    </div>
+  </div>
+<% end %>

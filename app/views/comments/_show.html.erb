@@ -1,0 +1,48 @@
+<% user = User.find_by_id(comment.user_id) %>
+<% if comment.parent_id %>
+  <% parent_comment = Comment.find(comment.parent_id) %>
+  <% parent_user = User.find_by_id(parent_comment.user_id) %>
+<% end %>
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    #<%= comment.floor %>
+    <%= link_to get_gravatar(user, 20), user_path(user) %>
+    <%= user.name %>
+    <% if parent_comment %>
+      <%= t('action.reply') %>
+      <a id='parent-comment-<%= parent_comment.id %>' class='parent-comment'
+        data-toggle='popover' data-placement='top'
+        data-title='<%= link_to get_gravatar(parent_user, 20), user_path(parent_user) %> <%= parent_user.name %>'
+        data-content='<%= markdown parent_comment.content %>'>
+        #<%= parent_comment.floor %>
+      </a>
+    <% end %>
+    <div class='right'>
+      <%=
+        link_to t('action.reply'),
+        [commentable, :reply, comment],
+        class: 'button btn-xs reply-comment',
+        remote: true
+      %>
+      <% if current_user == user or is_super_admin_or_admin?(current_user) %>
+        <%=
+          link_to t('action.edit'),
+          [:edit, commentable, comment],
+          class: 'button btn-xs edit-comment',
+          remote: true
+        %>
+        <%=
+          link_to t('action.delete'),
+          [commentable, comment],
+          method: :delete,
+          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
+          class: 'button btn-xs btn-danger delete-comment',
+          remote: true
+        %>
+      <% end %>
+    </div>
+  </div>
+  <div class='panel-body'>
+    <%= markdown comment.content %>
+  </div>
+</div>

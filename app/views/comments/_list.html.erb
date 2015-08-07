@@ -1,0 +1,23 @@
+<ul class='comment-list'>
+  <% commentable.comments.reverse.each do |comment| %>
+    <li id='comment-<%= comment.id %>'>
+      <%=
+        render partial: 'comments/show',
+        locals: {
+          commentable: commentable,
+          comment: comment
+        }
+      %>
+    </li>
+  <% end %>
+  <div id='comment-placeholder'></div>
+  <li id='new-comment'>
+    <%=
+      render partial: 'comments/form',
+      locals: {
+        commentable: commentable,
+        comment: commentable.comments.new
+      }
+    %>
+  </li>
+</ul>

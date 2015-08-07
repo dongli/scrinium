@@ -10,4 +10,13 @@
     <dt><%= @research_record.title %></dt>
     <dd class='content'><%= markdown @research_record.content %></dd>
   </dl>
+  <dl>
+    <dt></dt>
+    <dd>
+      <%=
+        render partial: 'comments/list',
+        locals: { commentable: @research_record }
+      %>
+    </dd>
+  </dl>
 <% end %>

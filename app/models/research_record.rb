@@ -6,6 +6,7 @@ class ResearchRecord < ActiveRecord::Base
   belongs_to :user
   has_many :group_research_record_associations
   has_many :groups, through: :group_research_record_associations
+  has_many :comments, as: :commentable, dependent: :destroy
 
   enum privacy: [
     :public,

@@ -24,6 +24,7 @@ zh-CN:
     research: '研究'
     group: '团队'
     research_record: '科研记录'
+    comment: '评论'
 
   actions: '操作'
   action:
@@ -34,6 +35,7 @@ zh-CN:
     preview: '预览'
     update: '更新'
     block: '屏蔽'
+    reply: '回复'
 
   message:
     create_success: '成功创建%{thing}。'
@@ -139,6 +141,8 @@ zh-CN:
     browse_count: '浏览次数'
     version_number: '版本数'
 
+  comment:
+    content: '评论内容'
   activerecord:
     errors:
       models:

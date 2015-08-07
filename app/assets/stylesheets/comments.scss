@@ -1,0 +1,20 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.comment-list {
+  list-style-type: none;
+}
+
+.comment-form {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+  textarea.text {
+    height: 200px;
+  }
+}
+
+a.parent-comment {
+  cursor: pointer;
+}

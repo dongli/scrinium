@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
 
   belongs_to :organization
   belongs_to :research_team
-  has_many :research_records, dependent: :destroy
+  has_many :research_records
   has_many :group_user_associations
   has_many :groups, through: :group_user_associations
+  has_many :comments, dependent: :destroy
   # TODO: Below is the special codes for LASG.
   has_many :experiments
 
