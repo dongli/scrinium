@@ -33,7 +33,8 @@ class User < ActiveRecord::Base
     :assistant_professor,
     :postdoctoral_researcher,
     :postgraduate,
-    :undergraduate
+    :undergraduate,
+    :freeman
   ].map { |x| I18n.t("user.position_types.#{x}") }
 
   before_save :set_user_defaults

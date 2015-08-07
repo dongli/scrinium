@@ -79,6 +79,7 @@ zh-CN:
       postdoctoral_researcher: '博士后'
       postgraduate: '研究生'
       undergraduate: '本科生'
+      freeman: '自由人'
     role: '角色'
     role_types:
       super_admin: '超级管理员'

@@ -10,14 +10,16 @@
       %>
     </li>
   <% end %>
-  <div id='comment-placeholder'></div>
-  <li id='new-comment'>
-    <%=
-      render partial: 'comments/form',
-      locals: {
-        commentable: commentable,
-        comment: commentable.comments.new
-      }
-    %>
-  </li>
+  <% if current_user %>
+    <div id='comment-placeholder'></div>
+    <li id='new-comment'>
+      <%=
+        render partial: 'comments/form',
+        locals: {
+          commentable: commentable,
+          comment: commentable.comments.new
+        }
+      %>
+    </li>
+  <% end %>
 </ul>

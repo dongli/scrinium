@@ -11,6 +11,7 @@
   </thead>
   <tbody>
     <% organizations.each do |o| %>
+      <% next if o.short_name == 'void' %>
       <tr>
         <td>
           <%= link_to o.short_name, organization_path(o) %>

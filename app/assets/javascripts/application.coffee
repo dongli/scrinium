@@ -17,36 +17,53 @@
 #= require select2
 #= require_tree .
 
+selectByGET = (id, api_url) ->
+  $('select[id='+id+']').select2(
+    ajax:
+      url: ROOT_PATH+api_url
+      dataType: 'json'
+      delay: 250
+      processResults: (data) ->
+        {
+          results: $.map( data, (d, i) ->
+            { id: d[0], text: d[1] }
+          )
+        }
+      results: (data, page) ->
+        results: data
+  )
+
+selectByPOST = (id, api_url, post_data) ->
+  $('select[id='+id+']').select2(
+    ajax:
+      type: 'POST'
+      url: ROOT_PATH+api_url
+      params: {
+        contentType: 'application/json; charset=utf-8'
+      }
+      dataType: 'json'
+      data: -> post_data
+      delay: 250
+      processResults: (data) ->
+        {
+          results: $.map( data, (d, i) ->
+            { id: d[0], text: d[1] }
+          )
+        }
+      results: (data, page) ->
+        results: data
+  )
+
 $(document).on 'page:change', ->
   # Using Select2 to enhance select element.
-  $('select[id=input-user-full-name]').select2(
-    ajax:
-      url: ROOT_PATH+'api/v1/users/names'
-      dataType: 'json'
-      delay: 250
-      processResults: (data) ->
-        {
-          results: $.map( data, (d, i) ->
-            { id: d[0], text: d[1] }
-          )
-        }
-      results: (data, page) ->
-        results: data
-  )
-  $('select[id=input-group-name]').select2(
-    ajax:
-      url: ROOT_PATH+'api/v1/groups/names'
-      dataType: 'json'
-      delay: 250
-      processResults: (data) ->
-        {
-          results: $.map( data, (d, i) ->
-            { id: d[0], text: d[1] }
-          )
-        }
-      results: (data, page) ->
-        results: data
-  )
+  selectByGET 'input-user-full-name', 'api/v1/users/names'
+  selectByGET 'input-group-name', 'api/v1/groups/names'
+  selectByGET 'input-organization-name', 'api/v1/organizations/names'
+  selectByGET 'input-research-team-name', 'api/v1/research_teams/names'
+  # TODO: Function call is not working!
+  # selectByPOST 'input-group-name-for-user', 'api/v1/groups/for_user', {
+  #   user_id: $('select[id=input-group-name-for-user]').data('user-id')
+  # }
   $('select[id=input-group-name-for-user]').select2(
     ajax:
       type: 'POST'
@@ -55,14 +72,46 @@ $(document).on 'page:change', ->
         contentType: 'application/json; charset=utf-8'
       }
       dataType: 'json'
-      data: ->
+      data: -> {
         user_id: $('select[id=input-group-name-for-user]').data('user-id')
+      }
       delay: 250
       processResults: (data) ->
         {
-          results: $.map( data, (d, i) ->
-            { id: d[0], text: d[1] }
-          )
+        results: $.map( data, (d, i) ->
+          { id: d[0], text: d[1] }
+        )
+        }
+      results: (data, page) ->
+        results: data
+  )
+  $('select#input-organization-name').change ->
+    $('select#input-research-team-name-of-organization').select2('val', '')
+  # TODO: Function call is not working!
+  # selectByPOST(
+  #   'input-research-team-name-of-organization',
+  #   'api/v1/research_teams/of_organization',
+  #   {
+  #     organization_id: $('select[id=input-organization-name]').val()
+  #   }
+  # )
+  $('select[id=input-research-team-name-of-organization]').select2(
+    ajax:
+      type: 'POST'
+      url: ROOT_PATH+'api/v1/research_teams/of_organization'
+      params: {
+        contentType: 'application/json; charset=utf-8'
+      }
+      dataType: 'json'
+      data: -> {
+        organization_id: $('select[id=input-organization-name]').val()
+      }
+      delay: 250
+      processResults: (data) ->
+        {
+        results: $.map( data, (d, i) ->
+          { id: d[0], text: d[1] }
+        )
         }
       results: (data, page) ->
         results: data

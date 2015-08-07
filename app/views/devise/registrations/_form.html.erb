@@ -1,5 +1,6 @@
 <div class='devise-form'>
   <!-- Check if the user is the first one. -->
+  <%= devise_error_messages! %>
   <% if User.all.empty? %>
     <% be_super_admin = true %>
     <% flash[:notice] = t('user.super_admin_born') %>
@@ -44,14 +45,20 @@
         label: t('user.affiliation'),
         required: true,
         label_method: :name,
-        value_method: :id
+        value_method: :id,
+        input_html: {
+          id: 'input-organization-name'
+        }
       %>
       <%=
         f.association :research_team,
         label: t('scrinium.research_team'),
         required: true,
         label_method: :name,
-        value_method: :id
+        value_method: :id,
+        input_html: {
+          id: 'input-research-team-name-of-organization'
+        }
       %>
       <% if resource.position %>
         <%=
