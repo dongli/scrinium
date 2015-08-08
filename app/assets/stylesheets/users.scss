@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-img.gravatar {
+img.avatar {
   border-radius: 10px;
 }
 
@@ -10,9 +10,13 @@ img.gravatar {
   padding-top: 30px;
   max-width: 320px;
   margin: 0 auto;
-  h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
+  #preview-avatar {
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px;
+  }
+  #upload-avatar {
+    padding-bottom: 1em;
   }
   #user_remember_me {
     margin-left: 0;

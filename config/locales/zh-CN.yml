@@ -149,10 +149,17 @@ zh-CN:
       models:
         user:
           attributes:
+            avatar:
+              blank: '请提供一个酷炫的头像！'
             email:
               taken: '该邮箱已经被注册！'
             current_password:
               blank: '当前密码为空！'
+            password:
+              blank: '请设置登陆密码！'
+              too_short: '密码长度不够！'
+            password_confirmation:
+              confirmation: '请确认登陆密码！'
         organization:
           attributes:
             name:

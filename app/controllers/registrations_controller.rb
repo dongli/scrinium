@@ -13,7 +13,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     ApplicationHelper.transform_params params, :user, [:gender, :role, :position]
-    params.require(:user).permit(:name,
+    params.require(:user).permit(:avatar,
+                                 :name,
                                  :gender,
                                  :organization_id,
                                  :research_team_id,

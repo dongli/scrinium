@@ -148,6 +148,10 @@ ActiveRecord::Schema.define(version: 20150805161421) do
   create_table "users", force: :cascade do |t|
     t.integer  "organization_id"
     t.integer  "research_team_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "name",                   default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

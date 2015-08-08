@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.belongs_to :organization,  index: true
       t.belongs_to :research_team, index: true
       ## Database authenticatable
+      t.attachment :avatar
       t.string  :name,               null: false, default: ''
       t.string  :email,              null: false, default: ''
       t.string  :encrypted_password, null: false, default: ''

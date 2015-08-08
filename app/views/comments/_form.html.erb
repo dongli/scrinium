@@ -1,7 +1,7 @@
 <%= simple_form_for [commentable, comment], remote: true do |f| %>
   <div class='panel panel-default'>
     <div class='panel-heading'>
-      <%= link_to get_gravatar(current_user, 20), user_path(current_user) %>
+      <%= link_to avatar(current_user, :small), user_path(current_user) %>
       <%= current_user.name %>
       <% if comment.parent_id %>
         <%= t('action.reply') %>#<%= Comment.find(comment.parent_id).floor %>

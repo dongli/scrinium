@@ -1,5 +1,5 @@
 <ul class="left-side-list">
-  <li><%= get_gravatar @user, 90 %></li>
+  <li><%= avatar @user, :medium %></li>
   <li><%= @user.name %></li>
   <li>
     <% if @user.organization %>

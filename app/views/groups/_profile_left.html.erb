@@ -10,7 +10,7 @@
         <div class='row'>
           <% @group.users.each do |u| %>
             <div class='col-md-4'>
-              <%= get_gravatar u, 36 %><br/>
+              <%= avatar u, :thumb %><br/>
               <%= u.name %>
             </div>
           <% end %>

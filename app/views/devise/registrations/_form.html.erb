@@ -1,6 +1,5 @@
 <div class='devise-form'>
   <!-- Check if the user is the first one. -->
-  <%= devise_error_messages! %>
   <% if User.all.empty? %>
     <% be_super_admin = true %>
     <% flash[:notice] = t('user.super_admin_born') %>
@@ -10,35 +9,61 @@
     <% has_error = true %>
     <% flash[:error] = t('user.organization_is_empty') %>
   <% end %>
-  <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
-    <%=
-      f.input :name,
-      label: t('user.name'),
-      placeholder: t('user.need_real_name'),
-      autofocus: true,
-      required: true,
-      input_html: {
-        autocapitalize: 'off',
-        autocorrect: 'none',
-        spellcheck: 'false'
-      }
-    %>
-    <% if resource.gender %>
-      <%=
-        f.input :gender,
-        label: t('user.gender'),
-        required: true,
-        collection: User.genders,
-        selected: User.genders[resource.gender]
-      %>
-    <% else %>
-      <%=
-        f.input :gender,
-        label: t('user.gender'),
-        required: true,
-        collection: User.genders
-      %>
-    <% end %>
+  <%= simple_form_for resource,
+    as: resource_name,
+    url: registration_path(resource_name),
+    html: { multiform: true } do |f| %>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%=
+          image_tag 'medium/default_avatar.png',
+          size: '100x100',
+          id: 'preview-avatar'
+        %>
+        <%=
+          f.file_field :avatar,
+          required: true,
+          id: 'upload-avatar'
+        %>
+      </div>
+      <div class='col-md-6'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <%=
+              f.input :name,
+              label: false,
+              placeholder: t('user.need_real_name'),
+              autofocus: true,
+              required: true,
+              input_html: {
+                autocapitalize: 'off',
+                autocorrect: 'none',
+                spellcheck: 'false'
+              }
+            %>
+          </div>
+          <div class='col-md-12'>
+            <% if resource.gender %>
+              <%=
+                f.input :gender,
+                label: false,
+                required: true,
+                collection: User.genders,
+                selected: User.genders[resource.gender]
+              %>
+            <% else %>
+              <%=
+                f.input :gender,
+                label: false,
+                required: true,
+                collection: User.genders.merge({ t('user.gender') => -1 }),
+                selected: -1
+              %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
     <% if not be_super_admin %>
       <%=
         f.association :organization,
@@ -88,20 +113,21 @@
     <% end %>
     <%=
       f.input :email,
-      label: t('user.email'),
-      required: true
+      label: false,
+      required: true,
+      placeholder: t('user.email')
     %>
     <%=
       f.input :password,
-      label: t('user.password'),
-      placeholder: t('user.password_hint'),
-      required: false
+      label: false,
+      required: false,
+      placeholder: t('user.password')+' | '+t('user.password_hint')
     %>
     <%=
       f.input :password_confirmation,
-      label: t('user.password_confirmation'),
-      placeholder: t('user.password_confirmation_hint'),
-      required: false
+      label: false,
+      required: false,
+      placeholder: t('user.password_confirmation_hint')
     %>
     <% if current_user %>
       <%= f.button :submit, t('action.edit'), class: 'button right', disabled: has_error %>

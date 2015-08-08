@@ -1,7 +1,7 @@
 <ul class='left-side-list'>
   <li>
     <%=
-      link_to get_gravatar(@research_record.user, 90),
+      link_to avatar(@research_record.user, :medium),
       user_path(@research_record.user)
     %>
     </li>
