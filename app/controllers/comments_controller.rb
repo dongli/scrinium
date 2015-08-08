@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_action :load_commentable
+  before_action :load_user_and_commentable
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -77,9 +77,10 @@ class CommentsController < ApplicationController
 
   private
 
-  def load_commentable
-    resource, id = request.path.split('/')[1,2]
-    @commentable = resource.singularize.classify.constantize.find(id)
+  def load_user_and_commentable
+    user_id, resource, commentable_id = request.path.split('/')[2,4]
+    @user = User.find(user_id)
+    @commentable = resource.singularize.classify.constantize.find(commentable_id)
   end
 
   def commentable_path

@@ -1,4 +1,4 @@
-<%= simple_form_for [commentable, comment], remote: true do |f| %>
+<%= simple_form_for [current_user, commentable, comment], remote: true do |f| %>
   <div class='panel panel-default'>
     <div class='panel-heading'>
       <%= link_to avatar(current_user, :small), user_path(current_user) %>

@@ -1,5 +1,6 @@
 class ResearchTeamsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_action :load_organization
   before_action :set_research_team, only: [:show, :edit, :update, :destroy]
 
   # GET /research_teams
@@ -25,9 +26,7 @@ class ResearchTeamsController < ApplicationController
   # POST /research_teams
   # POST /research_teams.json
   def create
-    @research_team = ResearchTeam.new(research_team_params)
-    # TODO: How to set 'organization_id' elegantly?
-    @research_team.organization_id = OrganizationsHelper.current_organization.id
+    @research_team = @organization.research_teams.new(research_team_params)
 
     respond_to do |format|
       if @research_team.save
@@ -65,6 +64,11 @@ class ResearchTeamsController < ApplicationController
   end
 
   private
+
+  def load_organization
+    id = request.path.split('/')[2]
+    @organization = Organization.find(id)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_research_team

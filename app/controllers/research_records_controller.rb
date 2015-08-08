@@ -31,7 +31,7 @@ class ResearchRecordsController < ApplicationController
 
     respond_to do |format|
       if @research_record.save
-        format.html { redirect_to @research_record, notice: t('message.create_success', thing: t('scrinium.research_record')) }
+        format.html { redirect_to [@research_record.user, @research_record], notice: t('message.create_success', thing: t('scrinium.research_record')) }
         format.json { render :show, status: :created, location: @research_record }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ResearchRecordsController < ApplicationController
     set_draft
     respond_to do |format|
       if @research_record.update(research_record_params)
-        format.html { redirect_to @research_record, notice: t('research_record.update_success') }
+        format.html { redirect_to [@research_record.user, @research_record], notice: t('research_record.update_success') }
         format.json { render :show, status: :ok, location: @research_record }
       else
         format.html { render :edit }

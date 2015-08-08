@@ -8,15 +8,17 @@ Rails.application.routes.draw do
   get 'dashboard/index'
 
   devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
-  resources :users
-  resources :groups
-  resources :research_teams
-  resources :organizations
   concern :commentable do
     resources :comments, except: [ :new, :show ]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
   end
-  resources :research_records, concerns: :commentable
+  resources :users do
+    resources :research_records, concerns: :commentable
+  end
+  resources :groups
+  resources :organizations do
+    resources :research_teams
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

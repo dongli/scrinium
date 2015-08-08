@@ -11,9 +11,7 @@ $('li#new-comment').html("<%=
   locals: { commentable: @commentable, comment: @commentable.comments.new }
 %>");
 // TODO: Move the following to a better place.
-$(function () {
-  $('[data-toggle="popover"]').popover({ html: true });
-});
+$('[data-toggle="popover"]').popover({ html: true });
 $('[data-toggle="popover"]').on('inserted.bs.popover', function () {
   MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
 });

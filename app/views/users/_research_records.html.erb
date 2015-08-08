@@ -9,7 +9,7 @@
       }
     %>
     <% if is_same_user? user %>
-      <%= link_to t('action.add'), new_research_record_path, class: 'button right' %>
+      <%= link_to t('action.add'), new_user_research_record_path(user), class: 'button right' %>
     <% end %>
   </dd>
 </dl>

@@ -11,11 +11,11 @@
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        edit_research_record_path(@research_record)
+        [:edit, current_user, @research_record]
       %>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        @research_record,
+        [current_user, @research_record],
         method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.research_record')) }
       %>

@@ -52,7 +52,7 @@
               <li>
                 <%=
                   link_to fa_icon('plus-square', text: t('research_record.add')),
-                  new_research_record_path
+                  new_user_research_record_path(current_user)
                 %>
               </li>
             </ul>

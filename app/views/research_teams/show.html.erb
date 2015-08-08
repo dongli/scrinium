@@ -1,5 +1,5 @@
 <% content_for :title, t('research_team.profile') %>
-<% add_breadcrumb @research_team.short_name, research_team_path(@research_team) %>
+<% add_breadcrumb @research_team.short_name, organization_research_team_path(@organization, @research_team) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>

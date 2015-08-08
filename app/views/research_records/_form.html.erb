@@ -1,5 +1,5 @@
 <div class='research-record-form'>
-  <%= simple_form_for @research_record do |f| %>
+  <%= simple_form_for [current_user, @research_record] do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :title,

@@ -12,7 +12,7 @@
       <%= t('action.reply') %>
       <a id='parent-comment-<%= parent_comment.id %>' class='parent-comment'
         data-toggle='popover' data-placement='top'
-        data-title='<%= link_to avatar(parent_user, :thumb), user_path(parent_user) %> <%= parent_user.name %>'
+        data-title='<%= link_to avatar(parent_user, :small), user_path(parent_user) %> <%= parent_user.name %>'
         data-content='<%= markdown parent_comment.content %>'>
         #<%= parent_comment.floor %>
       </a>
@@ -20,20 +20,20 @@
     <div class='right'>
       <%=
         link_to t('action.reply'),
-        [commentable, :reply, comment],
+        [current_user, commentable, :reply, comment],
         class: 'button btn-xs reply-comment',
         remote: true
       %>
       <% if current_user == user or is_super_admin_or_admin?(current_user) %>
         <%=
           link_to t('action.edit'),
-          [:edit, commentable, comment],
+          [:edit, user, commentable, comment],
           class: 'button btn-xs edit-comment',
           remote: true
         %>
         <%=
           link_to t('action.delete'),
-          [commentable, comment],
+          [user, commentable, comment],
           method: :delete,
           data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
           class: 'button btn-xs btn-danger delete-comment',

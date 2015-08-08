@@ -16,7 +16,7 @@
       <div class='row'>
         <% @organization.research_teams.each do |team| %>
           <div class='col-md-6 col-sm-12 research-team-entry'>
-            <%= link_to team.name, research_team_path(team) %>
+            <%= link_to team.name, [@organization, team] %>
           </div>
         <% end %>
       </div>

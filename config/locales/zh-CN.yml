@@ -153,6 +153,7 @@ zh-CN:
               blank: '请提供一个酷炫的头像！'
             email:
               taken: '该邮箱已经被注册！'
+              blank: '请填写邮箱！'
             current_password:
               blank: '当前密码为空！'
             password:

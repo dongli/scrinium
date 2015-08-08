@@ -22,7 +22,7 @@
           class='research-record-draft'
         <% end %>
       >
-        <td><%= link_to "《#{r.title}》", research_record_path(r) %></td>
+        <td><%= link_to "《#{r.title}》", [r.user, r] %></td>
         <% if show_author %>
           <td><%= link_to r.user.name, user_path(r.user) %></td>
         <% end %>

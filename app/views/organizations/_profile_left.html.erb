@@ -5,7 +5,12 @@
     <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_organization_path(@organization) %></li>
   <% end %>
   <% if is_super_admin?(current_user) %>
-    <li><%= link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.research_team')), new_research_team_path %></li>
+    <li>
+      <%=
+        link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.research_team')),
+        new_organization_research_team_path(@organization)
+      %>
+    </li>
   <% end %>
   <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@organization.users.size.to_s %></li>
 </ul>
