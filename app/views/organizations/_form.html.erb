@@ -3,7 +3,7 @@
     <%= f.input :name, label: t('organization.name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :short_name, label: t('organization.short_name'), required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :description, label: t('organization.description'), required: true, as: :text %>
-    <% if @organization %>
+    <% if @organization.id %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>
     <% else %>
       <%= f.button :submit, t('action.add'), class: 'button right' %>
