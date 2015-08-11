@@ -1,15 +1,15 @@
 <dl>
-  <dt><%= t('user.latest_research_records') %></dt>
+  <dt><%= t('user.latest_articles') %></dt>
   <dd>
     <%=
-      render partial: 'research_records/table_list',
+      render partial: 'articles/table_list',
       locals: {
-        research_records: user.research_records,
+        articles: user.articles,
         show_author: false
       }
     %>
     <% if is_same_user? user %>
-      <%= link_to t('action.add'), new_user_research_record_path(user), class: 'button right' %>
+      <%= link_to t('action.add'), new_user_article_path(user), class: 'button right' %>
     <% end %>
   </dd>
 </dl>

@@ -23,7 +23,7 @@ zh-CN:
     research_team: '研究组'
     research: '研究'
     group: '团队'
-    research_record: '科研记录'
+    article: '科研记录'
     comment: '评论'
 
   actions: '操作'
@@ -102,8 +102,8 @@ zh-CN:
     profile: '个人信息'
     console:
       edit_info: '修改信息'
-      create_research_record: '添加科研记录'
-    latest_research_records: '最近科研记录'
+      create_article: '添加科研记录'
+    latest_articles: '最近科研记录'
     super_admin_born: '您即将成为超级管理员！'
     organization_is_empty: '尚未创建任何机构！请超级管理员创建。'
 
@@ -123,7 +123,7 @@ zh-CN:
   group:
     name: '团队名称'
     description: '团队描述'
-    research_records: '团队记录'
+    articles: '团队记录'
     owner: '管理者'
     members: '成员'
     member_number: '成员人数'
@@ -134,7 +134,7 @@ zh-CN:
     organization: '机构'
     manage_users: '管理用户'
 
-  research_record:
+  article:
     add: '添加科研记录'
     edit: '修改科研记录'
     title: '记录名称'
@@ -169,10 +169,10 @@ zh-CN:
               taken: '已经有相同名称的机构被注册！'
             short_name:
               taken: '已经有相同简称的机构被注册！'
-        research_record:
+        article:
           attributes:
             title:
-              blank: '记录名称不能为空！'
-              taken: '已经有相同名称的记录！'
+              blank: '文章名称不能为空！'
+              taken: '已经有相同名称的文章！'
             content:
-              blank: '记录内容不能为空！'
+              blank: '内容不能为空！'

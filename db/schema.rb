@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 20150805161421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "articles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title",      null: false
+    t.text     "content",    null: false
+    t.boolean  "draft",      null: false
+    t.integer  "privacy",    null: false
+    t.string   "tags",                    array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -40,15 +52,15 @@ ActiveRecord::Schema.define(version: 20150805161421) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "group_research_record_associations", force: :cascade do |t|
+  create_table "group_article_associations", force: :cascade do |t|
     t.integer  "group_id"
-    t.integer  "research_record_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "group_research_record_associations", ["group_id"], name: "index_group_research_record_associations_on_group_id", using: :btree
-  add_index "group_research_record_associations", ["research_record_id"], name: "index_group_research_record_associations_on_research_record_id", using: :btree
+  add_index "group_article_associations", ["article_id"], name: "index_group_article_associations_on_article_id", using: :btree
+  add_index "group_article_associations", ["group_id"], name: "index_group_article_associations_on_group_id", using: :btree
 
   create_table "group_user_associations", force: :cascade do |t|
     t.integer  "group_id"
@@ -111,19 +123,6 @@ ActiveRecord::Schema.define(version: 20150805161421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "research_records", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "title",      null: false
-    t.text     "content",    null: false
-    t.boolean  "draft",      null: false
-    t.integer  "privacy",    null: false
-    t.string   "tags",                    array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "research_records", ["user_id"], name: "index_research_records_on_user_id", using: :btree
 
   create_table "research_team_translations", force: :cascade do |t|
     t.integer  "research_team_id", null: false

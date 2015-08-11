@@ -3,9 +3,9 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'research_records/table_list',
+    render partial: 'articles/table_list',
     locals: {
-      research_records: ResearchRecord.all,
+      articles: Article.all,
       show_author: true
     }
   %>

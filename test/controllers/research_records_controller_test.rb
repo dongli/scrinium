@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class ResearchRecordsControllerTest < ActionController::TestCase
+class ArticlesControllerTest < ActionController::TestCase
   setup do
-    @research_record = research_records(:one)
+    @article = articles(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:research_records)
+    assert_not_nil assigns(:articles)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class ResearchRecordsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create research_record" do
-    assert_difference('ResearchRecord.count') do
-      post :create, research_record: {  }
+  test "should create article" do
+    assert_difference('Article.count') do
+      post :create, article: {  }
     end
 
-    assert_redirected_to research_record_path(assigns(:research_record))
+    assert_redirected_to article_path(assigns(:article))
   end
 
-  test "should show research_record" do
-    get :show, id: @research_record
+  test "should show article" do
+    get :show, id: @article
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @research_record
+    get :edit, id: @article
     assert_response :success
   end
 
-  test "should update research_record" do
-    patch :update, id: @research_record, research_record: {  }
-    assert_redirected_to research_record_path(assigns(:research_record))
+  test "should update article" do
+    patch :update, id: @article, article: {  }
+    assert_redirected_to article_path(assigns(:article))
   end
 
-  test "should destroy research_record" do
-    assert_difference('ResearchRecord.count', -1) do
-      delete :destroy, id: @research_record
+  test "should destroy article" do
+    assert_difference('Article.count', -1) do
+      delete :destroy, id: @article
     end
 
-    assert_redirected_to research_records_path
+    assert_redirected_to articles_path
   end
 end

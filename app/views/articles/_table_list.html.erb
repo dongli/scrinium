@@ -1,25 +1,25 @@
 <% show_author = true if local_assigns[:show_author].nil? %>
 
-<table class='research-records'>
+<table class='articles'>
   <thead>
     <tr>
-      <th width='200'><%= t('research_record.title') %></th>
+      <th width='200'><%= t('article.title') %></th>
       <% if show_author %>
-        <th width='100'><%= t('research_record.author') %></th>
+        <th width='100'><%= t('article.author') %></th>
       <% end %>
       <th width='200'><%= t('global.create_time') %></th>
-      <th width='100'><%= t('research_record.browse_count') %></th>
+      <th width='100'><%= t('article.browse_count') %></th>
     </tr>
   </thead>
   <tbody>
-    <% research_records.each do |r| %>
+    <% articles.each do |r| %>
     <% if not is_same_user?(r.user) and not is_in_groups?(r.groups) and
         r.privacy != t('privacy_types.public') %>
       <% next %>
     <% end %>
       <tr
         <% if r.draft %>
-          class='research-record-draft'
+          class='article-draft'
         <% end %>
       >
         <td><%= link_to "《#{r.title}》", [r.user, r] %></td>

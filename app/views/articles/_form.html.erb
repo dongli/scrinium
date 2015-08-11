@@ -1,9 +1,9 @@
-<div class='research-record-form'>
-  <%= simple_form_for [current_user, @research_record] do |f| %>
+<div class='article-form'>
+  <%= simple_form_for [current_user, @article] do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :title,
-      label: t('research_record.title'),
+      label: t('article.title'),
       autofocus: true,
       required: true,
       input_html: {
@@ -18,18 +18,18 @@
           f.input :privacy,
           label: t('privacy'),
           required: true,
-          collection: ResearchRecord.privacies,
-          selected: ResearchRecord.privacies[@research_record.privacy]
+          collection: Article.privacies,
+          selected: Article.privacies[@article.privacy]
         %>
       </div>
       <div class='col-md-6' id='select-groups'>
         <%=
           f.association :groups,
-          label: t('research_record.public_groups'),
+          label: t('article.public_groups'),
           required: true,
           label_method: :name,
           value_method: :id,
-          collection: @research_record.groups,
+          collection: @article.groups,
           input_html: {
             id: 'input-group-name-for-user',
             data: { user_id: current_user.id }
@@ -39,7 +39,7 @@
     </div>
     <%=
       f.input :content,
-      label: t('research_record.content'),
+      label: t('article.content'),
       required: true,
       as: :text
     %>
@@ -47,7 +47,7 @@
       <li>
         <%=
           link_to t('action.preview'), '#',
-          id: 'research-record-preview',
+          id: 'article-preview',
           class: 'button'
         %>
       </li>
@@ -55,7 +55,7 @@
         <%= f.button :submit, t('action.save'), class: 'button' %>
       </li>
       <li>
-        <% if content_for(:title) == t('research_record.edit') %>
+        <% if content_for(:title) == t('article.edit') %>
           <%= f.button :submit, t('action.edit'), class: 'button' %>
         <% else %>
           <%= f.button :submit, t('action.add'), class: 'button' %>
@@ -66,7 +66,7 @@
 </div>
 
 <!-- Preview placeholder -->
-<div class="modal fade" id='research-record-preview'>
+<div class="modal fade" id='article-preview'>
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header"></div>

@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
-	$('a#research-record-preview').click ->
+	$('a#article-preview').click ->
 		location.reload
-		title = $('input#research_record_title').val()
-		content = $('textarea#research_record_content').val()
+		title = $('input#article_title').val()
+		content = $('textarea#article_content').val()
 		titleElement = $('div.modal-header')
 		contentElement = $('div.modal-body')
 		$.post ROOT_PATH+'api/v1/markdown', { text: content }, (result) ->
@@ -14,12 +14,12 @@ $(document).on 'page:change', ->
 			contentElement.html result
 			MathJax.Hub.Queue ['Typeset', MathJax.Hub]
 		MathJax.Hub.Queue ['Typeset', MathJax.Hub]
-		$('div#research-record-preview').modal('show')
+		$('div#article-preview').modal('show')
 	# Reload MathJax to render the math after jumping from other pages.
 	MathJax.Hub.Queue ['Typeset', MathJax.Hub]
 
 	$('#select-groups').hide()
-	$('#research_record_privacy').change ->
+	$('#article_privacy').change ->
 		if this.value == '2'
 			$('#select-groups').show()
 		else

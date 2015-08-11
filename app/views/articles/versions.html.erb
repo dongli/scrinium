@@ -1,5 +1,5 @@
-<% content_for :title, @research_record.title %>
-<% add_breadcrumb @research_record.title, user_research_record_path(@research_record.user, @research_record) %>
+<% content_for :title, @article.title %>
+<% add_breadcrumb @article.title, user_article_path(@article.user, @article) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -10,7 +10,7 @@
     <dt><%= t('versions') %></dt>
     <dd>
       <ul class='versions'>
-        <% @research_record.versions.each do |v| %>
+        <% @article.versions.each do |v| %>
           <% next if not v.reify or not v.previous %>
           <li>
             <div class='panel panel-default'>
@@ -28,11 +28,11 @@
         <li>
           <div class='panel panel-default'>
             <div class='panel-heading'>
-              #<%= @research_record.id %> <%= @research_record.updated_at %>
+              #<%= @article.id %> <%= @article.updated_at %>
             </div>
             <div class='panel-body'>
               <%=
-                markdown_diff @research_record.previous_version.content, @research_record.content
+                markdown_diff @article.previous_version.content, @article.content
               %>
             </div>
           </div>

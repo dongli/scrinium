@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
   end
   resources :users do
-    resources :research_records, concerns: :commentable
-    get '/research_records/:id/versions' => 'research_records#versions', as: :research_record_versions
+    resources :articles, concerns: :commentable
+    get '/articles/:id/versions' => 'articles#versions', as: :article_versions
   end
   resources :groups
   resources :organizations do

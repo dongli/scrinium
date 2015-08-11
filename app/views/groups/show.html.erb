@@ -10,11 +10,11 @@
     <dd><%= markdown @group.description %></dd>
   </dl>
   <dl>
-    <dt><%= t('group.research_records') %></dt>
+    <dt><%= t('group.articles') %></dt>
     <dd>
       <%=
-        render partial: 'research_records/table_list',
-        locals: { research_records: @group.research_records }
+        render partial: 'articles/table_list',
+        locals: { articles: @group.articles }
       %>
     </dd>
   </dl>

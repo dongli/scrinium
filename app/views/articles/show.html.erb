@@ -1,0 +1,22 @@
+<% content_for :title, @article.title %>
+<% add_breadcrumb @article.title, user_article_path(@article.user, @article) %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl class='article-show'>
+    <dt><%= @article.title %></dt>
+    <dd class='content'><%= markdown @article.content %></dd>
+  </dl>
+  <dl>
+    <dt></dt>
+    <dd>
+      <%=
+        render partial: 'comments/list',
+        locals: { commentable: @article }
+      %>
+    </dd>
+  </dl>
+<% end %>

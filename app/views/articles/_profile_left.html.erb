@@ -1,0 +1,32 @@
+<ul class='left-side-list'>
+  <li>
+    <%=
+      link_to avatar(@article.user, :medium),
+      user_path(@article.user)
+    %>
+    </li>
+  <li><%= t('global.create_time')+': '+@article.created_at.to_s %></li>
+  <li><%= t('action.edit_time')+': '+@article.updated_at.to_s %></li>
+  <% if current_user and current_user == @article.user %>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        [:edit, current_user, @article]
+      %>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        [current_user, @article],
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.article')) }
+      %>
+    </li>
+  <% end %>
+  <% if @article.versions.size > 0 %>
+    <li>
+      <%=
+        link_to "#{t('article.version_number')}: #{@article.versions.size}",
+        [@article.user, @article, :versions]
+      %>
+    </li>
+  <% end %>
+</ul>

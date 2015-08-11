@@ -18,7 +18,7 @@ User.create(name: '张三',
             password: '12345678',
             password_confirmation: '12345678')
 
-ResearchRecord.create(user_id: 1,
+Article.create(user_id: 1,
                       title: '云滴谱的数值求解',
                       content: '\\\\[ \\frac{\\partial n}{\\partial t} = - \\frac{\\partial}{\\partial r} \\frac{d r}{d t} n \\\\]',
                       draft: false,

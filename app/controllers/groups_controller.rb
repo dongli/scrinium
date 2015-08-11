@@ -76,7 +76,7 @@ class GroupsController < ApplicationController
                                   :description,
                                   :owner_id,
                                   { user_ids: [] },
-                                  { research_record_ids: [] },
+                                  { article_ids: [] },
                                   :privacy)
   end
 end

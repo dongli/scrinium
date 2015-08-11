@@ -1,0 +1,9 @@
+<% content_for :title, t('scrinium.articles') %>
+<% add_breadcrumb t('scrinium.articles'), articles_index_path %>
+
+<% content_for :main_block do %>
+  <%=
+    render partial: 'articles/table_list',
+    locals: { articles: Article.all }
+  %>
+<% end %>

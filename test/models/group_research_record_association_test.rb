@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GroupResearchRecordAssociationTest < ActiveSupport::TestCase
+class GroupArticleAssociationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

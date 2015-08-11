@@ -1,9 +1,0 @@
-<% content_for :title, t('scrinium.research_records') %>
-<% add_breadcrumb t('scrinium.research_records'), research_records_index_path %>
-
-<% content_for :main_block do %>
-  <%=
-    render partial: 'research_records/table_list',
-    locals: { research_records: ResearchRecord.all }
-  %>
-<% end %>
