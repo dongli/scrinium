@@ -3,6 +3,8 @@ class Article < ActiveRecord::Base
   validates :title, :content, presence: true
   is_impressionable
   has_paper_trail :on => [:update, :destroy]
+  acts_as_taggable
+  acts_as_taggable_on :categories
   belongs_to :user
   has_many :group_article_associations
   has_many :groups, through: :group_article_associations

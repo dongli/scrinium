@@ -6,7 +6,6 @@ class CreateArticles < ActiveRecord::Migration
       t.text    :content, null: false
       t.boolean :draft,   null: false
       t.integer :privacy, null: false
-      t.string  :tags,    array: true
 
       t.timestamps null: false
     end

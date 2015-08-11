@@ -7,6 +7,15 @@
     </li>
   <li><%= t('global.create_time')+': '+@article.created_at.to_s %></li>
   <li><%= t('action.edit_time')+': '+@article.updated_at.to_s %></li>
+  <li>
+    <ul class='left-side-list'>
+      <% @article.categories.each do |t| %>
+        <li><span class='label label-default'>
+          <%= t('article.categories.'+t.name) %>
+        </span></li>
+      <% end %>
+    </ul>
+  </li>
   <% if current_user and current_user == @article.user %>
     <li>
       <%=

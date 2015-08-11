@@ -79,3 +79,5 @@ gem 'closure_tree'
 gem 'paperclip', '~> 4.3'
 
 gem 'diffy'
+
+gem 'acts-as-taggable-on', '~> 3.4'

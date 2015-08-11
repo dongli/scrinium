@@ -3,7 +3,8 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :title,
-      label: t('article.title'),
+      label: false,
+      placeholder: t('article.placeholder.title'),
       autofocus: true,
       required: true,
       input_html: {
@@ -16,7 +17,7 @@
       <div class='col-md-2'>
         <%=
           f.input :privacy,
-          label: t('privacy'),
+          label: false,
           required: true,
           collection: Article.privacies,
           selected: Article.privacies[@article.privacy]
@@ -39,7 +40,8 @@
     </div>
     <%=
       f.input :content,
-      label: t('article.content'),
+      label: false,
+      placeholder: t('article.placeholder.content'),
       required: true,
       as: :text
     %>
