@@ -17,11 +17,30 @@ module ApplicationHelper
     :fenced_code_blocks => true,
     :no_intra_emphasis => true
   })
-  def markdown text
-    @@markdown.render(text).html_safe
+  def markdown text, *options
+    if options.include? :without_html_safe
+      @@markdown.render(text)
+    else
+      @@markdown.render(text).html_safe
+    end
   end
-  def self.markdown text
-    @@markdown.render(text).html_safe
+  def self.markdown text, *options
+    if options.include? :without_html_safe
+      @@markdown.render(text)
+    else
+      @@markdown.render(text).html_safe
+    end
+  end
+
+  def markdown_diff a, b
+    markdown(Diffy::Diff.new(a+"\n", b+"\n").to_s
+    .gsub(/^\+(.*)$/, '@start_add@\1@end_add@')
+    .gsub(/^-(.*)$/, '@start_remove@\1@end_remove@'),
+    :without_html_safe)
+    .gsub('@start_add@', '<div class="added-text">')
+    .gsub('@end_add@', '</div>')
+    .gsub('@start_remove@', '<div class="removed-text">')
+    .gsub('@end_remove@', '</div>').html_safe
   end
 
   def self.transform_params params, object, elements

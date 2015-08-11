@@ -1,4 +1,5 @@
 <div class='devise-form'>
+  <%= devise_error_messages! %>
   <!-- Check if the user is the first one. -->
   <% if User.all.empty? %>
     <% be_super_admin = true %>

@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
+  # Change the avatar display after uploading.
   $('#upload-avatar').change ->
     reader = new FileReader
     reader.readAsDataURL @files[0]

@@ -74,3 +74,5 @@ gem 'paper_trail', '~> 4.0.0'
 gem 'closure_tree'
 
 gem 'paperclip', '~> 4.3'
+
+gem 'diffy'

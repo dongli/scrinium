@@ -2,7 +2,7 @@ class ResearchRecord < ActiveRecord::Base
   validates_uniqueness_of :title, scope: :user_id
   validates :title, :content, presence: true
   is_impressionable
-  has_paper_trail
+  has_paper_trail :on => [:update, :destroy]
   belongs_to :user
   has_many :group_research_record_associations
   has_many :groups, through: :group_research_record_associations

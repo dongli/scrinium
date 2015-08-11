@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :users do
     resources :research_records, concerns: :commentable
+    get '/research_records/:id/versions' => 'research_records#versions', as: :research_record_versions
   end
   resources :groups
   resources :organizations do

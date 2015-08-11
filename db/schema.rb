@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150805161421) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
   create_table "organization_translations", force: :cascade do |t|
     t.integer  "organization_id", null: false
     t.string   "locale",          null: false
@@ -152,22 +153,22 @@ ActiveRecord::Schema.define(version: 20150805161421) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "name",                   default: "", null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.integer  "gender",                              null: false
+    t.string   "name",                               null: false
+    t.string   "email",                              null: false
+    t.string   "encrypted_password",                 null: false
+    t.integer  "gender",                             null: false
     t.integer  "position"
     t.integer  "role"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

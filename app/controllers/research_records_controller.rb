@@ -1,6 +1,6 @@
 class ResearchRecordsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_action :set_research_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_research_record, only: [:show, :edit, :update, :destroy, :versions]
   impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   # GET /research_records
@@ -46,7 +46,7 @@ class ResearchRecordsController < ApplicationController
     set_draft
     respond_to do |format|
       if @research_record.update(research_record_params)
-        format.html { redirect_to [@research_record.user, @research_record], notice: t('research_record.update_success') }
+        format.html { redirect_to [@research_record.user, @research_record], notice: t('message.update_success', thing: t('scrinium.research_record')) }
         format.json { render :show, status: :ok, location: @research_record }
       else
         format.html { render :edit }
@@ -62,6 +62,13 @@ class ResearchRecordsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_path(current_user), notice: t('research_record.destroy_success') }
       format.json { head :no_content }
+    end
+  end
+
+  def versions
+    respond_to do |format|
+      format.html
+      format.json
     end
   end
 

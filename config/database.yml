@@ -19,7 +19,7 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: 5
+  pool: <%= ENV['SCRINIUM_DATABASE_POOL'] || ENV['MAX_THREADS'] || 5 %>
   username: <%= ENV['SCRINIUM_DATABASE_USERNAME'] %>
   password: <%= ENV['SCRINIUM_DATABASE_PASSWORD'] %>
 
@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: scrinium_production
-  username: scrinium
-  password: <%= ENV['SCRINIUM_DATABASE_PASSWORD'] %>

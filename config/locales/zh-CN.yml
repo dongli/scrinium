@@ -49,6 +49,8 @@ zh-CN:
     private: '非公开'
     group_public: '团队公开'
 
+  versions: '历史版本'
+
   user:
     need_real_name: '请填写真实姓名！'
     has_no_affiliation: '无所属单位'

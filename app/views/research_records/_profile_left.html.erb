@@ -21,7 +21,12 @@
       %>
     </li>
   <% end %>
-  <li>
-    <%= t('research_record.version_number')+': '+@research_record.versions.size.to_s %>
-  </li>
+  <% if @research_record.versions.size > 0 %>
+    <li>
+      <%=
+        link_to "#{t('research_record.version_number')}: #{@research_record.versions.size}",
+        [@research_record.user, @research_record, :versions]
+      %>
+    </li>
+  <% end %>
 </ul>

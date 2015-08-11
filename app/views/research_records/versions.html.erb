@@ -1,0 +1,43 @@
+<% content_for :title, @research_record.title %>
+<% add_breadcrumb @research_record.title, user_research_record_path(@research_record.user, @research_record) %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl>
+    <dt><%= t('versions') %></dt>
+    <dd>
+      <ul class='versions'>
+        <% @research_record.versions.each do |v| %>
+          <% next if not v.reify or not v.previous %>
+          <li>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                #<%= v.id %> <%= v.reify.updated_at %>
+              </div>
+              <div class='panel-body'>
+                <%=
+                  markdown_diff v.previous.reify.content, v.reify.content
+                %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        <li>
+          <div class='panel panel-default'>
+            <div class='panel-heading'>
+              #<%= @research_record.id %> <%= @research_record.updated_at %>
+            </div>
+            <div class='panel-body'>
+              <%=
+                markdown_diff @research_record.previous_version.content, @research_record.content
+              %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+<% end %>

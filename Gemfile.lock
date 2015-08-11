@@ -90,6 +90,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diffy (3.0.7)
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
@@ -251,6 +252,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   country_select
   devise
+  diffy
   font-awesome-rails
   globalize (~> 5.0.0)
   grape
