@@ -1,0 +1,19 @@
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    #<%= previous_version.index %> <%= current_version.updated_at %>
+    <div class='right'>
+      <% if current_user == article.user %>
+        <%=
+          link_to t('action.delete'),
+          user_delete_version_path(current_user, article, previous_version.id),
+          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('article.version')) },
+          class: 'button btn-xs btn-danger delete-comment',
+          remote: true
+        %>
+      <% end %>
+    </div>
+  </div>
+  <div class='panel-body'>
+    <%= markdown_diff previous_version.reify.content, current_version.content %>
+  </div>
+</div>

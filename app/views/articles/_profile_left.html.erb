@@ -30,9 +30,11 @@
   <% end %>
   <% if @article.versions.size > 0 %>
     <li>
+      <%= t('article.version_number') %>:
       <%=
-        link_to "#{t('article.version_number')}: #{@article.versions.size}",
-        [@article.user, @article, :versions]
+        link_to @article.versions.size,
+        [@article.user, @article, :versions],
+        id: 'version-number'
       %>
     </li>
   <% end %>

@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: t('article.destroy_success') }
+      format.html { redirect_to user_path(current_user), notice: t('message.destroy_success', thing: t('scrinium.article')) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,13 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+    end
+  end
+
+  def delete_version
+    PaperTrail::Version.find(params[:version_id]).destroy
+    respond_to do |format|
+      format.js
     end
   end
 

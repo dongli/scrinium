@@ -12,30 +12,26 @@
       <ul class='versions'>
         <% @article.versions.each do |v| %>
           <% next if not v.reify or not v.previous %>
-          <li>
-            <div class='panel panel-default'>
-              <div class='panel-heading'>
-                #<%= v.id %> <%= v.reify.updated_at %>
-              </div>
-              <div class='panel-body'>
-                <%=
-                  markdown_diff v.previous.reify.content, v.reify.content
-                %>
-              </div>
-            </div>
+          <li id='version-<%= v.previous.id %>'>
+            <%=
+              render partial: 'diff',
+              locals: {
+                article: @article,
+                previous_version: v.previous,
+                current_version: v.reify
+              }
+            %>
           </li>
         <% end %>
-        <li>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              #<%= @article.id %> <%= @article.updated_at %>
-            </div>
-            <div class='panel-body'>
-              <%=
-                markdown_diff @article.previous_version.content, @article.content
-              %>
-            </div>
-          </div>
+        <li id='version-<%= @article.versions.last.id %>'>
+          <%=
+            render partial: 'diff',
+            locals: {
+              article: @article,
+              previous_version: @article.versions.last,
+              current_version: @article
+            }
+          %>
         </li>
       </ul>
     </dd>
