@@ -7,6 +7,11 @@
   <script type="text/javascript" charset="utf-8">
     var ROOT_PATH = '<%= root_url %>';
   </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "all" } }
+    });
+  </script>
   <%= mathjax_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

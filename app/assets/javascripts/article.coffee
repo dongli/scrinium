@@ -18,7 +18,6 @@ $(document).on 'page:change', ->
 	# Reload MathJax to render the math after jumping from other pages.
 	MathJax.Hub.Queue ['Typeset', MathJax.Hub]
 
-	$('#select-groups').hide()
 	$('#article_privacy').change ->
 		if this.value == '2'
 			$('#select-groups').show()

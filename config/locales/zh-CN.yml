@@ -22,7 +22,7 @@ zh-CN:
     organization: '机构'
     research_team: '研究组'
     research: '研究'
-    group: '团队'
+    group: '群组'
     article: '文章'
     comment: '评论'
 
@@ -47,7 +47,7 @@ zh-CN:
   privacy_types:
     public: '公开'
     private: '非公开'
-    group_public: '团队公开'
+    group_public: '群组公开'
 
   versions: '历史版本'
 
@@ -57,7 +57,7 @@ zh-CN:
     has_been_deleted: '用户“%{name}”已经被删除。'
     join_time: '加入时间'
     joined_at: '加入于%{date}'
-    join_groups: '加入%{group_number}个团队'
+    join_groups: '加入%{group_number}个群组'
     sign_in: '用户登录'
     sign_up: '新用户注册'
     edit: '个人设置'
@@ -121,16 +121,16 @@ zh-CN:
     description: '研究组描述'
 
   group:
-    name: '团队名称'
-    description: '团队描述'
-    articles: '团队文章'
+    name: '群组名称'
+    description: '群组描述'
+    articles: '群组文章'
     owner: '管理者'
     members: '成员'
     member_number: '成员人数'
 
   dashboard:
     user: '用户'
-    group: '团队'
+    group: '群组'
     organization: '机构'
     manage_users: '管理用户'
 
@@ -141,9 +141,11 @@ zh-CN:
     author: '作者'
     browse_count: '浏览次数'
     version_number: '版本数'
+    version: '文章版本'
     placeholder:
       title: 题目 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
-      categories: 类别
+      categories: 类别 | 提示：以空格分开。
+      public_for_groups: 选择向哪些群组公开
       content: 内容 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
     categories:
       research_record: '科研记录'

@@ -19,9 +19,11 @@
           f.input :category_list,
           label: false,
           collection: @article.categories.map { |t| t.name },
-          include_blank: false,
           input_html: {
-            multiple: 'multiple'
+            multiple: 'multiple',
+            data: {
+              placeholder: t('article.placeholder.categories')
+            }
           }
         %>
       </div>
@@ -34,17 +36,21 @@
           selected: Article.privacies[@article.privacy]
         %>
       </div>
-      <div class='col-md-6' id='select-groups'>
+      <div class='col-md-4' id='select-groups'
+        style='<%= 'display:none' if @article.privacy != t('privacy_types.group_public') %>'>
         <%=
           f.association :groups,
-          label: t('article.public_groups'),
+          label: false,
           required: true,
           label_method: :name,
           value_method: :id,
           collection: @article.groups,
           input_html: {
             id: 'input-group-name-for-user',
-            data: { user_id: current_user.id }
+            data: {
+              user_id: current_user.id,
+              placeholder: t('article.placeholder.public_for_groups')
+            }
           }
         %>
       </div>

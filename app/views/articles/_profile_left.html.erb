@@ -4,9 +4,7 @@
       link_to avatar(@article.user, :medium),
       user_path(@article.user)
     %>
-    </li>
-  <li><%= t('global.create_time')+': '+@article.created_at.to_s %></li>
-  <li><%= t('action.edit_time')+': '+@article.updated_at.to_s %></li>
+  </li>
   <li>
     <ul class='left-side-list'>
       <% @article.categories.each do |t| %>

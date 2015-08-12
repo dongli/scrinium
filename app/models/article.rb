@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   validates_uniqueness_of :title, scope: :user_id
   validates :title, :content, presence: true
   is_impressionable
-  has_paper_trail :on => [:update, :destroy]
+  has_paper_trail on: [:update, :destroy], only: [:title, :content]
   acts_as_taggable
   acts_as_taggable_on :categories
   belongs_to :user
