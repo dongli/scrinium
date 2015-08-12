@@ -2,11 +2,16 @@
 <% add_breadcrumb t('scrinium.research'), researches_index_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
-  <%=
-    render partial: 'articles/table_list',
-    locals: {
-      articles: Article.all,
-      show_author: true
-    }
-  %>
+  <dl>
+    <dt><%= t('article.categories.research_record') %></dt>
+    <dd>
+      <%=
+        render partial: 'articles/table_list',
+        locals: {
+          articles: Article.tagged_with(t('article.categories.research_record')),
+          show_author: true
+        }
+      %>
+    </dd>
+  </dl>
 <% end %>

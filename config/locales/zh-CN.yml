@@ -143,9 +143,10 @@ zh-CN:
     version_number: '版本数'
     placeholder:
       title: 题目 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
+      categories: 类别
       content: 内容 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
     categories:
-      research_record: '研究记录'
+      research_record: '科研记录'
 
   comment:
     content: '评论内容'

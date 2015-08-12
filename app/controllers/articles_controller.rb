@@ -96,6 +96,7 @@ class ArticlesController < ApplicationController
                                     :privacy,
                                     { group_ids: [] },
                                     :tag_list,
+                                    { category_list: [] },
                                     :user_id)
   end
 end

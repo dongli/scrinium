@@ -11,7 +11,7 @@
     <ul class='left-side-list'>
       <% @article.categories.each do |t| %>
         <li><span class='label label-default'>
-          <%= t('article.categories.'+t.name) %>
+          <%= t.name %>
         </span></li>
       <% end %>
     </ul>

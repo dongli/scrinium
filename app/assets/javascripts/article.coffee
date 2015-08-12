@@ -24,3 +24,7 @@ $(document).on 'page:change', ->
 			$('#select-groups').show()
 		else
 			$('#select-groups').hide()
+
+	$('#article_category_list').select2
+		tags: true
+		multiple: true
