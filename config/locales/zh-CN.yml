@@ -142,6 +142,7 @@ zh-CN:
     browse_count: '浏览次数'
     version_number: '版本数'
     version: '文章版本'
+    versions: '所有版本'
     placeholder:
       title: 题目 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
       categories: 类别 | 提示：以空格分开。

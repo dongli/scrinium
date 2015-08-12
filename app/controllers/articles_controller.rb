@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :versions]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :versions, :delete_version]
   impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   # GET /articles
@@ -73,7 +73,11 @@ class ArticlesController < ApplicationController
   end
 
   def delete_version
-    PaperTrail::Version.find(params[:version_id]).destroy
+    if params[:version_id] == '-1'
+      @article.versions.destroy_all
+    else
+      PaperTrail::Version.find(params[:version_id]).destroy
+    end
     respond_to do |format|
       format.js
     end

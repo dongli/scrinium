@@ -2,7 +2,7 @@
 <% add_breadcrumb @article.title, user_article_path(@article.user, @article) %>
 
 <% content_for :left_side do %>
-  <%= render 'profile_left' %>
+  <%= render partial: 'profile_left', locals: { show_versions: true } %>
 <% end %>
 
 <% content_for :main_block do %>
@@ -23,16 +23,18 @@
             %>
           </li>
         <% end %>
-        <li id='version-<%= @article.versions.last.id %>'>
-          <%=
-            render partial: 'diff',
-            locals: {
-              article: @article,
-              previous_version: @article.versions.last,
-              current_version: @article
-            }
-          %>
-        </li>
+        <% if @article.versions.last %>
+          <li id='version-<%= @article.versions.last.id %>'>
+            <%=
+              render partial: 'diff',
+              locals: {
+                article: @article,
+                previous_version: @article.versions.last,
+                current_version: @article
+              }
+            %>
+          </li>
+        <% end %>
       </ul>
     </dd>
   </dl>
