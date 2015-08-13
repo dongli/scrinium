@@ -12,11 +12,20 @@ $(document).on 'page:change', ->
 		$.post ROOT_PATH+'api/v1/markdown', { text: content }, (result) ->
 			titleElement.html title
 			contentElement.html result
-			MathJax.Hub.Queue ['Typeset', MathJax.Hub]
-		MathJax.Hub.Queue ['Typeset', MathJax.Hub]
+			MathJax.Hub.Queue(
+				["resetEquationNumbers", MathJax.InputJax.TeX],
+				['Typeset', MathJax.Hub]
+			)
+		MathJax.Hub.Queue(
+			["resetEquationNumbers", MathJax.InputJax.TeX],
+			['Typeset', MathJax.Hub]
+		)
 		$('div#article-preview').modal('show')
 	# Reload MathJax to render the math after jumping from other pages.
-	MathJax.Hub.Queue ['Typeset', MathJax.Hub]
+	MathJax.Hub.Queue(
+		["resetEquationNumbers", MathJax.InputJax.TeX],
+		['Typeset', MathJax.Hub]
+	)
 
 	$('#article_privacy').change ->
 		if this.value == '2'

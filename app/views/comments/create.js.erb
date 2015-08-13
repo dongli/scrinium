@@ -1,6 +1,9 @@
 <% comment = @commentable.comments.last %>
 $('#comment-placeholder').before("<li id='comment-<%= comment.id %>'><%= j render partial: 'comments/show', locals: { commentable: @commentable, comment: comment } %></li>");
-MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+MathJax.Hub.Queue(
+  ["resetEquationNumbers", MathJax.InputJax.TeX],
+  ['Typeset', MathJax.Hub]
+);
 <% if comment.parent_id %>
   $('[data-toggle="popover"]').popover
     html: true
@@ -13,7 +16,10 @@ $('li#new-comment').html("<%=
 // TODO: Move the following to a better place.
 $('[data-toggle="popover"]').popover({ html: true });
 $('[data-toggle="popover"]').on('inserted.bs.popover', function () {
-  MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+  MathJax.Hub.Queue(
+    ["resetEquationNumbers", MathJax.InputJax.TeX],
+    ['Typeset', MathJax.Hub]
+  );
 });
 // Dismiss popover when click outside.
 $('body').on('click', function (e) {

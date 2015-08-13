@@ -3,5 +3,8 @@ $("li#comment-<%= @comment.id %>").html("<%=
   locals: { commentable: @commentable, comment: @comment }
 %>");
 $("a#parent-comment-<%= @comment.id %>").attr('data-content', '<%= j markdown @comment.content %>');
-MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+MathJax.Hub.Queue(
+  ["resetEquationNumbers", MathJax.InputJax.TeX],
+  ['Typeset', MathJax.Hub]
+);
 $('[data-toggle="popover"]').popover({ html: true });
