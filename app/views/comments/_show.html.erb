@@ -18,27 +18,29 @@
       </a>
     <% end %>
     <div class='right'>
-      <%=
-        link_to t('action.reply'),
-        [current_user, commentable, :reply, comment],
-        class: 'button btn-xs reply-comment',
-        remote: true
-      %>
-      <% if current_user == user or is_super_admin_or_admin?(current_user) %>
+      <% if current_user %>
         <%=
-          link_to t('action.edit'),
-          [:edit, user, commentable, comment],
-          class: 'button btn-xs edit-comment',
+          link_to t('action.reply'),
+          [current_user, commentable, :reply, comment],
+          class: 'button btn-xs reply-comment',
           remote: true
         %>
-        <%=
-          link_to t('action.delete'),
-          [user, commentable, comment],
-          method: :delete,
-          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
-          class: 'button btn-xs btn-danger delete-comment',
-          remote: true
-        %>
+        <% if current_user == user or is_super_admin_or_admin?(current_user) %>
+          <%=
+            link_to t('action.edit'),
+            [:edit, user, commentable, comment],
+            class: 'button btn-xs edit-comment',
+            remote: true
+          %>
+          <%=
+            link_to t('action.delete'),
+            [user, commentable, comment],
+            method: :delete,
+            data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
+            class: 'button btn-xs btn-danger delete-comment',
+            remote: true
+          %>
+        <% end %>
       <% end %>
     </div>
   </div>
