@@ -5,7 +5,7 @@
   <title><%= content_for?(:title) ? yield(:title) + ' - ' + t('global.scrinium') : t('global.scrinium') %></title>
   <!-- Set ROOT_PATH for querying in JavaScript. -->
   <script type="text/javascript" charset="utf-8">
-    var ROOT_PATH = '<%= root_url %>';
+    var ROOT_PATH = '<%= main_app.root_url %>';
   </script>
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

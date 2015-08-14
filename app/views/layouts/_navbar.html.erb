@@ -15,14 +15,14 @@
         <li>
           <%=
             link_to fa_icon('institution', text: t('scrinium.organization')),
-            organizations_path,
+            main_app.organizations_path,
             class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
             link_to fa_icon('mortar-board', text: t('scrinium.research')),
-            researches_index_path,
+            main_app.researches_index_path,
             class: 'navbar-link'
           %>
         </li>
@@ -40,27 +40,27 @@
               <li>
                 <%=
                   link_to fa_icon('home', text: t('user.profile')),
-                  user_path(current_user)
+                  main_app.user_path(current_user)
                 %>
               </li>
               <li>
                 <%=
                   link_to fa_icon('dashboard', text: t('global.dashboard')),
-                  dashboard_index_path
+                  main_app.dashboard_index_path
                 %>
               </li>
               <li>
                 <%=
                   link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.article')),
-                  new_user_article_path(current_user)
+                  main_app.new_user_article_path(current_user)
                 %>
               </li>
             </ul>
           </li>
-          <li><%= link_to fa_icon('sign-out', text: t('user.signout')), destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
+          <li><%= link_to fa_icon('sign-out', text: t('user.signout')), main_app.destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
         <% else %>
-          <li><%= link_to fa_icon('pencil-square-o', text: t('user.signup')), new_user_registration_path, :class => 'navbar-link' %></li>
-          <li><%= link_to fa_icon('sign-in', text: t('user.signin')), new_user_session_path, class: 'navbar-link' %></li>
+          <li><%= link_to fa_icon('pencil-square-o', text: t('user.signup')), main_app.new_user_registration_path, :class => 'navbar-link' %></li>
+          <li><%= link_to fa_icon('sign-in', text: t('user.signin')), main_app.new_user_session_path, class: 'navbar-link' %></li>
         <% end %>
       </ul>
     </div>
