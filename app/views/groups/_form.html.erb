@@ -32,7 +32,7 @@
       label_method: :name,
       value_method: :id,
       collection: @group.users,
-      input_html: { id: 'input-user-full-name', multiple: 'multiple' }
+      input_html: { id: 'input-user-name', multiple: 'multiple' }
     %>
     <% if content_for(:title) == t('action.edit')+t('scrinium.group') %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>

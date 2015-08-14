@@ -56,7 +56,7 @@ selectByPOST = (id, api_url, post_data) ->
 
 $(document).on 'page:change', ->
   # Using Select2 to enhance select element.
-  selectByGET 'input-user-full-name', 'api/v1/users/names'
+  selectByGET 'input-user-name', 'api/v1/users/names'
   selectByGET 'input-group-name', 'api/v1/groups/names'
   selectByGET 'input-organization-name', 'api/v1/organizations/names'
   selectByGET 'input-research-team-name', 'api/v1/research_teams/names'
