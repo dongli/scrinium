@@ -4,7 +4,11 @@ $("li#comment-<%= @comment.id %>").html("<%=
 %>");
 $("a#parent-comment-<%= @comment.id %>").attr('data-content', '<%= j markdown @comment.content %>');
 MathJax.Hub.Queue(
-  ["resetEquationNumbers", MathJax.InputJax.TeX],
+  function () {
+    if (MathJax.InputJax.TeX.resetEquationNumbers) {
+      MathJax.InputJax.TeX.resetEquationNumbers();
+    }
+  },
   ['Typeset', MathJax.Hub]
 );
 $('[data-toggle="popover"]').popover({ html: true });

@@ -8,7 +8,7 @@ turnOnParentComentPopover = ->
       html: true
   $('[data-toggle="popover"]').on 'inserted.bs.popover', ->
     MathJax.Hub.Queue(
-      ["resetEquationNumbers", MathJax.InputJax.TeX],
+      (-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
       ['Typeset', MathJax.Hub]
     )
   # Dismiss popover when click outside.

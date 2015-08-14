@@ -13,17 +13,17 @@ $(document).on 'page:change', ->
 			titleElement.html title
 			contentElement.html result
 			MathJax.Hub.Queue(
-				["resetEquationNumbers", MathJax.InputJax.TeX],
+				(-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
 				['Typeset', MathJax.Hub]
 			)
 		MathJax.Hub.Queue(
-			["resetEquationNumbers", MathJax.InputJax.TeX],
+			(-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
 			['Typeset', MathJax.Hub]
 		)
 		$('div#article-preview').modal('show')
 	# Reload MathJax to render the math after jumping from other pages.
 	MathJax.Hub.Queue(
-		["resetEquationNumbers", MathJax.InputJax.TeX],
+		(-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
 		['Typeset', MathJax.Hub]
 	)
 
