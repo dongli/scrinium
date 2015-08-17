@@ -22,6 +22,8 @@ default: &default
   pool: <%= ENV['SCRINIUM_DATABASE_POOL'] || ENV['MAX_THREADS'] || 5 %>
   username: <%= ENV['SCRINIUM_DATABASE_USERNAME'] %>
   password: <%= ENV['SCRINIUM_DATABASE_PASSWORD'] %>
+  host: <%= ENV['SCRINIUM_DATABASE_HOST'] || 'localhost' %>
+  port: <%= ENV['SCRINIUM_DATABASE_PORT'] || 5432 %>
 
 development:
   <<: *default
