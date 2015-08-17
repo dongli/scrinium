@@ -3,9 +3,13 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= content_for?(:title) ? yield(:title) + ' - ' + t('global.scrinium') : t('global.scrinium') %></title>
+  <%= yield(:head) if content_for? :head %>
   <!-- Set ROOT_PATH for querying in JavaScript. -->
   <script type="text/javascript" charset="utf-8">
     var ROOT_PATH = '<%= main_app.root_url %>';
+    I18n = {}
+    I18n.defaultLocale = '<%= I18n.default_locale %>';
+    I18n.locale = '<%= I18n.locale %>';
   </script>
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

@@ -81,3 +81,5 @@ gem 'paperclip', '~> 4.3'
 gem 'diffy'
 
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem "i18n-js", ">= 3.0.0.rc11"

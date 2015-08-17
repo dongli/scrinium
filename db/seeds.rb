@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(name: '董理',
+            avatar: open('/Users/dongli/Dropbox/Docs/Materials/me.jpg'),
             gender: 1,
             email: 'dongli@lasg.iap.ac.cn',
             password: '12345678',

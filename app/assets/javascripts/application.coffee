@@ -15,6 +15,7 @@
 #= require turbolinks
 #= require bootstrap-sprockets
 #= require select2
+#= require i18n/translations
 #= require_tree .
 
 selectByGET = (id, api_url) ->

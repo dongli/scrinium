@@ -29,7 +29,10 @@
                 </a>
                 <ul class='dropdown-menu'>
                   <% v.each do |item, url| %>
-                    <li><%= link_to item, url, class: 'navbar-link' %></li>
+                    <li>
+                      <%= link_to item, url, class: 'navbar-link',
+                        'data-no-turbolink': true %>
+                    </li>
                   <% end %>
                 </ul>
               </li>

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def store_location
     # Store last url except for Devise urls.
     return unless request.get?
-    if not request.path =~ /^\/d\/users/ and not request.xhr?
+    if not request.path =~ /(^\/d\/users)|(edit$)/ and not request.xhr?
       session[:previous_url] = request.fullpath
     end
   end
