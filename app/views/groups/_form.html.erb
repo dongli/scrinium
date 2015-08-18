@@ -1,38 +1,52 @@
 <div class='group-form'>
   <%= simple_form_for(@group) do |f| %>
-    <%= f.hidden_field :owner_id, value: current_user.id %>
+    <%= f.hidden_field :admin_id, value: current_user.id %>
     <%=
       f.input :name,
-      label: t('group.name'),
+      label: false,
+      placeholder: t('global.name'),
       autofocus: true,
-      required: true,
+      required: true
+    %>
+    <%=
+      f.input :category_list,
+      label: false,
+      collection: @group.categories.map { |t| t.name },
       input_html: {
-        autocapitalize: 'off',
-        autocorrect: 'none',
-        spellcheck: 'false'
+        multiple: 'multiple',
+        data: {
+          placeholder: t('group.placeholder.categories')
+        }
       }
     %>
     <%=
       f.input :privacy,
-      label: t('privacy'),
+      label: false,
       required: true,
       collection: Group.privacies,
       selected: Group.privacies[@group.privacy]
     %>
     <%=
       f.input :description,
-      label: t('group.description'),
+      label: false,
+      placeholder: t('global.description'),
       required: true,
       as: :text
     %>
     <%=
       f.association :users,
-      label: t('group.members'),
+      label: false,
       required: true,
       label_method: :name,
       value_method: :id,
       collection: @group.users,
-      input_html: { id: 'input-user-name', multiple: 'multiple' }
+      input_html: {
+        id: 'input-user-name',
+        multiple: 'multiple',
+        data: {
+          placeholder: t('group.members')
+        }
+      }
     %>
     <% if content_for(:title) == t('action.edit')+t('scrinium.group') %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>

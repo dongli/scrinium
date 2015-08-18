@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -21,6 +21,14 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
+        organization_id = session[:previous_url].match(/\/organizations\/new\?organization_id=(\d+)/)[1]
+        if organization_id
+          organizationship = Organizationship.new(organization_id: organization_id,
+                                                  suborganization_id: @organization.id)
+          if not organizationship.save
+            format.html { redirect_to @organization, error: t('message.create_fail', thing: t('scrinium.organizationship')) }
+          end
+        end
         format.html { redirect_to @organization, notice: t('message.create_success', thing: t('scrinium.organization')) }
         format.json { render :show, status: :created, location: @organization }
       else

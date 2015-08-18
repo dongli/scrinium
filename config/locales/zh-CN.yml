@@ -22,7 +22,8 @@ zh-CN:
     home: '首页'
     user: '用户'
     organization: '机构'
-    research_team: '研究组'
+    suborganization: '子机构'
+    organizationship: '机构关系'
     research: '研究'
     group: '群组'
     article: '文章'
@@ -41,6 +42,7 @@ zh-CN:
 
   message:
     create_success: '成功创建%{thing}。'
+    create_fail: '创建%{thing}失败！'
     update_success: '成功更新%{thing}。'
     destroy_success: '成功删除%{thing}。'
     are_you_sure_to_delete?: '确定删除该“%{thing}”吗？'
@@ -116,12 +118,6 @@ zh-CN:
     description: '机构描述'
     people_number: '成员数量'
 
-  research_team:
-    profile: '研究组信息'
-    name: '研究组名称'
-    short_name: '研究组简称'
-    description: '研究组描述'
-
   group:
     name: '群组名称'
     description: '群组描述'
@@ -129,6 +125,8 @@ zh-CN:
     owner: '管理者'
     members: '成员'
     member_number: '成员人数'
+    placeholder:
+      categories: 类别 | 提示：以空格分开。
 
   dashboard:
     user: '用户'

@@ -10,16 +10,14 @@
     <dt><%= t('organization.description') %></dt>
     <dd><%= markdown @organization.description %></dd>
   </dl>
-  <dl class='research-teams'>
-    <dt><%= t('scrinium.research_team') %></dt>
+  <dl>
+    <dt><%= t('scrinium.suborganization') %></dt>
     <dd>
-      <div class='row'>
-        <% @organization.research_teams.each do |team| %>
-          <div class='col-md-6 col-sm-12 research-team-entry'>
-            <%= link_to team.name, [@organization, team] %>
-          </div>
+      <ul class='suborganizations'>
+        <% @organization.suborganizations.each do |s| %>
+          <li><%= link_to s.name, organization_path(s) %></li>
         <% end %>
-      </div>
+      </ul>
     </dd>
   </dl>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811063350) do
+ActiveRecord::Schema.define(version: 20150818112144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20150811063350) do
   add_index "group_article_associations", ["article_id"], name: "index_group_article_associations_on_article_id", using: :btree
   add_index "group_article_associations", ["group_id"], name: "index_group_article_associations_on_group_id", using: :btree
 
+  create_table "group_translations", force: :cascade do |t|
+    t.integer  "group_id",    null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.text     "description"
+  end
+
+  add_index "group_translations", ["group_id"], name: "index_group_translations_on_group_id", using: :btree
+  add_index "group_translations", ["locale"], name: "index_group_translations_on_locale", using: :btree
+
   create_table "group_user_associations", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "user_id"
@@ -72,12 +84,10 @@ ActiveRecord::Schema.define(version: 20150811063350) do
   add_index "group_user_associations", ["user_id"], name: "index_group_user_associations_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.text     "description", null: false
-    t.integer  "owner_id",    null: false
-    t.integer  "privacy",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "admin_id",   null: false
+    t.integer  "privacy",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -123,26 +133,21 @@ ActiveRecord::Schema.define(version: 20150811063350) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "research_team_translations", force: :cascade do |t|
-    t.integer  "research_team_id", null: false
-    t.string   "locale",           null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+  create_table "organizationships", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.integer  "suborganization_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
     t.string   "name"
     t.string   "short_name"
     t.text     "description"
   end
 
-  add_index "research_team_translations", ["locale"], name: "index_research_team_translations_on_locale", using: :btree
-  add_index "research_team_translations", ["research_team_id"], name: "index_research_team_translations_on_research_team_id", using: :btree
 
-  create_table "research_teams", force: :cascade do |t|
-    t.integer  "organization_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
-  add_index "research_teams", ["organization_id"], name: "index_research_teams_on_organization_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

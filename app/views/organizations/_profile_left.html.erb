@@ -7,8 +7,8 @@
   <% if is_super_admin?(current_user) %>
     <li>
       <%=
-        link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.research_team')),
-        new_organization_research_team_path(@organization)
+        link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.suborganization')),
+        new_organization_path(organization_id: @organization)
       %>
     </li>
   <% end %>

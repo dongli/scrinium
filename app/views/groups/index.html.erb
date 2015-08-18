@@ -14,7 +14,7 @@
       <% Group.all.each do |g| %>
         <tr>
           <td><%= link_to "#{g.name}", group_path(g) %></td>
-          <td><%= link_to User.find_by_id(g.owner_id).name, user_path(User.find_by_id(g.owner_id)) %></td>
+          <td><%= link_to User.find_by_id(g.admin_id).name, user_path(User.find_by_id(g.admin_id)) %></td>
           <td><%= g.created_at %></td>
           <td><%= g.users.size %></td>
         </tr>

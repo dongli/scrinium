@@ -4,5 +4,6 @@ class Organization < ActiveRecord::Base
   translates :name, :short_name, :description
 
   has_many :users
-  has_many :research_teams, dependent: :destroy
+  has_many :organizationships
+  has_many :suborganizations, through: :organizationships
 end

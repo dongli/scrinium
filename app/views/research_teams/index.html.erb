@@ -1,9 +1,0 @@
-<% content_for :title, t('scrinium.research_team') %>
-<% add_breadcrumb t('scrinium.research_team'), research_teams_path, on_nav_bar: true %>
-
-<% content_for :main_block do %>
-  <%=
-    render partial: 'research_teams/table_list',
-    locals: { research_teams: ResearchTeam.all }
-  %>
-<% end %>

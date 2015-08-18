@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -74,9 +74,11 @@ class GroupsController < ApplicationController
     ApplicationHelper.transform_params params, :group, [:privacy]
     params.require(:group).permit(:name,
                                   :description,
-                                  :owner_id,
+                                  :admin_id,
                                   { user_ids: [] },
                                   { article_ids: [] },
+                                  :tag_list,
+                                  { category_list: [] },
                                   :privacy)
   end
 end

@@ -1,6 +1,15 @@
 <ul class='left-side-list'>
   <li><%= @group.name %></li>
   <li><%= @group.privacy %></li>
+  <li>
+    <ul class='left-side-list'>
+      <% @group.categories.each do |t| %>
+        <li><span class='label label-default'>
+          <%= t.name %>
+        </span></li>
+      <% end %>
+    </ul>
+  </li>
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
   <li><%= link_to fa_icon('edit', text: t('action.edit')+t('scrinium.group')), edit_group_path(@group) %></li>
   <li>
