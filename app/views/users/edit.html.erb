@@ -3,46 +3,84 @@
 <% content_for :main_block do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
-      <%=
-        f.input :name,
-        label: t('user.name'),
-        autofocus: true,
-        required: true,
-        input_html: {
-          autocapitalize: 'off',
-          autocorrect: 'none',
-          spellcheck: 'false'
-        }
-      %>
-      <%=
-        f.input :gender,
-        label: t('user.gender'),
-        required: true,
-        collection: User.genders,
-        selected: User.genders[@user.gender]
-      %>
+      <div class='row'>
+        <div class='col-md-6'>
+          <%=
+            image_tag @user.avatar.url,
+            size: '100x100',
+            id: 'preview-avatar'
+          %>
+          <%=
+            f.file_field :avatar,
+            required: true,
+            id: 'upload-avatar'
+          %>
+        </div>
+        <div class='col-md-6'>
+          <div class='row'>
+            <div class='col-md-12'>
+              <%=
+                f.input :name,
+                label: false,
+                placeholder: t('user.need_real_name'),
+                autofocus: true,
+                required: true,
+                input_html: {
+                  autocapitalize: 'off',
+                  autocorrect: 'none',
+                  spellcheck: 'false'
+                }
+              %>
+            </div>
+            <div class='col-md-12'>
+              <% if @user.gender %>
+                <%=
+                  f.input :gender,
+                  label: false,
+                  required: true,
+                  collection: User.genders,
+                  selected: User.genders[@user.gender]
+                %>
+              <% else %>
+                <%=
+                  f.input :gender,
+                  label: false,
+                  required: true,
+                  collection: User.genders.merge({ t('user.gender') => -1 }),
+                  selected: -1
+                %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
       <%=
         f.association :organization,
         label: t('user.affiliation'),
         required: true,
         label_method: :name,
-        value_method: :id
+        value_method: :id,
+        input_html: {
+          id: 'input-organization-name'
+        }
       %>
-      <%=
-        f.association :research_team,
-        label: t('scrinium.research_team'),
-        required: true,
-        label_method: :name,
-        value_method: :id
-      %>
-      <%=
-        f.input :position,
-        label: t('user.position'),
-        required: true,
-        collection: User.positions,
-        selected: User.positions[@user.position]
-      %>
-      <% if is_super_admin_or_admin?(current_user) %>
+      <% if @user.position %>
+        <%=
+          f.input :position,
+          label: t('user.position'),
+          required: true,
+          collection: User.positions,
+          selected: User.positions[@user.position]
+        %>
+      <% else %>
+        <%=
+          f.input :position,
+          label: t('user.position'),
+          required: true,
+          collection: User.positions
+        %>
+      <% end %>
+      <% if is_super_admin_or_admin?(@user) %>
         <%=
           f.input :role,
           label: t('user.role'),
@@ -51,7 +89,24 @@
           selected: User.roles[@user.role]
         %>
       <% end %>
-      <%= f.input :email, label: t('user.email'), required: true %>
+      <%=
+        f.input :email,
+        label: false,
+        required: true,
+        placeholder: t('user.email')
+      %>
+      <%=
+        f.input :password,
+        label: false,
+        required: false,
+        placeholder: t('user.password')+' | '+t('user.password_hint')
+      %>
+      <%=
+        f.input :password_confirmation,
+        label: false,
+        required: false,
+        placeholder: t('user.password_confirmation_hint')
+      %>
       <% if current_user %>
         <%= f.button :submit, t('action.edit'), class: 'button right' %>
       <% else %>

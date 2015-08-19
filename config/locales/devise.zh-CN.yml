@@ -34,6 +34,11 @@ zh-CN:
       send_paranoid_instructions: '如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件。'
       updated: '您的密码已修改成功，您现在已登录。'
       updated_not_active: '您的密码已修改成功。'
+    password:
+      reset: 重置密码
+      placeholder:
+        new_password: 新密码 | 不少于<%= @minimum_password_length %>个字符。
+        confirm_password: 确认密码
     registrations:
       destroyed: '再见！您的帐户已成功注销。我们希望很快可以再见到您。'
       signed_up: '欢迎您！您已注册成功。'

@@ -76,16 +76,6 @@
           id: 'input-organization-name'
         }
       %>
-      <%=
-        f.association :research_team,
-        label: t('scrinium.research_team'),
-        required: true,
-        label_method: :name,
-        value_method: :id,
-        input_html: {
-          id: 'input-research-team-name-of-organization'
-        }
-      %>
       <% if resource.position %>
         <%=
           f.input :position,
