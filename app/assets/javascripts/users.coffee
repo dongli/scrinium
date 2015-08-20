@@ -9,3 +9,8 @@ $(document).on 'page:change', ->
     reader.readAsDataURL @files[0]
     reader.onload = (event) ->
       $('#preview-avatar').attr('src', event.target.result)
+
+  # Show password reset forms.
+  $('a#reset-password').click ->
+    $('div#reset-password').show()
+    $(this).hide()

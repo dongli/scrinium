@@ -95,18 +95,21 @@
         required: true,
         placeholder: t('user.email')
       %>
-      <%=
-        f.input :password,
-        label: false,
-        required: false,
-        placeholder: t('user.password')+' | '+t('user.password_hint')
-      %>
-      <%=
-        f.input :password_confirmation,
-        label: false,
-        required: false,
-        placeholder: t('user.password_confirmation_hint')
-      %>
+      <a id='reset-password'><%= t('action.reset')+t('user.password') %></a>
+      <div id='reset-password' style='display:none'>
+        <%=
+          f.input :password,
+          label: false,
+          required: false,
+          placeholder: t('user.password')+' | '+t('user.password_hint')
+        %>
+        <%=
+          f.input :password_confirmation,
+          label: false,
+          required: false,
+          placeholder: t('user.password_confirmation_hint')
+        %>
+      </div>
       <% if current_user %>
         <%= f.button :submit, t('action.edit'), class: 'button right' %>
       <% else %>
