@@ -21,7 +21,8 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        organization_id = session[:previous_url].match(/\/organizations\/new\?organization_id=(\d+)/)[1]
+        match = session[:previous_url].match(/\/organizations\/new\?organization_id=(\d+)/)
+        organization_id = match ? match[1] : nil
         if organization_id
           organizationship = Organizationship.new(organization_id: organization_id,
                                                   suborganization_id: @organization.id)
