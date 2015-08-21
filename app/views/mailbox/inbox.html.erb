@@ -1,0 +1,29 @@
+<% content_for :title, t('mailbox.inbox') %>
+<% check_mailbox %>
+
+<% content_for :left_side do %>
+  <%= render 'left_side' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <ul style='list-style-type:none'>
+    <% unread_messages.each do |m| %>
+      <li><%= render partial: 'message', locals: { message: m } %></li>
+    <% end %>
+  </ul>
+  <ul style='list-style-type:none'>
+    <% read_messages.each do |m| %>
+      <li><%= render partial: 'message', locals: { message: m } %></li>
+    <% end %>
+  </ul>
+  <ul style='list-style-type:none'>
+    <% unread_notifications.each do |n| %>
+      <li><%= render partial: 'notification', locals: { notification: n } %></li>
+    <% end %>
+  </ul>
+  <ul style='list-style-type:none'>
+    <% read_notifications.each do |n| %>
+      <li><%= render partial: 'notification', locals: { notification: n } %></li>
+    <% end %>
+  </ul>
+<% end %>

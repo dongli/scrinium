@@ -54,9 +54,17 @@ GEM
       sass (>= 3.3.0)
     bower-rails (0.10.0)
     builder (3.2.2)
+    bullet (4.14.7)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (5.0.0)
       columnize (= 0.9.0)
     cancancan (1.12.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     closure_tree (5.2.0)
@@ -98,6 +106,8 @@ GEM
     execjs (2.5.2)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
+    foreigner (1.7.4)
+      activerecord (>= 3.0.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     globalize (5.0.1)
@@ -135,6 +145,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailboxer (0.13.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (>= 3.2.0)
     mathjax-rails (2.5.1)
       railties (>= 3.0)
     mime-types (2.6.1)
@@ -227,6 +241,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode_utils (1.4.0)
+    uniform_notifier (1.9.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -250,6 +265,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   bootstrap-sass
   bower-rails
+  bullet
   byebug
   cancancan
   closure_tree
@@ -265,6 +281,7 @@ DEPENDENCIES
   impressionist
   jbuilder (~> 2.0)
   jquery-rails
+  mailboxer
   mathjax-rails (~> 2.5.1)
   paper_trail (~> 4.0.0)
   paperclip (~> 4.3)

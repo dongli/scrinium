@@ -1,0 +1,15 @@
+<div class='panel panel-default'>
+  <div class='panel-heading' id='notification-head-<%= notification.id %>'>
+    <%= t('mailbox.notification') %><br/>
+    <%= fa_icon('bell') if notification.is_unread? current_user %>
+    <%= t('notification.subject') %>: <%= notification.subject %><br/>
+    <%= t('notification.send_time') %>: <%= notification.created_at %>
+  </div>
+  <div class='panel-body'
+    id='notification-body-<%= notification.id %>'
+    data-read='<%= notification.is_read? current_user %>'
+    style='display:none'>
+    <%= markdown notification.body %>
+    <a class='button btn-xs right'><%= t('action.reply') %></a>
+  </div>
+</div>

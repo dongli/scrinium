@@ -1,0 +1,15 @@
+<div class='panel panel-default'>
+  <div class='panel-heading' id='message-head-<%= message.id %>'>
+    <%= t('message.sender') %>: <%= link_to message.sender.name, message.sender %><br/>
+    <%= fa_icon('bell') if message.is_unread? current_user %>
+    <%= t('message.subject') %>: <b><%= message.subject %></b><br/>
+    <%= t('message.send_time') %>: <%= message.created_at %>
+  </div>
+  <div class='panel-body'
+    id='message-body-<%= message.id %>'
+    data-read='<%= message.is_read? current_user %>'
+    style='display:none'>
+    <%= markdown message.body %>
+    <a class='button btn-xs right'><%= t('action.reply') %></a>
+  </div>
+</div>

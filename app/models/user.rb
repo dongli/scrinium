@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_presence :avatar
 
+  acts_as_messageable
+
   belongs_to :organization
   belongs_to :research_team
   has_many :articles, dependent: :destroy
@@ -41,6 +43,10 @@ class User < ActiveRecord::Base
   ].map { |x| I18n.t("user.position_types.#{x}") }
 
   before_save :set_user_defaults
+
+  def mailboxer_email object
+    object.class == Mailboxer::Notification ? email : nil
+  end
 
   protected
 

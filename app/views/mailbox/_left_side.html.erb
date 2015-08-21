@@ -1,0 +1,14 @@
+<nav>
+  <ul class='nav nav-stacked nav-pills' id='left-side' data-user-id='<%= current_user.id %>'>
+    <li role='presentation' class='active'>
+      <a id='inbox'>
+        <%= t('mailbox.inbox') %>
+        <% if has_unread? %>
+          <span class='badge'><%= num_unread %></span>
+        <% end %>
+      </a>
+    </li>
+    <li role='presentation'><a href='#'><%= t('mailbox.sentbox') %></a></li>
+    <li role='presentation'><a href='#'><%= t('mailbox.trash') %></a></li>
+  </ul>
+</nav>

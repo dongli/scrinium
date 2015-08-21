@@ -88,32 +88,3 @@ $(document).on 'page:change', ->
   )
   $('select#input-organization-name').change ->
     $('select#input-research-team-name-of-organization').select2('val', '')
-  # TODO: Function call is not working!
-  # selectByPOST(
-  #   'input-research-team-name-of-organization',
-  #   'api/v1/research_teams/of_organization',
-  #   {
-  #     organization_id: $('select[id=input-organization-name]').val()
-  #   }
-  # )
-  $('select[id=input-research-team-name-of-organization]').select2(
-    ajax:
-      type: 'POST'
-      url: ROOT_PATH+'api/v1/research_teams/of_organization'
-      params: {
-        contentType: 'application/json; charset=utf-8'
-      }
-      dataType: 'json'
-      data: -> {
-        organization_id: $('select[id=input-organization-name]').val()
-      }
-      delay: 250
-      processResults: (data) ->
-        {
-        results: $.map( data, (d, i) ->
-          { id: d[0], text: d[1] }
-        )
-        }
-      results: (data, page) ->
-        results: data
-  )

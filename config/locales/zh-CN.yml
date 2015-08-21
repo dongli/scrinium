@@ -29,6 +29,13 @@ zh-CN:
     article: '文章'
     comment: '评论'
 
+  mailbox:
+    inbox: 收件箱
+    sentbox: 发件箱
+    trash: 垃圾桶
+    message: 消息
+    notification: 通知
+
   actions: '操作'
   action:
     add: '添加'
@@ -47,6 +54,13 @@ zh-CN:
     update_success: '成功更新%{thing}。'
     destroy_success: '成功删除%{thing}。'
     are_you_sure_to_delete?: '确定删除该“%{thing}”吗？'
+    subject: 题目
+    sender: 发件人
+    send_time: 发件时间
+
+  notification:
+    subject: 题目
+    send_time: 发件时间
 
   privacy: '隐私度'
   privacy_types:

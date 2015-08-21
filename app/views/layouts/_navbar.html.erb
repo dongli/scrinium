@@ -54,14 +54,20 @@
           %>
         </li>
         <% if user_signed_in? %>
+          <% check_mailbox %>
           <li class='dropdown'>
             <a href='#'
               class='dropdown-toggle'
+              id='user-menu'
               data-toggle='dropdown'
               role='button'
               aria-haspopup='true'
               aria-expanded='false'>
-              <%= fa_icon('user', text: t('scrinium.user')) %> <span class='caret'></span>
+              <% if has_unread? %>
+                <%= fa_icon('bell', text: t('scrinium.user')) %> <span class='caret'></span>
+              <% else %>
+                <%= fa_icon('user', text: t('scrinium.user')) %> <span class='caret'></span>
+              <% end %>
             </a>
             <ul class='dropdown-menu'>
               <li>
@@ -69,6 +75,14 @@
                   link_to fa_icon('home', text: t('user.profile')),
                   main_app.user_path(current_user)
                 %>
+              </li>
+              <li>
+                <a href='<%= main_app.user_mailbox_inbox_path(current_user) %>'>
+                  <%= fa_icon('inbox', text: t('mailbox.inbox')) %>
+                  <% if has_unread? %>
+                    <span class='badge'><%= num_unread %></span>
+                  <% end %>
+                </a>
               </li>
               <li>
                 <%=
