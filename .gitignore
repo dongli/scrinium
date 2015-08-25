@@ -15,5 +15,7 @@
 .DS_Store
 /public/system
 /public/assets
+engine_requires.*
+engine_routes.rb
 
 *scrinium_esm*
