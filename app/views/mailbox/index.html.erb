@@ -85,5 +85,12 @@
         </li>
       <% end %>
     </ul>
+    <ul class='clean-list' id='trashed-notification-list'>
+      <% trashed_notifications.each do |m| %>
+        <li id='notification-<%= m.id %>'>
+          <%= render partial: 'notification', locals: { notification: m } %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 <% end %>

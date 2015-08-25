@@ -1,33 +1,33 @@
 zh-CN:
   global:
-    shustone: 'XXX科技（北京）有限公司（筹）'
-    scrinium: '科研信息管理平台'
-    title: '标题'
-    content: '内容'
+    shustone: XXX科技（北京）有限公司（筹）
+    scrinium: 科研信息管理平台
+    title: 标题
+    content: 内容
     contact: 联系人
-    dashboard: '控制台'
-    to: '到'
-    operation: '操作'
-    name: '名称'
-    short_name: '简称'
-    description: '描述'
+    dashboard: 控制台
+    to: 到
+    operation: 操作
+    name: 名称
+    short_name: 简称
+    description: 描述
     specification: 规格
-    basic_info: '基本信息'
+    basic_info: 基本信息
     true_: 是
     false_: 否
-    create_time: '添加时间'
-    edit_time: '修改时间'
+    create_time: 添加时间
+    edit_time: 修改时间
 
   scrinium:
-    home: '首页'
-    user: '用户'
-    organization: '机构'
-    suborganization: '子机构'
-    organizationship: '机构关系'
-    research: '研究'
-    group: '群组'
-    article: '文章'
-    comment: '评论'
+    home: 首页
+    user: 用户
+    organization: 机构
+    suborganization: 子机构
+    organizationship: 机构关系
+    research: 研究
+    group: 群组
+    article: 文章
+    comment: 评论
     mailbox: 邮箱
 
   mailbox:
@@ -37,16 +37,16 @@ zh-CN:
     message: 消息
     notification: 通知
 
-  actions: '操作'
+  actions: 操作
   action:
-    add: '添加'
-    edit: '修改'
-    delete: '删除'
-    save: '保存'
-    preview: '预览'
-    update: '更新'
-    block: '屏蔽'
-    reply: '回复'
+    add: 添加
+    edit: 修改
+    delete: 删除
+    save: 保存
+    preview: 预览
+    update: 更新
+    block: 屏蔽
+    reply: 回复
     reset: 重置
     send: 发送
     write: 撰写
@@ -55,11 +55,11 @@ zh-CN:
     restore: 恢复
 
   message:
-    create_success: '成功创建%{thing}。'
-    create_fail: '创建%{thing}失败！'
-    update_success: '成功更新%{thing}。'
-    destroy_success: '成功删除%{thing}。'
-    are_you_sure_to_delete?: '确定删除该“%{thing}”吗？'
+    create_success: 成功创建%{thing}。
+    create_fail: 创建%{thing}失败！
+    update_success: 成功更新%{thing}。
+    destroy_success: 成功删除%{thing}。
+    are_you_sure_to_delete?: 确定删除该“%{thing}”吗？
     subject: 题目
     sender: 发件人
     receivers: 收件人
@@ -69,139 +69,143 @@ zh-CN:
     subject: 题目
     send_time: 发件时间
 
-  privacy: '隐私度'
+  privacy: 隐私度
   privacy_types:
-    public: '公开'
-    private: '非公开'
-    group_public: '群组公开'
+    public: 公开
+    private: 非公开
+    group_public: 群组公开
 
-  versions: '历史版本'
+  versions: 历史版本
 
   user:
-    need_real_name: '请填写真实姓名！'
-    has_no_affiliation: '无所属单位'
-    has_been_deleted: '用户“%{name}”已经被删除。'
-    join_time: '加入时间'
-    joined_at: '加入于%{date}'
-    join_groups: '加入%{group_number}个群组'
-    sign_in: '用户登录'
-    sign_up: '新用户注册'
-    edit: '个人设置'
-    update: '更新用户信息'
-    name: '名字'
-    user_name_hint: '4-20个小写英文字母、数字或下划线'
-    gender: '性别'
+    need_real_name: 请填写真实姓名！
+    has_no_affiliation: 无所属单位
+    has_been_deleted: 用户“%{name}”已经被删除。
+    join_time: 加入时间
+    joined_at: 加入于%{date}
+    join_groups: 加入%{group_number}个群组
+    sign_in: 用户登录
+    sign_up: 新用户注册
+    edit: 个人设置
+    update: 更新用户信息
+    name: 名字
+    user_name_hint: 4-20个小写英文字母、数字或下划线
+    gender: 性别
     gender_types:
-      female: '女'
-      male: '男'
-    affiliation: '单位'
-    position: '职位'
+      female: 女
+      male: 男
+    affiliation: 单位
+    position: 职位
     position_types:
-      academician: '院士'
-      researcher: '研究员'
-      associate_researcher: '副研究员'
-      assistant_researcher: '助理研究员'
-      professor: '教授'
-      associate_professor: '副教授'
-      assistant_professor: '助理教授'
-      postdoctoral_researcher: '博士后'
-      postgraduate: '研究生'
-      undergraduate: '本科生'
-      freeman: '自由人'
-    role: '角色'
+      academician: 院士
+      researcher: 研究员
+      associate_researcher: 副研究员
+      assistant_researcher: 助理研究员
+      professor: 教授
+      associate_professor: 副教授
+      assistant_professor: 助理教授
+      postdoctoral_researcher: 博士后
+      postgraduate: 研究生
+      undergraduate: 本科生
+      freeman: 自由人
+    role: 角色
     role_types:
-      super_admin: '超级管理员'
-      admin: '普通管理员'
-      user: '用户'
-      guest: '访客'
-      unknown: '未知用户角色'
-    email: '邮箱地址'
-    email_hint: '格式：user@domain.com'
-    signup: '注册'
-    signin: '登录'
-    signout: '登出'
-    password: '密码'
-    password_hint: '至少8个字符'
-    password_confirmation: '密码确认'
-    password_confirmation_hint: '重复输入一次密码'
-    remember_me: '记住我'
-    profile: '个人信息'
+      super_admin: 超级管理员
+      admin: 普通管理员
+      user: 用户
+      guest: 访客
+      unknown: 未知用户角色
+    email: 邮箱地址
+    email_hint: 格式：user@domain.com
+    signup: 注册
+    signin: 登录
+    signout: 登出
+    password: 密码
+    password_hint: 至少8个字符
+    password_confirmation: 密码确认
+    password_confirmation_hint: 重复输入一次密码
+    remember_me: 记住我
+    profile: 个人信息
     console:
-      edit_info: '修改信息'
-      create_article: '添加文章'
-    latest_articles: '最近文章'
-    super_admin_born: '您即将成为超级管理员！'
-    organization_is_empty: '尚未创建任何机构！请超级管理员创建。'
+      edit_info: 修改信息
+      create_article: 添加文章
+    latest_articles: 最近文章
+    super_admin_born: 您即将成为超级管理员！
+    organization_is_empty: 尚未创建任何机构！请超级管理员创建。
 
   organization:
-    profile: '机构信息'
-    name: '机构名称'
-    short_name: '机构简称'
-    description: '机构描述'
-    people_number: '成员数量'
+    profile: 机构信息
+    name: 机构名称
+    short_name: 机构简称
+    description: 机构描述
+    people_number: 成员数量
 
   group:
-    name: '群组名称'
-    description: '群组描述'
-    articles: '群组文章'
-    owner: '管理者'
-    members: '成员'
-    member_number: '成员人数'
+    name: 群组名称
+    description: 群组描述
+    articles: 群组文章
+    owner: 管理者
+    members: 成员
+    member_number: 成员人数
     placeholder:
       categories: 类别 | 提示：以空格分开。
 
   dashboard:
-    user: '用户'
-    group: '群组'
-    organization: '机构'
-    manage_users: '管理用户'
+    user: 用户
+    group: 群组
+    organization: 机构
+    manage_users: 管理用户
 
   article:
-    title: '名称'
-    public_groups: '公开组'
-    tags: '文章标记'
-    author: '作者'
-    browse_count: '浏览次数'
-    version_number: '版本数'
-    version: '文章版本'
-    versions: '所有版本'
+    title: 名称
+    public_groups: 公开组
+    tags: 文章标记
+    author: 作者
+    browse_count: 浏览次数
+    version_number: 版本数
+    version: 文章版本
+    versions: 所有版本
     placeholder:
       title: 题目 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
       categories: 类别 | 提示：以空格分开。
       public_for_groups: 选择向哪些群组公开
       content: 内容 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
     categories:
-      research_record: '科研记录'
+      research_record: 科研记录
 
   comment:
-    content: '评论内容'
+    content: 评论内容
+    got_commented_subject: 您的%{what}被评论
+    got_commented_body: |+
+      您的%{what}被“%{who}”评论，详见[这里](%{url})。
+
   activerecord:
     errors:
       models:
         user:
           attributes:
             avatar:
-              blank: '请提供一个酷炫的头像！'
+              blank: 请提供一个酷炫的头像！
             email:
-              taken: '该邮箱已经被注册！'
-              blank: '请填写邮箱！'
+              taken: 该邮箱已经被注册！
+              blank: 请填写邮箱！
             current_password:
-              blank: '当前密码为空！'
+              blank: 当前密码为空！
             password:
-              blank: '请设置登陆密码！'
-              too_short: '密码长度不够！'
+              blank: 请设置登陆密码！
+              too_short: 密码长度不够！
             password_confirmation:
-              confirmation: '请确认登陆密码！'
+              confirmation: 请确认登陆密码！
         organization:
           attributes:
             name:
-              taken: '已经有相同名称的机构被注册！'
+              taken: 已经有相同名称的机构被注册！
             short_name:
-              taken: '已经有相同简称的机构被注册！'
+              taken: 已经有相同简称的机构被注册！
         article:
           attributes:
             title:
-              blank: '文章名称不能为空！'
-              taken: '已经有相同名称的文章！'
+              blank: 文章名称不能为空！
+              taken: 已经有相同名称的文章！
             content:
-              blank: '内容不能为空！'
+              blank: 内容不能为空！

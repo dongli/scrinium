@@ -1,6 +1,6 @@
 module MailboxHelper
   attr_reader :unread_messages, :read_messages, :sent_messages, :trashed_messages
-  attr_reader :unread_notifications, :read_notifications
+  attr_reader :unread_notifications, :read_notifications, :trashed_notifications
 
   def check_mailbox
     @unread_messages = []
@@ -9,6 +9,7 @@ module MailboxHelper
     @read_notifications = []
     @sent_messages = []
     @trashed_messages = []
+    @trashed_notifications = []
     current_user.mailbox.inbox.each do |c|
       c.messages.each do |m|
         next if m.sender == current_user
@@ -20,7 +21,10 @@ module MailboxHelper
       end
     end
     current_user.mailbox.notifications.each do |n|
-      if n.is_unread? current_user
+      next if n.is_deleted? current_user
+      if n.is_trashed? current_user
+        @trashed_notifications << n
+      elsif n.is_unread? current_user
         @unread_notifications << n
       else
         @read_notifications << n

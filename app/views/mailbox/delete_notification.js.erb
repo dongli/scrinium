@@ -1,1 +1,14 @@
 $('li#notification-<%= @notification.id %>').remove();
+if ('<%= @action %>' === 'trash') {
+  $('ul#trashed-notification-list').prepend(
+  "<li id='notification-<%= @notification.id %>'>" +
+  "  <%= j render partial: 'notification', locals: { notification: @notification } %>" +
+  "</li>");
+  $('div#notification-head-<%= @notification.id %>').click(function() {
+    var notification_body, notification_head, notification_id;
+    notification_head = $(this);
+    notification_id = notification_head.attr('id').split('-')[2];
+    notification_body = $("div#notification-body-" + notification_id);
+    notification_body.toggle();
+  });
+}

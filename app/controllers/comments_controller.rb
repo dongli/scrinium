@@ -39,6 +39,25 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        if @comment.parent
+          if @comment.user != @comment.parent.user
+            what = t('scrinium.comment')
+            who = @comment.user.name
+            url = url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
+            subject = t('comment.got_commented_subject', what: what)
+            body = t('comment.got_commented_body', who: who, what: what, url: url)
+            @comment.parent.user.notify subject, body
+          end
+        else
+          if @comment.user != @commentable.user
+            what = t('scrinium.'+@commentable.class.to_s.downcase)
+            who = @comment.user.name
+            url = url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
+            subject = t('comment.got_commented_subject', what: what)
+            body = t('comment.got_commented_body', who: who, what: what, url: url)
+            @commentable.user.notify subject, body
+          end
+        end
         format.html { redirect_to @commentable }
         format.json { render :show, status: :created, location: @comment }
         format.js

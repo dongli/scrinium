@@ -53,8 +53,10 @@ class MailboxController < ApplicationController
     @notification = current_user.mailbox.notifications.find(params[:id])
     if @notification.is_trashed? current_user
       @notification.mark_as_deleted current_user
+      @action = :delete
     else
       @notification.move_to_trash current_user
+      @action = :trash
     end
     respond_to do |format|
       format.js
@@ -67,6 +69,10 @@ class MailboxController < ApplicationController
         next if not m.is_trashed? current_user
         m.mark_as_deleted current_user
       end
+    end
+    current_user.mailbox.notifications.each do |n|
+      next if not n.is_trashed? current_user
+      n.mark_as_deleted current_user
     end
     respond_to do |format|
       format.js
