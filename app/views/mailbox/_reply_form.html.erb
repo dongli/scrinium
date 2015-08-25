@@ -1,0 +1,18 @@
+<%= form_tag user_send_message_path, remote: true do %>
+  <%= hidden_field_tag :message_id, @message.id.to_s %>
+  <div class='panel panel-default' id='message-form' style='margin-top:1em; margin-bottom:0;'>
+    <div class='panel-heading'>
+      <%= text_field_tag :subject, "RE: #{@message.subject}" %>
+    </div>
+    <div class='panel-body'>
+      <%= text_field_tag :body %>
+      <div style='text-align:right'>
+        <%= button_tag t('action.send'), class: 'button btn-xs' %>
+        <%=
+          link_to t('action.cancel'), '#',
+          class: 'button btn-xs btn-warning', remote: true
+        %>
+      </div>
+    </div>
+  </div>
+<% end %>

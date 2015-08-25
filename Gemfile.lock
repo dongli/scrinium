@@ -101,6 +101,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diffy (3.0.7)
+    doorkeeper (3.0.0)
+      railties (>= 3.2)
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
@@ -274,6 +276,7 @@ DEPENDENCIES
   country_select
   devise
   diffy
+  doorkeeper
   font-awesome-rails
   globalize (~> 5.0.0)
   grape

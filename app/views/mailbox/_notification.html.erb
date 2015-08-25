@@ -11,5 +11,10 @@
     style='display:none'>
     <%= markdown notification.body %>
     <a class='button btn-xs right'><%= t('action.reply') %></a>
+    <%=
+      link_to t('action.delete'),
+      user_delete_notification_path(notification),
+      class: 'button btn-xs btn-danger'
+    %>
   </div>
 </div>

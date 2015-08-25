@@ -16,11 +16,7 @@ a.button:visited {
   color: white;
 }
 
-table {
-  @extend .table;
-  @extend .table-striped;
-}
-
+// TODO: Try text-algin: right;
 .right {
   float: right !important;
 }

@@ -28,6 +28,7 @@ zh-CN:
     group: '群组'
     article: '文章'
     comment: '评论'
+    mailbox: 邮箱
 
   mailbox:
     inbox: 收件箱
@@ -47,6 +48,11 @@ zh-CN:
     block: '屏蔽'
     reply: '回复'
     reset: 重置
+    send: 发送
+    write: 撰写
+    cancel: 抛弃
+    clean_all: 清除所有
+    restore: 恢复
 
   message:
     create_success: '成功创建%{thing}。'
@@ -56,6 +62,7 @@ zh-CN:
     are_you_sure_to_delete?: '确定删除该“%{thing}”吗？'
     subject: 题目
     sender: 发件人
+    receivers: 收件人
     send_time: 发件时间
 
   notification:

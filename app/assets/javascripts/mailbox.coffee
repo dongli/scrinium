@@ -2,7 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'page:change', ->
+change_unread = ->
+  unread_badge = $('a#show-inbox').children('span.badge')
+  n = parseInt(unread_badge.text())-1
+  if n > 0
+    unread_badge.text(n)
+  else
+    unread_badge.hide()
+    $('a#user-menu').children('i').attr('class', 'fa fa-user')
+
+expand_message = ->
   $('div[id|=message-head]').click ->
     user_id = $('ul#left-side').attr('data-user-id')
     message_head = $(this)
@@ -18,14 +27,9 @@ $(document).on 'page:change', ->
         user_id: user_id
         message_id: message_id
       }
-      unread_badge = $('a#inbox').children('span.badge')
-      n = parseInt(unread_badge.text())-1
-      if n > 0
-        unread_badge.text(n)
-      else
-        unread_badge.hide()
-        $('a#user-menu').children('i').attr('class', 'fa fa-user')
+      change_unread()
 
+expand_notification = ->
   $('div[id|=notification-head]').click ->
     user_id = $('ul#left-side').attr('data-user-id')
     notification_head = $(this)
@@ -41,10 +45,35 @@ $(document).on 'page:change', ->
         user_id: user_id
         notification_id: notification_id
       }
-      unread_badge = $('a#inbox').children('span.badge')
-      n = parseInt(unread_badge.text())-1
-      if n > 0
-        unread_badge.text(n)
-      else
-        unread_badge.hide()
-        $('a#user-menu').children('i').attr('class', 'fa fa-user')
+      change_unread()
+
+$(document).on 'page:change', ->
+  $('div#sentbox').hide()
+  $('div#trash').hide()
+
+  $('a#show-inbox').click ->
+    $('div#inbox').show()
+    $('li#nav-inbox').addClass('active')
+    $('div#sentbox').hide()
+    $('li#nav-sentbox').removeClass('active')
+    $('div#trash').hide()
+    $('li#nav-trash').removeClass('active')
+
+  $('a#show-sentbox').click ->
+    $('div#inbox').hide()
+    $('li#nav-inbox').removeClass('active')
+    $('div#sentbox').show()
+    $('li#nav-sentbox').addClass('active')
+    $('div#trash').hide()
+    $('li#nav-trash').removeClass('active')
+
+  $('a#show-trash').click ->
+    $('div#inbox').hide()
+    $('li#nav-inbox').removeClass('active')
+    $('div#sentbox').hide()
+    $('li#nav-sentbox').removeClass('active')
+    $('div#trash').show()
+    $('li#nav-trash').addClass('active')
+
+  expand_message()
+  expand_notification()

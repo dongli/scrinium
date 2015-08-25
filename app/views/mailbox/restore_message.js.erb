@@ -1,0 +1,19 @@
+if ('<%= @box %>' === 'inbox') {
+  $('ul#read-message-list').prepend(
+  "<li id='message-<%= @message.id %>'>" +
+  "  <%= j render partial: 'message', locals: { message: @message } %>" +
+  "</li>");
+} else if ('<%= @box %>' === 'sentbox') {
+  $('ul#sent-message-list').prepend(
+  "<li id='message-<%= @message.id %>'>" +
+  "  <%= j render partial: 'message', locals: { message: @message } %>" +
+  "</li>");
+}
+$('ul#trashed-message-list li#message-<%= @message.id %>').remove();
+$('div#message-head-<%= @message.id %>').click(function() {
+  var message_body, message_head, message_id;
+  message_head = $(this);
+  message_id = message_head.attr('id').split('-')[2];
+  message_body = $("div#message-body-" + message_id);
+  message_body.toggle();
+});

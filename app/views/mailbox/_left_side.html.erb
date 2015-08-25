@@ -1,14 +1,22 @@
 <nav>
   <ul class='nav nav-stacked nav-pills' id='left-side' data-user-id='<%= current_user.id %>'>
-    <li role='presentation' class='active'>
-      <a id='inbox'>
-        <%= t('mailbox.inbox') %>
+    <li role='presentation' class='active' id='nav-inbox'>
+      <a id='show-inbox'>
+        <%= fa_icon('inbox', text: t('mailbox.inbox')) %>
         <% if has_unread? %>
           <span class='badge'><%= num_unread %></span>
         <% end %>
       </a>
     </li>
-    <li role='presentation'><a href='#'><%= t('mailbox.sentbox') %></a></li>
-    <li role='presentation'><a href='#'><%= t('mailbox.trash') %></a></li>
+    <li role='presentation' id='nav-sentbox'>
+      <a id='show-sentbox'>
+        <%= fa_icon('paper-plane', text: t('mailbox.sentbox')) %>
+      </a>
+    </li>
+    <li role='presentation' id='nav-trash'>
+      <a id='show-trash'>
+        <%= fa_icon('trash', text: t('mailbox.trash')) %>
+      </a>
+    </li>
   </ul>
 </nav>

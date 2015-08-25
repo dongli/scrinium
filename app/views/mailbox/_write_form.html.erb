@@ -1,0 +1,42 @@
+<%= form_tag user_send_message_path, remote: true do %>
+  <div class='panel panel-default' id='message-form' style='margin-top:1em; margin-bottom:0;'>
+    <div class='panel-heading'>
+      <table class='table table-condensed table-borderless'>
+        <tbody>
+          <tr>
+            <td class='col-md-1' style='text-align:right'>
+              <%= label_tag :receivers, t('message.receivers') %>:
+            </td>
+            <td class='col-md-10'>
+              <%=
+                select_tag 'receivers[]', nil,
+                class: 'form-control',
+                multiple: 'multiple',
+                id: 'input-user-name',
+                style: 'width: 100%;'
+              %>
+            </td>
+          </tr>
+          <tr>
+            <td class='col-md-1' style='text-align:right'>
+              <%= label_tag :subject, t('message.subject') %>:
+            </td>
+            <td class='col-md-10'>
+              <%= text_field_tag :subject, nil, class: 'form-control' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='panel-body'>
+      <%= text_area_tag :body %>
+      <div style='text-align:right'>
+        <%= button_tag t('action.send'), class: 'button btn-xs', id: 'send-wroten-message' %>
+        <%=
+          link_to t('action.cancel'), '#',
+          class: 'button btn-xs btn-warning', remote: true
+        %>
+      </div>
+    </div>
+  </div>
+<% end %>

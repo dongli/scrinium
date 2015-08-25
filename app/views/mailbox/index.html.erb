@@ -1,0 +1,89 @@
+<% content_for :title, t('scrinium.mailbox') %>
+
+<% check_mailbox %>
+
+<% content_for :left_side do %>
+  <%= render 'left_side' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <div id='inbox'>
+    <ul class='clean-list' id='unread-message-list'>
+      <% unread_messages.each do |m| %>
+        <li id='message-<%= m.id %>'>
+          <%= render partial: 'message', locals: { message: m } %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class='clean-list' id='read-message-list'>
+      <% read_messages.each do |m| %>
+        <li id='message-<%= m.id %>'>
+          <%= render partial: 'message', locals: { message: m } %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class='clean-list' id='unread-notification-list'>
+      <% unread_notifications.each do |n| %>
+        <li id='notification-<%= n.id %>'>
+          <%= render partial: 'notification', locals: { notification: n } %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class='clean-list' id='read-notification-list'>
+      <% read_notifications.each do |n| %>
+        <li id='notification-<%= n.id %>'>
+          <%= render partial: 'notification', locals: { notification: n } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id='sentbox'>
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <div class='collapse navbar-collapse'>
+          <ul class='nav navbar-nav'>
+            <li>
+              <%=
+                link_to fa_icon('pencil', text: t('action.write')+t('mailbox.message')),
+                user_write_message_path,
+                remote: true
+              %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id='write-message-placeholder'></div>
+    <ul class='clean-list' id='sent-message-list'>
+      <% sent_messages.each do |m| %>
+        <li id='message-<%= m.id %>'>
+          <%= render partial: 'message', locals: { message: m } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id='trash'>
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <div class='collapse navbar-collapse'>
+          <ul class='nav navbar-nav'>
+            <li>
+              <%=
+                link_to fa_icon('eraser', text: t('action.clean_all')),
+                user_empty_trash_path,
+                remote: true
+              %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <ul class='clean-list' id='trashed-message-list'>
+      <% trashed_messages.each do |m| %>
+        <li id='message-<%= m.id %>'>
+          <%= render partial: 'message', locals: { message: m } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

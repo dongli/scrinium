@@ -86,5 +86,3 @@ $(document).on 'page:change', ->
       results: (data, page) ->
         results: data
   )
-  $('select#input-organization-name').change ->
-    $('select#input-research-team-name-of-organization').select2('val', '')

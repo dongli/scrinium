@@ -1,6 +1,9 @@
 <div class='panel panel-default'>
   <div class='panel-heading' id='message-head-<%= message.id %>'>
     <%= t('message.sender') %>: <%= link_to message.sender.name, message.sender %><br/>
+    <%= t('message.receivers') %>:
+    <%= message.receipts.reject { |p| p.receiver == message.sender }.collect { |p| p.receiver.name }.uniq.join(', ') %>
+    <br/>
     <%= fa_icon('bell') if message.is_unread? current_user %>
     <%= t('message.subject') %>: <b><%= message.subject %></b><br/>
     <%= t('message.send_time') %>: <%= message.created_at %>
@@ -10,6 +13,25 @@
     data-read='<%= message.is_read? current_user %>'
     style='display:none'>
     <%= markdown message.body %>
-    <a class='button btn-xs right'><%= t('action.reply') %></a>
+    <div style='text-align:right'>
+      <%=
+        link_to t('action.reply'),
+        user_reply_message_path(current_user, message),
+        class: 'button btn-xs', remote: true
+      %>
+      <% if message.is_trashed? current_user %>
+        <%=
+          link_to t('action.restore'),
+          user_restore_message_path(current_user, message),
+          class: 'button btn-xs', remote: true
+        %>
+      <% end %>
+      <%=
+        link_to t('action.delete'),
+        user_delete_message_path(current_user, message),
+        class: 'button btn-xs btn-danger', remote: true
+      %>
+    </div>
+    <div id='reply-message-placeholder'></div>
   </div>
 </div>

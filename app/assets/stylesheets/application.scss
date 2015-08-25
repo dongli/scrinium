@@ -50,6 +50,10 @@ footer {
   text-justify: inter-word;
 }
 
+a {
+  cursor: pointer;
+}
+
 a:hover {
   background-color: inherit;
   color: inherit;
@@ -57,10 +61,14 @@ a:hover {
   text-decoration: none;
 }
 
-ul.left-side-list {
-  margin: 0px;
-  padding: 0px;
+ul.clean-list {
+  padding: 0;
   list-style-type: none;
+}
+
+ul.left-side-list {
+  @extend ul.clean-list;
+  margin: 0px;
   li {
     margin-top: 1em;
   }
@@ -90,4 +98,8 @@ ul.left-side-list {
   li.indent {
     padding-left: 1em;
   }
+}
+
+.no-bottom-margin {
+  margin-bottom: 0;
 }

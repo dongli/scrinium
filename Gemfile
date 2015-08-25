@@ -87,3 +87,5 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bullet', group: :development
 
 gem 'mailboxer'
+
+gem 'doorkeeper'

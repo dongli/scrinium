@@ -1,0 +1,24 @@
+$('div#write-message-placeholder').html('<%= j render "write_form" %>');
+
+$('select#input-user-name').select2({
+  ajax: {
+    url: ROOT_PATH + 'api/v1/users/names',
+    dataType: 'json',
+    delay: 250,
+    processResults: function(data) {
+      return {
+        results: $.map(data, function(d, i) {
+          return {
+            id: d[0],
+            text: d[1]
+          };
+        })
+      };
+    },
+    results: function(data, page) {
+      return {
+        results: data
+      };
+    }
+  }
+});

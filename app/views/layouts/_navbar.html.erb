@@ -72,13 +72,13 @@
             <ul class='dropdown-menu'>
               <li>
                 <%=
-                  link_to fa_icon('home', text: t('user.profile')),
+                  link_to avatar(current_user, :small)+' '+t('user.profile'),
                   main_app.user_path(current_user)
                 %>
               </li>
               <li>
-                <a href='<%= main_app.user_mailbox_inbox_path(current_user) %>'>
-                  <%= fa_icon('inbox', text: t('mailbox.inbox')) %>
+                <a href='<%= main_app.user_mailbox_index_path(current_user) %>'>
+                  <%= fa_icon('envelope', text: t('scrinium.mailbox')) %>
                   <% if has_unread? %>
                     <span class='badge'><%= num_unread %></span>
                   <% end %>
