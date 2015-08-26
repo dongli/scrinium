@@ -1,0 +1,116 @@
+<div class='reference-form'>
+  <%= simple_form_for @reference do |f| %>
+    <%=
+      f.input :authors,
+      label: false,
+      collection: @reference.authors,
+      input_html: {
+        multiple: 'multiple',
+        data: {
+          placeholder: t('reference.placeholder.authors')
+        }
+      }
+    %>
+    <%=
+      f.input :title,
+      label: false,
+      placeholder: t('reference.title')
+    %>
+    <div class='row'>
+      <div class='col-md-4'>
+        <%=
+          f.input :reference_type,
+          label: false,
+          required: true,
+          collection: Reference.reference_types,
+          selected: Reference.reference_types[@reference.reference_type]
+        %>
+      </div>
+      <div class='col-md-4'>
+        <div id='select-journal'>
+          <%= f.hidden_field :publicable_type, value: 'Journal' %>
+          <% if @reference.publicable %>
+            <%=
+              f.input :publicable_id,
+              label: false,
+              required: true,
+              label_method: :abbreviation,
+              value_method: :id,
+              collection: [@reference.publicable],
+              input_html: {
+                id: 'input-journal-abbreviation',
+                data: {
+                  placeholder: t('reference.journal')
+                }
+              }
+            %>
+          <% else %>
+            <%=
+              f.input :publicable_id,
+              label: false,
+              required: true,
+              as: :select,
+              input_html: {
+                id: 'input-journal-abbreviation',
+                data: {
+                  placeholder: t('reference.journal')
+                }
+              }
+            %>
+          <% end %>
+        </div>
+      </div>
+      <div class='col-md-4'>
+        <%=
+          f.input :doi,
+          label: false,
+          placeholder: t('reference.doi')
+        %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-3'>
+        <%=
+          f.input :year,
+          label: false,
+          placeholder: t('reference.year')
+        %>
+      </div>
+      <div class='col-md-3'>
+        <%=
+          f.input :volume,
+          label: false,
+          placeholder: t('reference.volume')
+        %>
+      </div>
+      <div class='col-md-3'>
+        <%=
+          f.input :issue,
+          label: false,
+          placeholder: t('reference.issue'),
+          disabled: ( @reference.publicable and not @reference.publicable.issued )
+        %>
+      </div>
+      <div class='col-md-3'>
+        <%=
+          f.input :pages,
+          label: false,
+          placeholder: t('reference.placeholder.pages')
+        %>
+      </div>
+    </div>
+    <%=
+      f.input :abstract,
+      label: false,
+      placeholder: t('reference.abstract'),
+      as: :text,
+      value: @reference.abstract
+    %>
+    <%= f.file_field :file %>
+    <% if @reference.id %>
+      <%= f.button :submit, t('action.edit'), class: 'button right' %>
+    <% else %>
+      <%= f.button :submit, t('action.add'), class: 'button right' %>
+    <% end %>
+  <% end %>
+</div>

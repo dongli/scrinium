@@ -18,6 +18,8 @@
 }
 
 table.articles {
+  @extend .table;
+  @extend .table-striped;
   border-collapse: collapse;
   tr.article-draft {
     background-color: rgba(203, 35, 46, 0.50);

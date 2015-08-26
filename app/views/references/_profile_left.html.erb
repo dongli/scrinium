@@ -1,0 +1,22 @@
+<ul class='left-side-list'>
+  <li>
+    <%= t('reference.cite_key') %>: <%= @reference.cite_key %>
+  </li>
+  <li>
+    <%= @reference.publicable.abbreviation %>
+  </li>
+  <li>
+    <%= @reference.volume %>
+    <%= '('+@reference.issue+')' if @reference.issue %>
+  </li>
+  <li>
+    <%=
+      link_to fa_icon('edit', text: t('action.edit')),
+      edit_reference_path(@reference)
+    %>
+    <% if @reference.file %>
+      <%= link_to fa_icon('file-pdf-o', text: t('action.download')),
+        @reference.file.url %>
+    <% end %>
+  </li>
+</ul>

@@ -1,0 +1,14 @@
+<% content_for :title, t('scrinium.reference') %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <ul class='reference'>
+    <li class='title'><%= @reference.title %></li>
+    <li class='authors'><%= join_authors @reference %></li>
+    <li class='abstract'><%= @reference.abstract %></li>
+    <li class='citation'><%= t('reference.citation') %>: <%= render(inline: citation(@reference)) %></li>
+  </ul>
+<% end %>

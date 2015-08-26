@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :groups
   resources :organizations
   resources :organizationships
+  resources :references
+  resources :journals
 
   root 'home#index'
 
