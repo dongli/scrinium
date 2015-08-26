@@ -86,3 +86,6 @@ $(document).on 'page:change', ->
       results: (data, page) ->
         results: data
   )
+  $('[id$=_category_list]').select2
+    tags: true
+    multiple: true
