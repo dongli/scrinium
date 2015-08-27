@@ -1,0 +1,8 @@
+<%= simple_form_for [user, publication] do |f| %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.hidden_field :reference_id, value: reference.id %>
+  <%= f.hidden_field :matched_author, value: matched_author %>
+  <div class="center">
+    <%= f.button :submit, t('action.add'), class: 'button btn-xs' %>
+  </div>
+<% end %>

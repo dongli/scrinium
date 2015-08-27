@@ -9,7 +9,9 @@
       }
     %>
     <% if is_same_user? user %>
-      <%= link_to t('action.add'), new_user_article_path(user), class: 'button right' %>
+      <div class='right'>
+        <%= link_to t('action.add'), new_user_article_path(user), class: 'button' %>
+      </div>
     <% end %>
   </dd>
 </dl>

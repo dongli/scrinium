@@ -4,9 +4,9 @@
     <%= f.input :short_name, label: t('organization.short_name'), required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :description, label: t('organization.description'), required: true, as: :text %>
     <% if @organization.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button right' %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
     <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button right' %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
     <% end %>
   <% end %>
 </div>

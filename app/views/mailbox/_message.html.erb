@@ -13,7 +13,7 @@
     data-read='<%= message.is_read? current_user %>'
     style='display:none'>
     <%= markdown message.body %>
-    <div style='text-align:right'>
+    <div class='right'>
       <%=
         link_to t('action.reply'),
         user_reply_message_path(current_user, message),

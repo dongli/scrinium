@@ -1,0 +1,6 @@
+<dl>
+  <dt><%= t('scrinium.publication') %></dt>
+  <dd>
+    <%= render partial: 'publications/table_list', locals: { publications: user.publications } %>
+  </dd>
+</dl>

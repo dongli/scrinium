@@ -106,11 +106,11 @@
       as: :text,
       value: @reference.abstract
     %>
-    <%= f.file_field :file %>
+    <%= f.file_field :file, class: 'float-left' %>
     <% if @reference.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button right' %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
     <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button right' %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
     <% end %>
   <% end %>
 </div>

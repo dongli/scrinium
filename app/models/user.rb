@@ -10,11 +10,12 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   belongs_to :organization
-  belongs_to :research_team
   has_many :articles, dependent: :destroy
   has_many :group_user_associations
   has_many :groups, through: :group_user_associations
   has_many :comments, dependent: :destroy
+  has_many :publications, dependent: :destroy
+  has_many :references, through: :publications
   # TODO: Below is the special codes for LASG.
   has_many :experiments
 

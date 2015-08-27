@@ -1,0 +1,5 @@
+<ul>
+  <% publications.each do |p| %>
+    <li><%= render inline: citation(p.reference).gsub(p.matched_author, "<b>#{p.matched_author}</b>") %></li>
+  <% end %>
+</ul>

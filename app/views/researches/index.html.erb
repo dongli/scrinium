@@ -14,4 +14,13 @@
       %>
     </dd>
   </dl>
+  <dl>
+    <dt><%= t('scrinium.reference') %></dt>
+    <dd>
+      <%=
+        render partial: 'references/table_list',
+        locals: { references: Reference.all }
+      %>
+    </dd>
+  </dl>
 <% end %>

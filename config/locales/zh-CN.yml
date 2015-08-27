@@ -31,6 +31,7 @@ zh-CN:
     mailbox: 邮箱
     reference: 参考文献
     journal: 期刊杂志
+    publication: 发表刊物
 
   mailbox:
     inbox: 收件箱
@@ -58,6 +59,7 @@ zh-CN:
     download: 下载
 
   message:
+    add_success: 成功添加%{thing}。
     create_success: 成功创建%{thing}。
     create_fail: 创建%{thing}失败！
     update_success: 成功更新%{thing}。
@@ -188,6 +190,7 @@ zh-CN:
       article: 文章
       book: 书
     title: 题目
+    authors: 作者
     year: 年份
     volume: 卷号
     issue: 发行号

@@ -1,0 +1,20 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width='50'><%= t('reference.cite_key') %></th>
+      <th width='100'><%= t('reference.authors') %></th>
+      <th width='200'><%= t('reference.title') %></th>
+      <th width='20'><%= t('reference.year') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% references.each do |r| %>
+      <tr>
+        <td><%= r.cite_key %></td>
+        <td><%= join_authors r, false %></td>
+        <td><%= link_to r.title, r %></td>
+        <td><%= r.year %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -4,6 +4,8 @@ class Reference < ActiveRecord::Base
   belongs_to :publicable, polymorphic: true
   has_attached_file :file
   validates_attachment_content_type :file, content_type: ['application/pdf']
+  has_many :publications, dependent: :destroy
+  has_many :users, through: :publications
 
   enum reference_type: [
     :article,

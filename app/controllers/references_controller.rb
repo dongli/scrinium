@@ -70,10 +70,11 @@ class ReferencesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def reference_params
-    ApplicationHelper.transform_params params, :reference, [:reference_type]
+    transform_params params, :reference, [:reference_type]
     params[:reference][:authors].delete_if { |a| a.empty? }
     if not ( @reference and @reference.cite_key )
-      last_name = params[:reference][:authors].first.split.first
+      # TODO: I only handled <first_name last_name> case. There are other cases!
+      last_name = params[:reference][:authors].first.split.last
       year = params[:reference][:year]
       random_two_chars = Array.new(2) { Array('a'..'z').sample }.join
       params[:reference][:cite_key] = "#{last_name}:#{year}#{random_two_chars}"

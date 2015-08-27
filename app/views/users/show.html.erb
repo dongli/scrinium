@@ -6,5 +6,6 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <%= render partial: 'research_records', locals: { user: @user } %>
+  <%= render partial: 'articles', locals: { user: @user } %>
+  <%= render partial: 'publications', locals: { user: @user } %>
 <% end %>

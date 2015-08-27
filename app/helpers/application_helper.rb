@@ -24,13 +24,6 @@ module ApplicationHelper
       @@markdown.render(text).html_safe
     end
   end
-  def self.markdown text, *options
-    if options.include? :without_html_safe
-      @@markdown.render(text)
-    else
-      @@markdown.render(text).html_safe
-    end
-  end
 
   def markdown_diff a, b
     markdown(Diffy::Diff.new(a+"\n", b+"\n").to_s
@@ -41,11 +34,5 @@ module ApplicationHelper
     .gsub('@end_add@', '</div>')
     .gsub('@start_remove@', '<div class="removed-text">')
     .gsub('@end_remove@', '</div>').html_safe
-  end
-
-  def self.transform_params params, object, elements
-    elements.each do |x|
-      params[object][x] = params[object][x].to_i if params[object].has_key? x
-    end
   end
 end

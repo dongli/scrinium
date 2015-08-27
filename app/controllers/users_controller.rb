@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password]
 
   def index
     @users = User.all
@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_password
+    respond_to do |format|
+      format.html
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -40,12 +46,12 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    ApplicationHelper.transform_params params, :user, [:gender, :role, :position]
+    transform_params params, :user, [:gender, :role, :position]
     params.require(:user).permit(:avatar,
                                  :name,
                                  :gender,
                                  :organization_id,
-                                 :research_team_id,
+                                 { publication_ids: [] },
                                  { group_ids: [] },
                                  :position,
                                  :email,
