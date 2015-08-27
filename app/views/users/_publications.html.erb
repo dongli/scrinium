@@ -1,6 +1,11 @@
 <dl>
   <dt><%= t('scrinium.publication') %></dt>
   <dd>
-    <%= render partial: 'publications/table_list', locals: { publications: user.publications } %>
+    <%=
+      render partial: 'publications/table_list',
+      locals: {
+        publications: user.publications.sort_by { |p| p.reference.year }.reverse
+      }
+    %>
   </dd>
 </dl>

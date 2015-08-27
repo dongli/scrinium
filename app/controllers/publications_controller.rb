@@ -1,25 +1,6 @@
 class PublicationsController < ApplicationController
-  before_action :set_publication, only: [:show, :edit, :update, :destroy]
-
-  # GET /publications
-  # GET /publications.json
-  def index
-    @publications = Publication.all
-  end
-
-  # GET /publications/1
-  # GET /publications/1.json
-  def show
-  end
-
-  # GET /publications/new
-  def new
-    @publication = Publication.new
-  end
-
-  # GET /publications/1/edit
-  def edit
-  end
+  before_action :authenticate_user!
+  before_action :set_publication, only: [:update, :destroy]
 
   # POST /publications
   # POST /publications.json
@@ -31,7 +12,8 @@ class PublicationsController < ApplicationController
         format.html { redirect_to session[:previous_url], notice: t('message.add_success', thing: @publication.reference.reference_type) }
         format.json { render :show, status: :created, location: @publication }
       else
-        format.html { render :new }
+        # TODO: Why we can not use I18n here?
+        format.html { redirect_to session[:previous_url], flash: { error: @publication.errors.to_a.first } }
         format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
