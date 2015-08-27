@@ -18,6 +18,8 @@ Dir.chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
+  system 'bin/rake acts_as_taggable_on_engine:install:migrations'
+  system 'bin/rake mailboxer_engine:install:migrations'
   system "bin/rake db:setup"
 
   puts "\n== Removing old logs and tempfiles =="
