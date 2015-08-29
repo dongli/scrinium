@@ -10,7 +10,6 @@ class API < Grape::API
   mount V1::UsersAPI
   mount V1::GroupsAPI
   mount V1::OrganizationsAPI
-  mount V1::MarkdownAPI
   mount V1::MailboxAPI
   mount V1::JournalsAPI
 end

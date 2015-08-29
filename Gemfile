@@ -67,8 +67,10 @@ gem 'grape'
 gem 'bower-rails'
 
 gem 'mathjax-rails', '~> 2.5.1'
-gem 'redcarpet'
-gem 'coderay'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-marked'
+  gem 'rails-assets-highlightjs'
+end
 
 gem 'impressionist'
 

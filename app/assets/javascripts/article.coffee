@@ -3,32 +3,25 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
-	$('a#article-preview').click ->
-		location.reload
-		title = $('input#article_title').val()
-		content = $('textarea#article_content').val()
-		titleElement = $('div.modal-header')
-		contentElement = $('div.modal-body')
-		$.post ROOT_PATH+'api/v1/markdown', { text: content }, (result) ->
-			titleElement.html title
-			contentElement.html result
-			MathJax.Hub.Queue(
-				(-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
-				['Typeset', MathJax.Hub]
-			)
-		MathJax.Hub.Queue(
-			(-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
-			['Typeset', MathJax.Hub]
-		)
-		$('div#article-preview').modal('show')
-	# Reload MathJax to render the math after jumping from other pages.
-	MathJax.Hub.Queue(
-		(-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
-		['Typeset', MathJax.Hub]
-	)
+	# Switch 'edit' and 'preview' tabs.
+	$('div#preview-content').hide()
+	$('a#edit-content').click ->
+		$('li#edit-content').addClass('active')
+		$('div#edit-content').show()
+		$('li#preview-content').removeClass('active')
+		$('div#preview-content').hide()
+	$('a#preview-content').click ->
+		$('li#edit-content').removeClass('active')
+		$('div#edit-content').hide()
+		$('li#preview-content').addClass('active')
+		$('div#preview-content').show()
+		markdown $('textarea#article_content').val(), $('div#preview-content-placeholder')
 
 	$('#article_privacy').change ->
 		if this.value == '2'
 			$('#select-groups').show()
 		else
 			$('#select-groups').hide()
+
+	$('.markdown').each ->
+		markdown $(this).html(), $(this)

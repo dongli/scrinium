@@ -17,6 +17,10 @@
   }
 }
 
+div.tab-pane {
+  padding-top: 1em;
+}
+
 table.articles {
   @extend .table;
   @extend .table-striped;

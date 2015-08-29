@@ -2,13 +2,7 @@ $("li#comment-<%= @comment.id %>").html("<%=
   j render partial: 'comments/show',
   locals: { commentable: @commentable, comment: @comment }
 %>");
-$("a#parent-comment-<%= @comment.id %>").attr('data-content', '<%= j markdown @comment.content %>');
-MathJax.Hub.Queue(
-  function () {
-    if (MathJax.InputJax.TeX.resetEquationNumbers) {
-      MathJax.InputJax.TeX.resetEquationNumbers();
-    }
-  },
-  ['Typeset', MathJax.Hub]
-);
-$('[data-toggle="popover"]').popover({ html: true });
+
+$('li#comment-<%= @comment.id %> .markdown').each(function () {
+  markdown($(this).html(), $(this));
+});

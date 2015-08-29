@@ -55,24 +55,38 @@
         %>
       </div>
     </div>
-    <%=
-      f.input :content,
-      label: false,
-      placeholder: t('article.placeholder.content'),
-      required: true,
-      as: :text
-    %>
+    <div>
+      <ul class='nav nav-tabs' role='tablist'>
+        <li role='presentation' class='active' id='edit-content'>
+          <a href='#edit-content' aria-controls='edit-content'
+            role='tab' data-toggle='tab' id='edit-content'>
+            <%= t('action.edit') %>
+          </a>
+        </li>
+        <li role='presentation' id='preview-content'>
+          <a href='#preview-content' aria-controls='preview-content'
+            role='tab' data-toggle='tab' id='preview-content'>
+            <%= t('action.preview') %>
+          </a>
+        </li>
+      </ul>
+      <div class='tab-content'>
+        <div role='tabpanel' class='tab-pane active' id='edit-content'>
+          <%=
+            f.input :content,
+            label: false,
+            placeholder: t('article.placeholder.content'),
+            required: true,
+            as: :text
+          %>
+        </div>
+        <div role='tabpanel' class='tab-pane' id='preview-content'>
+          <div id='preview-content-placeholder'></div>
+        </div>
+      </div>
+    </div>
     <ul class='list-inline right'>
-      <li>
-        <%=
-          link_to t('action.preview'), '#',
-          id: 'article-preview',
-          class: 'button'
-        %>
-      </li>
-      <li>
-        <%= f.button :submit, t('action.save'), class: 'button' %>
-      </li>
+      <li><%= f.button :submit, t('action.save'), class: 'button' %></li>
       <li>
         <% if @article.id %>
           <%= f.button :submit, t('action.edit'), class: 'button' %>
@@ -82,14 +96,4 @@
       </li>
     </ul>
   <% end %>
-</div>
-
-<!-- Preview placeholder -->
-<div class="modal fade" id='article-preview'>
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header"></div>
-      <div class="modal-body"></div>
-    </div>
-  </div>
 </div>

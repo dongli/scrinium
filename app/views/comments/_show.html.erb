@@ -10,12 +10,7 @@
     <%= user.name %>
     <% if parent_comment %>
       <%= t('action.reply') %>
-      <a id='parent-comment-<%= parent_comment.id %>' class='parent-comment'
-        data-toggle='popover' data-placement='top'
-        data-title='<%= link_to avatar(parent_user, :small), user_path(parent_user) %> <%= parent_user.name %>'
-        data-content='<%= markdown parent_comment.content %>'>
-        #<%= parent_comment.floor %>
-      </a>
+      <%= link_to "##{parent_comment.floor}", "#comment-#{comment.parent_id}" %>
     <% end %>
     <div class='float-right'>
       <% if current_user %>
@@ -44,7 +39,5 @@
       <% end %>
     </div>
   </div>
-  <div class='panel-body'>
-    <%= markdown comment.content %>
-  </div>
+  <div class='panel-body markdown'><%= comment.content %></div>
 </div>

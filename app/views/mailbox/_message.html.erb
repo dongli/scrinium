@@ -12,17 +12,18 @@
     id='message-body-<%= message.id %>'
     data-read='<%= message.is_read? current_user %>'
     style='display:none'>
-    <%= markdown message.body %>
+    <div id='content' data-marked='false'><%= message.body %></div>
     <div class='right'>
-      <%=
-        link_to t('action.reply'),
-        user_reply_message_path(current_user, message),
-        class: 'button btn-xs', remote: true
-      %>
       <% if message.is_trashed? current_user %>
         <%=
           link_to t('action.restore'),
           user_restore_message_path(current_user, message),
+          class: 'button btn-xs', remote: true
+        %>
+      <% else %>
+        <%=
+          link_to t('action.reply'),
+          user_reply_message_path(current_user, message),
           class: 'button btn-xs', remote: true
         %>
       <% end %>

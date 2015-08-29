@@ -7,7 +7,7 @@
 <% content_for :main_block do %>
   <dl>
     <dt><%= t('group.description') %></dt>
-    <dd><%= markdown @group.description %></dd>
+    <dd class='markdown'><%= @group.description %></dd>
   </dl>
   <dl>
     <dt><%= t('group.articles') %></dt>

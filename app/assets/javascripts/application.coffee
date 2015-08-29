@@ -15,8 +15,31 @@
 #= require turbolinks
 #= require bootstrap-sprockets
 #= require select2
+#= require marked
+#= require highlightjs
 #= require i18n/translations
 #= require_tree .
+
+# ============================= Common Functions ===============================
+@mathjax = ->
+  MathJax.Hub.Queue(
+    (-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
+    ['Typeset', MathJax.Hub]
+  )
+
+marked.setOptions
+  highlight: (code) ->
+    hljs.highlightAuto(code).value
+
+@markdown = (content = null, element = null, options = {}) ->
+  if element == null
+    marked(content)
+  else
+    if options.attr?
+      element.attr(options.attr, marked(content))
+    else
+      element.html(marked(content))
+    mathjax()
 
 selectByGET = (id, api_url) ->
   $('select[id='+id+']').select2(

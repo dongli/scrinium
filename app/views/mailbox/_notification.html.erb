@@ -9,7 +9,7 @@
     id='notification-body-<%= notification.id %>'
     data-read='<%= notification.is_read? current_user %>'
     style='display:none'>
-    <%= markdown notification.body %>
+    <div id='content' data-marked='false'><%= notification.body %></div>
     <div class='right'>
       <%=
         link_to t('action.delete'),

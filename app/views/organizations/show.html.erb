@@ -8,7 +8,7 @@
 <% content_for :main_block do %>
   <dl>
     <dt><%= t('organization.description') %></dt>
-    <dd><%= markdown @organization.description %></dd>
+    <dd class='markdown'><%= @organization.description %></dd>
   </dl>
   <dl>
     <dt><%= t('scrinium.suborganization') %></dt>

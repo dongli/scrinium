@@ -1,41 +1,11 @@
 <% comment = @commentable.comments.last %>
 $('#comment-placeholder').before("<li id='comment-<%= comment.id %>'><%= j render partial: 'comments/show', locals: { commentable: @commentable, comment: comment } %></li>");
-MathJax.Hub.Queue(
-  function () {
-    if (MathJax.InputJax.TeX.resetEquationNumbers) {
-      MathJax.InputJax.TeX.resetEquationNumbers();
-    }
-  },
-  ['Typeset', MathJax.Hub]
-);
-<% if comment.parent_id %>
-  $('[data-toggle="popover"]').popover
-    html: true
-    trigger: 'hover'
-<% end %>
+
+$('li#comment-<%= @comment.id %> .markdown').each(function () {
+  markdown($(this).html(), $(this));
+});
+
 $('li#new-comment').html("<%=
   j render partial: 'comments/form',
   locals: { commentable: @commentable, comment: @commentable.comments.new }
 %>");
-// TODO: Move the following to a better place.
-$('[data-toggle="popover"]').popover({ html: true });
-$('[data-toggle="popover"]').on('inserted.bs.popover', function () {
-  MathJax.Hub.Queue(
-    function () {
-      if (MathJax.InputJax.TeX.resetEquationNumbers) {
-        MathJax.InputJax.TeX.resetEquationNumbers();
-      }
-    },
-    ['Typeset', MathJax.Hub]
-  );
-});
-// Dismiss popover when click outside.
-$('body').on('click', function (e) {
-  $('[data-toggle="popover"]').each(function () {
-    //the 'is' for buttons that trigger popups
-    //the 'has' for icons within a button that triggers a popup
-    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-        $(this).popover('hide');
-    }
-  });
-});

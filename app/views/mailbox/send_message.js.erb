@@ -3,6 +3,7 @@ $('ul#sent-message-list').prepend(
 "<li id='message-<%= @message.id %>'>" +
 "  <%= j render partial: 'message', locals: { message: @message } %>" +
 "</li>");
+markdown($('li#message-<%= @message.id %>').html(), $('li#message-<%= @message.id %>'));
 
 $('div#message-head-<%= @message.id %>').click(function() {
   var message_body, message_head, message_id;

@@ -1,5 +1,7 @@
-<ul>
+<ul class='publications'>
   <% publications.each do |p| %>
-    <li><%= render inline: citation(p.reference).gsub(p.matched_author, "<b>#{p.matched_author}</b>") %></li>
+    <li><a href='<%= reference_path(p.reference) %>'>
+      <%= render inline: citation(p.reference).gsub(p.matched_author, "<b>#{p.matched_author}</b>") %>
+    </a></li>
   <% end %>
 </ul>

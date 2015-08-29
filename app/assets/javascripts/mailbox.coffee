@@ -11,12 +11,16 @@ change_unread = ->
     unread_badge.hide()
     $('a#user-menu').children('i').attr('class', 'fa fa-user')
 
-expand_message = ->
+@expand_message = ->
   $('div[id|=message-head]').click ->
     user_id = $('ul#left-side').attr('data-user-id')
     message_head = $(this)
     message_id = message_head.attr('id').split('-')[2]
     message_body = $("div#message-body-#{message_id}")
+    message_content = message_body.children('#content')
+    if message_content.attr('data-marked') == 'false'
+      markdown message_content.html(), message_content
+      message_content.attr('data-marked', 'true')
     message_body.toggle()
     # Reduce the unread number.
     if message_body.attr('data-read') == 'false'
@@ -29,12 +33,16 @@ expand_message = ->
       }
       change_unread()
 
-expand_notification = ->
+@expand_notification = ->
   $('div[id|=notification-head]').click ->
     user_id = $('ul#left-side').attr('data-user-id')
     notification_head = $(this)
     notification_id = notification_head.attr('id').split('-')[2]
     notification_body = $("div#notification-body-#{notification_id}")
+    notification_content = notification_body.children('#content')
+    if notification_content.attr('data-marked') == 'false'
+      markdown notification_content.html(), notification_content
+      notification_content.attr('data-marked', 'true')
     notification_body.toggle()
     # Reduce the unread number.
     if notification_body.attr('data-read') == 'false'
