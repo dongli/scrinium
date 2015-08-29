@@ -112,3 +112,12 @@ $(document).on 'page:change', ->
   $('[id$=_category_list]').select2
     tags: true
     multiple: true
+  # Turn on Bootstrap popover.
+  $('[data-toggle="popover"]').each ->
+    $(this).popover
+      html: true
+  # Dismiss popover when click outside.
+  $('body').on 'click', (e) ->
+    $('[data-toggle="popover"]').each ->
+      if !$(this).is(e.target) and $(this).has(e.target).length == 0 and $('.popover').has(e.target).length == 0
+        $(this).popover 'hide'
