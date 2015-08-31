@@ -276,20 +276,6 @@ ActiveRecord::Schema.define(version: 20150827000923) do
 
   add_index "references", ["publicable_type", "publicable_id"], name: "index_references_on_publicable_type_and_publicable_id", using: :btree
 
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-
-    t.string   "name"
-    t.string   "short_name"
-    t.text     "description"
-  end
-
-
-  end
-
-
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"

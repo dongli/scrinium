@@ -62,6 +62,7 @@ gem 'font-awesome-rails'
 gem 'globalize', '~> 5.0.0'
 
 gem 'grape'
+gem 'doorkeeper'
 
 # Use Bower to install asset packages, such as 'select2'.
 gem 'bower-rails'
@@ -90,4 +91,3 @@ gem 'bullet', group: :development
 
 gem 'mailboxer'
 
-gem 'doorkeeper'

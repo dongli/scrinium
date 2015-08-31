@@ -1,6 +1,5 @@
 $("li#comment-<%= @comment.id %>").html("<%=
-  j render partial: 'comments/show',
-  locals: { commentable: @commentable, comment: @comment }
+  j render partial: 'comments/show', locals: { comment: @comment }
 %>");
 
 $('li#comment-<%= @comment.id %> .markdown').each(function () {
