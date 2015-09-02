@@ -58,8 +58,11 @@ class CommentsController < ApplicationController
             @commentable.user.notify subject, body
           end
         end
-        format.html { redirect_to @commentable }
-        format.json { render :show, status: :created, location: @comment }
+        MessageBus.publish '/comments', {
+          user_id: @comment.user_id,
+          user_name: @comment.user.name,
+          content: @comment.content
+        }
         format.js
       else
         format.html { render :new }

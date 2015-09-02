@@ -183,6 +183,7 @@ zh-CN:
     got_commented_subject: 您的%{what}被评论
     got_commented_body: |+
       您的%{what}被“%{who}”评论，详见[这里](%{url})。
+    has_new_comments: 有%{number}个新评论！请点击刷新。
 
   reference:
     type: 文献类型

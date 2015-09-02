@@ -19,7 +19,7 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :parent_id, value: comment.parent_id %>
       <% if not comment.floor %>
-        <% floor = commentable.comments.size == 1 ? 1 : commentable.comments.first.leaves.last.floor+1 %>
+        <% floor = max_comment_floor(commentable) + 1 %>
         <%= f.hidden_field :floor, value: floor %>
       <% end %>
       <%= f.input :content, label: false, as: :text, wrapper_html: { id: 'new-comment-content' } %>

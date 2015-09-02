@@ -18,6 +18,7 @@
 #= require marked
 #= require highlightjs
 #= require i18n/translations
+#= require message-bus
 #= require_tree .
 
 # ============================= Common Functions ===============================

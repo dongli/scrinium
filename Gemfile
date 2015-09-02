@@ -91,3 +91,6 @@ gem 'bullet', group: :development
 
 gem 'mailboxer'
 
+gem 'redis-rails'
+gem 'message_bus'
+gem 'thin'
