@@ -8,6 +8,9 @@
 
 <% content_for :main_block do %>
   <div id='inbox'>
+    <div class='alert alert-info' role='alert' style='display: none;' id='new-mail-notifier'>
+      <%= t('mailbox.has_new_mails', number: 0) %>
+    </div>
     <ul class='clean-list' id='unread-message-list'>
       <% unread_messages.each do |m| %>
         <li id='message-<%= m.id %>'>

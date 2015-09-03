@@ -78,10 +78,11 @@
                 %>
               </li>
               <li>
-                <a href='<%= main_app.user_mailbox_index_path(current_user) %>'>
+                <a href='<%= main_app.user_mailbox_index_path(current_user) %>'
+                  id='mailbox-menu-item'>
                   <%= fa_icon('envelope', text: t('scrinium.mailbox')) %>
                   <% if has_unread? %>
-                    <span class='badge'><%= num_unread %></span>
+                    <span class='badge unread-mail-badge'><%= num_unread %></span>
                   <% end %>
                 </a>
               </li>

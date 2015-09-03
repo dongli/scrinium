@@ -4,7 +4,7 @@
       <a id='show-inbox'>
         <%= fa_icon('inbox', text: t('mailbox.inbox')) %>
         <% if has_unread? %>
-          <span class='badge'><%= num_unread %></span>
+          <span class='badge unread-mail-badge'><%= num_unread %></span>
         <% end %>
       </a>
     </li>

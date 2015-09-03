@@ -30,6 +30,10 @@ class MailboxController < ApplicationController
       current_user.send_message(User.find(params[:receivers]), params[:body], params[:subject])
       @message = current_user.mailbox.sentbox.last.messages.first
     end
+    @message.receipts.each do |r|
+      next if r.mailbox_type == 'sentbox'
+      MessageBus.publish "/mailbox-#{r.receiver_id}", { user_id: current_user.id }
+    end
     respond_to do |format|
       format.js
     end

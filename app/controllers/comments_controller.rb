@@ -47,6 +47,7 @@ class CommentsController < ApplicationController
             subject = t('comment.got_commented_subject', what: what)
             body = t('comment.got_commented_body', who: who, what: what, url: url)
             @comment.parent.user.notify subject, body
+            MessageBus.publish "/mailbox-#{@comment.parent.user_id}", { user_id: @comment.user_id }
           end
         else
           if @comment.user != @commentable.user
@@ -56,6 +57,7 @@ class CommentsController < ApplicationController
             subject = t('comment.got_commented_subject', what: what)
             body = t('comment.got_commented_body', who: who, what: what, url: url)
             @commentable.user.notify subject, body
+            MessageBus.publish "/mailbox-#{@commentable.user_id}", { user_id: @comment.user_id }
           end
         end
         MessageBus.publish '/comments', {

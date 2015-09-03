@@ -3,15 +3,16 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 change_unread = ->
-  unread_badge = $('a#show-inbox').children('span.badge')
-  n = parseInt(unread_badge.text())-1
-  if n > 0
-    unread_badge.text(n)
-  else
-    unread_badge.hide()
-    $('a#user-menu').children('i').attr('class', 'fa fa-user')
+  $('.unread-mail-badge').each ->
+    n = parseInt($(this).text())-1
+    if n > 0
+      $(this).text(n)
+    else
+      $(this).remove()
+      $('#user-menu i.fa-bell').attr('class', 'fa fa-user')
 
 @expand_message = ->
+  $('div[id|=message-head]').off('click')
   $('div[id|=message-head]').click ->
     user_id = $('ul#left-side').attr('data-user-id')
     message_head = $(this)
@@ -34,6 +35,7 @@ change_unread = ->
       change_unread()
 
 @expand_notification = ->
+  $('div[id|=notification-head]').off('click')
   $('div[id|=notification-head]').click ->
     user_id = $('ul#left-side').attr('data-user-id')
     notification_head = $(this)
@@ -85,3 +87,27 @@ $(document).on 'page:change', ->
 
   expand_message()
   expand_notification()
+
+  # 收听邮件事件。
+  if $('#user-info').length
+    MessageBus.subscribe "/mailbox-#{$('#user-info').data('user-id')}", (data) ->
+      # 设置未读闹铃。
+      $('#user-menu i.fa-user').attr('class', 'fa fa-bell')
+      # 检查是否已经有未读邮件。
+      $('.unread-mail-badge').each ->
+        if $(this).length
+          n = parseInt($(this).text())
+          $(this).text(n + 1)
+      if not $('.unread-mail-badge').length
+        $('#mailbox-menu-item').append("<span class='badge unread-mail-badge'>1</span>")
+        $('#show-inbox').append("<span class='badge unread-mail-badge'>1</span>")
+      # 提示用户刷新看新邮件。
+      t = $('#new-mail-notifier').text()
+      n = parseInt(t.match(/\d+/))
+      $('#new-mail-notifier').text(t.replace(/\d+/, n + 1))
+      $('#new-mail-notifier').show()
+
+  # 提示用户刷新页面。
+  $('#new-mail-notifier').click ->
+    # TODO: 最好能够直接渲染出新的邮件，避免用户刷新页面。
+    location.reload()
