@@ -1,4 +1,4 @@
-<div id='message-bus-comment-<%= commentable.class.to_s.downcase %>-<%= commentable.id %>'></div>
+<div id='message-bus-comment-<%= commentable.class %>-<%= commentable.id %>'></div>
 <ul class='comment-list'>
   <% per_page = 20 %>
   <% if commentable.comments.size <= per_page %>

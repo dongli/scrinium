@@ -122,3 +122,6 @@ $(document).on 'page:change', ->
     $('[data-toggle="popover"]').each ->
       if !$(this).is(e.target) and $(this).has(e.target).length == 0 and $('.popover').has(e.target).length == 0
         $(this).popover 'hide'
+
+  $('.markdown').each ->
+    markdown $(this).html(), $(this)

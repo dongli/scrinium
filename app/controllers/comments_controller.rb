@@ -60,11 +60,7 @@ class CommentsController < ApplicationController
             MessageBus.publish "/mailbox-#{@commentable.user_id}", { user_id: @comment.user_id }
           end
         end
-        MessageBus.publish '/comments', {
-          user_id: @comment.user_id,
-          user_name: @comment.user.name,
-          content: @comment.content
-        }
+        MessageBus.publish "/comment-#{@commentable.class}-#{@commentable.id}", { user_id: @comment.user_id }
         format.js
       else
         format.html { render :new }

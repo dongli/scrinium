@@ -22,6 +22,3 @@ $(document).on 'page:change', ->
 			$('#select-groups').show()
 		else
 			$('#select-groups').hide()
-
-	$('.markdown').each ->
-		markdown $(this).html(), $(this)
