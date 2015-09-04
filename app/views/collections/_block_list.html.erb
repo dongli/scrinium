@@ -1,0 +1,29 @@
+<div class='row'>
+  <% collections.each do |c| %>
+    <a href='<%= url_for([c.collectable.user, c.collectable]) %>'>
+      <div class='col-md-5 cod-md-offset-1' id='collection-<%= c.id %>'>
+        <div class='well'>
+          <dl>
+            <dt>
+              <%= c.collectable.title %>
+              <div class='float-right'>
+                <% if c.watched %>
+                  <%=
+                    link_to fa_icon('eye'),
+                    collection_toggle_watched_path(c), remote: true
+                  %>
+                <% else %>
+                  <%=
+                    link_to fa_icon('eye-slash'),
+                    collection_toggle_watched_path(c), remote: true
+                  %>
+                <% end %>
+              </div>
+            </dt>
+            <dd class='markdown'><%= c.collectable.content %></dd>
+          </dl>
+        </div>
+      </div>
+    </a>
+  <% end %>
+</div>

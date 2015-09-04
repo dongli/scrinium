@@ -48,4 +48,21 @@
       %>
     </li>
   <% end %>
+  <% if current_user and current_user != @article.user %>
+    <li>
+      <% collected = is_collected? current_user, @article %>
+      <%=
+        link_to fa_icon('star', text: t('collection.cancel')),
+        user_article_uncollect_path(current_user, @article),
+        remote: true, id: 'uncollect-Article',
+        style: "display: #{collected ? 'block' : 'none'}"
+      %>
+      <%=
+        link_to fa_icon('star-o', text: t('action.collect')),
+        user_article_collect_path(current_user, @article),
+        remote: true, id: 'collect-Article',
+        style: "display: #{collected ? 'none' : 'block'}"
+      %>
+    </li>
+  <% end %>
 </ul>

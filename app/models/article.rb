@@ -11,6 +11,7 @@ class Article < ActiveRecord::Base
   has_many :group_article_associations
   has_many :groups, through: :group_article_associations
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :collections, as: :collectable, dependent: :destroy
 
   enum privacy: [
     :public,

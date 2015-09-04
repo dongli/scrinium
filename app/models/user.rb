@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :publications, dependent: :destroy
   has_many :references, through: :publications
+  has_many :collections, dependent: :destroy
   # TODO: Below is the special codes for LASG.
   has_many :experiments
 

@@ -8,4 +8,5 @@
 <% content_for :main_block do %>
   <%= render partial: 'articles', locals: { user: @user } %>
   <%= render partial: 'publications', locals: { user: @user } %>
+  <%= render partial: 'collections', locals: { user: @user } %>
 <% end %>

@@ -32,6 +32,7 @@ zh-CN:
     reference: 参考文献
     journal: 期刊杂志
     publication: 发表刊物
+    collection: 收藏
 
   mailbox:
     inbox: 收件箱
@@ -58,6 +59,7 @@ zh-CN:
     clean_all: 清除所有
     restore: 恢复
     download: 下载
+    collect: 收藏
 
   message:
     add_success: 成功添加%{thing}。
@@ -82,6 +84,10 @@ zh-CN:
     group_public: 群组公开
 
   versions: 历史版本
+
+  collection:
+    cancel: 取消收藏
+    type: 收藏类型
 
   user:
     need_real_name: 请填写真实姓名！

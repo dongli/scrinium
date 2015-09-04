@@ -1,0 +1,5 @@
+if (<%= @collection.watched %>) {
+  $('#collection-<%= @collection.id %>').find('.fa').attr('class', 'fa fa-eye');
+} else {
+  $('#collection-<%= @collection.id %>').find('.fa').attr('class', 'fa fa-eye-slash');
+}
