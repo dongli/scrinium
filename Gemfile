@@ -94,3 +94,6 @@ gem 'mailboxer'
 gem 'redis-rails'
 gem 'message_bus'
 gem 'thin'
+
+gem 'kaminari'
+gem 'kaminari-bootstrap'
