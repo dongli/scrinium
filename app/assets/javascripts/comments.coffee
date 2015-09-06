@@ -15,5 +15,5 @@ $(document).on 'page:change', ->
       $('#new-comment-notifier').show()
       # 禁止用户发表新的评论，除非他已经更新了页面。
       $('#save-comment').prop('disabled', true)
-  else if window.comment_channel != null
+  else if window.comment_channel != null and typeof window.comment_channel != 'undefined'
     MessageBus.unsubscribe window.comment_channel

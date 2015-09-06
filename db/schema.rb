@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150904002335) do
     t.integer  "collectable_id"
     t.string   "collectable_type"
     t.boolean  "watched",          default: false
+    t.boolean  "updated",          default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end

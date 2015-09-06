@@ -75,6 +75,13 @@ ul.left-side-list {
   }
 }
 
+ul.tag-cloud {
+  @extend ul.clean-list;
+  li {
+    display: inline-block;
+  }
+}
+
 dl {
   dt {
     border-bottom: solid 1px #EEE;

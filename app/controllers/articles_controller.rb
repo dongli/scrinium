@@ -46,6 +46,10 @@ class ArticlesController < ApplicationController
     set_draft
     respond_to do |format|
       if @article.update(article_params)
+        MessageBus.publish "/update-Article-#{@article.id}", {
+          collectable_type: 'Article',
+          collectable_id: @article.id
+        }
         format.html { redirect_to [@article.user, @article], notice: t('message.update_success', thing: t('scrinium.article')) }
         format.json { render :show, status: :ok, location: @article }
       else

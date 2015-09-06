@@ -79,6 +79,14 @@ selectByPOST = (id, api_url, post_data) ->
         results: data
   )
 
+@typeIsArray = (value) ->
+  value and
+    typeof value is 'object' and
+    value instanceof Array and
+    typeof value.length is 'number' and
+    typeof value.splice is 'function' and
+    not ( value.propertyIsEnumerable 'length' )
+
 $(document).on 'page:change', ->
   # Using Select2 to enhance select element.
   selectByGET 'input-user-name', 'api/v1/users/names'
