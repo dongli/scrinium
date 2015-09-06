@@ -1,2 +1,3 @@
-$('#collect-<%= @collectable.class %>').hide();
-$('#uncollect-<%= @collectable.class %>').show();
+var a = '<%= class_escape @collectable %>';
+$('#collect-'+a).hide();
+$('#uncollect-'+a).show();
