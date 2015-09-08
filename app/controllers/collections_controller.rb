@@ -71,6 +71,8 @@ class CollectionsController < ApplicationController
     engine = request.path.match(/^\/(\w+)/)[1]
     if engine != 'users'
       collectable_type = Rails.app_class.to_s.split('::').first+engine.capitalize+'::'+collectable_type.singularize.classify
+    else
+      collectable_type = collectable_type.singularize.classify
     end
     @user = User.find(user_id)
     @collectable = collectable_type.constantize.find(collectable_id)
