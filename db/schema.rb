@@ -89,16 +89,16 @@ ActiveRecord::Schema.define(version: 20150904002335) do
   create_table "group_user_associations", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "user_id"
-    t.boolean  "approved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "approved",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "group_user_associations", ["group_id"], name: "index_group_user_associations_on_group_id", using: :btree
   add_index "group_user_associations", ["user_id"], name: "index_group_user_associations_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.integer  "admin_id",          null: false
+    t.integer  "admin_id"
     t.integer  "privacy",           null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -253,6 +253,7 @@ ActiveRecord::Schema.define(version: 20150904002335) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.integer  "admin_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -320,27 +321,27 @@ ActiveRecord::Schema.define(version: 20150904002335) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "organization_id"
-    t.boolean  "organization_approved"
+    t.boolean  "organization_approved",  default: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "name",                               null: false
-    t.string   "email",                              null: false
-    t.string   "encrypted_password",                 null: false
-    t.integer  "gender",                             null: false
+    t.string   "name",                                   null: false
+    t.string   "email",                                  null: false
+    t.string   "encrypted_password",                     null: false
+    t.integer  "gender",                                 null: false
     t.integer  "position"
     t.integer  "role"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

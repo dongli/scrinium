@@ -1,6 +1,7 @@
 <ul class='left-side-list'>
   <li><%= logo @group, :medium %></li>
   <li><%= @group.name %></li>
+  <li><%= t('global.contact') %>: <%= link_to @group.admin.name, @group.admin %></li>
   <li><%= @group.privacy %></li>
   <li>
     <ul class='left-side-list'>
@@ -12,7 +13,7 @@
     </ul>
   </li>
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
-  <li><%= link_to fa_icon('edit', text: t('action.edit')+t('scrinium.group')), edit_group_path(@group) %></li>
+  <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group) %></li>
   <li>
     <dl class='small'>
       <dt><%= t('group.members') %></dt>

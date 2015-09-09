@@ -1,14 +1,19 @@
 <ul class="left-side-list">
   <li><%= avatar @user, :medium %></li>
   <li><%= @user.name %></li>
-  <li>
-    <% if @user.organization %>
-      <%= @user.organization.name %>
+  <% if @user.organization %>
+    <% if @user.organization_approved %>
+      <li><%= @user.organization.name %></li>
+      <li><%= @user.position %></li>
     <% else %>
-      <%= t('user.has_no_affiliation') %>
+      <li><span data-toggle='tooltip' data-placement='bottom' title='<%= t('message.unapproved') %>'
+      style='color: grey;'><%= @user.organization.name %></span></li>
+      <li><span data-toggle='tooltip' data-placement='bottom' title='<%= t('message.unapproved') %>'
+      style='color: grey;'><%= @user.position %></span></li>
     <% end %>
-  </li>
-  <li><%= @user.position %></li>
+  <% else %>
+    <li><%= t('user.has_no_affiliation') %></li>
+  <% end %>
   <li><%= @user.role %></li>
   <li>
     <%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %>

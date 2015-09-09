@@ -18,6 +18,10 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
+    # 创建组织的用户默认成为管理者。
+    if current_user
+      @organization.admin_id = current_user.id
+    end
 
     respond_to do |format|
       if @organization.save
@@ -68,6 +72,7 @@ class OrganizationsController < ApplicationController
   def organization_params
     params.require(:organization).permit(:name,
                                          :short_name,
-                                         :description)
+                                         :description,
+                                         :admin_id)
   end
 end

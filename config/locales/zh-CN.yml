@@ -72,6 +72,7 @@ zh-CN:
     sender: 发件人
     receivers: 收件人
     send_time: 发件时间
+    unapproved: 尚未通过验证！
 
   notification:
     subject: 题目

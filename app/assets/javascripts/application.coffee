@@ -133,3 +133,5 @@ $(document).on 'page:change', ->
 
   $('.markdown').each ->
     markdown $(this).html(), $(this)
+
+  $('[data-toggle="tooltip"]').tooltip()

@@ -1,6 +1,5 @@
 <div class='group-form'>
   <%= simple_form_for(@group) do |f| %>
-    <%= f.hidden_field :admin_id, value: current_user.id %>
     <%=
       image_tag 'medium/default_avatar.png',
       size: '100x100',

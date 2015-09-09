@@ -26,6 +26,14 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    # 创建组织的用户默认成为管理者。
+    if current_user
+      @group.admin_id = current_user.id
+    end
+    # 自动将管理者加入到用户中。
+    if not @group.user_ids.include? @group.admin_id
+      @group.user_ids = @group.user_ids << @group.admin_id
+    end
 
     respond_to do |format|
       if @group.save
@@ -41,6 +49,10 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    # 自动将管理者加入到用户中。
+    if not params[:group][:user_ids].include? @group.admin_id
+      params[:group][:user_ids] << @group.admin_id
+    end
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: t('message.update_success', thing: t('scrinium.group')) }

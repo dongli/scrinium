@@ -1,10 +1,9 @@
 class CreateGroups < ActiveRecord::Migration
   def up
     create_table :groups do |t|
-      t.integer :admin_id,    null: false
-      t.integer :privacy,     null: false
+      t.references :admin, as: :user
+      t.integer :privacy, null: false
       t.attachment :logo
-
       t.timestamps null: false
     end
     Group.create_translation_table!({
