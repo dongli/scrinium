@@ -1,5 +1,15 @@
 <div class='organization-form'>
   <%= simple_form_for @organization do |f| %>
+    <%=
+      image_tag 'medium/default_avatar.png',
+      size: '100x100',
+      id: 'preview-avatar'
+    %>
+    <%=
+      f.file_field :logo,
+      required: true,
+      id: 'upload-avatar'
+    %>
     <%= f.input :name, label: t('organization.name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :short_name, label: t('organization.short_name'), required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :description, label: t('organization.description'), required: true, as: :text %>

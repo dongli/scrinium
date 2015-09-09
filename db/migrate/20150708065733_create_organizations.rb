@@ -1,6 +1,7 @@
 class CreateOrganizations < ActiveRecord::Migration
   def up
     create_table :organizations do |t|
+      t.attachment :logo
       t.timestamps null: false
     end
     Organization.create_translation_table!({

@@ -97,10 +97,14 @@ ActiveRecord::Schema.define(version: 20150904002335) do
   add_index "group_user_associations", ["user_id"], name: "index_group_user_associations_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.integer  "admin_id",   null: false
-    t.integer  "privacy",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "admin_id",          null: false
+    t.integer  "privacy",           null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -244,8 +248,12 @@ ActiveRecord::Schema.define(version: 20150904002335) do
   add_index "organization_translations", ["organization_id"], name: "index_organization_translations_on_organization_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "organizationships", force: :cascade do |t|

@@ -3,6 +3,7 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.integer :admin_id,    null: false
       t.integer :privacy,     null: false
+      t.attachment :logo
 
       t.timestamps null: false
     end
