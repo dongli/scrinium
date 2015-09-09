@@ -79,9 +79,9 @@
       placeholder: t('user.password_confirmation_hint')
     %>
     <% if current_user %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right', disabled: has_error %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
     <% else %>
-      <%= f.button :submit, t('user.signup'), class: 'button float-right', disabled: has_error %>
+      <%= f.button :submit, t('user.signup'), class: 'button float-right' %>
     <% end %>
   <% end %>
 </div>
