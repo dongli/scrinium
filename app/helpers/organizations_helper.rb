@@ -1,10 +1,9 @@
 module OrganizationsHelper
-  def set_current_organization id
-    $organization_id = id
-    $current_organization = Organization.find(id)
-  end
-
-  def self.current_organization
-    $current_organization
+  def logo organization, size
+    if organization.logo_file_name
+      image_tag organization.logo.url(size), alt: organization.name, class: 'avatar'
+    else
+      image_tag "#{size}/default_avatar.png", alt: organization.name, class: 'avatar'
+    end
   end
 end

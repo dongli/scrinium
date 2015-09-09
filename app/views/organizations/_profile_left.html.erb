@@ -1,5 +1,5 @@
 <ul class='left-side-list'>
-  <% set_current_organization @organization.id %>
+  <li><%= logo @organization, :medium %></li>
   <li><%= @organization.name %></li>
   <% if is_super_admin_or_admin?(current_user) %>
     <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_organization_path(@organization) %></li>
