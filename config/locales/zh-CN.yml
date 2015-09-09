@@ -143,6 +143,7 @@ zh-CN:
       create_article: 添加文章
     latest_articles: 最近文章
     super_admin_born: 您即将成为超级管理员！
+    complete_info: 欢迎您注册！请在注册完成后进一步完善个人信息。
     organization_is_empty: 尚未创建任何机构！请超级管理员创建。
 
   organization:

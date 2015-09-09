@@ -1,7 +1,8 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
-      t.belongs_to :organization,  index: true
+      t.belongs_to :organization, index: true
+      t.boolean    :organization_approved, default: false
       ## Database authenticatable
       t.attachment :avatar
       t.string  :name,               null: false

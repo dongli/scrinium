@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150904002335) do
   create_table "group_user_associations", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "user_id"
+    t.boolean  "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -319,6 +320,7 @@ ActiveRecord::Schema.define(version: 20150904002335) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "organization_id"
+    t.boolean  "organization_approved"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
