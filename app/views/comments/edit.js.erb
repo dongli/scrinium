@@ -1,4 +1,4 @@
 $("li#comment-<%= @comment.id %>").html("<%=
   j render partial: 'comments/form',
-  locals: { commentable: @commentable, comment: @comment }
+  locals: { app: @app, commentable: @commentable, comment: @comment, method: :patch }
 %>");

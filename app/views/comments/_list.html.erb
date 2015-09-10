@@ -1,3 +1,4 @@
+<% app ||= main_app %>
 <div id='message-bus-comment-<%= commentable.class %>-<%= commentable.id %>'></div>
 <ul class='comment-list'>
   <% per_page = 20 %>
@@ -8,7 +9,7 @@
   <% end %>
   <% comments.each do |c| %>
     <li id='comment-<%= c.id %>'>
-      <%= render partial: 'comments/show', locals: { comment: c } %>
+      <%= render partial: 'comments/show', locals: { app: app, comment: c } %>
     </li>
   <% end %>
   <div id='comment-placeholder'>
@@ -24,6 +25,7 @@
       <%=
         render partial: 'comments/form',
         locals: {
+          app: app,
           commentable: commentable,
           comment: commentable.comments.new
         }

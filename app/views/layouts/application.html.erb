@@ -3,7 +3,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= content_for?(:title) ? yield(:title) + ' - ' + t('global.scrinium') : t('global.scrinium') %></title>
-  <%= yield(:head) if content_for? :head %>
   <!-- Set ROOT_PATH for querying in JavaScript. -->
   <script type="text/javascript" charset="utf-8">
     var ROOT_PATH = '<%= main_app.root_url %>';
@@ -22,6 +21,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- 由于Turbolink导致我们无法在<head>中yield如下content -->
+  <%= yield :javascript %>
 
   <header>
     <%= render 'layouts/navbar' %>

@@ -63,8 +63,7 @@ class CommentsController < ApplicationController
         MessageBus.publish "/comment-#{@commentable.class}-#{@commentable.id}", { user_id: @comment.user_id }
         format.js
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        # TODO: 处理错误。
       end
     end
   end
@@ -74,12 +73,9 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @commentable }
-        format.json { render :show, status: :ok, location: @comment }
         format.js
       else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        # TODO: 处理错误。
       end
     end
   end
@@ -89,8 +85,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @commentable }
-      format.json { head :no_content }
       format.js
     end
   end
@@ -98,9 +92,19 @@ class CommentsController < ApplicationController
   private
 
   def load_user_and_commentable
-    user_id, resource, commentable_id = request.path.split('/')[2,4]
+    user_id, commentable_type, commentable_id = request.path.match(/\/users\/(\d+)\/(\w+)\/(\d+)/)[1,3]
+    # NOTE: 这里要求所有engine命名规则为<主应用名><子应用名>，并且挂在路径为'/<子应用名>'。
+    engine = request.path.match(/^\/(\w+)/)[1]
+    if engine != 'users'
+      app_name = Rails.app_class.to_s.split('::').first
+      commentable_type = app_name+engine.capitalize+'::'+commentable_type.singularize.classify
+      @app = eval("#{app_name.downcase}_#{engine}")
+    else
+      commentable_type = commentable_type.singularize.classify
+      @app = main_app
+    end
     @user = User.find(user_id)
-    @commentable = resource.singularize.classify.constantize.find(commentable_id)
+    @commentable = commentable_type.constantize.find(commentable_id)
   end
 
   def commentable_path

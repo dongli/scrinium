@@ -1,4 +1,7 @@
-<%= simple_form_for [current_user, commentable, comment], remote: true do |f| %>
+<% app ||= main_app %>
+<!-- 不知道为什么如下的simple_form_for写法无法在edit时自动设为PATCH动作。 -->
+<% method ||= :post %>
+<%= simple_form_for :comment, url: app.url_for([current_user, commentable, comment]), method: method, remote: true do |f| %>
   <div class='panel panel-default'>
     <div class='panel-heading'>
       <% if comment.floor %>
