@@ -25,7 +25,17 @@
         <% floor = max_comment_floor(commentable) + 1 %>
         <%= f.hidden_field :floor, value: floor %>
       <% end %>
-      <%= f.input :content, label: false, as: :text, wrapper_html: { id: 'new-comment-content' } %>
+      <%=
+        f.input :content,
+        label: false,
+        as: :text,
+        wrapper_html: {
+          id: 'new-comment-content'
+        },
+        input_html: {
+          value: comment.content # FIXME: 不知道为什么提交了新的评论，这里会遗留那个评论的内容。只能显式设置（此时的评论内容为空）。
+        }
+      %>
     </div>
   </div>
 <% end %>
