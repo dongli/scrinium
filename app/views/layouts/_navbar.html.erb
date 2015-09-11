@@ -88,16 +88,18 @@
               </li>
               <li>
                 <%=
-                  link_to fa_icon('dashboard', text: t('global.dashboard')),
-                  main_app.dashboard_index_path
-                %>
-              </li>
-              <li>
-                <%=
                   link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.article')),
                   main_app.new_user_article_path(current_user)
                 %>
               </li>
+              <% if is_super_admin_or_admin? current_user %>
+                <li>
+                  <%=
+                    link_to fa_icon('dashboard', text: t('global.dashboard')),
+                    main_app.dashboard_index_path
+                  %>
+                </li>
+              <% end %>
             </ul>
           </li>
           <li><%= link_to fa_icon('sign-out', text: t('user.signout')), main_app.destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>

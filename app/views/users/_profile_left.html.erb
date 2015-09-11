@@ -21,7 +21,6 @@
   <% if current_user == @user %>
     <li><%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_path(@user) %></li>
     <li><%= link_to fa_icon('key', text: t('action.edit')+t('user.password')), change_user_password_path(@user) %></li>
-    <li><%= link_to fa_icon('dashboard', text: t('global.dashboard')), dashboard_index_path %></li>
   <% end %>
   <li>
     <a href='#group-list'
