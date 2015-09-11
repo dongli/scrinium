@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20150904002335) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title",      null: false
-    t.text     "content",    null: false
-    t.boolean  "draft",      null: false
-    t.integer  "privacy",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                      null: false
+    t.text     "content",    default: ""
+    t.boolean  "draft",      default: false
+    t.integer  "privacy",    default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree

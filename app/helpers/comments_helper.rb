@@ -1,6 +1,5 @@
 module CommentsHelper
   def max_comment_floor commentable
-    return 1 if commentable.comments.size == 1
     res = 0
     commentable.comments.each do |c|
       break if not c.floor

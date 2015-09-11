@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   validates_uniqueness_of :title, scope: :user_id
-  validates :title, :content, presence: true
+  validates :title, presence: true
   is_impressionable
   has_paper_trail on: [:update, :destroy],
     if: Proc.new { |t| not t.draft },
