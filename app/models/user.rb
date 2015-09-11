@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
 
   enum gender: [
     :female,
-    :male
+    :male,
+    :invalid
   ].map { |x| I18n.t("user.gender_types.#{x}") }
   enum role: [
     :super_admin,
@@ -42,6 +43,11 @@ class User < ActiveRecord::Base
     :undergraduate,
     :freeman
   ].map { |x| I18n.t("user.position_types.#{x}") }
+
+  validates :gender, exclusion: {
+    in: [ I18n.t('user.gender_types.invalid') ],
+    message: I18n.t('user.gender_is_empty')
+  }
 
   before_save :set_user_defaults
 

@@ -1,5 +1,4 @@
 <div class='devise-form'>
-  <%= devise_error_messages! %>
   <!-- Check if the user is the first one. -->
   <% if User.all.empty? %>
     <% flash[:notice] = t('user.super_admin_born') %>
@@ -52,8 +51,8 @@
                 f.input :gender,
                 label: false,
                 required: true,
-                collection: User.genders.merge({ t('user.gender') => -1 }),
-                selected: -1
+                collection: User.genders,
+                selected: 2
               %>
             <% end %>
           </div>

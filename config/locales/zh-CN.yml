@@ -105,6 +105,7 @@ zh-CN:
     user_name_hint: 4-20个小写英文字母、数字或下划线
     gender: 性别
     gender_types:
+      invalid: 性别
       female: 女
       male: 男
     affiliation: 单位
@@ -146,6 +147,7 @@ zh-CN:
     super_admin_born: 您即将成为超级管理员！
     complete_info: 欢迎您注册！请在注册完成后进一步完善个人信息。
     organization_is_empty: 尚未创建任何机构！请超级管理员创建。
+    gender_is_empty: 请指定性别！
 
   organization:
     profile: 机构信息
