@@ -97,3 +97,5 @@ gem 'thin'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+gem 'lograge'
