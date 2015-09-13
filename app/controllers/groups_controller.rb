@@ -85,6 +85,7 @@ class GroupsController < ApplicationController
   def group_params
     transform_params params, :group, [:privacy]
     params.require(:group).permit(:name,
+                                  :logo,
                                   :description,
                                   :admin_id,
                                   { user_ids: [] },
