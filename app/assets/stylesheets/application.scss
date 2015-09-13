@@ -128,7 +128,16 @@ ul.left-side-list {
   float: right !important;
 }
 
-img.avatar
 img.logo {
   border-radius: 10px;
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.resizable {
+  width: 100%;
 }

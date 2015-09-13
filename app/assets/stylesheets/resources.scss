@@ -1,0 +1,21 @@
+// Place all the styles related to the resources controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.resource-form {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  textarea.text {
+    height: 200px;
+  }
+}
+
+img#preview-figure {
+  width: 320px;
+  height: 320px;
+}

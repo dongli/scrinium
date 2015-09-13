@@ -33,6 +33,7 @@ zh-CN:
     journal: 期刊杂志
     publication: 发表刊物
     collection: 收藏
+    resource: 资源
 
   mailbox:
     inbox: 收件箱
@@ -188,6 +189,17 @@ zh-CN:
       content: 内容 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
     categories:
       research_record: 科研记录
+
+  placeholder:
+    categories: 类别 | 提示：以空格分开。
+
+  resource:
+    size: 文件大小
+    types:
+      invalid: 资源类型
+      figure: 图表
+      datum: 数据
+      document: 文档
 
   comment:
     content: 评论内容

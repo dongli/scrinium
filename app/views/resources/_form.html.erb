@@ -1,0 +1,53 @@
+<div class='resource-form'>
+  <%= simple_form_for [ current_user, @resource ] do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%=
+      f.input :name,
+      label: false,
+      require: true,
+      placeholder: t('global.name')
+    %>
+    <%=
+      f.input :resource_type,
+      label: false,
+      required: true,
+      collection: Resource.resource_types,
+      selected: Resource.resource_types[@resource.resource_type]
+    %>
+    <%=
+      f.input :category_list,
+      label: false,
+      collection: @resource.categories.map { |t| t.name },
+      input_html: {
+        multiple: 'multiple',
+        data: {
+          placeholder: t('placeholder.categories')
+        }
+      }
+    %>
+    <%=
+      f.input :description,
+      label: false,
+      require: true,
+      placeholder: t('global.description'),
+      as: :text
+    %>
+    <!-- 如果资源类型是图表，那么显示上传的图表。 -->
+    <%=
+      image_tag 'medium/default_avatar.png',
+      size: '100x100',
+      id: 'preview-figure'
+    %>
+    <%=
+      f.file_field :file,
+      required: true,
+      id: 'upload-resource',
+      value: @resource.file
+    %>
+    <% if @resource.id %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
+    <% else %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
+    <% end %>
+  <% end %>
+</div>

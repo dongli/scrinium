@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904002335) do
+ActiveRecord::Schema.define(version: 20150913060335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -298,6 +298,21 @@ ActiveRecord::Schema.define(version: 20150904002335) do
   end
 
   add_index "references", ["publicable_type", "publicable_id"], name: "index_references_on_publicable_type_and_publicable_id", using: :btree
+
+  create_table "resources", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "user_id"
+    t.integer  "resource_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "resources", ["name"], name: "index_resources_on_name", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

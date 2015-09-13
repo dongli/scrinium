@@ -42,6 +42,13 @@ marked.setOptions
       element.html(marked(content))
     mathjax()
 
+@previewUploadedFigure = (uploadButtonSelector, previewSelector) ->
+  $(uploadButtonSelector).change ->
+    reader = new FileReader
+    reader.readAsDataURL @files[0]
+    reader.onload = (event) ->
+      $(previewSelector).attr('src', event.target.result)
+
 selectByGET = (id, api_url) ->
   $('select[id='+id+']').select2(
     ajax:
@@ -135,3 +142,5 @@ $(document).on 'page:change', ->
     markdown $(this).html(), $(this)
 
   $('[data-toggle="tooltip"]').tooltip()
+
+  previewUploadedFigure('#upload-figure', '#preview-figure')

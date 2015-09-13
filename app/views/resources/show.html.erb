@@ -1,0 +1,22 @@
+<% content_for :title, @resource.name %>
+<% add_breadcrumb @resource.name, user_resource_path(@resource.user, @resource) %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl class='resource-show'>
+    <dt><%= @resource.name %></dt>
+    <dd class='content'><%= image_tag @resource.file.url, class: 'center resizable' %></dd>
+  </dl>
+  <dl>
+    <dt></dt>
+    <dd>
+      <%=
+        render partial: 'comments/list',
+        locals: { commentable: @resource }
+      %>
+    </dd>
+  </dl>
+<% end %>

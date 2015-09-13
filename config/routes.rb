@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'users/:id/change_password' => 'users#change_password', as: :change_user_password
   resources :users do
     resources :articles, concerns: [ :commentable, :collectable ]
+    resources :resources, concerns: [ :commentable, :collectable ]
     resources :publications, except: [ :index, :new, :edit, :show ]
     get '/articles/:id/versions' => 'articles#versions', as: :article_versions
     get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version
