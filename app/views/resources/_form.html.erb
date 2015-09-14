@@ -41,8 +41,7 @@
     <%=
       f.file_field :file,
       required: true,
-      id: 'upload-resource',
-      value: @resource.file
+      id: 'upload-resource'
     %>
     <% if @resource.id %>
       <%= f.button :submit, t('action.edit'), class: 'button float-right' %>

@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
           if @comment.user != @comment.parent.user
             what = t('scrinium.comment')
             who = @comment.user.name
-            url = url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
+            url = @app.url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
             subject = t('comment.got_commented_subject', what: what)
             body = t('comment.got_commented_body', who: who, what: what, url: url)
             @comment.parent.user.notify subject, body
@@ -51,16 +51,23 @@ class CommentsController < ApplicationController
           end
         else
           if @comment.user != @commentable.user
-            what = t('scrinium.'+@commentable.class.to_s.downcase)
+            # what的额外逻辑是为了处理engine中的commentable。
+            class_name = @commentable.class
+            if class_name.parent_name
+              namespace = class_name.parent_name.to_s.underscore
+            else
+              namespace = Rails.application.class.parent_name.to_s.underscore
+            end
+            what = t(namespace+'.'+class_name.to_s.split('::').last.underscore)
             who = @comment.user.name
-            url = url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
+            url = @app.url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
             subject = t('comment.got_commented_subject', what: what)
             body = t('comment.got_commented_body', who: who, what: what, url: url)
             @commentable.user.notify subject, body
-            MessageBus.publish "/mailbox-#{@commentable.user_id}", { user_id: @comment.user_id }
+            MessageBus.publish "/mailbox-#{@commentable.user.id}", { user_id: @comment.user_id }
           end
         end
-        MessageBus.publish "/comment-#{@commentable.class}-#{@commentable.id}", { user_id: @comment.user_id }
+        MessageBus.publish "/comment-#{@commentable.class.to_s}-#{@commentable.id}", { user_id: @comment.user_id }
         format.js
       else
         # TODO: 处理错误。

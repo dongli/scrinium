@@ -41,3 +41,5 @@ Organization.create(name: '暂无所属科研单位',
 ['journals', 'examples'].each do |s|
   load "#{FileUtils.pwd}/db/seeds/#{s}.rb"
 end
+
+Dir.glob("#{FileUtils.pwd}/db/seeds/engine/*.rb") { |s| load s }
