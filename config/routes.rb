@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     get '/collect' => 'collections#collect', as: :collect
     get '/uncollect' => 'collections#uncollect', as: :uncollect
   end
+  concern :resourceable do
+    resources :resources, concerns: [ :commentable, :collectable ]
+  end
   get '/collections/:id/toggle_watched' => 'collections#toggle_watched', as: :collection_toggle_watched
   get '/collections/:id/view' => 'collections#view', as: :collection_view
   get 'users/:id/change_password' => 'users#change_password', as: :change_user_password

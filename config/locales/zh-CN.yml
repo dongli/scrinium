@@ -17,6 +17,7 @@ zh-CN:
     false_: 否
     create_time: 添加时间
     edit_time: 修改时间
+    owner: 拥有者
 
   scrinium:
     home: 首页

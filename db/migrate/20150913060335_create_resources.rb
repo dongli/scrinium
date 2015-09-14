@@ -6,6 +6,7 @@ class CreateResources < ActiveRecord::Migration
       t.attachment :file
       t.integer :user_id
       t.integer :resource_type
+      t.references :resourceable, polymorphic: true, index: true
 
       t.timestamps null: false
     end
