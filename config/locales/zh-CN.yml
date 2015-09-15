@@ -12,12 +12,14 @@ zh-CN:
     short_name: 简称
     description: 描述
     specification: 规格
+    info: 信息
     basic_info: 基本信息
     true_: 是
     false_: 否
     create_time: 添加时间
     edit_time: 修改时间
     owner: 拥有者
+    log: 日志
 
   scrinium:
     home: 首页
