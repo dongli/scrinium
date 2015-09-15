@@ -6,7 +6,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = @resourceable ? @resourceable.resources : Resource.all
+    @resources = @resourceable.resources
   end
 
   # GET /resources/1
@@ -16,7 +16,7 @@ class ResourcesController < ApplicationController
 
   # GET /resources/new
   def new
-    @resource = @resourceable ? @resourceable.resources.new : Resource.new
+    @resource = @resourceable.resources.new
   end
 
   # GET /resources/1/edit
@@ -26,11 +26,11 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = @resourceable ? @resourceable.resources.new(resource_params) : Resource.new(resource_params)
+    @resource = @resourceable.resources.new(resource_params)
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to [ current_user, @resource ], notice: t('message.create_success', thing: t('scrinium.resource')) }
+        format.html { redirect_to [ @app, current_user, @resourceable, @resource ], notice: t('message.create_success', thing: t('scrinium.resource')) }
       else
         format.html { render :new }
       end
@@ -42,7 +42,7 @@ class ResourcesController < ApplicationController
   def update
     respond_to do |format|
       if @resource.update(resource_params)
-        format.html { redirect_to [ current_user, @resource ], notice: t('message.update_success', thing: t('scrinium.resource')) }
+        format.html { redirect_to [ @app, current_user, @resourceable, @resource ], notice: t('message.update_success', thing: t('scrinium.resource')) }
       else
         format.html { render :edit }
       end
@@ -61,33 +61,25 @@ class ResourcesController < ApplicationController
   private
 
   def load_user_and_resourceable
-    match = request.path.match(/\/users\/(\d+)\/((\w+)\/(\d+))?/)
-    user_id = match[1]
-    @user = User.find(user_id)
-    # NOTE: resource有可能是单独存在的，即不属于任何resourceable。
-    if match[2] and match[3] != 'resources'
-      resourceable_type = match[3]
-      resourceable_id = match[4]
-      # NOTE: 这里要求所有engine命名规则为<主应用名><子应用名>，并且挂在路径为'/<子应用名>'。
-      engine = request.path.match(/^\/(\w+)/)[1]
-      if engine != 'users'
-        app_name = Rails.app_class.to_s.split('::').first
-        resourceable_type = app_name+engine.capitalize+'::'+resourceable_type.singularize.classify
-        @app = eval("#{app_name.downcase}_#{engine}")
-      else
-        resourceable_type = resourceable_type.singularize.classify
-        @app = main_app
-      end
-      @resourceable = resource_type.constantize.find(resourceable_id)
-    else
+    # [/<engine prefix>]/users/:id[/<other prefices>]*/<resourceable_type>/:id/resources/...
+    tokens = request.path.split('/').reject(&:empty?)
+    @user = User.find(tokens[tokens.index('users')+1])
+    n = tokens.index('resources')
+    resourceable_type, resourceable_id = tokens[n-2,n-1]
+    if tokens.first == 'users'
+      resourceable_type = resourceable_type.singularize.classify
       @app = main_app
-      @resourceable = nil
+    else
+      app_name = Rails.app_class.to_s.split('::').first
+      resourceable_type = app_name+tokens.first.capitalize+'::'+resourceable_type.singularize.classify
+      @app = eval("#{app_name.downcase}_#{tokens.first}")
     end
+    @resourceable = resourceable_type.constantize.find(resourceable_id)
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_resource
-    @resource = @resourceable ? @resourceable.resources.find(params[:id]) : Resource.find(params[:id])
+    @resource = Resource.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
