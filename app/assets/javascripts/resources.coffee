@@ -17,3 +17,8 @@ $(document).on 'page:change', ->
         previewUploadedFigure('#upload-resource', '#preview-figure')
       else
         $('[id|="preview"]').hide()
+  # 修正当resourceable是user时的route错误（resources后面会跟着多余的'.<user_id>'）。
+  if $('form#new_resource').length
+    action = $('form#new_resource').attr('action')
+    if /resources\.\d+/.test(action)
+      $('form#new_resource').attr('action', action.replace(/\.\d+/, ''))

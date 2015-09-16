@@ -65,7 +65,7 @@ class ResourcesController < ApplicationController
     tokens = request.path.split('/').reject(&:empty?)
     @user = User.find(tokens[tokens.index('users')+1])
     n = tokens.index('resources')
-    resourceable_type, resourceable_id = tokens[n-2,n-1]
+    resourceable_type, resourceable_id = tokens[n-2..n-1]
     if tokens.first == 'users'
       resourceable_type = resourceable_type.singularize.classify
       @app = main_app
