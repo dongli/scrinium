@@ -6,7 +6,38 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <%= render partial: 'articles', locals: { user: @user } %>
-  <%= render partial: 'publications', locals: { user: @user } %>
-  <%= render partial: 'collections', locals: { user: @user } %>
+  <div>
+    <ul class='nav nav-tabs' role='tablist'>
+      <li role='presentation' class='active'>
+        <a href='#activities' aria-controls='activities' role='tab' data-toggle='tab'>
+          <%= t('global.activity') %>
+        </a>
+      </li>
+      <li role='presentation'>
+        <a href='#collections' aria-controls='collections' role='tab' data-toggle='tab'>
+          <%= t('scrinium.collection') %>
+        </a>
+      </li>
+      <li role='presentation'>
+        <a href='#resources' aria-controls='resources' role='tab' data-toggle='tab'>
+          <%= t('scrinium.resource') %>
+        </a>
+      </li>
+    </ul>
+    <div class='tab-content'>
+      <div role='tabpanel' class='tab-pane active' id='activities'>
+        <%= render partial: 'articles', locals: { user: @user } %>
+        <%= render partial: 'publications', locals: { user: @user } %>
+      </div>
+      <div role='tabpanel' class='tab-pane' id='collections'>
+        <%= render partial: 'collections', locals: { user: @user } %>
+      </div>
+      <div role='tabpanel' class='tab-pane' id='resources'>
+        <%=
+          render partial: 'resources/table_list',
+          locals: { resources: @user.resources }
+        %>
+      </div>
+    </div>
+  </div>
 <% end %>

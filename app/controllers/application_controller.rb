@@ -8,15 +8,17 @@ class ApplicationController < ActionController::Base
   protected
 
   def store_location
+    session[:previous_url] = [] if not session[:previous_url] or session[:previous_url].class != Array
     # Store last url except for Devise urls.
     return unless request.get?
     if not request.path =~ /(^\/d\/users)|(edit$)/ and not request.xhr?
-      session[:previous_url] = request.fullpath
+      session[:previous_url] << request.fullpath
+      session[:previous_url].shift if session[:previous_url].size > 5
     end
   end
 
   def after_sign_in_path_for resource
-    session[:previous_url] || root_path
+    session[:previous_url] ? session[:previous_url].last : root_path
   end
 
   def transform_params params, object, elements

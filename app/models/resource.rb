@@ -21,4 +21,9 @@ class Resource < ActiveRecord::Base
   def user
     User.find(self.user_id)
   end
+
+  def app
+    engine = self.resourceable.class.parent_name
+    engine ? engine.to_s.underscore : 'main_app'
+  end
 end

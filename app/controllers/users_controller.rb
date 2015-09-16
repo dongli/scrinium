@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to session[:previous_url], notice: t('message.update_success', thing: t('scrinium.user')) }
+        format.html { redirect_to session[:previous_url].last, notice: t('message.update_success', thing: t('scrinium.user')) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to session[:previous_url], notice: t('message.destroy_success', thing: t('scrinium.user')) }
+      format.html { redirect_to session[:previous_url].last, notice: t('message.destroy_success', thing: t('scrinium.user')) }
       format.json { head :no_content }
     end
   end

@@ -9,11 +9,11 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to session[:previous_url], notice: t('message.add_success', thing: @publication.reference.reference_type) }
+        format.html { redirect_to session[:previous_url].last, notice: t('message.add_success', thing: @publication.reference.reference_type) }
         format.json { render :show, status: :created, location: @publication }
       else
         # TODO: Why we can not use I18n here?
-        format.html { redirect_to session[:previous_url], flash: { error: @publication.errors.to_a.first } }
+        format.html { redirect_to session[:previous_url].last, flash: { error: @publication.errors.to_a.first } }
         format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end

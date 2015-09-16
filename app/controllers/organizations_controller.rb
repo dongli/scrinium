@@ -25,7 +25,7 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        match = session[:previous_url].match(/\/organizations\/new\?organization_id=(\d+)/)
+        match = session[:previous_url].last.match(/\/organizations\/new\?organization_id=(\d+)/)
         organization_id = match ? match[1] : nil
         # 建立机构间的联系。
         if organization_id

@@ -1,5 +1,5 @@
 <div class='resource-form'>
-  <%= simple_form_for [ @app, current_user, @resourceable, @resource ] do |f| %>
+  <%= simple_form_for filter_user [ @app, current_user, @resourceable, @resource ] do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :name,

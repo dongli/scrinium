@@ -21,3 +21,18 @@ a.button:visited {
   border-radius: 10px;
   padding: 1em;
 }
+
+.carousel {
+  height: 300px;
+  overflow: hidden;
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Safari有BUG！只能关掉梯度。
+.carousel-control.left, .carousel-control.right {
+  background-image: none
+}

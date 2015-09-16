@@ -8,10 +8,5 @@
         show_author: false
       }
     %>
-    <% if is_same_user? user %>
-      <div class='right'>
-        <%= link_to t('action.add'), new_user_article_path(user), class: 'button' %>
-      </div>
-    <% end %>
   </dd>
 </dl>

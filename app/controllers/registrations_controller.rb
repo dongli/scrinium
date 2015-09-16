@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for resource
-    session[:previous_url] || root_path
+    session[:previous_url] ? session[:previous_url].last : root_path
   end
 
   private

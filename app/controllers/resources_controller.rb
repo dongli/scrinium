@@ -30,7 +30,10 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to [ @app, current_user, @resourceable, @resource ], notice: t('message.create_success', thing: t('scrinium.resource')) }
+        format.html {
+          redirect_to ResourcesHelper.filter_user([ @app, current_user, @resourceable, @resource ]),
+          notice: t('message.create_success', thing: t('scrinium.resource'))
+        }
       else
         format.html { render :new }
       end
@@ -42,7 +45,10 @@ class ResourcesController < ApplicationController
   def update
     respond_to do |format|
       if @resource.update(resource_params)
-        format.html { redirect_to [ @app, current_user, @resourceable, @resource ], notice: t('message.update_success', thing: t('scrinium.resource')) }
+        format.html {
+          redirect_to ResourcesHelper.filter_user([ @app, current_user, @resourceable, @resource ]),
+          notice: t('message.update_success', thing: t('scrinium.resource'))
+        }
       else
         format.html { render :edit }
       end
@@ -54,7 +60,8 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to user_resources_url, notice: t('message.destroy_success', thing: t('scrinium.resource')) }
+      session[:previous_url].pop while session[:previous_url].last =~ /resources\/(\d+|new)/
+      format.html { redirect_to session[:previous_url].last || root_path, notice: t('message.destroy_success', thing: t('scrinium.resource')) }
     end
   end
 

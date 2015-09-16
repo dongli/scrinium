@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get '/collections/:id/view' => 'collections#view', as: :collection_view
   get 'users/:id/change_password' => 'users#change_password', as: :change_user_password
   resources :users do
-    resources :users, concerns: [ :resourceable ]
     resources :articles, concerns: [ :commentable, :collectable ]
     resources :resources, concerns: [ :commentable, :collectable ]
     resources :publications, except: [ :index, :new, :edit, :show ]
