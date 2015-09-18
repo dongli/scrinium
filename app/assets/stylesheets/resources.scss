@@ -3,19 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .resource-form {
-  padding-top: 30px;
-  max-width: 320px;
+  text-align: center;
+  width: 320px;
   margin: 0 auto;
-  h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
   textarea.text {
     height: 200px;
   }
 }
 
-img#preview-figure {
-  width: 320px;
-  height: 320px;
+.dropzone {
+  border-radius: 10px;
 }

@@ -4,21 +4,12 @@
 
 $(document).on 'page:change', ->
   return if not /\/resources\/(new|\d+\/edit)/.test(location)
-  switch $('#resource_resource_type').val()
-    when '1'
-      $('#preview-figure').attr('src', $('#upload-resource').attr('value'))
-    else
-      $('[id|="preview"]').hide()
-  $('#resource_resource_type').change ->
-    switch $(this).val()
-      when '1'
-        $('[id|="preview"]').hide()
-        $('#preview-figure').show()
-        previewUploadedFigure('#upload-resource', '#preview-figure')
-      else
-        $('[id|="preview"]').hide()
-  # 修正当resourceable是user时的route错误（resources后面会跟着多余的'.<user_id>'）。
-  if $('form#new_resource').length
-    action = $('form#new_resource').attr('action')
-    if /resources\.\d+/.test(action)
-      $('form#new_resource').attr('action', action.replace(/\.\d+/, ''))
+  Dropzone.autoDiscover = false;
+  $('#upload-file').dropzone
+    maxFilesize: 1
+    paramName: 'resource[file]'
+    addRemoveLinks: true
+    success: (file, response) ->
+      action = $('#new_resource').attr('action').replace(/resources.*$/, "resources/#{response.id}")
+      $('#new_resource').attr('action', action)
+    dictDefaultMessage: '将文件拖拽到这里'

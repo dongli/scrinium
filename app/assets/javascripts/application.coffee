@@ -19,6 +19,7 @@
 #= require highlightjs
 #= require i18n/translations
 #= require message-bus
+#= require dropzone
 #= require_tree .
 
 # ============================= Common Functions ===============================

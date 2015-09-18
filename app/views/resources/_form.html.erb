@@ -1,5 +1,14 @@
 <div class='resource-form'>
-  <%= simple_form_for filter_user [ @app, current_user, @resourceable, @resource ] do |f| %>
+  <div style='margin-bottom: 1em;'>
+    <% if @resource.id %>
+      <%= image_tag @resource.file.url, class: 'center resizable', style: 'padding-bottom: 1em; border-radius: 10px;' %>
+    <% else %>
+      <%= form_for filter_user([ @app, current_user, @resourceable, @resource ]),
+        html: { multipart: true, class: 'dropzone', id: 'upload-file' } do |f| %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= simple_form_for filter_user([ @app, current_user, @resourceable, @resource ]), method: :patch do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :name,
@@ -31,17 +40,6 @@
       require: true,
       placeholder: t('global.description'),
       as: :text
-    %>
-    <!-- 如果资源类型是图表，那么显示上传的图表。 -->
-    <%=
-      image_tag 'medium/default_avatar.png',
-      size: '100x100',
-      id: 'preview-figure'
-    %>
-    <%=
-      f.file_field :file,
-      required: true,
-      id: 'upload-resource'
     %>
     <% if @resource.id %>
       <%= f.button :submit, t('action.edit'), class: 'button float-right' %>

@@ -34,8 +34,14 @@ class ResourcesController < ApplicationController
           redirect_to ResourcesHelper.filter_user([ @app, current_user, @resourceable, @resource ]),
           notice: t('message.create_success', thing: t('scrinium.resource'))
         }
+        format.json {
+          render json: { message: 'success', id: @resource.id }, status: 200
+        }
       else
         format.html { render :new }
+        format.json {
+          render json: { error: @resource.errors.full_messages.join(',') }, status: 400
+        }
       end
     end
   end

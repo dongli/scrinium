@@ -8,7 +8,12 @@
 <% content_for :main_block do %>
   <dl class='resource-show'>
     <dt><%= @resource.name %></dt>
-    <dd class='content'><%= image_tag @resource.file.url, class: 'center resizable' %></dd>
+    <dd>
+      <%= image_tag @resource.file.url, class: 'center resizable' %>
+      <div class='description' style='margin-top: 1em;'>
+        <%= @resource.description %>
+      </div>
+    </dd>
   </dl>
   <dl>
     <dt></dt>

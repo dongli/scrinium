@@ -6,7 +6,7 @@ class Resource < ActiveRecord::Base
   has_attached_file :file
   validates_attachment_content_type :file, content_type: /\Aimage\/.*\Z/
 
-  validates_presence_of :name
+  validates_presence_of :name, if: 'file.nil?'
 
   acts_as_taggable
   acts_as_taggable_on :categories
