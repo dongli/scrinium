@@ -12,4 +12,13 @@ $(document).on 'page:change', ->
     success: (file, response) ->
       action = $('#new_resource').attr('action').replace(/resources.*$/, "resources/#{response.id}")
       $('#new_resource').attr('action', action)
-    dictDefaultMessage: '将文件拖拽到这里'
+      # 添加一个用于删除上传文件的链接。
+      $('#new_resource').after("""
+        <a rel='nofollow' data-method='delete'
+          href='/users/1/resources/#{response.id}'
+          id='remove-uploaded-file'></a>
+      """)
+    dictDefaultMessage: I18n.t('message.drop_file_here')
+  # 由于用户放弃该文件，因此删除上传的文件对应的resource。
+  $(document).on 'page:before-change', ->
+    $('#remove-uploaded-file').click()
