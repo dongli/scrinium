@@ -4,7 +4,10 @@ class Resource < ActiveRecord::Base
   has_many :collections, as: :collectable, dependent: :destroy
 
   has_attached_file :file
-  validates_attachment_content_type :file, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :file, content_type: [
+    /\Aimage\/.*\Z/,
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ]
 
   validates_presence_of :name, if: 'file.nil?'
 
@@ -25,5 +28,13 @@ class Resource < ActiveRecord::Base
   def app
     engine = self.resourceable.class.parent_name
     engine ? engine.to_s.underscore : 'main_app'
+  end
+
+  def file_type
+    Mime::EXTENSION_LOOKUP.select { |k, v| v == self.file_content_type }.keys.first.to_sym
+  end
+
+  def image?
+    self.file_content_type =~ /\Aimage\/.*\Z/
   end
 end
