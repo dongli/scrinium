@@ -7,15 +7,15 @@
     <%= t('resource.size') %>:
     <%= number_to_human_size @resource.file_file_size %>
   </li>
-  <% if current_user and current_user == @resource.user %>
-    <li>
+  <li>
+    <%=
+      link_to fa_icon('download', text: t('action.download')),
+      @resource.file.url
+    %>
+    <% if current_user and current_user == @resource.user %>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
         [ :edit, current_user, @resource ]
-      %>
-      <%=
-        link_to fa_icon('download', text: t('action.download')),
-        @resource.file.url
       %>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
@@ -23,8 +23,8 @@
         method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.resource')) }
       %>
-    </li>
-  <% end %>
+    <% end %>
+  </li>
   <li>
     <%= render partial: 'collections/collect_button', locals: { collectable: @resource } %>
   </li>

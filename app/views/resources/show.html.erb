@@ -10,6 +10,7 @@
     <dt><%= @resource.name %></dt>
     <dd>
       <div class='center'>
+        <%= fa_icon 'spinner spin', style: 'font-size: 100px;', id: 'spinner' %>
         <%= preview @resource %>
       </div>
       <div class='description' style='margin-top: 1em;'>
