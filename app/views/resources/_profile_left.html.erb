@@ -1,5 +1,9 @@
 <ul class='left-side-list'>
   <li>
+    <%= t('global.contact') %>:
+    <%= link_to @resource.user.name, @resource.user %>
+  </li>
+  <li>
     <%= t('resource.size') %>:
     <%= number_to_human_size @resource.file_file_size %>
   </li>

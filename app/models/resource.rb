@@ -6,7 +6,8 @@ class Resource < ActiveRecord::Base
   has_attached_file :file
   validates_attachment_content_type :file, content_type: [
     /\Aimage\/.*\Z/,
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/pdf'
   ]
   validates_attachment_size :file, less_than: 10.megabytes
 
