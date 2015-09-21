@@ -6,7 +6,6 @@ $(document).on 'page:change', ->
   return if not /\/resources\/(new|\d+\/edit)/.test(location)
   Dropzone.autoDiscover = false;
   $('#upload-file').dropzone
-    maxFilesize: 1
     paramName: 'resource[file]'
     addRemoveLinks: true
     success: (file, response) ->

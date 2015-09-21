@@ -17,13 +17,6 @@
       placeholder: t('global.name')
     %>
     <%=
-      f.input :resource_type,
-      label: false,
-      required: true,
-      collection: Resource.resource_types,
-      selected: Resource.resource_types[@resource.resource_type]
-    %>
-    <%=
       f.input :category_list,
       label: false,
       collection: @resource.categories.map { |t| t.name },

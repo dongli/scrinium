@@ -8,6 +8,7 @@ class Resource < ActiveRecord::Base
     /\Aimage\/.*\Z/,
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ]
+  validates_attachment_size :file, less_than: 10.megabytes
 
   validates_presence_of :name, if: 'file.nil?'
 
