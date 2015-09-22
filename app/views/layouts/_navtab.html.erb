@@ -1,0 +1,18 @@
+<div>
+  <ul class='nav nav-tabs' role='tablist'>
+    <% tabs.each do |x, y| %>
+      <li role='presentation' id='li-<%= x %>'>
+        <a href='#<%= x %>' aria-controls='<%= x %>' role='tab' data-toggle='tab' id='<%= x %>'>
+          <%= y.first %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class='tab-content'>
+    <% tabs.each do |x, y| %>
+      <div role='tabpanel' class='tab-pane' id='<%= x %>'>
+        <%= y.last %>
+      </div>
+    <% end %>
+  </div>
+</div>

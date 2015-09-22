@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
-$(document).on 'page:change', ->
   if /\/resources\/(new|\d+\/edit)/.test(location)
     Dropzone.autoDiscover = false;
     $('#upload-file').dropzone
@@ -27,4 +26,3 @@ $(document).on 'page:change', ->
     $('#resource-preview').load ->
       $('#spinner').hide(100)
       $(this).show(100)
-
