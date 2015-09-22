@@ -50,6 +50,24 @@ marked.setOptions
     reader.onload = (event) ->
       $(previewSelector).attr('src', event.target.result)
 
+@activateTab = (tabs) ->
+  return if not localStorage['tab']
+  tab = localStorage['tab']
+  for x in tabs
+    $("#li-#{x}").removeClass('active')
+    $("div##{x}").removeClass('active')
+  $("#li-#{tab}").addClass('active')
+  $("div##{tab}").addClass('active')
+
+@turnOnTab = (tabs) ->
+  prevTab = localStorage['tab']
+  if prevTab and prevTab not in tabs
+    $("#li-#{tabs[0]}").addClass('active')
+    $("div##{tabs[0]}").addClass('active')
+  $('ul.nav-tabs a').click ->
+    $(this).tab('show')
+    localStorage['tab'] = $(this).attr('aria-controls')
+
 selectByGET = (id, api_url) ->
   $('select[id='+id+']').select2(
     ajax:

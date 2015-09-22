@@ -8,17 +8,17 @@
 <% content_for :main_block do %>
   <div>
     <ul class='nav nav-tabs' role='tablist'>
-      <li role='presentation' class='active'>
+      <li role='presentation' id='li-activities' class='active'>
         <a href='#activities' aria-controls='activities' role='tab' data-toggle='tab'>
           <%= t('global.activity') %>
         </a>
       </li>
-      <li role='presentation'>
+      <li role='presentation' id='li-collections'>
         <a href='#collections' aria-controls='collections' role='tab' data-toggle='tab'>
           <%= t('scrinium.collection') %>
         </a>
       </li>
-      <li role='presentation'>
+      <li role='presentation' id='li-resources'>
         <a href='#resources' aria-controls='resources' role='tab' data-toggle='tab'>
           <%= t('scrinium.resource') %>
         </a>
