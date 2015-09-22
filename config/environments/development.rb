@@ -44,5 +44,6 @@ Rails.application.configure do
   config.after_initialize do
     Bullet.enable = false
     Bullet.alert = false
+    PaperTrail.enabled = false
   end
 end

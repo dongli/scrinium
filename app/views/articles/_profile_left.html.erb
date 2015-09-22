@@ -38,15 +38,5 @@
       <% end %>
     </li>
   <% end %>
-  <% if @article.versions.size > 0 %>
-    <li>
-      <%= t('article.version_number') %>:
-      <%=
-        link_to @article.versions.size,
-        [@article.user, @article, :versions],
-        id: 'version-number'
-      %>
-    </li>
-  <% end %>
   <%= render partial: 'collections/collect_button', locals: { collectable: @article } %>
 </ul>
