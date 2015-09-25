@@ -74,6 +74,7 @@ class SurveysController < ApplicationController
                                     :id,
                                     :content,
                                     :question_type,
+                                    :accept_extra_answer,
                                     answers_attributes: [
                                       :id,
                                       :content

@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20150924014204) do
     t.integer  "question_id"
     t.integer  "feedback_id"
     t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "extra_content"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "answers", ["feedback_id"], name: "index_answers_on_feedback_id", using: :btree
@@ -300,8 +301,9 @@ ActiveRecord::Schema.define(version: 20150924014204) do
     t.integer  "survey_id"
     t.integer  "question_type"
     t.string   "content"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "accept_extra_answer", default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "questions", ["survey_id"], name: "index_questions_on_survey_id", using: :btree
@@ -351,8 +353,12 @@ ActiveRecord::Schema.define(version: 20150924014204) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "preface"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree

@@ -250,6 +250,10 @@ zh-CN:
       checkbox: 是否选择
       single_option: 单项选择
       multiple_options: 多项选择
+    accept_extra_answer?: 接受额外答案？
+
+  answer:
+    extra_content: 额外答案
 
   activerecord:
     errors:

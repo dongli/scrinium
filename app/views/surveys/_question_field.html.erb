@@ -18,6 +18,13 @@
       </div>
     </div>
 
+    <div class='right'>
+      <%=
+        f.input :accept_extra_answer,
+        inline_label: t('question.accept_extra_answer?')
+      %>
+    </div>
+
     <%= f.simple_fields_for :answers do |g| %>
       <%= render 'answer_field', f: g %>
     <% end %>

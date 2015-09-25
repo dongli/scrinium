@@ -27,6 +27,9 @@
         <%= question.content %><br>
       </div>
       <%= f.input :content, as: :check_boxes, collection: question.answers.map { |a| a.content }, label: false %>
+      <% if question.accept_extra_answer %>
+        <%= f.input :extra_content, label: false, placeholder: t('answer.extra_content') %>
+      <% end %>
     <% end %>
   </li>
 </fieldset>

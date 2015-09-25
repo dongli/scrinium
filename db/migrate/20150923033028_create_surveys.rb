@@ -4,6 +4,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.string :title
       t.text :preface
+      t.attachment :cover_image
 
       t.timestamps null: false
     end

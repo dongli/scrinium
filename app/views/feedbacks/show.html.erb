@@ -1,16 +1,18 @@
 <% content_for :title, @survey.title %>
 
 <% content_for :main_block do %>
-  <dt><%= @survey.title %></dt>
-  <dd>
-    <%= @survey.preface %>
-    <ol>
-      <% @feedback.answers.zip(@survey.questions).each do |a, q| %>
-        <%=
-          render partial: 'surveys/question_show',
-          locals: { question: q, answer: a }
-        %>
-      <% end %>
-    </ol>
-  </dd>
+  <dl>
+    <dt><%= @survey.title %></dt>
+    <dd>
+      <%= @survey.preface %>
+      <ol>
+        <% @feedback.answers.zip(@survey.questions).each do |a, q| %>
+          <%=
+            render partial: 'surveys/question_show',
+            locals: { question: q, answer: a }
+          %>
+        <% end %>
+      </ol>
+    </dd>
+  </dl>
 <% end %>

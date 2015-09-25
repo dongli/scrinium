@@ -83,7 +83,8 @@ class FeedbacksController < ApplicationController
                                      :survey_id,
                                      answers_attributes: [
                                       :id,
-                                      :content
+                                      :content,
+                                      :extra_content
                                      ])
   end
 end

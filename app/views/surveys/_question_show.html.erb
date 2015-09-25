@@ -13,4 +13,7 @@
       </span>
     <% end %>
   <% end %>
+  <% if question.accept_extra_answer and answer.extra_content %>
+    <span class='blue'><%= answer.extra_content %></span>
+  <% end %>
 <% end %>
