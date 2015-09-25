@@ -2,7 +2,7 @@ $(document).on 'page:change', ->
   if /\/surveys\/(new|\d+\/edit)/.test(location)
     $('form').on 'click', '.remove_field', (event) ->
       $(this).prev('input[type=hidden]').val('1')
-      $(this).closest('fieldset').hide()
+      $(this).closest('fieldset').remove()
       event.preventDefault()
 
     $('form').on 'click', '.add_field', (event) ->

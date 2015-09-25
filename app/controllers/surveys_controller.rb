@@ -41,6 +41,13 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
+        # TODO: 确定需要手动删除问题吗？
+        @survey.questions.each do |q|
+          if not params[:survey][:questions_attributes].values.map { |x| x[:content] }.include? q.content
+            @survey.questions.delete q
+            q.destroy
+          end
+        end
         format.html { redirect_to @survey, notice: t('message.update_success', thing: t('scrinium.survey')) }
       else
         format.html { render :edit }
