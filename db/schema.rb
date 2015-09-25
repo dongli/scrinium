@@ -299,6 +299,7 @@ ActiveRecord::Schema.define(version: 20150924014204) do
 
   create_table "questions", force: :cascade do |t|
     t.integer  "survey_id"
+    t.integer  "order"
     t.integer  "question_type"
     t.string   "content"
     t.boolean  "accept_extra_answer", default: false

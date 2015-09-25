@@ -7,7 +7,7 @@
       </div>
       <%= simple_form_for [ @survey, @feedback ] do |f| %>
         <ol>
-          <%= f.simple_fields_for :answers do |g| %>
+          <%= f.simple_fields_for :answers, @feedback.answers.sort_by { |x| x.question.order } do |g| %>
             <%= render 'answer_field', f: g %>
           <% end %>
         </ol>

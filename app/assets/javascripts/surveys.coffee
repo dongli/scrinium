@@ -8,5 +8,21 @@ $(document).on 'page:change', ->
     $('form').on 'click', '.add_field', (event) ->
       time = new Date().getTime()
       regexp = new RegExp($(this).data('id'), 'g')
-      $(this).before($(this).data('fields').replace(regexp, time))
+      $(this).closest('div.right').before($(this).data('fields').replace(regexp, time))
+      event.preventDefault()
+
+    $('form').on 'click', '.move_up_field', (event) ->
+      field = $(this).closest('fieldset.question-field')
+      hidden_input = field.next()
+      return if not field.prev().prev().is('fieldset.question-field')
+      field.insertBefore(field.prev().prev())
+      hidden_input.insertAfter(field)
+      event.preventDefault()
+
+    $('form').on 'click', '.move_down_field', (event) ->
+      field = $(this).closest('fieldset.question-field')
+      hidden_input = field.next()
+      return if not field.next().next().is('fieldset.question-field')
+      field.insertAfter(field.next().next().next())
+      hidden_input.insertAfter(field)
       event.preventDefault()

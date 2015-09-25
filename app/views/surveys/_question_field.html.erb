@@ -1,14 +1,18 @@
-<fieldset>
+<fieldset class='question-field'>
   <div class='question-form'>
     <div class='row'>
-      <div class='col-md-9'>
+      <div class='col-md-1 col-sm-1 col-xs-1'>
+        <%= link_to fa_icon('arrow-circle-o-up 2x'), '#', class: 'move_up_field' %>
+        <%= link_to fa_icon('arrow-circle-o-down 2x'), '#', class: 'move_down_field' %>
+      </div>
+      <div class='col-md-9 col-sm-8 col-xs-7'>
         <%=
           f.input :content,
           label: false,
           placeholder: t('scrinium.question')
         %>
       </div>
-      <div class='col-md-3'>
+      <div class='col-md-2 col-sm-3 col-xs-4'>
         <%=
           f.input :question_type,
           label:false,

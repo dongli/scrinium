@@ -13,7 +13,7 @@
       placeholder: t('survey.placeholder.preface')
     %>
 
-    <%= f.simple_fields_for :questions do |g| %>
+    <%= f.simple_fields_for :questions, @survey.questions.sort_by { |x| x.order } do |g| %>
       <%= render 'question_field', f: g %>
     <% end %>
 
