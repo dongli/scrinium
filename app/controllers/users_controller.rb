@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    transform_params params, :user, [:gender, :role, :position]
+    transform_params params, :user, :gender, :role, :position
     params.require(:user).permit(:avatar,
                                  :name,
                                  :gender,

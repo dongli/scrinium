@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    transform_params params, :user, [:gender, :role, :position]
+    transform_params params, :user, :gender, :role, :position
     params.require(:user).permit(:avatar,
                                  :name,
                                  :gender,

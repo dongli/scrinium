@@ -21,9 +21,22 @@ class ApplicationController < ActionController::Base
     session[:previous_url] ? session[:previous_url].last : root_path
   end
 
-  def transform_params params, object, elements
+  def transform_params params, object, *elements
+    return if not params.has_key? object
     elements.each do |x|
-      params[object][x] = params[object][x].to_i if params[object].has_key? x
+      if x.class == Symbol
+        params[object][x] = params[object][x].to_i if params[object].has_key? x
+      elsif x.class == Hash
+        x.each do |k, v|
+          if k == :placeholder
+            params[object].keys.each do |kk|
+              transform_params params[object], kk, v
+            end
+          else
+            transform_params params[object], k, v
+          end
+        end
+      end
     end
   end
 end
