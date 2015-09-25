@@ -143,3 +143,14 @@ img.center {
 img.resizable {
   width: 100%;
 }
+
+.red {
+  color: red;
+}
+
+.underline {
+  background-color: transparent;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: darkred
+}

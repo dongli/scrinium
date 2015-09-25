@@ -38,6 +38,10 @@ zh-CN:
     publication: 发表刊物
     collection: 收藏
     resource: 资源
+    survey: 问卷调查
+    question: 问题
+    answer: 选择
+    feedback: 反馈
 
   mailbox:
     inbox: 收件箱
@@ -65,6 +69,7 @@ zh-CN:
     restore: 恢复
     download: 下载
     collect: 收藏
+    submit: 提交
 
   message:
     add_success: 成功添加%{thing}。
@@ -231,6 +236,20 @@ zh-CN:
     placeholder:
       authors: 作者（中文名称如：张三，英文名称如：San Zhang）
       pages: 页码（如：100-120）
+
+  survey:
+    placeholder:
+      preface: 填写问卷调查的序言。
+      answer: 预设答案
+
+  question:
+    question_types:
+      invalid: 问答类型
+      single_line: 单行问答
+      multiple_lines: 多行问答
+      checkbox: 是否选择
+      single_option: 单项选择
+      multiple_options: 多项选择
 
   activerecord:
     errors:

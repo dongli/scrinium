@@ -1,0 +1,20 @@
+<ul class='left-side-list'>
+  <li>
+    <%= t('global.contact') %>:
+    <%= link_to @survey.user.name, @survey.user %>
+  </li>
+  <li>
+    <% if current_user and current_user == @survey.user %>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        [ :edit, @survey ]
+      %>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        @survey,
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.survey')) }
+      %>
+    <% end %>
+  </li>
+</ul>

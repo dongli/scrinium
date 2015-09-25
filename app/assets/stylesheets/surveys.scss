@@ -1,0 +1,20 @@
+.survey-form {
+  max-width: 640px;
+  margin: 0 auto;
+  textarea.text {
+    height: 200px;
+  }
+}
+
+div.add-query {
+  border: dashed;
+  border-color: grey;
+  border-radius: 10px;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.preface {
+  margin-bottom: 1em;
+}

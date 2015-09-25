@@ -42,6 +42,11 @@ Rails.application.routes.draw do
   resources :organizationships
   resources :references
   resources :journals
+  resources :surveys do
+    resources :feedbacks
+  end
+  resources :answers
+  resources :questions
 
   root 'home#index'
 

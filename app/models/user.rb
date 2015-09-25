@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
   has_many :resources, as: :resourceable, dependent: :destroy
+  has_many :surveys, dependent: :destroy
 
   enum gender: [
     :female,

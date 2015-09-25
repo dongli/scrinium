@@ -1,0 +1,32 @@
+<fieldset>
+  <% answer = f.object %>
+  <% question = answer.question %>
+  <li>
+    <% case question.question_type %>
+    <% when t('question.question_types.single_line') %>
+      <div class='question'>
+        <%= question.content %><br>
+      </div>
+      <%= f.input :content, label: false %>
+    <% when t('question.question_types.multiple_lines') %>
+      <div class='question'>
+        <%= question.content %><br>
+      </div>
+      <%= f.input :content, label: false, as: :text %>
+    <% when t('question.question_types.checkbox') %>
+      <div class='question'>
+        <%= f.input :content, as: :boolean, inline_label: true, label: question.content %>
+      </div>
+    <% when t('question.question_types.single_option') %>
+      <div class='question'>
+        <%= question.content %><br>
+      </div>
+      <%= f.input :content, as: :radio_buttons, collection: question.answers.map { |a| a.content }, label: false %>
+    <% when t('question.question_types.multiple_options') %>
+      <div class='question'>
+        <%= question.content %><br>
+      </div>
+      <%= f.input :content, as: :check_boxes, collection: question.answers.map { |a| a.content }, label: false %>
+    <% end %>
+  </li>
+</fieldset>

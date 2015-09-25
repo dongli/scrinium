@@ -1,0 +1,14 @@
+<fieldset>
+  <div class='row'>
+    <div class='col-md-10'>
+      <%=
+        f.input :content,
+        label: false,
+        placeholder: t('survey.placeholder.answer')
+      %>
+    </div>
+    <div class='col-md-2'>
+      <%= link_to t('action.delete'), '#', class: 'btn btn-danger remove_field' %>
+    </div>
+  </div>
+</fieldset>
