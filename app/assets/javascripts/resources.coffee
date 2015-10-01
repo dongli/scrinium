@@ -26,3 +26,10 @@ $(document).on 'page:change', ->
     $('#resource-preview').load ->
       $('#spinner').hide(100)
       $(this).show(100)
+  else
+    $('#use-resource-table-list').click ->
+      $('#resource-table-list').show()
+      $('#resource-block-list').hide()
+    $('#use-resource-block-list').click ->
+      $('#resource-table-list').hide()
+      $('#resource-block-list').show()

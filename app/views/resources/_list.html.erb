@@ -1,0 +1,19 @@
+<% app ||= main_app %>
+<dl>
+  <dt>
+    <div class='center'>
+      <ul class='clean-list'>
+        <li style='display: inline;'><a id='use-resource-table-list'><%= fa_icon 'list' %></a></li>
+        <li style='display: inline;'><a id='use-resource-block-list'><%= fa_icon 'th' %></a></li>
+      </ul>
+    </div>
+  </dt>
+  <dd>
+    <div id='resource-table-list'>
+      <%= render partial: 'resources/table_list', locals: { app: app, resources: resources } %>
+    </div>
+    <div id='resource-block-list' style='display: none;'>
+      <%= render partial: 'resources/block_list', locals: { app: app, resources: resources } %>
+    </div>
+  </dd>
+</dl>

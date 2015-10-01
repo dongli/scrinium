@@ -1,0 +1,11 @@
+<% app ||= main_app %>
+<div class='row'>
+  <% resources.each do |r| %>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+      <a href='<%= url_for ResourcesHelper.filter_user([ app, r.user, r.resourceable, r ]) %>' class='thumbnail'>
+        <% next if not r.image? %>
+        <%= image_tag r.file.url, class: 'img-responsive center-block' %>
+      </a>
+    </div>
+  <% end %>
+</div>
