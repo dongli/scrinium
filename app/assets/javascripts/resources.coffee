@@ -7,7 +7,6 @@ $(document).on 'page:change', ->
     Dropzone.autoDiscover = false;
     $('#upload-file').dropzone
       paramName: 'resource[file]'
-      addRemoveLinks: true
       success: (file, response) ->
         action = $('#new_resource').attr('action').replace(/resources.*$/, "resources/#{response.id}")
         $('#new_resource').attr('action', action)

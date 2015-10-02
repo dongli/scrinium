@@ -285,3 +285,11 @@ zh-CN:
               taken: 已经有相同名称的文章！
             content:
               blank: 内容不能为空！
+
+  errors:
+    messages:
+      carrierwave_processing_error: "无法调整文件的大小！"
+      carrierwave_integrity_error: "文件完整性错误！"
+      carrierwave_download_error: "无法下载文件！"
+      extension_white_list_error: "不允许上传以%{extension}为后缀的文件, 允许的后缀为：%{allowed_types}"
+      extension_black_list_error: "不允许上传以%{extension}为后缀的文件, 不允许的后缀为：%{prohibited_types}"

@@ -309,6 +309,7 @@ DEPENDENCIES
   bullet
   byebug
   cancancan
+  carrierwave
   closure_tree
   coffee-rails (~> 4.1.0)
   country_select
