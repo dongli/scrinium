@@ -5,7 +5,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string  :title,   null: false
       t.text    :content, default: ''
       t.boolean :draft,   default: false
-      t.integer :privacy, default: 0
+      t.string :privacy,  null: false
 
       t.timestamps null: false
     end

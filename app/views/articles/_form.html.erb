@@ -31,9 +31,7 @@
         <%=
           f.input :privacy,
           label: false,
-          required: true,
-          collection: Article.privacies,
-          selected: Article.privacies[@article.privacy]
+          required: true
         %>
       </div>
       <div class='col-md-4' id='select-groups'

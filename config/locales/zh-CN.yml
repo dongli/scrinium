@@ -89,12 +89,6 @@ zh-CN:
     subject: 题目
     send_time: 发件时间
 
-  privacy: 隐私度
-  privacy_types:
-    public: 公开
-    private: 非公开
-    group_public: 群组公开
-
   versions: 历史版本
 
   collection:
@@ -285,11 +279,20 @@ zh-CN:
               taken: 已经有相同名称的文章！
             content:
               blank: 内容不能为空！
+            privacy:
+              blank: 隐私度不能为空！
         resource:
           attributes:
             name:
               blank: 资源名称不能为空！
               taken: 已经有相同名称的资源！
+
+  enumerize:
+    article:
+      privacy:
+        public: 公开
+        private: 不公开
+        group_public: 群组公开
 
   errors:
     messages:

@@ -1,6 +1,10 @@
 class Article < ActiveRecord::Base
+  extend Enumerize
+
   validates_uniqueness_of :title, scope: :user_id
   validates :title, presence: true
+  validates_presence_of :privacy
+
   is_impressionable
   has_paper_trail on: [:update, :destroy],
     if: Proc.new { |t| not t.draft },
@@ -13,9 +17,9 @@ class Article < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy
 
-  enum privacy: [
+  enumerize :privacy, in: [
     :public,
     :private,
     :group_public
-  ].map { |x| I18n.t("privacy_types.#{x}") }
+  ]
 end

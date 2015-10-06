@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150924014204) do
     t.string   "title",                      null: false
     t.text     "content",    default: ""
     t.boolean  "draft",      default: false
-    t.integer  "privacy",    default: 0
+    t.string   "privacy",                    null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
