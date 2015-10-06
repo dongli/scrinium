@@ -1,4 +1,6 @@
 class Reference < ActiveRecord::Base
+  extend Enumerize
+
   validates_uniqueness_of :title, scope: :year
   validates :title, :authors, :year, :pages, presence: true
   belongs_to :publicable, polymorphic: true
@@ -7,8 +9,10 @@ class Reference < ActiveRecord::Base
   has_many :publications, dependent: :destroy
   has_many :users, through: :publications
 
-  enum reference_type: [
+  validates_presence_of :reference_type
+
+  enumerize :reference_type, in: [
     :article,
     :book
-  ].map { |x| I18n.t("reference.types.#{x}") }
+  ]
 end

@@ -311,7 +311,7 @@ ActiveRecord::Schema.define(version: 20150924014204) do
 
   create_table "references", force: :cascade do |t|
     t.string   "cite_key"
-    t.integer  "reference_type"
+    t.string   "reference_type"
     t.string   "authors",           default: [],              array: true
     t.string   "title"
     t.integer  "publicable_id"

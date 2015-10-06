@@ -9,7 +9,7 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to session[:previous_url].last, notice: t('message.add_success', thing: @publication.reference.reference_type) }
+        format.html { redirect_to session[:previous_url].last, notice: t('message.add_success', thing: @publication.reference.reference_type.text) }
         format.json { render :show, status: :created, location: @publication }
       else
         # TODO: Why we can not use I18n here?
@@ -24,7 +24,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to @publication, notice: t('message.update_success', thing: @publication.reference.reference_type) }
+        format.html { redirect_to @publication, notice: t('message.update_success', thing: @publication.reference.reference_type.text) }
         format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit }
@@ -38,7 +38,7 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to publications_url, notice: t('message.destroy_success', thing: @publication.reference.reference_type) }
+      format.html { redirect_to publications_url, notice: t('message.destroy_success', thing: @publication.reference.reference_type.text) }
       format.json { head :no_content }
     end
   end

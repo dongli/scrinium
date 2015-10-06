@@ -2,7 +2,7 @@ class CreateReferences < ActiveRecord::Migration
   def change
     create_table :references do |t|
       t.string     :cite_key
-      t.integer    :reference_type
+      t.string     :reference_type
       t.string     :authors, array: true, default: []
       t.string     :title
       t.references :publicable, polymorphic: true, index: true

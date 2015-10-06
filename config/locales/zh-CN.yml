@@ -198,9 +198,6 @@ zh-CN:
 
   reference:
     type: 文献类型
-    types:
-      article: 文章
-      book: 书
     title: 题目
     authors: 作者
     year: 年份
@@ -301,6 +298,10 @@ zh-CN:
       privacy:
         public: 公开
         private: 不公开
+    reference:
+      reference_type:
+        article: 文章
+        book: 书
 
   errors:
     messages:

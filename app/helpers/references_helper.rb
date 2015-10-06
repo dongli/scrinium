@@ -1,6 +1,6 @@
 module ReferencesHelper
   def join_authors reference, add_link = true
-    if add_link
+    if current_user and add_link
       attrs = <<-EOT
         class='author'
         data-toggle='popover'

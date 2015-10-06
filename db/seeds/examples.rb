@@ -2,7 +2,7 @@ Reference.create(
   cite_key: 'Dong:2012ab',
   title: 'Trajectory-tracking scheme in Lagrangian form for solving linear advection problems: preliminary tests',
   authors: ['Li Dong', 'Bin Wang'],
-  reference_type: 0,
+  reference_type: 'article',
   publicable_type: 'Journal',
   publicable_id: 1,
   doi: '10.1175/MWR-D-10-05026.1',
