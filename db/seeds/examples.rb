@@ -13,9 +13,26 @@ Reference.create(
 )
 
 User.create(
+  name: '董理',
+  avatar: open('/Users/dongli/Dropbox/Docs/Materials/me.jpg'),
+  gender: 'male',
+  email: 'dongli@lasg.iap.ac.cn',
+  password: '12345678',
+  password_confirmation: '12345678'
+)
+
+Article.create(
+  user_id: 1,
+  title: '云滴谱的数值求解',
+  content: '\\\\[ \\frac{\\partial n}{\\partial t} = - \\frac{\\partial}{\\partial r} \\frac{d r}{d t} n \\\\]',
+  draft: false,
+  privacy: 0
+)
+
+User.create(
   name: '张三',
   avatar: open('/Users/dongli/Dropbox/Docs/Materials/张三.png'),
-  gender: 1,
+  gender: 'female',
   email: 'zhangsan@lasg.iap.ac.cn',
   password: '12345678',
   password_confirmation: '12345678'

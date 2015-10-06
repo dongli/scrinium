@@ -33,23 +33,11 @@
               %>
             </div>
             <div class='col-md-12'>
-              <% if @user.gender %>
-                <%=
-                  f.input :gender,
-                  label: false,
-                  required: true,
-                  collection: User.genders,
-                  selected: User.genders[@user.gender]
-                %>
-              <% else %>
-                <%=
-                  f.input :gender,
-                  label: false,
-                  required: true,
-                  collection: User.genders.merge({ t('user.gender') => -1 }),
-                  selected: -1
-                %>
-              <% end %>
+              <%=
+                f.input :gender,
+                label: false,
+                required: true
+              %>
             </div>
           </div>
         </div>
@@ -64,22 +52,11 @@
           id: 'input-organization-name'
         }
       %>
-      <% if @user.position %>
-        <%=
-          f.input :position,
-          label: t('user.position'),
-          required: true,
-          collection: User.positions,
-          selected: User.positions[@user.position]
-        %>
-      <% else %>
-        <%=
-          f.input :position,
-          label: t('user.position'),
-          required: true,
-          collection: User.positions
-        %>
-      <% end %>
+      <%=
+        f.input :position,
+        label: t('user.position'),
+        required: true
+      %>
       <% if is_super_admin_or_admin?(@user) %>
         <%=
           f.input :role,

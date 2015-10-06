@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend Enumerize
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,18 +21,8 @@ class User < ActiveRecord::Base
   has_many :resources, as: :resourceable, dependent: :destroy
   has_many :surveys, dependent: :destroy
 
-  enum gender: [
-    :female,
-    :male,
-    :invalid
-  ].map { |x| I18n.t("user.gender_types.#{x}") }
-  enum role: [
-    :super_admin,
-    :admin,
-    :user,
-    :guest
-  ].map { |x| I18n.t("user.role_types.#{x}") }
-  enum position: [
+  enumerize :gender, in: [ :female, :male ]
+  enumerize :position, in: [
     :academician,
     :researcher,
     :associate_researcher,
@@ -42,7 +34,13 @@ class User < ActiveRecord::Base
     :postgraduate,
     :undergraduate,
     :freeman
-  ].map { |x| I18n.t("user.position_types.#{x}") }
+  ]
+  enum role: [
+    :super_admin,
+    :admin,
+    :user,
+    :guest
+  ].map { |x| I18n.t("user.role_types.#{x}") }
 
   validates :gender, exclusion: {
     in: [ I18n.t('user.gender_types.invalid') ],

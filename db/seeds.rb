@@ -6,19 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(name: '董理',
-            avatar: open('/Users/dongli/Dropbox/Docs/Materials/me.jpg'),
-            gender: 1,
-            email: 'dongli@lasg.iap.ac.cn',
-            password: '12345678',
-            password_confirmation: '12345678')
-
-Article.create(user_id: 1,
-                      title: '云滴谱的数值求解',
-                      content: '\\\\[ \\frac{\\partial n}{\\partial t} = - \\frac{\\partial}{\\partial r} \\frac{d r}{d t} n \\\\]',
-                      draft: false,
-                      privacy: 0)
-
 Organization.create(name: '中国科学院大气物理研究所',
                     short_name: 'CAS-IAP',
                     description: '',

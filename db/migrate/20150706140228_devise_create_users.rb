@@ -8,8 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :name,               null: false
       t.string  :email,              null: false
       t.string  :encrypted_password, null: false
-      t.integer :gender,             null: false
-      t.integer :position
+      t.string  :gender,             null: false
+      t.string  :position
       t.integer :role
 
       ## Recoverable

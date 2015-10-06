@@ -38,23 +38,11 @@
             %>
           </div>
           <div class='col-md-12'>
-            <% if resource.gender %>
-              <%=
-                f.input :gender,
-                label: false,
-                required: true,
-                collection: User.genders,
-                selected: User.genders[resource.gender]
-              %>
-            <% else %>
-              <%=
-                f.input :gender,
-                label: false,
-                required: true,
-                collection: User.genders,
-                selected: 2
-              %>
-            <% end %>
+            <%=
+              f.input :gender,
+              label: false,
+              required: true
+            %>
           </div>
         </div>
       </div>
