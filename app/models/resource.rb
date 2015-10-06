@@ -5,7 +5,8 @@ class Resource < ActiveRecord::Base
 
   mount_uploader :file, ResourceUploader
   validates_presence_of :file
-  validates_presence_of :name, if: 'file == ""'
+  validates_presence_of :name, on: :update
+  validates_uniqueness_of :name, on: :update
 
   acts_as_taggable
   acts_as_taggable_on :categories

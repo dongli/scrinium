@@ -285,6 +285,11 @@ zh-CN:
               taken: 已经有相同名称的文章！
             content:
               blank: 内容不能为空！
+        resource:
+          attributes:
+            name:
+              blank: 资源名称不能为空！
+              taken: 已经有相同名称的资源！
 
   errors:
     messages:
