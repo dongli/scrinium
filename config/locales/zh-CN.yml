@@ -270,6 +270,10 @@ zh-CN:
             name:
               blank: 资源名称不能为空！
               taken: 已经有相同名称的资源！
+        group:
+          attributes:
+            privacy:
+              blank: 群组隐私度不能为空！
 
   enumerize:
     article:
@@ -293,6 +297,10 @@ zh-CN:
         postgraduate: 研究生
         undergraduate: 本科生
         freeman: 自由人
+    group:
+      privacy:
+        public: 公开
+        private: 不公开
 
   errors:
     messages:

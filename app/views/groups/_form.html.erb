@@ -31,9 +31,7 @@
     <%=
       f.input :privacy,
       label: false,
-      required: true,
-      collection: Group.privacies,
-      selected: Group.privacies[@group.privacy]
+      required: true
     %>
     <%=
       f.input :description,

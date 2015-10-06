@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20150924014204) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "admin_id"
-    t.integer  "privacy",           null: false
+    t.string   "privacy",           null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
