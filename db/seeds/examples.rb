@@ -16,6 +16,7 @@ User.create(
   name: '董理',
   avatar: open('/Users/dongli/Dropbox/Docs/Materials/me.jpg'),
   gender: 'male',
+  role: 'admin',
   email: 'dongli@lasg.iap.ac.cn',
   password: '12345678',
   password_confirmation: '12345678'
@@ -33,6 +34,7 @@ User.create(
   name: '张三',
   avatar: open('/Users/dongli/Dropbox/Docs/Materials/张三.png'),
   gender: 'female',
+  role: 'user',
   email: 'zhangsan@lasg.iap.ac.cn',
   password: '12345678',
   password_confirmation: '12345678'

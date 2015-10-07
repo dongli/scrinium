@@ -1,7 +1,7 @@
 class CreateGroups < ActiveRecord::Migration
   def up
     create_table :groups do |t|
-      t.references :admin, as: :user
+      t.references :admin, class_name: 'User'
       t.string :privacy, null: false
       t.attachment :logo
       t.timestamps null: false

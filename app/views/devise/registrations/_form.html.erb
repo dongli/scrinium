@@ -1,7 +1,7 @@
 <div class='devise-form'>
   <!-- Check if the user is the first one. -->
   <% if User.all.empty? %>
-    <% flash[:notice] = t('user.super_admin_born') %>
+    <% flash[:notice] = t('user.admin_born') %>
   <% else %>
     <% flash[:notice] = t('user.complete_info') %>
   <% end %>
@@ -27,7 +27,7 @@
             <%=
               f.input :name,
               label: false,
-              placeholder: t('user.need_real_name'),
+              placeholder: t('placeholder.need_real_name'),
               autofocus: true,
               required: true,
               input_html: {
