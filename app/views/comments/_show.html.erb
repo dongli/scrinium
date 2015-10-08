@@ -22,13 +22,15 @@
           class: 'button btn-xs reply-comment',
           remote: true
         %>
-        <% if current_user == user or is_super_admin_or_admin?(current_user) %>
+        <% if can? :update, comment %>
           <%=
             link_to t('action.edit'),
             app.url_for([:edit, user, commentable, comment]),
             class: 'button btn-xs edit-comment',
             remote: true
           %>
+        <% end %>
+        <% if can? :delete, comment %>
           <%=
             link_to t('action.delete'),
             app.url_for([user, commentable, comment]),

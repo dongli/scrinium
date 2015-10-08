@@ -6,22 +6,29 @@
   <li>
     <%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %>
   </li>
-  <% if current_user == @user %>
+  <% if can? :update, @user %>
     <li><%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_path(@user) %></li>
     <li><%= link_to fa_icon('key', text: t('action.edit')+t('user.password')), change_user_password_path(@user) %></li>
+    <% if @user == current_user %>
+      <li>
+        <%=
+          link_to fa_icon('file-o', text: t('action.add')+t('scrinium.article')),
+          new_user_article_path(@user),
+          id: 'add-article'
+        %>
+      </li>
+      <li>
+        <%=
+          link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+          new_user_resource_path(@user),
+          id: 'add-resource', style: 'display: none;'
+        %>
+      </li>
+    <% end %>
+  <% end %>
+  <% if can? :create, Reference %>
     <li>
-      <%=
-        link_to fa_icon('file-o', text: t('action.add')+t('scrinium.article')),
-        new_user_article_path(@user),
-        id: 'add-article'
-      %>
-    </li>
-    <li>
-      <%=
-        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        new_user_resource_path(@user),
-        id: 'add-resource', style: 'display: none;'
-      %>
+      <%= link_to fa_icon('book', text: t('action.add')+t('scrinium.reference')), new_reference_path %>
     </li>
   <% end %>
   <li>

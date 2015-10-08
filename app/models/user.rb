@@ -37,26 +37,12 @@ class User < ActiveRecord::Base
   ]
   enumerize :role, in: [
     :admin,
+    :assist_admin,
     :user,
     :guest
-  ]
-
-  before_save :set_user_defaults
+  ], default: :guest
 
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil
-  end
-
-  protected
-
-  def set_user_defaults
-    if not self.role
-      if User.all.empty?
-        # Set the first user as super admin!
-        self.role = 0
-      else
-        self.role = 3
-      end
-    end
   end
 end

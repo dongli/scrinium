@@ -12,22 +12,19 @@
     </tr>
   </thead>
   <tbody>
-    <% articles.each do |a| %>
-    <% if not is_same_user?(a.user) and not is_in_groups?(a.groups) and
-        a.privacy != t('privacy_types.public') %>
-      <% next %>
-    <% end %>
+    <% articles.each do |article| %>
+      <% next if cannot? :show, article %>
       <tr
-        <% if a.draft %>
+        <% if article.draft %>
           class='article-draft'
         <% end %>
       >
-        <td><%= link_to "《#{a.title}》", main_app.url_for([a.user, a]) %></td>
+        <td><%= link_to "《#{article.title}》", [ main_app, article.user, article ] %></td>
         <% if show_author %>
-          <td><%= link_to a.user.name, main_app.user_path(a.user) %></td>
+          <td><%= link_to article.user.name, main_app.user_path(article.user) %></td>
         <% end %>
-        <td><%= a.created_at %></td>
-        <td><%= a.impressionist_count filter: :session_hash %></td>
+        <td><%= article.created_at %></td>
+        <td><%= article.impressionist_count filter: :session_hash %></td>
       </tr>
     <% end %>
   </tbody>

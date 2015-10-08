@@ -6,7 +6,7 @@
     render partial: 'organizations/table_list',
     locals: { organizations: Organization.all }
   %>
-  <% if is_super_admin?(current_user) %>
+  <% if can? :create, Organization %>
     <%= link_to t('action.add'), new_organization_path, class: 'button float-right' %>
   <% end %>
 <% end %>

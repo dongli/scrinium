@@ -4,9 +4,6 @@
       <th width="100"><%= t('organization.short_name') %></th>
       <th width="300"><%= t('organization.name') %></th>
       <th width="200"><%= t('global.create_time') %></th>
-      <% if is_super_admin_or_admin?(current_user) %>
-        <th width="200"><%= t('actions') %></th>
-      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -18,19 +15,6 @@
         </td>
         <td><%= o.name %></td>
         <td><%= o.created_at %></td>
-        <% if is_super_admin_or_admin?(current_user) %>
-          <td>
-            <% if is_super_admin?(current_user) %>
-              <%=
-                link_to t('action.delete'),
-                organization_path(o),
-                method: :delete,
-                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.organization')) },
-                class: 'button btn-xs btn-danger'
-              %>
-            <% end %>
-          </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>

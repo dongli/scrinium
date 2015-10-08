@@ -1,3 +1,3 @@
 Scrinium::Application.configure do
-  config.lograge.enabled = true
+  config.lograge.enabled = false
 end

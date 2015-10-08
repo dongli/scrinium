@@ -21,6 +21,7 @@ zh-CN:
         freeman: 自由人
       role:
         admin: 管理员
+        assist_admin: 辅助管理员
         user: 用户
         guest: 访客
 
@@ -83,3 +84,5 @@ zh-CN:
               too_short: 密码长度不够！
             password_confirmation:
               confirmation: 请确认登陆密码！
+            role:
+              inclusion: 角色设置不正确！

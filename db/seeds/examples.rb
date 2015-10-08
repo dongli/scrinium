@@ -22,6 +22,15 @@ User.create(
   password_confirmation: '12345678'
 )
 
+Membership.create(
+  host_type: 'Organization',
+  host_id: 2,
+  user_id: 1,
+  role: 'admin',
+  status: 'approved',
+  expired_at: 'never'
+)
+
 Article.create(
   user_id: 1,
   title: '云滴谱的数值求解',

@@ -73,7 +73,6 @@ class SurveysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def survey_params
-    transform_params params, :survey, questions_attributes: { placeholder: :question_type }
     order = 0
     params[:survey][:questions_attributes].values.each do |q|
       q[:order] = order

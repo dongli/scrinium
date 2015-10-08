@@ -10,11 +10,7 @@
             size: '100x100',
             id: 'preview-avatar'
           %>
-          <%=
-            f.file_field :avatar,
-            required: true,
-            id: 'upload-avatar'
-          %>
+          <%= f.file_field :avatar, required: true, id: 'upload-avatar' %>
         </div>
         <div class='col-md-6'>
           <div class='row'>
@@ -33,45 +29,13 @@
               %>
             </div>
             <div class='col-md-12'>
-              <%=
-                f.input :gender,
-                label: false,
-                required: true
-              %>
+              <%= f.input :gender, label: false, required: true %>
             </div>
           </div>
         </div>
       </div>
-      <%=
-        f.association :organization,
-        label: t('user.affiliation'),
-        required: true,
-        label_method: :name,
-        value_method: :id,
-        input_html: {
-          id: 'input-organization-name'
-        }
-      %>
-      <%=
-        f.input :position,
-        label: t('user.position'),
-        required: true
-      %>
-      <% if is_super_admin_or_admin?(@user) %>
-        <%=
-          f.input :role,
-          label: t('user.role'),
-          require: true,
-          collection: User.roles,
-          selected: User.roles[@user.role]
-        %>
-      <% end %>
-      <%=
-        f.input :email,
-        label: false,
-        required: true,
-        placeholder: t('user.email')
-      %>
+      <%= f.input :role, label: false, required: true, disabled: current_user.role != 'admin' %>
+      <%= f.input :email, label: false, required: true, placeholder: t('user.email') %>
       <% if current_user %>
         <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
       <% else %>

@@ -6,7 +6,7 @@
     render partial: 'resources/table_list',
     locals: { resources: Resource.all }
   %>
-  <% if is_super_admin?(current_user) %>
+  <% if can? :create, Resource %>
     <%= link_to t('action.add'), new_user_resource_path(current_user), class: 'button float-right' %>
   <% end %>
 <% end %>
