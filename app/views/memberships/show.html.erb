@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host:</strong>
+  <%= @membership.host %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @membership.member %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @membership.role %>
+</p>
+
+<p>
+  <strong>Expired at:</strong>
+  <%= @membership.expired_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @membership.status %>
+</p>
+
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>

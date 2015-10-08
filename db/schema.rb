@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924014204) do
+ActiveRecord::Schema.define(version: 20151007070256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,17 +106,6 @@ ActiveRecord::Schema.define(version: 20150924014204) do
 
   add_index "group_translations", ["group_id"], name: "index_group_translations_on_group_id", using: :btree
   add_index "group_translations", ["locale"], name: "index_group_translations_on_locale", using: :btree
-
-  create_table "group_user_associations", force: :cascade do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.boolean  "approved",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "group_user_associations", ["group_id"], name: "index_group_user_associations_on_group_id", using: :btree
-  add_index "group_user_associations", ["user_id"], name: "index_group_user_associations_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.integer  "admin_id"
@@ -215,6 +204,20 @@ ActiveRecord::Schema.define(version: 20150924014204) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "host_id",                           null: false
+    t.string   "host_type",                         null: false
+    t.integer  "user_id",                           null: false
+    t.string   "role",       default: "member",     null: false
+    t.string   "expired_at"
+    t.string   "status",     default: "unapproved"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "memberships", ["host_type", "host_id"], name: "index_memberships_on_host_type_and_host_id", using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -386,32 +389,29 @@ ActiveRecord::Schema.define(version: 20150924014204) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.integer  "organization_id"
-    t.boolean  "organization_approved",  default: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "name",                                   null: false
-    t.string   "email",                                  null: false
-    t.string   "encrypted_password",                     null: false
-    t.string   "gender",                                 null: false
+    t.string   "name",                               null: false
+    t.string   "email",                              null: false
+    t.string   "encrypted_password",                 null: false
+    t.string   "gender",                             null: false
     t.string   "position"
-    t.string   "role",                                   null: false
+    t.string   "role",                               null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: :cascade do |t|

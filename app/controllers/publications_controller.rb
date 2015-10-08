@@ -9,12 +9,9 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to session[:previous_url].last, notice: t('message.add_success', thing: @publication.reference.reference_type.text) }
-        format.json { render :show, status: :created, location: @publication }
+        format.html { redirect_to session[:previous_url].last, notice: t('message.create_success', thing: @publication.reference.reference_type.text) }
       else
-        # TODO: Why we can not use I18n here?
         format.html { redirect_to session[:previous_url].last, flash: { error: @publication.errors.to_a.first } }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -25,10 +22,8 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.update(publication_params)
         format.html { redirect_to @publication, notice: t('message.update_success', thing: @publication.reference.reference_type.text) }
-        format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,7 +34,6 @@ class PublicationsController < ApplicationController
     @publication.destroy
     respond_to do |format|
       format.html { redirect_to publications_url, notice: t('message.destroy_success', thing: @publication.reference.reference_type.text) }
-      format.json { head :no_content }
     end
   end
 

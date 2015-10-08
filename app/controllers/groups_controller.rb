@@ -2,52 +2,48 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  # GET /groups
-  # GET /groups.json
   def index
     @groups = Group.all
   end
 
-  # GET /groups/1
-  # GET /groups/1.json
   def show
   end
 
-  # GET /groups/new
   def new
     @group = Group.new
   end
 
-  # GET /groups/1/edit
   def edit
   end
 
-  # POST /groups
-  # POST /groups.json
   def create
     @group = Group.new(group_params)
     # 创建组织的用户默认成为管理者。
-    if current_user
-      @group.admin_id = current_user.id
-    end
-    # 自动将管理者加入到用户中。
-    if not @group.user_ids.include? @group.admin_id
-      @group.user_ids = @group.user_ids << @group.admin_id
-    end
-
+    @group.admin_id = current_user.id
     respond_to do |format|
       if @group.save
+        # 建立管理员membership和其它表单中含有的用户membership。
+        user_ids = (params[:group][:user_ids]
+          .delete_if { |id| id.empty? }
+          .map { |id| id.to_i } << current_user.id).uniq
+        user_ids.each do |id|
+          role = id == current_user.id ? 'admin' : 'member'
+          membership = Membership.new(host_type: 'Group',
+                                      host_id: @group.id,
+                                      user_id: id,
+                                      role: role,
+                                      status: 'approved')
+          if not membership.save
+            # TODO: 处理错误。
+          end
+        end
         format.html { redirect_to @group, notice: t('message.create_success', thing: t('scrinium.group')) }
-        format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /groups/1
-  # PATCH/PUT /groups/1.json
   def update
     # 自动将管理者加入到用户中。
     if not params[:group][:user_ids].include? @group.admin_id
@@ -56,16 +52,12 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: t('message.update_success', thing: t('scrinium.group')) }
-        format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /groups/1
-  # DELETE /groups/1.json
   def destroy
     @group.destroy
     respond_to do |format|
@@ -76,18 +68,15 @@ class GroupsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def group_params
     params.require(:group).permit(:name,
                                   :logo,
                                   :description,
                                   :admin_id,
-                                  { user_ids: [] },
                                   { article_ids: [] },
                                   :tag_list,
                                   { category_list: [] },

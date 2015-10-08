@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host_id: 
+  host_type: Host
+  member_id: 
+  role: MyString
+  expired_at: MyString
+  status: MyString
+
+two:
+  host_id: 
+  host_type: Host
+  member_id: 
+  role: MyString
+  expired_at: MyString
+  status: MyString

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get 'mailbox/empty_trash' => 'mailbox#empty_trash', as: :empty_trash
     get 'mailbox/restore_message/:id' => 'mailbox#restore_message', as: :restore_message
   end
+  resources :memberships
   resources :groups
   resources :organizations
   resources :organizationships

@@ -36,13 +36,7 @@
   </div>
 
   <footer>
-    <% if current_user and
-          current_user.organization and
-          current_user.organization.short_name != 'void' %>
-      Copyright &copy 2015 <%= current_user.organization.name %> / <%= t('global.shustone') %>
-    <% else %>
-      Copyright &copy 2015 <%= t('global.shustone') %>
-    <% end %>
+    Copyright &copy 2015 <%= t('global.shustone') %>
   </footer>
 </body>
 </html>

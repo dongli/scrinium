@@ -19,15 +19,20 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
     # 创建组织的用户默认成为管理者。
-    if current_user
-      @organization.admin_id = current_user.id
-    end
-
+    @organization.admin_id = current_user.id
     respond_to do |format|
       if @organization.save
+        # 建立管理员membership。
+        if not Membership.new(host_type: 'Organization',
+                              host_id: @organization.id,
+                              user_id: current_user.id,
+                              role: 'admin',
+                              status: 'approved').save
+          # TODO: 处理错误。
+        end
+        # 建立机构间的联系。
         match = session[:previous_url].last.match(/\/organizations\/new\?organization_id=(\d+)/)
         organization_id = match ? match[1] : nil
-        # 建立机构间的联系。
         if organization_id
           organizationship = Organizationship.new(organization_id: organization_id,
                                                   suborganization_id: @organization.id)
@@ -36,10 +41,8 @@ class OrganizationsController < ApplicationController
           end
         end
         format.html { redirect_to @organization, notice: t('message.create_success', thing: t('scrinium.organization')) }
-        format.json { render :show, status: :created, location: @organization }
       else
         format.html { render :new }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,10 +51,8 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.update(organization_params)
         format.html { redirect_to @organization, notice: t('message.update_success', thing: t('scrinium.organization')) }
-        format.json { render :show, status: :ok, location: @organization }
       else
         format.html { render :edit }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +61,6 @@ class OrganizationsController < ApplicationController
     @organization.destroy
     respond_to do |format|
       format.html { redirect_to organizations_url, notice: t('message.destroy_success', thing: t('scrinium.organization')) }
-      format.json { head :no_content }
     end
   end
 

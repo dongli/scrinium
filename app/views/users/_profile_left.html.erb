@@ -1,20 +1,8 @@
 <ul class="left-side-list">
   <li><%= avatar @user, :medium %></li>
   <li><%= @user.name %></li>
-  <% if @user.organization %>
-    <% if @user.organization_approved %>
-      <li><%= @user.organization.name %></li>
-      <li><%= @user.position %></li>
-    <% else %>
-      <li><span data-toggle='tooltip' data-placement='bottom' title='<%= t('message.unapproved') %>'
-      style='color: grey;'><%= @user.organization.name %></span></li>
-      <li><span data-toggle='tooltip' data-placement='bottom' title='<%= t('message.unapproved') %>'
-      style='color: grey;'><%= @user.position %></span></li>
-    <% end %>
-  <% else %>
-    <li><%= t('user.has_no_affiliation') %></li>
-  <% end %>
-  <li><%= @user.role %></li>
+  <li><%= render 'memberships/organization_logos', user: @user %></li>
+  <li><%= @user.role.text %></li>
   <li>
     <%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %>
   </li>
@@ -49,9 +37,9 @@
 <!-- Group list placeholder -->
 <div class='collapse' id='group-list'>
   <ul class='left-side-list'>
-    <% @user.groups.all.each do |g| %>
+    <% @user.groups.each do |group| %>
       <li class='indent'>
-        <%= link_to fa_icon('chevron-right', text: g.name), group_path(g) %>
+        <%= link_to fa_icon('chevron-right', text: group.name), group %>
       </li>
     <% end %>
     <li class='indent'>

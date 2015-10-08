@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
-  belongs_to :organization
+  has_many :memberships, dependent: :destroy
+  has_many :organizations, through: :memberships, source: :host, source_type: 'Organization'
+  has_many :groups, through: :memberships, source: :host, source_type: 'Group'
   has_many :articles, dependent: :destroy
-  has_many :group_user_associations
-  has_many :groups, through: :group_user_associations
   has_many :comments, dependent: :destroy
   has_many :publications, dependent: :destroy
   has_many :references, through: :publications

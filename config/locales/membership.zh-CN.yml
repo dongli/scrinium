@@ -1,0 +1,12 @@
+zh-CN:
+  membership:
+    action:
+      apply: 申请加入
+    message:
+      wait_for_approval: 请耐心等待管理员核准。
+      quit_success: 您从%{host}退出！
+    notification:
+      subject:
+        new_user_applies_to_join_in: 新用户申请加入%{host}
+      body:
+        new_user_applies_to_join_in: 新用户%{user}申请加入%{host}，等待您的批准。
