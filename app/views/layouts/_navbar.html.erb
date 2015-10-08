@@ -92,7 +92,7 @@
                   main_app.new_user_article_path(current_user)
                 %>
               </li>
-              <% if current_user and current_user.role == 'admin' %>
+              <% if current_user and ( current_user.admin? or current_user.assist_admin? ) %>
                 <li>
                   <%=
                     link_to fa_icon('dashboard', text: t('global.dashboard')),

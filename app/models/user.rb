@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     :assist_admin,
     :user,
     :guest
-  ], default: :guest
+  ], default: :guest, predicates: true
 
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil
