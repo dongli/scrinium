@@ -36,7 +36,7 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to @membership, notice: 'Membership was successfully updated.' }
+        format.html { redirect_to @membership, notice: t('message.update_success', thing: t('scrinium.membership')) }
       else
         format.html { render :edit }
       end

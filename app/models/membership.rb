@@ -9,4 +9,10 @@ class Membership < ActiveRecord::Base
     :assist_admin,
     :member
   ]
+
+  enumerize :status, in: [
+    :unapproved,
+    :approved,
+    :banned
+  ]
 end

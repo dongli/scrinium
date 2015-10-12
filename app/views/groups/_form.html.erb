@@ -18,6 +18,12 @@
       required: true
     %>
     <%=
+      f.input :short_name,
+      label: false,
+      placeholder: t('global.short_name'),
+      required: true
+    %>
+    <%=
       f.input :category_list,
       label: false,
       collection: @group.categories.map { |t| t.name },

@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :categories
 
-  translates :name, :description
+  translates :name, :short_name, :description
 
   validates_presence_of :privacy
 

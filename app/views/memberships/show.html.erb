@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Host:</strong>
-  <%= @membership.host %>
-</p>
-
-<p>
-  <strong>Member:</strong>
-  <%= @membership.member %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @membership.role %>
-</p>
-
-<p>
-  <strong>Expired at:</strong>
-  <%= @membership.expired_at %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @membership.status %>
-</p>
-
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
-<%= link_to 'Back', memberships_path %>
+<% content_for :main_block do %>
+  <div class='membership-card'>
+    <div class='well'>
+      <div class='row'>
+        <div class='col-md-4'>
+          <%= avatar @membership.user, :medium %>
+        </div>
+        <div class='col-md-6 col-md-offset-2'>
+            <ul class='clean-list'>
+              <li><%= t('membership.applicant') %>: <%= @membership.user.name %></li>
+              <li><%= t('membership.host_type') %>: <%= @membership.host_type %></li>
+              <li><%= t('membership.host_name') %>: <%= @membership.host.name %></li>
+              <li><%= t('membership.role') %>: <%= @membership.role.text %></li>
+              <li><%= t('membership.status') %>: <%= @membership.status.text %></li>
+            </ul>
+        </div>
+      </div>
+      <% if current_user.id == @membership.host.admin_id %>
+        <div class='center'>
+          <% case @membership.status %>
+          <% when 'unapproved', 'banned' %>
+            <%=
+              link_to t('membership.action.approve'),
+              [ @membership, membership: { status: 'approved' } ],
+              method: :patch, class: 'button'
+            %>
+          <% when 'approved' %>
+            <%=
+              link_to t('membership.action.ban'),
+              [ @membership, membership: { status: 'banned' } ],
+              method: :patch, class: 'button btn-danger'
+            %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

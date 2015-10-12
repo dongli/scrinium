@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20151007070256) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "name"
+    t.string   "short_name"
     t.text     "description"
   end
 

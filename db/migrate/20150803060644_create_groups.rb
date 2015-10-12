@@ -8,6 +8,7 @@ class CreateGroups < ActiveRecord::Migration
     end
     Group.create_translation_table!({
       name: :string,
+      short_name: :string,
       description: :text
     })
   end

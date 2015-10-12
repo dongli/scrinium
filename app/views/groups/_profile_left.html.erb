@@ -14,6 +14,7 @@
   </li>
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
   <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group) %></li>
+  <li><%= render 'memberships/apply_button', host: @group %></li>
   <li>
     <dl class='small'>
       <dt><%= t('group.members') %></dt>

@@ -1,7 +1,17 @@
 zh-CN:
+  scrinium:
+    membership: 用户资格
+
   membership:
+    applicant: 申请人
+    host_type: 组织类型
+    host_name: 组织名称
+    role: 角色
+    status: 资格状态
     action:
       apply: 申请加入
+      approve: 核准
+      ban: 封存
     message:
       wait_for_approval: 请耐心等待管理员核准。
       quit_success: 您从%{host}退出！
@@ -9,4 +19,15 @@ zh-CN:
       subject:
         new_user_applies_to_join_in: 新用户申请加入%{host}
       body:
-        new_user_applies_to_join_in: 新用户%{user}申请加入%{host}，等待您的批准。
+        new_user_applies_to_join_in: 新用户”%{user}“申请加入”%{host}“，等待您的批准。
+
+  enumerize:
+    membership:
+      role:
+        admin: 管理员
+        assist_admin: 辅助管理员
+        member: 成员
+      status:
+        unapproved: 未核准
+        approved: 已核准
+        banned: 封存
