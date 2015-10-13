@@ -27,7 +27,9 @@ body {
   padding-top: 60px;
   /* Margin bottom by footer height */
   margin-bottom: 70px;
-  background-color: #FFFFFF;
+  background: -moz-linear-gradient(left top, #ace, #f96);
+  background: -webkit-linear-gradient(left top, #FFFFFF, #FAFAFA);
+  background: -o-linear-gradient(left top, #ace, #f96);
 }
 
 footer {

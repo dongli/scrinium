@@ -15,6 +15,7 @@
 .DS_Store
 /public/system
 /public/assets
+/public/uploads
 engine_requires.*
 engine_routes.rb
 

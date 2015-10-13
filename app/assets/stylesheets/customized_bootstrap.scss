@@ -2,7 +2,7 @@
 @import 'bootstrap';
 
 .navbar-default {
-  background-color: #FFFFFF;
+  background-color: inherit;
   border-color: #E7E7E7;
 }
 
@@ -36,7 +36,7 @@ a.button:visited {
 }
 
 .breadcrumb {
-  background-color: white;
+  background-color: inherit;
   border-radius: 10px;
   border-style: solid;
   border-width: thin;
