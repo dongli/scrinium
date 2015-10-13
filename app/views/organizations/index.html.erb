@@ -3,7 +3,7 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'organizations/table_list',
+    render partial: 'organizations/block_list',
     locals: { organizations: Organization.all }
   %>
   <% if can? :create, Organization %>

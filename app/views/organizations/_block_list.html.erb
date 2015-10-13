@@ -1,0 +1,9 @@
+<div class='row'>
+  <% organizations.each do |o| %>
+    <div class='col-md-2 col-sm-3 col-xs-4'>
+      <a href='<%= organization_path(o) %>'>
+        <%= image_tag o.logo.url, class: 'img-responsive center-block' %>
+      </a>
+    </div>
+  <% end %>
+</div>
