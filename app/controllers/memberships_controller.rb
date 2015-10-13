@@ -24,7 +24,10 @@ class MembershipsController < ApplicationController
         # 通知管理员新用户的加入。
         host = @membership.host
         subject = t('membership.notification.subject.new_user_applies_to_join_in', host: host.short_name)
-        body = t('membership.notification.body.new_user_applies_to_join_in', user: current_user.name, host: host.short_name)
+        body = t('membership.notification.body.new_user_applies_to_join_in',
+                 user: current_user.name,
+                 host: host.short_name,
+                 page: membership_path(@membership))
         @membership.host.admin.notify subject, body
         format.html { redirect_to session[:previous_url].last, notice: t('membership.message.wait_for_approval') }
       else

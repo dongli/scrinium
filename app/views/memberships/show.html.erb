@@ -9,7 +9,7 @@
             <ul class='clean-list'>
               <li><%= t('membership.applicant') %>: <%= @membership.user.name %></li>
               <li><%= t('membership.host_type') %>: <%= @membership.host_type %></li>
-              <li><%= t('membership.host_name') %>: <%= @membership.host.name %></li>
+              <li><%= t('membership.host_name') %>: <%= @membership.host.short_name %></li>
               <li><%= t('membership.role') %>: <%= @membership.role.text %></li>
               <li><%= t('membership.status') %>: <%= @membership.status.text %></li>
             </ul>

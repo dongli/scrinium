@@ -19,7 +19,7 @@ zh-CN:
       subject:
         new_user_applies_to_join_in: 新用户申请加入%{host}
       body:
-        new_user_applies_to_join_in: 新用户”%{user}“申请加入”%{host}“，等待您的批准。
+        new_user_applies_to_join_in: 新用户”%{user}“申请加入”%{host}“，等待您的[批准](%{page})。
 
   enumerize:
     membership:
