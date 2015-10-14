@@ -21,10 +21,6 @@ Organization.create(name: '大气科学和地球流体力学数值模拟国家�
 Organizationship.create(organization_id: 1,
                         suborganization_id: 2)
 
-Organization.create(name: '暂无所属科研单位',
-                    short_name: 'void',
-                    admin_id: 0)
-
 ['journals', 'examples'].each do |s|
   load "#{FileUtils.pwd}/db/seeds/#{s}.rb"
 end

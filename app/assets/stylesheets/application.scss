@@ -46,14 +46,13 @@ footer {
 
 .left-side {
   margin: 2em;
+  padding: 1em;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: #E7E7E7;
 }
 
 .main-block {
-  padding: 2em;
-  border-radius: 10px;
-  border-style: solid;
-  border-width: thin;
-  border-color: #E7E7E7;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -133,6 +132,10 @@ ul.left-side-list {
 
 .float-right {
   float: right !important;
+}
+
+img.avatar {
+  border-radius: 100px;
 }
 
 img.logo {

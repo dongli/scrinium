@@ -1,4 +1,11 @@
 <div class='row'>
+  <% if can? :create, Organization %>
+    <div class='col-md-2 col-sm-3 col-xs-4'>
+      <a href='<%= new_organization_path %>'>
+        <%= image_tag 'medium/add_icon.png', class: 'img-responsive center-block' %>
+      </a>
+    </div>
+  <% end %>
   <% organizations.each do |o| %>
     <div class='col-md-2 col-sm-3 col-xs-4'>
       <a href='<%= organization_path(o) %>'>
