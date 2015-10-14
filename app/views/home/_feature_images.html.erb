@@ -14,7 +14,7 @@
     <% Resource.all.each do |r| %>
       <% next if not r.image? %>
       <div class='item <%= 'active' if counter == 0 %>'>
-        <a href='<%= url_for ResourcesHelper.filter_user([eval(r.app), r.user, r.resourceable, r]) %>'>
+        <a href='<%= url_for [eval(r.app), r.resourceable, r] %>'>
           <%= image_tag r.file.url, class: 'img-responsive center-block' %>
         </a>
       </div>

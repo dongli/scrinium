@@ -1,5 +1,5 @@
 <% content_for :title, @resource.name %>
-<% add_breadcrumb @resource.name, user_resource_path(@resource.user, @resource) %>
+<% add_breadcrumb @resource.name, resource_path(@resource) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>

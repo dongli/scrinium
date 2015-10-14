@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'researches/index'
   get 'dashboard/index'
 
-  devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
+  root 'home#index'
+
+  # Concerns -------------------------------------------------------------------
   concern :commentable do
     resources :comments, except: [ :new, :show ]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
@@ -21,13 +23,10 @@ Rails.application.routes.draw do
   end
   get '/collections/:id/toggle_watched' => 'collections#toggle_watched', as: :collection_toggle_watched
   get '/collections/:id/view' => 'collections#view', as: :collection_view
-  get 'users/:id/change_password' => 'users#change_password', as: :change_user_password
+  # User -----------------------------------------------------------------------
+  devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
+  get '/users/:id/change_password' => 'users#change_password', as: :change_user_password
   resources :users do
-    resources :articles, concerns: [ :commentable, :collectable ]
-    resources :resources, concerns: [ :commentable, :collectable ]
-    resources :publications, except: [ :index, :new, :edit, :show ]
-    get '/articles/:id/versions' => 'articles#versions', as: :article_versions
-    get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message
     get 'mailbox/write_message' => 'mailbox#write_message', as: :write_message
@@ -37,20 +36,30 @@ Rails.application.routes.draw do
     get 'mailbox/empty_trash' => 'mailbox#empty_trash', as: :empty_trash
     get 'mailbox/restore_message/:id' => 'mailbox#restore_message', as: :restore_message
   end
-  resources :memberships
-  resources :groups
-  resources :organizations
-  resources :organizationships
+  # Article --------------------------------------------------------------------
+  resources :articles, concerns: [ :commentable, :collectable ]
+  get '/articles/:id/versions' => 'articles#versions', as: :article_versions
+  get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version
+  # Resource -------------------------------------------------------------------
+  resources :resources, concerns: [ :commentable, :collectable ]
+  # Reference ------------------------------------------------------------------
+  resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references
   resources :journals
+  # Membership -----------------------------------------------------------------
+  resources :memberships
+  # Organization ---------------------------------------------------------------
+  resources :organizations
+  resources :organizationships
+  # Group ----------------------------------------------------------------------
+  resources :groups
+  # Survey (准备去除) -----------------------------------------------------------
   resources :surveys do
     resources :feedbacks
   end
   resources :answers
   resources :questions
-
-  root 'home#index'
-
+  # Engines --------------------------------------------------------------------
   if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end

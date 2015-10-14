@@ -11,7 +11,7 @@
     <% resources.each do |r| %>
       <tr>
         <td>
-          <%= link_to r.name, ResourcesHelper.filter_user([ app, r.user, r.resourceable, r ]) %>
+          <%= link_to r.name, [ app, r.resourceable, r ] %>
         </td>
         <td>
           <%= link_to r.user.name, main_app.user_path(r.user) %>

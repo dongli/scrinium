@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to [@article.user, @article], notice: t('message.create_success', thing: t('scrinium.article')) }
+        format.html { redirect_to @article, notice: t('message.create_success', thing: t('scrinium.article')) }
       else
         format.html { render :new }
       end
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
           collectable_type: 'Article',
           collectable_id: @article.id
         }
-        format.html { redirect_to [@article.user, @article], notice: t('message.update_success', thing: t('scrinium.article')) }
+        format.html { redirect_to @article, notice: t('message.update_success', thing: t('scrinium.article')) }
       else
         format.html { render :edit }
       end

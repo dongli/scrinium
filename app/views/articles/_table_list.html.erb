@@ -19,7 +19,7 @@
           class='article-draft'
         <% end %>
       >
-        <td><%= link_to "《#{article.title}》", [ main_app, article.user, article ] %></td>
+        <td><%= link_to "《#{article.title}》", [ main_app, article ] %></td>
         <% if show_author %>
           <td><%= link_to article.user.name, main_app.user_path(article.user) %></td>
         <% end %>

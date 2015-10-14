@@ -1,5 +1,5 @@
 <div class='article-form'>
-  <%= simple_form_for [current_user, @article] do |f| %>
+  <%= simple_form_for @article do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :title,
@@ -28,11 +28,7 @@
         %>
       </div>
       <div class='col-md-2'>
-        <%=
-          f.input :privacy,
-          label: false,
-          required: true
-        %>
+        <%= f.input :privacy, label: false, required: true %>
       </div>
       <div class='col-md-4' id='select-groups'
         style='<%= 'display:none' if @article.privacy != t('privacy_types.group_public') %>'>

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :load_user_and_commentable
+  before_action :load_app_and_commentable
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
           if @comment.user != @comment.parent.user
             what = t('scrinium.comment')
             who = @comment.user.name
-            url = @app.url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
+            url = @app.url_for([ @commentable ])+"#comment-#{@comment.id}"
             subject = t('comment.got_commented_subject', what: what)
             body = t('comment.got_commented_body', who: who, what: what, url: url)
             @comment.parent.user.notify subject, body
@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
             end
             what = t(namespace+'.'+class_name.to_s.split('::').last.underscore)
             who = @comment.user.name
-            url = @app.url_for([@commentable.user, @commentable])+"#comment-#{@comment.id}"
+            url = @app.url_for([ @commentable ])+"#comment-#{@comment.id}"
             subject = t('comment.got_commented_subject', what: what)
             body = t('comment.got_commented_body', who: who, what: what, url: url)
             @commentable.user.notify subject, body
@@ -79,10 +79,8 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @comment.update!(comment_params)
         format.js
-      else
-        # TODO: 处理错误。
       end
     end
   end
@@ -98,19 +96,19 @@ class CommentsController < ApplicationController
 
   private
 
-  def load_user_and_commentable
-    user_id, commentable_type, commentable_id = request.path.match(/\/users\/(\d+)\/(\w+)\/(\d+)/)[1,3]
-    # NOTE: 这里要求所有engine命名规则为<主应用名><子应用名>，并且挂在路径为'/<子应用名>'。
-    engine = request.path.match(/^\/(\w+)/)[1]
-    if engine != 'users'
+  def load_app_and_commentable
+    # [/<engine prefix>]/<commentable_type>/:id/comments/...
+    tokens = request.path.split('/').reject(&:empty?)
+    n = tokens.index('comments')
+    commentable_type, commentable_id = tokens[n-2..n-1]
+    if RailsEnginesHelper.engine_names.index { |x| x =~ /_#{tokens.first}$/ }
       app_name = Rails.app_class.to_s.split('::').first
-      commentable_type = app_name+engine.capitalize+'::'+commentable_type.singularize.classify
-      @app = eval("#{app_name.downcase}_#{engine}")
+      commentable_type = app_name+tokens.first.capitalize+'::'+commentable_type.singularize.classify
+      @app = eval("#{app_name.downcase}_#{tokens.first}")
     else
       commentable_type = commentable_type.singularize.classify
       @app = main_app
     end
-    @user = User.find(user_id)
     @commentable = commentable_type.constantize.find(commentable_id)
   end
 

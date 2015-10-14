@@ -14,8 +14,7 @@
         <li>
           <%=
             link_to fa_icon('file-o', text: t('action.add')+t('scrinium.article')),
-            new_user_article_path(@user),
-            id: 'add-article'
+            new_article_path, id: 'add-article'
           %>
         </li>
       <% end %>
@@ -23,7 +22,7 @@
         <li>
           <%=
             link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-            new_user_resource_path(@user),
+            new_resource_path,
             id: 'add-resource', style: 'display: none;'
           %>
         </li>

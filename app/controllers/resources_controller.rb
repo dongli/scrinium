@@ -1,37 +1,29 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_user_and_resourceable
+  before_action :load_app_and_resourceable
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
-  # GET /resources
-  # GET /resources.json
   def index
     @resources = @resourceable.resources
   end
 
-  # GET /resources/1
-  # GET /resources/1.json
   def show
   end
 
-  # GET /resources/new
   def new
     @resource = @resourceable.resources.new
   end
 
-  # GET /resources/1/edit
   def edit
   end
 
-  # POST /resources
-  # POST /resources.json
   def create
     @resource = @resourceable.resources.new(resource_params)
 
     respond_to do |format|
       if @resource.save
         format.html {
-          redirect_to ResourcesHelper.filter_user([ @app, current_user, @resourceable, @resource ]),
+          redirect_to [ @app, @resourceable, @resource ],
           notice: t('message.create_success', thing: t('scrinium.resource'))
         }
         format.json {
@@ -46,13 +38,11 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /resources/1
-  # PATCH/PUT /resources/1.json
   def update
     respond_to do |format|
       if @resource.update(resource_params)
         format.html {
-          redirect_to ResourcesHelper.filter_user([ @app, current_user, @resourceable, @resource ]),
+          redirect_to [ @app, @resourceable, @resource ],
           notice: t('message.update_success', thing: t('scrinium.resource'))
         }
       else
@@ -61,8 +51,6 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # DELETE /resources/1
-  # DELETE /resources/1.json
   def destroy
     @resource.destroy
     respond_to do |format|
@@ -73,19 +61,18 @@ class ResourcesController < ApplicationController
 
   private
 
-  def load_user_and_resourceable
-    # [/<engine prefix>]/users/:id[/<other prefices>]*/<resourceable_type>/:id/resources/...
+  def load_app_and_resourceable
+    # [/<engine prefix>]/<resourceable_type>/:id/resources/...
     tokens = request.path.split('/').reject(&:empty?)
-    @user = User.find(tokens[tokens.index('users')+1])
     n = tokens.index('resources')
     resourceable_type, resourceable_id = tokens[n-2..n-1]
-    if tokens.first == 'users'
-      resourceable_type = resourceable_type.singularize.classify
-      @app = main_app
-    else
+    if RailsEnginesHelper.engine_names.index { |x| x =~ /_#{tokens.first}$/ }
       app_name = Rails.app_class.to_s.split('::').first
       resourceable_type = app_name+tokens.first.capitalize+'::'+resourceable_type.singularize.classify
       @app = eval("#{app_name.downcase}_#{tokens.first}")
+    else
+      resourceable_type = resourceable_type.singularize.classify
+      @app = main_app
     end
     @resourceable = resourceable_type.constantize.find(resourceable_id)
   end
