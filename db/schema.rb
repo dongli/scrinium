@@ -314,6 +314,7 @@ ActiveRecord::Schema.define(version: 20151007070256) do
   add_index "questions", ["survey_id"], name: "index_questions_on_survey_id", using: :btree
 
   create_table "references", force: :cascade do |t|
+    t.integer  "creator_id"
     t.string   "cite_key"
     t.string   "reference_type"
     t.string   "authors",           default: [],              array: true
@@ -334,6 +335,8 @@ ActiveRecord::Schema.define(version: 20151007070256) do
     t.datetime "updated_at",                     null: false
   end
 
+  add_index "references", ["cite_key"], name: "index_references_on_cite_key", using: :btree
+  add_index "references", ["creator_id"], name: "index_references_on_creator_id", using: :btree
   add_index "references", ["publicable_type", "publicable_id"], name: "index_references_on_publicable_type_and_publicable_id", using: :btree
 
   create_table "resources", force: :cascade do |t|

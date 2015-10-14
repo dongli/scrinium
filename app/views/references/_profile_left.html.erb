@@ -10,10 +10,20 @@
     <%= '('+@reference.issue+')' if @reference.issue %>
   </li>
   <li>
-    <%=
-      link_to fa_icon('edit', text: t('action.edit')),
-      edit_reference_path(@reference)
-    %>
+    <% if policy(@reference).update? %>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        edit_reference_path(@reference)
+      %>
+    <% end %>
+    <% if policy(@reference).destroy? %>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        @resource,
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.reference')) }
+      %>
+    <% end %>
     <% if @reference.file %>
       <%= link_to fa_icon('file-pdf-o', text: t('action.download')),
         @reference.file.url %>

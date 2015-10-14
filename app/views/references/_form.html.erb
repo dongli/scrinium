@@ -1,5 +1,6 @@
 <div class='reference-form'>
   <%= simple_form_for @reference do |f| %>
+    <%= f.hidden_field :creator_id, value: current_user.id %>
     <%=
       f.input :authors,
       label: false,

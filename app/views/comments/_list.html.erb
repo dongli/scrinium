@@ -9,7 +9,7 @@
   <% end %>
   <% comments.each do |c| %>
     <li id='comment-<%= c.id %>'>
-      <%= render partial: 'comments/show', locals: { app: app, comment: c } %>
+      <%= render 'comments/show', app: app, comment: c %>
     </li>
   <% end %>
   <div id='comment-placeholder'>
@@ -20,7 +20,7 @@
   <div style='text-align: center;'>
     <%= paginate comments if commentable.comments.size > per_page %>
   </div>
-  <% if current_user %>
+  <% if policy(Comment).create? %>
     <li id='new-comment'>
       <%=
         render partial: 'comments/form',

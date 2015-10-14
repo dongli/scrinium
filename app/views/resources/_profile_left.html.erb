@@ -12,11 +12,13 @@
       link_to fa_icon('download', text: t('action.download')),
       @resource.file.url
     %>
-    <% if current_user and current_user == @resource.user %>
+    <% if policy(@resource).update? %>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
         [ :edit, current_user, @resource ]
       %>
+    <% end %>
+    <% if policy(@resource).destroy? %>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
         [ current_user, @resource ],
@@ -26,6 +28,6 @@
     <% end %>
   </li>
   <li>
-    <%= render partial: 'collections/collect_button', locals: { collectable: @resource } %>
+    <%= render 'collections/collect_button', collectable: @resource %>
   </li>
 </ul>

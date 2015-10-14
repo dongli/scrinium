@@ -15,28 +15,23 @@
       <% end %>
     </ul>
   </li>
-  <% if current_user and current_user == @article.user %>
-    <li>
-      <% if not show_versions %>
-        <%=
-          link_to fa_icon('edit', text: t('action.edit')),
-          [:edit, current_user, @article]
-        %>
-        <%=
-          link_to fa_icon('trash', text: t('action.delete')),
-          [current_user, @article],
-          method: :delete,
-          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.article')) }
-        %>
-      <% else %>
-        <%=
-          link_to fa_icon('trash', text: t('action.delete')+t('article.versions')),
-          user_delete_version_path(current_user, @article, -1),
-          remote: true,
-          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('article.versions')) }
-        %>
-      <% end %>
-    </li>
+  <li>
+  <% if policy(@article).update? %>
+    <%=
+      link_to fa_icon('edit', text: t('action.edit')),
+      [:edit, current_user, @article]
+    %>
   <% end %>
-  <%= render partial: 'collections/collect_button', locals: { collectable: @article } %>
+  <% if policy(@article).destroy? %>
+    <%=
+      link_to fa_icon('trash', text: t('action.delete')),
+      [current_user, @article],
+      method: :delete,
+      data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.article')) }
+    %>
+  <% end %>
+  </li>
+  <li>
+    <%= render 'collections/collect_button', collectable: @article %>
+  </li>
 </ul>

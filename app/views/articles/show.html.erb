@@ -12,11 +12,6 @@
   </dl>
   <dl>
     <dt></dt>
-    <dd>
-      <%=
-        render partial: 'comments/list',
-        locals: { commentable: @article }
-      %>
-    </dd>
+    <dd><%= render 'comments/list', commentable: @article %></dd>
   </dl>
 <% end %>

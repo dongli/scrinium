@@ -15,31 +15,31 @@
       <%= link_to "##{parent_comment.floor}", "#comment-#{comment.parent_id}" %>
     <% end %>
     <div class='float-right'>
-      <% if current_user %>
+      <% if policy(comment).reply? %>
         <%=
           link_to t('action.reply'),
           app.url_for([current_user, commentable, :reply, comment]),
           class: 'button btn-xs reply-comment',
           remote: true
         %>
-        <% if can? :update, comment %>
-          <%=
-            link_to t('action.edit'),
-            app.url_for([:edit, user, commentable, comment]),
-            class: 'button btn-xs edit-comment',
-            remote: true
-          %>
-        <% end %>
-        <% if can? :delete, comment %>
-          <%=
-            link_to t('action.delete'),
-            app.url_for([user, commentable, comment]),
-            method: :delete,
-            data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
-            class: 'button btn-xs btn-danger delete-comment',
-            remote: true
-          %>
-        <% end %>
+      <% end %>
+      <% if policy(comment).update? %>
+        <%=
+          link_to t('action.edit'),
+          app.url_for([:edit, user, commentable, comment]),
+          class: 'button btn-xs edit-comment',
+          remote: true
+        %>
+      <% end %>
+      <% if policy(comment).destroy? %>
+        <%=
+          link_to t('action.delete'),
+          app.url_for([user, commentable, comment]),
+          method: :delete,
+          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
+          class: 'button btn-xs btn-danger delete-comment',
+          remote: true
+        %>
       <% end %>
     </div>
   </div>

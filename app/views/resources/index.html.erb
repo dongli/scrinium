@@ -2,11 +2,5 @@
 <% add_breadcrumb t('scrinium.resource'), main_app.user_resources_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
-  <%=
-    render partial: 'resources/table_list',
-    locals: { resources: Resource.all }
-  %>
-  <% if can? :create, Resource %>
-    <%= link_to t('action.add'), new_user_resource_path(current_user), class: 'button float-right' %>
-  <% end %>
+  <%= render 'resources/table_list', resources: Resource.all %>
 <% end %>

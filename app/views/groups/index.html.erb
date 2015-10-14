@@ -21,5 +21,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to t('action.add'), new_group_path, class: 'button float-right' %>
+  <% if policy(Group).create? %>
+    <%= link_to t('action.add'), new_group_path, class: 'button float-right' %>
+  <% end %>
 <% end %>

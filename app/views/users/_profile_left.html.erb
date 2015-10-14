@@ -10,23 +10,27 @@
     <li><%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_path(@user) %></li>
     <li><%= link_to fa_icon('key', text: t('action.edit')+t('user.password')), change_user_password_path(@user) %></li>
     <% if @user == current_user %>
-      <li>
-        <%=
-          link_to fa_icon('file-o', text: t('action.add')+t('scrinium.article')),
-          new_user_article_path(@user),
-          id: 'add-article'
-        %>
-      </li>
-      <li>
-        <%=
-          link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-          new_user_resource_path(@user),
-          id: 'add-resource', style: 'display: none;'
-        %>
-      </li>
+      <% if policy(Article).create? %>
+        <li>
+          <%=
+            link_to fa_icon('file-o', text: t('action.add')+t('scrinium.article')),
+            new_user_article_path(@user),
+            id: 'add-article'
+          %>
+        </li>
+      <% end %>
+      <% if policy(Resource).create? %>
+        <li>
+          <%=
+            link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+            new_user_resource_path(@user),
+            id: 'add-resource', style: 'display: none;'
+          %>
+        </li>
+      <% end %>
     <% end %>
   <% end %>
-  <% if can? :create, Reference %>
+  <% if policy(Reference).create? %>
     <li>
       <%= link_to fa_icon('book', text: t('action.add')+t('scrinium.reference')), new_reference_path %>
     </li>
@@ -49,8 +53,10 @@
         <%= link_to fa_icon('chevron-right', text: group.name), group %>
       </li>
     <% end %>
-    <li class='indent'>
-      <%= link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.group')), new_group_path %>
-    </li>
+    <% if policy(Group).create? %>
+      <li class='indent'>
+        <%= link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.group')), new_group_path %>
+      </li>
+    <% end %>
   </ul>
 </div>

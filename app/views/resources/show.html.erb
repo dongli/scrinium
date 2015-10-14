@@ -20,11 +20,6 @@
   </dl>
   <dl>
     <dt></dt>
-    <dd>
-      <%=
-        render partial: 'comments/list',
-        locals: { commentable: @resource }
-      %>
-    </dd>
+    <dd><%= render 'comments/list', commentable: @resource %></dd>
   </dl>
 <% end %>

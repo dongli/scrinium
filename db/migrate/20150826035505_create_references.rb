@@ -1,7 +1,8 @@
 class CreateReferences < ActiveRecord::Migration
   def change
     create_table :references do |t|
-      t.string     :cite_key
+      t.integer    :creator_id, index: true
+      t.string     :cite_key, index: true
       t.string     :reference_type
       t.string     :authors, array: true, default: []
       t.string     :title
