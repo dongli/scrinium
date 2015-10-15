@@ -15,7 +15,7 @@
             </ul>
         </div>
       </div>
-      <% if current_user.id == @membership.host.admin_id %>
+      <% if policy(@membership).update? %>
         <div class='center'>
           <% case @membership.status %>
           <% when 'unapproved', 'banned' %>

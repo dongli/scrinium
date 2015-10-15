@@ -15,6 +15,7 @@
  *= require select2
  *= require highlightjs
  *= require dropzone/dropzone
+ *= require bootstrap-datepicker3
  *= require_self
  */
 
@@ -45,14 +46,14 @@ footer {
 }
 
 .left-side {
-  margin: 2em;
-  padding: 1em;
+  margin: 1em;
   border-right-style: solid;
   border-right-width: thin;
   border-right-color: #E7E7E7;
 }
 
 .main-block {
+  margin: 1em;
   text-align: justify;
   text-justify: inter-word;
 }

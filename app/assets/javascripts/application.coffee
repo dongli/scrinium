@@ -20,6 +20,8 @@
 #= require i18n/translations
 #= require message-bus
 #= require dropzone
+#= require bootstrap-datepicker/core
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
 #= require_tree .
 
 # ============================= Common Functions ===============================
@@ -182,3 +184,6 @@ $(document).on 'page:change', ->
   $('[data-toggle="tooltip"]').tooltip()
 
   previewUploadedFigure('#upload-figure', '#preview-figure')
+
+  $('.datepicker').datepicker
+    format: 'yyyy-dd-mm'

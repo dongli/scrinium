@@ -1,0 +1,12 @@
+<div class='license-form'>
+  <%= simple_form_for @license do |f| %>
+    <%= f.input :organization_id, label: false, placeholder: '机构ID' %>
+    <%= f.input :engine_name, label: false, required: true %>
+    <%= f.input :max_num_seats, label: false, placeholder: t('license.max_num_seats') %>
+    <%=
+      f.input :expired_at, label: t('license.expired_at'),
+      input_html: { class: 'datepicker' }
+    %>
+    <%= f.button :submit, t('action.add'), class: 'button float-right' %>
+  <% end %>
+</div>

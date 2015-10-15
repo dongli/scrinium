@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :questions
   # Engines --------------------------------------------------------------------
+  resources :licenses
   if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end

@@ -11,6 +11,7 @@ class Organization < ActiveRecord::Base
   has_many :users, through: :memberships
   has_many :organizationships
   has_many :suborganizations, through: :organizationships
+  has_many :licenses, dependent: :destroy
 
   def admin
     @admin = User.find(self.admin_id) if not defined? @admin or @admin.id != self.admin_id

@@ -6,18 +6,22 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <dl>
-    <dt><%= t('organization.description') %></dt>
-    <dd class='markdown'><%= @organization.description %></dd>
-  </dl>
-  <dl>
-    <dt><%= t('scrinium.suborganization') %></dt>
-    <dd>
-      <ul class='suborganizations'>
-        <% @organization.suborganizations.each do |s| %>
-          <li><%= link_to s.name, organization_path(s) %></li>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
+  <% if policy(@organization).update? %>
+    <%=
+      render 'layouts/navtab',
+      tabs: {
+        info: [ t('global.info'), render('info') ],
+        suborganizations: [ t('scrinium.suborganization'), render('suborganizations') ],
+        admin: [ t('global.admin'), render('admin') ]
+      }
+    %>
+  <% else %>
+    <%=
+      render 'layouts/navtab',
+      tabs: {
+        info: [ t('global.info'), render('info') ],
+        suborganizations: [ t('scrinium.suborganization'), render('suborganizations') ]
+      }
+    %>
+  <% end %>
 <% end %>

@@ -55,6 +55,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'country_select'
 gem 'font-awesome-rails'
+gem 'bootstrap-datepicker-rails'
 
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'

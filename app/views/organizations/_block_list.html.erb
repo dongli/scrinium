@@ -1,5 +1,6 @@
+<% add_logo = true if not defined? :add_logo %>
 <div class='row'>
-  <% if can? :create, Organization %>
+  <% if policy(Organization).create? and add_logo %>
     <div class='col-md-2 col-sm-3 col-xs-4'>
       <a href='<%= new_organization_path %>'>
         <%= image_tag 'medium/add_icon.png', class: 'img-responsive center-block' %>

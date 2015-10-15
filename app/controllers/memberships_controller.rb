@@ -29,6 +29,7 @@ class MembershipsController < ApplicationController
                  host: host.short_name,
                  page: membership_path(@membership))
         @membership.host.admin.notify subject, body
+        MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
         format.html { redirect_to session[:previous_url].last, notice: t('membership.message.wait_for_approval') }
       else
         format.html { render :new }

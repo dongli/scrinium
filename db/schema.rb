@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007070256) do
+ActiveRecord::Schema.define(version: 20151015060005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,18 @@ ActiveRecord::Schema.define(version: 20151007070256) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "licenses", force: :cascade do |t|
+    t.integer  "organization_id",             null: false
+    t.string   "engine_name",                 null: false
+    t.string   "expired_at",                  null: false
+    t.integer  "max_num_seats",   default: 5
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "licenses", ["engine_name"], name: "index_licenses_on_engine_name", using: :btree
+  add_index "licenses", ["organization_id"], name: "index_licenses_on_organization_id", using: :btree
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"

@@ -14,6 +14,7 @@ zh-CN:
     specification: 规格
     info: 信息
     basic_info: 基本信息
+    admin: 管理
     true_: 是
     false_: 否
     create_time: 添加时间
@@ -24,9 +25,6 @@ zh-CN:
 
   scrinium:
     home: 首页
-    organization: 机构
-    suborganization: 子机构
-    organizationship: 机构关系
     research: 研究
     group: 群组
     article: 文章
@@ -40,6 +38,7 @@ zh-CN:
     question: 问题
     answer: 选择
     feedback: 反馈
+    engines: 插件列表
 
   mailbox:
     inbox: 收件箱

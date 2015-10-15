@@ -1,0 +1,9 @@
+<div class='row'>
+  <% licenses.each do |license| %>
+    <div class='col-md-2 col-sm-3 col-xs-4'>
+      <a href='<%= license_path(license) %>'>
+        <%= license.engine_name.text %>
+      </a>
+    </div>
+  <% end %>
+</div>

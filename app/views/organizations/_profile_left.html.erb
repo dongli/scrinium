@@ -18,6 +18,7 @@
       %>
     </li>
   <% end %>
+  <!-- <li><%= render 'licenses/block_list', licenses: @organization.licenses %></li> -->
   <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@organization.users.size.to_s %></li>
   <li><%= render 'memberships/apply_button', host: @organization %></li>
 </ul>

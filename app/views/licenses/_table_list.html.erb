@@ -1,0 +1,20 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width="100"><%= t('license.engine_name') %></th>
+      <th width="300"><%= t('license.organization') %></th>
+      <th width="100"><%= t('license.max_num_seats') %></th>
+      <th width="100"><%= t('license.expired_at') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% licenses.each do |license| %>
+      <tr>
+        <td><%= link_to license.engine_name.text, license_path(license) %></td>
+        <td><%= license.organization.name %></td>
+        <td><%= license.max_num_seats %></td>
+        <td><%= license.expired_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
