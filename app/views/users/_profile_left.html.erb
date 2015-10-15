@@ -6,8 +6,8 @@
   <li>
     <%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %>
   </li>
-  <% if can? :update, @user %>
-    <li><%= link_to fa_icon('edit', text: t('user.console.edit_info')), edit_user_path(@user) %></li>
+  <% if policy(@user).update? %>
+    <li><%= link_to fa_icon('edit', text: t('action.edit')+t('global.info')), edit_user_path(@user) %></li>
     <li><%= link_to fa_icon('key', text: t('action.edit')+t('user.password')), change_user_password_path(@user) %></li>
     <% if @user == current_user %>
       <% if policy(Article).create? %>
