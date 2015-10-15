@@ -40,6 +40,14 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
+        # 通知用户资格的更新。
+        host = @membership.host
+        subject = t('membership.notification.subject.membership_updated', host: host.short_name)
+        body = t('membership.notification.body.membership_updated',
+                 host: host.short_name,
+                 page: membership_path(@membership))
+        @membership.user.notify subject, body
+        MessageBus.publish "/mailbox-#{@membership.user.id}", { user_id: current_user.id }
         format.html { redirect_to @membership, notice: t('message.update_success', thing: t('scrinium.membership')) }
       else
         format.html { render :edit }

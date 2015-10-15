@@ -18,8 +18,10 @@ zh-CN:
     notification:
       subject:
         new_user_applies_to_join_in: 新用户申请加入%{host}
+        membership_updated: 资格被更新
       body:
         new_user_applies_to_join_in: 新用户”%{user}“申请加入”%{host}“，等待您的[批准](%{page})。
+        membership_updated: 您在“%{host}”中的资格被更新，详情请见[这里](%{page})。
 
   enumerize:
     membership:
