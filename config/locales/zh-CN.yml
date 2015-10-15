@@ -35,7 +35,6 @@ zh-CN:
     reference: 参考文献
     journal: 期刊杂志
     publication: 发表刊物
-    collection: 收藏
     resource: 资源
     survey: 问卷调查
     question: 问题
@@ -67,7 +66,6 @@ zh-CN:
     clean_all: 清除所有
     restore: 恢复
     download: 下载
-    collect: 收藏
     submit: 提交
 
   message:
@@ -88,10 +86,6 @@ zh-CN:
     send_time: 发件时间
 
   versions: 历史版本
-
-  collection:
-    cancel: 取消收藏
-    type: 收藏类型
 
   organization:
     profile: 机构信息

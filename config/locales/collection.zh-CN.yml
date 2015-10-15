@@ -1,0 +1,8 @@
+zh-CN:
+  scrinium:
+    collection: 收藏
+
+  collection:
+    type: 收藏类型
+    collect: 收藏
+    cancel: 取消收藏
