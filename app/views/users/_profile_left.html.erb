@@ -22,8 +22,7 @@
         <li>
           <%=
             link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-            new_resource_path,
-            id: 'add-resource', style: 'display: none;'
+            [ :new, @user, :resource ], id: 'add-resource', style: 'display: none;'
           %>
         </li>
       <% end %>

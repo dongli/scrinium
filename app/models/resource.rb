@@ -6,7 +6,7 @@ class Resource < ActiveRecord::Base
   mount_uploader :file, ResourceUploader
   validates_presence_of :file
   validates_presence_of :name, on: :update
-  validates_uniqueness_of :name, on: :update
+  validates_uniqueness_of :name, on: :update, scope: [ :user_id, :resourceable_type, :resourceable_id ]
 
   acts_as_taggable
   acts_as_taggable_on :categories
