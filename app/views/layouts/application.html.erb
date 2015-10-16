@@ -30,15 +30,17 @@
 
   <div id="main-container" class="container">
     <%= render 'layouts/message' %>
-    <%= render_breadcrumbs %>
+    <%= render_breadcrumbs if request.path != '/' %>
     <div class='row'>
       <%= render 'layouts/left_side' %>
       <%= render 'layouts/main_block' %>
     </div>
   </div>
 
-  <!-- <footer>
-    Copyright &copy 2015 <%= t('global.shustone') %>
-  </footer> -->
+  <footer>
+    <% if request.path != '/' %>
+      Copyright &copy 2015 <%= t('global.shustone') %>
+    <% end %>
+  </footer>
 </body>
 </html>

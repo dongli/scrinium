@@ -11,6 +11,7 @@ class LicensesController < ApplicationController
 
   def new
     @license = License.new
+    @license.organization_id = params[:organization_id]
   end
 
   def edit
@@ -18,10 +19,21 @@ class LicensesController < ApplicationController
 
   def create
     @license = License.new(license_params)
-
     respond_to do |format|
       if @license.save
-        format.html { redirect_to @license, notice: t('message.create_success', thing: t('scrinium.license')) }
+        if not current_user.role == 'admin'
+          # 通知管理员某机构申请添加新插件。
+          organization = @license.organization
+          admin = User.find_by_role('admin')
+          subject = t('license.notification.subject.apply_for_engine', engine: @license.engine_name)
+          body = t('license.notification.body.apply_for_engine', organization: organization.short_name,
+                   engine: @license.engine_name, page: license_path(@license))
+          admin.notify subject, body
+          MessageBus.publish "/mailbox-#{admin.id}", { user_id: current_user.id }
+          format.html { redirect_to @license, notice: t('license.message.wait_for_approval') }
+        else
+          format.html { redirect_to @license, notice: t('message.create_success', thing: t('scrinium.license')) }
+        end
       else
         format.html { render :new }
       end
@@ -31,6 +43,16 @@ class LicensesController < ApplicationController
   def update
     respond_to do |format|
       if @license.update(license_params)
+        if not current_user.role == 'admin'
+          # 通知机构管理员许可证的更新。
+          organization = @license.organization
+          admin = organization.admin
+          subject = t('license.notification.subject.license_updated', engine: @license.engine_name)
+          body = t('license.notification.body.license_updated', organization: organization.short_name,
+                   engine: @license.engine_name, page: license_path(@license))
+          admin.notify subject, body
+          MessageBus.publish "/mailbox-#{admin.id}", { user_id: current_user.id }
+        end
         format.html { redirect_to @license, notice: t('message.update_success', thing: t('scrinium.license')) }
       else
         format.html { render :edit }
@@ -52,6 +74,6 @@ class LicensesController < ApplicationController
   end
 
   def license_params
-    params.require(:license).permit(:organization_id, :engine_name, :max_num_seats, :expired_at)
+    params.require(:license).permit(:organization_id, :engine_name, :max_num_seats, :status, :expired_at)
   end
 end

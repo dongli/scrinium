@@ -1,14 +1,36 @@
 zh-CN:
   scrinium:
+    engine: 插件
     license: 许可证
 
   license:
     engine_name: 插件名称
     organization: 授权机构
     max_num_seats: 最多席位数量
+    status: 状态
     expired_at: 有效截止日期
+    notification:
+      subject:
+        apply_for_engine: 机构申请添加插件%{engine}
+        license_updated: 插件%{engine}的许可证被更新
+      body:
+        apply_for_engine: “%{organization}”申请添加“%{engine}”，等待您的[审核](%{page})。
+        license_updated: 授权给“%{organization}”的插件”%{engine}“许可证被更新，详见[这里](%{page})。
+    message:
+      wait_for_approval: 请耐心等待管理员核准。
 
   enumerize:
     license:
       engine_name:
         esm: 地球系统模式插件
+      status:
+        unapproved: 未批准
+        approved: 已批准
+
+  activerecord:
+    errors:
+      models:
+        license:
+          attributes:
+            engine_name:
+              taken: 已经申请过该插件！

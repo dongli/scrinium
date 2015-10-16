@@ -186,4 +186,4 @@ $(document).on 'page:change', ->
   previewUploadedFigure('#upload-figure', '#preview-figure')
 
   $('.datepicker').datepicker
-    format: 'yyyy-dd-mm'
+    format: 'yyyy-mm-dd'

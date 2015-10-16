@@ -154,12 +154,13 @@ ActiveRecord::Schema.define(version: 20151015060005) do
   end
 
   create_table "licenses", force: :cascade do |t|
-    t.integer  "organization_id",             null: false
-    t.string   "engine_name",                 null: false
-    t.string   "expired_at",                  null: false
+    t.integer  "organization_id",                        null: false
+    t.string   "engine_name",                            null: false
+    t.string   "expired_at",                             null: false
     t.integer  "max_num_seats",   default: 5
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "status",          default: "unapproved"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "licenses", ["engine_name"], name: "index_licenses_on_engine_name", using: :btree

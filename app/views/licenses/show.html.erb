@@ -8,6 +8,7 @@
         <li><%= t('license.organization') %>: <%= link_to @license.organization.name, @license.organization %></li>
         <li><%= t('license.engine_name') %>: <%= @license.engine_name.text %></li>
         <li><%= t('license.max_num_seats') %>: <%= @license.max_num_seats %></li>
+        <li><%= t('license.status') %>: <%= @license.status.text %></li>
         <li><%= t('license.expired_at') %>: <%= @license.expired_at %></li>
       </ul>
       <% if policy(@license).update? %>

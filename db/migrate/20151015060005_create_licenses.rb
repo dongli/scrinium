@@ -5,6 +5,7 @@ class CreateLicenses < ActiveRecord::Migration
       t.string :engine_name, index: true, null: false
       t.string :expired_at, null: false
       t.integer :max_num_seats, default: 5
+      t.string :status, default: 'unapproved'
 
       t.timestamps null: false
     end

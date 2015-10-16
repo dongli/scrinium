@@ -46,8 +46,7 @@ end
 # Use Devise for user authentication.
 gem 'devise'
 
-# Use CanCanCan for user role.
-gem 'cancancan'
+# Use Pundit to manage user permission.
 gem 'pundit'
 
 # UI gems.

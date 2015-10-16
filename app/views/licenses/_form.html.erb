@@ -1,12 +1,19 @@
 <div class='license-form'>
   <%= simple_form_for @license do |f| %>
-    <%= f.input :organization_id, label: false, placeholder: '机构ID' %>
-    <%= f.input :engine_name, label: false, required: true %>
-    <%= f.input :max_num_seats, label: false, placeholder: t('license.max_num_seats') %>
-    <%=
-      f.input :expired_at, label: t('license.expired_at'),
-      input_html: { class: 'datepicker' }
-    %>
+    <% if @license.organization_id %>
+      <%= f.hidden_field :organization_id, value: @license.organization_id %>
+    <% else %>
+      <%= f.input :organization_id, label: false, placeholder: '机构ID' %>
+    <% end %>
+    <%= f.input :engine_name, label: t('license.engine_name'), required: true %>
+    <%= f.input :max_num_seats, label: t('license.max_num_seats'), required: true %>
+    <% if current_user.role == 'admin' %>
+      <%= f.input :status, label: t('license.status'), required: true %>
+      <%=
+        f.input :expired_at, label: t('license.expired_at'), required: true,
+        input_html: { class: 'datepicker' }
+      %>
+    <% end %>
     <%= f.button :submit, t('action.add'), class: 'button float-right' %>
   <% end %>
 </div>

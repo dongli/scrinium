@@ -1,5 +1,7 @@
 <% add_breadcrumb t('scrinium.home'), '/', first: true %>
 
 <% content_for :main_block do %>
-  <%= render partial: 'scrinium_intro' %>
+  <%= render 'front_section' %>
+  <%= render 'function_section' %>
+  <%= render 'feature_section' %>
 <% end %>

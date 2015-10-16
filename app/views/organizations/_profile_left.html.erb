@@ -9,6 +9,12 @@
         edit_organization_path(@organization)
       %>
     </li>
+    <li>
+      <%=
+        link_to fa_icon('gears', text: t('action.add')+t('scrinium.engine')),
+        new_license_path(organization_id: @organization.id)
+      %>
+    </li>
   <% end %>
   <% if policy(Organization).create? %>
     <li>
