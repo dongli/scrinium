@@ -10,6 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :position
       t.string :role, null: false
       t.string :status
+      t.integer :current_organization_id
 
       ## Recoverable
       t.string   :reset_password_token

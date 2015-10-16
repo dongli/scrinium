@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password, :change_current_organization]
 
   def index
     @users = User.all
@@ -39,6 +39,15 @@ class UsersController < ApplicationController
   def change_password
     respond_to do |format|
       format.html
+    end
+  end
+
+  def change_current_organization
+    @user.current_organization_id = params[:organization_id]
+    respond_to do |format|
+      if @user.save!
+        format.html { redirect_to :root }
+      end
     end
   end
 

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   # User -----------------------------------------------------------------------
   devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
   get '/users/:id/change_password' => 'users#change_password', as: :change_user_password
+  get '/users/:id/change_current_organization' => 'users#change_current_organization', as: :change_current_organization
   resources :users, concerns: [ :resourceable ] do
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message

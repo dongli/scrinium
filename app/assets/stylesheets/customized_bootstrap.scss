@@ -17,6 +17,12 @@
   background-color: #FFFFFF;
 }
 
+.navbar-nav > li > a {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 a.navbar-brand {
   color: black;
 }

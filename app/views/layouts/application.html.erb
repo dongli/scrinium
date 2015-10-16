@@ -28,6 +28,9 @@
     <%= render 'layouts/navbar' %>
   </header>
 
+  <% if request.path == '/' %>
+    <div class='with-background'>
+  <% end %>
   <div id="main-container" class="container">
     <%= render 'layouts/message' %>
     <%= render_breadcrumbs if request.path != '/' %>
@@ -36,9 +39,12 @@
       <%= render 'layouts/main_block' %>
     </div>
   </div>
+  <% if request.path == '/' %>
+    </div>
+  <% end %>
 
   <footer>
-    <% if request.path != '/' %>
+    <% if request.path == '/' %>
       Copyright &copy 2015 <%= t('global.shustone') %>
     <% end %>
   </footer>

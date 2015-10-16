@@ -3,3 +3,6 @@ zh-CN:
     organization: 机构
     suborganization: 子机构
     organizationship: 机构关系
+
+  organization:
+    switch: 切换机构

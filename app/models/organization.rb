@@ -3,7 +3,7 @@ class Organization < ActiveRecord::Base
   validates :short_name, uniqueness: true
   validates :admin_id, presence: true
 
-  has_attached_file :logo, styles: { medium: '150x150', thumb: '100x100', small: '20x20' }
+  has_attached_file :logo, styles: { medium: '150x150', thumb: '100x100', small: '30x30' }
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   translates :name, :short_name, :description
 

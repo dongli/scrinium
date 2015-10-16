@@ -1,3 +1,7 @@
+.with-background {
+  background-image: url('front_background.png');
+}
+
 // 页首部分
 .front {
   text-align: center;
@@ -32,6 +36,10 @@
 
 .function-content {
   font-size: 120%;
+}
+
+.function-logo {
+  margin-top: 2em;
 }
 
 // 特性部分
