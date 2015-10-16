@@ -67,6 +67,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(:name, :abbreviation)
+      params.require(:journal).permit(:name, :abbreviation, :status)
     end
 end

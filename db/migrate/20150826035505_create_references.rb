@@ -14,6 +14,7 @@ class CreateReferences < ActiveRecord::Migration
       t.string     :doi
       t.text       :abstract
       t.attachment :file
+      t.string :status
 
       t.timestamps null: false
     end

@@ -22,10 +22,8 @@ class ReferencesController < ApplicationController
     respond_to do |format|
       if @reference.save
         format.html { redirect_to @reference, notice: t('message.create_success', thing: t('scrinium.reference')) }
-        format.json { render :show, status: :created, location: @reference }
       else
         format.html { render :new }
-        format.json { render json: @reference.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,10 +32,8 @@ class ReferencesController < ApplicationController
     respond_to do |format|
       if @reference.update(reference_params)
         format.html { redirect_to @reference, notice: t('message.update_success', thing: t('scrinium.reference')) }
-        format.json { render :show, status: :ok, location: @reference }
       else
         format.html { render :edit }
-        format.json { render json: @reference.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,7 +42,6 @@ class ReferencesController < ApplicationController
     @reference.destroy
     respond_to do |format|
       format.html { redirect_to references_url, notice: t('message.destroy_success', thing: t('scrinium.reference')) }
-      format.json { head :no_content }
     end
   end
 
@@ -79,6 +74,7 @@ class ReferencesController < ApplicationController
                                       :pages,
                                       :doi,
                                       :abstract,
-                                      :file)
+                                      :file,
+                                      :status)
   end
 end

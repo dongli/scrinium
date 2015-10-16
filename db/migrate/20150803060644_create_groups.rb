@@ -4,6 +4,7 @@ class CreateGroups < ActiveRecord::Migration
       t.references :admin, class_name: 'User'
       t.string :privacy, null: false
       t.attachment :logo
+      t.string :status
       t.timestamps null: false
     end
     Group.create_translation_table!({

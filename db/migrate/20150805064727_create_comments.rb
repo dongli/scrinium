@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.text :content, null: false
       t.integer :parent_id
       t.integer :floor
+      t.string :status
 
       t.timestamps null: false
     end

@@ -89,6 +89,7 @@ class ResourcesController < ApplicationController
                                      :file,
                                      :user_id,
                                      :tag_list,
-                                     { category_list: [] })
+                                     { category_list: [] },
+                                     :status)
   end
 end

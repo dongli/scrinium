@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.text     "content",    default: ""
     t.boolean  "draft",      default: false
     t.string   "privacy",                    null: false
+    t.string   "status"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.text     "content",          null: false
     t.integer  "parent_id"
     t.integer  "floor"
+    t.string   "status"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -149,6 +152,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.string   "abbreviation"
     t.string   "short_name"
     t.boolean  "issued"
+    t.string   "status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -292,6 +296,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.integer  "admin_id"
+    t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -307,6 +312,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.integer  "user_id"
     t.integer  "reference_id"
     t.string   "matched_author"
+    t.string   "status"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -344,6 +350,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "status"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
@@ -416,6 +423,7 @@ ActiveRecord::Schema.define(version: 20151015060005) do
     t.string   "gender",                             null: false
     t.string   "position"
     t.string   "role",                               null: false
+    t.string   "status"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

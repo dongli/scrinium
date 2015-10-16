@@ -53,13 +53,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:avatar,
                                  :name,
                                  :gender,
-                                 :organization_id,
-                                 :organization_approved,
                                  { publication_ids: [] },
                                  { group_ids: [] },
                                  :position,
                                  :email,
                                  :role,
+                                 :status,
                                  :password,
                                  :password_confirmation)
   end

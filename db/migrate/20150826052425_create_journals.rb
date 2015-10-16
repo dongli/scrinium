@@ -5,6 +5,7 @@ class CreateJournals < ActiveRecord::Migration
       t.string  :abbreviation
       t.string  :short_name
       t.boolean :issued
+      t.string :status
 
       t.timestamps null: false
     end

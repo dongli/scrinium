@@ -75,6 +75,7 @@ class OrganizationsController < ApplicationController
                                          :logo,
                                          :short_name,
                                          :description,
-                                         :admin_id)
+                                         :admin_id,
+                                         :status)
   end
 end

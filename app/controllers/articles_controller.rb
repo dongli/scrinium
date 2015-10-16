@@ -91,6 +91,7 @@ class ArticlesController < ApplicationController
                                     { group_ids: [] },
                                     :tag_list,
                                     { category_list: [] },
-                                    :user_id)
+                                    :user_id,
+                                    :status)
   end
 end

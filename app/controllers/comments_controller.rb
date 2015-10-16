@@ -106,6 +106,7 @@ class CommentsController < ApplicationController
                                     :content,
                                     :user_id,
                                     :parent_id,
-                                    :floor)
+                                    :floor,
+                                    :status)
   end
 end

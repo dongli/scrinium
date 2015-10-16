@@ -3,6 +3,7 @@ class CreateOrganizations < ActiveRecord::Migration
     create_table :organizations do |t|
       t.attachment :logo
       t.references :admin, class_name: 'User'
+      t.string :status
       t.timestamps null: false
     end
     Organization.create_translation_table!({
