@@ -31,17 +31,13 @@
           <% check_mailbox %>
           <li class='dropdown'>
             <div id='user-info' data-user-id=<%= current_user.id %>></div>
-            <a href='#'
-              class='dropdown-toggle'
-              id='user-menu'
-              data-toggle='dropdown'
-              role='button'
-              aria-haspopup='true'
-              aria-expanded='false'>
+            <a id='user-menu' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
               <% if has_unread? %>
-                <%= fa_icon('bell', text: t('scrinium.user')) %> <span class='caret'></span>
+                <%= image_tag('logos/user_alert_logo.png', size: '30x30', id: 'user-alert-logo') %>
+                <%= image_tag('logos/user_logo.png', size: '30x30', id: 'user-logo', style: 'display: none') %>
               <% else %>
-                <%= image_tag('logos/user_logo.png', size: '30x30') %>
+                <%= image_tag('logos/user_alert_logo.png', size: '30x30', id: 'user-alert-logo', style: 'display: none') %>
+                <%= image_tag('logos/user_logo.png', size: '30x30', id: 'user-logo') %>
               <% end %>
             </a>
             <ul class='dropdown-menu'>

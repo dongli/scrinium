@@ -9,7 +9,8 @@ change_unread = ->
       $(this).text(n)
     else
       $(this).remove()
-      $('#user-menu i.fa-bell').attr('class', 'fa fa-user')
+      $('#user-alert-logo').hide()
+      $('#user-logo').show()
 
 @expand_message = ->
   $('div[id|=message-head]').off('click')
@@ -92,7 +93,8 @@ $(document).on 'page:change', ->
   if $('#user-info').length
     MessageBus.subscribe "/mailbox-#{$('#user-info').data('user-id')}", (data) ->
       # 设置未读闹铃。
-      $('#user-menu i.fa-user').attr('class', 'fa fa-bell')
+      $('#user-alert-logo').show()
+      $('#user-logo').hide()
       # 检查是否已经有未读邮件。
       $('.unread-mail-badge').each ->
         if $(this).length
