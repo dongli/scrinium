@@ -84,4 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['SCRINIUM_DATABASE_NAME'] || 'scrinium_production' %>_production
+  database: <%= ENV['SCRINIUM_DATABASE_NAME'] || 'scrinium' %>_production

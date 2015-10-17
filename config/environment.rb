@@ -8,13 +8,11 @@ Rails.application.initialize!
 # 重新订阅。
 # NOTE: 需要和collections_controller.rb中的回调函数保持一致！
 if ActiveRecord::Base.connection.table_exists? 'users'
-  User.all.each do |u|
-    u.collections.each do |c|
+  User.all.each do |user|
+    user.collections.each do |collection|
       MessageBus.subscribe "/update-#{c.collectable_type}-#{c.collectable_id}" do |msg|
-        c.updated = true
-        if not c.save
-          # TODO: 处理错误。
-        end
+        collection.updated = true
+        collection.save!
       end
     end
   end
