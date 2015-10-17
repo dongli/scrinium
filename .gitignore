@@ -19,4 +19,6 @@
 engine_requires.*
 engine_routes.rb
 
+nginx.conf
+
 *scrinium_esm*
