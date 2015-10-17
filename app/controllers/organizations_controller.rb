@@ -76,6 +76,15 @@ class OrganizationsController < ApplicationController
                                          :short_name,
                                          :description,
                                          :admin_id,
-                                         :status)
+                                         addresses_attributes: [
+                                           :id,
+                                           :name,
+                                           :country,
+                                           :city,
+                                           :district,
+                                           :zip_code,
+                                           :street,
+                                           :status
+                                         ])
   end
 end

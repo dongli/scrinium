@@ -2,5 +2,5 @@
 <% add_breadcrumb t('scrinium.organization'), organizations_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
-  <%= render 'organizations/block_list', organizations: Organization.all %>
+  <%= render 'organizations/block_list', organizations: Organization.all, add_logo: true %>
 <% end %>

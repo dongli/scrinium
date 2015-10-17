@@ -1,0 +1,11 @@
+zh-CN:
+  scrinium:
+    address: 地址
+
+  address:
+    name: 地址名称
+    country: 国家
+    city: 城市
+    district: 行政区
+    zip_code: 邮政编码
+    street: 街道名

@@ -13,10 +13,10 @@
     <%= f.input :name, label: t('organization.name'), autofocus: true, required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :short_name, label: t('organization.short_name'), required: true, input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' } %>
     <%= f.input :description, label: t('organization.description'), required: true, as: :text %>
-    <% if @organization.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
-    <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
+    <%= f.simple_fields_for :addresses, @organization.addresses.sort_by { |x| x.order } do |g| %>
+      <%= render 'addresses/form', f: g %>
     <% end %>
+    <%= link_to_add_field t('action.add')+t('scrinium.address'), f, :addresses, partial: 'addresses/form', class: 'button float-left' %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>
