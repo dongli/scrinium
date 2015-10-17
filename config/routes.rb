@@ -54,12 +54,6 @@ Rails.application.routes.draw do
   resources :organizationships
   # Group ----------------------------------------------------------------------
   resources :groups
-  # Survey (准备去除) -----------------------------------------------------------
-  resources :surveys do
-    resources :feedbacks
-  end
-  resources :answers
-  resources :questions
   # Engines --------------------------------------------------------------------
   resources :licenses
   if File.exist? "#{Rails.root}/config/engine_routes.rb"

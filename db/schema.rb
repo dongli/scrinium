@@ -16,18 +16,6 @@ ActiveRecord::Schema.define(version: 20151015060005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "answers", force: :cascade do |t|
-    t.integer  "question_id"
-    t.integer  "feedback_id"
-    t.string   "content"
-    t.string   "extra_content"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "answers", ["feedback_id"], name: "index_answers_on_feedback_id", using: :btree
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
-
   create_table "articles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title",                      null: false
@@ -77,15 +65,6 @@ ActiveRecord::Schema.define(version: 20151015060005) do
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "feedbacks", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "feedbacks", ["survey_id"], name: "index_feedbacks_on_survey_id", using: :btree
 
   create_table "group_article_associations", force: :cascade do |t|
     t.integer  "group_id"
@@ -320,18 +299,6 @@ ActiveRecord::Schema.define(version: 20151015060005) do
   add_index "publications", ["reference_id"], name: "index_publications_on_reference_id", using: :btree
   add_index "publications", ["user_id"], name: "index_publications_on_user_id", using: :btree
 
-  create_table "questions", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.integer  "order"
-    t.integer  "question_type"
-    t.string   "content"
-    t.boolean  "accept_extra_answer", default: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "questions", ["survey_id"], name: "index_questions_on_survey_id", using: :btree
-
   create_table "references", force: :cascade do |t|
     t.integer  "creator_id"
     t.string   "cite_key"
@@ -377,20 +344,6 @@ ActiveRecord::Schema.define(version: 20151015060005) do
 
   add_index "resources", ["name"], name: "index_resources_on_name", using: :btree
   add_index "resources", ["resourceable_type", "resourceable_id"], name: "index_resources_on_resourceable_type_and_resourceable_id", using: :btree
-
-  create_table "surveys", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "preface"
-    t.string   "cover_image_file_name"
-    t.string   "cover_image_content_type"
-    t.integer  "cover_image_file_size"
-    t.datetime "cover_image_updated_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
