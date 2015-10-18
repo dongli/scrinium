@@ -5,4 +5,5 @@ zh-CN:
     organizationship: 机构关系
 
   organization:
+    admin: 机构管理员
     switch: 切换机构
