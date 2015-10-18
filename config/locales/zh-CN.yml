@@ -27,7 +27,6 @@ zh-CN:
     home: 首页
     research: 研究
     group: 群组
-    article: 文章
     comment: 评论
     mailbox: 邮箱
     reference: 参考文献
@@ -108,23 +107,6 @@ zh-CN:
     group: 群组
     organization: 机构
     manage_users: 管理用户
-
-  article:
-    title: 名称
-    public_groups: 公开组
-    tags: 文章标记
-    author: 作者
-    browse_count: 浏览次数
-    version_number: 版本数
-    version: 文章版本
-    versions: 所有版本
-    placeholder:
-      title: 题目 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
-      categories: 类别 | 提示：以空格分开。
-      public_for_groups: 选择向哪些群组公开
-      content: 内容 | 提示：可以使用Markdown语法标记和LaTeX公式标记。
-    categories:
-      research_record: 科研记录
 
   placeholder:
     categories: 类别 | 提示：以空格分开。

@@ -11,9 +11,9 @@ module V1
         requires :user_id, type: Integer, desc: 'User ID.'
       end
       post :for_user do
-        Group.joins(:group_user_associations)
-          .where("group_user_associations.user_id = #{params[:user_id]}")
-          .map { |g| [ g.id, g.name ] }
+        User.find(params[:user_id]).memberships
+          .select { |x| x.host_type == 'Group' }
+          .map { |x| [ x.host.id, x.host.name ] }
       end
     end
   end

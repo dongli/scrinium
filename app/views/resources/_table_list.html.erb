@@ -1,4 +1,3 @@
-<% app ||= main_app %>
 <table class='table table-striped'>
   <thead>
     <tr>
@@ -11,7 +10,7 @@
     <% resources.each do |resource| %>
       <tr>
         <td>
-          <%= link_to r.name, [ app, resource.resourceable, resource ] %>
+          <%= link_to resource.name, [ resource.resourceable, resource ] %>
         </td>
         <td>
           <%= link_to resource.user.name, resource.user %>

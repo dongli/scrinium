@@ -3,21 +3,15 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%=
       f.input :title,
-      label: false,
+      label: t('article.title'),
       placeholder: t('article.placeholder.title'),
-      autofocus: true,
-      required: true,
-      input_html: {
-        autocapitalize: 'off',
-        autocorrect: 'none',
-        spellcheck: 'false'
-      }
+      autofocus: true
     %>
     <div class='row'>
       <div class='col-md-4'>
         <%=
           f.input :category_list,
-          label: false,
+          label: t('article.tags'),
           collection: @article.categories.map { |t| t.name },
           input_html: {
             multiple: 'multiple',
@@ -28,14 +22,13 @@
         %>
       </div>
       <div class='col-md-2'>
-        <%= f.input :privacy, label: false, required: true %>
+        <%= f.input :privacy, label: t('article.privacy') %>
       </div>
       <div class='col-md-4' id='select-groups'
         style='<%= 'display:none' if @article.privacy != t('privacy_types.group_public') %>'>
         <%=
           f.association :groups,
-          label: false,
-          required: true,
+          label: t('article.public_groups'),
           label_method: :name,
           value_method: :id,
           collection: @article.groups,

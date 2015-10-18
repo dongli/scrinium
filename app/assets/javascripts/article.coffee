@@ -13,7 +13,7 @@ $(document).on 'page:change', ->
 		markdown $('textarea#article_content').val(), $('div#preview-content-placeholder')
 
 	$('#article_privacy').change ->
-		if this.value == '2'
+		if this.value == 'group_public'
 			$('#select-groups').show()
 		else
 			$('#select-groups').hide()

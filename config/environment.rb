@@ -10,7 +10,7 @@ Rails.application.initialize!
 if ActiveRecord::Base.connection.table_exists? 'users'
   User.all.each do |user|
     user.collections.each do |collection|
-      MessageBus.subscribe "/update-#{c.collectable_type}-#{c.collectable_id}" do |msg|
+      MessageBus.subscribe "/update-#{collection.collectable_type}-#{collection.collectable_id}" do |msg|
         collection.updated = true
         collection.save!
       end
