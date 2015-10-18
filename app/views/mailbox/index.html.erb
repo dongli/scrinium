@@ -12,30 +12,30 @@
       <%= t('mailbox.has_new_mails', number: 0) %>
     </div>
     <ul class='clean-list' id='unread-message-list'>
-      <% unread_messages.each do |m| %>
-        <li id='message-<%= m.id %>'>
-          <%= render partial: 'message', locals: { message: m } %>
+      <% unread_messages.each do |message| %>
+        <li id='message-<%= message.id %>'>
+          <%= render 'message', message: message %>
         </li>
       <% end %>
     </ul>
     <ul class='clean-list' id='read-message-list'>
-      <% read_messages.each do |m| %>
-        <li id='message-<%= m.id %>'>
-          <%= render partial: 'message', locals: { message: m } %>
+      <% read_messages.each do |message| %>
+        <li id='message-<%= message.id %>'>
+          <%= render 'message', message: message %>
         </li>
       <% end %>
     </ul>
     <ul class='clean-list' id='unread-notification-list'>
-      <% unread_notifications.each do |n| %>
-        <li id='notification-<%= n.id %>'>
-          <%= render partial: 'notification', locals: { notification: n } %>
+      <% unread_notifications.each do |notification| %>
+        <li id='notification-<%= notification.id %>'>
+          <%= render 'notification', notification: notification %>
         </li>
       <% end %>
     </ul>
     <ul class='clean-list' id='read-notification-list'>
-      <% read_notifications.each do |n| %>
-        <li id='notification-<%= n.id %>'>
-          <%= render partial: 'notification', locals: { notification: n } %>
+      <% read_notifications.each do |notification| %>
+        <li id='notification-<%= notification.id %>'>
+          <%= render 'notification', notification: notification %>
         </li>
       <% end %>
     </ul>
@@ -48,8 +48,7 @@
             <li>
               <%=
                 link_to fa_icon('pencil', text: t('action.write')+t('mailbox.message')),
-                user_write_message_path,
-                remote: true
+                user_write_message_path, remote: true
               %>
             </li>
           </ul>
@@ -58,9 +57,9 @@
     </nav>
     <div id='write-message-placeholder'></div>
     <ul class='clean-list' id='sent-message-list'>
-      <% sent_messages.each do |m| %>
-        <li id='message-<%= m.id %>'>
-          <%= render partial: 'message', locals: { message: m } %>
+      <% sent_messages.each do |message| %>
+        <li id='message-<%= message.id %>'>
+          <%= render 'message', message: message %>
         </li>
       <% end %>
     </ul>
@@ -73,8 +72,7 @@
             <li>
               <%=
                 link_to fa_icon('eraser', text: t('action.clean_all')),
-                user_empty_trash_path,
-                remote: true
+                user_empty_trash_path, remote: true
               %>
             </li>
           </ul>
@@ -82,16 +80,16 @@
       </div>
     </nav>
     <ul class='clean-list' id='trashed-message-list'>
-      <% trashed_messages.each do |m| %>
-        <li id='message-<%= m.id %>'>
-          <%= render partial: 'message', locals: { message: m } %>
+      <% trashed_messages.each do |message| %>
+        <li id='message-<%= message.id %>'>
+          <%= render 'message', message: message %>
         </li>
       <% end %>
     </ul>
     <ul class='clean-list' id='trashed-notification-list'>
-      <% trashed_notifications.each do |m| %>
-        <li id='notification-<%= m.id %>'>
-          <%= render partial: 'notification', locals: { notification: m } %>
+      <% trashed_notifications.each do |notification| %>
+        <li id='notification-<%= notification.id %>'>
+          <%= render 'notification', notification: notification %>
         </li>
       <% end %>
     </ul>

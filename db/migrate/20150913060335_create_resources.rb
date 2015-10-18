@@ -7,9 +7,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :file_size
       t.string :file_type
       t.string :file_name
-      t.string :status
       t.integer :user_id
-      t.integer :resource_type
       t.references :resourceable, polymorphic: true, index: true
       t.string :status
 

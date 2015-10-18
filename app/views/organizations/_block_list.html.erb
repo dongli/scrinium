@@ -6,10 +6,10 @@
       </a>
     </div>
   <% end %>
-  <% organizations.each do |o| %>
+  <% organizations.each do |organization| %>
     <div class='col-md-2 col-sm-3 col-xs-4'>
-      <a href='<%= organization_path(o) %>'>
-        <%= image_tag o.logo.url, class: 'img-responsive center-block' %>
+      <a href='<%= organization_path(organization) %>'>
+        <%= image_tag organization.logo.url, class: 'img-responsive center-block' %>
       </a>
     </div>
   <% end %>

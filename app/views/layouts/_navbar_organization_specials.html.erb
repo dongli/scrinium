@@ -8,10 +8,10 @@
       <li><%= link_to fa_icon('home', text: '主页'), organization %></li>
       <% engines = active_engines(organization) %>
       <% if not engines.empty? %>
-          <% engines.each do |e| %>
-            <% navbar_items = send("#{e}_navbar_items") %>
-            <% navbar_items.each do |k, v| %>
-              <li><%= link_to k, v, class: 'navbar-link' %></li>
+          <% engines.each do |engine| %>
+            <% navbar_items = send("#{engine}_navbar_items") %>
+            <% navbar_items.each do |key, value| %>
+              <li><%= link_to key, value, class: 'navbar-link' %></li>
             <% end %>
           <% end %>
       <% end %>

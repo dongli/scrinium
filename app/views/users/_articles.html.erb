@@ -1,12 +1,6 @@
 <dl>
   <dt><%= t('user.latest_articles') %></dt>
   <dd>
-    <%=
-      render partial: 'articles/table_list',
-      locals: {
-        articles: user.articles,
-        show_author: false
-      }
-    %>
+    <%= render 'articles/table_list', articles: user.articles, show_author: false %>
   </dd>
 </dl>

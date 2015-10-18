@@ -7,22 +7,20 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'layouts/navtab',
-    locals: {
-      tabs: {
-        activities: [
-          t('global.activity'),
-          render(partial: 'articles', locals: { user: @user })+render(partial: 'publications', locals: { user: @user })
-        ],
-        collections: [
-          t('scrinium.collection'),
-          render(partial: 'collections', locals: { user: @user })
-        ],
-        resources: [
-          t('scrinium.resource'),
-          render(partial: 'resources/list', locals: { resources: @user.resources })
-        ]
-      }
+    render 'layouts/navtab',
+    tabs: {
+      activities: [
+        t('global.activity'),
+        render('articles', user: @user })+render('publications', user: @user)
+      ],
+      collections: [
+        t('scrinium.collection'),
+        render('collections', user: @user)
+      ],
+      resources: [
+        t('scrinium.resource'),
+        render('resources/list', resources: @user.resources)
+      ]
     }
   %>
 <% end %>

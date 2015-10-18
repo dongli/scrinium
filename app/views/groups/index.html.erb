@@ -11,12 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <% Group.all.each do |g| %>
+      <% Group.all.each do |group| %>
         <tr>
-          <td><%= link_to "#{g.name}", group_path(g) %></td>
-          <td><%= link_to g.admin.name, g.admin %></td>
-          <td><%= g.created_at %></td>
-          <td><%= g.users.size %></td>
+          <td><%= link_to "#{group.name}", group %></td>
+          <td><%= link_to group.admin.name, group.admin %></td>
+          <td><%= group.created_at %></td>
+          <td><%= group.users.size %></td>
         </tr>
       <% end %>
     </tbody>

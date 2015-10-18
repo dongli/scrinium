@@ -5,9 +5,9 @@
   <li><%= @group.privacy.text %></li>
   <li>
     <ul class='left-side-list'>
-      <% @group.categories.each do |t| %>
+      <% @group.categories.each do |tag| %>
         <li><span class='label label-default'>
-          <%= t.name %>
+          <%= tag.name %>
         </span></li>
       <% end %>
     </ul>
@@ -24,9 +24,9 @@
       <dt><%= t('group.members') %></dt>
       <dd>
         <div class='row'>
-          <% @group.users.each do |u| %>
+          <% @group.users.each do |user| %>
             <div class='col-md-4'>
-              <%= link_to avatar(u, :small), user_path(u) %>
+              <%= link_to avatar(user, :small), user %>
             </div>
           <% end %>
         </div>

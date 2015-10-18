@@ -8,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <% references.each do |r| %>
+    <% references.each do |reference| %>
       <tr>
-        <td><%= join_authors r, false %></td>
-        <td><%= link_to r.title, r %></td>
-        <td><%= r.publicable.abbreviation %></td>
-        <td><%= r.year %></td>
+        <td><%= join_authors reference, false %></td>
+        <td><%= link_to reference.title, reference %></td>
+        <td><%= reference.publicable.abbreviation %></td>
+        <td><%= reference.year %></td>
       </tr>
     <% end %>
   </tbody>

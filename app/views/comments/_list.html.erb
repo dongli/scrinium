@@ -7,9 +7,9 @@
   <% else %>
     <% comments = Kaminari.paginate_array(commentable.comments.reverse).page(params[:page]).per(per_page) %>
   <% end %>
-  <% comments.each do |c| %>
-    <li id='comment-<%= c.id %>'>
-      <%= render 'comments/show', app: app, comment: c %>
+  <% comments.each do |comment| %>
+    <li id='comment-<%= comment.id %>'>
+      <%= render 'comments/show', app: app, comment: comment %>
     </li>
   <% end %>
   <div id='comment-placeholder'>

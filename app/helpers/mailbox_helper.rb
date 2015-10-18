@@ -10,36 +10,36 @@ module MailboxHelper
     @sent_messages = []
     @trashed_messages = []
     @trashed_notifications = []
-    current_user.mailbox.inbox.each do |c|
-      c.messages.each do |m|
-        next if m.sender == current_user
-        if m.is_unread? current_user
-          @unread_messages << m
+    current_user.mailbox.inbox.each do |conversation|
+      conversation.messages.each do |message|
+        next if message.sender == current_user
+        if message.is_unread? current_user
+          @unread_messages << message
         else
-          @read_messages << m
+          @read_messages << message
         end
       end
     end
-    current_user.mailbox.notifications.each do |n|
-      next if n.is_deleted? current_user
-      if n.is_trashed? current_user
-        @trashed_notifications << n
-      elsif n.is_unread? current_user
-        @unread_notifications << n
+    current_user.mailbox.notifications.each do |notification|
+      next if notification.is_deleted? current_user
+      if notification.is_trashed? current_user
+        @trashed_notifications << notification
+      elsif notification.is_unread? current_user
+        @unread_notifications << notification
       else
-        @read_notifications << n
+        @read_notifications << notification
       end
     end
-    current_user.mailbox.sentbox.each do |c|
-      c.messages.each do |m|
-        next if m.sender != current_user
-        @sent_messages << m
+    current_user.mailbox.sentbox.each do |conversation|
+      conversation.messages.each do |message|
+        next if message.sender != current_user
+        @sent_messages << message
       end
     end
-    current_user.mailbox.trash.each do |c|
-      c.messages.each do |m|
-        next if not m.is_trashed? current_user
-        @trashed_messages << m
+    current_user.mailbox.trash.each do |conversation|
+      conversation.messages.each do |message|
+        next if not message.is_trashed? current_user
+        @trashed_messages << message
       end
     end
   end

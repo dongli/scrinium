@@ -1,10 +1,10 @@
 <% app ||= main_app %>
 <div class='row'>
-  <% resources.each do |r| %>
+  <% resources.each do |resource| %>
     <div class='col-md-4 col-sm-6 col-xs-12'>
-      <a href='<%= url_for [ app, r.resourceable, r ] %>' class='thumbnail'>
-        <% next if not r.image? %>
-        <%= image_tag r.file.url, class: 'img-responsive center-block' %>
+      <a href='<%= url_for [ app, resource.resourceable, resource ] %>' class='thumbnail'>
+        <% next if not resource.image? %>
+        <%= image_tag resource.file.url, class: 'img-responsive center-block' %>
       </a>
     </div>
   <% end %>

@@ -1,11 +1,6 @@
 <dl>
   <dt><%= t('scrinium.collection') %></dt>
   <dd>
-    <%=
-      render partial: 'collections/block_list',
-      locals: {
-        collections: user.collections
-      }
-    %>
+    <%= render 'collections/block_list', collections: user.collections %>
   </dd>
 </dl>

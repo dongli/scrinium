@@ -30,9 +30,9 @@ class MailboxController < ApplicationController
       current_user.send_message(User.find(params[:receivers]), params[:body], params[:subject])
       @message = current_user.mailbox.sentbox.last.messages.first
     end
-    @message.receipts.each do |r|
-      next if r.mailbox_type == 'sentbox'
-      MessageBus.publish "/mailbox-#{r.receiver_id}", { user_id: current_user.id }
+    @message.receipts.each do |receipt|
+      next if receipt.mailbox_type == 'sentbox'
+      MessageBus.publish "/mailbox-#{receipt.receiver_id}", { user_id: current_user.id }
     end
     respond_to do |format|
       format.js
@@ -68,15 +68,15 @@ class MailboxController < ApplicationController
   end
 
   def empty_trash
-    current_user.mailbox.trash.each do |c|
-      c.messages.each do |m|
-        next if not m.is_trashed? current_user
-        m.mark_as_deleted current_user
+    current_user.mailbox.trash.each do |conversation|
+      conversation.messages.each do |message|
+        next if not message.is_trashed? current_user
+        message.mark_as_deleted current_user
       end
     end
-    current_user.mailbox.notifications.each do |n|
-      next if not n.is_trashed? current_user
-      n.mark_as_deleted current_user
+    current_user.mailbox.notifications.each do |notification|
+      next if not notification.is_trashed? current_user
+      notification.mark_as_deleted current_user
     end
     respond_to do |format|
       format.js

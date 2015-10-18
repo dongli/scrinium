@@ -351,11 +351,10 @@ ActiveRecord::Schema.define(version: 20151017030253) do
     t.string   "file_size"
     t.string   "file_type"
     t.string   "file_name"
-    t.string   "status"
     t.integer  "user_id"
-    t.integer  "resource_type"
     t.integer  "resourceable_id"
     t.string   "resourceable_type"
+    t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

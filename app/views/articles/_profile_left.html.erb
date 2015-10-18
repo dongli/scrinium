@@ -8,9 +8,9 @@
   </li>
   <li>
     <ul class='left-side-list'>
-      <% @article.categories.each do |t| %>
+      <% @article.categories.each do |tag| %>
         <li><span class='label label-default'>
-          <%= t.name %>
+          <%= tag.name %>
         </span></li>
       <% end %>
     </ul>

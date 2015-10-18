@@ -10,17 +10,10 @@
     <dt><%= t('versions') %></dt>
     <dd>
       <ul class='versions'>
-        <% @article.versions.each do |v| %>
-          <% next if not v.reify or not v.previous %>
-          <li id='version-<%= v.previous.id %>'>
-            <%=
-              render partial: 'diff',
-              locals: {
-                article: @article,
-                previous_version: v.previous,
-                current_version: v.reify
-              }
-            %>
+        <% @article.versions.each do |version| %>
+          <% next if not version.reify or not version.previous %>
+          <li id='version-<%= version.previous.id %>'>
+            <%= render 'diff', article: @article, previous_version: version.previous, current_version: version.reify %>
           </li>
         <% end %>
         <% if @article.versions.last %>

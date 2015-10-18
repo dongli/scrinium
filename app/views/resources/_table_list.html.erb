@@ -8,15 +8,15 @@
     </tr>
   </thead>
   <tbody>
-    <% resources.each do |r| %>
+    <% resources.each do |resource| %>
       <tr>
         <td>
-          <%= link_to r.name, [ app, r.resourceable, r ] %>
+          <%= link_to r.name, [ app, resource.resourceable, resource ] %>
         </td>
         <td>
-          <%= link_to r.user.name, main_app.user_path(r.user) %>
+          <%= link_to resource.user.name, resource.user %>
         </td>
-        <td><%= r.created_at %></td>
+        <td><%= resource.created_at %></td>
       </tr>
     <% end %>
   </tbody>
