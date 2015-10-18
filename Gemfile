@@ -101,3 +101,5 @@ gem 'kaminari-bootstrap'
 gem 'lograge'
 
 gem 'enumerize'
+
+gem 'annotate'

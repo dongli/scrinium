@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: resources
+#
+#  id                :integer          not null, primary key
+#  name              :string
+#  description       :text
+#  file              :string
+#  file_size         :string
+#  file_type         :string
+#  file_name         :string
+#  status            :string
+#  user_id           :integer
+#  resource_type     :integer
+#  resourceable_id   :integer
+#  resourceable_type :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 class Resource < ActiveRecord::Base
   belongs_to :resourceable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :destroy

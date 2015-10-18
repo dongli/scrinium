@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                      :integer          not null, primary key
+#  avatar_file_name        :string
+#  avatar_content_type     :string
+#  avatar_file_size        :integer
+#  avatar_updated_at       :datetime
+#  name                    :string           not null
+#  email                   :string           not null
+#  encrypted_password      :string           not null
+#  gender                  :string           not null
+#  position                :string
+#  role                    :string           not null
+#  status                  :string
+#  current_organization_id :integer
+#  reset_password_token    :string
+#  reset_password_sent_at  :datetime
+#  remember_created_at     :datetime
+#  sign_in_count           :integer          default(0), not null
+#  current_sign_in_at      :datetime
+#  last_sign_in_at         :datetime
+#  current_sign_in_ip      :inet
+#  last_sign_in_ip         :inet
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined.  If you add columns to the
