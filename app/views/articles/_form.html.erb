@@ -25,7 +25,7 @@
         <%= f.input :privacy, label: t('article.privacy') %>
       </div>
       <div class='col-md-4' id='select-groups'
-        style='<%= 'display:none' if @article.privacy != t('privacy_types.group_public') %>'>
+        style='<%= 'display:none' if @article.privacy != 'group_public' %>'>
         <%=
           f.association :groups,
           label: t('article.public_groups'),
