@@ -4,7 +4,7 @@ class MembershipPolicy < ApplicationPolicy
   end
 
   def update?
-    login? and user.id == record.host.admin_id
+    login? and ( user.id == record.host.admin_id or ( record.join_type.invited? and user.id == record.user_id ) )
   end
 
   def destroy?

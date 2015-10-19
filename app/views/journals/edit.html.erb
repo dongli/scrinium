@@ -1,6 +1,5 @@
-<h1>Editing Journal</h1>
+<% content_for :title, t('action.edit')+t('scrinium.journal') %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @journal %> |
-<%= link_to 'Back', journals_path %>
+<% content_for :main_block do %>
+  <%= render 'form' %>
+<% end %>

@@ -1,0 +1,11 @@
+zh-CN:
+  scrinium:
+    resource: 资源
+
+  resource:
+    name: 资源名称
+    categories: 资源类别
+    description: 资源描述
+    size: 文件大小
+    placeholder:
+      categories: 提示：以空格分开。

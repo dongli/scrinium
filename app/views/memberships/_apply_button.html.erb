@@ -1,5 +1,3 @@
-<% if policy(Membership).create? and not is_user_in? host, host.class %>
-  <div class='center'>
-    <%= render 'memberships/form', membership: Membership.new, host: host %>
-  </div>
+<% if policy(Membership).create? and not is_user_in? host %>
+  <%= render 'memberships/form', membership: Membership.new, host: host, join_type: :self %>
 <% end %>

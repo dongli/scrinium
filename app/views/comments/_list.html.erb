@@ -22,14 +22,7 @@
   </div>
   <% if policy(Comment).create? %>
     <li id='new-comment'>
-      <%=
-        render partial: 'comments/form',
-        locals: {
-          app: app,
-          commentable: commentable,
-          comment: Comment.new
-        }
-      %>
+      <%= render 'comments/form', app: app, commentable: commentable, comment: Comment.new %>
     </li>
   <% end %>
 </ul>

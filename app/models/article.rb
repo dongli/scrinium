@@ -6,7 +6,6 @@
 #  user_id    :integer
 #  title      :string           not null
 #  content    :text             default("")
-#  draft      :boolean          default(FALSE)
 #  privacy    :string           not null
 #  status     :string
 #  created_at :datetime         not null
@@ -22,7 +21,7 @@ class Article < ActiveRecord::Base
 
   is_impressionable
   has_paper_trail on: [:update, :destroy],
-    if: Proc.new { |t| not t.draft },
+    if: Proc.new { |article| article.finished? },
     only: [:title, :content]
   acts_as_taggable
   acts_as_taggable_on :categories
@@ -36,5 +35,10 @@ class Article < ActiveRecord::Base
     :public,
     :private,
     :group_public
+  ], predicates: true
+
+  enumerize :status, in: [
+    :draft,
+    :finished
   ], predicates: true
 end

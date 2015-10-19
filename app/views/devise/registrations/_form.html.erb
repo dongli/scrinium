@@ -9,66 +9,31 @@
     as: resource_name,
     url: registration_path(resource_name),
     html: { multiform: true } do |f| %>
+    <div class='center'>
+      <%= image_tag 'medium/default_avatar.png',   size: '100x100', id: 'preview-avatar' %>
+      <%= f.file_field :avatar, id: 'upload-avatar' %>
+    </div>
     <div class='row'>
       <div class='col-md-6'>
         <%=
-          image_tag 'medium/default_avatar.png',
-          size: '100x100',
-          id: 'preview-avatar'
-        %>
-        <%=
-          f.file_field :avatar,
-          id: 'upload-avatar'
+          f.input :name, label: t('user.name'),
+          placeholder: t('placeholder.need_real_name'),
+          autofocus: true
         %>
       </div>
       <div class='col-md-6'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <%=
-              f.input :name,
-              label: false,
-              placeholder: t('placeholder.need_real_name'),
-              autofocus: true,
-              required: true,
-              input_html: {
-                autocapitalize: 'off',
-                autocorrect: 'none',
-                spellcheck: 'false'
-              }
-            %>
-          </div>
-          <div class='col-md-12'>
-            <%=
-              f.input :gender,
-              label: false,
-              required: true
-            %>
-          </div>
-        </div>
+        <%= f.input :gender, label: t('user.gender') %>
       </div>
     </div>
+    <%= f.input :email, label: t('user.email') %>
     <%=
-      f.input :email,
-      label: false,
-      required: true,
-      placeholder: t('user.email')
+      f.input :password, label: t('user.password'),
+      placeholder: t('user.password_hint')
     %>
     <%=
-      f.input :password,
-      label: false,
-      required: false,
-      placeholder: t('user.password')+' | '+t('user.password_hint')
-    %>
-    <%=
-      f.input :password_confirmation,
-      label: false,
-      required: false,
+      f.input :password_confirmation, label: false,
       placeholder: t('user.password_confirmation_hint')
     %>
-    <% if current_user %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
-    <% else %>
-      <%= f.button :submit, t('user.signup'), class: 'button float-right' %>
-    <% end %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

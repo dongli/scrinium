@@ -5,15 +5,15 @@
     <% else %>
       <%= f.input :organization_id, label: false, placeholder: '机构ID' %>
     <% end %>
-    <%= f.input :engine_name, label: t('license.engine_name'), required: true %>
-    <%= f.input :max_num_seats, label: t('license.max_num_seats'), required: true %>
+    <%= f.input :engine_name, label: t('license.engine_name') %>
+    <%= f.input :max_num_seats, label: t('license.max_num_seats') %>
     <% if current_user.role == 'admin' %>
-      <%= f.input :status, label: t('license.status'), required: true %>
+      <%= f.input :status, label: t('license.status') %>
       <%=
-        f.input :expired_at, label: t('license.expired_at'), required: true,
+        f.input :expired_at, label: t('license.expired_at'),
         input_html: { class: 'datepicker' }
       %>
     <% end %>
-    <%= f.button :submit, t('action.add'), class: 'button float-right' %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

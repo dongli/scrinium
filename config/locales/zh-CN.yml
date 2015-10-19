@@ -29,14 +29,7 @@ zh-CN:
     group: 群组
     comment: 评论
     mailbox: 邮箱
-    reference: 参考文献
-    journal: 期刊杂志
     publication: 发表刊物
-    resource: 资源
-    survey: 问卷调查
-    question: 问题
-    answer: 选择
-    feedback: 反馈
     engines: 插件列表
 
   mailbox:
@@ -65,6 +58,8 @@ zh-CN:
     restore: 恢复
     download: 下载
     submit: 提交
+    manage: 管理
+    invite: 邀请
 
   message:
     create_success: 成功创建%{thing}。
@@ -92,16 +87,6 @@ zh-CN:
     description: 机构描述
     people_number: 成员数量
 
-  group:
-    name: 群组名称
-    description: 群组描述
-    articles: 群组文章
-    owner: 管理者
-    members: 成员
-    member_number: 成员人数
-    placeholder:
-      categories: 类别 | 提示：以空格分开。
-
   dashboard:
     user: 用户
     group: 群组
@@ -111,54 +96,12 @@ zh-CN:
   placeholder:
     categories: 类别 | 提示：以空格分开。
 
-  resource:
-    size: 文件大小
-    types:
-      invalid: 资源类型
-      figure: 图表
-      datum: 数据
-      document: 文档
-
   comment:
     content: 评论内容
     got_commented_subject: 您的%{what}被评论
     got_commented_body: |+
       您的%{what}被“%{who}”评论，详见[这里](%{url})。
     has_new_comments: 有%{number}个新评论！请点击刷新。
-
-  reference:
-    type: 文献类型
-    title: 题目
-    authors: 作者
-    year: 年份
-    volume: 卷号
-    issue: 发行号
-    citation: 引用
-    journal: 杂志名称
-    doi: DOI号
-    abstract: 摘要
-    cite_key: 引用编号
-    placeholder:
-      authors: 作者（中文名称如：张三，英文名称如：San Zhang）
-      pages: 页码（如：100-120）
-
-  survey:
-    placeholder:
-      preface: 填写问卷调查的序言。
-      answer: 预设答案
-
-  question:
-    question_types:
-      invalid: 问答类型
-      single_line: 单行问答
-      multiple_lines: 多行问答
-      checkbox: 是否选择
-      single_option: 单项选择
-      multiple_options: 多项选择
-    accept_extra_answer?: 接受额外答案？
-
-  answer:
-    extra_content: 额外答案
 
   activerecord:
     errors:

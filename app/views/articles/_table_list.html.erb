@@ -15,13 +15,13 @@
     <% articles.each do |article| %>
       <% next if article.private? and ( ( current_user and current_user != article.user ) or show_author ) %>
       <tr
-        <% if article.draft %>
+        <% if article.draft? %>
           class='article-draft'
         <% end %>
       >
-        <td><%= link_to "《#{article.title}》", [ main_app, article ] %></td>
+        <td><%= link_to "《#{article.title}》", article %></td>
         <% if show_author %>
-          <td><%= link_to article.user.name, main_app.user_path(article.user) %></td>
+          <td><%= link_to article.user.name, article.user %></td>
         <% end %>
         <td><%= article.created_at %></td>
         <td><%= article.impressionist_count filter: :session_hash %></td>

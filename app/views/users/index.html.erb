@@ -1,8 +1,5 @@
 <% content_for :title, t('scrinium.user') %>
 
 <% content_for :main_block do %>
-  <%=
-    render partial: 'users/table_list',
-    locals: { users: User.all }
-  %>
+  <%= render 'users/table_list', users: User.all %>
 <% end %>

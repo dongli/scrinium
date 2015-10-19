@@ -1,5 +1,5 @@
 <% content_for :title, t('scrinium.license') %>
-<% add_breadcrumb "#{t('scrinium.license')} ##{@license.id}", license_path(@license) %>
+<% add_breadcrumb "#{t('scrinium.license')} ##{@license.id}", @license %>
 
 <% content_for :main_block do %>
   <div class='license-card'>
@@ -13,7 +13,7 @@
       </ul>
       <% if policy(@license).update? %>
         <div class='center'>
-          <%= link_to t('action.edit'), edit_license_path(@license), class: 'button' %>
+          <%= link_to t('action.edit'), [ :edit, @license ], class: 'button' %>
         </div>
       <% end %>
     </div>

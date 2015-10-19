@@ -51,7 +51,6 @@ Rails.application.routes.draw do
   resources :memberships
   # Organization ---------------------------------------------------------------
   resources :organizations
-  resources :organizationships
   resources :addresses
   # Group ----------------------------------------------------------------------
   resources :groups

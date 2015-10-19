@@ -1,4 +1,3 @@
-<% app ||= main_app %>
 <dl>
   <dt>
     <div class='center'>
@@ -10,10 +9,10 @@
   </dt>
   <dd>
     <div id='resource-table-list'>
-      <%= render 'resources/table_list', app: app, resources: resources %>
+      <%= render 'resources/table_list', resources: resources %>
     </div>
     <div id='resource-block-list' style='display: none;'>
-      <%= render 'resources/block_list', app: app, resources: resources %>
+      <%= render 'resources/block_list', resources: resources %>
     </div>
   </dd>
 </dl>

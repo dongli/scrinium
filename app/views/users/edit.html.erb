@@ -3,44 +3,25 @@
 <% content_for :main_block do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
+      <div class='center'>
+        <%= image_tag @user.avatar.url, size: '100x100', id: 'preview-avatar' %>
+        <%= f.file_field :avatar, id: 'upload-avatar' %>
+      </div>
       <div class='row'>
         <div class='col-md-6'>
           <%=
-            image_tag @user.avatar.url,
-            size: '100x100',
-            id: 'preview-avatar'
+            f.input :name, label: t('user.name'),
+            placeholder: t('placeholder.need_real_name'),
+            autofocus: true
           %>
-          <%= f.file_field :avatar, required: true, id: 'upload-avatar' %>
         </div>
         <div class='col-md-6'>
-          <div class='row'>
-            <div class='col-md-12'>
-              <%=
-                f.input :name,
-                label: false,
-                placeholder: t('placeholder.need_real_name'),
-                autofocus: true,
-                required: true,
-                input_html: {
-                  autocapitalize: 'off',
-                  autocorrect: 'none',
-                  spellcheck: 'false'
-                }
-              %>
-            </div>
-            <div class='col-md-12'>
-              <%= f.input :gender, label: false, required: true %>
-            </div>
-          </div>
+          <%= f.input :gender, label: t('user.gender') %>
         </div>
       </div>
-      <%= f.input :role, label: false, required: true, disabled: current_user.role != 'admin' %>
-      <%= f.input :email, label: false, required: true, placeholder: t('user.email') %>
-      <% if current_user %>
-        <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
-      <% else %>
-        <%= f.button :submit, t('user.signup'), class: 'button float-right' %>
-      <% end %>
+      <%= f.input :role, label: t('user.role'), disabled: current_user.role != 'admin' %>
+      <%= f.input :email, label: t('user.email') %>
+      <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
     <% end %>
   </div>
 <% end %>

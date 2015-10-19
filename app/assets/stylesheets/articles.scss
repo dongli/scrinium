@@ -27,9 +27,9 @@ table.articles {
   border-collapse: collapse;
   tr.article-draft {
     background-color: rgba(203, 35, 46, 0.50);
-    color: yellow;
+    color: red;
     a {
-      color: yellow;
+      color: red;
     }
   }
 }

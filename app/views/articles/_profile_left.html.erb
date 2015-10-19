@@ -1,10 +1,7 @@
 <% show_versions ||= false %>
 <ul class='left-side-list'>
   <li>
-    <%=
-      link_to avatar(@article.user, :medium),
-      user_path(@article.user)
-    %>
+    <%= link_to avatar(@article.user, size: :medium), @article.user %>
   </li>
   <li>
     <ul class='left-side-list'>

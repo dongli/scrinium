@@ -8,6 +8,8 @@
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
 #  admin_id          :integer
+#  website           :string
+#  parent_id         :integer
 #  status            :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -22,16 +24,19 @@ class Organization < ActiveRecord::Base
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   translates :name, :short_name, :description
 
+  belongs_to :parent, class_name: 'Organization', foreign_key: 'parent_id'
+  has_many :children, class_name: 'Organization', foreign_key: 'parent_id'
   has_many :memberships, as: :host, dependent: :destroy
   has_many :users, through: :memberships
-  has_many :organizationships
-  has_many :suborganizations, through: :organizationships
   has_many :licenses, dependent: :destroy
   has_many :addresses, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
   def admin
-    @admin = User.find(self.admin_id) if not defined? @admin or @admin.id != self.admin_id
-    @admin
+    if not defined? @admin or @admin.id != self.admin_id
+      @admin = User.find(self.admin_id)
+    else
+      @admin
+    end
   end
 end

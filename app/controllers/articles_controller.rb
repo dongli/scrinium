@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    set_draft
+    set_status
 
     respond_to do |format|
       if @article.save
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    set_draft
+    set_status
     respond_to do |format|
       if @article.update(article_params)
         MessageBus.publish "/update-Article-#{@article.id}", {
@@ -71,12 +71,12 @@ class ArticlesController < ApplicationController
 
   private
 
-  def set_draft
+  def set_status
     case params[:commit]
     when t('action.add'), t('action.edit')
-      @article.draft = false
+      @article.status = 'finished'
     when t('action.save')
-      @article.draft = true
+      @article.status = 'draft'
     end
   end
 

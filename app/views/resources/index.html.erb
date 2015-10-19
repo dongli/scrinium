@@ -1,6 +1,0 @@
-<% content_for :title, t('scrinium.resource') %>
-<% add_breadcrumb t('scrinium.resource'), main_app.user_resources_path, on_nav_bar: true %>
-
-<% content_for :main_block do %>
-  <%= render 'resources/table_list', resources: Resource.all %>
-<% end %>

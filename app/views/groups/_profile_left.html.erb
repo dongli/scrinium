@@ -1,5 +1,5 @@
 <ul class='left-side-list'>
-  <li><%= logo @group, :medium %></li>
+  <li><%= logo @group, size: :medium %></li>
   <li><%= @group.name %></li>
   <li><%= t('global.contact') %>: <%= link_to @group.admin.name, @group.admin %></li>
   <li><%= @group.privacy.text %></li>
@@ -15,7 +15,7 @@
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
   <% if policy(@group).update? %>
     <li>
-      <%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group) %>
+      <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @group ] %>
     </li>
   <% end %>
   <li><%= render 'memberships/apply_button', host: @group %></li>
@@ -26,7 +26,7 @@
         <div class='row'>
           <% @group.users.each do |user| %>
             <div class='col-md-4'>
-              <%= link_to avatar(user, :small), user %>
+              <%= link_to avatar(user, size: :small), user %>
             </div>
           <% end %>
         </div>

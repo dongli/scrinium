@@ -1,9 +1,11 @@
 module GroupsHelper
-  def logo group, size
+  def logo group, options = {}
+    size = options[:size] || :thumb
+    klass = options[:class] || 'avatar'
     if group.logo_file_name
-      image_tag group.logo.url(size), alt: group.name, class: 'logo'
+      image_tag group.logo.url(size), alt: group.name, class: klass
     else
-      image_tag "#{size}/default_logo.png", alt: group.name, class: 'logo'
+      image_tag "#{size}/default_avatar.png", alt: group.name, class: klass
     end
   end
 

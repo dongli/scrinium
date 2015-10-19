@@ -187,3 +187,11 @@ $(document).on 'page:change', ->
 
   $('.datepicker').datepicker
     format: 'yyyy-mm-dd'
+
+  # 切换用户列表显示方式。
+  $('#use-user-table-list').click ->
+    $('#user-table-list').show()
+    $('#user-block-list').hide()
+  $('#use-user-block-list').click ->
+    $('#user-table-list').hide()
+    $('#user-block-list').show()

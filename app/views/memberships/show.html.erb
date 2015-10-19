@@ -3,7 +3,7 @@
     <div class='well'>
       <div class='row'>
         <div class='col-md-4'>
-          <%= avatar @membership.user, :medium %>
+          <%= avatar @membership.user, size: :medium %>
         </div>
         <div class='col-md-6 col-md-offset-2'>
             <ul class='clean-list'>
@@ -15,24 +15,37 @@
             </ul>
         </div>
       </div>
-      <% if policy(@membership).update? %>
-        <div class='center'>
-          <% case @membership.status %>
-          <% when 'unapproved', 'banned' %>
-            <%=
-              link_to t('membership.action.approve'),
-              [ @membership, membership: { status: 'approved' } ],
-              method: :patch, class: 'button'
-            %>
-          <% when 'approved' %>
-            <%=
-              link_to t('membership.action.ban'),
-              [ @membership, membership: { status: 'banned' } ],
-              method: :patch, class: 'button btn-danger'
-            %>
+      <div class='center'>
+        <% case @membership.join_type %>
+        <% when 'self' %>
+          <% if policy(@membership).update? %>
+            <% case @membership.status %>
+            <% when 'unapproved', 'banned' %>
+              <%=
+                link_to t('membership.action.approve'),
+                [ @membership, membership: { status: 'approved' } ],
+                method: :patch, class: 'button'
+              %>
+            <% when 'approved' %>
+              <%=
+                link_to t('membership.action.ban'),
+                [ @membership, membership: { status: 'banned' } ],
+                method: :patch, class: 'button btn-danger'
+              %>
+            <% end %>
           <% end %>
-        </div>
-      <% end %>
+        <% when 'invited' %>
+          <% if policy(@membership).update? %>
+            <% if @membership.status.unapproved? %>
+              <%=
+                link_to t('membership.action.agree'),
+                [ @membership, membership: { status: 'approved' } ],
+                method: :patch, class: 'button'
+              %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

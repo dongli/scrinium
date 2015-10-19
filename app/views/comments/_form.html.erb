@@ -8,15 +8,14 @@
       <% if comment.floor %>
         #<%= comment.floor %>
       <% end %>
-      <%= link_to avatar(current_user, :small), user_path(current_user) %>
+      <%= link_to avatar(current_user, size: :small), current_user %>
       <%= current_user.name %>
       <% if comment.parent_id %>
         <%= t('action.reply') %>#<%= Comment.find(comment.parent_id).floor %>
       <% end %>
       <%=
-        f.button :submit, t('action.save'),
-        class: 'button btn-xs float-right', id: 'save-comment',
-        remote: true
+        f.button :submit, t('action.save'), class: 'button btn-xs float-right',
+        id: 'save-comment', remote: true
       %>
     </div>
     <div class='panel-body'>

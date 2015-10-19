@@ -10,6 +10,7 @@ class CreateResources < ActiveRecord::Migration
       t.integer :user_id
       t.references :resourceable, polymorphic: true, index: true
       t.string :status
+      t.string :uuid
 
       t.timestamps null: false
     end

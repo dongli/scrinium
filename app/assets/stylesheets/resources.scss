@@ -3,9 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .resource-form {
-  text-align: center;
   width: 320px;
   margin: 0 auto;
+  form.dropzone {
+    text-align: center;
+  }
   textarea.text {
     height: 200px;
   }
