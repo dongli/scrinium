@@ -104,6 +104,36 @@ zh-CN:
     has_new_comments: 有%{number}个新评论！请点击刷新。
 
   activerecord:
+    models:
+      address:          地址
+      article:          文章
+    attributes:
+      article:
+        title: 名称
+        privacy: 隐私度
+        public_groups: 公开组
+        tags: 文章标记
+        author: 作者
+        browse_count: 浏览次数
+        version_number: 版本数
+        version: 文章版本
+        versions: 所有版本
+        placeholder:
+          title: 提示：可以使用Markdown语法标记和LaTeX公式标记。
+          categories: 提示：以空格分开。
+          public_for_groups: 选择向哪些群组公开
+          content: 提示：可以使用Markdown语法标记和LaTeX公式标记。
+        categories:
+          research_record: 科研记录
+
+      address:
+        name: 地址名称
+        country: 国家
+        city: 城市
+        district: 行政区
+        zip_code: 邮政编码
+        street: 街道名
+
     errors:
       models:
         organization:
