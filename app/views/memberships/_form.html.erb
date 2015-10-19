@@ -6,9 +6,13 @@
   <% case join_type %>
   <% when :self %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
+    <div class='center'>
+      <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
+    </div>
   <% when :invited %>
     <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name' } %>
-    <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
+    <div class='center'>
+      <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
+    </div>
   <% end %>
 <% end %>

@@ -1,5 +1,3 @@
 <% if policy(Membership).create? %>
-  <div class='center'>
-    <%= render 'memberships/form', membership: Membership.new, host: host, join_type: :invited %>
-  </div>
+  <%= render 'memberships/form', membership: Membership.new, host: host, join_type: :invited %>
 <% end %>
