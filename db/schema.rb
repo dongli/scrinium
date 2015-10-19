@@ -312,26 +312,23 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "publications", ["user_id"], name: "index_publications_on_user_id", using: :btree
 
   create_table "references", force: :cascade do |t|
+    t.integer  "publicable_id"
+    t.string   "publicable_type"
     t.integer  "creator_id"
     t.string   "cite_key"
     t.string   "reference_type"
-    t.string   "authors",           default: [],              array: true
+    t.string   "authors",         default: [],              array: true
     t.string   "title"
-    t.integer  "publicable_id"
-    t.string   "publicable_type"
     t.string   "year"
     t.string   "volume"
     t.string   "issue"
     t.string   "pages"
     t.string   "doi"
     t.text     "abstract"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
+    t.string   "file"
     t.string   "status"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "references", ["cite_key"], name: "index_references_on_cite_key", using: :btree
