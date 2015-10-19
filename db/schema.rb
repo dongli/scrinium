@@ -292,16 +292,11 @@ ActiveRecord::Schema.define(version: 20151017030253) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.integer  "admin_id"
+    t.string   "website"
+    t.integer  "parent_id"
     t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-  end
-
-  create_table "organizationships", force: :cascade do |t|
-    t.integer  "organization_id"
-    t.integer  "suborganization_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
   end
 
   create_table "publications", force: :cascade do |t|

@@ -1,5 +1,6 @@
 <div class='organization-form'>
   <%= simple_form_for @organization do |f| %>
+    <%= f.hidden_field :parent_id, value: @organization.parent_id %>
     <%=
       image_tag 'medium/default_avatar.png',
       size: '100x100',

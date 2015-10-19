@@ -95,7 +95,7 @@
           <ul class='clean-list center'>
             <% current_user.organizations.each do |organization| %>
               <%=
-                link_to logo(organization, :thumb),
+                link_to logo(organization, size: :thumb),
                 change_current_organization_path(current_user, organization_id: organization.id)
               %>
             <% end %>

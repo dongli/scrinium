@@ -1,9 +1,10 @@
 zh-CN:
   scrinium:
     organization: 机构
-    suborganization: 子机构
-    organizationship: 机构关系
 
   organization:
     admin: 机构管理员
     switch: 切换机构
+    connection_with_parent: 与父机构的关联
+    children: 子机构
+    child: 子机构

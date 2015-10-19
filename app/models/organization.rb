@@ -22,10 +22,10 @@ class Organization < ActiveRecord::Base
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   translates :name, :short_name, :description
 
+  belongs_to :parent, class_name: 'Organization', foreign_key: 'parent_id'
+  has_many :children, class_name: 'Organization', foreign_key: 'parent_id'
   has_many :memberships, as: :host, dependent: :destroy
   has_many :users, through: :memberships
-  has_many :organizationships
-  has_many :suborganizations, through: :organizationships
   has_many :licenses, dependent: :destroy
   has_many :addresses, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true

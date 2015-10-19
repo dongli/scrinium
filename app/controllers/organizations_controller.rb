@@ -11,6 +11,7 @@ class OrganizationsController < ApplicationController
 
   def new
     @organization = Organization.new
+    @organization.parent_id = params[:parent_id]
   end
 
   def edit
@@ -29,16 +30,6 @@ class OrganizationsController < ApplicationController
                               role: 'admin',
                               status: 'approved').save
           # TODO: 处理错误。
-        end
-        # 建立机构间的联系。
-        match = session[:previous_url].last.match(/\/organizations\/new\?organization_id=(\d+)/)
-        organization_id = match ? match[1] : nil
-        if organization_id
-          organizationship = Organizationship.new(organization_id: organization_id,
-                                                  suborganization_id: @organization.id)
-          if not organizationship.save
-            format.html { redirect_to @organization, error: t('message.create_fail', thing: t('scrinium.organizationship')) }
-          end
         end
         format.html { redirect_to @organization, notice: t('message.create_success', thing: t('scrinium.organization')) }
       else
@@ -76,6 +67,7 @@ class OrganizationsController < ApplicationController
                                          :short_name,
                                          :description,
                                          :admin_id,
+                                         :parent_id,
                                          addresses_attributes: [
                                            :id,
                                            :name,

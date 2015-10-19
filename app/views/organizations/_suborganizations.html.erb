@@ -2,7 +2,7 @@
   <dt><%= t('scrinium.suborganization') %></dt>
   <dd>
     <ul class='suborganizations'>
-      <%= render 'block_list', organizations: @organization.suborganizations, add_logo: false %>
+      <%= render 'block_list', organizations: @organization.children, add_logo: false %>
     </ul>
   </dd>
 </dl>

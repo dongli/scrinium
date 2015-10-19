@@ -11,7 +11,7 @@
       render 'layouts/navtab',
       tabs: {
         info: [ t('global.info'), render('info') ],
-        suborganizations: [ t('scrinium.suborganization'), render('suborganizations') ],
+        suborganizations: [ t('organization.children'), render('suborganizations') ],
         admin: [ t('global.admin'), render('admin') ]
       }
     %>
@@ -20,7 +20,7 @@
       render 'layouts/navtab',
       tabs: {
         info: [ t('global.info'), render('info') ],
-        suborganizations: [ t('scrinium.suborganization'), render('suborganizations') ]
+        suborganizations: [ t('organization.children'), render('suborganizations') ]
       }
     %>
   <% end %>

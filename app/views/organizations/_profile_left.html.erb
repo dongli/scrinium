@@ -1,27 +1,37 @@
 <ul class='left-side-list'>
-  <li><%= logo @organization, :medium %></li>
+  <li><%= logo @organization, size: :medium %></li>
   <li><%= @organization.name %></li>
   <li><%= t('global.contact') %>: <%= link_to @organization.admin.name, @organization.admin %></li>
-  <% if policy(@organization).update? %>
-    <li>
+  <li>
+    <% if policy(@organization).update? %>
       <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @organization ] %>
-    </li>
+    <% end %>
+    <% if policy(@organization).destroy? %>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        @organization, method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.organization')) }
+      %>
+    <% end %>
+  </li>
+  <% if policy(@organization).update? %>
     <li>
       <%=
         link_to fa_icon('gears', text: t('action.add')+t('scrinium.engine')),
-        new_license_path(organization_id: @organization.id)
+        new_license_path(organization_id: @organization.id),
+        id: 'add-engine', style: 'display: none;'
       %>
     </li>
   <% end %>
   <% if policy(Organization).create? %>
     <li>
       <%=
-        link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.suborganization')),
-        new_organization_path(organization_id: @organization)
+        link_to fa_icon('plus-square', text: t('action.add')+t('organization.child')),
+        new_organization_path(parent_id: @organization.id),
+        id: 'add-child', style: 'display: none;'
       %>
     </li>
   <% end %>
-  <!-- <li><%= render 'licenses/block_list', licenses: @organization.licenses %></li> -->
   <li><%= fa_icon('users', text: t('organization.people_number'))+': '+@organization.users.size.to_s %></li>
   <li><%= render 'memberships/apply_button', host: @organization %></li>
 </ul>
