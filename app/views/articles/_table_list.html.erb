@@ -15,7 +15,7 @@
     <% articles.each do |article| %>
       <% next if article.private? and ( ( current_user and current_user != article.user ) or show_author ) %>
       <tr
-        <% if article.draft %>
+        <% if article.draft? %>
           class='article-draft'
         <% end %>
       >
