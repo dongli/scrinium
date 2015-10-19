@@ -25,62 +25,7 @@
             researches_index_path, class: 'navbar-link'
           %>
         </li>
-        <% if user_signed_in? %>
-          <% check_mailbox %>
-          <li class='dropdown'>
-            <div id='user-info' data-user-id=<%= current_user.id %>></div>
-            <a id='user-menu' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
-              <% if has_unread? %>
-                <%= image_tag('logos/user_alert_logo.png', size: '30x30', id: 'user-alert-logo') %>
-                <%= image_tag('logos/user_logo.png', size: '30x30', id: 'user-logo', style: 'display: none') %>
-              <% else %>
-                <%= image_tag('logos/user_alert_logo.png', size: '30x30', id: 'user-alert-logo', style: 'display: none') %>
-                <%= image_tag('logos/user_logo.png', size: '30x30', id: 'user-logo') %>
-              <% end %>
-            </a>
-            <ul class='dropdown-menu'>
-              <li>
-                <%= link_to avatar(current_user, size: :small)+' '+t('user.profile'), current_user %>
-              </li>
-              <% if current_user.organizations.size > 1 %>
-                <li>
-                  <a data-toggle='modal' data-target='#organization-switcher'>
-                    <%= fa_icon('map-signs', text: t('organization.switch')) %>
-                  </a>
-                </li>
-              <% end %>
-              <li>
-                <a href='<%= user_mailbox_index_path(current_user) %>'
-                  id='mailbox-menu-item'>
-                  <%= fa_icon('envelope', text: t('scrinium.mailbox')) %>
-                  <% if has_unread? %>
-                    <span class='badge unread-mail-badge'><%= num_unread %></span>
-                  <% end %>
-                </a>
-              </li>
-              <li>
-                <%=
-                  link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.article')),
-                  new_article_path
-                %>
-              </li>
-              <% if current_user and ( current_user.admin? or current_user.assist_admin? ) %>
-                <li>
-                  <%=
-                    link_to fa_icon('dashboard', text: t('global.dashboard')),
-                    dashboard_index_path
-                  %>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-          <li>
-            <%=
-              link_to image_tag('logos/logout_logo.png', size: '30x30'),
-              destroy_user_session_path, method: :delete, class: 'navbar-link'
-            %>
-          </li>
-        <% end %>
+        <%= render 'layouts/navbar_user' %>
       </ul>
     </div>
   </div>

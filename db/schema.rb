@@ -383,10 +383,7 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "avatar"
     t.string   "name",                                null: false
     t.string   "email",                               null: false
     t.string   "encrypted_password",                  null: false

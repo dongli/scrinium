@@ -113,6 +113,9 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.5.2)
+    file_validators (2.0.2)
+      activemodel (>= 3.0)
+      mime-types (>= 1.0)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
     foreigner (1.7.4)
@@ -176,6 +179,7 @@ GEM
       redis
     mime-types (2.6.1)
     mimemagic (0.3.0)
+    mini_magick (4.3.6)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
@@ -325,6 +329,7 @@ DEPENDENCIES
   doorkeeper
   dropzonejs-rails
   enumerize
+  file_validators
   font-awesome-rails
   globalize (~> 5.0.0)
   grape
@@ -338,6 +343,7 @@ DEPENDENCIES
   mailboxer
   mathjax-rails (~> 2.5.1)
   message_bus
+  mini_magick
   paper_trail (~> 4.0.0)
   paperclip (~> 4.3)
   pg

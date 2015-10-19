@@ -79,7 +79,9 @@ gem 'closure_tree'
 
 gem 'paperclip', '~> 4.3'
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'dropzonejs-rails'
+gem 'file_validators'
 
 gem 'diffy'
 
