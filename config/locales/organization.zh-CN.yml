@@ -8,3 +8,6 @@ zh-CN:
     connection_with_parent: 与父机构的关联
     children: 子机构
     child: 子机构
+    member_list: 成员列表
+    members: 成员
+    member: 成员

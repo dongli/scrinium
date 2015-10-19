@@ -3,6 +3,7 @@ $(document).on 'page:change', ->
     turnOnTab
       info: []
       suborganizations: [ 'add-child' ]
+      members: []
       admin: [ 'add-engine' ]
   else if /\/organizations\/(new|\d+\/edit)/.test(location)
     $('form').on 'click', '.remove_field', (event) ->

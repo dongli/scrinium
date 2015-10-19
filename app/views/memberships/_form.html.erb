@@ -1,6 +1,14 @@
 <%= simple_form_for membership do |f| %>
   <%= f.hidden_field :host_type, value: host.class %>
   <%= f.hidden_field :host_id, value: host.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
+  <%= f.hidden_field :join_type, value: join_type %>
+  <%= f.hidden_field :last_user_id, value: current_user.id %>
+  <% case join_type %>
+  <% when :self %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
+  <% when :invited %>
+    <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name' } %>
+    <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
+  <% end %>
 <% end %>

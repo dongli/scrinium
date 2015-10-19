@@ -12,16 +12,23 @@ zh-CN:
       apply: 申请加入
       approve: 核准
       ban: 封存
+      invite: 邀请加入
+      agree: 同意加入
     message:
       wait_for_approval: 请耐心等待管理员核准。
+      wait_for_agreement: 请耐心等待用户同意。
       quit_success: 您从%{host}退出！
     notification:
       subject:
         new_user_applies_to_join_in: 新用户申请加入%{host}
+        new_user_has_been_invited_to_join_in: 您被邀请加入%{host}
         membership_updated: 资格被更新
+        user_agreed_to_join_in: 用户“%{user}”同意加入%{host}
       body:
         new_user_applies_to_join_in: 新用户”%{user}“申请加入”%{host}“，等待您的[批准](%{page})。
+        new_user_has_been_invited_to_join_in: 您被加入到%{host}，等待您的[答复](%{page})。
         membership_updated: 您在“%{host}”中的资格被更新，详情请见[这里](%{page})。
+        user_agreed_to_join_in: 用户“%{user}”同意加入%{host}，详情请见[这里](%{page})。
 
   enumerize:
     membership:

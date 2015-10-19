@@ -26,7 +26,7 @@
         <div class='row'>
           <% @group.users.each do |user| %>
             <div class='col-md-4'>
-              <%= link_to avatar(user, :small), user %>
+              <%= link_to avatar(user, size: :small), user %>
             </div>
           <% end %>
         </div>

@@ -12,6 +12,7 @@
       tabs: {
         info: [ t('global.info'), render('info') ],
         suborganizations: [ t('organization.children'), render('suborganizations') ],
+        members: [ t('organization.members'), render('members') ],
         admin: [ t('global.admin'), render('admin') ]
       }
     %>
@@ -20,7 +21,8 @@
       render 'layouts/navtab',
       tabs: {
         info: [ t('global.info'), render('info') ],
-        suborganizations: [ t('organization.children'), render('suborganizations') ]
+        suborganizations: [ t('organization.children'), render('suborganizations') ],
+        members: [ t('organization.members'), render('members') ],
       }
     %>
   <% end %>

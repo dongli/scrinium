@@ -8,7 +8,7 @@
       <% if comment.floor %>
         #<%= comment.floor %>
       <% end %>
-      <%= link_to avatar(current_user, :small), current_user %>
+      <%= link_to avatar(current_user, size: :small), current_user %>
       <%= current_user.name %>
       <% if comment.parent_id %>
         <%= t('action.reply') %>#<%= Comment.find(comment.parent_id).floor %>

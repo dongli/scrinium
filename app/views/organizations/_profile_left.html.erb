@@ -1,5 +1,9 @@
 <ul class='left-side-list'>
-  <li><%= logo @organization, size: :medium %></li>
+  <li>
+    <div class='center'>
+      <%= logo @organization, size: :medium %>
+    </div>
+  </li>
   <li><%= @organization.name %></li>
   <li><%= t('global.contact') %>: <%= link_to @organization.admin.name, @organization.admin %></li>
   <li>

@@ -220,14 +220,20 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
   create_table "memberships", force: :cascade do |t|
-    t.integer  "host_id",                           null: false
-    t.string   "host_type",                         null: false
-    t.integer  "user_id",                           null: false
-    t.string   "role",       default: "member",     null: false
-    t.string   "expired_at"
-    t.string   "status",     default: "unapproved"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.text     "description"
+    t.integer  "host_id",                                null: false
+    t.string   "host_type",                              null: false
+    t.integer  "user_id",                                null: false
+    t.string   "role",            default: "member"
+    t.datetime "expired_at"
+    t.string   "join_type"
+    t.text     "rejected_reason"
+    t.datetime "rejected_at"
+    t.datetime "joined_at"
+    t.integer  "last_user_id"
+    t.string   "status",          default: "unapproved"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "memberships", ["host_type", "host_id"], name: "index_memberships_on_host_type_and_host_id", using: :btree

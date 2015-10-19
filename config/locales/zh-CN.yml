@@ -58,6 +58,8 @@ zh-CN:
     restore: 恢复
     download: 下载
     submit: 提交
+    manage: 管理
+    invite: 邀请
 
   message:
     create_success: 成功创建%{thing}。

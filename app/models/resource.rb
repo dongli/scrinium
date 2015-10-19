@@ -9,11 +9,10 @@
 #  file_size         :string
 #  file_type         :string
 #  file_name         :string
-#  status            :string
 #  user_id           :integer
-#  resource_type     :integer
 #  resourceable_id   :integer
 #  resourceable_type :string
+#  status            :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

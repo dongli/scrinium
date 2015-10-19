@@ -8,12 +8,12 @@
 <div class='panel panel-default'>
   <div class='panel-heading'>
     #<%= comment.floor %>
-    <%= link_to avatar(user, :small), user %>
+    <%= link_to avatar(user, size: :small), user %>
     <%= user.name %>
     <% if parent_comment %>
       <%= t('action.reply') %>
       <%= link_to "##{parent_comment.floor}", "#comment-#{comment.parent_id}" %>
-      <%= link_to avatar(parent_comment.user, :small), parent_comment.user %>
+      <%= link_to avatar(parent_comment.user, size: :small), parent_comment.user %>
       <%= parent_comment.user.name %>
     <% end %>
     <div class='float-right'>

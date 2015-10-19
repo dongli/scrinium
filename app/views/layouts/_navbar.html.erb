@@ -40,7 +40,7 @@
             </a>
             <ul class='dropdown-menu'>
               <li>
-                <%= link_to avatar(current_user, :small)+' '+t('user.profile'), current_user %>
+                <%= link_to avatar(current_user, size: :small)+' '+t('user.profile'), current_user %>
               </li>
               <% if current_user.organizations.size > 1 %>
                 <li>

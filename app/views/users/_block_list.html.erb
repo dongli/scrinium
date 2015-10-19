@@ -1,0 +1,14 @@
+<div class='row'>
+  <% users.each do |user| %>
+    <div class='col-md-3 col-sm-4 col-xs-6'>
+      <a href='<%= user_path(user) %>' class='thumbnail'>
+        <div class='well'>
+          <ul class='clean-list center spacing-1-em'>
+            <li><%= avatar user, class: 'img-responsive center-block avatar' %></li>
+            <li><%= user.name %></li>
+          </ul>
+        </div>
+      </a>
+    </div>
+  <% end %>
+</div>
