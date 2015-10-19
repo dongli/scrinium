@@ -107,15 +107,12 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "group_translations", ["locale"], name: "index_group_translations_on_locale", using: :btree
 
   create_table "groups", force: :cascade do |t|
+    t.string   "logo"
     t.integer  "admin_id"
-    t.string   "privacy",           null: false
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string   "privacy",    null: false
     t.string   "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -293,16 +290,13 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "organization_translations", ["organization_id"], name: "index_organization_translations_on_organization_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string   "logo"
     t.integer  "admin_id"
-    t.string   "website"
     t.integer  "parent_id"
+    t.string   "website"
     t.string   "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "publications", force: :cascade do |t|
