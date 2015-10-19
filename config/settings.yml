@@ -1,0 +1,39 @@
+# config/settings.yml
+defaults: &defaults
+  domain: 'localhost:3000'
+  website_name: 'scrinium'
+  smtp_settings:
+    address: 'smtpcloud.sohu.com'
+    port: 25
+    domain: 'service.kaikeba.com'
+    user_name: 'postmaster@kkb.sendcloud.org'
+    display_name: 'postmaster@service.kaikeba.com'
+    password: 'agZftD8KBjOjlyrZ'
+    authentication: 'login'
+    enable_starttls_auto: true
+  qiniu:
+    access_key: 'vg0UPNZ_jAQZ5ZBowG0prHStsF5AtdBOklnYVN0B'
+    secret_key: 'OSNFPVby7dq7NC0zw1pZZ5hDPj5laH0jxM1PS_O6'
+    default_bucket: 'scrinium'
+    default_bucket_domain: '7xllma.com1.z0.glb.clouddn.com'
+    image_bucket: 'scrinium'
+    image_bucket_domain: '7xllma.com1.z0.glb.clouddn.com'
+  redis_server_host: '127.0.0.1'
+  redis_server_port: '6379'
+
+######################################################################################
+development:
+  <<: *defaults
+
+
+######################################################################################
+test:
+  <<: *defaults
+
+
+######################################################################################
+production:
+  <<: *defaults
+  domain: 'www.scrinp.com'
+
+

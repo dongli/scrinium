@@ -28,7 +28,5 @@ module Scrinium
     config.paths.add 'app/api', glob: '**/*.rb'
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
 
-    # Redis cache.
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/scrinium', { expires_in: 90.minutes }
   end
 end
