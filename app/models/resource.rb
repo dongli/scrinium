@@ -32,7 +32,11 @@ class Resource < ActiveRecord::Base
   acts_as_taggable_on :categories
 
   def user
-    User.find(self.user_id)
+    begin
+      User.find(self.user_id)
+    rescue
+      self.destroy
+    end
   end
 
   def app

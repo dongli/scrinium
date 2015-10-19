@@ -15,7 +15,7 @@
   <li><%= t('global.create_time')+': '+@group.created_at.to_s %></li>
   <% if policy(@group).update? %>
     <li>
-      <%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group) %>
+      <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @group ] %>
     </li>
   <% end %>
   <li><%= render 'memberships/apply_button', host: @group %></li>

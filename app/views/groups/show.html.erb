@@ -12,10 +12,7 @@
   <dl>
     <dt><%= t('group.articles') %></dt>
     <dd>
-      <%=
-        render partial: 'articles/table_list',
-        locals: { articles: @group.articles }
-      %>
+      <%= render 'articles/table_list', articles: @group.articles %>
     </dd>
   </dl>
 <% end %>

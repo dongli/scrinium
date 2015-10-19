@@ -8,7 +8,6 @@
   </thead>
   <tbody>
     <% organizations.each do |organization| %>
-      <% next if o.short_name == 'void' %>
       <tr>
         <td>
           <%= link_to organization.short_name, organization %>

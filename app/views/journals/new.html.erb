@@ -1,5 +1,5 @@
-<h1>New Journal</h1>
+<% content_for :title, t('action.add')+t('scrinium.journal') %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', journals_path %>
+<% content_for :main_block do %>
+  <%= render 'form' %>
+<% end %>

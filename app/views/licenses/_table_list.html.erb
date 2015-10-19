@@ -10,7 +10,7 @@
   <tbody>
     <% licenses.each do |license| %>
       <tr>
-        <td><%= link_to license.engine_name.text, license_path(license) %></td>
+        <td><%= link_to license.engine_name.text, license %></td>
         <td><%= license.organization.name %></td>
         <td><%= license.max_num_seats %></td>
         <td><%= license.expired_at %></td>

@@ -7,25 +7,13 @@
     %>
     <%=
       f.file_field :logo,
-      required: true,
       id: 'upload-avatar'
     %>
-    <%=
-      f.input :name,
-      label: false,
-      placeholder: t('global.name'),
-      autofocus: true,
-      required: true
-    %>
-    <%=
-      f.input :short_name,
-      label: false,
-      placeholder: t('global.short_name'),
-      required: true
-    %>
+    <%= f.input :name, label: t('global.name'), autofocus: true %>
+    <%= f.input :short_name, label: t('global.short_name') %>
     <%=
       f.input :category_list,
-      label: false,
+      label: t('group.categories'),
       collection: @group.categories.map { |t| t.name },
       input_html: {
         multiple: 'multiple',
@@ -34,37 +22,19 @@
         }
       }
     %>
-    <%=
-      f.input :privacy,
-      label: false,
-      required: true
-    %>
-    <%=
-      f.input :description,
-      label: false,
-      placeholder: t('global.description'),
-      required: true,
-      as: :text
-    %>
+    <%= f.input :privacy, label: t('group.privacy') %>
+    <%= f.input :description, label: t('global.description'), as: :text %>
     <%=
       f.association :users,
-      label: false,
-      required: true,
+      label: t('group.members'),
       label_method: :name,
       value_method: :id,
       collection: @group.users,
       input_html: {
         id: 'input-user-name',
-        multiple: 'multiple',
-        data: {
-          placeholder: t('group.members')
-        }
+        multiple: 'multiple'
       }
     %>
-    <% if content_for(:title) == t('action.edit')+t('scrinium.group') %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
-    <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
-    <% end %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

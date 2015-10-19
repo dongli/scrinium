@@ -12,15 +12,9 @@
           <% end %>
           <div class='float-right'>
             <% if collection.watched %>
-              <%=
-                link_to fa_icon('eye'),
-                collection_toggle_watched_path(collection), remote: true
-              %>
+              <%= link_to fa_icon('eye'), collection_toggle_watched_path(collection), remote: true %>
             <% else %>
-              <%=
-                link_to fa_icon('eye-slash'),
-                collection_toggle_watched_path(collection), remote: true
-              %>
+              <%= link_to fa_icon('eye-slash'), collection_toggle_watched_path(collection), remote: true %>
             <% end %>
           </div>
         </div>

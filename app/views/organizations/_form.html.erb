@@ -5,11 +5,8 @@
       size: '100x100',
       id: 'preview-avatar'
     %>
-    <%= f.file_field :logo, required: true, id: 'upload-avatar' %>
-    <%=
-      f.input :name, label: t('organization.name'), autofocus: true, required: true,
-      input_html: { autocapitalize: 'off', autocorrect: 'none', spellcheck: 'false' }
-    %>
+    <%= f.file_field :logo, id: 'upload-avatar' %>
+    <%= f.input :name, label: t('organization.name'), autofocus: true %>
     <div class='row'>
       <div class='col-md-8'>
         <%= f.input :short_name, label: t('organization.short_name'), required: true %>
@@ -17,7 +14,7 @@
       <div class='col-md-4'>
         <!-- TODO: 该列表应该只显示机构成员，而不是所有平台用户。 -->
         <%=
-          f.input :admin_id, label: t('organization.admin'), required: true,
+          f.input :admin_id, label: t('organization.admin'),
           collection: [ @organization.admin_id ], input_html: { id: 'input-user-name' }
         %>
       </div>

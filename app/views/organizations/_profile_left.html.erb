@@ -4,10 +4,7 @@
   <li><%= t('global.contact') %>: <%= link_to @organization.admin.name, @organization.admin %></li>
   <% if policy(@organization).update? %>
     <li>
-      <%=
-        link_to fa_icon('edit', text: t('action.edit')),
-        edit_organization_path(@organization)
-      %>
+      <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @organization ] %>
     </li>
     <li>
       <%=

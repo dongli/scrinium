@@ -17,8 +17,7 @@
     <% end %>
     <% if policy(@resource).destroy? %>
       <%=
-        link_to fa_icon('trash', text: t('action.delete')),
-        @resource, method: :delete,
+        link_to fa_icon('trash', text: t('action.delete')), @resource, method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.resource')) }
       %>
     <% end %>

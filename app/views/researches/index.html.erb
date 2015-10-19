@@ -6,21 +6,15 @@
     <dt><%= t('article.categories.research_record') %></dt>
     <dd>
       <%=
-        render partial: 'articles/table_list',
-        locals: {
-          articles: Article.tagged_with(t('article.categories.research_record')),
-          show_author: true
-        }
+        render 'articles/table_list', show_author: true,
+        articles: Article.tagged_with(t('article.categories.research_record'))
       %>
     </dd>
   </dl>
   <dl>
     <dt><%= t('scrinium.reference') %></dt>
     <dd>
-      <%=
-        render partial: 'references/table_list',
-        locals: { references: Reference.all }
-      %>
+      <%= render 'references/table_list', references: Reference.all %>
     </dd>
   </dl>
 <% end %>

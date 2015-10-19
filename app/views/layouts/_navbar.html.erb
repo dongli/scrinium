@@ -16,15 +16,13 @@
         <li>
           <%=
             link_to image_tag('logos/organization_logo.png', size: '30x30'),
-            main_app.organizations_path,
-            class: 'navbar-link'
+            organizations_path, class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
             link_to image_tag('logos/research_logo.png', size: '30x30'),
-            main_app.researches_index_path,
-            class: 'navbar-link'
+            researches_index_path, class: 'navbar-link'
           %>
         </li>
         <% if user_signed_in? %>

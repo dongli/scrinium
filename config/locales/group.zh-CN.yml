@@ -1,0 +1,15 @@
+zh-CN:
+  scrinium:
+    group: 群组
+
+  group:
+    name: 群组名称
+    description: 群组描述
+    articles: 群组文章
+    categories: 群组类别
+    privacy: 隐私度
+    owner: 管理者
+    members: 成员
+    member_number: 成员人数
+    placeholder:
+      categories: 提示：以空格分开。

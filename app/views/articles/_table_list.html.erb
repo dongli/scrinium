@@ -19,9 +19,9 @@
           class='article-draft'
         <% end %>
       >
-        <td><%= link_to "《#{article.title}》", [ main_app, article ] %></td>
+        <td><%= link_to "《#{article.title}》", article %></td>
         <% if show_author %>
-          <td><%= link_to article.user.name, main_app.user_path(article.user) %></td>
+          <td><%= link_to article.user.name, article.user %></td>
         <% end %>
         <td><%= article.created_at %></td>
         <td><%= article.impressionist_count filter: :session_hash %></td>

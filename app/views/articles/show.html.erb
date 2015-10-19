@@ -1,5 +1,5 @@
 <% content_for :title, @article.title %>
-<% add_breadcrumb @article.title, article_path(@article) %>
+<% add_breadcrumb @article.title, @article %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
