@@ -22,3 +22,5 @@ engine_routes.rb
 nginx.conf
 
 *scrinium_esm*
+
+/db/schema.rb
