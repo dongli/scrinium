@@ -1,0 +1,32 @@
+<h3>重新发送注册邮件</h3>
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.full_error :confirmation_token %>
+  <p>
+    请输入您之前注册的邮箱地址来重新发送注册邮件，请查看是否放在了垃圾箱里。
+  </p>
+
+    <%= f.input :email, required: true, autofocus: true %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "重新发送邮件", class: 'btn btn-success btn-block',  data: { disable_with: '发送中...'} %>
+  </div>
+
+  <div class="login-options">
+    <!--<h4>Or login with</h4>-->
+    忘记密码？
+    <%= link_to new_password_path(resource_name) do %>
+      <strong>找回密码</strong>
+    <% end %>
+  </div>
+
+  <div class="create-account">
+    <p>没有账户？
+      <%= link_to new_user_registration_path, class: "uppercase" do %>
+        创建新账户
+      <% end %>
+    </p>
+
+  </div>
+<% end %>
+

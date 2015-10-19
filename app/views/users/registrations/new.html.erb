@@ -1,0 +1,27 @@
+<h3>注册</h3>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "users_sign_up"}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :name, required: true, label: false, placeholder: '用户名' %>
+    <%= f.input :email, required: true, label: false, placeholder: '邮箱', autofocus: true %>
+    <%#= f.simple_fields_for :profile, f.object.profile ? f.object.profile : f.object.build_profile do |profile_form| %>
+      <%#= profile_form.input :gender, as: :radio_buttons, :item_wrapper_class => 'inline' %>
+    <%# end %>
+    <%= f.input :password, required: true, label: false, placeholder: '密码'%>
+    <%= f.input :password_confirmation, required: true, label: false, placeholder: '再输一次密码' %>
+      </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, '注册', class: 'btn btn-success uppercase btn-block' %>
+  </div>
+
+  <div class="login-options">
+    <!--<h4>Or login with</h4>-->
+    忘记密码？点击
+    <%= link_to new_password_path(resource_name) do %>
+      <strong>找回密码</strong>
+    <% end %>
+  </div>
+
+<% end %>
