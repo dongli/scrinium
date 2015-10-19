@@ -53,6 +53,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
   gem 'rails-assets-highlightjs'
 end
+##global settings
+gem 'settingslogic'
 
 ## others
 gem 'simple_form'
