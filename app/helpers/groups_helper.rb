@@ -3,7 +3,11 @@ module GroupsHelper
     size = options[:size] || :thumb
     klass = options[:class] || 'avatar'
     if group.logo
-      image_tag group.logo_url(size), alt: group.name, class: klass
+      if size.class == Symbol
+        image_tag group.logo_url(size), alt: group.name, class: klass
+      elsif size.class == String
+        image_tag group.logo_url, alt: group.name, class: klass, size: size
+      end
     else
       image_tag "#{size}/default_avatar.png", alt: group.name, class: klass
     end
