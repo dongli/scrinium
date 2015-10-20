@@ -14,7 +14,7 @@ zh-CN:
     hints:
       defaults:
         username: 'User name to sign in.'
-        password: 'No special characters, please.'
+#        password: 'No special characters, please.'
     include_blanks:
       defaults:
         age: 'Rather not say'
@@ -25,3 +25,7 @@ zh-CN:
       article:
         title: "提示：可以使用Markdown语法标记和LaTeX公式标记"
         content: "提示：可以使用Markdown语法标记和LaTeX公式标记。"
+      user:
+        email: 邮箱
+        password: 密码
+        remember_me: 记住我？

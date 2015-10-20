@@ -56,6 +56,14 @@ zh-CN:
       send_instructions: '几分钟后，您将收到一封解锁帐号的邮件。'
       send_paranoid_instructions: '如果您的邮箱存在于我们的数据库中，您将收到一封解锁账号的邮件。'
       unlocked: '您的帐号已成功解锁，您现在已登录。'
+    views:
+      sign_up: 注 册
+      sign_in: 登 录
+      forget_password: 忘记密码
+      remember_me: 记住我
+      verify: 验证中...
+
+
   errors:
     messages:
       already_confirmed: '已经确认，请重新登录。'
