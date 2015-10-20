@@ -5,7 +5,7 @@ class API < Grape::API
   version 'v1', using: :path
   format :json
 
-  helpers Doorkeeper::Grape::Helpers
+
 
   mount V1::UsersAPI
   mount V1::GroupsAPI
