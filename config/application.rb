@@ -18,6 +18,7 @@ module Scrinium
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.available_locales = [:"zh-CN", :zh, :en]
     config.i18n.default_locale = :'zh-CN'
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
@@ -27,7 +28,5 @@ module Scrinium
     config.paths.add 'app/api', glob: '**/*.rb'
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
 
-    # Redis cache.
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/scrinium', { expires_in: 90.minutes }
   end
 end

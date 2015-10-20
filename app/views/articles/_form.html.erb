@@ -1,12 +1,7 @@
 <div class='article-form'>
   <%= simple_form_for @article do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%=
-      f.input :title,
-      label: t('article.title'),
-      placeholder: t('article.placeholder.title'),
-      autofocus: true
-    %>
+    <%= f.input :title %>
     <div class='row'>
       <div class='col-md-4'>
         <%=
@@ -22,7 +17,7 @@
         %>
       </div>
       <div class='col-md-2'>
-        <%= f.input :privacy, label: t('article.privacy') %>
+        <%= f.input :privacy %>
       </div>
       <div class='col-md-4' id='select-groups'
         style='<%= 'display:none' if @article.privacy != 'group_public' %>'>
@@ -59,13 +54,7 @@
       </ul>
       <div class='tab-content'>
         <div role='tabpanel' class='tab-pane active' id='edit-content'>
-          <%=
-            f.input :content,
-            label: false,
-            placeholder: t('article.placeholder.content'),
-            required: true,
-            as: :text
-          %>
+          <%= f.input :content, label: false, as: :text %>
         </div>
         <div role='tabpanel' class='tab-pane' id='preview-content'>
           <div id='preview-content-placeholder'></div>
