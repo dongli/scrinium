@@ -3,17 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
-  $('#reference_authors').select2
-    tags: true
-    multiple: true
-
   $('#reference_reference_type').change ->
-    if $(this).val() != 0
-      alert '对不起！现在只支持文章！'
+    if $(this).val() not in [ 'article', 'book' ]
+      alert "对不起！暂不支持#{I18n.t("enumerize.reference.reference_type.#{$(this).val()}")}！"
       $(this).val(0)
-
-  $('#input-publisher-abbreviation').change ->
-    $.post ROOT_PATH+'api/v1/publishers/issued', {
-      publisher_id: $(this).val()
-    }, (result) ->
-      $('#reference_issue').attr('disabled', !result).attr('value', '')
+    $('#reference-type-selection').hide()
+    $("##{$(this).val()}-form").show()
+    $('#reference-form-buttons').show()
+    $('#reference_authors').select2
+      tags: true
+      multiple: true
+    $('#reference_editors').select2
+      tags: true
+      multiple: true
+    $('#input-publisher-abbreviation').change ->
+      $.post ROOT_PATH+'api/v1/publishers/issued', {
+        publisher_id: $(this).val()
+      }, (result) ->
+        $('#reference_issue').attr('disabled', !result).attr('value', '')

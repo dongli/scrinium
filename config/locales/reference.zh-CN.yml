@@ -11,11 +11,43 @@ zh-CN:
     issue: 发行号
     pages: 页码
     citation: 引用
-    # TODO: 这里如何根据publisher_type设置不同的翻译？
-    publisher: 杂志名称
     doi: DOI号
     abstract: 摘要
     cite_key: 引用编号
     placeholder:
       authors: 中文名称如：张三，英文名称如：San Zhang
       pages: 如：100-120
+
+  activerecord:
+    models:
+      reference: 参考文献
+    attributes:
+      reference:
+        reference_type: 文献类型
+        title: 题目
+        authors: 作者列表
+        editors: 编辑列表
+        publisher_id: 出版社
+        year: 年份
+        volume: 卷号
+        issue: 发行号
+        pages: 页码
+        citation: 引用
+        doi: DOI号
+        abstract: 摘要
+        cite_key: 引用编号
+
+  enumerize:
+    reference:
+      reference_type:
+        article: 文章
+        book: 书
+        booklet: 小册子
+        inbook: 书中
+        conference: 会议
+        manual: 手册
+        techreport: 技术报告
+        mastersthesis: 硕士论文
+        phdthesis: 博士论文
+        unpublished: 未发表
+        misc: 其它
