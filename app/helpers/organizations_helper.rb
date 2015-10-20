@@ -2,8 +2,12 @@ module OrganizationsHelper
   def logo organization, options = {}
     size = options[:size] || :thumb
     klass = options[:class] || 'avatar'
-    if organization.logo_file_name
-      image_tag organization.logo.url(size), alt: organization.name, class: klass
+    if organization.logo
+      if size.class == Symbol
+        image_tag organization.logo_url(size), alt: organization.name, class: klass
+      elsif size.class == String
+        image_tag organization.logo_url, alt: organization.name, class: klass, size: size
+      end
     else
       image_tag "#{size}/default_avatar.png", alt: organization.name, class: klass
     end

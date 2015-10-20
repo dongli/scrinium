@@ -105,8 +105,8 @@ zh-CN:
 
   activerecord:
     models:
-      address:          地址
-      article:          文章
+      address: 地址
+      article: 文章
     attributes:
       article:
         title: 名称

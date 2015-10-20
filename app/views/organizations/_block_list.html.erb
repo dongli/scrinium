@@ -9,7 +9,7 @@
   <% organizations.each do |organization| %>
     <div class='col-md-2 col-sm-3 col-xs-4'>
       <a href='<%= organization_path(organization) %>'>
-        <%= logo organization, class: 'img-responsive center-block' %>
+        <%= logo organization, size: :medium, class: 'img-responsive center-block' %>
       </a>
     </div>
   <% end %>

@@ -2,26 +2,19 @@
 #
 # Table name: organizations
 #
-#  id                :integer          not null, primary key
-#  logo_file_name    :string
-#  logo_content_type :string
-#  logo_file_size    :integer
-#  logo_updated_at   :datetime
-#  admin_id          :integer
-#  website           :string
-#  parent_id         :integer
-#  status            :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  id         :integer          not null, primary key
+#  logo       :string
+#  admin_id   :integer
+#  parent_id  :integer
+#  website    :string
+#  status     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Organization < ActiveRecord::Base
-  validates :name, uniqueness: true
-  validates :short_name, uniqueness: true
-  validates :admin_id, presence: true
+  mount_uploader :logo, ImageUploader
 
-  has_attached_file :logo, styles: { medium: '150x150', thumb: '100x100', small: '30x30' }
-  validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   translates :name, :short_name, :description
 
   belongs_to :parent, class_name: 'Organization', foreign_key: 'parent_id'
@@ -31,6 +24,11 @@ class Organization < ActiveRecord::Base
   has_many :licenses, dependent: :destroy
   has_many :addresses, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true
+
+  validates_uniqueness_of :name, :short_name
+  validates_presence_of :admin_id
+  validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
+                   file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 
   def admin
     if not defined? @admin or @admin.id != self.admin_id

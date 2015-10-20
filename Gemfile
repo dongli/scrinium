@@ -6,27 +6,26 @@ end
 
 gem 'rails', '4.2.3'
 
-
-## server
+## 服务器部署
 gem 'unicorn'
 gem 'thin'
 
-## database
+## 数据库
 gem 'pg'
 gem 'redis-rails'
 
-## view
+## 视图和JavaScript
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-## user authentication and permissions
+## 用户验证与权限设置
 gem 'devise'
 gem 'pundit'
 
-# UI gems.
+# UI
 gem 'bootstrap-sass'
 gem 'country_select'
 gem 'font-awesome-rails'
@@ -42,25 +41,28 @@ gem 'grape'
 gem 'jbuilder', '~> 2.0'
 
 gem 'doorkeeper'
-## uploads
-gem 'paperclip', '~> 4.3'
+## 文件上传
+gem 'paperclip', '~> 4.3' # 等待删除
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-qiniu', '0.1.8'
+gem 'file_validators'
 
 gem 'mathjax-rails', '~> 2.5.1'
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
   gem 'rails-assets-highlightjs'
 end
-##global settings
+
+## 全局设定
 gem 'settingslogic'
 
-## others
+## 其它
 gem 'simple_form'
 gem 'impressionist'
 gem 'paper_trail', '~> 4.0.0'
 gem 'closure_tree'
+
 gem 'diffy'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'mailboxer'
@@ -70,10 +72,9 @@ gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'quiet_assets' #don't show assets log
+  gem 'quiet_assets' # don't show assets log
   gem 'byebug'
   gem 'bullet'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -83,4 +84,3 @@ group :development, :test do
   gem 'rack-livereload'
   gem 'guard-livereload'
 end
-

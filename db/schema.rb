@@ -107,15 +107,12 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "group_translations", ["locale"], name: "index_group_translations_on_locale", using: :btree
 
   create_table "groups", force: :cascade do |t|
+    t.string   "logo"
     t.integer  "admin_id"
-    t.string   "privacy",           null: false
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string   "privacy",    null: false
     t.string   "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -293,16 +290,13 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "organization_translations", ["organization_id"], name: "index_organization_translations_on_organization_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string   "logo"
     t.integer  "admin_id"
-    t.string   "website"
     t.integer  "parent_id"
+    t.string   "website"
     t.string   "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "publications", force: :cascade do |t|
@@ -318,26 +312,23 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "publications", ["user_id"], name: "index_publications_on_user_id", using: :btree
 
   create_table "references", force: :cascade do |t|
+    t.integer  "publicable_id"
+    t.string   "publicable_type"
     t.integer  "creator_id"
     t.string   "cite_key"
     t.string   "reference_type"
-    t.string   "authors",           default: [],              array: true
+    t.string   "authors",         default: [],              array: true
     t.string   "title"
-    t.integer  "publicable_id"
-    t.string   "publicable_type"
     t.string   "year"
     t.string   "volume"
     t.string   "issue"
     t.string   "pages"
     t.string   "doi"
     t.text     "abstract"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
+    t.string   "file"
     t.string   "status"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "references", ["cite_key"], name: "index_references_on_cite_key", using: :btree
@@ -383,10 +374,7 @@ ActiveRecord::Schema.define(version: 20151017030253) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "avatar"
     t.string   "name",                                null: false
     t.string   "email",                               null: false
     t.string   "encrypted_password",                  null: false

@@ -1,12 +1,12 @@
 class CreateOrganizations < ActiveRecord::Migration
   def up
     create_table :organizations do |t|
-      t.attachment :logo
-      t.references :admin, class_name: 'User'
-      t.string :website
+      t.string     :logo
+      t.references :admin,  class_name: 'User'
       t.references :parent, class_name: 'Organization'
-      t.string :status
-      t.timestamps null: false
+      t.string     :website
+      t.string     :status
+      t.timestamps                                     null: false
     end
     Organization.create_translation_table!({
       name: :string,

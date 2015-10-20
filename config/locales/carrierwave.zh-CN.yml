@@ -1,0 +1,9 @@
+zh-CN:
+  errors:
+    messages:
+      carrierwave_presence_error: 没有上传文件！
+      carrierwave_processing_error: 无法改变文件大小！
+      carrierwave_integrity_error: 文件不合适！
+      carrierwave_download_error: 无法下载文件！
+      extension_white_list_error: 您无法上传后缀为%{extension}的文件, 允许的类型是：%{allowed_types}！
+      extension_black_list_error: 您无法上传后缀为%{extension}的文件, 禁止的类型是：%{prohibited_types}！
