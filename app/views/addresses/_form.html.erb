@@ -1,24 +1,24 @@
 <fieldset class='experiment-action-field'>
   <div class='panel panel-default'>
     <div class='panel-heading'>
-      <%= f.input :name, required: true %>
+      <%= f.input :name %>
     </div>
     <div class='panel-body'>
       <div class='row'>
         <div class='col-md-6'>
-          <%= f.input :country, required: true %>
+          <%= f.input :country %>
         </div>
         <div class='col-md-6'>
-          <%= f.input :city, required: true %>
+          <%= f.input :city %>
         </div>
         <div class='col-md-6'>
-          <%= f.input :district, required: true %>
+          <%= f.input :district %>
         </div>
         <div class='col-md-6'>
-          <%= f.input :zip_code, required: true %>
+          <%= f.input :zip_code %>
         </div>
       </div>
-      <%= f.input :street, required: true %>
+      <%= f.input :street %>
       <div class='right'>
         <%= link_to t('action.delete'), '#', class: 'button btn-xs btn-danger remove_field' %>
       </div>

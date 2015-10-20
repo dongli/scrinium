@@ -19,7 +19,7 @@
       %>
     <% end %>
     <% if @reference.file %>
-      <%= link_to fa_icon('file-pdf-o', text: t('action.download')), @reference.file.url %>
+      <%= link_to fa_icon('file-pdf-o', text: t('action.download')), @reference.file_url %>
     <% end %>
   </li>
 </ul>
