@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  devise_for :users, :controllers =>
+  devise_for :users, path_prefix: 'd', :controllers =>
                        { :sessions => "users/sessions",
                          :registrations => "users/registrations",
                          :confirmations => "users/confirmations",

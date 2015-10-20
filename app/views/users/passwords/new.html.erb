@@ -1,4 +1,7 @@
-<h3>忘记密码？</h3>
+<% content_for :main_block do %>
+  <div class="col-md-6 col-md-offset-3">
+
+  <h3>忘记密码？</h3>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'forget-form', style: 'display: block;', method: :post }) do |f| %>
   <p>
@@ -22,5 +25,6 @@
     </p>
 
   </div>
-
+</div>
+<% end %>
 <% end %>

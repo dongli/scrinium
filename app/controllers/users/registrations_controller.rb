@@ -43,6 +43,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.for(:sign_up) << :attribute
   # end
 
+  def sign_up_params
+    params.require(:user).permit(:avatar,
+                                 :name,
+                                 :gender,
+                                 :organization_id,
+                                 :position,
+                                 :email,
+                                 :role,
+                                 :status,
+                                 :password,
+                                 :password_confirmation)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.for(:account_update) << :attribute
