@@ -1,4 +1,4 @@
-require 'doorkeeper/grape/helpers'
+
 
 class API < Grape::API
   prefix 'api'
