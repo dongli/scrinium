@@ -6,11 +6,20 @@ class CreateReferences < ActiveRecord::Migration
       t.string     :cite_key,      index: true                                  # 文献在其它地方被引用时使用的key，比如Dong:2012ab。
       t.string     :reference_type                                              # 文献类型，比如分为“文章”，“书籍”，“会议”等等。
       t.string     :authors,       array: true, default: []
+      t.string     :editors,       array: true, default: []
+      t.string     :school
+      t.string     :organization                                                # 会议组织或赞助机构。
+      t.string     :institution
       t.string     :title
+      t.string     :booktitle
       t.string     :year
       t.string     :volume
       t.string     :issue
+      t.string     :series
       t.string     :pages
+      t.string     :edition
+      t.string     :chapter
+      t.string     :howpublished
       t.string     :doi
       t.text       :abstract
       t.string     :file

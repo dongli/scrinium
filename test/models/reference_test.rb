@@ -8,11 +8,20 @@
 #  cite_key       :string
 #  reference_type :string
 #  authors        :string           default([]), is an Array
+#  editors        :string           default([]), is an Array
+#  school         :string
+#  organization   :string
+#  institution    :string
 #  title          :string
+#  booktitle      :string
 #  year           :string
 #  volume         :string
 #  issue          :string
+#  series         :string
 #  pages          :string
+#  edition        :string
+#  chapter        :string
+#  howpublished   :string
 #  doi            :string
 #  abstract       :text
 #  file           :string
