@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   # Reference ------------------------------------------------------------------
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references
-  resources :journals
+  resources :publishers
+  get '/library' => 'library#index', as: :library
   # Membership -----------------------------------------------------------------
   resources :memberships
   # Organization ---------------------------------------------------------------

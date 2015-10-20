@@ -1,0 +1,17 @@
+zh-CN:
+  scrinium:
+    publisher: 出版社
+
+  activerecord:
+    models:
+      publisher: 出版社
+    attributes:
+      publisher:
+        name: 名称
+        abbreviation: 缩写
+        short_name: 简称
+
+  enumerize:
+    publisher:
+      publisher_type:
+        journal: 期刊杂志

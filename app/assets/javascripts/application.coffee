@@ -139,7 +139,7 @@ $(document).on 'page:change', ->
   selectByGET 'input-user-name', 'api/v1/users/names'
   selectByGET 'input-group-name', 'api/v1/groups/names'
   selectByGET 'input-organization-name', 'api/v1/organizations/names'
-  selectByGET 'input-journal-abbreviation', 'api/v1/journals/abbreviations'
+  selectByGET 'input-publisher-abbreviation', 'api/v1/publishers/abbreviations'
   # TODO: Function call is not working!
   # selectByPOST 'input-group-name-for-user', 'api/v1/groups/for_user', {
   #   user_id: $('select[id=input-group-name-for-user]').data('user-id')

@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-['journals', 'examples'].each do |s|
-  load "#{FileUtils.pwd}/db/seeds/#{s}.rb"
+[ 'publishers', 'examples' ].each do |seed|
+  load "#{FileUtils.pwd}/db/seeds/#{seed}.rb"
 end
 
-Dir.glob("#{FileUtils.pwd}/db/seeds/engine/*.rb") { |s| load s }
+Dir.glob("#{FileUtils.pwd}/db/seeds/engine/*.rb") { |seed| load seed }

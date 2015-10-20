@@ -12,8 +12,8 @@ $(document).on 'page:change', ->
       alert '对不起！现在只支持文章！'
       $(this).val(0)
 
-  $('#input-journal-abbreviation').change ->
-    $.post ROOT_PATH+'api/v1/journals/issued', {
-      journal_id: $(this).val()
+  $('#input-publisher-abbreviation').change ->
+    $.post ROOT_PATH+'api/v1/publishers/issued', {
+      publisher_id: $(this).val()
     }, (result) ->
       $('#reference_issue').attr('disabled', !result).attr('value', '')

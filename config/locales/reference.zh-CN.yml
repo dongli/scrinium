@@ -11,7 +11,8 @@ zh-CN:
     issue: 发行号
     pages: 页码
     citation: 引用
-    journal: 杂志名称
+    # TODO: 这里如何根据publisher_type设置不同的翻译？
+    publisher: 杂志名称
     doi: DOI号
     abstract: 摘要
     cite_key: 引用编号

@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_reference, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_reference, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @references = Reference.all
@@ -66,8 +66,7 @@ class ReferencesController < ApplicationController
                                       :reference_type,
                                       { authors: [] },
                                       :title,
-                                      :publicable_id,
-                                      :publicable_type,
+                                      :publisher_id,
                                       :year,
                                       :volume,
                                       :issue,

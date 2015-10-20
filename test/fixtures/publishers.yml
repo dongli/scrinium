@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: publishers
+#
+#  id             :integer          not null, primary key
+#  logo           :string
+#  publisher_type :string           not null
+#  name           :string           not null
+#  abbreviation   :string           not null
+#  short_name     :string           not null
+#  issued         :boolean          not null
+#  status         :string           default("unqualified")
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  short_name: MyString
+
+two:
+  name: MyString
+  short_name: MyString

@@ -3,7 +3,7 @@
     <tr>
       <th width='100'><%= t('reference.authors') %></th>
       <th width='200'><%= t('reference.title') %></th>
-      <th width='80'><%= t('reference.journal') %></th>
+      <th width='80'><%= t('reference.publisher') %></th>
       <th width='20'><%= t('reference.year') %></th>
     </tr>
   </thead>
@@ -12,7 +12,7 @@
       <tr>
         <td><%= join_authors reference, false %></td>
         <td><%= link_to reference.title, reference %></td>
-        <td><%= reference.publicable.abbreviation %></td>
+        <td><%= reference.publisher.abbreviation %></td>
         <td><%= reference.year %></td>
       </tr>
     <% end %>

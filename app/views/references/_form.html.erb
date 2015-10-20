@@ -18,22 +18,23 @@
         <%= f.input :reference_type, label: t('reference.type') %>
       </div>
       <div class='col-md-4'>
-        <div id='select-journal'>
-          <%= f.hidden_field :publicable_type, value: 'Journal' %>
-          <% if @reference.publicable %>
+        <div id='select-publisher'>
+          <!-- TODO: 这里需要修改下，一个是程序格式问题，另一个是如何得知要用journal -->
+          <%= f.hidden_field :publisher_type, value: 'journal' %>
+          <% if @reference.publisher %>
             <%=
-              f.input :publicable_id,
-              label: t('reference.journal'),
+              f.input :publisher_id,
+              label: t('reference.publisher'),
               label_method: :abbreviation,
               value_method: :id,
-              collection: [@reference.publicable],
-              input_html: { id: 'input-journal-abbreviation' }
+              collection: [@reference.publisher],
+              input_html: { id: 'input-publisher-abbreviation' }
             %>
           <% else %>
             <%=
-              f.input :publicable_id,
-              label: t('reference.journal'), as: :select,
-              input_html: { id: 'input-journal-abbreviation' }
+              f.input :publisher_id,
+              label: t('reference.publisher'), as: :select,
+              input_html: { id: 'input-publisher-abbreviation' }
             %>
           <% end %>
         </div>
@@ -52,7 +53,7 @@
       <div class='col-md-3'>
         <%=
           f.input :issue, label: t('reference.issue'),
-          disabled: ( @reference.publicable and not @reference.publicable.issued )
+          disabled: ( @reference.publisher and not @reference.publisher.issued )
         %>
       </div>
       <div class='col-md-3'>
