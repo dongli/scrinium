@@ -1,30 +1,12 @@
+<% content_for :title, t('devise.views.forget_password') %>
+
 <% content_for :main_block do %>
-  <div class="col-md-6 col-md-offset-3">
-
-  <h3>忘记密码？</h3>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'forget-form', style: 'display: block;', method: :post }) do |f| %>
-  <p>
-     请输入您之前注册的邮箱地址来重置密码。
-  </p>
-  <%= f.error_notification %>
-
-  <div class="form-group">
-    <%= f.input :email, required: true, label: false, placeholder: '邮箱', autofocus: true %>
+  <div class='devise-form'>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'forget-form', method: :post }) do |f| %>
+      <%= f.input :email, label: false, autofocus: true %>
+      <div class='center'>
+        <%= f.button :submit, '找回密码', class: "btn btn-success uppercase" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, '找回密码', class: "btn btn-success uppercase pull-right" %>
-  </div>
-  <hr/>
-  <div class="create-account">
-    <p>没有账户？
-      <%= link_to new_user_registration_path, class: "uppercase" do %>
-        创建新账户
-      <% end %>
-    </p>
-
-  </div>
-</div>
-<% end %>
 <% end %>
