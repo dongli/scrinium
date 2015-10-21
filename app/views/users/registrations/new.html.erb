@@ -3,15 +3,21 @@
 <% content_for :main_block do %>
   <div class='devise-form'>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "users_sign_up" }) do |f| %>
-      <div class="form-group">
-        <%= f.input :name %>
+      <div class='form-group'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <%= f.input :name %>
+          </div>
+          <div class='col-md-6'>
+            <%= f.input :gender %>
+          </div>
+        </div>
         <%= f.input :email %>
-        <%= f.input :gender %>
         <%= f.input :password %>
         <%= f.input :password_confirmation %>
       </div>
 
-      <div class="form-actions">
+      <div class='form-actions'>
         <%= f.button :submit, t('devise.views.sign_up'), class: 'btn btn-success uppercase btn-block' %>
       </div>
     <% end %>

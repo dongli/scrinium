@@ -38,7 +38,6 @@ zh-CN:
     user_name_hint: 4-20个小写英文字母、数字或下划线
     affiliation: 单位
     position: 职位
-    role: 角色
     email_hint: 格式：user@domain.com
     signup: 注册
     signin: 登录
@@ -57,6 +56,7 @@ zh-CN:
         name: 名字
         email: 邮箱地址
         gender: 性别
+        role: 角色
         password: 密码
         password_confirmation: 密码确认
     errors:

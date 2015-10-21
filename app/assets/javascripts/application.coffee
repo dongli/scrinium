@@ -22,14 +22,36 @@
 #= require dropzone
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
+#= require froala_editor.min.js
+#= require plugins/align.min.js
+#= require plugins/char_counter.min.js
+#= require plugins/emoticons.min.js
+#= require plugins/font_family.min.js
+#= require plugins/font_size.min.js
+#= require plugins/colors.min.js
+#= require plugins/fullscreen.min.js
+#= require plugins/inline_style.min.js
+#= require plugins/line_breaker.min.js
+#= require plugins/image.min.js
+#= require plugins/link.min.js
+#= require plugins/lists.min.js
+#= require plugins/quote.min.js
+#= require plugins/table.min.js
+#= require plugins/save.min.js
 #= require_tree .
 
 # ============================= Common Functions ===============================
-@mathjax = ->
-  MathJax.Hub.Queue(
-    (-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
-    ['Typeset', MathJax.Hub]
-  )
+@mathjax = (id = null) ->
+  if id
+    MathJax.Hub.Queue(
+      (-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
+      ['Typeset', MathJax.Hub, id]
+    )
+  else
+    MathJax.Hub.Queue(
+      (-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
+      ['Typeset', MathJax.Hub]
+    )
 
 marked.setOptions
   highlight: (code) ->
@@ -180,6 +202,9 @@ $(document).on 'page:change', ->
 
   $('.markdown').each ->
     markdown $(this).html(), $(this)
+
+  $('.mathjax').each ->
+    mathjax()
 
   $('[data-toggle="tooltip"]').tooltip()
 

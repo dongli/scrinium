@@ -8,7 +8,7 @@
   </li>
   <% if policy(@user).update? %>
     <li><%= link_to fa_icon('edit', text: t('action.edit')+t('global.info')), [ :edit, @user ] %></li>
-    <li><%= link_to fa_icon('key', text: t('action.edit')+t('user.password')), change_user_password_path(@user) %></li>
+    <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_password_path(@user) %></li>
     <% if @user == current_user %>
       <% if policy(Article).create? %>
         <li>
@@ -27,11 +27,6 @@
         </li>
       <% end %>
     <% end %>
-  <% end %>
-  <% if policy(Reference).create? %>
-    <li>
-      <%= link_to fa_icon('book', text: t('action.add')+t('scrinium.reference')), new_reference_path %>
-    </li>
   <% end %>
   <li>
     <a href='#group-list'
