@@ -35,7 +35,7 @@ class Article < ActiveRecord::Base
     :public,
     :private,
     :group_public
-  ], predicates: true
+  ], default: :public, predicates: true
 
   enumerize :status, in: [
     :draft,
