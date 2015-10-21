@@ -1,3 +1,7 @@
+## kill `cat tmp/pids/unicorn.pid`
+## start unicorn_rails -c config/unicorn.rb -E production -D
+## if any error,please check log/unicorn_stderr.log
+
 app_root = File.expand_path(File.dirname(__FILE__) + '/..')
 
 working_directory app_root
@@ -12,7 +16,7 @@ cpu_cores = if File.exist? '/proc/cpuinfo'    # Linux
 
 worker_processes (rails_env == 'production' ? cpu_cores : 4)
 
-listen "#{app_root}/shared/tmp/sockets/unicorn.sock", :backlog => 1024
+listen "#{app_root}/tmp/sockets/unicorn.sock", :backlog => 1024
 
 timeout 30
 
