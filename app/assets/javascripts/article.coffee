@@ -10,7 +10,8 @@ $(document).on 'page:change', ->
 	$('a#preview-content').click ->
 		$('div#edit-content').hide()
 		$('div#preview-content').show()
-		markdown $('textarea#article_content').val(), $('div#preview-content-placeholder')
+		$('div#preview-content-placeholder').html($('textarea#article_content').val())
+		mathjax 'preview-content-placeholder'
 
 	$('#article_privacy').change ->
 		if this.value == 'group_public'
