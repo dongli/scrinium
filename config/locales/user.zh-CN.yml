@@ -59,6 +59,7 @@ zh-CN:
         role: 角色
         password: 密码
         password_confirmation: 密码确认
+        current_password: 当前密码
     errors:
       models:
         user:
