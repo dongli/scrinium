@@ -36,12 +36,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_password
-    respond_to do |format|
-      format.html
-    end
-  end
-
   def change_current_organization
     @user.current_organization_id = params[:organization_id]
     respond_to do |format|
