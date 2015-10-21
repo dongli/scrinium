@@ -1,0 +1,5 @@
+<p>欢迎您 <%= @email %>!</p>
+
+<p>请点击以下链接，激活您的账号</p>
+
+<p><%= link_to '激活我的账号', confirmation_url(@resource, confirmation_token: @token) %></p>

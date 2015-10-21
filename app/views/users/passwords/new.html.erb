@@ -1,0 +1,12 @@
+<% content_for :title, t('devise.views.forget_password') %>
+
+<% content_for :main_block do %>
+  <div class='devise-form'>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'forget-form', method: :post }) do |f| %>
+      <%= f.input :email, label: false, autofocus: true %>
+      <div class='center'>
+        <%= f.button :submit, '找回密码', class: "btn btn-success uppercase" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
