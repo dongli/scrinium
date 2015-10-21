@@ -1,0 +1,16 @@
+# Sample configuration file for Sidekiq.
+# Options here can still be overridden by cmd line args.
+# sidekiq -C config.yml
+# bundle exec sidekiq -d -L log/sidekiq.log -q mailer -q default -q often -q seldom -e production
+# 如果启用的，需要同时启动 sidekiq and redis
+---
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:concurrency: 10
+# Set timeout to 8 on Heroku, longer if you manage your own systems.
+:timeout: 30
+:queues:
+  - [mailer, 10]
+  - [often, 7]
+  - [default, 5]
+  - [seldom, 3]
