@@ -9,18 +9,14 @@
       </div>
       <div class='row'>
         <div class='col-md-6'>
-          <%=
-            f.input :name, label: t('user.name'),
-            placeholder: t('placeholder.need_real_name'),
-            autofocus: true
-          %>
+          <%= f.input :name %>
         </div>
         <div class='col-md-6'>
-          <%= f.input :gender, label: t('user.gender') %>
+          <%= f.input :gender %>
         </div>
       </div>
-      <%= f.input :role, label: t('user.role'), disabled: current_user.role != 'admin' %>
-      <%= f.input :email, label: t('user.email') %>
+      <%= f.input :role, disabled: current_user.role != 'admin' %>
+      <%= f.input :email %>
       <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
     <% end %>
   </div>

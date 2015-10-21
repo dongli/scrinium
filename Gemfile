@@ -48,7 +48,10 @@ gem 'mini_magick'
 gem 'carrierwave-qiniu', '0.1.8'
 gem 'file_validators'
 
+## 编辑器
 gem 'mathjax-rails', '~> 2.5.1'
+gem "wysiwyg-rails", "2.0.0.pre.rc.3"
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
   gem 'rails-assets-highlightjs'

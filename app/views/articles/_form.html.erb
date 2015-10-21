@@ -63,13 +63,15 @@
     </div>
     <ul class='list-inline right'>
       <li><%= f.button :submit, t('action.save'), class: 'button' %></li>
-      <li>
-        <% if @article.id %>
-          <%= f.button :submit, t('action.edit'), class: 'button' %>
-        <% else %>
-          <%= f.button :submit, t('action.add'), class: 'button' %>
-        <% end %>
-      </li>
+      <li><%= f.button :submit, t('action.submit'), class: 'button' %></li>
     </ul>
   <% end %>
 </div>
+
+<script>
+  $(function() {
+    $('#article_content').froalaEditor({
+      height: '300'
+    })
+  });
+</script>

@@ -24,8 +24,14 @@ Rails.application.routes.draw do
   get '/collections/:id/toggle_watched' => 'collections#toggle_watched', as: :collection_toggle_watched
   get '/collections/:id/view' => 'collections#view', as: :collection_view
   # User -----------------------------------------------------------------------
-  devise_for :users, path_prefix: 'd', controllers: { registrations: 'registrations' }
-  get '/users/:id/change_password' => 'users#change_password', as: :change_user_password
+  devise_for :users, path_prefix: 'd',
+    controllers: {
+      sessions:      'users/sessions',
+      registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
+      passwords:     'users/passwords',
+      emails:        'users/emails'
+    }
   get '/users/:id/change_current_organization' => 'users#change_current_organization', as: :change_current_organization
   resources :users, concerns: [ :resourceable ] do
     get 'mailbox/index'
