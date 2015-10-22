@@ -53,8 +53,11 @@ Rails.application.routes.draw do
   resources :references
   resources :journals
   # Membership -----------------------------------------------------------------
-  resources :memberships
-  get '/memberships/:id/reject' => 'memberships#reject', as: :reject_membership
+  resources :memberships do
+    member do
+      get :reject
+    end
+  end
   # Organization ---------------------------------------------------------------
   resources :organizations
   resources :addresses
