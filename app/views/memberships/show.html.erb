@@ -5,13 +5,16 @@
         <div class='col-md-4'>
           <%= avatar @membership.user, size: :medium %>
         </div>
-        <div class='col-md-6 col-md-offset-2'>
+        <div class='col-md-7 col-md-offset-1'>
             <ul class='clean-list'>
               <li><%= t('membership.applicant') %>: <%= @membership.user.name %></li>
               <li><%= t('membership.host_type') %>: <%= @membership.host_type %></li>
               <li><%= t('membership.host_name') %>: <%= @membership.host.short_name %></li>
               <li><%= t('membership.role') %>: <%= @membership.role.text %></li>
               <li><%= t('membership.status') %>: <%= @membership.status.text %></li>
+              <% if @membership.status == 'rejected' %>
+                <li><%= t('activerecord.attributes.membership.rejected_reason') %>: <%= @membership.rejected_reason %></li>
+              <% end %>
             </ul>
         </div>
       </div>
@@ -24,13 +27,18 @@
               <%=
                 link_to t('membership.action.approve'),
                 [ @membership, membership: { status: 'approved' } ],
-                method: :patch, class: 'button'
+                method: :patch, class: 'button btn-xs'
               %>
+              <%=
+                link_to t('membership.action.reject'),
+                [ :reject, @membership ], remote: true, class: 'button btn-danger btn-xs'
+              %>
+              <div id='reject-form-placeholder'></div>
             <% when 'approved' %>
               <%=
                 link_to t('membership.action.ban'),
                 [ @membership, membership: { status: 'banned' } ],
-                method: :patch, class: 'button btn-danger'
+                method: :patch, class: 'button btn-danger btn-xs'
               %>
             <% end %>
           <% end %>

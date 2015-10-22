@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :set_membership, only: [:show, :edit, :update, :destroy, :reject]
 
   def index
     @memberships = current_user.memberships
@@ -52,11 +52,22 @@ class MembershipsController < ApplicationController
       if @membership.update(membership_params)
         host = @membership.host
         if @membership.join_type.self?
-          # 通知用户资格的更新。
-          subject = t('membership.notification.subject.membership_updated', host: host.short_name)
-          body = t('membership.notification.body.membership_updated',
-                   host: host.short_name,
-                   page: membership_path(@membership))
+          case @membership.status
+          when 'rejected'
+            subject = t('membership.notification.subject.membership_rejected',
+                        host: host.short_name)
+            body = t('membership.notification.body.membership_rejected',
+                     host: host.short_name,
+                     reason: @membership.rejected_reason,
+                     page: membership_path(@membership))
+          else
+            # 通知用户资格的更新。
+            subject = t('membership.notification.subject.membership_updated',
+                        host: host.short_name)
+            body = t('membership.notification.body.membership_updated',
+                     host: host.short_name,
+                     page: membership_path(@membership))
+          end
           @membership.user.notify subject, body
           MessageBus.publish "/mailbox-#{@membership.user.id}", { user_id: current_user.id }
         elsif @membership.join_type.invited?
@@ -81,6 +92,13 @@ class MembershipsController < ApplicationController
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to memberships_url, notice: t('membership.message.quit_success', host: @membership.host.name) }
+    end
+  end
+
+  def reject
+    @membership.status = 'rejected'
+    respond_to do |format|
+      format.js
     end
   end
 

@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   resources :journals
   # Membership -----------------------------------------------------------------
   resources :memberships
+  get '/memberships/:id/reject' => 'memberships#reject', as: :reject_membership
   # Organization ---------------------------------------------------------------
   resources :organizations
   resources :addresses
