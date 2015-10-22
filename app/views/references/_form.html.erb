@@ -13,7 +13,7 @@
     <div id='book-form' style='display: none;'>
       <%= render 'book_form', f: f %>
     </div>
-    <div id='reference-form-buttons' style='display: none;'>
+    <div id='buttons' style='display: none;'>
       <%= f.file_field :file, class: 'float-left' %>
       <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
     </div>

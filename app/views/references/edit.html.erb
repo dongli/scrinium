@@ -1,3 +1,12 @@
+<% content_for :title, t('action.edit')+t('scrinium.reference') %>
+<% add_breadcrumb @reference.cite_key, @reference %>
+
 <% content_for :main_block do %>
-  <%= render 'form' %>
+  <div class='reference-form'>
+    <%= simple_form_for @reference do |f| %>
+      <%= render "#{@reference.reference_type}_form", f: f %>
+      <%= f.file_field :file, class: 'float-left' %>
+      <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
+    <% end %>
+  </div>
 <% end %>

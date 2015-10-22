@@ -220,3 +220,8 @@ $(document).on 'page:change', ->
   $('#use-user-block-list').click ->
     $('#user-table-list').hide()
     $('#user-block-list').show()
+
+  # 使用Select2做标签输入。
+  $('.use-select2-multiple-tags').select2
+    tags: true
+    multiple: true

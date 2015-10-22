@@ -2,21 +2,22 @@
   f.input :authors,
   collection: @reference.authors,
   input_html: {
+    class: 'use-select2-multiple-tags', style: 'width: 100%;',
     multiple: 'multiple',
     data: {
       placeholder: t('reference.placeholder.authors')
     }
-  }
+  },
+  label_html: { style: 'display: block;' }
 %>
 <%= f.input :title %>
 <div class='row'>
   <div class='col-md-6'>
-    <div id='select-publisher'>
-      <%=
-        f.input :publisher_id, as: :select,
-        input_html: { id: 'input-publisher-abbreviation' }
-      %>
-    </div>
+    <%=
+      f.input :publisher_id, collection: [ @reference.publisher_id ],
+      input_html: { id: 'input-publisher-abbreviation', style: 'width: 100%;' },
+      label_html: { style: 'display: block;' }
+    %>
   </div>
   <div class='col-md-6'>
     <%= f.input :doi %>

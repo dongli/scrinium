@@ -8,14 +8,9 @@ $(document).on 'page:change', ->
       alert "对不起！暂不支持#{I18n.t("enumerize.reference.reference_type.#{$(this).val()}")}！"
       $(this).val(0)
     $('#reference-type-selection').hide()
+    $('div[id*=-form]').not("##{$(this).val()}-form").remove()
     $("##{$(this).val()}-form").show()
-    $('#reference-form-buttons').show()
-    $('#reference_authors').select2
-      tags: true
-      multiple: true
-    $('#reference_editors').select2
-      tags: true
-      multiple: true
+    $('#buttons').show()
     $('#input-publisher-abbreviation').change ->
       $.post ROOT_PATH+'api/v1/publishers/issued', {
         publisher_id: $(this).val()
