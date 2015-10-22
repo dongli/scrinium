@@ -2,4 +2,11 @@
   padding-top: 30px;
   max-width: 40%;
   margin: 0 auto;
+  #reject-form-placeholder {
+    margin-top: 1em;
+    textarea {
+      max-width: 100%;
+      min-height: 100px;
+    }
+  }
 }

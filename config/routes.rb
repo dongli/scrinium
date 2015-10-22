@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount API => '/'
   mathjax 'mathjax'
 
@@ -54,7 +53,11 @@ Rails.application.routes.draw do
   resources :references
   resources :journals
   # Membership -----------------------------------------------------------------
-  resources :memberships
+  resources :memberships do
+    member do
+      get :reject
+    end
+  end
   # Organization ---------------------------------------------------------------
   resources :organizations
   resources :addresses
