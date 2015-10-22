@@ -11,7 +11,9 @@ zh-CN:
     action:
       apply: 申请加入
       approve: 核准
+      reject: 拒绝
       ban: 封存
+      confirm: 确认
       invite: 邀请加入
       agree: 同意加入
     message:
@@ -39,4 +41,10 @@ zh-CN:
       status:
         unapproved: 未核准
         approved: 已核准
+        rejected: 被拒绝
         banned: 封存
+
+  activerecord:
+    attributes:
+      membership:
+        rejected_reason: 拒绝理由

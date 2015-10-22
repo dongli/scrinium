@@ -5,10 +5,18 @@
   <%= f.hidden_field :last_user_id, value: current_user.id %>
   <% case join_type %>
   <% when :self %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <div class='center'>
-      <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
-    </div>
+    <% if membership.status == 'rejected' %>
+      <div class='center'>
+        <%= f.input :rejected_reason, as: :text %>
+        <%= f.hidden_field :status, value: 'rejected' %>
+        <%= f.button :submit, t('membership.action.confirm'), class: 'button btn-xs' %>
+      </div>
+    <% else %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <div class='center'>
+        <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
+      </div>
+    <% end %>
   <% when :invited %>
     <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name' } %>
     <div class='center'>

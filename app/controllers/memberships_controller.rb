@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :set_membership, only: [:show, :edit, :update, :destroy, :reject]
 
   def index
     @memberships = current_user.memberships
@@ -81,6 +81,13 @@ class MembershipsController < ApplicationController
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to memberships_url, notice: t('membership.message.quit_success', host: @membership.host.name) }
+    end
+  end
+
+  def reject
+    @membership.status = 'rejected'
+    respond_to do |format|
+      format.js
     end
   end
 
