@@ -5,7 +5,6 @@ class CreateProfiles < ActiveRecord::Migration
       t.string      :avatar
       t.string      :gender             # 性别
       t.string      :title              #职位，或者教授之类的
-      t.string      :mobile             #手机
       t.string      :city               #城市
       t.string      :country            #国家
       t.string      :qq                 #qq
