@@ -2,23 +2,27 @@
 
 <% content_for :main_block do %>
   <div class='devise-form'>
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "users_sign_up" }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "users_sign_up"}) do |f| %>
       <div class='form-group'>
         <div class='row'>
-          <div class='col-md-6'>
+          <div class='col-md-12'>
             <%= f.input :name %>
-          </div>
-          <div class='col-md-6'>
-            <%= f.input :gender %>
+
+            <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
+                <%= profile_form.input :gender %>
+                <%= profile_form.input :title %>
+            <% end %>
+
+            <%= f.input :email %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
           </div>
         </div>
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <%= f.input :password_confirmation %>
+
       </div>
 
       <div class='form-actions'>
-        <%= f.button :submit, t('devise.views.sign_up'), class: 'btn btn-success uppercase btn-block' %>
+        <%= f.button :submit, t('devise.views.sign_up'), class: 'btn btn-success uppercase btn-block', data: {disable_with: t('devise.views.submit')} %>
       </div>
     <% end %>
   </div>

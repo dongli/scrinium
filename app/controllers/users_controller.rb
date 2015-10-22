@@ -53,16 +53,12 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:avatar,
-                                 :name,
-                                 :gender,
-                                 { publication_ids: [] },
-                                 { group_ids: [] },
-                                 :position,
-                                 :email,
-                                 :role,
-                                 :status,
-                                 :password,
-                                 :password_confirmation)
+    params.require(:user).permit(:name, :email, :mobile,
+                                 profile_attributes: [:avatar, :string, :gender, :string, :title, :city, :country, :qq, :weibo, :wechat],
+                                 publication_ids: [],
+                                 group_ids: []
+    )
+
+
   end
 end

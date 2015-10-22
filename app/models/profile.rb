@@ -7,7 +7,6 @@
 #  avatar     :string
 #  gender     :string
 #  title      :string
-#  mobile     :string
 #  city       :string
 #  country    :string
 #  qq         :string
@@ -18,5 +17,27 @@
 #
 
 class Profile < ActiveRecord::Base
+  extend Enumerize
+
+  enumerize :gender, in: [ :female, :male ], default: :male
+  enumerize :title, in: [
+                         :academician,
+                         :researcher,
+                         :associate_researcher,
+                         :assistant_researcher,
+                         :professor,
+                         :associate_professor,
+                         :assistant_professor,
+                         :postdoctoral_researcher,
+                         :postgraduate,
+                         :undergraduate,
+                         :freeman
+                     ], default: :undergraduate
+  mount_uploader :avatar, ImageUploader
+
   belongs_to :user
+
+  validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },
+            file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
+
 end
