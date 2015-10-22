@@ -45,7 +45,6 @@ gem 'globalize', '~> 5.0.0'
 gem 'grape'
 gem 'jbuilder', '~> 2.0'
 
-# gem 'doorkeeper'
 ## 文件上传
 gem 'paperclip', '~> 4.3' # 等待删除
 gem 'carrierwave'

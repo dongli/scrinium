@@ -66,7 +66,6 @@ class User < ActiveRecord::Base
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
   has_many :resources, as: :resourceable, dependent: :destroy
-  # has_many :surveys, dependent: :destroy
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },
                      file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }

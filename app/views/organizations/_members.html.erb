@@ -1,1 +1,1 @@
-<%= render 'users/list', users: @organization.memberships.map { |x| x.user } %>
+<%= render 'users/list', users: @organization.memberships.select { |x| x.status == 'approved' }.map { |x| x.user } %>
