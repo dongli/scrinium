@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   after_filter :store_location
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protected
 
   def store_location
@@ -22,4 +23,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for resource
     session[:previous_url] ? session[:previous_url].last : root_path
   end
+
+  def user_not_authorized(exception)
+    policy_name = exception.policy.class.to_s.underscore
+    flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
+    redirect_to(request.referrer || root_path)
+  end
+
 end

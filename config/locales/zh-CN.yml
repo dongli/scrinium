@@ -229,3 +229,9 @@ zh-CN:
       carrierwave_download_error: "无法下载文件！"
       extension_white_list_error: "不允许上传以%{extension}为后缀的文件, 允许的后缀为：%{allowed_types}"
       extension_black_list_error: "不允许上传以%{extension}为后缀的文件, 不允许的后缀为：%{prohibited_types}"
+
+  pundit:
+    default: '对不起，您没有该操作的权限。'
+    article_policy:
+      update?: 'You cannot edit this article!'
+      create?: 'You cannot create article!'
