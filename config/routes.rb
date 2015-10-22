@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  use_doorkeeper
   mount API => '/'
   mathjax 'mathjax'
 
@@ -56,6 +55,7 @@ Rails.application.routes.draw do
   get '/library' => 'library#index', as: :library
   # Membership -----------------------------------------------------------------
   resources :memberships
+  get '/memberships/:id/reject' => 'memberships#reject', as: :reject_membership
   # Organization ---------------------------------------------------------------
   resources :organizations
   resources :addresses

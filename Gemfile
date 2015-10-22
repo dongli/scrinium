@@ -25,6 +25,11 @@ gem 'turbolinks'
 gem 'devise'
 gem 'pundit'
 
+#async
+gem "devise-async"
+gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
+
 # UI
 gem 'bootstrap-sass'
 gem 'country_select'
@@ -40,7 +45,6 @@ gem 'globalize', '~> 5.0.0'
 gem 'grape'
 gem 'jbuilder', '~> 2.0'
 
-gem 'doorkeeper'
 ## 文件上传
 gem 'paperclip', '~> 4.3' # 等待删除
 gem 'carrierwave'

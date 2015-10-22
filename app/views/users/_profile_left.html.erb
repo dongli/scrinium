@@ -8,7 +8,7 @@
   </li>
   <% if policy(@user).update? %>
     <li><%= link_to fa_icon('edit', text: t('action.edit')+t('global.info')), [ :edit, @user ] %></li>
-    <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_password_path(@user) %></li>
+    <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_registration_path %></li>
     <% if @user == current_user %>
       <% if policy(Article).create? %>
         <li>
