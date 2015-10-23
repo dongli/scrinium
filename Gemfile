@@ -28,7 +28,7 @@ gem 'pundit'
 #async
 gem "devise-async"
 gem 'sidekiq'
-gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sinatra', '>= 1.4.6', :require => nil
 
 # UI
 gem 'bootstrap-sass'

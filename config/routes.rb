@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   # Concerns -------------------------------------------------------------------
   concern :commentable do
     resources :comments, except: [ :new, :show ]
