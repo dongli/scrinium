@@ -19,7 +19,7 @@
 class Profile < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :gender, in: [ :female, :male ]
+  enumerize :gender, in: [ :female, :male ], predicates: true
   enumerize :title, in: [
                          :academician,
                          :researcher,
@@ -32,11 +32,13 @@ class Profile < ActiveRecord::Base
                          :postgraduate,
                          :undergraduate,
                          :freeman
-                        ]
+                       ], predicates: true
+
   mount_uploader :avatar, ImageUploader
 
   belongs_to :user
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },
             file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
+  validates_presence_of :gender, :title
 end

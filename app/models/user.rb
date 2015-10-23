@@ -23,6 +23,7 @@
 
 class User < ActiveRecord::Base
   extend Enumerize
+
   enumerize :role, in: [:admin, :assist_admin, :user], default: :user, predicates: true
 
   # Include default devise modules. Others available are:
@@ -45,8 +46,9 @@ class User < ActiveRecord::Base
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: proc { |profile| profile['title'].blank? }
 
-  validates :name, :email, presence: true
-  validates :email, uniqueness: true
+  validates_presence_of :name, :email
+  validates_uniqueness_of :email
+  validates_associated :profile
 
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil

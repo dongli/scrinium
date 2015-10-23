@@ -14,6 +14,12 @@ zh-CN:
         wechat: 微信账号
         created_at: 创建时间
         updated_at: 更新时间
+    errors:
+      models:
+        profile:
+          attributes:
+            title:
+              blank: 请指明您现在的职位！谢谢哈~
 
   enumerize:
     profile:

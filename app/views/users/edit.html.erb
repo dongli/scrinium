@@ -1,4 +1,4 @@
-<% content_for :title, t('user.edit') %>
+<% content_for :title, t('action.edit')+t('activerecord.models.profile') %>
 
 <% content_for :main_block do %>
   <div class='devise-form'>
@@ -11,13 +11,27 @@
       </div>
       <%= f.input :name %>
       <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-        <%= profile_form.input :gender %>
-        <%= profile_form.input :title %>
-        <%= profile_form.input :country %>
-        <%= profile_form.input :city %>
-        <%= profile_form.input :qq %>
-        <%= profile_form.input :weibo %>
-        <%= profile_form.input :wechat %>
+        <div class='row'>
+          <div class='col-md-6'>
+            <%= profile_form.input :gender %>
+          </div>
+          <div class='col-md-6'>
+            <%= profile_form.input :title %>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-6'>
+            <%= profile_form.input :country %>
+          </div>
+          <div class='col-md-6'>
+            <%= profile_form.input :city %>
+          </div>
+        </div>
+        <div class='center'>
+          <%= profile_form.input :qq, label: fa_icon('qq') %>
+          <%= profile_form.input :weibo, label: fa_icon('weibo') %>
+          <%= profile_form.input :wechat, label: fa_icon('wechat') %>
+        </div>
       <% end %>
       <div class='center'>
         <%= f.button :submit, t('action.submit'), class: 'button' %>
