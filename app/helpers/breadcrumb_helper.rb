@@ -1,5 +1,5 @@
 module BreadcrumbHelper
-  @@breadcrumbs ||= [ { title: I18n.t('scrinium.home'), url: '/'} ]
+  @@breadcrumbs ||= [ { title: I18n.t('home'), url: '/'} ]
 
   def add_breadcrumb title, url, options = {}
     title_ = title.to_sym

@@ -3,19 +3,16 @@
     <%= f.hidden_field :creator_id, value: current_user.id %>
     <%=
       f.input :authors,
-      label: t('reference.authors'),
       collection: @reference.authors,
       input_html: {
-        multiple: 'multiple',
-        data: {
-          placeholder: t('reference.placeholder.authors')
-        }
+        class: 'use-select2-multiple-tags',
+        multiple: 'multiple'
       }
     %>
-    <%= f.input :title, label: t('reference.title') %>
+    <%= f.input :title %>
     <div class='row'>
       <div class='col-md-4'>
-        <%= f.input :reference_type, label: t('reference.type') %>
+        <%= f.input :reference_type %>
       </div>
       <div class='col-md-4'>
         <div id='select-journal'>
@@ -23,7 +20,6 @@
           <% if @reference.publicable %>
             <%=
               f.input :publicable_id,
-              label: t('reference.journal'),
               label_method: :abbreviation,
               value_method: :id,
               collection: [@reference.publicable],
@@ -31,38 +27,31 @@
             %>
           <% else %>
             <%=
-              f.input :publicable_id,
-              label: t('reference.journal'), as: :select,
+              f.input :publicable_id, as: :select,
               input_html: { id: 'input-journal-abbreviation' }
             %>
           <% end %>
         </div>
       </div>
       <div class='col-md-4'>
-        <%= f.input :doi, label: t('reference.doi') %>
+        <%= f.input :doi %>
       </div>
     </div>
     <div class='row'>
       <div class='col-md-3'>
-        <%= f.input :year, label: t('reference.year') %>
+        <%= f.input :year %>
       </div>
       <div class='col-md-3'>
-        <%= f.input :volume, label: t('reference.volume') %>
+        <%= f.input :volume %>
       </div>
       <div class='col-md-3'>
-        <%=
-          f.input :issue, label: t('reference.issue'),
-          disabled: ( @reference.publicable and not @reference.publicable.issued )
-        %>
+        <%= f.input :issue, disabled: ( @reference.publicable and not @reference.publicable.issued ) %>
       </div>
       <div class='col-md-3'>
-        <%= f.input :pages, label: t('reference.pages'), placeholder: t('reference.placeholder.pages') %>
+        <%= f.input :pages %>
       </div>
     </div>
-    <%=
-      f.input :abstract, label: t('reference.abstract'),
-      as: :text, value: @reference.abstract
-    %>
+    <%= f.input :abstract, as: :text %>
     <%= f.file_field :file, class: 'float-left' %>
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>

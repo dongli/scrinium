@@ -2,7 +2,7 @@
   <ul class='nav nav-stacked nav-pills' id='left-side' data-user-id='<%= current_user.id %>'>
     <li role='presentation' class='active' id='nav-inbox'>
       <a id='show-inbox'>
-        <%= fa_icon('inbox', text: t('mailbox.inbox')) %>
+        <%= fa_icon('inbox', text: t('mailbox_inbox')) %>
         <% if has_unread? %>
           <span class='badge unread-mail-badge'><%= num_unread %></span>
         <% end %>
@@ -10,12 +10,12 @@
     </li>
     <li role='presentation' id='nav-sentbox'>
       <a id='show-sentbox'>
-        <%= fa_icon('paper-plane', text: t('mailbox.sentbox')) %>
+        <%= fa_icon('paper-plane', text: t('mailbox_sentbox')) %>
       </a>
     </li>
     <li role='presentation' id='nav-trash'>
       <a id='show-trash'>
-        <%= fa_icon('trash', text: t('mailbox.trash')) %>
+        <%= fa_icon('trash', text: t('mailbox_trash')) %>
       </a>
     </li>
   </ul>

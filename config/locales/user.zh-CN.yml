@@ -1,38 +1,24 @@
 zh-CN:
-  scrinium:
-    user: 用户
-  placeholder:
-    need_real_name: 请填写真实姓名！
-
-  user:
-    has_been_deleted: 用户“%{name}”已经被删除。
-    join_time: 加入时间
-    joined_at: 加入于%{date}
-    join_groups: 加入%{group_number}个群组
-    edit: 个人设置
-    update: 更新用户信息
-    user_name_hint: 4-20个小写英文字母、数字或下划线
-    affiliation: 单位
-    position: 职位
-    email_hint: 格式：user@domain.com
-    signup: 注册
-    signin: 登录
-    signout: 登出
-    password_hint: 至少8个字符
-    password_confirmation_hint: 重复输入一次密码
-    remember_me: 记住我
-    profile: 个人信息
-    edit_info: 修改信息
-    create_article: 添加文章
-    latest_articles: 最近文章
-
   activerecord:
+    models:
+      user: 用户
+    attributes:
+      user:
+        name: 姓名
+        email: 邮箱
+        mobile: 手机号
+        role: 角色
+        password: 密码
+        password_confirmation: 确认密码
+        confirmed_at: 确认时间
+        unconfirmed_email: 未确认邮箱
+        remember_me: 记住我
+        created_at: 注册时间
+        updated_at: 更新时间
     errors:
       models:
         user:
           attributes:
-            avatar:
-              blank: 请提供一个酷炫的头像！
             name:
               blank: 请填写真实姓名！
             gender:
@@ -51,3 +37,12 @@ zh-CN:
               blank: 请确认登陆密码！
             role:
               inclusion: 角色设置不正确！
+
+  simple_form:
+    placeholders:
+      user:
+        name: 请填写真实姓名！
+        password: 不少于6个字符。
+
+  user:
+    activity: 活动

@@ -10,17 +10,16 @@
   </div>
   <%= simple_form_for [ @app, @resourceable, @resource ], method: :patch do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.input :name, label: t('resource.name') %>
+    <%= f.input :name %>
     <%=
       f.input :category_list,
-      label: t('resource.categories'),
       collection: @resource.categories.map { |t| t.name },
       input_html: {
-        multiple: 'multiple',
-        data: { placeholder: t('resource.placeholder.categories') }
+        class: 'use-select2-multiple-tags',
+        multiple: 'multiple'
       }
     %>
-    <%= f.input :description, label: t('resource.description'), as: :text %>
+    <%= f.input :description, as: :text %>
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

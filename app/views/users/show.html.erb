@@ -1,5 +1,5 @@
-<% content_for :title, t('user.profile') %>
-<% add_breadcrumb t('user.profile'), @user, on_nav_bar: true %>
+<% content_for :title, t('activerecord.models.profile') %>
+<% add_breadcrumb t('activerecord.models.profile'), @user, on_nav_bar: true %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -10,7 +10,7 @@
     render 'layouts/navtab',
     tabs: {
       activities: [
-        t('global.activity'),
+        t('user.activity'),
         render('articles', user: @user)+render('publications', user: @user)
       ],
       collections: [
@@ -18,7 +18,7 @@
         render('collections', user: @user)
       ],
       resources: [
-        t('scrinium.resource'),
+        t('activerecord.models.resource'),
         render('resources/list', resources: @user.resources)
       ]
     }

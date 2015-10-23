@@ -1,31 +1,27 @@
 <% content_for :title, t('user.edit') %>
 
 <% content_for :main_block do %>
-
+  <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
-      <div class="rolw">
-        <div class="col-md-offset-3 col-md-6">
-          <div class='center'>
-            <%= image_tag @user.avatar_url, size: '100x100', id: 'preview-avatar' %>
-            <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-              <%= profile_form.input :avatar, id: 'upload-avatar' %>
-            <% end %>
-          </div>
-
-          <%= f.input :name %>
-          <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-            <%= profile_form.input :gender %>
-            <%= profile_form.input :title %>
-            <%= profile_form.input :country %>
-            <%= profile_form.input :city %>
-            <%= profile_form.input :qq %>
-            <%= profile_form.input :weibo %>
-            <%= profile_form.input :wechat %>
-          <% end %>
-          <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
-        </div>
+      <div class='center'>
+        <%= image_tag @user.avatar_url, size: '100x100', id: 'preview-avatar' %>
+        <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
+          <%= profile_form.input :avatar, id: 'upload-avatar' %>
+        <% end %>
       </div>
-
+      <%= f.input :name %>
+      <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
+        <%= profile_form.input :gender %>
+        <%= profile_form.input :title %>
+        <%= profile_form.input :country %>
+        <%= profile_form.input :city %>
+        <%= profile_form.input :qq %>
+        <%= profile_form.input :weibo %>
+        <%= profile_form.input :wechat %>
+      <% end %>
+      <div class='center'>
+        <%= f.button :submit, t('action.submit'), class: 'button' %>
+      </div>
     <% end %>
-
+  </div>
 <% end %>
