@@ -8,10 +8,4 @@
       <%= render 'articles/table_list', show_author: true, articles: Article.all %>
     </dd>
   </dl>
-  <dl>
-    <dt><%= t('activerecord.models.reference') %></dt>
-    <dd>
-      <%= render 'references/table_list', references: Reference.all %>
-    </dd>
-  </dl>
 <% end %>

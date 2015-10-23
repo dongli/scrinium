@@ -44,42 +44,6 @@ zh-CN:
       您的%{what}被“%{who}”评论，详见[这里](%{url})。
     has_new_comments: 有%{number}个新评论！请点击刷新。
 
-  enumerize:
-    article:
-      privacy:
-        public: 公开
-        private: 不公开
-        group_public: 群组公开
-    group:
-      privacy:
-        public: 公开
-        private: 不公开
-    reference:
-      reference_type:
-        article: 文章
-        book: 书
-    user:
-      role:
-        admin:   超级管理员
-        assist_admin: 普通管理员
-        user: 用户
-    profile:
-      gender:
-        female: 女士
-        male: 男士
-      title:
-        academician: 院士
-        researcher: 研究员
-        associate_researcher: 副研究员
-        assistant_researcher: 助理研究员
-        professor: 教授
-        associate_professor: 副教授
-        assistant_professor: 助理教授
-        postdoctoral_researcher: 博士后
-        postgraduate: 研究生
-        undergraduate: 本科生
-        freeman: 自由人
-
   errors:
     messages:
       carrierwave_processing_error: "无法调整文件的大小！"

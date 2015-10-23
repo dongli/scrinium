@@ -44,5 +44,12 @@ zh-CN:
         name: 请填写真实姓名！
         password: 不少于6个字符。
 
+  enumerize:
+    user:
+      role:
+        admin:   超级管理员
+        assist_admin: 普通管理员
+        user: 用户
+
   user:
     activity: 活动

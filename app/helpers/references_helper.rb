@@ -21,7 +21,7 @@ module ReferencesHelper
     res << "#{join_authors reference, false}, "
     res << "#{reference.year}: "
     res << "#{reference.title}, "
-    res << "<i>#{reference.publicable.abbreviation}</i>, "
+    res << "<i>#{reference.publisher.abbreviation}</i>, "
     res << "<b>#{reference.volume}</b>"
     res << "(#{reference.issue})" if reference.issue
     res << ", #{reference.pages}."

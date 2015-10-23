@@ -22,3 +22,18 @@ zh-CN:
       reference:
         authors: 中文名称如：张三，英文名称如：San Zhang
         pages: 如：100-120
+
+  enumerize:
+    reference:
+      reference_type:
+        article: 文章
+        book: 书
+        booklet: 小册子
+        inbook: 书中
+        conference: 会议
+        manual: 手册
+        techreport: 技术报告
+        mastersthesis: 硕士论文
+        phdthesis: 博士论文
+        unpublished: 未发表
+        misc: 其它

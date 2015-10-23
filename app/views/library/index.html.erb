@@ -1,0 +1,13 @@
+<% content_for :title, '文献库' %>
+
+<% content_for :main_block do %>
+  <div class="alert alert-info" role="alert">
+    在这里添加文献检索功能。
+  </div>
+  <dl>
+    <dt><%= t('scrinium.reference') %></dt>
+    <dd>
+      <%= render 'references/table_list', references: Reference.all %>
+    </dd>
+  </dl>
+<% end %>

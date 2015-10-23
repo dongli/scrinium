@@ -1,0 +1,12 @@
+<li class='dropdown'>
+  <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
+    <%= image_tag('logos/library_logo.png', size: '30x30') %>
+  </a>
+  <ul class='dropdown-menu'>
+    <li><%= link_to '进入文献库', library_path %></li>
+    <% if policy(Publisher).create? %>
+      <li><%= link_to '添加文献', new_reference_path %></li>
+      <li><%= link_to '添加出版社', new_publisher_path %></li>
+    <% end %>
+  </ul>
+</li>

@@ -2,3 +2,9 @@ zh-CN:
   activerecord:
     models:
       group: 群组
+
+  enumerize:
+    group:
+      privacy:
+        public: 公开
+        private: 不公开
