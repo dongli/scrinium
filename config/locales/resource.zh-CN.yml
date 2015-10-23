@@ -1,11 +1,14 @@
 zh-CN:
-  scrinium:
-    resource: 资源
+  activerecord:
+    models:
+      resource: 资源
+    attributes:
+      resource:
+        name: 资源名称
+        description: 资源描述
+        user: 拥有者
+        category_list: 资源类别
+        created_at: 创建时间
 
-  resource:
-    name: 资源名称
-    categories: 资源类别
-    description: 资源描述
-    size: 文件大小
-    placeholder:
-      categories: 提示：以空格分开。
+  dropzone:
+    drag_file_here: 请将文件拖至这里。

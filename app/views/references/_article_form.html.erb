@@ -1,0 +1,37 @@
+<%=
+  f.input :authors,
+  collection: @reference.authors,
+  input_html: {
+    class: 'use-select2-multiple-tags', style: 'width: 100%;',
+    multiple: 'multiple'
+  },
+  label_html: { style: 'display: block;' }
+%>
+<%= f.input :title %>
+<div class='row'>
+  <div class='col-md-6'>
+    <%=
+      f.input :publisher_id, collection: [ @reference.publisher_id ],
+      input_html: { id: 'input-publisher-abbreviation', style: 'width: 100%;' },
+      label_html: { style: 'display: block;' }
+    %>
+  </div>
+  <div class='col-md-6'>
+    <%= f.input :doi %>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-3'>
+    <%= f.input :year %>
+  </div>
+  <div class='col-md-3'>
+    <%= f.input :volume %>
+  </div>
+  <div class='col-md-3'>
+    <%= f.input :issue, disabled: ( @reference.publisher and not @reference.publisher.issued ) %>
+  </div>
+  <div class='col-md-3'>
+    <%= f.input :pages %>
+  </div>
+</div>
+<%= f.input :abstract, as: :text %>

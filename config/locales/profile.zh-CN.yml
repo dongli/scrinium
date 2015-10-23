@@ -1,0 +1,34 @@
+zh-CN:
+  activerecord:
+    models:
+      profile: 个人信息
+    attributes:
+      profile:
+        avatar: 头像
+        gender: 性别
+        title: 职位
+        city: 城市
+        country: 国籍
+        qq: QQ帐号
+        weibo: 微博账号
+        wechat: 微信账号
+        created_at: 创建时间
+        updated_at: 更新时间
+
+  enumerize:
+    profile:
+      gender:
+        female: 女士
+        male: 男士
+      title:
+        academician: 院士
+        researcher: 研究员
+        associate_researcher: 副研究员
+        assistant_researcher: 助理研究员
+        professor: 教授
+        associate_professor: 副教授
+        assistant_professor: 助理教授
+        postdoctoral_researcher: 博士后
+        postgraduate: 研究生
+        undergraduate: 本科生
+        freeman: 自由人

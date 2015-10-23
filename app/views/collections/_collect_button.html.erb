@@ -2,13 +2,13 @@
   <li>
     <% collected = is_collected? current_user, collectable %>
     <%=
-      link_to fa_icon('star', text: t('collection.cancel')),
+      link_to fa_icon('star', text: t('action.uncollect')),
       [ collectable, :uncollect ],
       remote: true, id: "uncollect-#{class_escape collectable}",
       style: "display: #{collected ? 'block' : 'none'}"
     %>
     <%=
-      link_to fa_icon('star-o', text: t('collection.collect')),
+      link_to fa_icon('star-o', text: t('action.collect')),
       [ collectable, :collect ],
       remote: true, id: "collect-#{class_escape collectable}",
       style: "display: #{collected ? 'none' : 'block'}"

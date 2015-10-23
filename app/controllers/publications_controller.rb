@@ -9,7 +9,7 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to session[:previous_url].last, notice: t('message.create_success', thing: @publication.reference.reference_type.text) }
+        format.html { redirect_to session[:previous_url].last, notice: t('message.create_success', thing: t('activerecord.models.publication')) }
       else
         format.html { redirect_to session[:previous_url].last, flash: { error: @publication.errors.to_a.first } }
       end
@@ -21,7 +21,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to @publication, notice: t('message.update_success', thing: @publication.reference.reference_type.text) }
+        format.html { redirect_to @publication, notice: t('message.update_success', thing: t('activerecord.models.publication')) }
       else
         format.html { render :edit }
       end
@@ -33,7 +33,7 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to publications_url, notice: t('message.destroy_success', thing: @publication.reference.reference_type.text) }
+      format.html { redirect_to publications_url, notice: t('message.destroy_success', thing: t('activerecord.models.publication')) }
     end
   end
 

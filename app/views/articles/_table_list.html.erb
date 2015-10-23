@@ -3,12 +3,12 @@
 <table class='articles'>
   <thead>
     <tr>
-      <th width='200'><%= t('article.title') %></th>
+      <th width='200'><%= t('activerecord.attributes.article.title') %></th>
       <% if show_author %>
-        <th width='100'><%= t('article.author') %></th>
+        <th width='100'><%= t('activerecord.attributes.article.user') %></th>
       <% end %>
-      <th width='200'><%= t('global.create_time') %></th>
-      <th width='100'><%= t('article.browse_count') %></th>
+      <th width='200'><%= t('activerecord.attributes.article.created_at') %></th>
+      <th width='100'><%= t('activerecord.attributes.article.impressionist_count') %></th>
     </tr>
   </thead>
   <tbody>

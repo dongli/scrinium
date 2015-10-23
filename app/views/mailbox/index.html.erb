@@ -1,4 +1,4 @@
-<% content_for :title, t('scrinium.mailbox') %>
+<% content_for :title, t('mailbox') %>
 
 <% check_mailbox %>
 
@@ -9,7 +9,7 @@
 <% content_for :main_block do %>
   <div id='inbox'>
     <div class='alert alert-info' role='alert' style='display: none;' id='new-mail-notifier'>
-      <%= t('mailbox.has_new_mails', number: 0) %>
+      <%= t('has_new_mails', number: 0) %>
     </div>
     <ul class='clean-list' id='unread-message-list'>
       <% unread_messages.each do |message| %>
@@ -47,7 +47,7 @@
           <ul class='nav navbar-nav'>
             <li>
               <%=
-                link_to fa_icon('pencil', text: t('action.write')+t('mailbox.message')),
+                link_to fa_icon('pencil', text: t('action.write')+t('mailbox_message')),
                 user_write_message_path, remote: true
               %>
             </li>

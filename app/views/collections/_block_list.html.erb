@@ -22,7 +22,7 @@
           <dt><%= link_to collection.collectable.title, collection_view_path(collection) %></dt>
           <dd>
             <ul class='clean-list'>
-              <li><%= t('article.author')+': '+collection.collectable.user.name %></li>
+              <li><%= t('owner')+': '+collection.collectable.user.name %></li>
               <li>
                 <ul class='tag-cloud'>
                   <% collection.collectable.categories.each do |tag| %>

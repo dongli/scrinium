@@ -1,20 +1,39 @@
 zh-CN:
-  scrinium:
-    reference: 参考文献
+  activerecord:
+    models:
+      reference: 参考文献
+    attributes:
+      reference:
+        authors: 作者
+        title: 题目
+        reference_type: 文献类型
+        year: 年份
+        volume: 卷号
+        issue: 发行号
+        pages: 页码
+        citation: 引用
+        journal: 杂志名称
+        doi: DOI号
+        abstract: 摘要
+        cite_key: 引用编号
 
-  reference:
-    type: 文献类型
-    title: 题目
-    authors: 作者列表
-    year: 年份
-    volume: 卷号
-    issue: 发行号
-    pages: 页码
-    citation: 引用
-    journal: 杂志名称
-    doi: DOI号
-    abstract: 摘要
-    cite_key: 引用编号
-    placeholder:
-      authors: 中文名称如：张三，英文名称如：San Zhang
-      pages: 如：100-120
+  simple_form:
+    placeholders:
+      reference:
+        authors: 中文名称如：张三，英文名称如：San Zhang
+        pages: 如：100-120
+
+  enumerize:
+    reference:
+      reference_type:
+        article: 文章
+        book: 书
+        booklet: 小册子
+        inbook: 书中
+        conference: 会议
+        manual: 手册
+        techreport: 技术报告
+        mastersthesis: 硕士论文
+        phdthesis: 博士论文
+        unpublished: 未发表
+        misc: 其它

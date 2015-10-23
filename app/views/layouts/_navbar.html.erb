@@ -22,9 +22,10 @@
         <li>
           <%=
             link_to image_tag('logos/research_logo.png', size: '30x30'),
-            researches_index_path, class: 'navbar-link'
+            news_index_path, class: 'navbar-link'
           %>
         </li>
+        <%= render 'layouts/navbar_library' %>
         <%= render 'layouts/navbar_user' %>
       </ul>
     </div>

@@ -1,7 +1,11 @@
 class BaseUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :qiniu
+  if ENV['SCRINIUM_USE_QINIU']
+    storage :qiniu
+  else
+    storage :file
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -45,5 +49,4 @@ class BaseUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

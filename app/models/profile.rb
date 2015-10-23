@@ -19,7 +19,7 @@
 class Profile < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :gender, in: [ :female, :male ], default: :male
+  enumerize :gender, in: [ :female, :male ]
   enumerize :title, in: [
                          :academician,
                          :researcher,
@@ -32,12 +32,11 @@ class Profile < ActiveRecord::Base
                          :postgraduate,
                          :undergraduate,
                          :freeman
-                     ], default: :undergraduate
+                        ]
   mount_uploader :avatar, ImageUploader
 
   belongs_to :user
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },
             file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
-
 end
