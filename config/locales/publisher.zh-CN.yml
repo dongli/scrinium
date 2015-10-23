@@ -1,7 +1,4 @@
 zh-CN:
-  scrinium:
-    publisher: 出版社
-
   activerecord:
     models:
       publisher: 出版社

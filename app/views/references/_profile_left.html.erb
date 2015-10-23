@@ -1,6 +1,6 @@
 <ul class='left-side-list'>
   <li>
-    <%= t('reference.cite_key') %>: <%= @reference.cite_key %>
+    <%= t('activerecord.attributes.reference.cite_key') %>: <%= @reference.cite_key %>
   </li>
   <li>
     <%= @reference.publisher.abbreviation %>
@@ -15,7 +15,7 @@
     <% if policy(@reference).destroy? %>
       <%=
         link_to fa_icon('trash', text: t('action.delete')), @resource, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.reference')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.reference')) }
       %>
     <% end %>
     <% if @reference.file %>

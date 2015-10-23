@@ -21,7 +21,7 @@ class ReferencesController < ApplicationController
 
     respond_to do |format|
       if @reference.save
-        format.html { redirect_to @reference, notice: t('message.create_success', thing: t('scrinium.reference')) }
+        format.html { redirect_to @reference, notice: t('message.create_success', thing: t('activerecord.models.reference')) }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class ReferencesController < ApplicationController
   def update
     respond_to do |format|
       if @reference.update(reference_params)
-        format.html { redirect_to @reference, notice: t('message.update_success', thing: t('scrinium.reference')) }
+        format.html { redirect_to @reference, notice: t('message.update_success', thing: t('activerecord.models.reference')) }
       else
         format.html { render :edit }
       end
@@ -41,7 +41,7 @@ class ReferencesController < ApplicationController
   def destroy
     @reference.destroy
     respond_to do |format|
-      format.html { redirect_to references_url, notice: t('message.destroy_success', thing: t('scrinium.reference')) }
+      format.html { redirect_to references_url, notice: t('message.destroy_success', thing: t('activerecord.models.reference')) }
     end
   end
 

@@ -2,3 +2,9 @@ zh-CN:
   activerecord:
     models:
       publication: 发表刊物
+    errors:
+      models:
+        publication:
+          attributes:
+            user_id:
+              taken: 已经认领过了！

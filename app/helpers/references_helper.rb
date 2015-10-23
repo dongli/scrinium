@@ -5,7 +5,7 @@ module ReferencesHelper
         class='author'
         data-toggle='popover'
         data-placement='bottom'
-        data-title='#{I18n.t('action.add')+reference.reference_type.text+I18n.t('global.to')+I18n.t('scrinium.user')}'
+        data-title='#{I18n.t('action.claim')+reference.reference_type.text}'
       EOT
       authors = reference.authors.map { |a|
         "<a #{attrs} data-content='#{render partial: 'publications/form', locals: { user: current_user, reference: reference, matched_author: a, publication: Publication.new }}'>#{a}</a>"

@@ -6,6 +6,8 @@
     <% if policy(Publisher).qualify? %>
       <%= f.hidden_field :status, value: 'qualified' %>
     <% end %>
-    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
+    <div class='center'>
+      <%= f.button :submit, t('action.submit'), class: 'button' %>
+    </div>
   <% end %>
 </div>

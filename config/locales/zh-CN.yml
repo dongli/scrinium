@@ -23,6 +23,7 @@ zh-CN:
     manage: 管理
     invite: 邀请
     join: 加入
+    claim: 认领
 
   message:
     create_success: 成功创建%{thing}。

@@ -17,7 +17,12 @@ User.create(
   role: 'admin',
   email: 'dongli@lasg.iap.ac.cn',
   password: '12345678',
-  password_confirmation: '12345678'
+  password_confirmation: '12345678',
+)
+
+Profile.create(
+  user_id: 1,
+  gender: 'male'
 )
 
 Organization.create(name: '中国科学院大气物理研究所',
@@ -65,5 +70,10 @@ User.create(
   role: 'user',
   email: 'zhangsan@lasg.iap.ac.cn',
   password: '12345678',
-  password_confirmation: '12345678'
+  password_confirmation: '12345678',
+)
+
+Profile.create(
+  user_id: 2,
+  gender: 'male'
 )
