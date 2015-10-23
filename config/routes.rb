@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   mathjax 'mathjax'
 
   get 'home/index'
-  get 'researches/index'
+  get 'news/index'
+  get 'library/index'
   get 'dashboard/index'
 
   root 'home#index'
@@ -57,7 +58,6 @@ Rails.application.routes.draw do
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references
   resources :publishers
-  get '/library' => 'library#index', as: :library
   # Membership -----------------------------------------------------------------
   resources :memberships do
     member do
