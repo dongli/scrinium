@@ -8,3 +8,6 @@ zh-CN:
           attributes:
             user_id:
               taken: 已经认领过了！
+
+  action:
+    claim: 认领

@@ -1,8 +1,8 @@
 zh-CN:
-  scrinium:
-    collection: 收藏
+  collection: 收藏
 
-  collection:
-    type: 收藏类型
+  owner: 拥有者
+
+  action:
     collect: 收藏
-    cancel: 取消收藏
+    uncollect: 取消收藏

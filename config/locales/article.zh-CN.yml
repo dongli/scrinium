@@ -16,6 +16,11 @@ zh-CN:
       article:
         category_list: 提示：每输入一个标记按回车
 
+  pundit:
+    article_policy:
+      update?: 您无权求改该文章！
+      create?: 您无权创建文章！
+
   enumerize:
     article:
       privacy:
