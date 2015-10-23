@@ -1,30 +1,6 @@
 zh-CN:
   scrinium:
     user: 用户
-
-  enumerize:
-    user:
-      gender:
-        female: 女士
-        male: 男士
-      position:
-        academician: 院士
-        researcher: 研究员
-        associate_researcher: 副研究员
-        assistant_researcher: 助理研究员
-        professor: 教授
-        associate_professor: 副教授
-        assistant_professor: 助理教授
-        postdoctoral_researcher: 博士后
-        postgraduate: 研究生
-        undergraduate: 本科生
-        freeman: 自由人
-      role:
-        admin: 管理员
-        assist_admin: 辅助管理员
-        user: 用户
-        guest: 访客
-
   placeholder:
     need_real_name: 请填写真实姓名！
 
@@ -51,15 +27,6 @@ zh-CN:
     latest_articles: 最近文章
 
   activerecord:
-    attributes:
-      user:
-        name: 名字
-        email: 邮箱地址
-        gender: 性别
-        role: 角色
-        password: 密码
-        password_confirmation: 密码确认
-        current_password: 当前密码
     errors:
       models:
         user:

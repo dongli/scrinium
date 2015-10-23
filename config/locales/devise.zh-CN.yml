@@ -63,6 +63,7 @@ zh-CN:
       remember_me: 记住我
       verify: 验证中...
       change_password: 更改密码
+      submit: 提交中...
 
   errors:
     messages:

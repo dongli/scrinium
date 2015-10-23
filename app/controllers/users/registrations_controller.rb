@@ -43,25 +43,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.for(:sign_up) << :attribute
   # end
 
-  def update_resource resource, params
-    resource.update_without_password sign_up_params
-  end
+  # def update_resource resource, params
+  #   resource.update_without_password sign_up_params
+  # end
 
   def after_update_path_for resource
     session[:previous_url] ? session[:previous_url].last : root_path
   end
 
   def sign_up_params
-    params.require(:user).permit(:avatar,
-                                 :name,
-                                 :gender,
+    params.require(:user).permit(:name,
                                  :organization_id,
-                                 :position,
                                  :email,
                                  :role,
-                                 :status,
                                  :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 profile_attributes: [:gender, :title]
+    )
   end
 
   # If you have extra params to permit, append them to the sanitizer.

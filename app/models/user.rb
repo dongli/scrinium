@@ -6,54 +6,30 @@
 #  avatar                  :string
 #  name                    :string           not null
 #  email                   :string           not null
+#  mobile                  :string
 #  encrypted_password      :string           not null
-#  gender                  :string           not null
-#  position                :string
 #  role                    :string           not null
-#  status                  :string
 #  current_organization_id :integer
 #  reset_password_token    :string
 #  reset_password_sent_at  :datetime
 #  remember_created_at     :datetime
-#  sign_in_count           :integer          default(0), not null
-#  current_sign_in_at      :datetime
-#  last_sign_in_at         :datetime
-#  current_sign_in_ip      :inet
-#  last_sign_in_ip         :inet
+#  confirmation_token      :string
+#  confirmed_at            :datetime
+#  confirmation_sent_at    :datetime
+#  unconfirmed_email       :string
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
 
 class User < ActiveRecord::Base
   extend Enumerize
-
-  enumerize :gender, in: [ :female, :male ]
-  enumerize :position, in: [
-    :academician,
-    :researcher,
-    :associate_researcher,
-    :assistant_researcher,
-    :professor,
-    :associate_professor,
-    :assistant_professor,
-    :postdoctoral_researcher,
-    :postgraduate,
-    :undergraduate,
-    :freeman
-  ]
-  enumerize :role, in: [
-    :admin,
-    :assist_admin,
-    :user,
-    :guest
-  ], default: :guest, predicates: true
+  enumerize :role, in: [:admin, :assist_admin, :user], default: :user, predicates: true
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable :trackable,
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable
 
-  mount_uploader :avatar, ImageUploader
 
   acts_as_messageable
 
@@ -66,12 +42,18 @@ class User < ActiveRecord::Base
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
   has_many :resources, as: :resourceable, dependent: :destroy
+  has_one  :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: proc { |profile| profile['title'].blank? }
 
-  validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },
-                     file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
-  validates_presence_of :name, :gender
+  validates :name, :email, presence: true
+  validates :email, uniqueness: true
 
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil
   end
+
+  def avatar_url
+    self.profile.try(:avatar)
+  end
+
 end

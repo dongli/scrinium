@@ -13,6 +13,7 @@
 #  resourceable_id   :integer
 #  resourceable_type :string
 #  status            :string
+#  uuid              :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
