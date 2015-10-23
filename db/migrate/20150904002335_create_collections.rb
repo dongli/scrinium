@@ -1,10 +1,10 @@
 class CreateCollections < ActiveRecord::Migration
   def change
     create_table :collections do |t|
-      t.belongs_to :user, index: true
-      t.references :collectable, polymorphic: true, index: true
-      t.boolean :watched, default: false
-      t.boolean :updated, default: false
+      t.belongs_to  :user,        index: true                     # 收藏人的ID
+      t.references  :collectable, polymorphic: true, index: true  # 收藏的什么
+      t.boolean     :watched,     default: false                  # 是否关注
+      t.boolean     :updated,     default: false                  # 是否更新？
 
       t.timestamps null: false
     end

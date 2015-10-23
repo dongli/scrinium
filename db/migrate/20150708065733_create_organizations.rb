@@ -1,17 +1,17 @@
 class CreateOrganizations < ActiveRecord::Migration
   def up
     create_table :organizations do |t|
-      t.string     :logo
-      t.references :admin,  class_name: 'User'
-      t.references :parent, class_name: 'Organization'
-      t.string     :website
-      t.string     :status
+      t.string     :logo                                  # 头像
+      t.references :admin,  class_name: 'User'            # 机构超级管理员的ID
+      t.references :parent, class_name: 'Organization'    # 父机构的ID
+      t.string     :website                               # 网址
+      t.string     :status                                # 状态， 新建，上线，下线
       t.timestamps                                     null: false
     end
     Organization.create_translation_table!({
-      name: :string,
-      short_name: :string,
-      description: :text
+      name: :string,                                      # 关联表中，机构的名称
+      short_name: :string,                                # 机构的简称
+      description: :text                                  # 描述
     })
   end
   def down
