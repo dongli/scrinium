@@ -1,8 +1,8 @@
 class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
-      t.integer     :user_id
-      t.string      :avatar
+      t.integer     :user_id            # 用户的ID
+      t.string      :avatar             # 头像
       t.string      :gender             # 性别
       t.string      :title              #职位，或者教授之类的
       t.string      :city               #城市

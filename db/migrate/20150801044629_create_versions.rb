@@ -8,7 +8,7 @@ class CreateVersions < ActiveRecord::Migration
 
   def change
     create_table :versions do |t|
-      t.string   :item_type, :null => false
+      t.string   :item_type, :null => false  # 实现对象级别的版本控制
       t.integer  :item_id,   :null => false
       t.string   :event,     :null => false
       t.string   :whodunnit
