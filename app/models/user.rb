@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_many :resources, as: :resourceable, dependent: :destroy
   has_one  :profile, dependent: :destroy
-  accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: proc { |profile| profile['title'].blank? }
+  accepts_nested_attributes_for :profile, allow_destroy: true
 
   validates_presence_of :name, :email
   validates_uniqueness_of :email
