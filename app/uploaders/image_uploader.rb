@@ -1,7 +1,4 @@
-# encoding: utf-8
-
 class ImageUploader < BaseUploader
-
   version :medium do
     process :resize_to_fit => [ 100, 100 ]
   end

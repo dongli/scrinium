@@ -28,13 +28,17 @@
 #= require plugins/emoticons.min.js
 #= require plugins/font_family.min.js
 #= require plugins/font_size.min.js
+#= require plugins/code_view.min.js
 #= require plugins/colors.min.js
+#= require plugins/entities.min.js
 #= require plugins/fullscreen.min.js
 #= require plugins/inline_style.min.js
 #= require plugins/line_breaker.min.js
 #= require plugins/image.min.js
 #= require plugins/link.min.js
 #= require plugins/lists.min.js
+#= require plugins/paragraph_format.min.js
+#= require plugins/paragraph_style.min.js
 #= require plugins/quote.min.js
 #= require plugins/table.min.js
 #= require plugins/save.min.js
@@ -161,7 +165,7 @@ $(document).on 'page:change', ->
   selectByGET 'input-user-name', 'api/v1/users/names'
   selectByGET 'input-group-name', 'api/v1/groups/names'
   selectByGET 'input-organization-name', 'api/v1/organizations/names'
-  selectByGET 'input-journal-abbreviation', 'api/v1/journals/abbreviations'
+  selectByGET 'input-publisher-abbreviation', 'api/v1/publishers/abbreviations'
   # TODO: Function call is not working!
   # selectByPOST 'input-group-name-for-user', 'api/v1/groups/for_user', {
   #   user_id: $('select[id=input-group-name-for-user]').data('user-id')
@@ -220,3 +224,8 @@ $(document).on 'page:change', ->
   $('#use-user-block-list').click ->
     $('#user-table-list').hide()
     $('#user-block-list').show()
+
+  # 使用Select2做标签输入。
+  $('.use-select2-multiple-tags').select2
+    tags: true
+    multiple: true

@@ -13,7 +13,7 @@
     </a>
     <ul class='dropdown-menu'>
       <li>
-        <%= link_to avatar(current_user, size: :small)+' '+t('user.profile'), current_user %>
+        <%= link_to avatar(current_user, size: :small)+' '+t('activerecord.models.profile'), current_user %>
       </li>
       <% if current_user.organizations.size > 1 %>
         <li>
@@ -25,17 +25,11 @@
       <li>
         <a href='<%= user_mailbox_index_path(current_user) %>'
           id='mailbox-menu-item'>
-          <%= fa_icon('envelope', text: t('scrinium.mailbox')) %>
+          <%= fa_icon('envelope', text: t('mailbox')) %>
           <% if has_unread? %>
             <span class='badge unread-mail-badge'><%= num_unread %></span>
           <% end %>
         </a>
-      </li>
-      <li>
-        <%=
-          link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.article')),
-          new_article_path
-        %>
       </li>
       <% if current_user and ( current_user.admin? or current_user.assist_admin? ) %>
         <li>

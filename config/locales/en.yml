@@ -20,5 +20,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  global:
-    shustone: Beijing ShuStone Technology Co., Ltd.
+  shustone: Beijing ShuStone Technology Co., Ltd.

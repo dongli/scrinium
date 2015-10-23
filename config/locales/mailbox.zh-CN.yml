@@ -1,0 +1,10 @@
+zh-CN:
+  mailbox: 邮箱
+  mailbox_receivers: 收件人
+  mailbox_subject: 标题
+  mailbox_inbox: 收件箱
+  mailbox_sentbox: 发件箱
+  mailbox_trash: 垃圾桶
+  mailbox_message: 消息
+  mailbox_notification: 通知
+  has_new_mails: 有%{number}个新邮件！请点击刷新。

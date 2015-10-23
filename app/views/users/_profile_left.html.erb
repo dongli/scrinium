@@ -4,16 +4,16 @@
   <li><%= render 'memberships/organization_logos', user: @user %></li>
   <li><%= @user.role.text %></li>
   <li>
-    <%= fa_icon('clock-o', text: t('user.joined_at', date: @user.created_at.strftime("%Y-%-m"))) %>
+    <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
   </li>
   <% if policy(@user).update? %>
-    <li><%= link_to fa_icon('edit', text: t('action.edit')+t('global.info')), [ :edit, @user ] %></li>
+    <li><%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @user ] %></li>
     <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_registration_path %></li>
     <% if @user == current_user %>
       <% if policy(Article).create? %>
         <li>
           <%=
-            link_to fa_icon('file-o', text: t('action.add')+t('scrinium.article')),
+            link_to fa_icon('file-o', text: t('action.add')+t('activerecord.models.article')),
             new_article_path, id: 'add-article'
           %>
         </li>
@@ -21,7 +21,7 @@
       <% if policy(Resource).create? %>
         <li>
           <%=
-            link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+            link_to fa_icon('cube', text: t('action.add')+t('activerecord.models.resource')),
             [ :new, @user, :resource ], id: 'add-resource', style: 'display: none;'
           %>
         </li>
@@ -33,7 +33,7 @@
       data-toggle='collapse'
       aria-expanded='false'
       aria-controls='group-list'>
-      <%= fa_icon('users', text: t('user.join_groups', group_number: @user.groups.all.size)) %>
+      <%= fa_icon('users', text: t('action.join')+t('activerecord.models.group')) %>
     </a>
   </li>
 </ul>
@@ -48,7 +48,7 @@
     <% end %>
     <% if policy(Group).create? %>
       <li class='indent'>
-        <%= link_to fa_icon('plus-square', text: t('action.add')+t('scrinium.group')), new_group_path %>
+        <%= link_to fa_icon('plus-square', text: t('action.add')+t('activerecord.models.group')), new_group_path %>
       </li>
     <% end %>
   </ul>

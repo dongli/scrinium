@@ -1,10 +1,9 @@
 <ul class='left-side-list'>
   <li>
-    <%= t('global.contact') %>:
+    <%= t('activerecord.attributes.resource.user') %>:
     <%= link_to @resource.user.name, @resource.user %>
   </li>
   <li>
-    <%= t('resource.size') %>:
     <%= number_to_human_size @resource.file.file.size %>
   </li>
   <li>
@@ -18,7 +17,7 @@
     <% if policy(@resource).destroy? %>
       <%=
         link_to fa_icon('trash', text: t('action.delete')), @resource, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.resource')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.resource')) }
       %>
     <% end %>
   </li>

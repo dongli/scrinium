@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_reference, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_reference, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @references = Reference.all
@@ -21,7 +21,7 @@ class ReferencesController < ApplicationController
 
     respond_to do |format|
       if @reference.save
-        format.html { redirect_to @reference, notice: t('message.create_success', thing: t('scrinium.reference')) }
+        format.html { redirect_to @reference, notice: t('message.create_success', thing: t('activerecord.models.reference')) }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class ReferencesController < ApplicationController
   def update
     respond_to do |format|
       if @reference.update(reference_params)
-        format.html { redirect_to @reference, notice: t('message.update_success', thing: t('scrinium.reference')) }
+        format.html { redirect_to @reference, notice: t('message.update_success', thing: t('activerecord.models.reference')) }
       else
         format.html { render :edit }
       end
@@ -41,7 +41,7 @@ class ReferencesController < ApplicationController
   def destroy
     @reference.destroy
     respond_to do |format|
-      format.html { redirect_to references_url, notice: t('message.destroy_success', thing: t('scrinium.reference')) }
+      format.html { redirect_to references_url, notice: t('message.destroy_success', thing: t('activerecord.models.reference')) }
     end
   end
 
@@ -53,6 +53,7 @@ class ReferencesController < ApplicationController
 
   def reference_params
     params[:reference][:authors].delete_if { |a| a.empty? }
+    params[:reference][:editors].delete_if { |a| a.empty? }
     if not ( @reference and @reference.cite_key )
       # TODO: I only handled <first_name last_name> case. There are other cases!
       last_name = params[:reference][:authors].first.split.last
@@ -61,17 +62,25 @@ class ReferencesController < ApplicationController
       params[:reference][:cite_key] = "#{last_name}:#{year}#{random_two_chars}"
     end
     params[:reference][:issue] ||= nil
-    params.require(:reference).permit(:creator_id,
+    params.require(:reference).permit(:publisher_id,
+                                      :creator_id,
                                       :cite_key,
                                       :reference_type,
                                       { authors: [] },
+                                      { editors: [] },
+                                      :school,
+                                      :organization,
+                                      :institution,
                                       :title,
-                                      :publicable_id,
-                                      :publicable_type,
+                                      :booktitle,
                                       :year,
                                       :volume,
                                       :issue,
+                                      :series,
                                       :pages,
+                                      :edition,
+                                      :chapter,
+                                      :howpublished,
                                       :doi,
                                       :abstract,
                                       :file,

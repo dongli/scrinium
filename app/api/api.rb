@@ -7,5 +7,5 @@ class API < Grape::API
   mount V1::GroupsAPI
   mount V1::OrganizationsAPI
   mount V1::MailboxAPI
-  mount V1::JournalsAPI
+  mount V1::PublishersAPI
 end

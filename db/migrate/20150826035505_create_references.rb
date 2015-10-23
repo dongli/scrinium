@@ -1,20 +1,29 @@
 class CreateReferences < ActiveRecord::Migration
   def change
     create_table :references do |t|
-      t.references :publicable,     polymorphic: true, index: true         #  ？
-      t.integer    :creator_id,                       index: true          # 创建者，为什么不用user_id?
-      t.string     :cite_key,                         index: true          # 文献在其它地方被引用时使用的key，比如Dong:2012ab。
-      t.string     :reference_type                                         # 文献类型，比如分为“文章”，“书籍”，“会议”等等。
-      t.string     :authors,         array: true, default: []              # 文件的作者，多个
-      t.string     :title                 # 标题
-      t.string     :year                  # 年份
-      t.string     :volume                # 卷
-      t.string     :issue                 # 事务
-      t.string     :pages                 # 页数
-      t.string     :doi                   # 数字对象标识
-      t.text       :abstract              # 摘要
-      t.string     :file                  # 附件？
-      t.string     :status                # 状态
+      t.belongs_to :publisher,     index: true                                  # 出版社，可以是学术期刊杂志，也可以是图书出版社。
+      t.integer    :creator_id,    index: true
+      t.string     :cite_key,      index: true                                  # 文献在其它地方被引用时使用的key，比如Dong:2012ab。
+      t.string     :reference_type                                              # 文献类型，比如分为“文章”，“书籍”，“会议”等等。
+      t.string     :authors,       array: true, default: []
+      t.string     :editors,       array: true, default: []
+      t.string     :school
+      t.string     :organization                                                # 会议组织或赞助机构。
+      t.string     :institution
+      t.string     :title
+      t.string     :booktitle
+      t.string     :year
+      t.string     :volume
+      t.string     :issue
+      t.string     :series
+      t.string     :pages
+      t.string     :edition
+      t.string     :chapter
+      t.string     :howpublished
+      t.string     :doi
+      t.text       :abstract
+      t.string     :file
+      t.string     :status
 
       t.timestamps null: false
     end

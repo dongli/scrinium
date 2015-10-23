@@ -25,12 +25,12 @@ gem 'turbolinks'
 gem 'devise'
 gem 'pundit'
 
-#async
+## 异步
 gem "devise-async"
 gem 'sidekiq'
-gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sinatra', '>= 1.4.6', :require => nil
 
-# UI
+## UI
 gem 'bootstrap-sass'
 gem 'country_select'
 gem 'font-awesome-rails'
