@@ -1,7 +1,7 @@
 class CreateImpressionsTable < ActiveRecord::Migration
   def self.up
     create_table :impressions, :force => true do |t|
-      t.string :impressionable_type
+      t.string :impressionable_type      # 记录用户行为的表
       t.integer :impressionable_id
       t.integer :user_id
       t.string :controller_name
