@@ -9,8 +9,14 @@
             <%= f.input :name %>
 
             <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-                <%= profile_form.input :gender %>
-                <%= profile_form.input :title %>
+              <div class='row'>
+                <div class='col-md-6'>
+                  <%= profile_form.input :gender %>
+                </div>
+                <div class='col-md-6'>
+                  <%= profile_form.input :title %>
+                </div>
+              </div>
             <% end %>
 
             <%= f.input :email %>
