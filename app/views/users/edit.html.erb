@@ -4,9 +4,26 @@
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
       <div class='center'>
-        <%= image_tag @user.avatar_url, size: '100x100', id: 'preview-avatar' %>
         <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-          <%= profile_form.input :avatar, id: 'upload-avatar' %>
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 200px;">
+              <%= image_tag @user.profile.avatar_url %>
+            </div>
+            <div>
+              <span class="button btn-file">
+                <span class="fileinput-new">
+                  <%= t('action.upload_avatar') %>
+                </span>
+                <span class="fileinput-exists">
+                  <%= t('action.change_avatar') %>
+                </span>
+                <%= profile_form.file_field :avatar %>
+              </span>
+              <a href="#" class="button btn-danger fileinput-exists" data-dismiss="fileinput">
+                <%= t('action.delete_avatar') %>
+              </a>
+            </div>
+          </div>
         <% end %>
       </div>
       <%= f.input :name %>

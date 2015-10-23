@@ -22,6 +22,7 @@
 #= require dropzone
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
+#= require jasny-bootstrap.min
 #= require froala_editor.min.js
 #= require plugins/align.min.js
 #= require plugins/char_counter.min.js
