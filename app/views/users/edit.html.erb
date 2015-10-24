@@ -7,7 +7,7 @@
         <%= render 'layouts/upload_image', form: profile_form, object: @user.profile, image_attribute_name: :avatar %>
       <% end %>
       <%= f.input :name %>
-      <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
+      <%= f.simple_fields_for :profile do |profile_form| %>
         <div class='row'>
           <div class='col-md-6'>
             <%= profile_form.input :gender %>
