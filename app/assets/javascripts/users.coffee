@@ -3,8 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
-  previewUploadedFigure('#upload-avatar', '#preview-avatar')
-
   if /\/users\/\d+$/.test(location)
     turnOnTab
       activities: [ 'add-article' ]

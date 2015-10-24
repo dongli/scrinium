@@ -16,6 +16,7 @@
  *= require highlightjs
  *= require dropzone/dropzone
  *= require bootstrap-datepicker3
+ *= require jasny-bootstrap.min
  *= require froala_editor.min.css
  *= require froala_style.min.css
  *= require plugins/char_counter.min.css
@@ -156,7 +157,7 @@ img.avatar {
 }
 
 img.logo {
-  border-radius: 10px;
+  border-radius: 100px;
 }
 
 img.center {

@@ -57,9 +57,8 @@ class Reference < ActiveRecord::Base
   has_many :publications, dependent: :destroy
   has_many :users, through: :publications
 
-  validates_uniqueness_of :title, scope: :year
-  validates_presence_of :title, :authors, :year, :pages,
-                        :reference_type, :publisher_id
+  validates :title, uniqueness: { cope: :year }
+  validates :title, :authors, :year, :pages, :reference_type, :publisher_id, presence: true
   validates :file, file_size: { less_than_or_equal_to: 100.megabytes },
                    file_content_type: { allow: [ 'application/pdf' ] }
 end

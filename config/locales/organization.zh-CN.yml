@@ -1,13 +1,21 @@
 zh-CN:
-  scrinium:
-    organization: 机构
+  activerecord:
+    models:
+      organization: 机构
+    attributes:
+      organization:
+        name: 名称
+        short_name: 简称
+        admin: 管理员
+        description: 简介
+
+  tab:
+    children: 子机构
+    members: 成员
 
   organization:
-    admin: 机构管理员
     switch: 切换机构
     connection_with_parent: 与父机构的关联
-    children: 子机构
     child: 子机构
     member_list: 成员列表
-    members: 成员
     member: 成员

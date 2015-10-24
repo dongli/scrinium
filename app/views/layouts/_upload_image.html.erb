@@ -1,0 +1,21 @@
+<div class='center'>
+  <div class='fileinput fileinput-new' data-provides='fileinput'>
+    <div class='fileinput-preview thumbnail' data-trigger='fileinput' style='width: 200px; height: 200px;'>
+      <%= image_tag object.send(image_attribute_name).url %>
+    </div>
+    <div>
+      <span class='button btn-file'>
+        <span class='fileinput-new'>
+          <%= t("action.upload_#{image_attribute_name}") %>
+        </span>
+        <span class='fileinput-exists'>
+          <%= t("action.change_#{image_attribute_name}") %>
+        </span>
+        <%= form.file_field image_attribute_name %>
+      </span>
+      <a href='#' class='button btn-danger fileinput-exists' data-dismiss='fileinput'>
+        <%= t("action.delete_#{image_attribute_name}") %>
+      </a>
+    </div>
+  </div>
+</div>

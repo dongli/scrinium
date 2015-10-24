@@ -1,30 +1,26 @@
 <div class='organization-form'>
   <%= simple_form_for @organization do |f| %>
     <%= f.hidden_field :parent_id, value: @organization.parent_id %>
-    <%=
-      image_tag 'medium/default_avatar.png',
-      size: '100x100',
-      id: 'preview-avatar'
-    %>
-    <%= f.file_field :logo, id: 'upload-avatar' %>
-    <%= f.input :name, label: t('organization.name'), autofocus: true %>
+    <%= render 'layouts/upload_image', form: f, object: @organization, image_attribute_name: :logo %>
+    <%= f.input :name, autofocus: true %>
     <div class='row'>
       <div class='col-md-8'>
-        <%= f.input :short_name, label: t('organization.short_name'), required: true %>
+        <%= f.input :short_name, required: true %>
       </div>
       <div class='col-md-4'>
         <!-- TODO: 该列表应该只显示机构成员，而不是所有平台用户。 -->
         <%=
-          f.input :admin_id, label: t('organization.admin'),
-          collection: [ @organization.admin_id ], input_html: { id: 'input-user-name' }
+          f.input :admin_id, label: t('activerecord.attributes.organization.admin'),
+          collection: [ @organization.admin_id ],
+          input_html: { id: 'input-user-name' }
         %>
       </div>
     </div>
-    <%= f.input :description, label: t('organization.description'), required: true, as: :text %>
+    <%= f.input :description, as: :text %>
     <%= f.simple_fields_for :addresses, @organization.addresses.sort_by { |x| x.order } do |g| %>
       <%= render 'addresses/form', f: g %>
     <% end %>
-    <%= link_to_add_field t('action.add')+t('scrinium.address'), f, :addresses, partial: 'addresses/form', class: 'button float-left' %>
+    <%= link_to_add_field t('action.add')+t('activerecord.models.address'), f, :addresses, partial: 'addresses/form', class: 'button float-left' %>
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

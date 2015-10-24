@@ -22,7 +22,8 @@ User.create(
 
 Profile.create(
   user_id: 1,
-  gender: 'male'
+  gender: 'male',
+  title: 'associate_researcher'
 )
 
 Organization.create(name: '中国科学院大气物理研究所',
@@ -75,5 +76,6 @@ User.create(
 
 Profile.create(
   user_id: 2,
-  gender: 'male'
+  gender: 'male',
+  title: 'associate_researcher'
 )
