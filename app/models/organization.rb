@@ -25,8 +25,7 @@ class Organization < ActiveRecord::Base
   has_many :addresses, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
-  validates_uniqueness_of :name, :short_name
-  validates_presence_of :admin_id
+  validates :name, :short_name, uniqueness: true
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 

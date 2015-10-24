@@ -14,7 +14,7 @@
 class Group < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :privacy, in: [ :public, :private ]
+  enumerize :privacy, in: [ :public, :private ], default: :public, predicates: true
 
   mount_uploader :logo, ImageUploader
 
@@ -28,7 +28,7 @@ class Group < ActiveRecord::Base
   has_many :group_article_associations
   has_many :articles, through: :group_article_associations
 
-  validates_presence_of :admin_id, :privacy
+  validates :name, :short_name, presence: true
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 

@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true
 
-  validates_presence_of :name, :email
-  validates_uniqueness_of :email
+  validates :name, :email, presence: true
+  validates :email, uniqueness: true
   validates_associated :profile
 
   def mailboxer_email object

@@ -19,7 +19,7 @@
   <% if policy(@article).destroy? %>
     <%=
       link_to fa_icon('trash', text: t('action.delete')), @article, method: :delete,
-      data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.article')) }
+      data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.article')) }
     %>
   <% end %>
   </li>

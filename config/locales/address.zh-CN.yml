@@ -1,11 +1,28 @@
 zh-CN:
-  scrinium:
-    address: 地址
-
-  address:
-    name: 地址名称
-    country: 国家
-    city: 城市
-    district: 行政区
-    zip_code: 邮政编码
-    street: 街道名
+  activerecord:
+    models:
+      address: 地址
+    attributes:
+      address:
+        name: 地址名称
+        country: 国家
+        city: 城市
+        district: 行政区
+        zip_code: 邮政编码
+        street: 街道名
+    errors:
+      models:
+        address:
+          attributes:
+            name:
+              blank: 请指定地址名称！
+            country:
+              blank: 请指定国家！
+            city:
+              blank: 请指定城市！
+            district:
+              blank: 请指定区块！
+            zip_code:
+              blank: 请指定邮政编码！
+            street:
+              blank: 请指定街道！

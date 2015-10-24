@@ -31,7 +31,7 @@ class OrganizationsController < ApplicationController
                               status: 'approved').save
           # TODO: 处理错误。
         end
-        format.html { redirect_to @organization, notice: t('message.create_success', thing: t('scrinium.organization')) }
+        format.html { redirect_to @organization, notice: t('message.create_success', thing: t('activerecord.models.organization')) }
       else
         format.html { render :new }
       end
@@ -41,7 +41,7 @@ class OrganizationsController < ApplicationController
   def update
     respond_to do |format|
       if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: t('message.update_success', thing: t('scrinium.organization')) }
+        format.html { redirect_to @organization, notice: t('message.update_success', thing: t('activerecord.models.organization')) }
       else
         format.html { render :edit }
       end
@@ -51,7 +51,7 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization.destroy
     respond_to do |format|
-      format.html { redirect_to organizations_url, notice: t('message.destroy_success', thing: t('scrinium.organization')) }
+      format.html { redirect_to organizations_url, notice: t('message.destroy_success', thing: t('activerecord.models.organization')) }
     end
   end
 

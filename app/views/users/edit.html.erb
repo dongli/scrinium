@@ -3,29 +3,9 @@
 <% content_for :main_block do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
-      <div class='center'>
-        <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-          <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 200px;">
-              <%= image_tag @user.profile.avatar_url %>
-            </div>
-            <div>
-              <span class="button btn-file">
-                <span class="fileinput-new">
-                  <%= t('action.upload_avatar') %>
-                </span>
-                <span class="fileinput-exists">
-                  <%= t('action.change_avatar') %>
-                </span>
-                <%= profile_form.file_field :avatar %>
-              </span>
-              <a href="#" class="button btn-danger fileinput-exists" data-dismiss="fileinput">
-                <%= t('action.delete_avatar') %>
-              </a>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
+        <%= render 'layouts/upload_image', form: profile_form, object: @user.profile, image_attribute_name: :avatar %>
+      <% end %>
       <%= f.input :name %>
       <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
         <div class='row'>

@@ -5,7 +5,7 @@
     </div>
   </li>
   <li><%= @organization.name %></li>
-  <li><%= t('global.contact') %>: <%= link_to @organization.admin.name, @organization.admin %></li>
+  <li><%= t('activerecord.attributes.organization.admin') %>: <%= link_to @organization.admin.name, @organization.admin %></li>
   <li>
     <% if policy(@organization).update? %>
       <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @organization ] %>
@@ -14,14 +14,14 @@
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
         @organization, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.organization')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.organization')) }
       %>
     <% end %>
   </li>
   <% if policy(@organization).update? %>
     <li>
       <%=
-        link_to fa_icon('gears', text: t('action.add')+t('scrinium.engine')),
+        link_to fa_icon('gears', text: t('action.add')+t('engine')),
         new_license_path(organization_id: @organization.id),
         id: 'add-engine', style: 'display: none;'
       %>

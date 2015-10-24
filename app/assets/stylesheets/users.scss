@@ -6,11 +6,6 @@
   padding-top: 100px;
   max-width: 320px;
   margin: 0 auto;
-  #preview-avatar {
-    border: solid;
-    border-width: 2px;
-    border-radius: 10px;
-  }
   #upload-avatar {
     padding-bottom: 1em;
   }
@@ -50,14 +45,6 @@
     margin-top: 1em;
     margin-bottom: 1em;
   }
-}
-
-img#preview-avatar {
-  border-radius: 10px;
-}
-
-a#reset-password {
-  cursor: pointer;
 }
 
 a.thumbnail {
