@@ -18,7 +18,7 @@
 #
 
 class Address < ActiveRecord::Base
-  validates :name, :country, :city, :district, :zip_code, :street
+  validates :name, :country, :city, :district, :zip_code, :street, presence: true
 
   belongs_to :addressable, polymorphic: true
 end

@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_organization, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @organizations = Organization.all
@@ -19,6 +19,7 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
+    set_crop_params
     # 创建组织的用户默认成为管理者。
     @organization.admin_id = current_user.id
     respond_to do |format|
@@ -39,6 +40,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
+    set_crop_params
     respond_to do |format|
       if @organization.update(organization_params)
         format.html { redirect_to @organization, notice: t('message.update_success', thing: t('activerecord.models.organization')) }
@@ -56,6 +58,15 @@ class OrganizationsController < ApplicationController
   end
 
   private
+
+  def set_crop_params
+    if params[:organization][:crop_x].present?
+      @organization.crop_x = params[:organization][:crop_x]
+      @organization.crop_y = params[:organization][:crop_y]
+      @organization.crop_w = params[:organization][:crop_w]
+      @organization.crop_h = params[:organization][:crop_h]
+    end
+  end
 
   def set_organization
     @organization = Organization.find(params[:id])

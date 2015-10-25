@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_group, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @groups = Group.all
@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    set_crop_params
     # 创建组织的用户默认成为管理者。
     @group.admin_id = current_user.id
     respond_to do |format|
@@ -43,6 +44,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+    set_crop_params
     # 自动将管理者加入到用户中。
     if not params[:group][:user_ids].include? @group.admin_id
       params[:group][:user_ids] << @group.admin_id
@@ -65,6 +67,15 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def set_crop_params
+    if params[:group][:crop_x].present?
+      @group.crop_x = params[:group][:crop_x]
+      @group.crop_y = params[:group][:crop_y]
+      @group.crop_w = params[:group][:crop_w]
+      @group.crop_h = params[:group][:crop_h]
+    end
+  end
 
   def set_group
     @group = Group.find(params[:id])

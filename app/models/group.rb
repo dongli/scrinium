@@ -18,6 +18,9 @@ class Group < ActiveRecord::Base
 
   mount_uploader :logo, ImageUploader
 
+  # 使用Jcrop裁剪头像，下面这四个变量是存储裁剪参数。
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+
   acts_as_taggable
   acts_as_taggable_on :categories
 

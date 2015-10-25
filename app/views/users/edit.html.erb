@@ -3,7 +3,7 @@
 <% content_for :main_block do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
-      <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
+      <%= f.simple_fields_for :profile do |profile_form| %>
         <%= render 'layouts/upload_image', form: profile_form, object: @user.profile, image_attribute_name: :avatar %>
       <% end %>
       <%= f.input :name %>
