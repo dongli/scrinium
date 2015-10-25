@@ -91,4 +91,13 @@ group :development, :test do
   ## refresh browser auto
   gem 'rack-livereload'
   gem 'guard-livereload'
+
+  ## Use Capistrano for deployment
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem "capistrano-scm-copy"
+  gem 'net-ssh', '~> 2.8.0'
+  gem 'capistrano-sidekiq'
+
 end
