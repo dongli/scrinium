@@ -4,7 +4,11 @@
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
       <%= f.simple_fields_for :profile do |profile_form| %>
-        <%= render 'layouts/upload_image', form: profile_form, object: @user.profile, image_attribute_name: :avatar %>
+        <%=
+          render 'layouts/upload_image', form: profile_form,
+          object: @user.profile, image_attribute_name: :avatar,
+          default_image: 'logos/default_avatar.png'
+        %>
       <% end %>
       <%= f.input :name %>
       <%= f.simple_fields_for :profile do |profile_form| %>

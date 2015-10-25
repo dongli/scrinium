@@ -1,7 +1,11 @@
 <div class='organization-form'>
   <%= simple_form_for @organization do |f| %>
     <%= f.hidden_field :parent_id, value: @organization.parent_id %>
-    <%= render 'layouts/upload_image', form: f, object: @organization, image_attribute_name: :logo %>
+    <%=
+      render 'layouts/upload_image', form: f,
+      object: @organization, image_attribute_name: :logo,
+      default_image: 'logos/default_organization_logo.png'
+    %>
     <%= f.input :name, autofocus: true %>
     <div class='row'>
       <div class='col-md-8'>

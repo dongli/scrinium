@@ -1,7 +1,12 @@
 <div class='center'>
   <div class='fileinput fileinput-new' data-provides='fileinput'>
     <div class='fileinput-preview thumbnail'>
-      <%= image_tag object.send(image_attribute_name).url %>
+      <% image = object.send(image_attribute_name) %>
+      <% if image.url %>
+        <%= image_tag image.url %>
+      <% else %>
+        <%= image_tag default_image %>
+      <% end %>
     </div>
     <div>
       <span class='button btn-file'>
