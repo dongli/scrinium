@@ -28,5 +28,5 @@ class Publisher < ActiveRecord::Base
 
   has_many :references, dependent: :destroy
 
-  validates_presence_of :name, :abbreviation, :short_name
+  validates :name, :abbreviation, :short_name, presence: true
 end

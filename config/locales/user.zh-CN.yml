@@ -53,3 +53,8 @@ zh-CN:
 
   user:
     activity: 活动
+
+  action:
+    upload_avatar: 上传头像
+    change_avatar: 更换头像
+    delete_avatar: 删除头像

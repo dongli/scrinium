@@ -10,6 +10,13 @@ zh-CN:
         privacy: 隐私度
         created_at: 动笔时间
         impressionist_count: 浏览次数
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              taken: 您已经创建过相同题目的文章了！
+              blank: 您需要制定文章的题目！
 
   simple_form:
     placeholders:

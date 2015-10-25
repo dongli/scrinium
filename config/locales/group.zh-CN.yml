@@ -2,9 +2,37 @@ zh-CN:
   activerecord:
     models:
       group: 群组
+    attributes:
+      group:
+        name: 名称
+        short_name: 简称
+        description: 简介
+        category_list: 分类标签
+        privacy: 隐私度
+        admin: 管理员
+        users: 成员
+        created_at: 创建时间
+    errors:
+      models:
+        group:
+          attributes:
+            name:
+              blank: 请给群组起个响当当的名称！
+            short_name:
+              blank: 请给群组起个便于识别的简称！
 
   enumerize:
     group:
       privacy:
         public: 公开
         private: 不公开
+
+  group:
+    members: 成员
+    member_number: 成员数量
+    topics: 话题
+
+  action:
+    upload_logo: 上传图标
+    change_logo: 更换图标
+    delete_logo: 删除图标

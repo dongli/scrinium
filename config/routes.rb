@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  class ActionDispatch::Routing::Mapper
+    def draw(routes_name)
+      instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
+    end
+  end
+
   mount API => '/'
   mathjax 'mathjax'
 
@@ -74,4 +81,7 @@ Rails.application.routes.draw do
   if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end
+
+  draw :admin
+
 end

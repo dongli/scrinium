@@ -15,10 +15,6 @@
 class License < ActiveRecord::Base
   extend Enumerize
 
-  validates_uniqueness_of :engine_name, scope: :organization_id
-
-  belongs_to :organization
-
   enumerize :engine_name, in: [
     :esm
   ]
@@ -26,4 +22,8 @@ class License < ActiveRecord::Base
     :unapproved,
     :approved
   ]
+
+  belongs_to :organization
+
+  validates :engine_name, uniqueness: { cope: :organization_id }
 end

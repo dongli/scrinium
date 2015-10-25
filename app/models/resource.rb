@@ -24,9 +24,12 @@ class Resource < ActiveRecord::Base
   has_many :collections, as: :collectable, dependent: :destroy
 
   mount_uploader :file, ResourceUploader
-  validates_presence_of :file
-  validates_presence_of :name, on: :update
-  validates_uniqueness_of :name, on: :update, scope: [ :user_id, :resourceable_type, :resourceable_id ]
+  validates :file, presence: true
+  validates :name, presence: { on: :update }
+  validates :name, uniqueness: {
+    on: :update,
+    scope: [ :user_id, :resourceable_type, :resourceable_id ]
+  }
 
   acts_as_taggable
   acts_as_taggable_on :categories

@@ -32,6 +32,7 @@ gem 'sinatra', '>= 1.4.6', :require => nil
 
 ## UI
 gem 'bootstrap-sass'
+gem 'jasny-bootstrap-rails'
 gem 'country_select'
 gem 'font-awesome-rails'
 gem 'bootstrap-datepicker-rails'

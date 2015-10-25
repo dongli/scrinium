@@ -15,9 +15,8 @@
 class Article < ActiveRecord::Base
   extend Enumerize
 
-  validates_uniqueness_of :title, scope: :user_id
+  validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true
-  validates_presence_of :privacy
 
   is_impressionable
   has_paper_trail on: [:update, :destroy],

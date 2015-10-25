@@ -22,6 +22,7 @@
 #= require dropzone
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
+#= require jasny-bootstrap.min
 #= require froala_editor.min.js
 #= require plugins/align.min.js
 #= require plugins/char_counter.min.js
@@ -70,13 +71,6 @@ marked.setOptions
     else
       element.html(marked(content))
     mathjax()
-
-@previewUploadedFigure = (uploadButtonSelector, previewSelector) ->
-  $(uploadButtonSelector).change ->
-    reader = new FileReader
-    reader.readAsDataURL @files[0]
-    reader.onload = (event) ->
-      $(previewSelector).attr('src', event.target.result)
 
 # 打开Bootstrap中的tab，并附加一些额外的元素。
 @turnOnTab = (tabs) ->
@@ -182,12 +176,11 @@ $(document).on 'page:change', ->
         user_id: $('select[id=input-group-name-for-user]').data('user-id')
       }
       delay: 250
-      processResults: (data) ->
-        {
+      processResults: (data) -> {
         results: $.map( data, (d, i) ->
           { id: d[0], text: d[1] }
         )
-        }
+      }
       results: (data, page) ->
         results: data
   )
@@ -211,8 +204,6 @@ $(document).on 'page:change', ->
     mathjax()
 
   $('[data-toggle="tooltip"]').tooltip()
-
-  previewUploadedFigure('#upload-figure', '#preview-figure')
 
   $('.datepicker').datepicker
     format: 'yyyy-mm-dd'

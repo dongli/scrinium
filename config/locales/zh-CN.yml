@@ -32,11 +32,11 @@ zh-CN:
     destroy_success: 成功删除%{thing}。
     are_you_sure_to_delete?: 确定删除该“%{thing}”吗？
 
-  dashboard:
-    user: 用户
-    group: 群组
-    organization: 机构
-    manage_users: 管理用户
+  engine: 插件
+
+  tab:
+    info: 信息
+    admin: 管理
 
   comment:
     content: 评论内容

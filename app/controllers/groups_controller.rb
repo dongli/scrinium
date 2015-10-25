@@ -33,11 +33,9 @@ class GroupsController < ApplicationController
                                       user_id: id,
                                       role: role,
                                       status: 'approved')
-          if not membership.save
-            # TODO: 处理错误。
-          end
+          membership.save!
         end
-        format.html { redirect_to @group, notice: t('message.create_success', thing: t('scrinium.group')) }
+        format.html { redirect_to @group, notice: t('message.create_success', thing: t('activerecord.models.group')) }
       else
         format.html { render :new }
       end
@@ -51,7 +49,7 @@ class GroupsController < ApplicationController
     end
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: t('message.update_success', thing: t('scrinium.group')) }
+        format.html { redirect_to @group, notice: t('message.update_success', thing: t('activerecord.models.group')) }
       else
         format.html { render :edit }
       end
@@ -61,7 +59,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: t('message.destroy_success', thing: t('scrinium.group')) }
+      format.html { redirect_to groups_url, notice: t('message.destroy_success', thing: t('activerecord.models.group')) }
       format.json { head :no_content }
     end
   end
@@ -74,6 +72,7 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name,
+                                  :short_name,
                                   :logo,
                                   :description,
                                   :admin_id,

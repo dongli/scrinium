@@ -10,19 +10,19 @@
     <%=
       render 'layouts/navtab',
       tabs: {
-        info: [ t('global.info'), render('info') ],
-        suborganizations: [ t('organization.children'), render('suborganizations') ],
-        members: [ t('organization.members'), render('members') ],
-        admin: [ t('global.admin'), render('admin') ]
+        info: [ t('tab.info'), render('info') ],
+        suborganizations: [ t('tab.children'), render('suborganizations') ],
+        members: [ t('tab.members'), render('members') ],
+        admin: [ t('tab.admin'), render('admin') ]
       }
     %>
   <% else %>
     <%=
       render 'layouts/navtab',
       tabs: {
-        info: [ t('global.info'), render('info') ],
-        suborganizations: [ t('organization.children'), render('suborganizations') ],
-        members: [ t('organization.members'), render('members') ],
+        info: [ t('tab.info'), render('info') ],
+        suborganizations: [ t('tab.children'), render('suborganizations') ],
+        members: [ t('tab.members'), render('members') ],
       }
     %>
   <% end %>

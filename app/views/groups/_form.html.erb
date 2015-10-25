@@ -1,32 +1,32 @@
 <div class='group-form'>
   <%= simple_form_for(@group) do |f| %>
-    <%=
-      image_tag 'medium/default_avatar.png',
-      size: '100x100',
-      id: 'preview-avatar'
-    %>
-    <%=
-      f.file_field :logo,
-      id: 'upload-avatar'
-    %>
-    <%= f.input :name, label: t('global.name'), autofocus: true %>
-    <%= f.input :short_name, label: t('global.short_name') %>
-    <%=
-      f.input :category_list,
-      label: t('group.categories'),
-      collection: @group.categories.map { |t| t.name },
-      input_html: {
-        multiple: 'multiple',
-        data: {
-          placeholder: t('group.placeholder.categories')
-        }
-      }
-    %>
-    <%= f.input :privacy, label: t('group.privacy') %>
-    <%= f.input :description, label: t('global.description'), as: :text %>
+    <%= render 'layouts/upload_image', form: f, object: @group, image_attribute_name: :logo %>
+    <div class='row'>
+      <div class='col-md-8'>
+        <%= f.input :name, autofocus: true %>
+      </div>
+      <div class='col-md-4'>
+        <%= f.input :short_name %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-8'>
+        <%=
+          f.input :category_list,
+          collection: @group.categories.map { |t| t.name },
+          input_html: {
+            class: 'use-select2-multiple-tags',
+            multiple: 'multiple'
+          }
+        %>
+      </div>
+      <div class='col-md-4'>
+        <%= f.input :privacy %>
+      </div>
+    </div>
+    <%= f.input :description, as: :text %>
     <%=
       f.association :users,
-      label: t('group.members'),
       label_method: :name,
       value_method: :id,
       collection: @group.users,

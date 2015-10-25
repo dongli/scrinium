@@ -1,5 +1,5 @@
 <ul class="left-side-list">
-  <li><%= image_tag @user.avatar_url, size: "100x100" %></li>
+  <li><%= avatar @user, size: "100x100" %></li>
   <li><%= @user.name %></li>
   <li><%= render 'memberships/organization_logos', user: @user %></li>
   <li><%= @user.role.text %></li>
