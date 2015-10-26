@@ -5,6 +5,7 @@ class CreatePublications < ActiveRecord::Migration
       t.belongs_to  :reference,  index: true    # 引用？
       t.string      :matched_author             # 匹配的作者
       t.string      :status                     # 作者
+      t.integer    :position                    # 位置（预留字段）
       t.timestamps null: false
     end
   end

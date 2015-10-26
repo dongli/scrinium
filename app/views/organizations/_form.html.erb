@@ -21,7 +21,7 @@
       </div>
     </div>
     <%= f.input :description, as: :text %>
-    <%= f.simple_fields_for :addresses, @organization.addresses.sort_by { |x| x.order } do |g| %>
+    <%= f.simple_fields_for :addresses, @organization.addresses.reverse do |g| %>
       <%= render 'addresses/form', f: g %>
     <% end %>
     <%= link_to_add_field t('action.add')+t('activerecord.models.address'), f, :addresses, partial: 'addresses/form', class: 'button float-left' %>
