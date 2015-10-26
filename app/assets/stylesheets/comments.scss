@@ -7,13 +7,8 @@ ul.comment-list {
   list-style-type: none;
 }
 
-.comment-form {
-  padding-top: 30px;
-  max-width: 320px;
-  margin: 0 auto;
-  textarea.text {
-    height: 200px;
-  }
+.comment-content {
+  max-width: 100%
 }
 
 div.popover {
