@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap-sprockets
+#= require jcrop
 #= require select2
 #= require marked
 #= require highlightjs

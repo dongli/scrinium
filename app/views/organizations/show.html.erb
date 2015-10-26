@@ -1,4 +1,4 @@
-<% content_for :title, t('organization.profile') %>
+<% content_for :title, @organization.short_name %>
 <% add_breadcrumb @organization.short_name, organization_path(@organization) %>
 
 <% content_for :left_side do %>

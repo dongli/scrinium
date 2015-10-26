@@ -17,5 +17,6 @@ zh-CN:
     switch: 切换机构
     connection_with_parent: 与父机构的关联
     child: 子机构
+    children: 子机构
     member_list: 成员列表
     member: 成员

@@ -6,6 +6,8 @@ $(document).on 'page:change', ->
       members: []
       admin: [ 'add-engine' ]
   else if /\/organizations\/(new|\d+\/edit)/.test(location)
+    crop_image '#organization_logo', 'organization'
+
     $('form').on 'click', '.remove_field', (event) ->
       fieldset = $(this).closest('fieldset')
       fieldset.remove()
