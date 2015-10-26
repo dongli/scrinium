@@ -1,0 +1,46 @@
+<div class='sticky-topics'>
+  <% topics.select { |x| x.sticky }.each do |topic| %>
+    <div class='panel panel-danger' id="topic-<%= topic.id %>">
+      <div class='panel-heading'>
+        <%= link_to avatar(topic.user, size: :small), topic.user %>
+        <%= link_to topic.topicable.title, topic.topicable %>
+        <% if policy(topic).manage? %>
+          <div class='float-right'>
+            <%= check_box_tag "sticky-#{topic.id}", '', topic.sticky %> <%= t('activerecord.attributes.topic.sticky') %>
+            <%= link_to '', [ :change_sticky, topic ], id: "change-sticky-#{topic.id}", remote: true %>
+          </div>
+        <% end %>
+      </div>
+      <div class='panel-body'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <%= topic.created_at %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class='normal-topics'>
+  <% topics.select { |x| not x.sticky }.each do |topic| %>
+    <div class='panel panel-default' id="topic-<%= topic.id %>">
+      <div class='panel-heading'>
+        <%= link_to avatar(topic.user, size: :small), topic.user %>
+        <%= link_to topic.topicable.title, topic.topicable %>
+        <% if policy(topic).manage? %>
+          <div class='float-right'>
+            <%= check_box_tag "sticky-#{topic.id}", '', topic.sticky %> <%= t('activerecord.attributes.topic.sticky') %>
+            <%= link_to '', [ :change_sticky, topic ], id: "change-sticky-#{topic.id}", remote: true %>
+          </div>
+        <% end %>
+      </div>
+      <div class='panel-body'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <%= topic.created_at %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

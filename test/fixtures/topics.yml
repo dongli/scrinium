@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_id: 
+  topicable: 
+  title: MyString
+  sticky: false
+  status: MyString
+  position: 1
+
+two:
+  group_id: 
+  topicable: 
+  title: MyString
+  sticky: false
+  status: MyString
+  position: 1

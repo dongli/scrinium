@@ -1,18 +1,17 @@
 <% content_for :title, @group.name %>
+<% add_breadcrumb @group.short_name, @group %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
 <% end %>
 
 <% content_for :main_block do %>
-  <dl>
-    <dt><%= t('activerecord.attributes.group.description') %></dt>
-    <dd class='markdown'><%= @group.description %></dd>
-  </dl>
-  <dl>
-    <dt><%= t('group.topics') %></dt>
-    <dd>
-      <%= render 'articles/table_list', articles: @group.articles %>
-    </dd>
-  </dl>
+  <%=
+    render 'layouts/navtab',
+    tabs: {
+      info: [ t('tab.info'), render('info') ],
+      members: [ t('tab.members'), render('members') ],
+      admin: [ t('tab.admin'), render('admin') ]
+    }
+  %>
 <% end %>

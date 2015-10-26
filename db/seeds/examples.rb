@@ -79,3 +79,19 @@ Profile.create(
   gender: 'male',
   title: 'associate_researcher'
 )
+
+Group.create(
+  name: '测试群组',
+  short_name: '测试群组',
+  admin_id: 1,
+  privacy: 'public'
+)
+
+Membership.create(
+  host_type: 'Group',
+  host_id: 1,
+  user_id: 1,
+  role: 'admin',
+  status: 'approved',
+  expired_at: 'never'
+)

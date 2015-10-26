@@ -28,6 +28,7 @@ zh-CN:
         private: 不公开
 
   group:
+    member: 成员
     members: 成员
     member_number: 成员数量
     topics: 话题

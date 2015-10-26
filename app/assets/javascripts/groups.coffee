@@ -8,3 +8,8 @@ $(document).on 'page:change', ->
     multiple: true
   if /\/groups\/(new|\d+\/edit)/.test(location)
     crop_image '#group_logo', 'group'
+  else if /\/groups\/\d+$/.test(location)
+      turnOnTab
+        info: []
+        members: []
+        admin: []

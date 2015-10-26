@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   has_many :groups, through: :memberships, source: :host, source_type: 'Group'
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :topics, dependent: :destroy
   has_many :publications, dependent: :destroy
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
