@@ -41,4 +41,8 @@ class Group < ActiveRecord::Base
       @admin
     end
   end
+
+  def has_topic? topicable
+    not self.topics.select { |x| x.topicable_id == topicable.id and x.topicable_type == topicable.class.to_s }.empty?
+  end
 end

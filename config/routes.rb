@@ -80,6 +80,7 @@ Rails.application.routes.draw do
       get :change_sticky
     end
   end
+  get '/topic_to_groups' => 'topics#post_to_groups'
   # Engines --------------------------------------------------------------------
   resources :licenses
   if File.exist? "#{Rails.root}/config/engine_routes.rb"

@@ -24,6 +24,7 @@ zh-CN:
     manage: 管理
     invite: 邀请
     join: 加入
+    share_to: 分享到
 
   message:
     create_success: 成功创建%{thing}。
