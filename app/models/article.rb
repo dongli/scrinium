@@ -11,14 +11,21 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
+require 'elasticsearch/model'
 class Article < ActiveRecord::Base
   extend Enumerize
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  mapping dynamic: false do
+    indexes :title
+    indexes :content
+  end
 
   validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true
 
-  is_impressionable
+  # is_impressionable
   has_paper_trail on: [:update, :destroy],
     if: Proc.new { |article| article.finished? },
     only: [:title, :content]
