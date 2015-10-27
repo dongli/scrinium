@@ -24,6 +24,9 @@
   <% end %>
   </li>
   <li>
+    <%= render 'layouts/share_button', postable: @article %>
+  </li>
+  <li>
     <%= render 'collections/collect_button', collectable: @article %>
   </li>
 </ul>

@@ -28,8 +28,7 @@ class Group < ActiveRecord::Base
 
   has_many :memberships, as: :host, dependent: :destroy
   has_many :users, class_name: 'User', through: :memberships
-  has_many :group_article_associations
-  has_many :articles, through: :group_article_associations
+  has_many :posts, dependent: :destroy
 
   validates :name, :short_name, presence: true
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
@@ -41,5 +40,9 @@ class Group < ActiveRecord::Base
     else
       @admin
     end
+  end
+
+  def has_post? postable
+    not self.posts.select { |x| x.postable_id == postable.id and x.postable_type == postable.class.to_s }.empty?
   end
 end

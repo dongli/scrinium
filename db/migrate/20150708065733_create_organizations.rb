@@ -6,7 +6,8 @@ class CreateOrganizations < ActiveRecord::Migration
       t.references :parent, class_name: 'Organization'    # 父机构的ID
       t.string     :website                               # 网址
       t.string     :status                                # 状态， 新建，上线，下线
-      t.timestamps                                     null: false
+      t.integer    :position                              # 位置（预留字段）
+      t.timestamps null: false
     end
     Organization.create_translation_table!({
       name: :string,                                      # 关联表中，机构的名称

@@ -101,6 +101,13 @@ ul.tag-cloud {
   }
 }
 
+ul.inline {
+  @extend ul.tag-cloud;
+  li {
+    margin-left: 1em;
+  }
+}
+
 ul.spacing-1-em {
   li {
     margin-top: 1em;

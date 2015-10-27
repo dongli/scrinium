@@ -1,4 +1,6 @@
 module ApplicationHelper
+  EMPTY_STRING = ''.freeze
+
   def link_to_add_field name, f, association, options = {}
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -26,5 +28,11 @@ module ApplicationHelper
         image_tag "logos/default_#{object.class.to_s.downcase}_logo.png", alt: object.name, class: klass, size: size
       end
     end
+  end
+
+  def timeago time, options = {}
+    options[:class] = options[:class].blank? ? 'timeago' : [options[:class], 'timeago'].join(' ')
+    options.merge!(title: time.iso8601)
+    content_tag(:abbr, EMPTY_STRING, class: options[:class], title: time.iso8601) if time
   end
 end

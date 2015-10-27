@@ -18,20 +18,10 @@
       <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @group ] %>
     </li>
   <% end %>
+  <% if policy(@group).create_post? %>
+    <li>
+      <%= link_to fa_icon('comments', text: t('post.create')), new_post_path(group_id: @group.id) %>
+    </li>
+  <% end %>
   <li><%= render 'memberships/apply_button', host: @group %></li>
-  <li>
-    <!-- TODO: 设置专门的TAB页面。 -->
-    <dl class='small'>
-      <dt><%= t('group.members') %></dt>
-      <dd>
-        <div class='row'>
-          <% @group.users.each do |user| %>
-            <div class='col-md-4'>
-              <%= link_to avatar(user, size: :small), user %>
-            </div>
-          <% end %>
-        </div>
-      </dd>
-    </dl>
-  </li>
 </ul>

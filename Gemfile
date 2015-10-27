@@ -39,6 +39,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'dropzonejs-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bower-rails'
+gem 'momentjs-rails'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 

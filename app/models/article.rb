@@ -25,15 +25,12 @@ class Article < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :categories
   belongs_to :user
-  has_many :group_article_associations
-  has_many :groups, through: :group_article_associations
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy
 
   enumerize :privacy, in: [
     :public,
-    :private,
-    :group_public
+    :private
   ], default: :public, predicates: true
 
   enumerize :status, in: [

@@ -33,7 +33,8 @@
           id: 'new-comment-content'
         },
         input_html: {
-          value: comment.content # FIXME: 不知道为什么提交了新的评论，这里会遗留那个评论的内容。只能显式设置（此时的评论内容为空）。
+          value: comment.content, # FIXME: 不知道为什么提交了新的评论，这里会遗留那个评论的内容。只能显式设置（此时的评论内容为空）。
+          class: 'comment-content'
         }
       %>
     </div>

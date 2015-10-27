@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   class ActionDispatch::Routing::Mapper
     def draw(routes_name)
       instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
@@ -76,12 +75,17 @@ Rails.application.routes.draw do
   resources :addresses
   # Group ----------------------------------------------------------------------
   resources :groups
+  resources :posts do
+    member do
+      get :change_sticky
+    end
+  end
+  get '/post_to_groups' => 'posts#post_to_groups'
   # Engines --------------------------------------------------------------------
   resources :licenses
   if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end
-
+  # Admin ----------------------------------------------------------------------
   draw :admin
-
 end
