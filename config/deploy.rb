@@ -7,7 +7,7 @@ set :repo_url, 'git@github.com:tianlu1677/scrinium.git'
 root_path = "/home/scrinium/projects/#{fetch(:application)}"
 ruby_path = '/opt/software/packman.active'
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, root_path
