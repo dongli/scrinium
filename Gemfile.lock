@@ -1,12 +1,3 @@
-GIT
-  remote: git@github.com:tianlu1677/scrinium_esm.git
-  revision: 0225d35a28c6e796460788ee6619c5900c64ff39
-  specs:
-    scrinium_esm (0.0.1)
-      globalize (~> 5.0.0)
-      pundit
-      rails (~> 4.2.4)
-
 GEM
   remote: https://ruby.taobao.org/
   remote: https://rails-assets.org/
@@ -496,7 +487,6 @@ DEPENDENCIES
   rails-assets-marked!
   redis-rails
   sass-rails (~> 5.0)
-  scrinium_esm!
   settingslogic
   sidekiq
   simple_form
