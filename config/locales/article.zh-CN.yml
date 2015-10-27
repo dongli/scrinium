@@ -6,7 +6,7 @@ zh-CN:
       article:
         title: 题目
         user: 作者
-        category_list: 文章分类
+        category_list: 分类标签
         privacy: 隐私度
         created_at: 动笔时间
         impressionist_count: 浏览次数

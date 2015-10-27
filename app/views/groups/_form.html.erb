@@ -1,6 +1,10 @@
 <div class='group-form'>
   <%= simple_form_for(@group) do |f| %>
-    <%= render 'layouts/upload_image', form: f, object: @group, image_attribute_name: :logo %>
+    <%=
+      render 'layouts/upload_image', form: f,
+      object: @group, image_attribute_name: :logo,
+      default_image: 'logos/default_group_logo.png'
+    %>
     <div class='row'>
       <div class='col-md-8'>
         <%= f.input :name, autofocus: true %>

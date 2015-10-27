@@ -81,7 +81,7 @@ class MembershipsController < ApplicationController
           @membership.host.admin.notify subject, body
           MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
         end
-        format.html { redirect_to @membership, notice: t('message.update_success', thing: t('scrinium.membership')) }
+        format.html { redirect_to @membership, notice: t('message.update_success', thing: t('activerecord.models.membership')) }
       else
         format.html { render :edit }
       end

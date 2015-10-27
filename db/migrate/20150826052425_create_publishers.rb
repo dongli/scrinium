@@ -8,6 +8,7 @@ class CreatePublishers < ActiveRecord::Migration
       t.string  :short_name,     null: false
       t.boolean :issued,         null: false
       t.string  :status,         default: 'unqualified'
+      t.integer :position                               # 位置（预留字段）
 
       t.timestamps null: false
     end

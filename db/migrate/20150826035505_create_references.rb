@@ -24,6 +24,7 @@ class CreateReferences < ActiveRecord::Migration
       t.text       :abstract
       t.string     :file
       t.string     :status
+      t.integer    :position                                                    # 位置（预留字段）
 
       t.timestamps null: false
     end

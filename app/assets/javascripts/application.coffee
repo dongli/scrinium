@@ -14,6 +14,9 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap-sprockets
+#= require jcrop
+#= require moment
+#= require moment/zh-cn.js
 #= require select2
 #= require marked
 #= require highlightjs
@@ -220,3 +223,9 @@ $(document).on 'page:change', ->
   $('.use-select2-multiple-tags').select2
     tags: true
     multiple: true
+
+  # 使用Moment.js显示相对时间。
+  moment.locale(I18n.locale.toLowerCase())
+  $('.timeago').each ->
+    date = moment($(this).attr('title'))
+    $(this).html(date.fromNow())

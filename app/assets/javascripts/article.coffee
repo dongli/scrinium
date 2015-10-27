@@ -12,9 +12,3 @@ $(document).on 'page:change', ->
 		$('div#preview-content').show()
 		$('div#preview-content-placeholder').html($('textarea#article_content').val())
 		mathjax 'preview-content-placeholder'
-
-	$('#article_privacy').change ->
-		if this.value == 'group_public'
-			$('#select-groups').show()
-		else
-			$('#select-groups').hide()

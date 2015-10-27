@@ -1,7 +1,11 @@
 <div class='organization-form'>
   <%= simple_form_for @organization do |f| %>
     <%= f.hidden_field :parent_id, value: @organization.parent_id %>
-    <%= render 'layouts/upload_image', form: f, object: @organization, image_attribute_name: :logo %>
+    <%=
+      render 'layouts/upload_image', form: f,
+      object: @organization, image_attribute_name: :logo,
+      default_image: 'logos/default_organization_logo.png'
+    %>
     <%= f.input :name, autofocus: true %>
     <div class='row'>
       <div class='col-md-8'>
@@ -17,7 +21,7 @@
       </div>
     </div>
     <%= f.input :description, as: :text %>
-    <%= f.simple_fields_for :addresses, @organization.addresses.sort_by { |x| x.order } do |g| %>
+    <%= f.simple_fields_for :addresses, @organization.addresses.reverse do |g| %>
       <%= render 'addresses/form', f: g %>
     <% end %>
     <%= link_to_add_field t('action.add')+t('activerecord.models.address'), f, :addresses, partial: 'addresses/form', class: 'button float-left' %>

@@ -1,5 +1,5 @@
-<% content_for :title, t('scrinium.article') %>
-<% add_breadcrumb t('scrinium.article'), articles_path %>
+<% content_for :title, t('activerecord.models.article') %>
+<% add_breadcrumb t('activerecord.models.article'), articles_path %>
 
 <% content_for :main_block do %>
   <%= render 'articles/table_list', articles: Article.all %>

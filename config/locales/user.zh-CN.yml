@@ -53,6 +53,7 @@ zh-CN:
 
   user:
     activity: 活动
+    affiliation: 所属机构
 
   action:
     upload_avatar: 上传头像

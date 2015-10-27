@@ -39,6 +39,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'dropzonejs-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bower-rails'
+gem 'momentjs-rails'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 
@@ -60,6 +61,7 @@ gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
   gem 'rails-assets-highlightjs'
+  gem 'rails-assets-jcrop'
 end
 
 ## 全局设定

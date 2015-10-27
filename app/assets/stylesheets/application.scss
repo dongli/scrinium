@@ -17,6 +17,7 @@
  *= require dropzone/dropzone
  *= require bootstrap-datepicker3
  *= require jasny-bootstrap.min
+ *= require jcrop
  *= require froala_editor.min.css
  *= require froala_style.min.css
  *= require plugins/char_counter.min.css
@@ -100,6 +101,13 @@ ul.tag-cloud {
   }
 }
 
+ul.inline {
+  @extend ul.tag-cloud;
+  li {
+    margin-left: 1em;
+  }
+}
+
 ul.spacing-1-em {
   li {
     margin-top: 1em;
@@ -157,7 +165,7 @@ img.avatar {
 }
 
 img.logo {
-  border-radius: 100px;
+  border-radius: 10px;
 }
 
 img.center {
