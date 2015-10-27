@@ -1,6 +1,10 @@
 zh-CN:
-  scrinium:
-    membership: 用户资格
+  activerecord:
+    models:
+      membership: 用户资格
+    attributes:
+      membership:
+        rejected_reason: 拒绝理由
 
   membership:
     applicant: 申请人
@@ -45,8 +49,3 @@ zh-CN:
         approved: 已核准
         rejected: 被拒绝
         banned: 封存
-
-  activerecord:
-    attributes:
-      membership:
-        rejected_reason: 拒绝理由

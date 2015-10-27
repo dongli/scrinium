@@ -25,14 +25,14 @@
           <ul class='clean-list'>
             <% current_user.groups.each do |group| %>
               <li>
-                <% if group.has_topic? topicable %>
+                <% if group.has_post? postable %>
                   <%= check_box_tag "group-#{group.id}", '', true, disabled: true %> <%= group.name %>
                 <% else %>
                   <%= check_box_tag "group-#{group.id}" %> <%= group.name %>
                   <%=
                     link_to '',
-                    new_topic_path(group_id: group.id, topicable_id: topicable.id, topicable_type: topicable.class),
-                    id: "new-topic-for-group-#{group.id}", remote: true
+                    new_post_path(group_id: group.id, postable_id: postable.id, postable_type: postable.class),
+                    id: "new-post-for-group-#{group.id}", remote: true
                   %>
                 <% end %>
               </li>
@@ -40,7 +40,7 @@
           </ul>
         <% end %>
         <div class='center'>
-          <%= link_to t('action.submit'), topic_to_groups_path, class: 'button btn-xs', remote: true %>
+          <%= link_to t('action.submit'), post_to_groups_path, class: 'button btn-xs', remote: true %>
         </div>
       </div>
     </div>

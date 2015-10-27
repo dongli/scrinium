@@ -1,4 +1,4 @@
-class TopicPolicy < ApplicationPolicy
+class PostPolicy < ApplicationPolicy
   def manage?
     login? and ( record.group.admin_id == user.id )
   end

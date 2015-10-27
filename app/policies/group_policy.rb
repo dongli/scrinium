@@ -12,7 +12,7 @@ class GroupPolicy < ApplicationPolicy
     login? and user.role == 'admin'
   end
 
-  def create_topic?
+  def create_post?
     login? and user.groups.include? record
   end
 

@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      post: 帖子
+    attributes:
+      post:
+        user: 发布人
+        created_at: 发布时间
+        sticky: 置顶
+
+  post:
+    create: 发布帖子

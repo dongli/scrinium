@@ -3,8 +3,8 @@
   <dd class='markdown'><%= @group.description %></dd>
 </dl>
 <dl>
-  <dt><%= t('group.topics') %></dt>
+  <dt><%= t('group.posts') %></dt>
   <dd>
-    <%= render 'topics/panel_list', topics: @group.topics %>
+    <%= render 'posts/panel_list', posts: @group.posts %>
   </dd>
 </dl>

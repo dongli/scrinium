@@ -2,7 +2,7 @@
 
 one:
   group_id: 
-  topicable: 
+  postable: 
   title: MyString
   sticky: false
   status: MyString
@@ -10,7 +10,7 @@ one:
 
 two:
   group_id: 
-  topicable: 
+  postable: 
   title: MyString
   sticky: false
   status: MyString

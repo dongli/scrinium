@@ -75,12 +75,12 @@ Rails.application.routes.draw do
   resources :addresses
   # Group ----------------------------------------------------------------------
   resources :groups
-  resources :topics do
+  resources :posts do
     member do
       get :change_sticky
     end
   end
-  get '/topic_to_groups' => 'topics#post_to_groups'
+  get '/post_to_groups' => 'posts#post_to_groups'
   # Engines --------------------------------------------------------------------
   resources :licenses
   if File.exist? "#{Rails.root}/config/engine_routes.rb"

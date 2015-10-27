@@ -1,8 +1,0 @@
-<% @topic.sticky ^= true; @topic.save! %>
-<% if @topic.sticky %>
-  $("#topic-<%= @topic.id %>").removeClass('panel-default').addClass('panel-danger');
-  $("#topic-<%= @topic.id %>").prependTo('.sticky-topics');
-<% else %>
-  $("#topic-<%= @topic.id %>").removeClass('panel-danger').addClass('panel-default');
-  $("#topic-<%= @topic.id %>").prependTo('.normal-topics');
-<% end %>
