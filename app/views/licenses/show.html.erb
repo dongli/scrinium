@@ -1,15 +1,15 @@
-<% content_for :title, t('scrinium.license') %>
-<% add_breadcrumb "#{t('scrinium.license')} ##{@license.id}", @license %>
+<% content_for :title, t('activerecord.models.license') %>
+<% add_breadcrumb "#{t('activerecord.models.license')} ##{@license.id}", @license %>
 
 <% content_for :main_block do %>
   <div class='license-card'>
     <div class='well'>
       <ul class='clean-list'>
-        <li><%= t('license.organization') %>: <%= link_to @license.organization.name, @license.organization %></li>
-        <li><%= t('license.engine_name') %>: <%= @license.engine_name.text %></li>
-        <li><%= t('license.max_num_seats') %>: <%= @license.max_num_seats %></li>
-        <li><%= t('license.status') %>: <%= @license.status.text %></li>
-        <li><%= t('license.expired_at') %>: <%= @license.expired_at %></li>
+        <li><%= t('activerecord.attributes.license.organization_id') %>: <%= link_to @license.organization.name, @license.organization %></li>
+        <li><%= t('activerecord.attributes.license.engine_name') %>: <%= @license.engine_name.text %></li>
+        <li><%= t('activerecord.attributes.license.max_num_seats') %>: <%= @license.max_num_seats %></li>
+        <li><%= t('activerecord.attributes.license.status') %>: <%= @license.status.text %></li>
+        <li><%= t('activerecord.attributes.license.expired_at') %>: <%= @license.expired_at %></li>
       </ul>
       <% if policy(@license).update? %>
         <div class='center'>
