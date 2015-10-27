@@ -4,7 +4,7 @@ else
   source 'https://ruby.taobao.org'
 end
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 
 ## 服务器部署
 gem 'unicorn'
