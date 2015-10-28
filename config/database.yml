@@ -27,7 +27,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['SCRINIUM_DATABASE_NAME'] || 'scrinium_development' %>_development
+  database: <%= ENV['SCRINIUM_DATABASE_NAME'] || 'scrinium_development1' %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -84,4 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['SCRINIUM_DATABASE_NAME'] || 'scrinium' %>_production
+  database: scrinium_development1
