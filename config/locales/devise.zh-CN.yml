@@ -64,6 +64,7 @@ zh-CN:
       verify: 验证中...
       change_password: 更改密码
       submit: 提交中...
+    sign_out: 登出
 
   errors:
     messages:

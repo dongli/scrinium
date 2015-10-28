@@ -1,7 +1,9 @@
 <ul class='left-side-list'>
   <li>
     <div class='center'>
-      <%= logo @organization, size: :medium %>
+      <a href='<%= organization_path(@organization) %>'>
+        <%= logo @organization, size: :medium %>
+      </a>
     </div>
   </li>
   <li><%= @organization.name %></li>

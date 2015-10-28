@@ -32,7 +32,7 @@ class LicensesController < ApplicationController
           MessageBus.publish "/mailbox-#{admin.id}", { user_id: current_user.id }
           format.html { redirect_to @license, notice: t('license.message.wait_for_approval') }
         else
-          format.html { redirect_to @license, notice: t('message.create_success', thing: t('scrinium.license')) }
+          format.html { redirect_to @license, notice: t('message.create_success', thing: t('activerecord.models.license')) }
         end
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class LicensesController < ApplicationController
           admin.notify subject, body
           MessageBus.publish "/mailbox-#{admin.id}", { user_id: current_user.id }
         end
-        format.html { redirect_to @license, notice: t('message.update_success', thing: t('scrinium.license')) }
+        format.html { redirect_to @license, notice: t('message.update_success', thing: t('activerecord.models.license')) }
       else
         format.html { render :edit }
       end
@@ -63,7 +63,7 @@ class LicensesController < ApplicationController
   def destroy
     @license.destroy
     respond_to do |format|
-      format.html { redirect_to licenses_url, notice: t('message.destroy_success', thing: t('scrinium.license')) }
+      format.html { redirect_to licenses_url, notice: t('message.destroy_success', thing: t('activerecord.models.license')) }
     end
   end
 

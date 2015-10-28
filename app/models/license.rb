@@ -16,7 +16,7 @@ class License < ActiveRecord::Base
   extend Enumerize
 
   enumerize :engine_name, in: [
-    :esm
+    :scrinium_esm
   ]
   enumerize :status, in: [
     :unapproved,
@@ -25,5 +25,5 @@ class License < ActiveRecord::Base
 
   belongs_to :organization
 
-  validates :engine_name, uniqueness: { cope: :organization_id }
+  validates :engine_name, uniqueness: { scope: :organization_id }
 end
