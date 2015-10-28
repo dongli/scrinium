@@ -25,5 +25,5 @@ class License < ActiveRecord::Base
 
   belongs_to :organization
 
-  validates :engine_name, uniqueness: { cope: :organization_id }
+  validates :engine_name, uniqueness: { scope: :organization_id }
 end
