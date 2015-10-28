@@ -1,10 +1,30 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy, :versions, :delete_version]
-  impressionist actions: [:show], unique: [:session_hash, :user_id]
+  # impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   def index
-    @articles = Article.all
+    # @articles = Article.search("neque").records
+    # @articles = Article.search(
+    #                        query: {
+    #                            multi_match: {
+    #                                query: params[:q].to_s,
+    #                                fields: ['title','content']
+    #                            }
+    #                        }
+    #
+    # ).records
+
+    options = {
+        category:       params[:c],
+        author:         params[:a],
+        published_week: params[:w],
+        published_day:  params[:d],
+        sort:           params[:s],
+        comments:       params[:comments]
+    }
+
+    @articles = Article.search(params[:q], options).page(params[:page]).per(2).records
   end
 
   def show

@@ -11,16 +11,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require 'elasticsearch/model'
 class Article < ActiveRecord::Base
   extend Enumerize
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-
-  mapping dynamic: false do
-    indexes :title
-    indexes :content
-  end
+  include ArticleSearchable
 
   validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true
@@ -44,4 +37,6 @@ class Article < ActiveRecord::Base
     :draft,
     :finished
   ], predicates: true
+
+  delegate :name, :email, to: :user, prefix: :user, allow_nil: true
 end
