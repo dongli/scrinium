@@ -4,6 +4,7 @@ $(document).on 'page:change', ->
       info: []
       suborganizations: [ 'add-child' ]
       members: []
+      engines: []
       admin: [ 'add-engine' ]
   else if /\/organizations\/(new|\d+\/edit)/.test(location)
     crop_image '#organization_logo', 'organization'

@@ -3,16 +3,13 @@
     <% if @license.organization_id %>
       <%= f.hidden_field :organization_id, value: @license.organization_id %>
     <% else %>
-      <%= f.input :organization_id, label: false, placeholder: '机构ID' %>
+      <%= f.input :organization_id %>
     <% end %>
-    <%= f.input :engine_name, label: t('license.engine_name') %>
-    <%= f.input :max_num_seats, label: t('license.max_num_seats') %>
+    <%= f.input :engine_name %>
+    <%= f.input :max_num_seats %>
     <% if current_user.role == 'admin' %>
-      <%= f.input :status, label: t('license.status') %>
-      <%=
-        f.input :expired_at, label: t('license.expired_at'),
-        input_html: { class: 'datepicker' }
-      %>
+      <%= f.input :status %>
+      <%= f.input :expired_at, input_html: { class: 'datepicker' } %>
     <% end %>
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>

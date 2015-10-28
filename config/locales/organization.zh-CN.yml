@@ -12,6 +12,7 @@ zh-CN:
   tab:
     children: 子机构
     members: 成员
+    engines: 插件
 
   organization:
     switch: 切换机构

@@ -19,7 +19,7 @@ zh-CN:
   enumerize:
     license:
       engine_name:
-        esm: 地球系统模式插件
+        scrinium_esm: 地球系统模式插件
       status:
         unapproved: 未批准
         approved: 已批准
