@@ -4,26 +4,7 @@ class ArticlesController < ApplicationController
   # impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   def index
-    # @articles = Article.search("neque").records
-    # @articles = Article.search(
-    #                        query: {
-    #                            multi_match: {
-    #                                query: params[:q].to_s,
-    #                                fields: ['title','content']
-    #                            }
-    #                        }
-    #
-    # ).records
-
-    options = {
-        category:       params[:c],
-        author:         params[:a],
-        published_week: params[:w],
-        published_day:  params[:d],
-        sort:           params[:s],
-        comments:       params[:comments]
-    }
-
+    options = {}
     @articles = Article.search(params[:q], options).page(params[:page]).per(2).records
   end
 

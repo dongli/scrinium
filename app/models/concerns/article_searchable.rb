@@ -12,24 +12,26 @@ module ArticleSearchable
     end
 
     def self.search(query, options)
-      __elasticsearch__.search(
-          {
-              query: {
-                  multi_match: {
-                      query: query.to_s,
-                      fields: ['title', 'content']
-                  }
-              },
-              # highlight: {
-              #     pre_tags: ['<em class="label label-highlight">'],
-              #     post_tags: ['</em>'],
-              #     fields: {
-              #         title:   { number_of_fragments: 0 },
-              #         content: { fragment_size: 25 }
-              #     }
-              # }
+
+      @search_definition = {
+          query: {}
+
+      }
+      if query.present?
+        @search_definition[:query] = {
+          multi_match: {
+              query: query.to_s,
+              fields: ['title', 'content'],
+              operator: 'or'
           }
-      )
+        }
+      else
+        @search_definition[:query] = { match_all: {} }
+        # @search_definition[:sort]  = { updated_at: 'desc' }
+      end
+
+      __elasticsearch__.search(@search_definition)
+
     end
 
     def as_indexed_json(options={})
@@ -40,7 +42,7 @@ module ArticleSearchable
   end
 end
 
-
+# http://stackoverflow.com/questions/20167976/elasticsearch-no-query-registered-for-query
 # module Searchable
 #   extend ActiveSupport::Concern
 #
