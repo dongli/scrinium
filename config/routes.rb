@@ -83,7 +83,7 @@ Rails.application.routes.draw do
   get '/post_to_groups' => 'posts#post_to_groups'
   # Engines --------------------------------------------------------------------
   resources :licenses
-  if false and File.exist? "#{Rails.root}/config/engine_routes.rb"
+  if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end
   # Admin ----------------------------------------------------------------------
