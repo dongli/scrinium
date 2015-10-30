@@ -1,7 +1,9 @@
 zh-CN:
   mailbox: 邮箱
+  mailbox_sender: 发件人
   mailbox_receivers: 收件人
   mailbox_subject: 标题
+  mailbox_send_time: 发送时间
   mailbox_inbox: 收件箱
   mailbox_sentbox: 发件箱
   mailbox_trash: 垃圾桶
