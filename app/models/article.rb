@@ -11,14 +11,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Article < ActiveRecord::Base
   extend Enumerize
+  include ArticleSearchable
 
   validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true
 
-  is_impressionable
+  # is_impressionable
   has_paper_trail on: [:update, :destroy],
     if: Proc.new { |article| article.finished? },
     only: [:title, :content]
@@ -37,4 +37,6 @@ class Article < ActiveRecord::Base
     :draft,
     :finished
   ], predicates: true
+
+  delegate :name, :email, to: :user, prefix: :user, allow_nil: true
 end
