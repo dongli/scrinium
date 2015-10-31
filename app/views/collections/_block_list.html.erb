@@ -19,7 +19,13 @@
           </div>
         </div>
         <dl>
-          <dt><%= link_to collection.collectable.title, collection_view_path(collection) %></dt>
+          <dt>
+            <% if collection.collectable.respond_to? :title %>
+              <%= link_to collection.collectable.title, collection_view_path(collection) %>
+            <% elsif collection.collectable.respond_to? :name %>
+              <%= link_to collection.collectable.name, collection_view_path(collection) %>
+            <% end %>
+          </dt>
           <dd>
             <ul class='clean-list'>
               <li><%= t('owner')+': '+collection.collectable.user.name %></li>

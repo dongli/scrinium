@@ -24,7 +24,7 @@ class ResourcesController < ApplicationController
       if @resource.save
         format.html {
           redirect_to [ @app, @resourceable, @resource ],
-          notice: t('message.create_success', thing: t('scrinium.resource'))
+          notice: t('message.create_success', thing: t('activerecord.models.resource'))
         }
         format.json {
           render json: { message: 'success', id: @resource.id }, status: 200
@@ -43,7 +43,7 @@ class ResourcesController < ApplicationController
       if @resource.update(resource_params)
         format.html {
           redirect_to [ @app, @resourceable, @resource ],
-          notice: t('message.update_success', thing: t('scrinium.resource'))
+          notice: t('message.update_success', thing: t('activerecord.models.resource'))
         }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class ResourcesController < ApplicationController
     @resource.destroy
     respond_to do |format|
       session[:previous_url].pop while session[:previous_url].last =~ /resources\/(\d+|new)/
-      format.html { redirect_to session[:previous_url].last || root_path, notice: t('message.destroy_success', thing: t('scrinium.resource')) }
+      format.html { redirect_to session[:previous_url].last || root_path, notice: t('message.destroy_success', thing: t('activerecord.models.resource')) }
     end
   end
 
@@ -65,16 +65,27 @@ class ResourcesController < ApplicationController
     # [/<engine prefix>]/<resourceable_type>/:id/resources/...
     tokens = request.path.split('/').reject(&:empty?)
     n = tokens.index('resources')
-    resourceable_type, resourceable_id = tokens[n-2..n-1]
-    if RailsEnginesHelper.engine_names.index { |x| x =~ /_#{tokens.first}$/ }
-      app_name = Rails.app_class.to_s.split('::').first
-      resourceable_type = app_name+tokens.first.capitalize+'::'+resourceable_type.singularize.classify
-      @app = eval("#{app_name.downcase}_#{tokens.first}")
+    if n == 0
+      set_resource
+      @resourceable = @resource.resourceable
+      tmp = @resourceable.class.to_s.split('::')
+      if tmp.size == 1
+        @app = main_app
+      elsif tmp.size == 2
+        @app = eval(tmp.first.underscore)
+      end
     else
-      resourceable_type = resourceable_type.singularize.classify
-      @app = main_app
+      resourceable_type, resourceable_id = tokens[n-2..n-1]
+      if RailsEnginesHelper.engine_names.index { |x| x =~ /_#{tokens.first}$/ }
+        app_name = Rails.app_class.to_s.split('::').first
+        resourceable_type = app_name+tokens.first.capitalize+'::'+resourceable_type.singularize.classify
+        @app = eval("#{app_name.downcase}_#{tokens.first}")
+      else
+        resourceable_type = resourceable_type.singularize.classify
+        @app = main_app
+      end
+      @resourceable = resourceable_type.constantize.find(resourceable_id)
     end
-    @resourceable = resourceable_type.constantize.find(resourceable_id)
   end
 
   # Use callbacks to share common setup or constraints between actions.

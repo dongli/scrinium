@@ -39,12 +39,12 @@
           %>
         </li>
       <% end %>
+      <li>
+        <%=
+          link_to fa_icon('battery-1', text: t('devise.sign_out')),
+          destroy_user_session_path, method: :delete, class: 'navbar-link'
+        %>
+      </li>
     </ul>
-  </li>
-  <li>
-    <%=
-      link_to image_tag('logos/logout_logo.png', size: '30x30'),
-      destroy_user_session_path, method: :delete, class: 'navbar-link'
-    %>
   </li>
 <% end %>

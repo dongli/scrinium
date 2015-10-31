@@ -1,12 +1,12 @@
 <div class='panel panel-default'>
   <div class='panel-heading' id='message-head-<%= message.id %>'>
-    <%= t('message.sender') %>: <%= link_to message.sender.name, message.sender %><br/>
-    <%= t('message.receivers') %>:
+    <%= t('mailbox_sender') %>: <%= link_to message.sender.name, message.sender %><br/>
+    <%= t('mailbox_receivers') %>:
     <%= message.receipts.reject { |p| p.receiver == message.sender }.collect { |p| p.receiver.name }.uniq.join(', ') %>
     <br/>
     <%= fa_icon('bell') if message.is_unread? current_user %>
-    <%= t('message.subject') %>: <b><%= message.subject %></b><br/>
-    <%= t('message.send_time') %>: <%= message.created_at %>
+    <%= t('mailbox_subject') %>: <b><%= message.subject %></b><br/>
+    <%= t('mailbox_send_time') %>: <%= message.created_at %>
   </div>
   <div class='panel-body'
     id='message-body-<%= message.id %>'

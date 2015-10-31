@@ -13,7 +13,7 @@
       <% if policy(Article).create? %>
         <li>
           <%=
-            link_to fa_icon('file-o', text: t('action.add')+t('activerecord.models.article')),
+            link_to fa_icon('plus-square-o', text: t('activerecord.models.article')),
             new_article_path, id: 'add-article'
           %>
         </li>
@@ -21,7 +21,7 @@
       <% if policy(Resource).create? %>
         <li>
           <%=
-            link_to fa_icon('cube', text: t('action.add')+t('activerecord.models.resource')),
+            link_to fa_icon('plus-square-o', text: t('activerecord.models.resource')),
             [ :new, @user, :resource ], id: 'add-resource', style: 'display: none;'
           %>
         </li>

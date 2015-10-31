@@ -1,0 +1,17 @@
+<% session[:current_organization_id] = @organization.id %>
+<% @organization.licenses.each do |license| %>
+  <div class='well engine-entry'>
+    <dl>
+      <dt><%= license.engine_name.text %></dt>
+      <dd>
+        <div class='btn-group btn-group-justified' role='group' aria-label='engine-entries'>
+          <% send("#{license.engine_name}_entries").each do |key, value| %>
+            <div class='btn-group' role='group'>
+              <a type='button' class='btn btn-default' href='<%= value %>'><%= key %></a>
+            </div>
+          <% end %>
+        </div>
+      </dd>
+    </dl>
+  </div>
+<% end %>
