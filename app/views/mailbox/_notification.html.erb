@@ -1,9 +1,9 @@
 <div class='panel panel-default'>
   <div class='panel-heading' id='notification-head-<%= notification.id %>'>
-    <%= t('mailbox.notification') %><br/>
+    <%= t('mailbox_notification') %><br/>
     <%= fa_icon('bell') if notification.is_unread? current_user %>
-    <%= t('notification.subject') %>: <%= notification.subject %><br/>
-    <%= t('notification.send_time') %>: <%= notification.created_at %>
+    <%= t('mailbox_subject') %>: <%= notification.subject %><br/>
+    <%= t('mailbox_send_time') %>: <%= notification.created_at %>
   </div>
   <div class='panel-body'
     id='notification-body-<%= notification.id %>'
