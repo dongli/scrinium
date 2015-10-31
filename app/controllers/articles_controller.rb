@@ -4,8 +4,7 @@ class ArticlesController < ApplicationController
   # impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   def index
-    options = {}
-    @articles = Article.search(params[:q], options).page(params[:page]).per(2).records
+    @articles = Article.all
   end
 
   def show
