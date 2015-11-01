@@ -1,7 +1,8 @@
+<%# attributes = attributes - %w(id created_at updated_at ) %>
 <%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, html: {class: "form-horizontal form-row-seperated"}  do |f| %>
   <div class="form-body">
     <% attributes.each do |attr| %>
-      <%= f.input attr %>
+      <%= f.input attr.to_sym %>
     <% end %>
   </div>
   <div class="form-actions">

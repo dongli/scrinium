@@ -3384,7 +3384,7 @@ Forms
   border-radius: 4px;
 }
 .form-control:focus {
-  border-color: #999;
+  border-color: #1f6a99;
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
