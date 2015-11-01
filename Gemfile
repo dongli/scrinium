@@ -81,10 +81,12 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
+gem 'inherited_resources'
 
 ## 搜索
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
