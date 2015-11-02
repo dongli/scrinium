@@ -4,7 +4,6 @@
       <%= search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f| %>
         <div class="input-group">
           <div class="input-cont">
-            <%= f.lable :"#{attributes.first}_cont" %>
             <%= f.text_field :"#{attributes.first}_cont", placeholder: "搜索#{resource_class.human_attribute_name(attributes.first)}...", class: 'form-control' %>
           </div>
           <span class="input-group-btn">
