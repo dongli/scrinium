@@ -23,7 +23,7 @@
   <% if policy(@organization).update? %>
     <li>
       <%=
-        link_to fa_icon('gears', text: t('action.add')+t('engine')),
+        link_to fa_icon('plus-square-o', text: t('engine')),
         new_license_path(organization_id: @organization.id),
         id: 'add-engine', style: 'display: none;'
       %>
@@ -32,7 +32,7 @@
   <% if policy(Organization).create? %>
     <li>
       <%=
-        link_to fa_icon('plus-square', text: t('action.add')+t('organization.child')),
+        link_to fa_icon('plus-square-o', text: t('organization.child')),
         new_organization_path(parent_id: @organization.id),
         id: 'add-child', style: 'display: none;'
       %>

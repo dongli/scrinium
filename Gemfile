@@ -87,23 +87,22 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
   gem 'quiet_assets' # don't show assets log
   gem 'byebug'
   gem 'bullet'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring.
   gem 'spring'
   gem 'annotate'
-  ## refresh browser auto
+  # Refresh browser auto.
   gem 'rack-livereload'
   gem 'guard-livereload'
 
-  ## Use Capistrano for deployment
+  # Use Capistrano for deployment.
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem "capistrano-scm-copy"
   gem 'net-ssh', '~> 2.8.0'
   gem 'capistrano-sidekiq'
-
 end

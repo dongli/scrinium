@@ -1,0 +1,47 @@
+<table class='table table-stripped'>
+  <thead>
+    <tr>
+      <th width='100'><%= t('activerecord.attributes.user.name') %></th>
+      <th width='100'><%= t('activerecord.attributes.membership.status') %></th>
+      <th width='100'>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% memberships.each do |membership| %>
+      <tr>
+        <td><%= link_to membership.user.name, membership.user %></td>
+        <td><%= membership.status.text %></td>
+        <td>
+          <% case membership.status %>
+          <% when 'unapproved' %>
+            <ul class='inline'>
+              <li>
+                <%=
+                  link_to t('membership.action.approve'),
+                  [ membership, membership: { status: 'approved' } ],
+                  method: :patch, class: 'button btn-xs'
+                %>
+              </li>
+              <li>
+                <%=
+                  link_to t('membership.action.reject'),
+                  [ :reject, membership ], remote: true, class: 'button btn-danger btn-xs'
+                %>
+              </li>
+            </ul>
+          <% when 'approved' %>
+            <ul class='inline'>
+              <li>
+                <%=
+                  link_to t('membership.action.ban'),
+                  [ membership, membership: { status: 'banned' } ],
+                  method: :patch, class: 'button btn-danger btn-xs'
+                %>
+              </li>
+            </ul>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,18 @@
+<dl class='clean'>
+  <dt>
+    <div class='center'>
+      <div class='btn-group' role='group' aria-label='membership-group'>
+        <button type='button' class='btn btn-default' id='show-unapproved-membership-list'><%= t('enumerize.membership.status.unapproved') %></button>
+        <button type='button' class='btn btn-default' id='show-approved-membership-list'><%= t('enumerize.membership.status.approved') %></button>
+      </div>
+    </div>
+  </dt>
+  <dd>
+    <div id='unapproved-membership-list'>
+      <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status == 'unapproved' } %>
+    </div>
+    <div id='approved-membership-list' style='display: none;'>
+      <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status == 'approved' } %>
+    </div>
+  </dd>
+</dl>
