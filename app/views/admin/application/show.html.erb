@@ -45,6 +45,15 @@
                   <td>
                     <%= resource.send(attr).try(:strftime, '%Y年%m月%d %H时%M分%S秒') %>
                   </td>
+                <% elsif resource.send(attr).is_a?(ImageUploader) %>
+                  <td>
+                    <%= image_tag(resource.send(attr + "_url"), height: '100px') %>
+                  </td>
+                <% elsif resource.send(attr).is_a?(CarrierWave::Uploader::Base) %>
+                  <td>
+                    <%= resource.send(attr).is_a?(CarrierWave::Uploader::Base) %>
+                    <%= image_tag(resource.send(attr + "_identify")) %>
+                  </td>
                 <% else %>
                   <td>
                     <%= resource.send(attr).to_s %>

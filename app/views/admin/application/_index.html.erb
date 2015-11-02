@@ -46,7 +46,6 @@
           <% elsif resource.send(attr).is_a?(ImageUploader) %>
             <td>
               <%= image_tag(resource.send(attr + "_url" , :thumb), height: '21px') %>
-              <%= 'gg' %>
             </td>
           <% elsif resource.send(attr).is_a?(CarrierWave::Uploader::Base) %>
             <td>
