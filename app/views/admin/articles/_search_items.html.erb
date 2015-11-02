@@ -1,0 +1,20 @@
+<% if @q.present? %>
+  <div class="row search-form-default">
+    <div class="col-md-12">
+      <%= search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f| %>
+        <div class="input-group">
+          <div class="input-cont">
+            <%= f.text_field :user_name_eq, placeholder: "用户名...", class: 'form-control' %>
+            <%= f.text_field :title_cont, placeholder: "标题...", class: 'form-control' %>
+          </div>
+          <span class="input-group-btn">
+            <button class="btn green">
+              查询
+              <i class="m-icon-swapright m-icon-white"></i>
+            </button>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

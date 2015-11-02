@@ -7,14 +7,15 @@
 
     <li>
       <a href="javascript:;">
-        <i class="icon-diamond"></i>
+        <i class="fa fa-list-alt fa-1"></i>
         <span class="title">用户管理</span>
-        <span class="arrow "></span>
       </a>
       <ul class="sub-menu">
         <li>
-          <a href="ui_general.html">
-            用户列表</a>
+          <%= link_to admin_users_path do  %>
+          <i class="fa fa-list"></i>
+            用户列表
+          <% end %>
         </li>
 
 

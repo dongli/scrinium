@@ -1,8 +1,13 @@
 <%# attributes = attributes - %w(id created_at updated_at ) %>
 <%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, html: {class: "form-horizontal form-row-seperated"}  do |f| %>
   <div class="form-body">
-    <% attributes.each do |attr| %>
-      <%= f.input attr.to_sym %>
+    <% permitted_attributes.each do |attribute| %>
+      <% if attribute.last(3) == '_at' %>
+        <%= f.input attribute.to_sym, as: :string %>
+      <% else %>
+        <%= f.input attribute.to_sym %>
+      <% end %>
+
     <% end %>
   </div>
   <div class="form-actions">
