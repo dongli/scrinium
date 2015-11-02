@@ -10,8 +10,8 @@ zh-CN:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "没有发现%{entry_name}"
+          zero: "没有发现"
           one: "显示<b>1</b>个%{entry_name}"
           other: "显示<b>所有%{count}</b>%{entry_name}"
       more_pages:
-        display_entries: "显示%{total}中的%{entry_name}<b>%{first}&nbsp;-&nbsp;%{last}</b>"
+        display_entries: "总共<strong>%{total}</strong>，<b>%{first}&nbsp;-&nbsp;%{last}</b>"
