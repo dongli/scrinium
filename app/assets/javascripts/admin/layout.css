@@ -1425,7 +1425,7 @@ Page sidebar
 }
 .page-sidebar .page-sidebar-menu > li > a > .title,
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .title {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 400;
 }
 .page-sidebar .page-sidebar-menu > li > a > i,
