@@ -8,11 +8,9 @@
 <div class="table-scrollable">
   <table class="table table-bordered table-striped table-hover" id="collection_table">
     <thead>
-    <tr class="active">
+    <tr class="">
       <% attributes.each do |attr| %>
-        <th scope="col">
-          <%= resource_class.human_attribute_name(attr) %>
-        </th>
+          <%= content_tag :th, sort_link(@q, attr) %>
       <% end %>
       <th scope="col" style="min-width:150px !important">
         <%= "操作" %>
@@ -41,7 +39,7 @@
             </td>
           <% elsif resource.send(attr).is_a?(Time) %>
             <td>
-              <%= resource.send(attr).try(:strftime, '%Y年%m月%d %H时%M分%S秒') %>
+              <%= resource.send(attr).try(:strftime, '%Y-%m-%d %H:%M:%S') %>
             </td>
           <% elsif resource.send(attr).is_a?(ImageUploader) %>
             <td>
