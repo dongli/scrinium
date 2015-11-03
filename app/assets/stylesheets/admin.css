@@ -11,9 +11,6 @@
  * file per style scope.
  *
 
- * require global/css/components-md.css
- * require global/css/plugins-md.css
- 
  *= require select2
  *= require font-awesome
  *= require customized_bootstrap
@@ -21,5 +18,6 @@
  *= require admin/components.css
  *= require admin/layout.css
  *= require admin/light.css
-
+ *= require nprogress
+ *= require nprogress-bootstrap
  */

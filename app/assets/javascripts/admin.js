@@ -15,6 +15,9 @@
 //= require turbolinks
 //= require select2
 //= require bootstrap-sprockets
+//= require nprogress
+//= require nprogress-turbolinks
+
 
 
 
