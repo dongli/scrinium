@@ -62,17 +62,16 @@
           <%= link_to t("action.show"), resource_path(resource), class: 'btn btn-xs blue' %>
 
           <%= link_to t("action.edit"), edit_resource_path(resource), class: 'btn btn-xs yellow' %>
-          <%= link_to t("action.delete"), resource_path(resource), :method => :delete, data: {confirm: t("action.delete")}, class: 'btn btn-xs red' %>
+          <%= link_to t("action.delete"), resource_path(resource), :method => :delete,
+                      data: {confirm: t("message.are_you_sure_to_delete?", thing: t("activerecord.models.#{resource_class.to_s.underscore}"))}, class: 'btn btn-xs red' %>
         </td>
       </tr>
     <% end %>
     </tbody>
     <tfoot>
-    <tr class="active">
+    <tr class="">
       <% attributes.each do |attr| %>
-        <th>
-          <%= resource_class.human_attribute_name(attr) %>
-        </th>
+        <%= content_tag :th, sort_link(@q, attr) %>
       <% end %>
       <th>
         <%= "操作" %>
