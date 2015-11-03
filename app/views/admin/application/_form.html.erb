@@ -2,7 +2,7 @@
 <%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, html: {class: "form-horizontal form-row-seperated"}  do |f| %>
   <div class="form-body">
     <% permitted_attributes.each do |attribute| %>
-      <% if attribute.last(3) == '_at' %>
+      <% if resource_class.column_types[attribute].try(:type) == :datetime %>
         <%= f.input attribute.to_sym, as: :string %>
       <% else %>
         <%= f.input attribute.to_sym %>
