@@ -1,5 +1,6 @@
-<%# attributes = attributes - %w(id created_at updated_at ) %>
-<%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, html: {class: "form-horizontal form-row-seperated"}  do |f| %>
+<%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, wrapper_mappings: {file: :horizontal_file_input },
+    html: {class: "form-horizontal form-row-seperated"}  do |f| %>
+  <%= f.error_notification %>
   <div class="form-body">
     <% permitted_attributes.each do |attribute| %>
       <% if resource_class.column_types[attribute].try(:type) == :datetime %>

@@ -3,8 +3,7 @@
     <div class="col-md-12">
       <%= search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f| %>
         <div class="input-group">
-            <%= f.text_field :name_cont, placeholder: "名称...", class: 'form-control' %>
-            <%= f.text_field :user_id_eq, placeholder: "user_id...", class: 'form-control' %>
+            <%= f.text_field :admin_id_eq, placeholder: "admin_id...", class: 'form-control' %>
           <span class="input-group-btn">
             <button class="btn green">
               查询
