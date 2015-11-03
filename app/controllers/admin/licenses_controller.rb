@@ -1,2 +1,2 @@
-class Admin::LicensesController < ApplicationController
+class Admin::LicensesController < Admin::ApplicationController
 end

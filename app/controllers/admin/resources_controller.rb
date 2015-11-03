@@ -1,2 +1,2 @@
-class Admin::ResourcesController < ApplicationController
+class Admin::ResourcesController < Admin::ApplicationController
 end
