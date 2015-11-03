@@ -3,11 +3,13 @@
     <div class="col-md-12">
       <%= search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f| %>
         <div class="input-group">
-            <%= f.text_field :user_name_cont, placeholder: "用户名...", class: 'form-control' %>
-            <%= f.text_field :title_cont, placeholder: "标题...", class: 'form-control' %>
+          <div class="input-cont">
+            <%= f.text_field :name_cont, placeholder: "用户名...", class: 'form-control' %>
+            <%= f.text_field :email_cont, placeholder: "email...", class: 'form-control' %>
+          </div>
           <span class="input-group-btn">
             <button class="btn green">
-              查询
+              <%= t('action.search') %>
               <i class="m-icon-swapright m-icon-white"></i>
             </button>
           </span>

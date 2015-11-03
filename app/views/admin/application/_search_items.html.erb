@@ -3,9 +3,15 @@
     <div class="col-md-12">
       <%= search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f| %>
         <div class="input-group">
-          <div class="input-cont">
-            <%= f.text_field :"#{attributes.first}_cont", placeholder: "搜索#{resource_class.human_attribute_name(attributes.first)}...", class: 'form-control' %>
-          </div>
+            <% %w(user_id group_id organization_id).each do |key| %>
+              <% if attributes.include? key %>
+                <%= f.text_field :"#{key}_eq", placeholder: "搜索#{resource_class.human_attribute_name(key.to_sym)}...", class: 'form-control' %>
+              <% end %>
+             <% end %>
+            <% end %>
+
+            <%#= f.text_field :"#{attributes.first}_cont", placeholder: "搜索#{resource_class.human_attribute_name(attributes.first)}...", class: 'form-control' %>
+
           <span class="input-group-btn">
             <button class="btn green">
               查询
@@ -13,7 +19,7 @@
             </button>
           </span>
         </div>
-      <% end %>
+
     </div>
   </div>
 <% end %>
