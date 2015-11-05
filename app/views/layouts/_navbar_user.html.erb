@@ -31,14 +31,6 @@
           <% end %>
         </a>
       </li>
-      <% if current_user and ( current_user.admin? or current_user.assist_admin? ) %>
-        <li>
-          <%=
-            link_to fa_icon('dashboard', text: t('global.dashboard')),
-            dashboard_index_path
-          %>
-        </li>
-      <% end %>
       <li>
         <%=
           link_to fa_icon('battery-1', text: t('devise.sign_out')),
