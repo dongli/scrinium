@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     # @articles = Article.search(params[:q], options= {}).page(params[:page]).per(2).records
-
+    @article = Article.all
   end
 
   def show
