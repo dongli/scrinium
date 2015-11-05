@@ -12,7 +12,8 @@
     <% end %>
   </div>
   <div class="btn-group pull-right">
-    <%= link_to resource_path(resource), :method => :delete, data: {confirm: t("action.delete")}, class: 'btn red' do %>
+    <%= link_to resource_path(resource), :method => :delete,
+                data: {confirm: t("message.are_you_sure_to_delete?", thing: t("activerecord.models.#{resource_class.to_s.underscore}"))}, class: 'btn red' do %>
       <%= t("action.delete") %>
       <i class="fa fa-times"></i>
     <% end %>
