@@ -69,7 +69,6 @@ gem 'settingslogic'
 
 ## 其它
 gem 'simple_form'
-gem 'impressionist'
 gem 'paper_trail', '~> 4.0.0'
 gem 'closure_tree'
 

@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy, :versions, :delete_version]
-  # impressionist actions: [:show], unique: [:session_hash, :user_id]
 
   def index
     @articles = Article.all
