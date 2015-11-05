@@ -1,0 +1,16 @@
+zh-CN:
+  activerecord:
+    models:
+      comment: 评论
+    attributes:
+      comment:
+        id:                 评论ID
+        user_id:            用户ID
+        commentable_id:     评论的类别ID
+        commentable_type:   评论的类别
+        content:            内容
+        parent_id:          回复的ID
+        floor:              楼数
+        status:             状态
+        created_at:         创建时间
+        updated_at:         更新时间
