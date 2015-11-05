@@ -1,4 +1,9 @@
-<%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, wrapper_mappings: {file: :horizontal_file_input },
+<%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, wrapper_mappings:
+                                              {file: :horizontal_file_input,
+                                               radio_buttons: :horizontal_radio_and_checkboxes,
+                                               check_boxes: :horizontal_radio_and_checkboxes,
+                                               boolean: :horizontal_boolean
+                                              },
     html: {class: "form-horizontal form-row-seperated"}  do |f| %>
   <%= f.error_notification %>
   <div class="form-body">
