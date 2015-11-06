@@ -237,3 +237,7 @@ $(document).on 'page:change', ->
   $('.timeago').each ->
     date = moment($(this).attr('title'))
     $(this).html(date.fromNow())
+
+  # 是table的整行可点击。
+  $('.clickable-row').click ->
+    window.document.location = $(this).data('href')

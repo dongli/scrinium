@@ -1,26 +1,17 @@
 <% content_for :title, t('activerecord.models.group') %>
 
 <% content_for :main_block do %>
-  <table class='table table-striped'>
-    <thead>
-      <tr>
-        <th width='200'><%= t('activerecord.attributes.group.name') %></th>
-        <th width='100'><%= t('activerecord.attributes.group.admin') %></th>
-        <th width='200'><%= t('activerecord.attributes.group.created_at') %></th>
-        <th width='100'><%= t('group.member_number') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% Group.all.each do |group| %>
-        <tr>
-          <td><%= link_to "#{group.name}", group %></td>
-          <td><%= link_to group.admin.name, group.admin %></td>
-          <td><%= group.created_at %></td>
-          <td><%= group.users.size %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="alert alert-info" role="alert">
+    在这里添加群组检索功能。
+  </div>
+  <% if current_user %>
+    <dl>
+      <dt>您的群组</dt>
+      <dd>
+        <%= render 'table_list', groups: current_user.groups %>
+      </dd>
+    </dl>
+  <% end %>
   <% if policy(Group).create? %>
     <%= link_to t('action.add'), new_group_path, class: 'button float-right' %>
   <% end %>

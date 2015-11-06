@@ -8,9 +8,9 @@
   </thead>
   <tbody>
     <% organizations.each do |organization| %>
-      <tr>
+      <tr class='clickable-row' data-href='<%= organization_path(organization) %>'>
         <td>
-          <%= link_to organization.short_name, organization %>
+          <%= organization.short_name %>
         </td>
         <td><%= organization.name %></td>
         <td><%= organization.created_at %></td>

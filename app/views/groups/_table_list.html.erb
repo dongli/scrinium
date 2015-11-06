@@ -1,0 +1,20 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width='200'><%= t('activerecord.attributes.group.name') %></th>
+      <th width='100'><%= t('activerecord.attributes.group.admin') %></th>
+      <th width='200'><%= t('activerecord.attributes.group.created_at') %></th>
+      <th width='100'><%= t('group.member_number') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% groups.all.each do |group| %>
+      <tr class='clickable-row' data-href='<%= group_path(group) %>'>
+        <td><%= group.name %></td>
+        <td><%= link_to group.admin.name, group.admin %></td>
+        <td><%= group.created_at %></td>
+        <td><%= group.users.size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

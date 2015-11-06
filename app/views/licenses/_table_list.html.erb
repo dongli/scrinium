@@ -9,8 +9,8 @@
   </thead>
   <tbody>
     <% licenses.each do |license| %>
-      <tr>
-        <td><%= link_to license.engine_name.text, license %></td>
+      <tr class='clickable-row' data-href='<%= license_path(license) %>'>
+        <td><%= license.engine_name.text %></td>
         <td><%= license.organization.short_name %></td>
         <td><%= license.max_num_seats %></td>
         <td><%= license.expired_at %></td>
