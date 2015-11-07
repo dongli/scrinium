@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require font-awesome
  *= require select2
  *= require highlightjs
@@ -28,6 +27,7 @@
  *= require plugins/image.min.css
  *= require plugins/line_breaker.min.css
  *= require plugins/table.min.css
+ *= require application/custom
  *= require_self
  */
 
