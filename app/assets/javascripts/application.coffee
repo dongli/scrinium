@@ -46,7 +46,7 @@
 #= require plugins/quote.min.js
 #= require plugins/table.min.js
 #= require plugins/save.min.js
-#= require_tree .
+#= require application/custom
 
 # ============================= Common Functions ===============================
 @mathjax = (id = null) ->
