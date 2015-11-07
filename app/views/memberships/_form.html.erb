@@ -19,7 +19,7 @@
       </div>
     <% end %>
   <% when :invited %>
-    <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name' } %>
+    <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name', style: 'width: 100%;' } %>
     <div class='center'>
       <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
     </div>

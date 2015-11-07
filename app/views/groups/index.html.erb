@@ -13,6 +13,8 @@
     </dl>
   <% end %>
   <% if policy(Group).create? %>
-    <%= link_to t('action.add'), new_group_path, class: 'button float-right' %>
+    <div class='center'>
+      <%= link_to t('action.add'), new_group_path, class: 'button' %>
+    </div>
   <% end %>
 <% end %>
