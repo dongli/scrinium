@@ -8,6 +8,7 @@
 #  parent_id  :integer
 #  website    :string
 #  status     :string
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

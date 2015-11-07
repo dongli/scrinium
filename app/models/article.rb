@@ -8,9 +8,11 @@
 #  content    :text             default("")
 #  privacy    :string           not null
 #  status     :string
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
 class Article < ActiveRecord::Base
   extend Enumerize
   # include ArticleSearchable
