@@ -2,16 +2,16 @@
   <thead>
     <tr>
       <th width="100"><%= t('activerecord.attributes.license.engine_name') %></th>
-      <th width="300"><%= t('activerecord.attributes.license.organization_id') %></th>
+      <th width="100"><%= t('activerecord.attributes.license.organization_id') %></th>
       <th width="100"><%= t('activerecord.attributes.license.max_num_seats') %></th>
       <th width="100"><%= t('activerecord.attributes.license.expired_at') %></th>
     </tr>
   </thead>
   <tbody>
     <% licenses.each do |license| %>
-      <tr>
-        <td><%= link_to license.engine_name.text, license %></td>
-        <td><%= license.organization.name %></td>
+      <tr class='clickable-row' data-href='<%= license_path(license) %>'>
+        <td><%= license.engine_name.text %></td>
+        <td><%= license.organization.short_name %></td>
         <td><%= license.max_num_seats %></td>
         <td><%= license.expired_at %></td>
       </tr>

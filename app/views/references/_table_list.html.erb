@@ -9,9 +9,9 @@
   </thead>
   <tbody>
     <% references.each do |reference| %>
-      <tr>
+      <tr class='clickable-row' data-href='<%= reference_path(reference) %>'>
         <td><%= join_authors reference, false %></td>
-        <td><%= link_to reference.title, reference %></td>
+        <td><%= reference.title %></td>
         <td><%= reference.publisher.abbreviation %></td>
         <td><%= reference.year %></td>
       </tr>

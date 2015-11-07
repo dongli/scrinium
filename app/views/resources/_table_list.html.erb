@@ -8,13 +8,9 @@
   </thead>
   <tbody>
     <% resources.each do |resource| %>
-      <tr>
-        <td>
-          <%= link_to resource.name, [ resource.resourceable, resource ] %>
-        </td>
-        <td>
-          <%= link_to resource.user.name, resource.user %>
-        </td>
+      <tr class='clickable-row' data-href='<%= url_for [ resource.resourceable, resource ] %>'>
+        <td><%= resource.name %></td>
+        <td><%= resource.user.name %></td>
         <td><%= resource.created_at %></td>
       </tr>
     <% end %>

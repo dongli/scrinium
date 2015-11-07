@@ -40,9 +40,6 @@ body {
   padding-top: 70px;
   /* Margin bottom by footer height */
   margin-bottom: 70px;
-  background: -moz-linear-gradient(left top, #ace, #f96);
-  background: -webkit-linear-gradient(left top, #FFFFFF, #FAFAFA);
-  background: -o-linear-gradient(left top, #ace, #f96);
 }
 
 footer {
@@ -79,6 +76,10 @@ a:hover {
   color: inherit;
   font-weight: bold;
   text-decoration: none;
+}
+
+.clickable-row {
+  cursor: pointer;
 }
 
 ul.clean-list {
@@ -131,6 +132,13 @@ dl.small {
   @extend dl;
   dt {
     font-size: 120%;
+  }
+}
+
+dl.clean {
+  @extend dl;
+  dt {
+    border-bottom: none;
   }
 }
 

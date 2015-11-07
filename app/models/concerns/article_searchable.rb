@@ -36,7 +36,7 @@ module ArticleSearchable
 
     def as_indexed_json(options={})
       self.as_json(
-          include: { users: {only: [:id, :name, :email]} }
+          include: { user: {only: [:id, :name, :email]} }
       )
     end
   end

@@ -219,6 +219,14 @@ $(document).on 'page:change', ->
     $('#user-table-list').hide()
     $('#user-block-list').show()
 
+  # 切换资格列表。
+  $('#show-unapproved-membership-list').click ->
+    $('#unapproved-membership-list').show()
+    $('#approved-membership-list').hide()
+  $('#show-approved-membership-list').click ->
+    $('#unapproved-membership-list').hide()
+    $('#approved-membership-list').show()
+
   # 使用Select2做标签输入。
   $('.use-select2-multiple-tags').select2
     tags: true
@@ -229,3 +237,7 @@ $(document).on 'page:change', ->
   $('.timeago').each ->
     date = moment($(this).attr('title'))
     $(this).html(date.fromNow())
+
+  # 是table的整行可点击。
+  $('.clickable-row').click ->
+    window.document.location = $(this).data('href')

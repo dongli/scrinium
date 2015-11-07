@@ -4,6 +4,11 @@ zh-CN:
       membership: 用户资格
     attributes:
       membership:
+        user: 成员用户
+        host_type: 组织类型
+        host: 组织
+        role: 角色
+        status: 资格状态
         rejected_reason: 拒绝理由
         description:     加入描述
         host_id:         加入组织的ID
@@ -20,12 +25,19 @@ zh-CN:
         created_at:      创建时间
         updated_at:      更新时间
 
+  enumerize:
+    membership:
+      role:
+        admin: 管理员
+        assist_admin: 辅助管理员
+        member: 成员
+      status:
+        unapproved: 未核准
+        approved: 已核准
+        rejected: 被拒绝
+        banned: 封存
+
   membership:
-    applicant: 申请人
-    host_type: 组织类型
-    host_name: 组织名称
-    role: 角色
-    status: 资格状态
     action:
       apply: 申请加入
       approve: 核准
@@ -51,15 +63,3 @@ zh-CN:
         membership_updated: 您在“%{host}”中的资格被更新，详情请见[这里](%{page})。
         membership_rejected: 您申请加入“%{host}”的请求被拒绝！拒绝理由为：%{reason}，详情请见[这里](%{page})。
         user_agreed_to_join_in: 用户“%{user}”同意加入%{host}，详情请见[这里](%{page})。
-
-  enumerize:
-    membership:
-      role:
-        admin: 管理员
-        assist_admin: 辅助管理员
-        member: 成员
-      status:
-        unapproved: 未核准
-        approved: 已核准
-        rejected: 被拒绝
-        banned: 封存

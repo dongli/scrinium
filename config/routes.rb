@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'news/index'
   get 'library/index'
-  get 'dashboard/index'
 
   root 'home#index'
 
