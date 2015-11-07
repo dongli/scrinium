@@ -13,7 +13,6 @@ class PostsController < ApplicationController
       @post.postable_id = params[:postable_id]
       @post.postable_type = params[:postable_type]
       @post.save!
-      @post.group.save!
       respond_to do |format|
         format.js
       end
@@ -28,7 +27,6 @@ class PostsController < ApplicationController
       @post.postable_id = @postable.id
       @post.postable_type = Article
       @post.save!
-      @post.group.save!
       redirect_to edit_article_path(@postable)
     end
   end
