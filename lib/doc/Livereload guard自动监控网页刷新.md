@@ -28,6 +28,7 @@ end
 这是 guard-livereload 默认的监控规则，它监控了 Rails 项目里面所有影响页面显示的文件，当这些文件有更改时就会通知浏览器刷新。
 
 4.接下来在 `config/environments/development.rb` 还要添加一处配置，让 Rails 服务启动以后给每个页面加上浏览器端的 livereload 扩展。
+非必须
 ```ruby
 config.middleware.insert_before(Rack::Lock, Rack::LiveReload)
 ```
@@ -39,4 +40,6 @@ guard start
 ```ruby
  rails s
 ```
-7.试试是不是成功，先修改目录下的文件，看浏览器是不是自动刷新，如果不能，查看浏览器上的livereload扩展的图标是不是黑色的(表示已经连接服务器)
+7. 先点击浏览器拓展 Livereload，是否能连接上服务器，变成黑色小圆点。
+
+8.试试是不是成功，先修改目录下的文件，看浏览器是不是自动刷新，如果不能，查看浏览器上的livereload扩展的图标是不是黑色的(表示已经连接服务器)
