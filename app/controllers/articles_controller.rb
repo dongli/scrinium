@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :versions, :delete_version]
 
   def index
-    @articles = Article.all
+    # @articles = Article.search(params[:q], options= {}).page(params[:page]).per(2).records
+    @article = Article.all
   end
 
   def show

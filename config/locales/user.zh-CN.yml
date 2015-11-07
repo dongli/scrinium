@@ -4,6 +4,7 @@ zh-CN:
       user: 用户
     attributes:
       user:
+        id: ID
         name: 姓名
         email: 邮箱
         mobile: 手机号
@@ -15,6 +16,7 @@ zh-CN:
         remember_me: 记住我
         created_at: 注册时间
         updated_at: 更新时间
+        current_organization_id: 当前机构ID
     errors:
       models:
         user:

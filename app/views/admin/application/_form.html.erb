@@ -1,0 +1,27 @@
+<%= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, wrapper_mappings:
+                                              {file: :horizontal_file_input,
+                                               radio_buttons: :horizontal_radio_and_checkboxes,
+                                               check_boxes: :horizontal_radio_and_checkboxes,
+                                               boolean: :horizontal_boolean
+                                              },
+    html: {class: "form-horizontal form-row-seperated"}  do |f| %>
+  <%= f.error_notification %>
+  <div class="form-body">
+    <% permitted_attributes.each do |attribute| %>
+      <% if resource_class.column_types[attribute].try(:type) == :datetime %>
+        <%= f.input attribute.to_sym, as: :string %>
+      <% else %>
+        <%= f.input attribute.to_sym %>
+      <% end %>
+
+    <% end %>
+  </div>
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-9">
+        <%= f.submit '保存修改', class: "btn green", data: { disabled_with: "提交中"} %>
+        <%= link_to t("action.back") , request.referer.present? ? request.referer : collection_path, class: 'btn default' %>
+      </div>
+    </div>
+  </div>
+<% end %>

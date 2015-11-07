@@ -4,6 +4,13 @@ zh-CN:
       post: 帖子
     attributes:
       post:
+        id:      帖子ID
+        user_id: 发布人ID
+        group_id: 群组ID
+        postable_id:   帖子的ID
+        postable_type: 帖子的类别
+        status:   状态
+        position: 位置
         user: 发布人
         created_at: 发布时间
         sticky: 置顶

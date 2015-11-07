@@ -4,7 +4,7 @@ else
   source 'https://ruby.taobao.org'
 end
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 
 ## 服务器部署
 gem 'unicorn'
@@ -40,6 +40,7 @@ gem 'dropzonejs-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bower-rails'
 gem 'momentjs-rails'
+gem 'nprogress-rails'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 
@@ -80,10 +81,12 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
+gem 'inherited_resources'
 
 ## 搜索
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console.

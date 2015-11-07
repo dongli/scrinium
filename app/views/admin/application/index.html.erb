@@ -1,0 +1,26 @@
+<%= render 'breadcrumb' %>
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN SAMPLE TABLE PORTLET
+    -->
+    <div class="portlet light box green">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="fa fa-cogs"></i>
+          <span class="caption-subject  bold uppercase">
+            <%= resource_class.model_name.human + "列表" %>
+          </span>
+          | <%= page_entries_info collection %>
+
+        </div>
+
+
+      </div>
+      <div class="portlet-body flip-scroll">
+        <%= render "index", attributes: attributes %>
+      </div>
+    </div>
+    <!-- END SAMPLE TABLE PORTLET
+    -->
+  </div>
+</div>
