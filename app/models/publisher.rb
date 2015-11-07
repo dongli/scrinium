@@ -10,6 +10,7 @@
 #  short_name     :string           not null
 #  issued         :boolean          not null
 #  status         :string           default("unqualified")
+#  position       :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

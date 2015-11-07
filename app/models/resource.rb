@@ -14,6 +14,7 @@
 #  resourceable_type :string
 #  status            :string
 #  uuid              :string
+#  position          :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
