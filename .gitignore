@@ -18,6 +18,7 @@
 /public/uploads
 engine_requires.*
 engine_routes.rb
+engine_gems.rb
 
 nginx.conf
 

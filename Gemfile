@@ -108,3 +108,8 @@ group :development, :test do
   gem 'net-ssh', '~> 2.8.0'
   gem 'capistrano-sidekiq'
 end
+
+## 插件
+if File.exist? 'engine_gems.rb'
+  instance_eval File.read 'engine_gems.rb'
+end
