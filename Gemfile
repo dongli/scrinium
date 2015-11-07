@@ -107,9 +107,7 @@ group :development, :test do
   gem "capistrano-scm-copy"
   gem 'net-ssh', '~> 2.8.0'
   gem 'capistrano-sidekiq'
-end
 
-## 插件
-if File.exist? 'engine_gems.rb'
-  instance_eval File.read 'engine_gems.rb'
+  # 插件
+  gem 'scrinium_esm', '0.0.1', path: '../scrinium_esm'
 end
