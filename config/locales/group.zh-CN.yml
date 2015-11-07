@@ -4,14 +4,18 @@ zh-CN:
       group: 群组
     attributes:
       group:
-        name: 名称
-        short_name: 简称
-        description: 简介
-        category_list: 分类标签
-        privacy: 隐私度
-        admin: 管理员
-        users: 成员
-        created_at: 创建时间
+        name:           名称
+        short_name:     简称
+        description:    简介
+        logo:           群组Logo
+        admin_id:       超级管理员ID
+        category_list:  分类标签
+        privacy:        隐私度
+        admin:          管理员
+        users:          成员
+        status:         状态
+        created_at:     创建时间
+        updated_at:     更新时间
     errors:
       models:
         group:

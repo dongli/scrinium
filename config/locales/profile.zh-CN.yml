@@ -4,6 +4,7 @@ zh-CN:
       profile: 个人信息
     attributes:
       profile:
+        user_id: 用户ID
         avatar: 头像
         gender: 性别
         title: 职位

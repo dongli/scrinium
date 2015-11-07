@@ -8,7 +8,11 @@ zh-CN:
         short_name: 简称
         admin: 管理员
         description: 简介
-
+        logo: 机构logo
+        admin_id: 超级管理员ID
+        parent_id: 父机构ID
+        status: 状态
+        website: 网站网址
   tab:
     children: 子机构
     members: 成员

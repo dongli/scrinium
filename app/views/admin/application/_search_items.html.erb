@@ -1,0 +1,25 @@
+<% if @q.present? %>
+  <div class="row search-form-default">
+    <div class="col-md-12">
+      <%= search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f| %>
+        <div class="input-group">
+            <% %w(user_id group_id organization_id).each do |key| %>
+              <% if attributes.include? key %>
+                <%= f.text_field :"#{key}_eq", placeholder: "搜索#{resource_class.human_attribute_name(key.to_sym)}...", class: 'form-control' %>
+              <% end %>
+             <% end %>
+            <% end %>
+
+            <%#= f.text_field :"#{attributes.first}_cont", placeholder: "搜索#{resource_class.human_attribute_name(attributes.first)}...", class: 'form-control' %>
+
+          <span class="input-group-btn">
+            <button class="btn green">
+              查询
+              <i class="m-icon-swapright m-icon-white"></i>
+            </button>
+          </span>
+        </div>
+
+    </div>
+  </div>
+<% end %>

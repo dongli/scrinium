@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= render "breadcrumb" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="fa fa-cogs">
+            <%= resource_class.model_name.human %>
+          </i>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="table-scrollable">
+          <table class="table table-hover">
+            <thead>
+            <tr></tr>
+            </thead>
+            <tbody>
+            <% resource_class.attribute_names.each do |attr| %>
+              <tr>
+                <td style="width:20%;font-weight: bold;">
+                  <%= resource_class.human_attribute_name(attr) + ":" %>
+                </td>
+                <% if respond_to?("#{attr}_text".to_sym) %>
+                  <td>
+                    <%= self.send("#{attr}_text".to_sym) %>
+                  </td>
+                <% elsif resource.respond_to?("#{attr}_text".to_sym) %>
+                  <td>
+                    <%= resource.send("#{attr}_text".to_sym) %>
+                  </td>
+                <% elsif resource.respond_to?("#{attr}_title".to_sym) %>
+                  <td>
+                    <%= resource.send("#{attr}_title".to_sym) %>
+                  </td>
+                <% elsif resource.respond_to?("#{attr}_name".to_sym) %>
+                  <td>
+                    <%= resource.send("#{attr}_name".to_sym) %>
+                  </td>
+                <% elsif resource.send(attr).is_a?(Time) %>
+                  <td>
+                    <%= resource.send(attr).try(:strftime, '%Y年%m月%d %H时%M分%S秒') %>
+                  </td>
+                <% elsif resource.send(attr).is_a?(ImageUploader) %>
+                  <td>
+                    <%= image_tag(resource.send(attr + "_url"), height: '100px') %>
+                  </td>
+                <% elsif resource.send(attr).is_a?(CarrierWave::Uploader::Base) %>
+                  <td>
+                    <%= resource.send(attr).is_a?(CarrierWave::Uploader::Base) %>
+                    <%= image_tag(resource.send(attr + "_identify")) %>
+                  </td>
+                <% else %>
+                  <td>
+                    <%= resource.send(attr).to_s %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'operation_buttons' %>

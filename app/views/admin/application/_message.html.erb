@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+  <div class="note note-success note-shadow">
+    <p>
+      <%= flash[:notice] %>
+    </p>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="Metronic-alerts alert alert-danger fade in">
+    <button aria-hidden="true" class="close" data-dismiss="alert"></button>
+    <i class="fa-lg fa fa-warning">
+      <%= flash[:error] %>
+    </i>
+  </div>
+<% end %>

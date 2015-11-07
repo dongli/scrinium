@@ -4,11 +4,22 @@ zh-CN:
       resource: 资源
     attributes:
       resource:
-        name: 名称
-        description: 描述
+        id:
+        name:    名称
+        description:    描述
+        file:           文件
+        file_size:      文件大小
+        file_type:      文件类别
+        file_name:      文件原名称
+        user_id:        用户ID
+        resourceable_id:    所属类别
+        resourceable_type:  所属类别ID
+        status:   状态
+        uuid:   唯一标示uuid
+        created_at: 创建时间
+        updated_at: 更新时间
         user: 拥有者
         category_list: 分类标签
-        created_at: 创建时间
 
   dropzone:
     drag_file_here: 请将文件拖至这里。

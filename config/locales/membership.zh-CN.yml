@@ -5,6 +5,20 @@ zh-CN:
     attributes:
       membership:
         rejected_reason: 拒绝理由
+        description:     加入描述
+        host_id:         加入组织的ID
+        host_type:       加入的类别
+        user_id:         申请用户ID
+        role:            角色
+        expired_at:      过期时间
+        join_type:       加入的类别
+        rejected_reason: 拒绝理由
+        rejected_at:     拒绝时间
+        joined_at:       加入的时间
+        last_user_id:    最后修改人ID
+        status:          审核状态
+        created_at:      创建时间
+        updated_at:      更新时间
 
   membership:
     applicant: 申请人
