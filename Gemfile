@@ -82,6 +82,7 @@ gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
+gem 'acts_as_tenant'
 
 ## 搜索
 gem 'elasticsearch-model'
@@ -109,6 +110,5 @@ group :development, :test do
   gem 'capistrano-sidekiq'
 
   # 插件
-  gem 'acts_as_tenant'
   gem 'scrinium_esm', '0.0.1', path: '../scrinium_esm'
 end
