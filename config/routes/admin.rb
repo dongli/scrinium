@@ -11,5 +11,8 @@ namespace :admin do
   resources :posts
   resources :profiles
   resources :resources
+  if File.exist? "#{Rails.root}/config/engine_routes.rb"
+    instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
+  end
 
 end
