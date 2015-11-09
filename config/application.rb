@@ -27,6 +27,10 @@ module Scrinium
     # Load Grape API files.
     config.paths.add 'app/api', glob: '**/*.rb'
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+    config.app_generators.scaffold_controller = :scaffold_controller
+    config.generators.each do |g|
+      g.jbuilder false
+    end
 
   end
 end
