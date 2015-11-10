@@ -1,8 +1,29 @@
+<% current_folder_id = cookies[:current_folder_id] %>
+<% if current_folder_id and current_folder_id != current_folder.id %>
+  <% current_folder = Folder.find(current_folder_id) %>
+<% else %>
+  <% cookies[:current_folder_id] = { value: "#{current_folder.id}", path: request.fullpath } %>
+<% end %>
 <div id='resource-board' data-current-folder='<%= current_folder.id %>'>
   <ol class='breadcrumb'>
-    <li><a href='#'>Home</a></li>
-    <li><a href='#'>Library</a></li>
-    <li class='active'>Data</li>
+    <% folder = current_folder %>
+    <% parent_folders = [] %>
+    <% while folder.parent_id do %>
+      <% parent_folders << folder.parent %>
+      <% folder = folder.parent %>
+    <% end %>
+    <% parent_folders.reverse.each do |parent_folder| %>
+      <% if parent_folder.parent_id %>
+        <li><%= link_to parent_folder.name, parent_folder, remote: true %></li>
+      <% else %>
+        <li><%= link_to fa_icon('home'), parent_folder, remote: true %></li>
+      <% end %>
+    <% end %>
+    <% if current_folder.parent %>
+      <li class='active'><%= link_to current_folder.name, current_folder, remote: true %></li>
+    <% else %>
+      <li class='active'><%= link_to fa_icon('home'), current_folder, remote: true %></li>
+    <% end %>
   </ol>
 
   <div class='resource-board-actions'>
@@ -15,7 +36,7 @@
   <table class='table'>
     <thead>
       <tr>
-        <th width='200'>名称</th>
+        <th width='100'>名称</th>
         <th width='100'>创建时间</th>
       </tr>
     </thead>

@@ -1,1 +1,3 @@
-$('#resource-board').replaceWith("<%= j render 'resource_board/show', current_folder: @folder %>")
+$('#resource-board').replaceWith("<%= j render 'resource_board/show', current_folder: @folder %>");
+// 设置cookie，记录改变后的current_folder。
+document.cookie = "current_folder_id=<%= @folder.id %>; path=" + location.pathname;

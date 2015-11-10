@@ -77,6 +77,7 @@ marked.setOptions
 
 # 打开Bootstrap中的tab，并附加一些额外的元素。
 @turnOnTab = (tabs) ->
+  # TODO: 使用cookie存储。
   if localStorage and localStorage['tab'] and localStorage['url'] == location.pathname
     for x, y of tabs
       if x == localStorage['tab']
