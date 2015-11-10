@@ -1,0 +1,43 @@
+# == Schema Information
+#
+# Table name: folders
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  name            :string
+#  description     :string
+#  item_count      :integer
+#  parent_id       :integer
+#  folderable_id   :integer
+#  folderable_type :string
+#  status          :string
+#  position        :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  name: MyString
+  description: MyString
+  resource_count: 1
+  total_size: 1
+  parent_id: 1
+  folderable_id: 
+  folderable_type: Folderable
+  status: MyString
+  position: 1
+
+two:
+  user_id: 
+  name: MyString
+  description: MyString
+  resource_count: 1
+  total_size: 1
+  parent_id: 1
+  folderable_id: 
+  folderable_type: Folderable
+  status: MyString
+  position: 1

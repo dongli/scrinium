@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :trackable,
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
+  devise :confirmable if Rails.env.production?
 
   acts_as_messageable
 
@@ -43,12 +44,16 @@ class User < ActiveRecord::Base
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
   has_many :resources, as: :resourceable, dependent: :destroy
+  has_many :folders, as: :folderable, dependent: :destroy
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   validates_associated :profile
+
+  # TODO: 或者把创建根目录的任务拖延到用户第一次使用资源管理的时候。
+  after_create :create_root_folder
 
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil
@@ -58,4 +63,7 @@ class User < ActiveRecord::Base
     self.profile.try(:avatar)
   end
 
+  def create_root_folder
+    self.folders.create(name: 'root', user_id: self.id, folderable_id: self.id, folderable_type: 'User')
+  end
 end

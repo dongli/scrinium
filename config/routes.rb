@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version
   # Resource -------------------------------------------------------------------
   resources :resources, concerns: [ :commentable, :collectable ]
+  resources :folders
   # Reference ------------------------------------------------------------------
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references

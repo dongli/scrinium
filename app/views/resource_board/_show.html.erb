@@ -1,0 +1,44 @@
+<div id='resource-board' data-current-folder='<%= current_folder.id %>'>
+  <ol class='breadcrumb'>
+    <li><a href='#'>Home</a></li>
+    <li><a href='#'>Library</a></li>
+    <li class='active'>Data</li>
+  </ol>
+
+  <div class='resource-board-actions'>
+    <ul class='inline'>
+      <li><%= link_to fa_icon('plus-square-o', text: '文件'), [ :new, @user, :resource, folder_id: current_folder.id ] %></li>
+      <li><%= link_to fa_icon('plus-square-o', text: '文件夹'), [ :new, :folder, folder_id: current_folder.id ], remote: true %></li>
+    </ul>
+  </div>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th width='200'>名称</th>
+        <th width='100'>创建时间</th>
+      </tr>
+    </thead>
+    <tbody id='resource-board-table'>
+      <% current_folder.children.sort_by { |x| x.name }.each do |child| %>
+        <%= render 'resource_board/folder_table_row', folder: child %>
+      <% end %>
+      <% current_folder.resources.sort_by { |x| x.name }.each do |resource| %>
+        <%= render 'resource_board/resource_table_row', resource: resource %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class='modal fade' id='add-folder' tabindex='-1' role='dialog' aria-labelledby='add-folder-label'>
+    <div class='modal-dialog modal-sm' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header center'>
+          <h4 class='modal-title'>创建文件夹</h4>
+        </div>
+        <div class='modal-body'>
+          <%= render 'folders/form', folder: Folder.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

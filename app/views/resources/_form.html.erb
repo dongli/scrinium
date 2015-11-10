@@ -10,6 +10,7 @@
   </div>
   <%= simple_form_for [ @app, @resourceable, @resource ], method: :patch do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :folder_id, value: @resource.folder_id %>
     <%= f.input :name %>
     <%=
       f.input :category_list,

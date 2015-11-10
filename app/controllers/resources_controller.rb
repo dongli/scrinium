@@ -12,6 +12,7 @@ class ResourcesController < ApplicationController
 
   def new
     @resource = @resourceable.resources.new
+    @resource.folder_id = params[:folder_id]
   end
 
   def edit
@@ -97,6 +98,7 @@ class ResourcesController < ApplicationController
   def resource_params
     params.require(:resource).permit(:name,
                                      :description,
+                                     :folder_id,
                                      :file,
                                      :user_id,
                                      :tag_list,

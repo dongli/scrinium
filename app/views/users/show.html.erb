@@ -19,7 +19,7 @@
       ],
       resources: [
         t('activerecord.models.resource'),
-        render('resources/list', resources: @user.resources)
+        render('resource_board/show', current_folder: @user.folders.first)
       ]
     }
   %>

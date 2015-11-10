@@ -3,6 +3,7 @@
 # Table name: resources
 #
 #  id                :integer          not null, primary key
+#  folder_id         :integer
 #  name              :string
 #  description       :text
 #  file              :string
@@ -20,7 +21,16 @@
 #
 
 class Resource < ActiveRecord::Base
+  extend Enumerize
+
+  enumerize :status, in: [
+    :normal,
+    :hidden,
+    :trashed
+  ], default: :normal, predicates: true
+
   belongs_to :resourceable, polymorphic: true
+  belongs_to :folder
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy
 
