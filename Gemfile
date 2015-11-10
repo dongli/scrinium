@@ -47,6 +47,10 @@ gem 'globalize', '~> 5.0.0'
 ## API
 gem 'grape'
 gem 'jbuilder', '~> 2.0'
+gem 'grape-kaminari'
+gem 'active_model_serializers'
+gem 'grape-active_model_serializers'
+gem 'rack-cors', require: 'rack/cors'
 
 ## 文件上传
 gem 'paperclip', '~> 4.3' # 等待删除
@@ -82,6 +86,7 @@ gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
+gem 'acts_as_tenant'
 
 ## 搜索
 gem 'elasticsearch-model'
