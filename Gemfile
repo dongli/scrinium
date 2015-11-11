@@ -82,6 +82,7 @@ gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
+gem 'acts_as_tenant'
 
 ## 搜索
 gem 'elasticsearch-model'
