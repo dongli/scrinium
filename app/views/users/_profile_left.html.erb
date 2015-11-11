@@ -18,14 +18,6 @@
           %>
         </li>
       <% end %>
-      <% if policy(Resource).create? %>
-        <li>
-          <%=
-            link_to fa_icon('plus-square-o', text: t('activerecord.models.resource')),
-            [ :new, @user, :resource ], id: 'add-resource', style: 'display: none;'
-          %>
-        </li>
-      <% end %>
     <% end %>
   <% end %>
   <li>

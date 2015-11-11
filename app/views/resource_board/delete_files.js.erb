@@ -18,6 +18,10 @@ $('#delete-files-button').click(function() {
     id = $(this).attr('id');
     $('#' + id + '-delete').trigger('click');
   });
+  selectedResources.each(function() {
+    id = $(this).attr('id');
+    $('#' + id + '-delete').trigger('click');
+  });
 });
 
 // 更换表头。

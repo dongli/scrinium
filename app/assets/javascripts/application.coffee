@@ -23,6 +23,7 @@
 #= require i18n/translations
 #= require message-bus
 #= require dropzone
+#= require jquery.remotipart
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
 #= require jasny-bootstrap.min

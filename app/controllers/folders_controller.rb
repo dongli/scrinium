@@ -24,8 +24,11 @@ class FoldersController < ApplicationController
   end
 
   def update
-    @folder.update(folder_params)
-    respond_with @folder
+    respond_to do |format|
+      if @folder.update!(folder_params) # TODO: 处理错误。
+        format.js
+      end
+    end
   end
 
   def destroy

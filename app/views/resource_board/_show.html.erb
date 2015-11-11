@@ -28,7 +28,7 @@
 
   <div class='resource-board-actions'>
     <ul class='inline'>
-      <li><%= link_to fa_icon('plus-square-o', text: '文件'), [ :new, @user, :resource, folder_id: current_folder.id ] %></li>
+      <li><%= link_to fa_icon('plus-square-o', text: '文件'), [ :new, :resource, folder_id: current_folder.id ], remote: true %></li>
       <li><%= link_to fa_icon('plus-square-o', text: '文件夹'), [ :new, :folder, folder_id: current_folder.id ], remote: true %></li>
     </ul>
   </div>
@@ -59,6 +59,7 @@
     </tbody>
   </table>
 
+  <!-- 添加文件夹的modal -->
   <div class='modal fade' id='add-folder' tabindex='-1' role='dialog' aria-labelledby='add-folder-label'>
     <div class='modal-dialog modal-sm' role='document'>
       <div class='modal-content'>
@@ -72,6 +73,21 @@
     </div>
   </div>
 
+  <!-- 添加文件的modal -->
+  <div class='modal fade' id='add-resource' tabindex='-1' role='dialog' aria-labelledby='add-resource-label'>
+    <div class='modal-dialog modal-bg' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header center'>
+          <h4 class='modal-title'>创建文件</h4>
+        </div>
+        <div class='modal-body'>
+          <%= render 'resources/form', resource: Resource.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 删除文件或文件夹的modal -->
   <div class='modal fade' id='delete-files' tabindex='-1' role='dialog' aria-labelledby='delete-files-label'>
     <div class='modal-dialog modal-sm' role='document'>
       <div class='modal-content'>

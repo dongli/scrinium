@@ -1,0 +1,6 @@
+// 弹出一个modal。
+$('#resource_folder_id').attr('value', <%= @resource.folder_id %>);
+// 清空表单。
+// TODO: 下面这句导致选择文件后，文件栏仍为空。
+// $('.fileinput').fileinput('clear');
+$('#add-resource').modal();

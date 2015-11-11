@@ -23,3 +23,8 @@ zh-CN:
 
   dropzone:
     drag_file_here: 请将文件拖至这里。
+
+  action:
+    select_file: 选取
+    change_file: 改变
+    delete_file: 删除

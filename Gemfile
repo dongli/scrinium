@@ -54,6 +54,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-qiniu', '0.1.8'
 gem 'file_validators'
+gem 'remotipart'
 
 ## 编辑器
 gem 'mathjax-rails', '~> 2.5.1'

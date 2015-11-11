@@ -28,9 +28,6 @@ Rails.application.routes.draw do
     get '/collect' => 'collections#collect', as: :collect
     get '/uncollect' => 'collections#uncollect', as: :uncollect
   end
-  concern :resourceable do
-    resources :resources, concerns: [ :commentable, :collectable ]
-  end
   get '/collections/:id/toggle_watched' => 'collections#toggle_watched', as: :collection_toggle_watched
   get '/collections/:id/view' => 'collections#view', as: :collection_view
   # User -----------------------------------------------------------------------
@@ -43,7 +40,7 @@ Rails.application.routes.draw do
       emails:        'users/emails'
     }
   get '/users/:id/change_current_organization' => 'users#change_current_organization', as: :change_current_organization
-  resources :users, concerns: [ :resourceable ] do
+  resources :users do
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message
     get 'mailbox/write_message' => 'mailbox#write_message', as: :write_message
