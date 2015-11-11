@@ -34,10 +34,19 @@
   </div>
 
   <table class='table'>
-    <thead>
+    <thead id='resource-board-table-head'>
       <tr>
         <th width='100'>名称</th>
         <th width='100'>创建时间</th>
+
+        <th colspan=2 id='resource-board-file-actions' style='display: none;'>
+          <ul class='inline' style='margin-bottom: 0px;'>
+            <li style='margin-left: 0px;'><%= fa_icon('edit', text: '重命名') %></li>
+            <li><%= fa_icon('trash', text: '删除') %></li>
+            <li><%= fa_icon('wheelchair', text: '移动') %></li>
+            <li><%= fa_icon('copy', text: '拷贝') %></li>
+          </ul>
+        </th>
       </tr>
     </thead>
     <tbody id='resource-board-table'>

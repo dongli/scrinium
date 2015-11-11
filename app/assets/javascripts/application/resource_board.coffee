@@ -24,3 +24,9 @@ $(document).on 'page:change', ->
         toggleRow $('#resource-board-table tr.selected')
         if not selected
           toggleRow $(this)
+      if $('#resource-board-table tr.selected').length > 0
+        $('#resource-board-table-head th').hide()
+        $('#resource-board-file-actions').show()
+      else
+        $('#resource-board-table-head th').show()
+        $('#resource-board-file-actions').hide()
