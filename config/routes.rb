@@ -56,10 +56,11 @@ Rails.application.routes.draw do
   # Article --------------------------------------------------------------------
   resources :articles, concerns: [ :commentable, :collectable ]
   get '/articles/:id/versions' => 'articles#versions', as: :article_versions
-  get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version
+  get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version # 目前没什么用。
   # Resource -------------------------------------------------------------------
   resources :resources, concerns: [ :commentable, :collectable ]
   resources :folders
+  get '/resource_board/delete_files' => 'resource_board#delete_files', as: :delete_files
   # Reference ------------------------------------------------------------------
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references

@@ -1,4 +1,5 @@
 <tr id='folder-<%= folder.id %>'>
   <td><%= fa_icon('folder-o') %> <span class='folder-name'><%= link_to folder.name, folder, remote: true %></span></td>
   <td><%= folder.created_at %></td>
+  <td style='display: none;'><%= link_to '', folder, method: :delete, id: "folder-#{folder.id}-delete", remote: true %></td>
 </tr>

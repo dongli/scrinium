@@ -6,6 +6,12 @@ class ResourceBoardController < ApplicationController
     @current_folder = @owner.folders.first
   end
 
+  def delete_files
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_owner

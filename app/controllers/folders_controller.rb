@@ -29,8 +29,10 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    @resource.destroy
-    respond_with @folder
+    @folder.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

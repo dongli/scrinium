@@ -8,7 +8,7 @@ $(document).on 'page:change', ->
         row.attr('selected', true)
         row.addClass('selected')
 
-    $('#resource-board-table tr').click (e) ->
+    $('#resource-board-table').on 'click', 'tr', (e) ->
       if e.altKey
         # 选择或不选择多行（一次一行）。
         toggleRow $(this)
