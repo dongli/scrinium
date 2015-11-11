@@ -4,6 +4,8 @@ class API < Grape::API
   format :json
   formatter :json, Grape::Formatter::ActiveModelSerializers
   error_formatter :json, V1::ErrorFormatter
+  rescue_from :all, backtrace: true
+
   helpers AuthenticateHelper
 
   before do

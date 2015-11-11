@@ -13,10 +13,10 @@ module V1
         end
 
 
-        rescue_from ApiError::Unauthorized do |error|
-          code = ApiError.get_code(error)
-          generate_error_response(error, code)
-        end
+        # rescue_from ApiError::Unauthorized do |error|
+        #   code = ApiError.get_code(error)
+        #   generate_error_response(error, code)
+        # end
 
         # rescue_from :all do |error|
         #   if error.is_a? ApiError::Base
