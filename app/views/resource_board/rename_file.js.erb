@@ -1,13 +1,12 @@
+// TODO: 这里有些重复啊！
 <% if defined? @folder %>
   a = $('a[href="/folders/<%= @folder.id %>"]');
   a.before('<%= j render "folders/rename", folder: @folder %>');
-  $('input#folder_name').keypress(function(e) {
-    if (e.which == 13) {
-      $('form#edit_form_<%= @folder.id %>').submit();
-    }
-  });
   a.hide();
   $('input#folder_name').focus();
 <% elsif defined? @resource %>
-  alert('Rename a resource with name <%= @resource.name %>');
+  a = $('a[href="/resources/<%= @resource.id %>"]');
+  a.before('<%= j render "resources/rename", resource: @resource %>');
+  a.hide();
+  $('input#resource_name').focus();
 <% end %>

@@ -9,6 +9,7 @@ $(document).on 'page:change', ->
         row.addClass('selected')
 
     $('#resource-board-table').unbind('click').on 'click', 'tr', (e) ->
+      return if $('form[id^=edit_]').length > 0
       if e.altKey
         # 选择或不选择多行（一次一行）。
         toggleRow $(this)
