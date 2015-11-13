@@ -27,6 +27,11 @@ $(document).on 'page:change', ->
       if $('#resource-board-table tr.selected').length > 0
         $('#resource-board-table-head th').hide()
         $('#resource-board-file-actions').show()
+        # 只有当选择一个文件或文件夹时才显示一些操作按钮。
+        if $('#resource-board-table tr.selected').length > 1
+          $('#resource-board-file-actions li.for-single-file').hide()
+        else
+          $('#resource-board-file-actions li.for-single-file').show()
       else
         $('#resource-board-table-head th').show()
         $('#resource-board-file-actions').hide()
