@@ -41,7 +41,7 @@
 
         <th colspan=2 id='resource-board-file-actions' style='display: none;'>
           <ul class='resource-board-file-actions'>
-            <li class='for-single-file'><%= fa_icon('edit', text: '重命名') %></li>
+            <li class='for-single-file'><%= link_to fa_icon('edit', text: '重命名'), rename_file_path, remote: true %></li>
             <li><%= link_to fa_icon('trash', text: '删除'), delete_files_path, remote: true %></li>
             <li><%= fa_icon('wheelchair', text: '移动') %></li>
             <li><%= fa_icon('copy', text: '拷贝') %></li>

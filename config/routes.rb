@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   resources :resources, concerns: [ :commentable, :collectable ]
   resources :folders
   get '/resource_board/delete_files' => 'resource_board#delete_files', as: :delete_files
+  get '/resource_board/rename_file' => 'resource_board#rename_file', as: :rename_file
   # Reference ------------------------------------------------------------------
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references

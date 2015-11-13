@@ -6,6 +6,17 @@ class ResourceBoardController < ApplicationController
     @current_folder = @owner.folders.first
   end
 
+  def rename_file
+    if params[:folder_id].present?
+      @folder = Folder.find(params[:folder_id])
+    elsif params[:resource_id].present?
+      @resource = Resource.find(params[:resource_id])
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def delete_files
     respond_to do |format|
       format.js

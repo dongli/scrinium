@@ -32,6 +32,13 @@ $(document).on 'page:change', ->
           $('#resource-board-file-actions li.for-single-file').hide()
         else
           $('#resource-board-file-actions li.for-single-file').show()
+          # 这里修改操作按钮链接的参数，缀上被选定文件或文件夹的ID。
+          tmp = $('#resource-board-table tr.selected').attr('id')
+          fileType = tmp.replace(/-\d+/, '')
+          fileID = tmp.replace(/\w+-/, '')
+          $('#resource-board-file-actions li.for-single-file').each ->
+            url = $(this).children('a').attr('href').split('?')[0]
+            $(this).children('a').attr('href', "#{url}?#{fileType}_id=#{fileID}")
       else
         $('#resource-board-table-head th').show()
         $('#resource-board-file-actions').hide()
