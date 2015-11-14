@@ -2,7 +2,7 @@
 <% add_breadcrumb @organization.short_name, organization_path(@organization) %>
 
 <% content_for :left_side do %>
-  <%= render 'profile_left' %>
+  <%= render 'organizations/profile_left' %>
 <% end %>
 
 <% content_for :main_block do %>
@@ -10,21 +10,21 @@
     <%=
       render 'layouts/navtab',
       tabs: {
-        info: [ t('tab.info'), render('info') ],
-        suborganizations: [ t('tab.children'), render('suborganizations') ],
-        members: [ t('tab.members'), render('members') ],
-        engines: [ t('tab.engines'), render('engines') ],
-        admin: [ t('tab.admin'), render('admin') ]
+        info: [ t('tab.info'), render('organizations/info') ],
+        suborganizations: [ t('tab.children'), render('organizations/suborganizations') ],
+        members: [ t('tab.members'), render('organizations/members') ],
+        engines: [ t('tab.engines'), render('organizations/engines') ],
+        admin: [ t('tab.admin'), render('organizations/admin') ]
       }
     %>
   <% else %>
     <%=
       render 'layouts/navtab',
       tabs: {
-        info: [ t('tab.info'), render('info') ],
-        suborganizations: [ t('tab.children'), render('suborganizations') ],
-        members: [ t('tab.members'), render('members') ],
-        engines: [ t('tab.engines'), render('engines') ]
+        info: [ t('tab.info'), render('organizations/info') ],
+        suborganizations: [ t('tab.children'), render('organizations/suborganizations') ],
+        members: [ t('tab.members'), render('organizations/members') ],
+        engines: [ t('tab.engines'), render('organizations/engines') ]
       }
     %>
   <% end %>

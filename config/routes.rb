@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   end
 
   mount API => '/'
+  root 'home#index'
+
   mathjax 'mathjax'
 
-  get 'home/index'
   get 'news/index'
   get 'library/index'
-
-  root 'home#index'
 
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
@@ -82,11 +81,10 @@ Rails.application.routes.draw do
   get '/post_to_groups' => 'posts#post_to_groups'
   # Engines --------------------------------------------------------------------
   resources :licenses
-  resources :organizations do
-    if File.exist? "#{Rails.root}/config/engine_routes.rb"
-      instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
-    end
+  if File.exist? "#{Rails.root}/config/engine_routes.rb"
+    instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end
+
   # Admin ----------------------------------------------------------------------
   draw :admin
 end
