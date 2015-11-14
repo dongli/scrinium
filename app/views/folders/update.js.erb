@@ -1,2 +1,7 @@
-$('a[href="/folders/<%= @folder.id %>"]').text('<%= @folder.name %>').show();
-$('form#edit_folder_<%= @folder.id %>').remove();
+<% case @update_action %>
+<% when :move %>
+  $('#folder-<%= @folder.id %>').remove();
+<% when :rename %>
+  $('a[href="/folders/<%= @folder.id %>"]').text('<%= @folder.name %>').show();
+  $('form#edit_folder_<%= @folder.id %>').remove();
+<% end %>

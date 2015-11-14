@@ -24,6 +24,11 @@ class FoldersController < ApplicationController
   end
 
   def update
+    if params[:parent_id].present?
+      @update_action = :move
+    elsif params[:folder][:name].present?
+      @update_action = :rename
+    end
     respond_to do |format|
       if @folder.update!(folder_params) # TODO: 处理错误。
         format.js
@@ -56,6 +61,11 @@ class FoldersController < ApplicationController
   end
 
   def folder_params
+    # TODO: 我不知道如何直接在a中的href里写嵌套参数。
+    params[:folder] ||= {}
+    params.each do |key, value|
+      params[:folder][key] = value
+    end
     params.require(:folder).permit(:user_id,
                                    :name,
                                    :description,
