@@ -25,6 +25,11 @@ class ResourcesController < ApplicationController
   end
 
   def update
+    if params[:folder_id].present?
+      @update_action = :move
+    elsif params[:resource][:name].present?
+      @update_action = :rename
+    end
     respond_to do |format|
       if @resource.update!(resource_params)
         format.js
@@ -57,6 +62,11 @@ class ResourcesController < ApplicationController
   end
 
   def resource_params
+    # TODO: 我不知道如何直接在a中的href里写嵌套参数。
+    params[:resource] ||= {}
+    params.each do |key, value|
+      params[:resource][key] = value
+    end
     params.require(:resource).permit(:name,
                                      :description,
                                      :folder_id,

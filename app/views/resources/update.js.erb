@@ -1,2 +1,7 @@
-$('a[href="/resources/<%= @resource.id %>"]').text('<%= @resource.name %>').show();
-$('form#edit_resource_<%= @resource.id %>').remove();
+<% case @update_action %>
+<% when :move %>
+  $('#resource-<%= @resource.id %>').remove();
+<% when :rename %>
+  $('a[href="/resources/<%= @resource.id %>"]').text('<%= @resource.name %>').show();
+  $('form#edit_resource_<%= @resource.id %>').remove();
+<% end %>
