@@ -24,6 +24,7 @@
 #= require message-bus
 #= require dropzone
 #= require jquery.remotipart
+#= require jstree
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
 #= require jasny-bootstrap.min

@@ -23,6 +23,13 @@ class ResourceBoardController < ApplicationController
     end
   end
 
+  def move_files
+    @folders = params[:folder_ids].present? ? Folder.find(params[:folder_ids]) : []
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_owner

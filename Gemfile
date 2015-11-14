@@ -41,6 +41,7 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bower-rails'
 gem 'momentjs-rails'
 gem 'nprogress-rails'
+gem 'jstree-rails-4'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 

@@ -1,0 +1,10 @@
+$('div#move-files-container').replaceWith("<div id='move-files-container'></div>");
+$('div#move-files-container').jstree({
+  'core': {
+    'data': <%= raw get_folder_tree(@owner.folders.first, @folders).to_json %>,
+    'themes': {
+      'dots': false
+    }
+  }
+});
+$('div#move-files').modal();

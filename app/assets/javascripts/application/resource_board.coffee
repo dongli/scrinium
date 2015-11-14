@@ -40,6 +40,16 @@ $(document).on 'page:change', ->
           $('#resource-board-file-actions li.for-single-file').each ->
             url = $(this).children('a').attr('href').split('?')[0]
             $(this).children('a').attr('href', "#{url}?#{fileType}_id=#{fileID}")
+        # 需要将被选定文件或文件夹的ID回传给服务端。
+        args = ''
+        $('#resource-board-table tr[id^=folder].selected').each ->
+          args = args + "folder_ids[]=#{$(this).attr('id').replace('folder-', '')}&"
+        $('#resource-board-table tr[id^=resource].selected').each ->
+          args = args + "resource_ids[]=#{$(this).attr('id').replace('resource-', '')}&"
+        args = args.replace(/&$/, '')
+        a = $('a#move-files')
+        url = a.attr('href').split('?')[0]
+        a.attr('href', "#{url}?#{args}")
       else
         $('#resource-board-table-head th').show()
         $('#resource-board-file-actions').hide()

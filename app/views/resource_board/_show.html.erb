@@ -43,7 +43,7 @@
           <ul class='resource-board-file-actions'>
             <li class='for-single-file'><%= link_to fa_icon('edit', text: '重命名'), rename_file_path, remote: true %></li>
             <li><%= link_to fa_icon('trash', text: '删除'), delete_files_path, remote: true %></li>
-            <li><%= fa_icon('wheelchair', text: '移动') %></li>
+            <li><%= link_to fa_icon('wheelchair', text: '移动'), move_files_path, remote: true, id: 'move-files' %></li>
             <li><%= fa_icon('copy', text: '拷贝') %></li>
           </ul>
         </th>
@@ -97,7 +97,24 @@
         <div class='modal-body'>
           <div id='delete-files-message'></div>
           <div class='center'>
-            <button id='delete-files-button' class='btn btn-xs btn-danger'>删除</button>
+            <button id='delete-files-button' class='btn btn-danger'>删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 移动文件或文件夹的modal -->
+  <div class='modal fade' id='move-files' tabindex='-1' role='dialog' aria-labelledby='move-files-label'>
+    <div class='modal-dialog modal-sm' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header center'>
+          <h4 class='modal-title'>移动到 ...</h4>
+        </div>
+        <div class='modal-body'>
+          <div id='move-files-container'></div>
+          <div class='center'>
+            <button id='move-files-button' class='btn btn-primary'>移动</button>
           </div>
         </div>
       </div>
