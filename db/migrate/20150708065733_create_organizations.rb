@@ -21,10 +21,3 @@ class CreateOrganizations < ActiveRecord::Migration
     Organization.drop_tranlation_table!
   end
 end
-
-class A < ActiveRecord::Migration
-
-    add_column :organizations, :subdomain, :string
-
-
-end
