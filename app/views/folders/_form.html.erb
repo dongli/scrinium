@@ -1,0 +1,7 @@
+<%= simple_form_for folder, remote: true do |f| %>
+  <%= f.hidden_field :parent_id %>
+  <%= f.input :name %>
+  <div class='center'>
+    <%= f.button :submit, t('action.submit'), class: 'button' %>
+  </div>
+<% end %>

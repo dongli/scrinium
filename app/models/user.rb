@@ -22,6 +22,7 @@
 #
 
 class User < ActiveRecord::Base
+  include Resourceable
   extend Enumerize
 
   enumerize :role, in: [:admin, :assist_admin, :user], default: :user, predicates: true
@@ -29,7 +30,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :trackable,
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
+  devise :confirmable if Rails.env.production?
 
   acts_as_messageable
 
@@ -42,7 +44,6 @@ class User < ActiveRecord::Base
   has_many :publications, dependent: :destroy
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
-  has_many :resources, as: :resourceable, dependent: :destroy
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true
 
@@ -57,5 +58,4 @@ class User < ActiveRecord::Base
   def avatar_url
     self.profile.try(:avatar)
   end
-
 end

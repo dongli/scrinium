@@ -1,0 +1,15 @@
+zh-CN:
+  activerecord:
+    models:
+      folder: 文件夹
+    attributes:
+      folder:
+        name: 文件夹名称
+        description: 文件夹描述
+
+  enumerize:
+    folder:
+      status:
+        normal: 正常
+        hidden: 隐藏
+        trashed: 已删除

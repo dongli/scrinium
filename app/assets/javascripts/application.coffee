@@ -23,6 +23,8 @@
 #= require i18n/translations
 #= require message-bus
 #= require dropzone
+#= require jquery.remotipart
+#= require jstree
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
 #= require jasny-bootstrap.min
@@ -77,6 +79,7 @@ marked.setOptions
 
 # 打开Bootstrap中的tab，并附加一些额外的元素。
 @turnOnTab = (tabs) ->
+  # TODO: 使用cookie存储。
   if localStorage and localStorage['tab'] and localStorage['url'] == location.pathname
     for x, y of tabs
       if x == localStorage['tab']

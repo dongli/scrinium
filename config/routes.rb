@@ -28,9 +28,6 @@ Rails.application.routes.draw do
     get '/collect' => 'collections#collect', as: :collect
     get '/uncollect' => 'collections#uncollect', as: :uncollect
   end
-  concern :resourceable do
-    resources :resources, concerns: [ :commentable, :collectable ]
-  end
   get '/collections/:id/toggle_watched' => 'collections#toggle_watched', as: :collection_toggle_watched
   get '/collections/:id/view' => 'collections#view', as: :collection_view
   # User -----------------------------------------------------------------------
@@ -43,7 +40,7 @@ Rails.application.routes.draw do
       emails:        'users/emails'
     }
   get '/users/:id/change_current_organization' => 'users#change_current_organization', as: :change_current_organization
-  resources :users, concerns: [ :resourceable ] do
+  resources :users do
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message
     get 'mailbox/write_message' => 'mailbox#write_message', as: :write_message
@@ -56,9 +53,13 @@ Rails.application.routes.draw do
   # Article --------------------------------------------------------------------
   resources :articles, concerns: [ :commentable, :collectable ]
   get '/articles/:id/versions' => 'articles#versions', as: :article_versions
-  get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version
+  get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version # 目前没什么用。
   # Resource -------------------------------------------------------------------
   resources :resources, concerns: [ :commentable, :collectable ]
+  resources :folders
+  get '/resource_board/delete_files' => 'resource_board#delete_files', as: :delete_files
+  get '/resource_board/rename_file' => 'resource_board#rename_file', as: :rename_file
+  get '/resource_board/move_files' => 'resource_board#move_files', as: :move_files
   # Reference ------------------------------------------------------------------
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references
