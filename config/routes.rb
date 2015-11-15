@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
-  mount API => '/'
   root 'home#index'
-
+  mount API => '/'
   mount GrapeSwaggerRails::Engine => '/apidoc' unless Rails.env.production?
   mathjax 'mathjax'
 
@@ -57,9 +56,14 @@ Rails.application.routes.draw do
   # Resource -------------------------------------------------------------------
   resources :resources, concerns: [ :commentable, :collectable ]
   resources :folders
-  get '/resource_board/delete_files' => 'resource_board#delete_files', as: :delete_files
-  get '/resource_board/rename_file' => 'resource_board#rename_file', as: :rename_file
-  get '/resource_board/move_files' => 'resource_board#move_files', as: :move_files
+  resources :resource_board, only: [:index] do
+    collection do
+      get :delete_files
+      get :rename_file
+      get :move_files
+    end
+  end
+
   # Reference ------------------------------------------------------------------
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references
