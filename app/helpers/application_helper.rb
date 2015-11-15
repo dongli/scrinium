@@ -35,4 +35,8 @@ module ApplicationHelper
     options.merge!(title: time.iso8601)
     content_tag(:abbr, EMPTY_STRING, class: options[:class], title: time.iso8601) if time
   end
+
+  def is_root_domain?
+    request.path == '/' and request.host.split('.').first == 'scrinium'
+  end
 end
