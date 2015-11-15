@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_user, only: [ :show, :edit, :update, :destroy, :change_current_organization ]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @users = User.all
@@ -32,15 +32,6 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to session[:previous_url].last, notice: t('message.destroy_success', thing: t('activerecord.models.user')) }
-    end
-  end
-
-  def change_current_organization
-    @user.current_organization_id = params[:organization_id]
-    respond_to do |format|
-      if @user.save!
-        format.html { redirect_to :root }
-      end
     end
   end
 
