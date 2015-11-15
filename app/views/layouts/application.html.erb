@@ -4,6 +4,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= content_for?(:title) ? yield(:title) + ' - ' + t('scrinium') : t('scrinium') %></title>
   <!-- Set ROOT_PATH for querying in JavaScript. -->
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
   <script type="text/javascript" charset="utf-8">
     var ROOT_PATH = '<%= main_app.root_url %>';
     I18n = {}
@@ -15,7 +19,7 @@
       TeX: { equationNumbers: { autoNumber: "all" } }
     });
   </script>
-  <%= mathjax_tag %>
+  <%#= mathjax_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
