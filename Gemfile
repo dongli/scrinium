@@ -118,5 +118,5 @@ group :development, :test do
   gem 'capistrano-sidekiq'
 
   # 插件
-  gem 'scrinium_esm', '0.0.1', path: '../scrinium_esm'
+  # gem 'scrinium_esm', '0.0.1', path: '../scrinium_esm'
 end
