@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   mount API => '/'
   root 'home#index'
 
+  mount GrapeSwaggerRails::Engine => '/apidoc' unless Rails.env.production?
   mathjax 'mathjax'
 
   get 'news/index'

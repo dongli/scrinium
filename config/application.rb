@@ -30,6 +30,15 @@ module Scrinium
     # Load Grape API files.
     config.paths.add 'app/api', glob: '**/*.rb'
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+
+    #跨域操作
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+
     config.app_generators.scaffold_controller = :scaffold_controller
     config.generators.each do |g|
       g.jbuilder false

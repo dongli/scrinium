@@ -51,6 +51,12 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_associated :profile
 
+  before_save :ensure_authentication_token
+
+  def ensure_authentication_token
+    self.authentication_token ||= generate_authentication_token
+  end
+
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil
   end
@@ -58,4 +64,15 @@ class User < ActiveRecord::Base
   def avatar_url
     self.profile.try(:avatar)
   end
+
+  def reset_authentication_token
+    self.authentication_token = SecureRandom.uuid
+    self.save
+  end
+
+  private
+  def generate_authentication_token
+    self.authentication_token = SecureRandom.uuid
+  end
+
 end

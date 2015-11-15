@@ -48,6 +48,12 @@ gem 'globalize', '~> 5.0.0'
 ## API
 gem 'grape'
 gem 'jbuilder', '~> 2.0'
+gem 'grape-kaminari'
+gem 'active_model_serializers'
+gem 'grape-active_model_serializers'
+gem 'rack-cors', require: 'rack/cors'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 
 ## 文件上传
 gem 'paperclip', '~> 4.3' # 等待删除
