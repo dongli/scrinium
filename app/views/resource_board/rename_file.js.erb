@@ -1,0 +1,12 @@
+// TODO: 这里有些重复啊！
+<% if defined? @folder %>
+  a = $('a[href="/folders/<%= @folder.id %>"]');
+  a.before('<%= j render "folders/rename", folder: @folder %>');
+  a.hide();
+  $('input#folder_name').focus();
+<% elsif defined? @resource %>
+  a = $('a[href="/resources/<%= @resource.id %>"]');
+  a.before('<%= j render "resources/rename", resource: @resource %>');
+  a.hide();
+  $('input#resource_name').focus();
+<% end %>

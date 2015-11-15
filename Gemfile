@@ -41,6 +41,7 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bower-rails'
 gem 'momentjs-rails'
 gem 'nprogress-rails'
+gem 'jstree-rails-4'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 
@@ -60,6 +61,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-qiniu', '0.1.8'
 gem 'file_validators'
+gem 'remotipart'
 
 ## 编辑器
 gem 'mathjax-rails', '~> 2.5.1'
@@ -78,8 +80,8 @@ gem 'settingslogic'
 gem 'simple_form'
 gem 'paper_trail', '~> 4.0.0'
 gem 'closure_tree'
+gem 'responders'
 
-gem 'diffy'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'mailboxer'
 gem 'message_bus'

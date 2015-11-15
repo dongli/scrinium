@@ -1,6 +1,7 @@
 class CreateResources < ActiveRecord::Migration
   def change
     create_table :resources do |t|
+      t.belongs_to  :folder
       t.string      :name,                            index: true # 资源的名称
       t.text        :description                                  # 资源的描述
       t.string      :file                                         # 文件

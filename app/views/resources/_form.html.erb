@@ -1,25 +1,11 @@
 <div class='resource-form'>
-  <div style='margin-bottom: 1em;'>
-    <% if @resource.id %>
-      <%= image_tag @resource.file.url, class: 'center resizable', style: 'padding-bottom: 1em; border-radius: 10px;' %>
-    <% else %>
-      <%= form_for [ @app, @resourceable, @resource ],
-        html: { multipart: true, class: 'dropzone', id: 'upload-file' } do |f| %>
-      <% end %>
-    <% end %>
-  </div>
-  <%= simple_form_for [ @app, @resourceable, @resource ], method: :patch do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.input :name %>
+  <%= simple_form_for resource, remote: true do |f| %>
     <%=
-      f.input :category_list,
-      collection: @resource.categories.map { |t| t.name },
-      input_html: {
-        class: 'use-select2-multiple-tags',
-        multiple: 'multiple'
-      }
+      render 'layouts/upload_file', form: f,
+      object: resource, file_attribute_name: :file
     %>
-    <%= f.input :description, as: :text %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :folder_id, value: resource.folder_id %>
     <div class='center'>
       <%= f.button :submit, t('action.submit'), class: 'button' %>
     </div>

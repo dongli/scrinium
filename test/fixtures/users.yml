@@ -3,23 +3,16 @@
 # Table name: users
 #
 #  id                      :integer          not null, primary key
-#  avatar                  :string
 #  name                    :string           not null
 #  email                   :string           not null
+#  mobile                  :string
 #  encrypted_password      :string           not null
-#  gender                  :string           not null
-#  position                :string
 #  role                    :string           not null
-#  status                  :string
 #  current_organization_id :integer
+#  position                :integer
 #  reset_password_token    :string
 #  reset_password_sent_at  :datetime
 #  remember_created_at     :datetime
-#  sign_in_count           :integer          default(0), not null
-#  current_sign_in_at      :datetime
-#  last_sign_in_at         :datetime
-#  current_sign_in_ip      :inet
-#  last_sign_in_ip         :inet
 #  confirmation_token      :string
 #  confirmed_at            :datetime
 #  confirmation_sent_at    :datetime

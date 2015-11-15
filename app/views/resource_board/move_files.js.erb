@@ -1,0 +1,37 @@
+selectedFolders = $('#resource-board-table tr[id^=folder].selected');
+selectedResources = $('#resource-board-table tr[id^=resource].selected');
+
+$('div#move-files-container').replaceWith("<div id='move-files-container'></div>");
+$('div#move-files-container').jstree({
+  'core': {
+    'data': <%= raw get_folder_tree(@owner.folders.first, @folders).to_json %>,
+    'themes': {
+      'dots': false
+    }
+  }
+});
+$('div#move-files-container').on('changed.jstree', function(e, data) {
+  node = data.instance.get_node(data.selected[0]);
+  // jstree的文档打不开，我不知道怎么在下面的click中访问到被选择的文件夹，只能在这里将被选择
+  // 的文件夹ID记录到button中。
+  $('button#move-files').data('selected-folder-id', node.id);
+});
+$('button#move-files').click(function() {
+  if ($(this).data('selected-folder-id')) {
+    targetFolderID = $(this).data('selected-folder-id');
+    $('div#move-files').modal('hide');
+    selectedFolders.each(function() {
+      id = $(this).attr('id');
+      url = $('a#' + id + '-update').attr('href');
+      $('a#' + id + '-update').attr('href', url + '?parent_id=' + targetFolderID).trigger('click');
+    });
+    selectedResources.each(function() {
+      id = $(this).attr('id');
+      url = $('a#' + id + '-update').attr('href');
+      $('a#' + id + '-update').attr('href', url + '?folder_id=' + targetFolderID).trigger('click');
+    });
+  } else {
+    alert('You did not select a folder!');
+  }
+});
+$('div#move-files').modal();

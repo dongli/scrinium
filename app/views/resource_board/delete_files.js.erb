@@ -1,0 +1,31 @@
+selectedFolders = $('#resource-board-table tr[id^=folder].selected');
+selectedResources = $('#resource-board-table tr[id^=resource].selected');
+
+numItem = selectedFolders.length + selectedResources.length;
+if (selectedFolders.length > 0 && selectedResources.length == 0)
+  itemTitle = '文件夹';
+else if (selectedFolders.length == 0 && selectedResources.length > 0)
+  itemTitle = '文件';
+else
+  itemTitle = '资源';
+
+$('#delete-files-message').html("<p>确定要删除" + numItem + "个" + itemTitle + "？</p>");
+$('#delete-files').modal();
+
+$('#delete-files-button').click(function() {
+  $('#delete-files').modal('hide');
+  selectedFolders.each(function() {
+    id = $(this).attr('id');
+    $('#' + id + '-delete').trigger('click');
+  });
+  selectedResources.each(function() {
+    id = $(this).attr('id');
+    $('#' + id + '-delete').trigger('click');
+  });
+});
+
+// 更换表头。
+$('#delete-files-button').click(function() {
+  $('#resource-board-table-head th').show();
+  $('#resource-board-file-actions').hide();
+});

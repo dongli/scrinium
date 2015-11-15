@@ -7,6 +7,8 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    redirect_to "http://#{@organization.subdomain}.#{request.domain}"
+    # redirect_to 'http://las.scrinium.dev:3009/'
   end
 
   def new

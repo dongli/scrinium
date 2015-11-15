@@ -17,6 +17,7 @@
  *= require bootstrap-datepicker3
  *= require jasny-bootstrap.min
  *= require jcrop
+ *= require jstree-default
  *= require froala_editor.min.css
  *= require froala_style.min.css
  *= require plugins/char_counter.min.css
@@ -199,4 +200,13 @@ img.resizable {
   border-style: solid;
   border-width: 0px 0px 1px 0px;
   border-color: darkred
+}
+
+table th, table td {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

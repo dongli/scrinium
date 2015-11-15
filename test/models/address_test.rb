@@ -6,13 +6,13 @@
 #  name             :string
 #  addressable_id   :integer
 #  addressable_type :string
-#  order            :integer
 #  country          :string
 #  city             :string
 #  district         :string
 #  street           :string
 #  zip_code         :string
 #  status           :string
+#  position         :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

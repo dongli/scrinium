@@ -1,4 +1,9 @@
+require "application_responder"
+
 class ApplicationController < ActionController::Base
+  self.responder = ApplicationResponder
+  respond_to :html
+
   include Pundit
 
   # Prevent CSRF attacks by raising an exception.
@@ -29,5 +34,4 @@ class ApplicationController < ActionController::Base
     flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
     redirect_to(request.referrer || root_path)
   end
-
 end
