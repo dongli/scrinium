@@ -3,7 +3,6 @@ module V1
     version 'v1', using: :path
 
     mount V1::ApiBase
-    # mount V1::UsersAPI
     mount V1::GroupsAPI
     mount V1::OrganizationsAPI
     mount V1::MailboxAPI
