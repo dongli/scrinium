@@ -20,7 +20,7 @@ module V1
       end
 
       get do
-        !devise_authenticate!
+        authenticate! # 可进行用户是否登录验证
         @users = User.includes(:profile).all.page(params[:page] || 1).per(params[:per_page] || 1)#.includes(:profile)
         paginate(@users)
 
