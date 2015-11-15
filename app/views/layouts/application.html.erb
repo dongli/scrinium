@@ -32,7 +32,7 @@
     <%= render 'layouts/navbar' %>
   </header>
 
-  <% if request.path == '/' %>
+  <% if is_root_domain? %>
     <div class='with-background'>
   <% end %>
   <div id="main-container" class="container">
@@ -43,12 +43,12 @@
       <%= render 'layouts/main_block' %>
     </div>
   </div>
-  <% if request.path == '/' %>
+  <% if is_root_domain? %>
     </div>
   <% end %>
 
   <footer>
-    <% if request.path == '/' %>
+    <% if is_root_domain? %>
       Copyright &copy 2015 <%= t('global.shustone') %>
     <% end %>
   </footer>
