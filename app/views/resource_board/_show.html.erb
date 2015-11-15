@@ -41,9 +41,9 @@
 
         <th colspan=2 id='resource-board-file-actions' style='display: none;'>
           <ul class='resource-board-file-actions'>
-            <li class='for-single-file'><%= link_to fa_icon('edit', text: '重命名'), rename_file_path, remote: true %></li>
-            <li><%= link_to fa_icon('trash', text: '删除'), delete_files_path, remote: true %></li>
-            <li><%= link_to fa_icon('wheelchair', text: '移动'), move_files_path, remote: true, id: 'move-files' %></li>
+            <li class='for-single-file'><%= link_to fa_icon('edit', text: '重命名'), resource_board_rename_file_path, remote: true %></li>
+            <li><%= link_to fa_icon('trash', text: '删除'), resource_board_delete_files_path, remote: true %></li>
+            <li><%= link_to fa_icon('wheelchair', text: '移动'), resource_board_move_files_path, remote: true, id: 'move-files' %></li>
             <li><%= fa_icon('copy', text: '拷贝') %></li>
           </ul>
         </th>

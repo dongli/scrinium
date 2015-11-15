@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  # Concerns -------------------------------------------------------------------
+  # Concerns
   concern :commentable do
     resources :comments, except: [ :new, :show ]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   get '/collections/:id/toggle_watched' => 'collections#toggle_watched', as: :collection_toggle_watched
   get '/collections/:id/view' => 'collections#view', as: :collection_view
-  # User -----------------------------------------------------------------------
+  # 用户
   devise_for :users, path_prefix: 'd',
     controllers: {
       sessions:      'users/sessions',
@@ -38,7 +38,6 @@ Rails.application.routes.draw do
       passwords:     'users/passwords',
       emails:        'users/emails'
     }
-  get '/users/:id/change_current_organization' => 'users#change_current_organization', as: :change_current_organization
   resources :users do
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message
@@ -49,35 +48,32 @@ Rails.application.routes.draw do
     get 'mailbox/empty_trash' => 'mailbox#empty_trash', as: :empty_trash
     get 'mailbox/restore_message/:id' => 'mailbox#restore_message', as: :restore_message
   end
-  # Article --------------------------------------------------------------------
+  # 文章
   resources :articles, concerns: [ :commentable, :collectable ]
   get '/articles/:id/versions' => 'articles#versions', as: :article_versions
   get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version # 目前没什么用。
-  # Resource -------------------------------------------------------------------
+  # 资源
   resources :resources, concerns: [ :commentable, :collectable ]
   resources :folders
-  resources :resource_board, only: [:index] do
-    collection do
-      get :delete_files
-      get :rename_file
-      get :move_files
-    end
+  namespace :resource_board do
+    get :delete_files
+    get :rename_file
+    get :move_files
   end
-
-  # Reference ------------------------------------------------------------------
+  # 参考文献
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references
   resources :publishers
-  # Membership -----------------------------------------------------------------
+  # 资格
   resources :memberships do
     member do
       get :reject
     end
   end
-  # Organization ---------------------------------------------------------------
+  # 机构
   resources :organizations
   resources :addresses
-  # Group ----------------------------------------------------------------------
+  # 群组
   resources :groups
   resources :posts do
     member do
@@ -85,12 +81,11 @@ Rails.application.routes.draw do
     end
   end
   get '/post_to_groups' => 'posts#post_to_groups'
-  # Engines --------------------------------------------------------------------
+  # 插件
   resources :licenses
   if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end
-
-  # Admin ----------------------------------------------------------------------
+  # 后台管理
   draw :admin
 end

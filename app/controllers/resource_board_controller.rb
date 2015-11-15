@@ -2,10 +2,6 @@ class ResourceBoardController < ApplicationController
   before_action :authenticate_user!
   before_action :set_owner
 
-  def index
-    @current_folder = @owner.folders.first
-  end
-
   def rename_file
     if params[:folder_id].present?
       @folder = Folder.find(params[:folder_id])
