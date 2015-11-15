@@ -4,5 +4,6 @@ module V1
     def self.call message, backtrace, options, env
       { status: false, :message => message }.to_json
     end
+
   end
 end

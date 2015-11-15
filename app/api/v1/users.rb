@@ -1,6 +1,5 @@
 module V1
   class Users < ApiBase #Grape::API
-    include Grape::Kaminari
 
     resource :users do
 

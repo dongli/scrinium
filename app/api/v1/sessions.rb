@@ -3,7 +3,6 @@ module V1
     resource :sessions do
 
       desc "Authenticate user and return user object / access token"
-
       params do
         requires :email, type: String, desc: "User email"
         requires :password, type: String, desc: "User Password"
@@ -12,6 +11,11 @@ module V1
       post do
         email = params[:email]
         password = params[:password]
+
+        if current_user
+          error!({error_code: 401, error_message: "already login in"})
+          return
+        end
 
         if email.nil? or password.nil?
           error!({error_code: 404, error_message: "Invalid Email or Password."},401)
