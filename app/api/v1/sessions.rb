@@ -29,7 +29,8 @@ module V1
           return
         else
           user.save
-          {status: 'ok', token: user.authentication_token}.to_json
+          {status: true, access_token: user.authentication_token}.to_json
+          cookies[:access_token] ||= user.authentication_token
         end
       end
 
