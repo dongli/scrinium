@@ -7,7 +7,7 @@ module V1
     mount V1::OrganizationsAPI
     mount V1::MailboxAPI
     mount V1::PublishersAPI
-    mount V1::Users
+    mount V1::UsersAPI
     mount V1::Sessions
 
     add_swagger_documentation(
