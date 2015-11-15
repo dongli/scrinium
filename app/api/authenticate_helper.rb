@@ -5,7 +5,7 @@ module AuthenticateHelper
   end
 
   def authenticate!
-    error!('401 Unauthorized', 401) unless current_user
+    error!('401 Unauthorized', 401) unless authenticated
   end
 
   def warden

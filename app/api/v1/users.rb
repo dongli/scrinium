@@ -20,7 +20,8 @@ module V1
       end
 
       get do
-        @users = User.all.page(params[:page] || 1).per(params[:per_page] || 1)#.includes(:profile)
+        !devise_authenticate!
+        @users = User.includes(:profile).all.page(params[:page] || 1).per(params[:per_page] || 1)#.includes(:profile)
         paginate(@users)
 
         # @profile = current_user.profile

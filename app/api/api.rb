@@ -8,9 +8,6 @@ class API < Grape::API
 
   helpers AuthenticateHelper
 
-  before do
-    error!("401 Unauthorized, 401") unless authenticated
-  end
   mount V1::ApiBase
   # mount V1::UsersAPI
   mount V1::GroupsAPI
