@@ -7,6 +7,7 @@
 #  admin_id   :integer
 #  parent_id  :integer
 #  website    :string
+#  subdomain  :string
 #  status     :string
 #  position   :integer
 #  created_at :datetime         not null
@@ -30,6 +31,7 @@ class Organization < ActiveRecord::Base
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
   validates :name, :short_name, uniqueness: true
+  validates :name, :short_name, presence: true
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 
@@ -39,5 +41,13 @@ class Organization < ActiveRecord::Base
     else
       @admin
     end
+  end
+
+  before_create :set_defaults
+
+  private
+
+  def set_defaults
+    self.subdomain ||= self.short_name.parameterize
   end
 end
