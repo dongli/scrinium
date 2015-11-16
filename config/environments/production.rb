@@ -80,7 +80,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = Settings.smtp_settings_symbol_hash
 
-  config.action_mailer.default_url_options = { host: Settings.domain, port: 3000 }
+  config.action_mailer.default_url_options = { host: Settings.domain }
 
 
   config.after_initialize do
