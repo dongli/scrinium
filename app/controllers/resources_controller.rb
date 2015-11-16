@@ -1,11 +1,13 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_resourceable
+  before_action :set_resourceable, only: [ :new, :create ]
   before_action :set_resource, only: [ :show, :edit, :update, :destroy ]
 
   def new
     @resource = @resourceable.resources.new
     @resource.folder_id = params[:folder_id]
+    @resource.resourceable_type = params[:resourceable_type]
+    @resource.resourceable_id = params[:resourceable_id]
   end
 
   def show
@@ -54,6 +56,9 @@ class ResourcesController < ApplicationController
     if params[:resourceable_id].present? and params[:resourceable_type].present?
       resourceable_id = params[:resourceable_id]
       resourceable_type = params[:resourceable_type]
+    elsif params[:resource][:resourceable_id].present? and params[:resource][:resourceable_type].present?
+      resourceable_id = params[:resource][:resourceable_id]
+      resourceable_type = params[:resource][:resourceable_type]
     else
       resourceable_id = current_user.id
       resourceable_type = 'User'

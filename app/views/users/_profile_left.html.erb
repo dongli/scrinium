@@ -20,28 +20,4 @@
       <% end %>
     <% end %>
   <% end %>
-  <li>
-    <a href='#group-list'
-      data-toggle='collapse'
-      aria-expanded='false'
-      aria-controls='group-list'>
-      <%= fa_icon('users', text: t('action.join')+t('activerecord.models.group')) %>
-    </a>
-  </li>
 </ul>
-
-<!-- Group list placeholder -->
-<div class='collapse' id='group-list'>
-  <ul class='left-side-list'>
-    <% @user.groups.each do |group| %>
-      <li class='indent'>
-        <%= link_to fa_icon('chevron-right', text: group.name), group %>
-      </li>
-    <% end %>
-    <% if policy(Group).create? %>
-      <li class='indent'>
-        <%= link_to fa_icon('plus-square', text: t('action.add')+t('activerecord.models.group')), new_group_path %>
-      </li>
-    <% end %>
-  </ul>
-</div>

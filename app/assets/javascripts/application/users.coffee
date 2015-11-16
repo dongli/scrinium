@@ -9,4 +9,4 @@ $(document).on 'page:change', ->
     turnOnTab
       activities: [ 'add-article' ]
       collections: []
-      resources: [ ]
+      resources: []

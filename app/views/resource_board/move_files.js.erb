@@ -1,10 +1,12 @@
 selectedFolders = $('#resource-board-table tr[id^=folder].selected');
 selectedResources = $('#resource-board-table tr[id^=resource].selected');
 
+// 重置文件夹列表。
 $('div#move-files-container').replaceWith("<div id='move-files-container'></div>");
+// 换上新的文件夹列表。
 $('div#move-files-container').jstree({
   'core': {
-    'data': <%= raw get_folder_tree(@owner.folders.first, @folders).to_json %>,
+    'data': <%= raw get_folder_tree(@folderable.folders.first, @folders).to_json %>,
     'themes': {
       'dots': false
     }
@@ -17,18 +19,28 @@ $('div#move-files-container').on('changed.jstree', function(e, data) {
   $('button#move-files').data('selected-folder-id', node.id);
 });
 $('button#move-files').click(function() {
+  folderableType = $('div#resource-board').data('folderable-type');
+  folderableID = $('div#resource-board').data('folderable-id');
   if ($(this).data('selected-folder-id')) {
     targetFolderID = $(this).data('selected-folder-id');
     $('div#move-files').modal('hide');
     selectedFolders.each(function() {
       id = $(this).attr('id');
       url = $('a#' + id + '-update').attr('href');
-      $('a#' + id + '-update').attr('href', url + '?parent_id=' + targetFolderID).trigger('click');
+      $('a#' + id + '-update').attr('href',
+        url + '?parent_id=' + targetFolderID +
+        '&folderable_type=' + folderableType +
+        '&folderable_id=' + folderableID
+      ).trigger('click');
     });
     selectedResources.each(function() {
       id = $(this).attr('id');
       url = $('a#' + id + '-update').attr('href');
-      $('a#' + id + '-update').attr('href', url + '?folder_id=' + targetFolderID).trigger('click');
+      $('a#' + id + '-update').attr('href',
+        url + '?folder_id=' + targetFolderID +
+        '&folderable_type=' + folderableType +
+        '&folderable_id=' + folderableID
+      ).trigger('click');
     });
   } else {
     alert('You did not select a folder!');

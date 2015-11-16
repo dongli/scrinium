@@ -1,10 +1,31 @@
+<!-- 如果没有传入current_folder，则必须传入folderable。 -->
+<% if not defined? current_folder or not current_folder %>
+  <!-- 很抱歉在这里添加增加root文件夹的逻辑，因为在model中无法访问到current_user。 -->
+  <% if folderable.folders.empty? %>
+    <% folderable.folders.create(
+      name: 'root',
+      user_id: current_user.id,
+      folderable_id: folderable.id,
+      folderable_type: folderable.class.to_s
+    ) %>
+  <% end %>
+
+  <!-- 默认第一个文件夹为当前文件夹。 -->
+  <% current_folder = folderable.folders.first %>
+<% end %>
+<!-- 从cookie中查看是否记录有当前文件夹ID。 -->
 <% current_folder_id = cookies[:current_folder_id] %>
 <% if current_folder_id and current_folder_id != current_folder.id %>
-  <% current_folder = Folder.find(current_folder_id) %>
+  <!-- 如果有，则更改当前文件夹。 -->
+  <% tmp = Folder.find_by id: current_folder_id %>
+  <!-- 为了避免泄露文件，我们必须判断folderable的一致性。 -->
+  <% current_folder = tmp if tmp and tmp.folderable == current_folder.folderable %>
 <% else %>
   <% cookies[:current_folder_id] = { value: "#{current_folder.id}", path: request.fullpath } %>
 <% end %>
-<div id='resource-board' data-current-folder='<%= current_folder.id %>'>
+<div id='resource-board' data-current-folder='<%= current_folder.id %>'
+  data-folderable-type='<%= current_folder.folderable_type %>'
+  data-folderable-id='<%= current_folder.folderable_id %>'>
   <ol class='breadcrumb'>
     <% folder = current_folder %>
     <% parent_folders = [] %>
@@ -28,8 +49,24 @@
 
   <div class='resource-board-actions'>
     <ul class='inline'>
-      <li><%= link_to fa_icon('plus-square-o', text: '文件'), [ :new, :resource, folder_id: current_folder.id ], remote: true %></li>
-      <li><%= link_to fa_icon('plus-square-o', text: '文件夹'), [ :new, :folder, folder_id: current_folder.id ], remote: true %></li>
+      <li>
+        <%=
+          link_to fa_icon('plus-square-o', text: '文件'),
+          [ :new, :resource, folder_id: current_folder.id,
+            resourceable_type: current_folder.folderable_type,
+            resourceable_id: current_folder.folderable_id ],
+          remote: true
+        %>
+      </li>
+      <li>
+        <%=
+          link_to fa_icon('plus-square-o', text: '文件夹'),
+          [ :new, :folder, parent_id: current_folder.id,
+            folderable_type: current_folder.folderable_type,
+            folderable_id: current_folder.folderable_id ],
+          remote: true
+        %>
+      </li>
     </ul>
   </div>
 
@@ -41,10 +78,38 @@
 
         <th colspan=2 id='resource-board-file-actions' style='display: none;'>
           <ul class='resource-board-file-actions'>
-            <li class='for-single-file'><%= link_to fa_icon('edit', text: '重命名'), resource_board_rename_file_path, remote: true %></li>
-            <li><%= link_to fa_icon('trash', text: '删除'), resource_board_delete_files_path, remote: true %></li>
-            <li><%= link_to fa_icon('wheelchair', text: '移动'), resource_board_move_files_path, remote: true, id: 'move-files' %></li>
-            <li><%= fa_icon('copy', text: '拷贝') %></li>
+            <li class='for-single-file'>
+              <%=
+                link_to fa_icon('edit', text: '重命名'), rename_file_path(
+                  folderable_type: current_folder.folderable.class,
+                  folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'rename-file'
+              %>
+            </li>
+            <li>
+              <%=
+                link_to fa_icon('trash', text: '删除'), delete_files_path(
+                folderable_type: current_folder.folderable.class,
+                folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'delete-files'
+              %>
+            </li>
+            <li>
+              <%=
+                link_to fa_icon('wheelchair', text: '移动'), move_files_path(
+                  folderable_type: current_folder.folderable.class,
+                  folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'move-files'
+              %>
+            </li>
+            <li>
+              <%=
+                link_to fa_icon('share-alt', text: '分享'), share_files_path(
+                  folderable_type: current_folder.folderable.class,
+                  folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'share-files'
+              %>
+            </li>
           </ul>
         </th>
       </tr>
@@ -97,7 +162,7 @@
         <div class='modal-body'>
           <div id='delete-files-message'></div>
           <div class='center'>
-            <button id='delete-files-button' class='btn btn-danger'>删除</button>
+            <button id='delete-files' class='btn btn-danger'>删除</button>
           </div>
         </div>
       </div>

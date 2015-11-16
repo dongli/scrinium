@@ -6,12 +6,30 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <%=
-    render 'layouts/navtab',
-    tabs: {
-      info: [ t('tab.info'), render('info') ],
-      members: [ t('tab.members'), render('members') ],
-      admin: [ t('tab.admin'), render('admin') ]
-    }
-  %>
+  <% if policy(@group).update? %>
+    <%=
+      render 'layouts/navtab',
+      tabs: {
+        info: [ t('tab.info'), render('info') ],
+        members: [ t('tab.members'), render('members') ],
+        resources: [
+          t('activerecord.models.resource'),
+          render('resource_board/show', folderable: @group)
+        ],
+        admin: [ t('tab.admin'), render('admin') ]
+      }
+    %>
+  <% else %>
+    <%=
+      render 'layouts/navtab',
+      tabs: {
+        info: [ t('tab.info'), render('info') ],
+        members: [ t('tab.members'), render('members') ],
+        resources: [
+          t('activerecord.models.resource'),
+          render('resource_board/show', folderable: @group)
+        ]
+      }
+    %>
+  <% end %>
 <% end %>
