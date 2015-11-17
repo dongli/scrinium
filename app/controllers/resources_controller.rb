@@ -18,11 +18,10 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = @resourceable.resources.new(resource_params)
-    @resource.name = @resource.file.file.filename
+    @resource.name = @resource.file.file.filename if @resource.file.file
+    @resource.save
     respond_to do |format|
-      if @resource.save! # TODO: 处理错误。
-        format.js
-      end
+      format.js
     end
   end
 
@@ -75,6 +74,8 @@ class ResourcesController < ApplicationController
     params.require(:resource).permit(:name,
                                      :description,
                                      :folder_id,
+                                     :resourceable_type,
+                                     :resourceable_id,
                                      :file,
                                      :user_id,
                                      :tag_list,

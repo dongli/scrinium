@@ -18,10 +18,9 @@ class FoldersController < ApplicationController
 
   def create
     @folder = @folderable.folders.new(folder_params)
+    @folder.save
     respond_to do |format|
-      if @folder.save! # TODO: 处理错误。
-        format.js
-      end
+      format.js
     end
   end
 

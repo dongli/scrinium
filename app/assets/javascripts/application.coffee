@@ -115,6 +115,24 @@ marked.setOptions
       localStorage['tab'] = $(this).attr('aria-controls')
       localStorage['url'] = location.pathname
 
+@showValidationError = (inputName, errorMessage) ->
+  $("label[for=#{inputName}]").attr('style', 'color: #AA3F44;')
+  if $("input##{inputName}").length == 1
+    input = $("input##{inputName}")
+  else if $("div.#{inputName}").length == 1
+    input = $("div.#{inputName}")
+  input.attr('style', 'border-color: #AA3F44;')
+    .after("""
+      <p style='color: #AA3F44; margin-top: 5px;' id='#{inputName}-error-message'>
+        #{errorMessage}
+      </p>
+    """)
+  # 当用户开始编辑时，去除错误显示。
+  input.bind 'click keypress', ->
+    $("label[for=#{inputName}]").attr('style', 'color: #333333;')
+    $(this).attr('style', 'border-color: #CCCCCC;')
+    $("##{inputName}-error-message").remove()
+
 selectByGET = (id, api_url) ->
   $('select[id='+id+']').select2(
     ajax:

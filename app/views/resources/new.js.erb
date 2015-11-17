@@ -1,8 +1,7 @@
-// 弹出一个modal。
+// 清空表单。
+$('div#resource-form-container').html("<%= j render 'resources/form', resource: Resource.new %>");
 $('input#resource_folder_id').attr('value', '<%= @resource.folder_id %>');
 $('input#resource_resourceable_type').attr('value', '<%= @resource.resourceable_type %>');
 $('input#resource_resourceable_id').attr('value', '<%= @resource.resourceable_id %>');
-// 清空表单。
-// TODO: 下面这句导致选择文件后，文件栏仍为空。
-// $('.fileinput').fileinput('clear');
+// 弹出一个modal。
 $('div#add-resource').modal();
