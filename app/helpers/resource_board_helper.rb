@@ -16,4 +16,13 @@ module ResourceBoardHelper
     end
     tree
   end
+
+  def get_resource_icon object
+    case object
+    when Resource
+      fa_icon('file-o')
+    when Folder
+      fa_icon('folder-o')
+    end
+  end
 end

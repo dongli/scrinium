@@ -26,6 +26,12 @@ class ResourceBoardController < ApplicationController
     end
   end
 
+  def share_files
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_folderable

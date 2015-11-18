@@ -1,0 +1,37 @@
+selectedFolders = $('#resource-board-table tr[id^=folder].selected');
+selectedResources = $('#resource-board-table tr[id^=resource].selected');
+
+$('div#share-files').modal();
+
+$('button#share-files').unbind('click').bind('click', function(e) {
+  $('input[id^=share-files-group-]').filter(function() {
+    // 只有当群组被选中，并且还没有贴出该对象时才执行发布操作。
+    return $(this).prop('checked') && ! $(this).prop('disabled')
+  }).each(function() {
+    groupID = $(this).attr('id').split('-')[3];
+    selectedFolders.each(function() {
+      id = $(this).attr('id');
+      folderID = id.split('-')[1];
+      url = $('a#' + id + '-share').attr('href');
+      $('a#' + id + '-share').attr('href',
+        url + '?host_type=Group' +
+        '&host_id=' + groupID +
+        '&shareable_type=Folder' +
+        '&shareable_id=' + folderID
+      ).trigger('click');
+    });
+    selectedResources.each(function() {
+      id = $(this).attr('id');
+      resourceID = id.split('-')[1];
+      url = $('a#' + id + '-share').attr('href');
+      $('a#' + id + '-share').attr('href',
+        url + '?host_type=Group' +
+        '&host_id=' + groupID +
+        '&shareable_type=Resource' +
+        '&shareable_id=' + resourceID
+      ).trigger('click');
+    });
+  });
+  $('div#share-files').modal('hide');
+  e.preventDefault();
+});

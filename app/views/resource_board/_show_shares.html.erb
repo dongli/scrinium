@@ -1,0 +1,20 @@
+<div class='shared-resource-board'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th width='100'>名称</th>
+        <th width='100'>分享者</th>
+        <th width='100'>分享时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% host.shares.each do |share| %>
+        <tr>
+          <td><%= get_resource_icon share.shareable %> <%= share.shareable.name %></td>
+          <td><%= share.user.name %></td>
+          <td><%= share.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

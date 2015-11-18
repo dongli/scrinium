@@ -1,5 +1,5 @@
 <tr id='resource-<%= resource.id %>'>
-  <td><%= fa_icon('file-o') %> <span class='resource-name'><%= link_to resource.name, resource %></span></td>
+  <td><%= get_resource_icon resource %> <span class='resource-name'><%= link_to resource.name, resource %></span></td>
   <td><%= resource.created_at %></td>
   <td style='display: none;'>
     <ul>
@@ -14,6 +14,12 @@
          link_to '', resource, method: :patch,
          id: "resource-#{resource.id}-update", remote: true
        %>
+      </li>
+      <li>
+        <%=
+          link_to '', new_share_path,
+          id: "resource-#{resource.id}-share", remote: true
+        %>
       </li>
     </ul>
   </td>

@@ -53,6 +53,12 @@ a.button:visited {
   padding: 1em;
 }
 
+.breadcrumb-no-border {
+  @extend .breadcrumb;
+  border: none;
+  margin-bottom: 0;
+}
+
 .carousel {
   height: 300px;
   overflow: hidden;
