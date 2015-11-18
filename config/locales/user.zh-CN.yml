@@ -16,7 +16,7 @@ zh-CN:
         remember_me: 记住我
         created_at: 注册时间
         updated_at: 更新时间
-        current_organization_id: 当前机构ID
+        current_password: 当前密码
     errors:
       models:
         user:

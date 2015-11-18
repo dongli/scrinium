@@ -10,7 +10,6 @@ class Admin::UsersController < Admin::ApplicationController
       email
       mobile
       role
-      current_organization_id
       confirmed_at
       created_at
       updated_at
@@ -18,7 +17,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def permitted_attributes
-    %w(name email mobile role current_organization_id  confirmed_at)
+    %w(name email mobile role  confirmed_at)
   end
 
 end
