@@ -1,4 +1,41 @@
-<div class='shared-resource-board'>
+<div id='shared-resource-board'>
+  <!-- 文件夹导航栏 -->
+  <div id='shared-folder-nav-column' class='float-left' style='display: table;'>
+    <ol class='breadcrumb-no-border'>
+      <% if defined? current_share %>
+        <li><%= link_to fa_icon('home'), back_to_top_share_path(current_share), remote: true %></li>
+      <% else %>
+        <li><%= link_to fa_icon('home'), '#' %></li>
+      <% end %>
+      <% if defined? current_folder %>
+        <% folder = current_folder %>
+        <% parent_folders = [] %>
+        <% while folder.id != current_share.shareable.id do %>
+          <% parent_folders << folder.parent %>
+          <% folder = folder.parent %>
+        <% end %>
+        <% parent_folders.reverse.each do |parent_folder| %>
+          <li>
+            <%=
+              link_to parent_folder.name, [
+                parent_folder,
+                current_share_id: current_share.id
+              ], remote: true
+            %>
+          </li>
+        <% end %>
+        <li class='active'>
+          <%=
+            link_to current_folder.name, [
+              current_folder,
+              current_share_id: current_share.id
+            ], remote: true
+          %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
   <table class='table'>
     <thead>
       <tr>
@@ -8,12 +45,29 @@
       </tr>
     </thead>
     <tbody>
-      <% host.shares.each do |share| %>
-        <tr>
-          <td><%= get_resource_icon share.shareable %> <%= share.shareable.name %></td>
-          <td><%= share.user.name %></td>
-          <td><%= share.created_at %></td>
-        </tr>
+      <% if defined? current_folder %>
+        <% current_folder.children.sort_by { |x| x.name }.each do |child| %>
+          <%= render 'resource_board/folder_table_row', folder: child, current_share_id: current_share.id %>
+        <% end %>
+        <% current_folder.resources.sort_by { |x| x.name }.each do |resource| %>
+          <%= render 'resource_board/resource_table_row', resource: resource %>
+        <% end %>
+      <% else %>
+        <% host.shares.each do |share| %>
+          <tr>
+            <td>
+              <%= get_resource_icon share.shareable %>
+              <%=
+                link_to share.shareable.name, [
+                  share.shareable,
+                  current_share_id: share.id
+                ], get_resource_link_options(share.shareable)
+              %>
+            </td>
+            <td><%= share.user.name %></td>
+            <td><%= share.created_at %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

@@ -1,7 +1,7 @@
 class SharesController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
-  before_action :set_host_and_shareable
-  before_action :set_share, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_host_and_shareable, except: [ :back_to_top ]
+  before_action :set_share, only: [ :show, :edit, :update, :destroy, :back_to_top ]
 
   def show
   end
@@ -31,6 +31,9 @@ class SharesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to shares_url, notice: 'Share was successfully destroyed.' }
     end
+  end
+
+  def back_to_top
   end
 
   private

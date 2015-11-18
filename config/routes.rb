@@ -58,7 +58,11 @@ Rails.application.routes.draw do
   [ :delete_files, :rename_file, :move_files, :share_files ].each do |action|
     get "#{action}/:folderable_type/:folderable_id" => "resource_board##{action}", as: action
   end
-  resources :shares
+  resources :shares do
+    member do
+      get :back_to_top
+    end
+  end
   # 参考文献
   resources :publications, except: [ :index, :new, :edit, :show ]
   resources :references

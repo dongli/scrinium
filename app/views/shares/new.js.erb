@@ -1,5 +1,3 @@
-<% if @share.errors.empty? %>
-  alert('分享"<%= @share.shareable_type %>"至"<%= @share.host_type %>"<%= @share.host.name %>。');
-<% else %>
+<% if not @share.errors.empty? %>
   alert('分享遇到错误！<%= @share.shareable.name %>: <%= @share.errors.full_messages %>');
 <% end %>

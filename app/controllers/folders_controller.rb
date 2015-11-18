@@ -11,6 +11,7 @@ class FoldersController < ApplicationController
   end
 
   def show
+    @current_share = Share.find_by id: params[:current_share_id]
   end
 
   def edit

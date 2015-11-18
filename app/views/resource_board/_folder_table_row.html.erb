@@ -1,5 +1,12 @@
 <tr id='folder-<%= folder.id %>'>
-  <td><%= get_resource_icon folder %> <span class='folder-name'><%= link_to folder.name, folder, remote: true %></span></td>
+  <% if defined? current_share_id %>
+    <td>
+      <%= fa_icon('folder-o') %>
+      <%= link_to folder.name, [ folder, current_share_id: current_share_id ], remote: true %>
+    </td>
+  <% else %>
+    <td><%= fa_icon('folder-o') %> <%= link_to folder.name, folder, remote: true %></td>
+  <% end %>
   <td><%= folder.created_at %></td>
   <!-- 目录操作列表 -->
   <td style='display: none;'>

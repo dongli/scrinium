@@ -25,4 +25,99 @@
 <% end %>
 
 <%= render 'resource_board/show_owned', current_folder: current_folder %>
-<%= render 'resource_board/show_shares', host: current_folder.folderable %>
+
+<% if not current_folder.folderable.shares.empty? %>
+  <%= render 'resource_board/show_shares', host: current_folder.folderable %>
+<% end %>
+
+<!-- 添加文件夹的modal -->
+<div class='modal fade' id='add-folder' tabindex='-1' role='dialog' aria-labelledby='add-folder-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>创建文件夹</h4>
+      </div>
+      <div class='modal-body'>
+        <%= render 'folders/form', folder: Folder.new %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 添加文件的modal -->
+<div class='modal fade' id='add-resource' tabindex='-1' role='dialog' aria-labelledby='add-resource-label'>
+  <div class='modal-dialog modal-bg' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>创建文件</h4>
+      </div>
+      <div class='modal-body' id='resource-form-container'>
+        <!-- 文件上传表单在resources/new.js.erb中插入 -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 删除文件或文件夹的modal -->
+<div class='modal fade' id='delete-files' tabindex='-1' role='dialog' aria-labelledby='delete-files-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>是否执行删除？</h4>
+      </div>
+      <div class='modal-body'>
+        <div id='delete-files-message'></div>
+        <div class='center'>
+          <button id='delete-files' class='btn btn-danger'>删除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 移动文件或文件夹的modal -->
+<div class='modal fade' id='move-files' tabindex='-1' role='dialog' aria-labelledby='move-files-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>移动到 ...</h4>
+      </div>
+      <div class='modal-body'>
+        <div id='move-files-container'></div>
+        <div class='center'>
+          <button id='move-files' class='btn btn-primary'>移动</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 分享文件或文件夹的modal -->
+<div class='modal fade' id='share-files' tabindex='-1' role='dialog' aria-labelledby='share-files-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>分享到 ...</h4>
+      </div>
+      <div class='modal-body'>
+        <div class='well'>
+          <% if current_user.groups.size < 20 %>
+            <ul class='clean-list'>
+              <% current_user.groups.each do |group| %>
+                <li>
+                  <%= check_box_tag "share-files-group-#{group.id}" %> <%= group.name %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        <div class='well'>
+          分享到其他用户。
+        </div>
+        <div class='center'>
+          <button id='share-files' class='btn btn-primary'>分享</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

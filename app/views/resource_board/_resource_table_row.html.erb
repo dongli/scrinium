@@ -1,5 +1,5 @@
 <tr id='resource-<%= resource.id %>'>
-  <td><%= get_resource_icon resource %> <span class='resource-name'><%= link_to resource.name, resource %></span></td>
+  <td><%= fa_icon('file-o') %> <%= link_to resource.name, resource %></td>
   <td><%= resource.created_at %></td>
   <td style='display: none;'>
     <ul>
