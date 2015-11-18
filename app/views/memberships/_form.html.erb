@@ -19,9 +19,44 @@
       </div>
     <% end %>
   <% when :invited %>
-    <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name', style: 'width: 100%;' } %>
+    <%= f.input :user_id, label: false, as: :select, class: "js-data-example-ajax" %>
+    <%#= f.input :user_id, label: false, as: :select, collection: User.all %>
     <div class='center'>
       <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
     </div>
   <% end %>
 <% end %>
+<script>
+  $("#membership_user_id").select2({
+    ajax: {
+      url: "/api/v1/users",
+      dataType: 'json',
+      delay: 250,
+      data: function (params) {
+        return {
+          q: params.term, // search term
+          page: params.page
+        };
+      },
+      processResults: function (data, params) {
+        // parse the results into the format expected by Select2
+        // since we are using custom formatting functions we do not need to
+        // alter the remote JSON data, except to indicate that infinite
+        // scrolling can be used
+        params.page = params.page || 1;
+
+        return {
+          results: data.users,
+          pagination: {
+            more: (params.page * 30) < data.total_count
+          }
+        };
+      },
+      cache: true
+    },
+    escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+    minimumInputLength: 2
+//    templateResult: formatRepo, // omitted for brevity, see the source of this page
+//    templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+  });
+</script>

@@ -24,12 +24,12 @@ module V1
         optional :per_page, type: Integer, desc: 'per_page'
       end
 
-      get do
-        authenticate! # 可进行用户是否登录验证
-        @users = User.includes(:profile).all.page(params[:page] || 1).per(params[:per_page] || 1)#.includes(:profile)
-        paginate(@users)
-
-      end
+      # get do
+      #   authenticate! # 可进行用户是否登录验证
+      #   @users = User.includes(:profile).all.page(params[:page] || 1).per(params[:per_page] || 1)#.includes(:profile)
+      #   paginate(@users)
+      #
+      # end
 
       desc 'get one user info'
       params do
@@ -54,6 +54,17 @@ module V1
         @user.update(name: params[:name])
         @user
       end
+
+      desc 'search users by name or email'
+      params do
+        optional :q, type: String, desc: 'search user_name or user_email'
+      end
+
+      get do
+        # authenticate!
+        @users = User.search(params[:q], options= {}).records.includes(:profile).page(params[:page]).per(2)
+      end
+
 
     end
   end
