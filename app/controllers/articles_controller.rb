@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
     set_status
 
     respond_to do |format|
@@ -91,7 +91,6 @@ class ArticlesController < ApplicationController
                                     { group_ids: [] },
                                     :tag_list,
                                     { category_list: [] },
-                                    :user_id,
                                     :status)
   end
 end
