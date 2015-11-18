@@ -1,4 +1,4 @@
-<% if defined? @current_share %>
+<% if @current_share %>
   $('div#shared-resource-board').replaceWith("<%=
     j render 'resource_board/show_shares',
     host: @current_share.host,
