@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :authenticate_user!, except: [ :show ]
   before_action :set_user, only: [ :show, :edit, :update, :destroy ]
-
-  def index
-    @users = User.all
-  end
 
   def show
   end
@@ -42,9 +38,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :mobile,
+    params.require(:user).permit(:name, :mobile,
                                  profile_attributes: [
-                                   :id,
                                    :avatar,
                                    :crop_x,
                                    :crop_y,
