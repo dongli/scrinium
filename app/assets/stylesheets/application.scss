@@ -209,3 +209,7 @@ table th, table td {
   -ms-user-select: none;
   user-select: none;
 }
+
+table {
+  table-layout: fixed;
+}
