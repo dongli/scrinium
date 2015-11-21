@@ -37,11 +37,14 @@
   </div>
 
   <table class='table'>
+    <col width='200'>
+    <col width='100'>
+    <col width='50'>
     <thead>
       <tr>
-        <th width='100'>名称</th>
-        <th width='100'>分享者</th>
-        <th width='100'>分享时间</th>
+        <th>名称</th>
+        <th>分享时间</th>
+        <th>分享者</th>
       </tr>
     </thead>
     <tbody>
@@ -64,8 +67,8 @@
                 ], get_resource_link_options(share.shareable)
               %>
             </td>
-            <td><%= share.user.name %></td>
             <td><%= share.created_at %></td>
+            <td><%= share.user.name %></td>
           </tr>
         <% end %>
       <% end %>

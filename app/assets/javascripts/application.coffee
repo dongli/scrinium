@@ -213,8 +213,11 @@ $(document).on 'page:change', ->
     multiple: true
   # Turn on Bootstrap popover.
   $('[data-toggle="popover"]').each ->
-    $(this).popover
+    $(this).popover({
       html: true
+    }).click (e) ->
+      e.stopPropagation()
+
   # Dismiss popover when click outside.
   $('body').on 'click', (e) ->
     $('[data-toggle="popover"]').each ->

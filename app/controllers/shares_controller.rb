@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
-  before_action :set_host_and_shareable, except: [ :back_to_top ]
+  before_action :set_host_and_shareable, except: [ :destroy, :back_to_top ]
   before_action :set_share, only: [ :show, :edit, :update, :destroy, :back_to_top ]
 
   def show
@@ -10,7 +10,10 @@ class SharesController < ApplicationController
     @share = @host.shares.new
     @share.shareable = @shareable
     @share.user = current_user
-    @share.save
+    if @share.save
+      @shareable.share_ids << @share.id
+      @shareable.save
+    end
   end
 
   def edit
@@ -27,9 +30,11 @@ class SharesController < ApplicationController
   end
 
   def destroy
+    @share.shareable.share_ids.delete @share.id
+    @share.shareable.save
     @share.destroy
     respond_to do |format|
-      format.html { redirect_to shares_url, notice: 'Share was successfully destroyed.' }
+      format.js
     end
   end
 

@@ -1,3 +1,14 @@
 <% if not @share.errors.empty? %>
   alert('分享遇到错误！<%= @share.shareable.name %>: <%= @share.errors.full_messages %>');
+<% else %>
+  $('td#<%= @share.shareable_type.downcase %>-<%= @share.shareable_id %>-share-hosts').html("<%=
+    j render 'resource_board/share_hosts', object: @share.shareable
+  %>");
+  $('[data-toggle="popover"]').each(function() {
+    $(this).popover({
+      html: true
+    }).click(function(e) {
+      e.stopPropagation();
+    });
+  });
 <% end %>
