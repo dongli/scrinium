@@ -1,6 +1,6 @@
 <tr id='resource-<%= resource.id %>'>
   <td><%= fa_icon('file-o') %> <%= link_to resource.name, resource %></td>
-  <td><%= resource.created_at %></td>
+  <td><%= timeago resource.created_at %></td>
   <td id='resource-<%= resource.id %>-share-hosts' style='text-align: center;'>
     <%= render 'resource_board/share_hosts', object: resource %>
   </td>

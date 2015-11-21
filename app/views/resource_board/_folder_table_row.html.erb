@@ -8,7 +8,7 @@
   <% else %>
     <td><%= fa_icon('folder-o') %> <%= link_to folder.name, folder, remote: true %></td>
   <% end %>
-  <td><%= folder.created_at %></td>
+  <td><%= timeago folder.created_at %></td>
   <td><%= render 'resource_board/share_hosts', object: folder %></td>
   <!-- 文件夹操作列表 -->
   <td style='display: none;'>

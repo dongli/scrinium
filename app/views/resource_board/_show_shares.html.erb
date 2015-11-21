@@ -67,7 +67,7 @@
                 ], get_resource_link_options(share.shareable)
               %>
             </td>
-            <td><%= share.created_at %></td>
+            <td><%= timeago share.created_at %></td>
             <td><%= share.user.name %></td>
           </tr>
         <% end %>
