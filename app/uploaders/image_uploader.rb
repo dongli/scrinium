@@ -14,6 +14,10 @@ class ImageUploader < BaseUploader
     process resize_to_fit: [ 20, 20 ]
   end
 
+  # def default_url(*args)
+  #   ActionController::Base.helpers.asset_path("assets/thumb/" + ["default_avatar.png"].compact.join('_'))
+  # end
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end

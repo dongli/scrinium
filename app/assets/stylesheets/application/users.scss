@@ -50,3 +50,9 @@
 a.thumbnail {
   border-style: none;
 }
+
+.select2-users { padding-top: 4px; padding-bottom: 3px; }
+.select2-users-avatar { float: left; width: 60px; margin-right: 10px; }
+.select2-users-avatar img { width: 100%; height: auto; border-radius: 2px; }
+.select2-users-name { margin-left: 70px; color: black; font-weight: bold;}
+.select2-users-email {  word-wrap: break-word; line-height: 1.1; margin-top: 2px; }
