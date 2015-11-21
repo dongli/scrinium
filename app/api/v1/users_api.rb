@@ -61,8 +61,9 @@ module V1
       end
 
       get do
-        # authenticate!
-        @users = User.search(params[:q], options= {}).records.includes(:profile).page(params[:page]).per(2)
+        authenticate!
+        @users = User.search(params[:q], options= {}).records.includes(:profile).page(params[:page]).per(10)
+
       end
 
 

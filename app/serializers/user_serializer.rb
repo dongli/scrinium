@@ -1,9 +1,7 @@
 class UserSerializer < BaseSerializer
 
-  attributes :id, :name, :email, :liked
+  attributes :id, :name, :email
   has_one :profile
 
-  def liked
-    'like' if 1 == 2
-  end
+
 end
