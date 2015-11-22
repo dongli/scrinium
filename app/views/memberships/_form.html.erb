@@ -19,8 +19,7 @@
       </div>
     <% end %>
   <% when :invited %>
-    <%= f.input :user_id, label: false, as: :select, class: "js-data-example-ajax", input_html: {style: 'width: 100%;' } %>
-    <%#= f.input :user_id, label: false, as: :select, collection: User.all %>
+    <%= f.input :user_id, label: false, as: :select, input_html: {style: 'width: 100%;', class: "choose_user" } %>
     <div class='center'>
       <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
     </div>
@@ -29,11 +28,10 @@
 <script>
 
   function formatRepo (user) {
-    console.log(user)
     if (user.loading) return user.text;
 
     var markup = "<div class='select2-users clearfix'>" +
-//            "<div class='select2-users-avatar'><img src='" + user.profile.small_avatar_url + "' /></div>" +
+            "<div class='select2-users-avatar'><img src='" + user.profile.small_avatar_url + "' /></div>" +
             "<div class='select2-users-name'>" + user.name +
             "<div class='select2-users-email'>" + user.email + "</div>" +
             "</div></div>";
@@ -44,10 +42,14 @@
   function formatRepoSelection (user) {
     return user.name
   }
+  var users_url = "/api/v1/users";
 
-  $("#membership_user_id").select2({
+  $(".choose_user").select2({
+    language: "zh-CN",
+    placeholder: "请选择一个用户",
+    theme: "bootstrap",
     ajax: {
-      url: "/api/v1/users",
+      url: users_url,
       dataType: 'json',
       delay: 300,
       data: function (params) {
