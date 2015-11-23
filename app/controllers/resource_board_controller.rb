@@ -1,6 +1,6 @@
 class ResourceBoardController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_owner
+  before_action :set_folderable
 
   def rename_file
     if params[:folder_id].present?
@@ -26,13 +26,19 @@ class ResourceBoardController < ApplicationController
     end
   end
 
+  def share_files
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
-  def set_owner
-    if params[:owner_id].present? and params[:owner_type].present?
-      @owner = params[:owner_type].classify.constantize.find(params[:owner_id])
+  def set_folderable
+    if params[:folderable_id].present? and params[:folderable_type].present?
+      @folderable = params[:folderable_type].classify.constantize.find(params[:folderable_id])
     else
-      @owner = current_user
+      @folderable = current_user
     end
   end
 end

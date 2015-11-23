@@ -1,0 +1,29 @@
+<%=
+  fa_icon('share-alt',
+  id: "#{object.class}-#{object.id}-share-icon",
+  style: "display: #{object.share_ids.empty? ? 'none' : 'block'}",
+  data: {
+    toggle: 'popover',
+    placement: 'bottom',
+    content: <<-EOT
+      <ul class='clean-list'>
+        #{
+          object.share_ids.map { |id|
+            <<-EOT
+              <li id='delete-share-#{id}'>
+                #{check_box_tag "delete-share-#{id}", '', true} #{Share.find(id).host.name}
+                #{link_to '', share_path(id), method: :delete, remote: true}
+              </li>
+            EOT
+          }.join
+        }
+      </ul>
+      <script type='text/javascript'>
+        $('input[id^=delete-share-]').change(function() {
+          var id = $(this).attr('id').split('-')[2];
+          $('li#delete-share-' + id + ' a').trigger('click');
+        });
+      </script>
+    EOT
+  })
+%>

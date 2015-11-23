@@ -10,6 +10,7 @@ class CreateResources < ActiveRecord::Migration
       t.string      :file_name                                    # 原名称
       t.integer     :user_id                                      # 创建者的ID
       t.references  :resourceable, polymorphic: true, index: true # 所属对象
+      t.integer     :share_ids, array: true, default: []          # 记录分享ID
       t.string      :status                                       # 状态
       t.string      :uuid                                         # 唯一标示符
       t.integer     :position                                     # 位置（预留字段）

@@ -3,12 +3,11 @@
 <table class='articles'>
   <thead>
     <tr>
-      <th width='200'><%= t('activerecord.attributes.article.title') %></th>
+      <th width='100'><%= t('activerecord.attributes.article.title') %></th>
       <% if show_author %>
-        <th width='100'><%= t('activerecord.attributes.article.user') %></th>
+        <th width='50'><%= t('activerecord.attributes.article.user') %></th>
       <% end %>
-      <th width='200'><%= t('activerecord.attributes.article.created_at') %></th>
-      <th width='100'><%= t('activerecord.attributes.article.impressionist_count') %></th>
+      <th width='50'><%= t('activerecord.attributes.article.created_at') %></th>
     </tr>
   </thead>
   <tbody>
@@ -19,8 +18,7 @@
         <% if show_author %>
           <td><%= link_to article.user.name, article.user %></td>
         <% end %>
-        <td><%= article.created_at %></td>
-        <td><%#= article.impressionist_count filter: :session_hash %></td>
+        <td><%= timeago article.created_at %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,17 @@
-$('#resource-board').replaceWith("<%= j render 'resource_board/show', current_folder: @folder %>");
+<% if @current_share %>
+  $('div#shared-resource-board').replaceWith("<%=
+    j render 'resource_board/show_shares',
+    host: @current_share.host,
+    current_folder: @folder,
+    current_share: @current_share
+  %>");
+<% else %>
+  $('div#resource-board').replaceWith("<%=
+    j render 'resource_board/show_owned',
+    current_folder: @folder
+  %>");
+  // 设置cookie，记录改变后的current_folder。
+  document.cookie = "current_folder_id=<%= @folder.id %>; path=" + location.pathname;
+<% end %>
 // 需要重新绑定一些事件！
 $(document).trigger('page:change');
-// 设置cookie，记录改变后的current_folder。
-document.cookie = "current_folder_id=<%= @folder.id %>; path=" + location.pathname;

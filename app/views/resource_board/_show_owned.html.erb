@@ -1,0 +1,108 @@
+<div id='resource-board' data-current-folder='<%= current_folder.id %>'
+  data-folderable-type='<%= current_folder.folderable_type %>'
+  data-folderable-id='<%= current_folder.folderable_id %>'>
+  <!-- 文件夹导航栏 -->
+  <div id='folder-nav-column' class='float-left' style='display: table;'>
+    <ol class='breadcrumb-no-border'>
+      <% folder = current_folder %>
+      <% parent_folders = [] %>
+      <% while folder.parent_id do %>
+        <% parent_folders << folder.parent %>
+        <% folder = folder.parent %>
+      <% end %>
+      <% parent_folders.reverse.each do |parent_folder| %>
+        <% if parent_folder.parent_id %>
+          <li><%= link_to parent_folder.name, parent_folder, remote: true %></li>
+        <% else %>
+          <li><%= link_to fa_icon('home'), parent_folder, remote: true %></li>
+        <% end %>
+      <% end %>
+      <% if current_folder.parent %>
+        <li class='active'><%= link_to current_folder.name, current_folder, remote: true %></li>
+      <% else %>
+        <li class='active'><%= link_to fa_icon('home'), current_folder, remote: true %></li>
+      <% end %>
+    </ol>
+  </div>
+  <!-- 资源操作按钮 -->
+  <div id='resource-board-actions' class='float-right' style='display: table;'>
+    <ul>
+      <li>
+        <%=
+          link_to fa_icon('plus-square-o', text: '文件'),
+          [ :new, :resource, folder_id: current_folder.id,
+            resourceable_type: current_folder.folderable_type,
+            resourceable_id: current_folder.folderable_id ],
+          remote: true
+        %>
+      </li>
+      <li>
+        <%=
+          link_to fa_icon('plus-square-o', text: '文件夹'),
+          [ :new, :folder, parent_id: current_folder.id,
+            folderable_type: current_folder.folderable_type,
+            folderable_id: current_folder.folderable_id ],
+          remote: true
+        %>
+      </li>
+    </ul>
+  </div>
+
+  <table class='table'>
+    <col width="200" />
+    <col width="100" />
+    <col width="50" />
+    <thead id='resource-board-table-head'>
+      <tr>
+        <th>名称</th>
+        <th>创建时间</th>
+        <th style='text-align: center;'>分享</th>
+
+        <th colspan=3 id='resource-board-file-actions' style='display: none;'>
+          <ul class='resource-board-file-actions'>
+            <li class='for-single-file'>
+              <%=
+                link_to fa_icon('edit', text: '重命名'), rename_file_path(
+                  folderable_type: current_folder.folderable.class,
+                  folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'rename-file'
+              %>
+            </li>
+            <li>
+              <%=
+                link_to fa_icon('trash', text: '删除'), delete_files_path(
+                folderable_type: current_folder.folderable.class,
+                folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'delete-files'
+              %>
+            </li>
+            <li>
+              <%=
+                link_to fa_icon('wheelchair', text: '移动'), move_files_path(
+                  folderable_type: current_folder.folderable.class,
+                  folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'move-files'
+              %>
+            </li>
+            <li>
+              <%=
+                link_to fa_icon('share-alt', text: '分享'), share_files_path(
+                  folderable_type: current_folder.folderable.class,
+                  folderable_id: current_folder.folderable.id
+                ), remote: true, id: 'share-files'
+              %>
+            </li>
+          </ul>
+        </th>
+      </tr>
+    </thead>
+    <tbody id='resource-board-table'>
+      <% current_folder.children.sort_by { |x| x.name }.each do |child| %>
+        <%= render 'resource_board/folder_table_row', folder: child %>
+      <% end %>
+      <% current_folder.resources.sort_by { |x| x.name }.each do |resource| %>
+        <%= render 'resource_board/resource_table_row', resource: resource %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -30,4 +30,7 @@ class Folder < ActiveRecord::Base
   has_many :resources, dependent: :destroy
   belongs_to :parent, class_name: 'Folder', foreign_key: 'parent_id'
   has_many :children, class_name: 'Folder', foreign_key: 'parent_id', dependent: :destroy
+
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :parent_id }
 end

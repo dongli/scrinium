@@ -7,8 +7,11 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    redirect_to "http://#{@organization.subdomain}.#{request.domain}"
-    # redirect_to 'http://las.scrinium.dev:3009/'
+    if request.port
+      redirect_to "http://#{@organization.subdomain}.#{request.domain}:#{request.port}"
+    else
+      redirect_to "http://#{@organization.subdomain}.#{request.domain}"
+    end
   end
 
   def new

@@ -17,6 +17,7 @@
 #  confirmed_at            :datetime
 #  confirmation_sent_at    :datetime
 #  unconfirmed_email       :string
+#  authentication_token    :string
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #

@@ -74,8 +74,7 @@ a {
 
 a:hover {
   background-color: inherit;
-  color: inherit;
-  font-weight: bold;
+  color: blue;
   text-decoration: none;
 }
 
@@ -209,4 +208,8 @@ table th, table td {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+table {
+  table-layout: fixed;
 }

@@ -1,6 +1,10 @@
 <tr id='resource-<%= resource.id %>'>
-  <td><%= fa_icon('file-o') %> <span class='resource-name'><%= link_to resource.name, resource %></span></td>
-  <td><%= resource.created_at %></td>
+  <td><%= fa_icon('file-o') %> <%= link_to resource.name, resource %></td>
+  <td><%= timeago resource.created_at %></td>
+  <td id='resource-<%= resource.id %>-share-hosts' style='text-align: center;'>
+    <%= render 'resource_board/share_hosts', object: resource %>
+  </td>
+  <!-- 文件操作列表 -->
   <td style='display: none;'>
     <ul>
       <li>
@@ -14,6 +18,12 @@
          link_to '', resource, method: :patch,
          id: "resource-#{resource.id}-update", remote: true
        %>
+      </li>
+      <li>
+        <%=
+          link_to '', new_share_path,
+          id: "resource-#{resource.id}-share", remote: true
+        %>
       </li>
     </ul>
   </td>

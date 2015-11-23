@@ -55,10 +55,13 @@ Rails.application.routes.draw do
   # 资源
   resources :resources, concerns: [ :commentable, :collectable ]
   resources :folders
-  namespace :resource_board do
-    get :delete_files
-    get :rename_file
-    get :move_files
+  [ :delete_files, :rename_file, :move_files, :share_files ].each do |action|
+    get "#{action}/:folderable_type/:folderable_id" => "resource_board##{action}", as: action
+  end
+  resources :shares do
+    member do
+      get :back_to_top
+    end
   end
   # 参考文献
   resources :publications, except: [ :index, :new, :edit, :show ]

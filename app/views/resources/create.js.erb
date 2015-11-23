@@ -1,30 +1,39 @@
-var resourceNames = [];
-var resourceIDs = []
-$('#resource-board-table td span').each(function() {
-  resourceNames.push($(this).text());
-  resourceIDs.push($(this).parent().parent().attr('id'));
-})
-// 关闭modal。
-$('#add-resource').modal('hide');
-// 按序搜索将新创建的文件夹插入到当前列表的哪一行后面。
-var inserted = false;
-for (i = 0; i < resourceNames.length; i++) {
-  if (resourceNames[i] > '<%= @resource.name %>') {
-    $('#' + resourceIDs[i]).before("<%=
-      j render 'resource_board/resource_table_row', resource: @resource
-    %>");
-    inserted = true;
-    break;
+<% if @resource.errors.empty? %>
+  var resourceNames = [];
+  var resourceIDs = []
+  $('#resource-board-table td span').each(function() {
+    resourceNames.push($(this).text());
+    resourceIDs.push($(this).parent().parent().attr('id'));
+  })
+  // 关闭modal。
+  $('#add-resource').modal('hide');
+  // 按序搜索将新创建的文件夹插入到当前列表的哪一行后面。
+  var inserted = false;
+  for (i = 0; i < resourceNames.length; i++) {
+    if (resourceNames[i] > '<%= @resource.name %>') {
+      $('#' + resourceIDs[i]).before("<%=
+        j render 'resource_board/resource_table_row', resource: @resource
+      %>");
+      inserted = true;
+      break;
+    }
   }
-}
-if (!inserted) {
-  if (resourceIDs.length == 0) {
-    $('#resource-board-table').append("<%=
-      j render 'resource_board/resource_table_row', resource: @resource
-    %>")
-  } else {
-    $('#' + resourceIDs[resourceIDs.length-1]).after("<%=
-      j render 'resource_board/resource_table_row', resource: @resource
-    %>");
+  if (!inserted) {
+    if (resourceIDs.length == 0) {
+      $('#resource-board-table').append("<%=
+        j render 'resource_board/resource_table_row', resource: @resource
+      %>")
+    } else {
+      $('#' + resourceIDs[resourceIDs.length-1]).after("<%=
+        j render 'resource_board/resource_table_row', resource: @resource
+      %>");
+    }
   }
-}
+<% else %>
+  // 处理错误。
+  <% if @resource.errors.include? :file %>
+    showValidationError('fileinput', '<%= @resource.errors.messages[:file].first %>');
+  <% elsif @resource.errors.include? :name %>
+    showValidationError('fileinput', '<%= @resource.errors.messages[:name].first %>');
+  <% end %>
+<% end %>

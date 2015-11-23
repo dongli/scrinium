@@ -1,3 +1,5 @@
 <% user.organizations.each do |organization| %>
-  <span class='logo'><%= organization.short_name %></span>
+  <span class='logo'>
+    <%= link_to logo(organization, size: :small), organization %>
+  </span>
 <% end %>

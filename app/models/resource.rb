@@ -29,21 +29,18 @@ class Resource < ActiveRecord::Base
     :trashed
   ], default: :normal, predicates: true
 
+  mount_uploader :file, ResourceUploader
+
+  acts_as_taggable
+  acts_as_taggable_on :categories
+
   belongs_to :resourceable, polymorphic: true
   belongs_to :folder
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy
 
-  mount_uploader :file, ResourceUploader
-  validates :file, presence: true
-  validates :name, presence: { on: :update }
-  validates :name, uniqueness: {
-    on: :update,
-    scope: [ :user_id, :resourceable_type, :resourceable_id ]
-  }
-
-  acts_as_taggable
-  acts_as_taggable_on :categories
+  validates :file, :name, presence: true
+  validates :name, uniqueness: { scope: :folder_id }
 
   def user
     begin
@@ -51,11 +48,6 @@ class Resource < ActiveRecord::Base
     rescue
       self.destroy
     end
-  end
-
-  def app
-    engine = self.resourceable.class.parent_name
-    engine ? engine.to_s.underscore : 'main_app'
   end
 
   def file_type
