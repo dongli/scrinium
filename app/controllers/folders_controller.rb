@@ -1,14 +1,17 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_folderable
+  before_action :set_folderable, only: [ :new, :create ]
   before_action :set_folder, only: [ :show, :edit, :update, :destroy ]
 
   def new
     @folder = @folderable.folders.new
-    @folder.parent_id = params[:folder_id]
+    @folder.parent_id = params[:parent_id]
+    @folder.folderable_type = params[:folderable_type]
+    @folder.folderable_id = params[:folderable_id]
   end
 
   def show
+    @current_share = Share.find_by id: params[:current_share_id]
   end
 
   def edit
@@ -16,10 +19,9 @@ class FoldersController < ApplicationController
 
   def create
     @folder = @folderable.folders.new(folder_params)
+    @folder.save
     respond_to do |format|
-      if @folder.save! # TODO: 处理错误。
-        format.js
-      end
+      format.js
     end
   end
 
@@ -53,6 +55,9 @@ class FoldersController < ApplicationController
     if params[:folderable_id].present? and params[:folderable_type].present?
       folderable_id = params[:folderable_id]
       folderable_type = params[:folderable_type]
+    elsif params[:folder][:folderable_id].present? and params[:folder][:folderable_type].present?
+      folderable_id = params[:folder][:folderable_id]
+      folderable_type = params[:folder][:folderable_type]
     else
       folderable_id = current_user.id
       folderable_type = 'User'

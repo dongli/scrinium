@@ -16,4 +16,21 @@ module ResourceBoardHelper
     end
     tree
   end
+
+  def get_resource_icon object
+    case object
+    when Resource
+      fa_icon('file-o')
+    when Folder
+      fa_icon('folder-o')
+    end
+  end
+
+  def get_resource_link_options object
+    case object
+    when Resource
+    when Folder
+      { remote: true }
+    end
+  end
 end

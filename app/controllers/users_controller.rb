@@ -60,7 +60,6 @@ class UsersController < ApplicationController
                                    :weibo,
                                    :wechat
                                  ],
-                                 publication_ids: [],
                                  group_ids: [])
   end
 end

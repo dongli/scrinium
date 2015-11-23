@@ -12,4 +12,5 @@ $(document).on 'page:change', ->
       turnOnTab
         info: []
         members: []
+        resources: []
         admin: []

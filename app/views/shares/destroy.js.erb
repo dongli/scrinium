@@ -1,0 +1,10 @@
+<% if @share.shareable.share_ids.empty? %>
+  $('td#<%= @share.shareable_type.downcase %>-<%= @share.shareable_id %>-share-hosts i').popover('hide');
+  $('td#<%= @share.shareable_type.downcase %>-<%= @share.shareable_id %>-share-hosts i').hide();
+<% else %>
+  var icon = $('i#<%= @share.shareable_type %>-<%= @share.shareable_id %>-share-icon');
+  var $content = $('<ul class="clean-list">' + icon.attr('data-content') + '</ul>');
+  $content.find('li#delete-share-<%= @share.id %>').remove();
+  icon.attr('data-content', $content.html());
+  icon.popover('show');
+<% end %>

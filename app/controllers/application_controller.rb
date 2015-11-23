@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   protected
 
   def store_location

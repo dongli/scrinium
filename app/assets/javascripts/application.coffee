@@ -115,6 +115,24 @@ marked.setOptions
       localStorage['tab'] = $(this).attr('aria-controls')
       localStorage['url'] = location.pathname
 
+@showValidationError = (inputName, errorMessage) ->
+  $("label[for=#{inputName}]").attr('style', 'color: #AA3F44;')
+  if $("input##{inputName}").length == 1
+    input = $("input##{inputName}")
+  else if $("div.#{inputName}").length == 1
+    input = $("div.#{inputName}")
+  input.attr('style', 'border-color: #AA3F44;')
+    .after("""
+      <p style='color: #AA3F44; margin-top: 5px;' id='#{inputName}-error-message'>
+        #{errorMessage}
+      </p>
+    """)
+  # 当用户开始编辑时，去除错误显示。
+  input.bind 'click keypress', ->
+    $("label[for=#{inputName}]").attr('style', 'color: #333333;')
+    $(this).attr('style', 'border-color: #CCCCCC;')
+    $("##{inputName}-error-message").remove()
+
 selectByGET = (id, api_url) ->
   $('select[id='+id+']').select2(
     ajax:
@@ -195,8 +213,11 @@ $(document).on 'page:change', ->
     multiple: true
   # Turn on Bootstrap popover.
   $('[data-toggle="popover"]').each ->
-    $(this).popover
+    $(this).popover({
       html: true
+    }).click (e) ->
+      e.stopPropagation()
+
   # Dismiss popover when click outside.
   $('body').on 'click', (e) ->
     $('[data-toggle="popover"]').each ->
@@ -244,3 +265,29 @@ $(document).on 'page:change', ->
   # 是table的整行可点击。
   $('.clickable-row').click ->
     window.document.location = $(this).data('href')
+
+  # 窗口改变大小后，检查left-side元素是否要收缩。
+  resizeID = 0
+  collapseLeftSide = ->
+    if $('.left-side').is(':hidden')
+      return if $('a[href=#left-side-content]').length > 0
+      $('div.main-block').before -> """
+        <div class='center' id='show-left-side-content'>
+          <a href='#left-side-content' class='show-left-side-content'
+           data-toggle='collapse' data-target='#left-side-content'
+           aria-expanded='false' aria-controls='left-side-content'>
+           <i class='fa fa-sort'></i>
+          </a>
+          <div class='collapse' id='left-side-content'>
+            <div class='well' style='margin-left: 5em; margin-right: 5em;'>
+              #{$('.left-side').html()}
+            </div>
+          </div>
+        </div>
+      """
+    else
+      $('div#show-left-side-content').remove()
+  collapseLeftSide()
+  $(window).resize ->
+    clearTimeout(resizeID);
+    resizeID = setTimeout(collapseLeftSide, 50)

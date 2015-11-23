@@ -7,6 +7,7 @@
 #  admin_id   :integer
 #  parent_id  :integer
 #  website    :string
+#  subdomain  :string
 #  status     :string
 #  position   :integer
 #  created_at :datetime         not null

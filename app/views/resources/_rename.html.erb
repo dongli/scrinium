@@ -1,3 +1,11 @@
 <%= simple_form_for resource, html: { class: 'form-inline', style: 'display: inline;' }, remote: true do |f| %>
   <%= f.input_field :name, label: false %>
 <% end %>
+
+<script type='text/javascript'>
+  // 当用户点击其它地方时，退出修改。
+  $('body').on('click', function() {
+    $('form#edit_resource_<%= resource.id %>').remove();
+    $('a[href="/resources/<%= resource.id %>"]').show();
+  });
+</script>

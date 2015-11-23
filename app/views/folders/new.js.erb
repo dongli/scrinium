@@ -1,5 +1,7 @@
 // 弹出一个modal。
-$('#folder_parent_id').attr('value', <%= @folder.parent_id %>);
+$('input#folder_parent_id').attr('value', '<%= @folder.parent_id %>');
+$('input#folder_folderable_type').attr('value', '<%= @folder.folderable_type %>');
+$('input#folder_folderable_id').attr('value', '<%= @folder.folderable_id %>');
 // 清空表单。
-$('#folder_name').val('');
-$('#add-folder').modal();
+$('input#folder_name').val('');
+$('div#add-folder').modal();

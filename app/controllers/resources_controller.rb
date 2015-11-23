@@ -1,11 +1,13 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_resourceable
+  before_action :set_resourceable, only: [ :new, :create ]
   before_action :set_resource, only: [ :show, :edit, :update, :destroy ]
 
   def new
     @resource = @resourceable.resources.new
     @resource.folder_id = params[:folder_id]
+    @resource.resourceable_type = params[:resourceable_type]
+    @resource.resourceable_id = params[:resourceable_id]
   end
 
   def show
@@ -16,11 +18,10 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = @resourceable.resources.new(resource_params)
-    @resource.name = @resource.file.file.filename
+    @resource.name = @resource.file.file.filename if @resource.file.file
+    @resource.save
     respond_to do |format|
-      if @resource.save! # TODO: 处理错误。
-        format.js
-      end
+      format.js
     end
   end
 
@@ -41,6 +42,7 @@ class ResourcesController < ApplicationController
     @resource.destroy
     respond_to do |format|
       format.js
+      format.html { redirect_to current_user }
     end
   end
 
@@ -54,6 +56,9 @@ class ResourcesController < ApplicationController
     if params[:resourceable_id].present? and params[:resourceable_type].present?
       resourceable_id = params[:resourceable_id]
       resourceable_type = params[:resourceable_type]
+    elsif params[:resource][:resourceable_id].present? and params[:resource][:resourceable_type].present?
+      resourceable_id = params[:resource][:resourceable_id]
+      resourceable_type = params[:resource][:resourceable_type]
     else
       resourceable_id = current_user.id
       resourceable_type = 'User'
@@ -70,6 +75,8 @@ class ResourcesController < ApplicationController
     params.require(:resource).permit(:name,
                                      :description,
                                      :folder_id,
+                                     :resourceable_type,
+                                     :resourceable_id,
                                      :file,
                                      :user_id,
                                      :tag_list,
