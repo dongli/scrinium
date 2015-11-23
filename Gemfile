@@ -64,7 +64,7 @@ gem 'file_validators'
 gem 'remotipart'
 
 ## 编辑器
-gem 'mathjax-rails', '~> 2.5.1'
+
 gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
 source 'https://rails-assets.org' do

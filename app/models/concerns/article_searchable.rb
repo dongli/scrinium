@@ -11,7 +11,7 @@ module ArticleSearchable
       indexes :content
     end
 
-    def self.search(query, options)
+    def self.search(query, options = {})
 
       @search_definition = {
           query: {}

@@ -15,7 +15,7 @@
 
 class Article < ActiveRecord::Base
   extend Enumerize
-  # include ArticleSearchable
+  include ArticleSearchable
 
   validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true

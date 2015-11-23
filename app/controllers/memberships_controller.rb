@@ -17,6 +17,7 @@ class MembershipsController < ApplicationController
   end
 
   def create
+    # TODO 不能邀请同一个用户参加群组/机构两次,同时也不可邀请自己
     @membership = User.find(params[:membership][:user_id]).memberships.new(membership_params)
 
     respond_to do |format|

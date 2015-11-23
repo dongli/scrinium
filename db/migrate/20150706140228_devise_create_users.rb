@@ -7,7 +7,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :mobile                           # 手机
       t.string  :encrypted_password, null: false
       t.string  :role,               null: false  # 角色：admin，assist_admin，user。默认是user
-      t.integer :current_organization_id
       t.integer :position                         # 位置（预留字段）
 
       ## Recoverable

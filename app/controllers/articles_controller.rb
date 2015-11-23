@@ -3,8 +3,8 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :versions, :delete_version]
 
   def index
-    # @articles = Article.search(params[:q], options= {}).page(params[:page]).per(2).records
-    @article = Article.all
+    @articles = Article.search(params[:q], options= {}).records.page(params[:page]).per(params[:per_page] || 10)
+    # @articles = Article.all
   end
 
   def show
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
     set_status
 
     respond_to do |format|
@@ -91,7 +91,6 @@ class ArticlesController < ApplicationController
                                     { group_ids: [] },
                                     :tag_list,
                                     { category_list: [] },
-                                    :user_id,
                                     :status)
   end
 end

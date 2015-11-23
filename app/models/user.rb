@@ -25,7 +25,7 @@
 class User < ActiveRecord::Base
   include Resourceable
   extend Enumerize
-
+  include UserSearchable
   enumerize :role, in: [:admin, :assist_admin, :user], default: :user, predicates: true
 
   # Include default devise modules. Others available are:
