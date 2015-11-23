@@ -265,3 +265,28 @@ $(document).on 'page:change', ->
   # 是table的整行可点击。
   $('.clickable-row').click ->
     window.document.location = $(this).data('href')
+
+  # 窗口改变大小后，检查left-side元素是否要收缩。
+  resizeID = 0
+  collapseLeftSide = ->
+    if $('.left-side').is(':hidden')
+      $('div.main-block').before -> """
+        <div class='center' id='show-left-side-content'>
+          <a href='#left-side-content' class='show-left-side-content'
+           data-toggle='collapse' data-target='#left-side-content'
+           aria-expanded='false' aria-controls='left-side-content'>
+           <i class='fa fa-sort'></i>
+          </a>
+          <div class='collapse' id='left-side-content'>
+            <div class='well'>
+              #{$('.left-side').html()}
+            </div>
+          </div>
+        </div>
+      """
+    else
+      $('div#show-left-side-content').remove()
+  collapseLeftSide()
+  $(window).resize ->
+    clearTimeout(resizeID);
+    resizeID = setTimeout(collapseLeftSide, 50)
