@@ -270,6 +270,7 @@ $(document).on 'page:change', ->
   resizeID = 0
   collapseLeftSide = ->
     if $('.left-side').is(':hidden')
+      return if $('a[href=#left-side-content]').length > 0
       $('div.main-block').before -> """
         <div class='center' id='show-left-side-content'>
           <a href='#left-side-content' class='show-left-side-content'
@@ -278,7 +279,7 @@ $(document).on 'page:change', ->
            <i class='fa fa-sort'></i>
           </a>
           <div class='collapse' id='left-side-content'>
-            <div class='well'>
+            <div class='well' style='margin-left: 5em; margin-right: 5em;'>
               #{$('.left-side').html()}
             </div>
           </div>
