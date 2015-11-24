@@ -1,6 +1,15 @@
 <dl>
   <dt><%= t('organization.children') %></dt>
   <dd>
+    <% if policy(Organization).create? %>
+      <div class='float-right'>
+        <%=
+          link_to fa_icon('plus-square-o', text: t('organization.child')),
+          new_organization_path(parent_id: @organization.id),
+          id: 'add-child', style: 'display: none;'
+        %>
+      </div>
+    <% end %>
     <ul class='suborganizations'>
       <%= render 'organizations/block_list', organizations: @organization.children, add_logo: false %>
     </ul>

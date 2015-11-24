@@ -1,5 +1,4 @@
-
-function formatRepo (user) {
+function formatRepo(user) {
   if (user.loading) return user.text;
 
   var markup = "<div class='select2-users clearfix'>" +
@@ -11,10 +10,11 @@ function formatRepo (user) {
   return markup;
 }
 
-function formatRepoSelection (user) {
+function formatRepoSelection(user) {
   return user.name
 }
-$(function(){
+
+$(function() {
   var users_url = "/api/v1/users";
 
   $(".choose_user").select2({
@@ -28,7 +28,6 @@ $(function(){
       data: function (params) {
         return {
           q: params.term // search term
-
         };
       },
       processResults: function (data, params) {
@@ -36,7 +35,6 @@ $(function(){
         // since we are using custom formatting functions we do not need to
         // alter the remote JSON data, except to indicate that infinite
         // scrolling can be used
-
         return {
           results: data.users
         };
@@ -47,7 +45,5 @@ $(function(){
     templateResult: formatRepo, // omitted for brevity, see the source of this page
     templateSelection: formatRepoSelection, // omitted for brevity, see the source of this page
     minimumInputLength: 2
-
   });
-
 });

@@ -42,7 +42,7 @@ Profile.create(
 
 Organization.create(name: '中国科学院大气物理研究所',
                     logo: open("#{Rails.root}/app/assets/images/logos/iap_logo.png"),
-                    short_name: 'CAS-IAP',
+                    short_name: 'IAP',
                     description: '',
                     admin_id: 1,
                     locale: 'zh-CN')

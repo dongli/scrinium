@@ -1,6 +1,16 @@
 <dl>
   <dt><%= t('activerecord.models.article') %></dt>
   <dd>
+    <% if @user == current_user %>
+      <% if policy(Article).create? %>
+        <div class='float-right'>
+          <%=
+            link_to fa_icon('plus-square-o', text: t('activerecord.models.article')),
+            new_article_path, id: 'add-article'
+          %>
+        </div>
+      <% end %>
+    <% end %>
     <%= render 'articles/table_list', articles: user.articles, show_author: false %>
   </dd>
 </dl>

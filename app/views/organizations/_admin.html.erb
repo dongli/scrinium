@@ -1,6 +1,13 @@
 <dl>
   <dt><%= t('engine') %></dt>
   <dd>
+    <div class='float-right'>
+      <%=
+        link_to fa_icon('plus-square-o', text: t('engine')),
+        new_license_path(organization_id: @organization.id),
+        id: 'add-engine', style: 'display: none;'
+      %>
+    </div>
     <%= render 'licenses/table_list', licenses: @organization.licenses %>
   </dd>
 </dl>

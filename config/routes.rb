@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   mount API => '/'
   mount GrapeSwaggerRails::Engine => '/apidoc' unless Rails.env.production?
 
-
   get 'news/index'
   get 'library/index'
 
