@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [ :index, :show ]
   before_action :load_app_and_commentable
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @comments = @commentable.comments

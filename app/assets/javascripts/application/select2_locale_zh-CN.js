@@ -1,5 +1,5 @@
 (function () {
-  if (jQuery && jQuery.fn && jQuery.fn.select2 && jQuery.fn.select2.amd)var e = jQuery.fn.select2.amd;
+  if (jQuery && jQuery.fn && jQuery.fn.select2 && jQuery.fn.select2.amd) var e = jQuery.fn.select2.amd;
   return e.define("select2/i18n/zh-CN", [], function () {
     return {
       errorLoading: function () {

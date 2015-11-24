@@ -22,5 +22,4 @@ class ProfileSerializer < ActiveModel::Serializer
   def small_avatar_url
     object.avatar.url.present? ? object.avatar_url(:thumb) : '/assets/thumb/default_avatar.png'
   end
-
 end
