@@ -16,6 +16,8 @@
 class Article < ActiveRecord::Base
   extend Enumerize
   include ArticleSearchable
+  include PublicActivity::Model
+  tracked
 
   validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true

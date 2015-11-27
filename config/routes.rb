@@ -79,6 +79,7 @@ Rails.application.routes.draw do
   resources :groups do
     get :feed, on: :collection
   end
+  resources :activities
   resources :posts do
     member do
       get :change_sticky

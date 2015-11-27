@@ -91,6 +91,7 @@ gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
 gem 'acts_as_tenant'
+gem 'public_activity'
 
 ## 搜索
 gem 'elasticsearch-model'
