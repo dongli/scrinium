@@ -16,6 +16,10 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def feed
+    @posts = Post.includes(:postable).where(group_id: current_user.group_ids).order('updated_at desc')
+  end
+
   def create
     @group = Group.new(group_params)
     set_crop_params

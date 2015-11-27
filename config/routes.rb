@@ -76,7 +76,9 @@ Rails.application.routes.draw do
   resources :organizations
   resources :addresses
   # 群组
-  resources :groups
+  resources :groups do
+    get :feed, on: :collection
+  end
   resources :posts do
     member do
       get :change_sticky
