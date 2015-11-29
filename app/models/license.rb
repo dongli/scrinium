@@ -22,7 +22,7 @@ class License < ActiveRecord::Base
   enumerize :status, in: [
     :unapproved,
     :approved
-  ]
+  ], default: :unapproved
 
   belongs_to :organization
 
