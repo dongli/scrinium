@@ -1,8 +1,8 @@
 class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
-      t.string      :name, index: true                           # 地址名称（一个机构可能有多个园区）
-      t.references  :addressable, polymorphic: true, index: true # 所属类别
+      t.string      :name                                        # 地址名称（一个机构可能有多个园区）
+      t.references  :addressable, polymorphic: true              # 所属类别
       t.string      :country                                     # 国家
       t.string      :city                                        # 城市
       t.string      :district                                    # 行政区
@@ -13,5 +13,8 @@ class CreateAddresses < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :addresses, [:addressable_id, :addressable_type]
+
   end
 end

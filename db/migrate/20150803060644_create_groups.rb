@@ -13,7 +13,10 @@ class CreateGroups < ActiveRecord::Migration
       short_name: :string,
       description: :text
     })
+
+    add_index :groups, :admin_id
   end
+
   def down
     drop_table :groups
     Group.drop_tranlation_table!

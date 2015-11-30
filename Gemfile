@@ -91,6 +91,7 @@ gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
 gem 'acts_as_tenant'
+gem 'public_activity'
 
 ## 搜索
 gem 'elasticsearch-model'
@@ -130,4 +131,11 @@ group :test do
   gem 'factory_girl_rails'  # 测试数据
   gem 'database_cleaner'    # 测试数据库清理
   gem 'sqlite3'
+end
+
+group :test do
+  gem 'rspec'               # rspec 测试框架
+  gem 'rspec-rails'         # for respec
+  gem 'factory_girl_rails'  # 测试数据
+  gem 'database_cleaner'    # 测试数据库清理
 end

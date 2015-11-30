@@ -12,5 +12,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.string  :wechat  # 微信
       t.timestamps null: false
     end
+
+    add_index :profiles, :user_id
+
   end
 end
