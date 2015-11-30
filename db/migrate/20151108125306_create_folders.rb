@@ -13,5 +13,10 @@ class CreateFolders < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :folders, :user_id
+    add_index :folders, :parent_id
+    add_index :folders, [:folderable_id, :folderable_type]
+
   end
 end

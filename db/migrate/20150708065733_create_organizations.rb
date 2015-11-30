@@ -15,8 +15,16 @@ class CreateOrganizations < ActiveRecord::Migration
       short_name: :string,                                # 机构的简称
       description: :text                                  # 描述
     })
+
+    add_index :organizations, :parent_id
+    add_index :organizations, :admin_id
+    add_index :organizations, :subdomain
   end
+
   def down
+    remove_index :organizations, :parent_id
+    remove_index :organizations, :admin_id
+
     drop_table :organizations
     Organization.drop_tranlation_table!
   end

@@ -1,0 +1,7 @@
+<% content_for :main_block do %>
+  <% @posts.each do |post| %>
+    <%= post.postable.id %>
+    <%= post.postable.title %>
+    <br/>
+  <% end  %>
+<% end %>

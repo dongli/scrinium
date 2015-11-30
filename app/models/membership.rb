@@ -26,7 +26,7 @@ class Membership < ActiveRecord::Base
     :admin,
     :assist_admin,
     :member
-  ]
+  ], default: :member
   enumerize :join_type, in: [
     :self,
     :invited,
@@ -37,7 +37,7 @@ class Membership < ActiveRecord::Base
     :approved,
     :rejected,
     :banned
-  ]
+  ], default: :unapproved
 
   belongs_to :host, polymorphic: true
   belongs_to :user
