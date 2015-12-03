@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @node.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @node.name %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @node.group_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @node.status %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @node.position %>
+</p>
+
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<%= link_to 'Back', nodes_path %>
