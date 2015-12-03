@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  layout 'home_page'
   before_action :subdomian_organization
 
   def index
