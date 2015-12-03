@@ -9,8 +9,9 @@ class CreateNodes < ActiveRecord::Migration
 
       t.timestamps null: false
 
-      add_index :nodes, :group_id
-
     end
+
+    add_index :nodes, :group_id
+
   end
 end
