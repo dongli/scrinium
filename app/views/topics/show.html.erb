@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% content_for :main_block do %>
 
 <p>
   <strong>User:</strong>
-  <%= @topic.user_id %>
+  <%= @topic.user_name %>
 </p>
+<p>
 
+</p>
 <p>
   <strong>Title:</strong>
   <%= @topic.title %>
@@ -35,5 +37,6 @@
   <%= @topic.position %>
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Edit', edit_group_topic_path(@group, @topic) %> |
+<%= link_to 'Back', group_topics_path(@group) %>
+<% end %>

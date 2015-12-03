@@ -3,6 +3,8 @@
 # Table name: topics
 #
 #  id             :integer          not null, primary key
+#  group_id       :integer
+#  node_id        :integer
 #  user_id        :integer
 #  title          :string
 #  content        :text

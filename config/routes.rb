@@ -79,6 +79,7 @@ Rails.application.routes.draw do
   resources :groups do
     get :feed, on: :collection
     resources :topics
+    resources :nodes
   end
   resources :activities
   resources :posts do

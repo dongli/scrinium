@@ -32,6 +32,9 @@ class Group < ActiveRecord::Base
   has_many :users, class_name: 'User', through: :memberships
   has_many :posts, dependent: :destroy
 
+  has_many :topics, dependent: :destroy
+  has_many :nodes, dependent: :destroy
+
   validates :name, :short_name, presence: true
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
