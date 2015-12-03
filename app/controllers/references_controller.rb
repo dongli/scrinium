@@ -53,7 +53,7 @@ class ReferencesController < ApplicationController
 
   def reference_params
     params[:reference][:authors].delete_if { |a| a.empty? }
-    params[:reference][:editors].delete_if { |a| a.empty? }
+    params[:reference][:editors].delete_if { |a| a.empty? } if params[:reference].has_key? :editors
     if not ( @reference and @reference.cite_key )
       # TODO: I only handled <first_name last_name> case. There are other cases!
       last_name = params[:reference][:authors].first.split.last
