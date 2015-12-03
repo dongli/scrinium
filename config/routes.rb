@@ -5,17 +5,18 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'home#index'
   mount API => '/'
   mount GrapeSwaggerRails::Engine => '/apidoc' unless Rails.env.production?
-
-  get 'news/index'
-  get 'library/index'
 
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  root 'home#index'
+  get 'news/index'
+  get 'library/index'
+  get 'old_index' => "home#old_index"
 
   # Concerns
   concern :commentable do
