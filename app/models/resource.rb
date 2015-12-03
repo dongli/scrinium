@@ -13,6 +13,7 @@
 #  user_id           :integer
 #  resourceable_id   :integer
 #  resourceable_type :string
+#  share_ids         :integer          default([]), is an Array
 #  status            :string
 #  uuid              :string
 #  position          :integer

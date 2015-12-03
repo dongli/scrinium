@@ -19,7 +19,7 @@
 class Profile < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :gender, in: [ :female, :male ], predicates: true
+  enumerize :gender, in: [ :female, :male ], default: :male, predicates: true
   enumerize :title, in: [
                          :academician,
                          :researcher,

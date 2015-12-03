@@ -1,6 +1,10 @@
-<h1>Editing Topic</h1>
+<% content_for :main_block do %>
+
+  <h1>Editing Topic</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+  <td><%= link_to 'Show', group_topic_path(@group, @topic) %></td>
+  <td><%= link_to 'Edit', edit_group_topic_path(@group, @topic) %></td>
+  <td><%= link_to 'Destroy', group_topic_path(@group, @topic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>

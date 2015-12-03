@@ -1,11 +1,14 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!, except: [ :show, :index ]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_group
 
   def index
-    @topics = Topic.all
+    @topics = @group.topics.all
   end
 
   def show
+    @topic.increment!(:views_count)
   end
 
   def new
@@ -16,11 +19,12 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @topic = @group.topics.new(topic_params)
+    @topic.user_id = current_user.id
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to group_topic_path(@group, @topic), notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -32,7 +36,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to group_topic_path(@group, @topic), notice: 'Topic was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -44,17 +48,21 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+      format.html { redirect_to group_topics_path(@group), notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_group
+      @group = Group.find(params[:group_id])
+    end
+
     def set_topic
       @topic = Topic.find(params[:id])
     end
 
     def topic_params
-      params.require(:topic).permit(:user_id, :title, :content, :views_count, :comments_count, :status, :position)
+      params.require(:topic).permit(:user_id, :group_id, :node_id, :title,  :content, :status, :position)
     end
 end

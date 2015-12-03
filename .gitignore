@@ -22,6 +22,6 @@ engine_routes.rb
 nginx.conf
 
 *scrinium_esm*
-
+/test/*
 /db/schema.rb
 Gemfile.lock

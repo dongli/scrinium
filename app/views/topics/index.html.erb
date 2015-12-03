@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% content_for :main_block do %>
+
+  <p id="notice"><%= notice %></p>
 
 <h1>Listing Topics</h1>
 
@@ -19,16 +21,16 @@
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
-        <td><%= topic.user_id %></td>
+        <td><%= topic.user_name %></td>
         <td><%= topic.title %></td>
         <td><%= topic.content %></td>
         <td><%= topic.views_count %></td>
         <td><%= topic.comments_count %></td>
         <td><%= topic.status %></td>
         <td><%= topic.position %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', group_topic_path(@group, topic) %></td>
+        <td><%= link_to 'Edit', edit_group_topic_path(@group, topic) %></td>
+        <td><%= link_to 'Destroy', group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +38,5 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
+<%= link_to 'New Topic', new_group_topic_path(@group) %>
+  <% end %>
