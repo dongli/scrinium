@@ -6,7 +6,6 @@ class HomeController < ApplicationController
   end
 
   def old_index
-
   end
 
   def subdomian_organization

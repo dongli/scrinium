@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title><%= t('scrinium') %></title>
+  <title>
+    <%= t('scrinium') %>
+  </title>
   <meta name='apple-mobile-web-app-capable' content='yes' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
@@ -14,8 +17,9 @@
 
   <%= stylesheet_link_tag 'home_page', media: 'all', 'data-turbolinks-track' => true %>
 
-  <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
 </head>
+
 <body>
   <div class="page-wrapper">
     <!-- 导航栏 -->
@@ -50,7 +54,7 @@
       </div>
     </header>
     <!-- 封面 -->
-    <section class="header-2-sub bg-midnight-blue">
+    <section class="header-2-sub bg-custom">
       <div class="background">
         &nbsp;
       </div>
@@ -58,13 +62,18 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <div class="hero-unit">
-              <h1>您的科研工作台
-                <br/>专注科研本身</h1>
+              <h1>您的科研工作台</h1>
             </div>
-            <div class="btns">
-              <%= link_to '登录', new_user_session_path, class: 'btn btn-success' %>
-              <%= link_to '注册', new_user_registration_path, class: 'btn btn-danger' %>
-            </div>
+            <% if current_user %>
+              <a href='<%= user_path(current_user) %>'>
+                <%= avatar(current_user, size: '80x80') %>
+              </a>
+              <% else %>
+                <div class="btns">
+                  <%= link_to '登录', new_user_session_path, class: 'btn btn-signin' %>
+                    <%= link_to '注册', new_user_registration_path, class: 'btn btn-signup' %>
+                </div>
+                <% end %>
           </div>
         </div>
       </div>
@@ -73,7 +82,7 @@
     <!-- 主要功能 -->
     <section class="content-10">
       <div class="container">
-        <h3>科研工作的好帮手</h3>
+        <h3>科研工作好帮手</h3>
         <div class="row features">
           <div class="col-sm-4">
             <!-- <img src="img/illustrations/retina@2x.png" alt="" width="117" height="104"> -->
@@ -124,6 +133,16 @@
     </section>
   </div>
 
+  <!-- 页脚 -->
+  <footer class="footer-1">
+    <div class="container">
+      <div class="row" style="text-align: center;">
+        Copyright &copy 2015 漱石（北京）科技有限公司
+      </div>
+    </div>
+  </footer>
+
   <%= javascript_include_tag 'home_page', 'data-turbolinks-track' => true %>
 </body>
+
 </html>
