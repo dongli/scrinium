@@ -18,41 +18,30 @@
 </head>
 <body>
   <div class="page-wrapper">
+    <!-- 导航栏 -->
     <header class="header-2">
       <div class="container">
         <div class="row">
           <div class="navbar col-sm-12 navbar-fixed-top" role="navigation">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle"></button>
-              <a class="brand" href="#">S<span style='font-size: 80%'>CRINIUM</span></a>
+              <a class="brand" href="<%= root_url(subdomain: false) %>">S<span style='font-size: 80%'>CRINIUM</span></a>
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav pull-right">
+                <li>
+                  <a href="#">主要特性</a>
+                </li>
                 <li>
                   <a href="#">关于我们</a>
                 </li>
               </ul>
               <ul class="subnav">
                 <li>
-                  <a href="#">Privacy</a>
+                  <a href="#">使用条款</a>
                 </li>
                 <li>
-                  <a href="#">Terms</a>
-                </li>
-                <li>
-                  <a href="#">Advertise</a>
-                </li>
-                <li>
-                  <a href="#">Affiliates</a>
-                </li>
-                <li>
-                  <a href="#">Newsletter</a>
-                </li>
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Contact Us</a>
+                  <a href="#">联系我们</a>
                 </li>
               </ul>
             </div>
@@ -60,6 +49,7 @@
         </div>
       </div>
     </header>
+    <!-- 封面 -->
     <section class="header-2-sub bg-midnight-blue">
       <div class="background">
         &nbsp;
@@ -68,146 +58,70 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <div class="hero-unit">
-              <h1>We have created the product that will help
-              <br/>
-              your startup to look even better</h1>
+              <h1>您的科研工作台
+                <br/>专注科研本身</h1>
             </div>
             <div class="btns">
-              <a class="btn btn-inverse" href="#">Learn More</a>
-              <a class="btn btn-danger" href="#">Buy Now for $9</a>
+              <%= link_to '登录', new_user_session_path, class: 'btn btn-success' %>
+              <%= link_to '注册', new_user_registration_path, class: 'btn btn-danger' %>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-  <!-- content-10  -->
-  <section class="content-10">
+    <!-- 主要功能 -->
+    <section class="content-10">
       <div class="container">
-          <div class="row">
-              <div class="col-sm-6">
-                  <h3>The Second Sneak-Peek
-                  of Startup Design Framework</h3>
-                  <p>
-                      You can decide whether to create your site using UI Kit blocks or samples.
-                  </p>
-                  <div class="features">
-                      <div class="box">
-                          <!-- <img src="img/retina@2x.png" width="100" height="100" alt=""> -->
-                          <h6>Easy to use</h6>
-                          <p>
-                              To get started, you select the desired sample and base the entire website on it. It’s that simple!
-                          </p>
-                      </div>
-                      <div class="box">
-                          <!-- <img src="img/gift@2x.png" width="100" height="100" alt="" > -->
-                          <h6>Feel our design</h6>
-                          <p>
-                              Samples will show you the feeling on how to play around using the components in the website building process.
-                          </p>
-                      </div>
-                      <div class="box">
-                          <!-- <img src="img/time@2x.png" width="100" height="100" alt="" > -->
-                          <h6>Variety of designs</h6>
-                          <p>
-                              Responsive web design is a web design approach aimed to provide crafting sites.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-4 col-sm-offset-2 text-center">
-                  <div id="c-10_myCarousel" class="carousel slide">
-                      <div class="carousel-inner">
-                          <div class="item active">
-                              <!-- <img src="img/iphone@2x.png" width="302" height="635" alt="" > -->
-                          </div>
-                          <div class="item">
-                              <!-- <img src="img/iphone@2x.png" width="302" height="635" alt="" > -->
-                          </div>
-                          <div class="item">
-                              <!-- <img src="img/iphone@2x.png" width="302" height="635" alt="" > -->
-                          </div>
-                      </div>
-                      <ol class="carousel-indicators">
-                          <li data-target="#c-10_myCarousel" data-slide-to="0" class="active"></li>
-                          <li data-target="#c-10_myCarousel" data-slide-to="1"></li>
-                          <li data-target="#c-10_myCarousel" data-slide-to="2"></li>
-                      </ol>
-                  </div>
-              </div>
+        <h3>科研工作的好帮手</h3>
+        <div class="row features">
+          <div class="col-sm-4">
+            <!-- <img src="img/illustrations/retina@2x.png" alt="" width="117" height="104"> -->
+            <h6>科研博客</h6>
+            <p>
+              为您提供一个纯净、专业的环境，记录好科研工作的第一手资料，累积成为宝贵的知识库。
+            </p>
           </div>
+          <div class="col-sm-4">
+            <!-- <img src="img/illustrations/clock@2x.png" alt="" width="104" height="104"> -->
+            <h6>群组协作</h6>
+            <p>
+              组建您的科研团队，共享知识，深度讨论。
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <!-- <img src="img/illustrations/rocket@2x.png" alt="" width="101" height="101"> -->
+            <h6>云存储</h6>
+            <p>
+              提供好用的云存储空间，便于共享和存档。
+            </p>
+          </div>
+        </div>
+        <div class="row features">
+          <div class="col-sm-4">
+            <!-- <img src="img/illustrations/responsive@2x.png" alt="" width="100" height="100"> -->
+            <h6>文献管理</h6>
+            <p>
+              提供统一和全面的文献库，搜索、引用一步到位。
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <!-- <img src="img/illustrations/magic@2x.png" alt="" width="100" height="100"> -->
+            <h6>试验记录</h6>
+            <p>
+              任何试验不论成功或失败，都具有参考意义。您需要的是定制化的试验表单，更加专业地记录试验。
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <!-- <img src="img/illustrations/box@2x.png" alt="" width="176" height="127" style="left: -75px;"> -->
+            <h6>个人主页</h6>
+            <p>
+              做一名响当当的科研人，让外界熟悉您，了解您的科研成果。
+            </p>
+          </div>
+        </div>
       </div>
-  </section>
-
-  <!-- footer-1 -->
-  <footer class="footer-1 bg-midnight-blue">
-      <div class="container">
-          <div class="row">
-              <div class="col-sm-5">
-                  <p class="lead">
-                      <b>200,000</b> users registered since January
-                  </p>
-                  <div class="social-btns">
-                      <a href="#" class="social-btn-facebook" data-text="Startup Design Framework - http://designmodo.com/startup/ Suit Up your Startup!" data-url="http://designmodo.com/startup/">
-                          <div class="fui-facebook"></div>
-                          <div class="fui-facebook"></div>
-                      </a>
-                      <a href="#" class="social-btn-twitter" data-text="Startup Design Framework - http://designmodo.com/startup/ Suit Up your Startup!" data-url="http://designmodo.com/startup/">
-                          <div class="fui-twitter"></div>
-                          <div class="fui-twitter"></div>
-                      </a>
-                  </div>
-              </div>
-              <nav>
-                  <div class="col-sm-2 col-sm-offset-1">
-                      <h6>About</h6>
-                      <ul>
-                          <li>
-                              <a href="#">About Us</a>
-                          </li>
-                          <li>
-                              <a href="#">Blog</a>
-                          </li>
-                          <li>
-                              <a href="#">Team</a>
-                          </li>
-                          <li>
-                              <a href="#">Career</a>
-                          </li>
-                          <li>
-                              <a href="#">Contact</a>
-                          </li>
-                      </ul>
-                  </div>
-                  <div class="col-sm-2">
-                      <h6>Follow Us</h6>
-                      <ul>
-                          <li>
-                              <a href="#">Facebook</a>
-                          </li>
-                          <li>
-                              <a href="#">Twitter</a>
-                          </li>
-                          <li>
-                              <a href="#">Instagram</a>
-                          </li>
-                      </ul>
-                  </div>
-              </nav>
-              <div class="col-sm-2 buy-btn">
-                  <a class="btn btn-danger btn-block" href="#">Buy App</a>
-                  or <a href="#">Learn More</a>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-sm-5 additional-links">
-                  <a href="#">Terms of Service</a>
-                  <a href="#">Special Terms</a>
-                  <a href="#">Privacy Policy</a>
-              </div>
-          </div>
-      </div>
-    </footer>
+    </section>
   </div>
 
   <%= javascript_include_tag 'home_page', 'data-turbolinks-track' => true %>

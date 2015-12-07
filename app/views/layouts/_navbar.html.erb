@@ -17,19 +17,19 @@
       <ul class='nav navbar-nav navbar-right'>
         <li>
           <%=
-            link_to image_tag('logos/organization_logo.png', size: '30x30'),
+            link_to t('activerecord.models.organization'),
             organizations_path, class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
-            link_to image_tag('logos/group_logo.png', size: '30x30'),
+            link_to t('activerecord.models.group'),
             groups_path, class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
-            link_to image_tag('logos/research_logo.png', size: '30x30'),
+            link_to t('news'),
             news_index_path, class: 'navbar-link'
           %>
         </li>

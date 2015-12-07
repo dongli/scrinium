@@ -73,3 +73,13 @@ a.button:visited {
 .carousel-control.left, .carousel-control.right {
   background-image: none
 }
+
+.radio,
+.checkbox {
+  margin-top: 0;
+}
+
+.navbar-nav > li > a {
+  line-height: 30px;
+  font-size: 16px;
+}

@@ -3,17 +3,11 @@
   <li class='dropdown'>
     <div id='user-info' data-user-id=<%= current_user.id %>></div>
     <a id='user-menu' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
-      <% if has_unread? %>
-        <%= image_tag('logos/user_alert_logo.png', size: '30x30', id: 'user-alert-logo') %>
-        <%= image_tag('logos/user_logo.png', size: '30x30', id: 'user-logo', style: 'display: none') %>
-      <% else %>
-        <%= image_tag('logos/user_alert_logo.png', size: '30x30', id: 'user-alert-logo', style: 'display: none') %>
-        <%= image_tag('logos/user_logo.png', size: '30x30', id: 'user-logo') %>
-      <% end %>
+      <%= avatar(current_user, size: '30x30') %>
     </a>
     <ul class='dropdown-menu'>
       <li>
-        <%= link_to avatar(current_user, size: :small)+' '+t('activerecord.models.profile'), current_user %>
+        <%= link_to fa_icon('user', text: t('activerecord.models.profile')), current_user %>
       </li>
       <li>
         <a href='<%= user_mailbox_index_path(current_user) %>'
