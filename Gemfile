@@ -91,6 +91,7 @@ gem 'enumerize'
 gem 'inherited_resources'
 gem 'acts_as_tenant'
 gem 'public_activity'
+gem 'ffaker', require: false
 
 ## 搜索
 gem 'elasticsearch-model'
@@ -118,7 +119,6 @@ group :development, :test do
   gem 'capistrano-sidekiq'
 
   # 生成假数据，faker重构版本
-  gem 'ffaker', require: false
   gem 'guard-rails', require: false
   gem 'factory_girl_rails'  # 测试数据
 
