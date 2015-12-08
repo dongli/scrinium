@@ -1,10 +1,10 @@
 $(document).on 'page:change', ->
   turnOnTab
     info: []
-    suborganizations: [ 'add-child' ]
+    suborganizations: []
     members: []
     engines: []
-    admin: [ 'add-engine' ]
+    admin: []
 
   crop_image '#organization_logo', 'organization'
 

@@ -7,26 +7,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class='navbar-brand' href='/'>S<span style='font-size: 80%'>CRINIUM</span></a>
+      <%=
+        link_to raw("S<span style='font-size: 80%'>CRINIUM</span>"),
+        root_url(subdomain: false), class: 'navbar-brand'
+      %>
     </div>
 
     <div class='collapse navbar-collapse'>
       <ul class='nav navbar-nav navbar-right'>
         <li>
           <%=
-            link_to image_tag('logos/organization_logo.png', size: '30x30'),
+            link_to t('activerecord.models.organization'),
             organizations_path, class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
-            link_to image_tag('logos/group_logo.png', size: '30x30'),
+            link_to t('activerecord.models.group'),
             groups_path, class: 'navbar-link'
           %>
         </li>
         <li>
           <%=
-            link_to image_tag('logos/research_logo.png', size: '30x30'),
+            link_to t('news'),
             news_index_path, class: 'navbar-link'
           %>
         </li>

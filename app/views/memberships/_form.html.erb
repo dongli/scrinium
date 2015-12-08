@@ -19,7 +19,8 @@
       </div>
     <% end %>
   <% when :invited %>
-    <%= f.input :user_id, label: false, as: :select, input_html: { id: 'input-user-name', style: 'width: 100%;' } %>
+    <%= f.input :user_id, label: false, as: :select, input_html: {style: 'width: 100%;', class: "choose_user" } %>
+    <%= f.input :role, collection: [:assist_admin, :member], as: :radio_buttons %>
     <div class='center'>
       <%= f.button :submit, t('membership.action.invite'), class: 'button btn-xs' %>
     </div>

@@ -10,6 +10,7 @@
 #  parent_id       :integer
 #  folderable_id   :integer
 #  folderable_type :string
+#  share_ids       :integer          default([]), is an Array
 #  status          :string
 #  position        :integer
 #  created_at      :datetime         not null
@@ -30,4 +31,7 @@ class Folder < ActiveRecord::Base
   has_many :resources, dependent: :destroy
   belongs_to :parent, class_name: 'Folder', foreign_key: 'parent_id'
   has_many :children, class_name: 'Folder', foreign_key: 'parent_id', dependent: :destroy
+
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :parent_id }
 end

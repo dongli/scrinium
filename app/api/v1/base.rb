@@ -9,6 +9,7 @@ module V1
     mount V1::PublishersAPI
     mount V1::UsersAPI
     mount V1::Sessions
+    mount V1::ArticlesAPI
 
     add_swagger_documentation(
         :api_version => "api/v1",

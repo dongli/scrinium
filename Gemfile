@@ -56,7 +56,6 @@ gem 'grape-swagger'
 gem 'grape-swagger-rails'
 
 ## 文件上传
-gem 'paperclip', '~> 4.3' # 等待删除
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-qiniu', '0.1.8'
@@ -64,7 +63,7 @@ gem 'file_validators'
 gem 'remotipart'
 
 ## 编辑器
-gem 'mathjax-rails', '~> 2.5.1'
+
 gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
 source 'https://rails-assets.org' do
@@ -91,6 +90,7 @@ gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
 gem 'acts_as_tenant'
+gem 'public_activity'
 
 ## 搜索
 gem 'elasticsearch-model'
@@ -117,6 +117,18 @@ group :development, :test do
   gem 'net-ssh', '~> 2.8.0'
   gem 'capistrano-sidekiq'
 
+  # 生成假数据，faker重构版本
+  gem 'ffaker', require: false
+  gem 'guard-rails', require: false
+  gem 'factory_girl_rails'  # 测试数据
+
   # 插件
   # gem 'scrinium_esm', '0.0.1', path: '../scrinium_esm'
+end
+
+group :test do
+  gem 'rspec'               # rspec 测试框架
+  gem 'rspec-rails'         # for respec
+  gem 'database_cleaner'    # 测试数据库清理
+  gem 'shoulda'
 end

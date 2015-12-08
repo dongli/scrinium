@@ -1,7 +1,16 @@
 <tr id='folder-<%= folder.id %>'>
-  <td><%= fa_icon('folder-o') %> <span class='folder-name'><%= link_to folder.name, folder, remote: true %></span></td>
-  <td><%= folder.created_at %></td>
-  <!-- 目录操作列表 -->
+  <% if defined? current_share_id %>
+    <!-- 在分享列表中显示。 -->
+    <td>
+      <%= fa_icon('folder-o') %>
+      <%= link_to folder.name, [ folder, current_share_id: current_share_id ], remote: true %>
+    </td>
+  <% else %>
+    <td><%= fa_icon('folder-o') %> <%= link_to folder.name, folder, remote: true %></td>
+  <% end %>
+  <td><%= timeago folder.created_at %></td>
+  <td><%= render 'resource_board/share_hosts', object: folder %></td>
+  <!-- 文件夹操作列表 -->
   <td style='display: none;'>
     <ul>
       <li>
@@ -14,6 +23,12 @@
         <%=
           link_to '', folder, method: :patch,
           id: "folder-#{folder.id}-update", remote: true
+        %>
+      </li>
+      <li>
+        <%=
+          link_to '', new_share_path,
+          id: "folder-#{folder.id}-share", remote: true
         %>
       </li>
     </ul>

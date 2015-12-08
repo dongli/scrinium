@@ -16,6 +16,10 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def feed
+    @posts = Post.includes(:postable).where(group_id: current_user.group_ids).order('updated_at desc')
+  end
+
   def create
     @group = Group.new(group_params)
     set_crop_params
@@ -23,19 +27,7 @@ class GroupsController < ApplicationController
     @group.admin_id = current_user.id
     respond_to do |format|
       if @group.save
-        # 建立管理员membership和其它表单中含有的用户membership。
-        user_ids = (params[:group][:user_ids]
-          .delete_if { |id| id.empty? }
-          .map { |id| id.to_i } << current_user.id).uniq
-        user_ids.each do |id|
-          role = id == current_user.id ? 'admin' : 'member'
-          membership = Membership.new(host_type: 'Group',
-                                      host_id: @group.id,
-                                      user_id: id,
-                                      role: role,
-                                      status: 'approved')
-          membership.save!
-        end
+        @membership = current_user.memberships.create(host_type: 'Group', host_id: @group.id, role: "admin", status: "approved")
         format.html { redirect_to @group, notice: t('message.create_success', thing: t('activerecord.models.group')) }
       else
         format.html { render :new }
@@ -45,10 +37,6 @@ class GroupsController < ApplicationController
 
   def update
     set_crop_params
-    # 自动将管理者加入到用户中。
-    if not params[:group][:user_ids].include? @group.admin_id
-      params[:group][:user_ids] << @group.admin_id
-    end
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: t('message.update_success', thing: t('activerecord.models.group')) }

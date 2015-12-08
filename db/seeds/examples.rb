@@ -26,9 +26,23 @@ Profile.create(
   title: 'associate_researcher'
 )
 
+User.create(
+  name: '田鲁',
+  role: 'admin',
+  email: 'tianlu1677@gmail.com',
+  password: '12345678',
+  password_confirmation: '12345678',
+)
+
+Profile.create(
+  user_id: 2,
+  gender: 'male',
+  title: 'freeman'
+)
+
 Organization.create(name: '中国科学院大气物理研究所',
                     logo: open("#{Rails.root}/app/assets/images/logos/iap_logo.png"),
-                    short_name: 'CAS-IAP',
+                    short_name: 'IAP',
                     description: '',
                     admin_id: 1,
                     locale: 'zh-CN')
@@ -75,7 +89,7 @@ User.create(
 )
 
 Profile.create(
-  user_id: 2,
+  user_id: 3,
   gender: 'male',
   title: 'associate_researcher'
 )

@@ -29,16 +29,7 @@
       </div>
     </div>
     <%= f.input :description, as: :text %>
-    <%=
-      f.association :users,
-      label_method: :name,
-      value_method: :id,
-      collection: @group.users,
-      input_html: {
-        id: 'input-user-name',
-        multiple: 'multiple'
-      }
-    %>
+
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

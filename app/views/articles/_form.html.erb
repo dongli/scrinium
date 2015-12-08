@@ -1,6 +1,5 @@
 <div class='article-form'>
   <%= simple_form_for @article do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.input :title %>
     <div class='row'>
       <div class='col-md-4'>

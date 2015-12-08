@@ -1,0 +1,8 @@
+<% content_for :main_block do %>
+
+  <h1>New Topic</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', group_topics_path(@group) %>
+<% end %>

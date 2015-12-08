@@ -11,7 +11,7 @@ class Admin::ApplicationController < ActionController::Base
 
 
   def index
-    @q = resource_class.search(params[:q])
+    @q = resource_class.ransack(params[:q])
   end
 
   def create
@@ -64,7 +64,7 @@ class Admin::ApplicationController < ActionController::Base
 
   def collection
     get_collection_ivar || set_collection_ivar(end_of_association_chain.
-                                                   search(params[:q]).result.page(params[:page] || 1).per(params[:per_page]))
+                                                   ransack(params[:q]).result.page(params[:page] || 1).per(params[:per_page]))
   end
 
   def permitted_params

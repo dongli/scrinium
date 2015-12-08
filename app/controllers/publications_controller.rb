@@ -2,8 +2,6 @@ class PublicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_publication, only: [:update, :destroy]
 
-  # POST /publications
-  # POST /publications.json
   def create
     @publication = Publication.new(publication_params)
 
@@ -16,8 +14,6 @@ class PublicationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /publications/1
-  # PATCH/PUT /publications/1.json
   def update
     respond_to do |format|
       if @publication.update(publication_params)
@@ -28,8 +24,6 @@ class PublicationsController < ApplicationController
     end
   end
 
-  # DELETE /publications/1
-  # DELETE /publications/1.json
   def destroy
     @publication.destroy
     respond_to do |format|
@@ -39,12 +33,10 @@ class PublicationsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_publication
     @publication = Publication.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def publication_params
     params.require(:publication).permit(:user_id, :reference_id, :matched_author, :status)
   end

@@ -5,18 +5,18 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'home#index'
   mount API => '/'
   mount GrapeSwaggerRails::Engine => '/apidoc' unless Rails.env.production?
-  mathjax 'mathjax'
-
-  get 'news/index'
-  get 'library/index'
 
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  root 'home#index'
+  get 'news/index'
+  get 'library/index'
+  get 'old_index' => "home#old_index"
 
   # Concerns
   concern :commentable do
@@ -55,10 +55,13 @@ Rails.application.routes.draw do
   # 资源
   resources :resources, concerns: [ :commentable, :collectable ]
   resources :folders
-  namespace :resource_board do
-    get :delete_files
-    get :rename_file
-    get :move_files
+  [ :delete_files, :rename_file, :move_files, :share_files ].each do |action|
+    get "#{action}/:folderable_type/:folderable_id" => "resource_board##{action}", as: action
+  end
+  resources :shares do
+    member do
+      get :back_to_top
+    end
   end
   # 参考文献
   resources :publications, except: [ :index, :new, :edit, :show ]
@@ -74,7 +77,12 @@ Rails.application.routes.draw do
   resources :organizations
   resources :addresses
   # 群组
-  resources :groups
+  resources :groups do
+    get :feed, on: :collection
+    resources :topics
+    resources :nodes
+  end
+  resources :activities
   resources :posts do
     member do
       get :change_sticky

@@ -1,121 +1,121 @@
+<!-- 如果没有传入current_folder，则必须传入folderable。 -->
+<% if not defined? current_folder or not current_folder %>
+  <!-- 很抱歉在这里添加增加root文件夹的逻辑，因为在model中无法访问到current_user。 -->
+  <% if folderable.folders.empty? %>
+    <% folderable.folders.create(
+      name: 'root',
+      user_id: current_user.id,
+      folderable_id: folderable.id,
+      folderable_type: folderable.class.to_s
+    ) %>
+  <% end %>
+
+  <!-- 默认第一个文件夹为当前文件夹。 -->
+  <% current_folder = folderable.folders.first %>
+<% end %>
+<!-- 从cookie中查看是否记录有当前文件夹ID。 -->
 <% current_folder_id = cookies[:current_folder_id] %>
 <% if current_folder_id and current_folder_id != current_folder.id %>
-  <% current_folder = Folder.find(current_folder_id) %>
+  <!-- 如果有，则更改当前文件夹。 -->
+  <% tmp = Folder.find_by id: current_folder_id %>
+  <!-- 为了避免泄露文件，我们必须判断folderable的一致性。 -->
+  <% current_folder = tmp if tmp and tmp.folderable == current_folder.folderable %>
 <% else %>
   <% cookies[:current_folder_id] = { value: "#{current_folder.id}", path: request.fullpath } %>
 <% end %>
-<div id='resource-board' data-current-folder='<%= current_folder.id %>'>
-  <ol class='breadcrumb'>
-    <% folder = current_folder %>
-    <% parent_folders = [] %>
-    <% while folder.parent_id do %>
-      <% parent_folders << folder.parent %>
-      <% folder = folder.parent %>
-    <% end %>
-    <% parent_folders.reverse.each do |parent_folder| %>
-      <% if parent_folder.parent_id %>
-        <li><%= link_to parent_folder.name, parent_folder, remote: true %></li>
-      <% else %>
-        <li><%= link_to fa_icon('home'), parent_folder, remote: true %></li>
-      <% end %>
-    <% end %>
-    <% if current_folder.parent %>
-      <li class='active'><%= link_to current_folder.name, current_folder, remote: true %></li>
-    <% else %>
-      <li class='active'><%= link_to fa_icon('home'), current_folder, remote: true %></li>
-    <% end %>
-  </ol>
 
-  <div class='resource-board-actions'>
-    <ul class='inline'>
-      <li><%= link_to fa_icon('plus-square-o', text: '文件'), [ :new, :resource, folder_id: current_folder.id ], remote: true %></li>
-      <li><%= link_to fa_icon('plus-square-o', text: '文件夹'), [ :new, :folder, folder_id: current_folder.id ], remote: true %></li>
-    </ul>
+<%= render 'resource_board/show_owned', current_folder: current_folder %>
+
+<% if not current_folder.folderable.shares.empty? %>
+  <%= render 'resource_board/show_shares', host: current_folder.folderable %>
+<% end %>
+
+<!-- 添加文件夹的modal -->
+<div class='modal fade' id='add-folder' tabindex='-1' role='dialog' aria-labelledby='add-folder-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>创建文件夹</h4>
+      </div>
+      <div class='modal-body'>
+        <%= render 'folders/form', folder: Folder.new %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <table class='table'>
-    <thead id='resource-board-table-head'>
-      <tr>
-        <th width='100'>名称</th>
-        <th width='100'>创建时间</th>
+<!-- 添加文件的modal -->
+<div class='modal fade' id='add-resource' tabindex='-1' role='dialog' aria-labelledby='add-resource-label'>
+  <div class='modal-dialog modal-bg' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>创建文件</h4>
+      </div>
+      <div class='modal-body' id='resource-form-container'>
+        <!-- 文件上传表单在resources/new.js.erb中插入 -->
+      </div>
+    </div>
+  </div>
+</div>
 
-        <th colspan=2 id='resource-board-file-actions' style='display: none;'>
-          <ul class='resource-board-file-actions'>
-            <li class='for-single-file'><%= link_to fa_icon('edit', text: '重命名'), resource_board_rename_file_path, remote: true %></li>
-            <li><%= link_to fa_icon('trash', text: '删除'), resource_board_delete_files_path, remote: true %></li>
-            <li><%= link_to fa_icon('wheelchair', text: '移动'), resource_board_move_files_path, remote: true, id: 'move-files' %></li>
-            <li><%= fa_icon('copy', text: '拷贝') %></li>
-          </ul>
-        </th>
-      </tr>
-    </thead>
-    <tbody id='resource-board-table'>
-      <% current_folder.children.sort_by { |x| x.name }.each do |child| %>
-        <%= render 'resource_board/folder_table_row', folder: child %>
-      <% end %>
-      <% current_folder.resources.sort_by { |x| x.name }.each do |resource| %>
-        <%= render 'resource_board/resource_table_row', resource: resource %>
-      <% end %>
-    </tbody>
-  </table>
-
-  <!-- 添加文件夹的modal -->
-  <div class='modal fade' id='add-folder' tabindex='-1' role='dialog' aria-labelledby='add-folder-label'>
-    <div class='modal-dialog modal-sm' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header center'>
-          <h4 class='modal-title'>创建文件夹</h4>
-        </div>
-        <div class='modal-body'>
-          <%= render 'folders/form', folder: Folder.new %>
+<!-- 删除文件或文件夹的modal -->
+<div class='modal fade' id='delete-files' tabindex='-1' role='dialog' aria-labelledby='delete-files-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>是否执行删除？</h4>
+      </div>
+      <div class='modal-body'>
+        <div id='delete-files-message'></div>
+        <div class='center'>
+          <button id='delete-files' class='btn btn-danger'>删除</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- 添加文件的modal -->
-  <div class='modal fade' id='add-resource' tabindex='-1' role='dialog' aria-labelledby='add-resource-label'>
-    <div class='modal-dialog modal-bg' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header center'>
-          <h4 class='modal-title'>创建文件</h4>
-        </div>
-        <div class='modal-body'>
-          <%= render 'resources/form', resource: Resource.new %>
+<!-- 移动文件或文件夹的modal -->
+<div class='modal fade' id='move-files' tabindex='-1' role='dialog' aria-labelledby='move-files-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>移动到 ...</h4>
+      </div>
+      <div class='modal-body'>
+        <div id='move-files-container'></div>
+        <div class='center'>
+          <button id='move-files' class='btn btn-primary'>移动</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- 删除文件或文件夹的modal -->
-  <div class='modal fade' id='delete-files' tabindex='-1' role='dialog' aria-labelledby='delete-files-label'>
-    <div class='modal-dialog modal-sm' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header center'>
-          <h4 class='modal-title'>是否执行删除？</h4>
-        </div>
-        <div class='modal-body'>
-          <div id='delete-files-message'></div>
-          <div class='center'>
-            <button id='delete-files-button' class='btn btn-danger'>删除</button>
-          </div>
-        </div>
+<!-- 分享文件或文件夹的modal -->
+<div class='modal fade' id='share-files' tabindex='-1' role='dialog' aria-labelledby='share-files-label'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header center'>
+        <h4 class='modal-title'>分享到 ...</h4>
       </div>
-    </div>
-  </div>
-
-  <!-- 移动文件或文件夹的modal -->
-  <div class='modal fade' id='move-files' tabindex='-1' role='dialog' aria-labelledby='move-files-label'>
-    <div class='modal-dialog modal-sm' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header center'>
-          <h4 class='modal-title'>移动到 ...</h4>
+      <div class='modal-body'>
+        <div class='well'>
+          <% if current_user.groups.size < 20 %>
+            <ul class='clean-list'>
+              <% current_user.groups.each do |group| %>
+                <li>
+                  <%= check_box_tag "share-files-group-#{group.id}" %> <%= group.name %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
         </div>
-        <div class='modal-body'>
-          <div id='move-files-container'></div>
-          <div class='center'>
-            <button id='move-files' class='btn btn-primary'>移动</button>
-          </div>
+        <div class='well'>
+          分享到其他用户。
+        </div>
+        <div class='center'>
+          <button id='share-files' class='btn btn-primary'>分享</button>
         </div>
       </div>
     </div>

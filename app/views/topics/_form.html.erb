@@ -1,0 +1,17 @@
+<% content_for :main_block do %>
+
+  <%= simple_form_for([@group, @topic]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :node, collection: @group.nodes %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.input :status %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+<% end %>

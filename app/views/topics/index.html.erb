@@ -1,0 +1,42 @@
+<% content_for :main_block do %>
+
+  <p id="notice"><%= notice %></p>
+
+<h1>Listing Topics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Views count</th>
+      <th>Comments count</th>
+      <th>Status</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= topic.user_name %></td>
+        <td><%= topic.title %></td>
+        <td><%= topic.content %></td>
+        <td><%= topic.views_count %></td>
+        <td><%= topic.comments_count %></td>
+        <td><%= topic.status %></td>
+        <td><%= topic.position %></td>
+        <td><%= link_to 'Show', group_topic_path(@group, topic) %></td>
+        <td><%= link_to 'Edit', edit_group_topic_path(@group, topic) %></td>
+        <td><%= link_to 'Destroy', group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Topic', new_group_topic_path(@group) %>
+  <% end %>

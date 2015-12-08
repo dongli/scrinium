@@ -2,20 +2,24 @@
 #
 # Table name: articles
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  title      :string           not null
-#  content    :text             default("")
-#  privacy    :string           not null
-#  status     :string
-#  position   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  title          :string           not null
+#  content        :text             default("")
+#  privacy        :string           not null
+#  views_count    :integer
+#  comments_count :integer
+#  status         :string
+#  position       :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Article < ActiveRecord::Base
   extend Enumerize
-  # include ArticleSearchable
+  include ArticleSearchable
+  include PublicActivity::Model
+  tracked
 
   validates :title, uniqueness: { scope: :user_id }
   validates :title, presence: true

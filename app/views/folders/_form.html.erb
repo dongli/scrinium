@@ -1,5 +1,7 @@
 <%= simple_form_for folder, remote: true do |f| %>
-  <%= f.hidden_field :parent_id %>
+  <% [ :parent_id, :folderable_type, :folderable_id ].each do |attribute| %>
+    <%= f.hidden_field attribute %>
+  <% end %>
   <%= f.input :name %>
   <div class='center'>
     <%= f.button :submit, t('action.submit'), class: 'button' %>

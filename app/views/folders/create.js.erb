@@ -1,30 +1,37 @@
-var folderNames = [];
-var folderIDs = []
-$('#resource-board-table td span').each(function() {
-  folderNames.push($(this).text());
-  folderIDs.push($(this).parent().parent().attr('id'));
-})
-// 关闭modal。
-$('#add-folder').modal('hide');
-// 按序搜索将新创建的文件夹插入到当前列表的哪一行后面。
-var inserted = false;
-for (i = 0; i < folderNames.length; i++) {
-  if (folderNames[i] > '<%= @folder.name %>') {
-    $('#' + folderIDs[i]).before("<%=
-      j render 'resource_board/folder_table_row', folder: @folder
-    %>");
-    inserted = true;
-    break;
+<% if @folder.errors.empty? %>
+  var folderNames = [];
+  var folderIDs = []
+  $('#resource-board-table td span').each(function() {
+    folderNames.push($(this).text());
+    folderIDs.push($(this).parent().parent().attr('id'));
+  })
+  // 关闭modal。
+  $('#add-folder').modal('hide');
+  // 按序搜索将新创建的文件夹插入到当前列表的哪一行后面。
+  var inserted = false;
+  for (i = 0; i < folderNames.length; i++) {
+    if (folderNames[i] > '<%= @folder.name %>') {
+      $('#' + folderIDs[i]).before("<%=
+        j render 'resource_board/folder_table_row', folder: @folder
+      %>");
+      inserted = true;
+      break;
+    }
   }
-}
-if (!inserted) {
-  if (folderIDs.length == 0) {
-    $('#resource-board-table').append("<%=
-      j render 'resource_board/folder_table_row', folder: @folder
-    %>")
-  } else {
-    $('#' + folderIDs[folderIDs.length-1]).after("<%=
-      j render 'resource_board/folder_table_row', folder: @folder
-    %>");
+  if (!inserted) {
+    if (folderIDs.length == 0) {
+      $('#resource-board-table').append("<%=
+        j render 'resource_board/folder_table_row', folder: @folder
+      %>")
+    } else {
+      $('#' + folderIDs[folderIDs.length-1]).after("<%=
+        j render 'resource_board/folder_table_row', folder: @folder
+      %>");
+    }
   }
-}
+<% else %>
+  // 处理错误。
+  <% if @folder.errors.include? :name %>
+    showValidationError('folder_name', '<%= @folder.errors.messages[:name].first %>');
+  <% end %>
+<% end %>

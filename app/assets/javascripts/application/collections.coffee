@@ -1,9 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 $(document).on 'page:change', ->
-  if /\/users\/\d+/.test(location)
+  if $('div#collections').length == 1
     $('[id|=message-bus-collection]').each ->
       if not typeIsArray window.collection_channels
         window.collection_channels = []
