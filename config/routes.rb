@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'news/index'
   get 'library/index'
-  get 'old_index' => "home#old_index"
+  get 'about' => 'home#about'
 
   # Concerns
   concern :commentable do
