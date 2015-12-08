@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'news/index'
   get 'library/index'
   get 'old_index' => "home#old_index"
+  get 'news/show' => "news#show"
+  get 'new/user' => "news#user"
 
   # Concerns
   concern :commentable do
