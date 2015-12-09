@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title><%= t('scrinium') %></title>
+  <title>
+    <%= t('scrinium') %>
+  </title>
   <meta name='apple-mobile-web-app-capable' content='yes' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
@@ -14,8 +17,9 @@
 
   <%= stylesheet_link_tag 'home_page', media: 'all', 'data-turbolinks-track' => true %>
 
-  <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
 </head>
+
 <body>
   <div class="page-wrapper">
     <!-- 导航栏 -->
@@ -30,10 +34,10 @@
             <div class="collapse navbar-collapse">
               <ul class="nav pull-right">
                 <li>
-                  <a href="#">主要特性</a>
+                  <a href="#">特性</a>
                 </li>
                 <li>
-                  <a href="#">关于我们</a>
+                  <%= link_to '关于', about_path %>
                 </li>
               </ul>
               <ul class="subnav">
@@ -49,8 +53,9 @@
         </div>
       </div>
     </header>
+
     <!-- 封面 -->
-    <section class="header-2-sub bg-midnight-blue">
+    <section class="header-2-sub bg-custom">
       <div class="background">
         &nbsp;
       </div>
@@ -58,72 +63,38 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <div class="hero-unit">
-              <h1>您的科研工作台
-                <br/>专注科研本身</h1>
+              <h1>您的科研工作台</h1>
             </div>
-            <div class="btns">
-              <%= link_to '登录', new_user_session_path, class: 'btn btn-success' %>
-              <%= link_to '注册', new_user_registration_path, class: 'btn btn-danger' %>
-            </div>
+            <% if current_user %>
+              <a href='<%= user_path(current_user) %>'>
+                <%= avatar(current_user, size: '80x80') %>
+              </a>
+              <% else %>
+                <div class="btns">
+                  <%= link_to '登录', new_user_session_path, class: 'btn btn-signin' %>
+                    <%= link_to '注册', new_user_registration_path, class: 'btn btn-signup' %>
+                </div>
+                <% end %>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 主要功能 -->
-    <section class="content-10">
-      <div class="container">
-        <h3>科研工作的好帮手</h3>
-        <div class="row features">
-          <div class="col-sm-4">
-            <!-- <img src="img/illustrations/retina@2x.png" alt="" width="117" height="104"> -->
-            <h6>科研博客</h6>
-            <p>
-              为您提供一个纯净、专业的环境，记录好科研工作的第一手资料，累积成为宝贵的知识库。
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <!-- <img src="img/illustrations/clock@2x.png" alt="" width="104" height="104"> -->
-            <h6>群组协作</h6>
-            <p>
-              组建您的科研团队，共享知识，深度讨论。
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <!-- <img src="img/illustrations/rocket@2x.png" alt="" width="101" height="101"> -->
-            <h6>云存储</h6>
-            <p>
-              提供好用的云存储空间，便于共享和存档。
-            </p>
-          </div>
-        </div>
-        <div class="row features">
-          <div class="col-sm-4">
-            <!-- <img src="img/illustrations/responsive@2x.png" alt="" width="100" height="100"> -->
-            <h6>文献管理</h6>
-            <p>
-              提供统一和全面的文献库，搜索、引用一步到位。
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <!-- <img src="img/illustrations/magic@2x.png" alt="" width="100" height="100"> -->
-            <h6>试验记录</h6>
-            <p>
-              任何试验不论成功或失败，都具有参考意义。您需要的是定制化的试验表单，更加专业地记录试验。
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <!-- <img src="img/illustrations/box@2x.png" alt="" width="176" height="127" style="left: -75px;"> -->
-            <h6>个人主页</h6>
-            <p>
-              做一名响当当的科研人，让外界熟悉您，了解您的科研成果。
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <%= yield %>
+
   </div>
+
+  <!-- 页脚 -->
+  <footer class="footer-1">
+    <div class="container">
+      <div class="row" style="text-align: center;">
+        Copyright &copy 2015 北京漱石科技有限公司（筹）
+        <br/> 京ICP备15062969号
+      </div>
+    </div>
+  </footer>
 
   <%= javascript_include_tag 'home_page', 'data-turbolinks-track' => true %>
 </body>
+
 </html>

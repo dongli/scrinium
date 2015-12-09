@@ -32,9 +32,6 @@
     <%= render 'layouts/navbar' %>
   </header>
 
-  <% if is_root_domain? %>
-    <div class='with-background'>
-  <% end %>
   <div id="main-container" class="container">
     <%= render 'layouts/message' %>
     <%= render_breadcrumbs if request.path != '/' and not request.path =~ /\/d\/users\// %>
@@ -43,14 +40,11 @@
       <%= render 'layouts/main_block' %>
     </div>
   </div>
-  <% if is_root_domain? %>
-    </div>
-  <% end %>
 
-  <footer>
-    <% if is_root_domain? %>
+  <% if is_root_domain? %>
+    <footer>
       Copyright &copy 2015 <%= t('global.shustone') %>
-    <% end %>
-  </footer>
+    </footer>
+  <% end %>
 </body>
 </html>
