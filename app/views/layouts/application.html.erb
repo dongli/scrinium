@@ -36,8 +36,9 @@
     <%= render 'layouts/message' %>
     <%= render_breadcrumbs if request.path != '/' and not request.path =~ /\/d\/users\// %>
     <div class='row'>
-      <%= render 'layouts/left_side' %>
-      <%= render 'layouts/main_block' %>
+      <%= render 'layouts/left_column' %>
+      <%= render 'layouts/center_column' %>
+      <%= render 'layouts/right_column' %>
     </div>
   </div>
 

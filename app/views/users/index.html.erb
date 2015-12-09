@@ -1,5 +1,5 @@
 <% content_for :title, t('activerecord.models.user') %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <%= render 'users/table_list', users: User.all %>
 <% end %>

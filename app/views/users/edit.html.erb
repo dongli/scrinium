@@ -1,6 +1,6 @@
 <% content_for :title, t('action.edit')+t('activerecord.models.profile') %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
       <%= f.simple_fields_for :profile do |profile_form| %>

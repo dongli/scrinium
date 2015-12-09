@@ -1,6 +1,6 @@
 <% content_for :title, t('devise.views.sign_up') %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <div class='devise-form'>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "users_sign_up"}) do |f| %>
       <div class='form-group'>

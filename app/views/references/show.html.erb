@@ -1,10 +1,10 @@
 <% content_for :title, t('activerecord.models.reference') %>
 
-<% content_for :left_side do %>
+<% content_for :left_column do %>
   <%= render 'profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <ul class='reference'>
     <li class='title'><%= @reference.title %></li>
     <li class='authors'><%= render inline: join_authors(@reference) %></li>

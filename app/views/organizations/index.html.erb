@@ -1,6 +1,6 @@
 <% content_for :title, t('activerecord.models.organization') %>
 <% add_breadcrumb t('activerecord.models.organization'), organizations_path, on_nav_bar: true %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <%= render 'organizations/block_list', organizations: Organization.all, add_logo: true %>
 <% end %>

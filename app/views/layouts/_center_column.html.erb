@@ -1,0 +1,9 @@
+<% if content_for?(:left_column) ^ content_for?(:right_column) %>
+  <div class='col-sm-12 col-md-9 center-column'>
+<% elsif content_for?(:left_column) and content_for?(:right_column) %>
+  <div class='col-sm-12 col-md-7 center-column'>
+<% else %>
+  <div class='col-sm-12 center-column'>
+<% end %>
+  <%= yield :center_column %>
+</div>
