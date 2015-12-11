@@ -200,7 +200,7 @@ you can use the generic selector below, but it's slower:
 }
 body {
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.72222;
   color: #34495e;
   background-color: #ffffff;

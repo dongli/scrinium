@@ -3,15 +3,24 @@
 
 <% content_for :left_column do %>
   <%= render 'profile_left' %>
+  <div class='panel panel-default'>
+    <div class='panel-body center' style='height: 200px;'>
+      事件提醒
+    </div>
+  </div>
 <% end %>
 
 <% content_for :center_column do %>
   <%=
     render 'layouts/navtab',
     tabs: {
-      activities: [
-        t('user.activity'),
-        render('articles', user: @user)+render('publications', user: @user)
+      columns: [
+        t('user.columns'),
+        render('articles', user: @user)
+      ],
+      publications: [
+        t('user.publications'),
+        render('publications', user: @user)
       ],
       collections: [
         t('collection'),

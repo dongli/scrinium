@@ -54,7 +54,8 @@ zh-CN:
         user: 用户
 
   user:
-    activity: 活动
+    columns: 专栏
+    publications: 发表刊物
     affiliation: 所属机构
 
   action:

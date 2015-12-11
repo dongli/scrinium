@@ -20,6 +20,7 @@
  *= require jstree-default
  *= require froala_editor/froala_editor_require
  *= require application/custom
+ *= require startup/flat-ui/flat-ui
  *= require_self
  */
 
@@ -47,21 +48,12 @@ footer {
 }
 
 .left-column {
-  margin: 1em;
-  border-right-style: solid;
-  border-right-width: thin;
-  border-right-color: #E7E7E7;
 }
 
 .right-column {
-  margin: 1em;
-  border-left-style: solid;
-  border-left-width: thin;
-  border-left-color: #E7E7E7;
 }
 
 .center-column {
-  margin: 1em;
   text-align: justify;
   text-justify: inter-word;
 }
