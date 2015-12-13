@@ -14,7 +14,7 @@
         <%= t('action.reply') %>#<%= Comment.find(comment.parent_id).floor %>
       <% end %>
       <%=
-        f.button :submit, t('action.save'), class: 'button btn-xs float-right',
+        f.button :submit, t('action.save'), class: 'btn btn-primary btn-xs pull-right',
         id: 'save-comment', remote: true
       %>
     </div>

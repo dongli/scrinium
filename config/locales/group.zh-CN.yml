@@ -25,6 +25,13 @@ zh-CN:
             short_name:
               blank: 请给群组起个便于识别的简称！
 
+  simple_form:
+    placeholders:
+      group:
+        name: 名称
+        short_name: 简称
+        description: 简介
+
   enumerize:
     group:
       privacy:

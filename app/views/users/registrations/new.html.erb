@@ -1,36 +1,28 @@
 <% content_for :title, t('devise.views.sign_up') %>
 
 <% content_for :center_column do %>
-  <div class='devise-form'>
+  <div class='devise-form' style='margin-top: 10%'>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "users_sign_up"}) do |f| %>
-      <div class='form-group'>
+      <%= f.input :name %>
+
+      <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
         <div class='row'>
-          <div class='col-md-12'>
-            <%= f.input :name %>
-
-            <%= f.simple_fields_for :profile, f.object.profile.present? ? f.object.profile : f.object.build_profile do |profile_form| %>
-              <div class='row'>
-                <div class='col-md-6'>
-                  <%= profile_form.input :gender %>
-                </div>
-                <div class='col-md-6'>
-                  <%= profile_form.input :title %>
-                </div>
-              </div>
-            <% end %>
-
-            <%= f.input :email %>
-            <%= f.input :password %>
-            <%= f.input :password_confirmation %>
+          <div class='col-md-6'>
+            <%= profile_form.input :gender %>
+          </div>
+          <div class='col-md-6'>
+            <%= profile_form.input :title %>
           </div>
         </div>
-      </div>
+      <% end %>
 
-      <div class='form-actions'>
-        <%= f.button :submit, t('devise.views.sign_up'), class: 'btn btn-success uppercase btn-block', data: { disable_with: t('devise.views.submit') } %>
-        <div class='float-right' style='margin-top: 1em;'>
-          <%= link_to t('devise.views.sign_in'), new_user_session_path %>
-        </div>
+      <%= f.input :email %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+
+      <%= f.button :submit, t('devise.views.sign_up'), class: 'btn btn-success uppercase btn-block', data: { disable_with: t('devise.views.submit') } %>
+      <div class='pull-right' style='margin-top: 1em;'>
+        <%= link_to t('devise.views.sign_in'), new_user_session_path %>
       </div>
     <% end %>
   </div>
