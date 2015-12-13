@@ -1,11 +1,11 @@
 <% content_for :title, @group.name %>
 <% add_breadcrumb @group.short_name, @group %>
 
-<% content_for :left_side do %>
+<% content_for :left_column do %>
   <%= render 'profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <% if policy(@group).update? %>
     <%=
       render 'layouts/navtab',

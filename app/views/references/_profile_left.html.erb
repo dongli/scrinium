@@ -1,25 +1,29 @@
-<ul class='left-side-list'>
-  <li>
-    <%= t('activerecord.attributes.reference.cite_key') %>: <%= @reference.cite_key %>
-  </li>
-  <li>
-    <%= @reference.publisher.abbreviation %>
-  </li>
-  <li>
-    <%= @reference.volume %> <%= '('+@reference.issue+')' if @reference.issue %>
-  </li>
-  <li>
-    <% if policy(@reference).update? %>
-      <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @reference ] %>
-    <% end %>
-    <% if policy(@reference).destroy? %>
-      <%=
-        link_to fa_icon('trash', text: t('action.delete')), @resource, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.reference')) }
-      %>
-    <% end %>
-    <% if @reference.file %>
-      <%= link_to fa_icon('file-pdf-o', text: t('action.download')), @reference.file_url %>
-    <% end %>
-  </li>
-</ul>
+<div class='panel panel-default'>
+  <div class='panel-body'>
+    <ul class='left-side-list'>
+      <li>
+        <%= t('activerecord.attributes.reference.cite_key') %>: <%= @reference.cite_key %>
+      </li>
+      <li>
+        <%= @reference.publisher.abbreviation %>
+      </li>
+      <li>
+        <%= @reference.volume %> <%= '('+@reference.issue+')' if @reference.issue %>
+      </li>
+      <li>
+        <% if policy(@reference).update? %>
+          <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @reference ] %>
+        <% end %>
+        <% if policy(@reference).destroy? %>
+          <%=
+            link_to fa_icon('trash', text: t('action.delete')), @resource, method: :delete,
+            data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.reference')) }
+          %>
+        <% end %>
+        <% if @reference.file %>
+          <%= link_to fa_icon('file-pdf-o', text: t('action.download')), @reference.file_url %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

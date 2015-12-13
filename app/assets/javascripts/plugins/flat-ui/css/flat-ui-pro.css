@@ -1599,7 +1599,7 @@ fieldset[disabled] .select2-search input[type="text"] + .form-control-feedback,
   }
 .form-group {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   }
 .form-horizontal .radio,
 .form-horizontal .checkbox,

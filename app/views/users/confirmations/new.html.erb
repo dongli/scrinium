@@ -1,4 +1,4 @@
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <div class="col-md-6 col-md-offset-3">
     <h3>重新发送注册邮件</h3>
     <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post}) do |f| %>

@@ -1,27 +1,24 @@
 <% content_for :title, t('devise.views.sign_in') %>
 
-<% content_for :main_block do %>
-  <div class='devise-form'>
+<% content_for :center_column do %>
+  <div class='devise-form' style='margin-top: 10%'>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form') do |f| %>
-      <%= f.input :email, autofocus: true  %>
+      <%= f.input :email, autofocus: true %>
       <%= f.input :password  %>
-      <div class="form-actions">
-        <div class="pull-left">
-          <% if devise_mapping.rememberable? %>
-            <%= f.input :remember_me, as: :boolean, boolean_style: :inline %>
-          <% end %>
-        </div>
-        <div class="pull-right">
-          <%= link_to new_user_password_path do %>
-            <%= t('devise.views.forget_password') %>？
-          <% end %>
-        </div>
+
+      <%= f.button :submit, t('devise.views.sign_in'), class: 'btn btn-success btn-block',  data: { disable_with: t('devise.views.verify') } %>
+
+      <div class="pull-left">
+        <% if devise_mapping.rememberable? %>
+          <%= f.input :remember_me, as: :boolean, boolean_style: :inline %>
+        <% end %>
       </div>
-      <div class="form-actions">
-        <%= f.button :submit, t('devise.views.sign_in'), class: 'btn btn-success btn-block',  data: { disable_with: t('devise.views.verify') } %>
-        <div class='float-right' style='margin-top: 1em;'>
-          <%= link_to t('devise.views.sign_up'), new_user_registration_path %>
-        </div>
+
+      <div class="pull-right" style='margin-top: 1em;'>
+        <%= link_to new_user_password_path do %>
+          <%= t('devise.views.forget_password') %>？
+        <% end %>
+        <%= link_to t('devise.views.sign_up'), new_user_registration_path %>
       </div>
     <% end %>
   </div>

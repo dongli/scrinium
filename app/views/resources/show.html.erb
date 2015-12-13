@@ -1,11 +1,11 @@
 <% content_for :title, @resource.name %>
 <% add_breadcrumb @resource.name, resource_path(@resource) %>
 
-<% content_for :left_side do %>
+<% content_for :left_column do %>
   <%= render 'profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <dl class='resource-show'>
     <dt><%= @resource.name %></dt>
     <dd>
