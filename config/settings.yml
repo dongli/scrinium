@@ -5,10 +5,10 @@ defaults: &defaults
   smtp_settings:
     address: 'smtpcloud.sohu.com'
     port: 25
-    domain: 'service.kaikeba.com'
-    user_name: 'postmaster@kkb.sendcloud.org'
-    display_name: 'postmaster@service.kaikeba.com'
-    password: 'agZftD8KBjOjlyrZ'
+    domain: 'R6sJVHCZfkBvjKNXmwh9GyhgpTecaErX.sendcloud.org'
+    user_name: 'tianlu1677_test_2Sep5d'
+    display_name: 'scrinium'
+    password: 'dcwSRsFFMavqrfjZ'
     authentication: 'login'
     enable_starttls_auto: true
   qiniu:
