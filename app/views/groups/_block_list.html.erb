@@ -1,0 +1,20 @@
+<% only_logo = false if local_assigns[:only_logo].nil? %>
+<div class='row'>
+  <% groups.each do |group| %>
+    <% if only_logo %>
+      <a href='<%= group_path(group) %>'>
+        <%= logo group, size: :thumb %>
+      </a>
+    <% else %>
+      <div class='col-md-3 col-sm-4 col-xs-6'>
+        <div class='panel panel-default'>
+          <div class='panel-body center'>
+            <a href='<%= group_path(group) %>'>
+              <%= logo group, size: :medium %>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

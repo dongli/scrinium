@@ -24,7 +24,7 @@
     <%= f.simple_fields_for :addresses, @organization.addresses.reverse do |g| %>
       <%= render 'addresses/form', f: g %>
     <% end %>
-    <%= link_to_add_field t('action.add')+t('activerecord.models.address'), f, :addresses, partial: 'addresses/form', class: 'button float-left' %>
-    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
+    <%= link_to_add_field t('action.add')+t('activerecord.models.address'), f, :addresses, partial: 'addresses/form', class: 'button pull-left' %>
+    <%= f.button :submit, t('action.submit'), class: 'button pull-right' %>
   <% end %>
 </div>

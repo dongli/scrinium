@@ -1,49 +1,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-.navbar-default {
-  background-color: #F1F1F1;
-  opacity: 0.9;
-  border-color: #E7E7E7;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: black;
-}
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  background-color: #FFFFFF;
-}
-
-.navbar-nav > li > a {
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-a.navbar-brand {
-  color: black;
-  line-height: 30px;
-  font-size: 180%;
-}
-
-.button {
-  @extend .btn;
-  @extend .btn-primary;
-  white-space: normal;
-}
-
-.error {
-  @extend .alert;
-  @extend .alert-danger;
-}
-
-a.button:visited {
-  color: white;
-}
-
 .breadcrumb {
   background-color: inherit;
   border-radius: 10px;

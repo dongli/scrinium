@@ -70,7 +70,7 @@
                 <%= avatar(current_user, size: '80x80') %>
               </a>
               <% else %>
-                <%= link_to '登录', new_user_session_path, class: 'btn btn-signin btn-wide', style: 'margin-right: 5px' %>
+                <%= link_to '登录', new_user_session_path, class: 'btn btn-signin btn-wide' %>
                 <%= link_to '注册', new_user_registration_path, class: 'btn btn-signup btn-wide' %>
               <% end %>
           </div>

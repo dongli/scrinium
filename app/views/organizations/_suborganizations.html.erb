@@ -2,7 +2,7 @@
   <dt><%= t('organization.children') %></dt>
   <dd>
     <% if policy(Organization).create? %>
-      <div class='float-right'>
+      <div class='pull-right'>
         <%=
           link_to fa_icon('plus-square-o', text: t('organization.child')),
           new_organization_path(parent_id: @organization.id),

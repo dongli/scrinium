@@ -1,6 +1,6 @@
 <div id='shared-resource-board'>
   <!-- 文件夹导航栏 -->
-  <div id='shared-folder-nav-column' class='float-left' style='display: table;'>
+  <div id='shared-folder-nav-column' class='pull-left' style='display: table;'>
     <ol class='breadcrumb-no-border'>
       <% if defined? current_share %>
         <li><%= link_to fa_icon('home'), back_to_top_share_path(current_share), remote: true %></li>

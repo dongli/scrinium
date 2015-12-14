@@ -4,17 +4,16 @@
   <div class="alert alert-info" role="alert">
     在这里添加群组检索功能。
   </div>
-  <% if current_user %>
-    <dl>
-      <dt>您的群组</dt>
-      <dd>
-        <%= render 'table_list', groups: @groups %>
-      </dd>
-    </dl>
-  <% end %>
-  <% if policy(Group).create? %>
-    <div class='center'>
-      <%= link_to t('action.add'), new_group_path, class: 'button' %>
+  <%= render 'block_list', groups: Group.all %>
+<% end %>
+
+<% content_for :right_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-body center'>
+      <%= render 'block_list', groups: @groups, only_logo: true %>
+      <% if policy(Group).create? %>
+        <%= link_to fa_icon('plus-square-o', text: t('action.add')), new_group_path %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 <% end %>
