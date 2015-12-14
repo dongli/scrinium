@@ -18,43 +18,32 @@
  *= require jasny-bootstrap.min
  *= require jcrop
  *= require jstree-default
- *= require plugins/froala_editor/froala_editor_require
+ *= require froala_editor/froala_editor_require
  *= require application/custom
- *= require startup/flat-ui/flat-ui
+ *= require startup/css/flat-ui
  *= require_self
  */
 
-html {
-  position: relative;
-  min-height: 100%;
+body {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.72222;
+  color: #34495e;
+  background-color: #ffffff
+}
+
+.navbar-default .navbar-brand {
+  color: #34495e;
+  font-size: 23px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #34495e;
 }
 
 #main-container {
   margin-top: 70px;
   margin-bottom: 70px;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  margin-top: 1em;
-  padding: 1em;
-  border-top: 1px solid #E7E7E7;
-  text-align: center;
-}
-
-.left-column {
-}
-
-.right-column {
-}
-
-.center-column {
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 a {
@@ -130,30 +119,12 @@ dl.clean {
   }
 }
 
-ul.left-side-list {
-  li.indent {
-    padding-left: 1em;
-  }
-}
-
-.no-bottom-margin {
-  margin-bottom: 0;
-}
-
 .center {
   text-align: center;
 }
 
 .right {
   text-align: right;
-}
-
-.float-left {
-  float: left !important;
-}
-
-.float-right {
-  float: right !important;
 }
 
 img.avatar {
@@ -182,13 +153,6 @@ img.resizable {
   color: blue;
 }
 
-.underline {
-  background-color: transparent;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  border-color: darkred
-}
-
 table th, table td {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -200,8 +164,4 @@ table th, table td {
 
 table {
   table-layout: fixed;
-}
-
-ul.publications {
-  padding-left: 10px;
 }

@@ -16,7 +16,7 @@
       <%= link_to avatar(parent_comment.user, size: :small), parent_comment.user %>
       <%= parent_comment.user.name %>
     <% end %>
-    <div class='float-right'>
+    <div class='pull-right'>
       <% if policy(comment).reply? %>
         <%=
           link_to t('action.reply'),

@@ -5,8 +5,8 @@
   <div class='reference-form'>
     <%= simple_form_for @reference do |f| %>
       <%= render "#{@reference.reference_type}_form", f: f %>
-      <%= f.file_field :file, class: 'float-left' %>
-      <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
+      <%= f.file_field :file, class: 'pull-left' %>
+      <%= f.button :submit, t('action.submit'), class: 'button pull-right' %>
     <% end %>
   </div>
 <% end %>
