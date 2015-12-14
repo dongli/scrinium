@@ -47,7 +47,7 @@ namespace :deploy do
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      execute " kill -USR2 `cat #{root_path}/current/tmp/pids/unicorn.pid` "
+      execute " kill -USR2 `cat /home/scrinium/projects/scrinium/current/tmp/pids/unicorn.pid` "
 
       # Here we can do anything such as:
       # within release_path do
