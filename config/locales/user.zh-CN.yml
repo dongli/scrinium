@@ -17,6 +17,9 @@ zh-CN:
         created_at: 注册时间
         updated_at: 更新时间
         current_password: 当前密码
+    placeholders:
+      user:
+        email: 邮箱
     errors:
       models:
         user:
@@ -43,8 +46,10 @@ zh-CN:
   simple_form:
     placeholders:
       user:
-        name: 请填写真实姓名！
-        password: 不少于6个字符。
+        name: 真实姓名
+        email: 邮箱
+        password: 密码 | 不少于6个字符
+        password_confirmation: 确认密码
 
   enumerize:
     user:
@@ -54,7 +59,8 @@ zh-CN:
         user: 用户
 
   user:
-    activity: 活动
+    columns: 专栏
+    publications: 发表刊物
     affiliation: 所属机构
 
   action:

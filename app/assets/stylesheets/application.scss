@@ -18,8 +18,9 @@
  *= require jasny-bootstrap.min
  *= require jcrop
  *= require jstree-default
- *= require froala_editor/froala_editor_require
+ *= require plugins/froala_editor/froala_editor_require
  *= require application/custom
+ *= require startup/flat-ui/flat-ui
  *= require_self
  */
 
@@ -28,9 +29,8 @@ html {
   min-height: 100%;
 }
 
-body {
-  padding-top: 70px;
-  /* Margin bottom by footer height */
+#main-container {
+  margin-top: 70px;
   margin-bottom: 70px;
 }
 
@@ -46,15 +46,13 @@ footer {
   text-align: center;
 }
 
-.left-side {
-  margin: 1em;
-  border-right-style: solid;
-  border-right-width: thin;
-  border-right-color: #E7E7E7;
+.left-column {
 }
 
-.main-block {
-  margin: 1em;
+.right-column {
+}
+
+.center-column {
   text-align: justify;
   text-justify: inter-word;
 }
@@ -65,7 +63,6 @@ a {
 
 a:hover {
   background-color: inherit;
-  color: blue;
   text-decoration: none;
 }
 

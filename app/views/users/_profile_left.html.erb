@@ -1,13 +1,17 @@
-<ul class="left-side-list">
-  <li><%= avatar @user, size: "100x100" %></li>
-  <li><%= @user.name %></li>
-  <li><%= render 'memberships/organization_logos', user: @user %></li>
-  <li><%= @user.role.text %></li>
-  <li>
-    <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
-  </li>
-  <% if policy(@user).update? %>
-    <li><%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @user ] %></li>
-    <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_registration_path %></li>
-  <% end %>
-</ul>
+<div class='panel panel-default'>
+  <div class='panel-body' style='text-align: center;'>
+    <ul class="left-side-list">
+      <li><%= avatar @user, size: "100x100" %></li>
+      <li><%= @user.name %></li>
+      <li><%= render 'memberships/organization_logos', user: @user %></li>
+      <li><%= @user.role.text %></li>
+      <li>
+        <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
+      </li>
+      <% if policy(@user).update? %>
+        <li><%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @user ] %></li>
+        <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

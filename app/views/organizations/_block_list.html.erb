@@ -1,16 +1,13 @@
 <div class='row'>
-  <% if policy(Organization).create? and add_logo %>
-    <div class='col-md-2 col-sm-3 col-xs-4'>
-      <a href='<%= new_organization_path %>'>
-        <%= image_tag 'medium/add_icon.png', class: 'img-responsive center-block' %>
-      </a>
-    </div>
-  <% end %>
   <% organizations.each do |organization| %>
-    <div class='col-md-2 col-sm-3 col-xs-4'>
-      <a href='<%= organization_path(organization) %>'>
-        <%= logo organization, size: :medium, class: 'img-responsive center-block' %>
-      </a>
+    <div class='col-md-3 col-sm-4 col-xs-6'>
+      <div class='panel panel-default'>
+        <div class='panel-body'>
+          <a href='<%= organization_path(organization) %>'>
+            <%= logo organization, size: :medium, class: 'img-responsive center-block' %>
+          </a>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

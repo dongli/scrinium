@@ -1,11 +1,11 @@
 <% content_for :title, @organization.short_name %>
 <% add_breadcrumb @organization.short_name, organization_path(@organization) %>
 
-<% content_for :left_side do %>
+<% content_for :left_column do %>
   <%= render 'organizations/profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <% if policy(@organization).update? %>
     <%=
       render 'layouts/navtab',

@@ -28,7 +28,7 @@
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
 #= require jasny-bootstrap.min
-#= require froala_editor/froala_editor_require
+#= require plugins/froala_editor/froala_editor_require
 #= require application/custom
 
 # ============================= Common Functions ===============================
@@ -247,27 +247,27 @@ $(document).on 'page:change', ->
   $('.clickable-row').click ->
     window.document.location = $(this).data('href')
 
-  # 窗口改变大小后，检查left-side元素是否要收缩。
+  # 窗口改变大小后，检查left-column元素是否要收缩。
   resizeID = 0
   collapseLeftSide = ->
-    if $('.left-side').is(':hidden')
-      return if $('a[href=#left-side-content]').length > 0
-      $('div.main-block').before -> """
-        <div class='center' id='show-left-side-content'>
-          <a href='#left-side-content' class='show-left-side-content'
-           data-toggle='collapse' data-target='#left-side-content'
-           aria-expanded='false' aria-controls='left-side-content'>
+    if $('.left-column').is(':hidden')
+      return if $('a[href=#left-column-content]').length > 0
+      $('div.center-column').before -> """
+        <div class='center' id='show-left-column-content'>
+          <a href='#left-column-content' class='show-left-column-content'
+           data-toggle='collapse' data-target='#left-column-content'
+           aria-expanded='false' aria-controls='left-column-content'>
            <i class='fa fa-sort'></i>
           </a>
-          <div class='collapse' id='left-side-content'>
+          <div class='collapse' id='left-column-content'>
             <div class='well' style='margin-left: 5em; margin-right: 5em;'>
-              #{$('.left-side').html()}
+              #{$('.left-column').html()}
             </div>
           </div>
         </div>
       """
     else
-      $('div#show-left-side-content').remove()
+      $('div#show-left-column-content').remove()
   collapseLeftSide()
   $(window).resize ->
     clearTimeout(resizeID);

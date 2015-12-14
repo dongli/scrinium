@@ -8,8 +8,8 @@ class Fakeout
 
   # 所有用到的models
 
-  MODELS = %w(User Group Organization Profile Membership Article)
-  BUIDL_METHODS = %w(user group organization membership article)
+  MODELS = %w(User Group Organization Profile Membership Article Node Topic)
+  BUIDL_METHODS = %w(user group organization membership article node topic)
 
   attr_accessor :size
   def initialize(size, prompt=true)
@@ -154,6 +154,33 @@ class Fakeout
       content: FFaker::HTMLIpsum.body,
       privacy: 'public'
     )
+  end
+
+  def build_node
+    Group.all.each do |group|
+      %w(活动 计划 日常 日常活动).each do |name|
+      Node.create(
+        user_id: 1,
+        name: name,
+        group_id: group.id
+      )
+      end
+    end
+  end
+
+  def build_topic
+    group = Group.find(pick_random(Group, true))
+    group.memberships.each do |membership|
+        Topic.create(
+            group_id: pick_random(Group, true),
+            node_id: group.node_ids[rand(4)],
+            user_id: membership.user_id ,
+            title: FFaker::LoremCN.paragraph,
+            content: FFaker::HTMLIpsum.body,
+            status: 'online'
+        )
+    end
+
   end
 
   def small

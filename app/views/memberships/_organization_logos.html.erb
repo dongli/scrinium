@@ -1,5 +1,6 @@
+<% size ||= :thumb %>
 <% user.organizations.each do |organization| %>
   <span class='logo'>
-    <%= link_to logo(organization, size: :small), organization %>
+    <%= link_to logo(organization, size: size), organization %>
   </span>
 <% end %>

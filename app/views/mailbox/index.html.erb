@@ -2,11 +2,11 @@
 
 <% check_mailbox %>
 
-<% content_for :left_side do %>
-  <%= render 'left_side' %>
+<% content_for :left_column do %>
+  <%= render 'left_column' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <div id='inbox'>
     <div class='alert alert-info' role='alert' style='display: none;' id='new-mail-notifier'>
       <%= t('has_new_mails', number: 0) %>

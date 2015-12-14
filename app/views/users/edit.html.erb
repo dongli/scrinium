@@ -1,6 +1,6 @@
 <% content_for :title, t('action.edit')+t('activerecord.models.profile') %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <div class='devise-form'>
     <%= simple_form_for @user do |f| %>
       <%= f.simple_fields_for :profile do |profile_form| %>
@@ -34,9 +34,7 @@
           <%= profile_form.input :wechat, label: fa_icon('wechat') %>
         </div>
       <% end %>
-      <div class='center'>
-        <%= f.button :submit, t('action.submit'), class: 'button' %>
-      </div>
+      <%= f.button :submit, t('action.submit'), class: 'btn btn-success uppercase btn-block' %>
     <% end %>
   </div>
 <% end %>

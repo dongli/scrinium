@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag    'new_layout', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'new_layout', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<style>
+
+  body {
+    /*padding-bottom: 20px;*/
+    padding-top: 0px;
+
+  }
+  #wrapper{
+    background-color: white;
+    border-right: 1px solid #E7E6E6;
+    border-left: 1px solid #E7E6E6
+  }
+  .margin-top-10{
+    margin-top: 10px;
+  }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
+</style>
+<body class="boxed">
+  <!--头部-->
+  <nav class="navbar navbar-default navbar-lg" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-4">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" href="#">Flat UI</a>
+    </div>
+
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-4">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Messages<span class="navbar-unread">1</span></a></li>
+        <li class="active"><a href="#">About Us</a></li>
+        <li><a href="#">Clients</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" action="#" role="search">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn"><span class="fui-search"></span></button>
+                </span>
+          </div>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">MonsterCritic <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span class="visible-sm visible-xs">Settings<span class="fui-gear"></span></span><span class="visible-md visible-lg"><span class="fui-gear"></span></span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+  <!--头部 结束-->
+
+  <!--中部显示-->
+  <div id="wrapper">
+  <div class="container">
+    <div class="margin-top-10"></div>
+
+    <div class="row">
+      <div class="col-md-9">
+          <div class="todo">
+            <div class="todo-search">
+              <input class="todo-search-field" type="search" value="" placeholder="Search" />
+            </div>
+            <ul>
+              <li class="todo-done">
+                <div class="todo-icon fui-user"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    Meet <strong>Adrian</strong> at <strong>6pm</strong>
+                  </h4>
+                  Times Square
+                </div>
+              </li>
+              <li>
+                <div class="todo-icon fui-list"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    Chat with <strong>V.Kudinov</strong>
+                  </h4>
+                  Skype conference an 9 am
+                </div>
+              </li>
+              <li>
+                <div class="todo-icon fui-eye"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    Watch <strong>Iron Man</strong>
+                  </h4>
+                  1998 Broadway
+                </div>
+              </li>
+              <li>
+                <div class="todo-icon fui-time"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    Fix bug on a <strong>Website</strong>
+                  </h4>
+                  As soon as possible
+                </div>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+
+
+
+      <!-- 左边栏-->
+      <div class="col-md-9">
+        <div class="col-md-4 ">
+
+
+          <!--群组的部分-->
+          <div class="tile">
+            <img src="/assets/plugins/flat-ui/img/icons/compas.svg" alt="Compas" class="tile-image big-illustration">
+            <h3 class="tile-title">Web Oriented</h3>
+            <p>100% convertable to HTML/CSS layout.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="tile">
+            <img src="/assets/plugins/flat-ui/img/icons/compas.svg" alt="Compas" class="tile-image big-illustration">
+            <h3 class="tile-title">Web Oriented</h3>
+            <p>100% convertable to HTML/CSS layout.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="tile">
+            <img src="/assets/plugins/flat-ui/img/icons/compas.svg" alt="Compas" class="tile-image big-illustration">
+            <h3 class="tile-title">Web Oriented</h3>
+            <p>100% convertable to HTML/CSS layout.</p>
+          </div>
+        </div>
+
+
+
+      </div>
+      <!--左边栏结束-->
+      <div class="col-md-3 border-left-1">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h4 class="panel-title">Panel title</h4>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+
+
+      <!--右边栏-->
+      <div class="col-md-3 border-left-1">
+        <ul class="nav nav-list nav-list-vivid">
+
+          <li class="nav-header">账户</li>
+
+          <li>
+            <a href="#fakelink">
+              个人信息
+              <span class="badge pull-right">19</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#fakelink">
+              Berlin, Germany
+              <span class="badge pull-right">130</span>
+            </a>
+          </li>
+          <li>
+            <a href="#fakelink">
+              Madrid, Spain
+              <span class="badge pull-right">9</span>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li class="nav-header">Asia</li>
+          <li>
+            <a href="#fakelink">
+              Shanghai, China
+              <span class="badge pull-right">69</span>
+            </a>
+          </li>
+          <li class="disabled">
+            <a href="#fakelink">
+              Bombay, India
+              <span class="badge pull-right">21</span>
+            </a>
+          </li>
+          <li>
+            <a href="#fakelink">
+              Karachi, Pakistan
+              <span class="badge pull-right">40</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!--右边栏结束-->
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+  <!--中部结束-->
+
+
+
+
+
+</body>
+</html>
