@@ -165,3 +165,12 @@ table th, table td {
 table {
   table-layout: fixed;
 }
+
+.select {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border: 2px solid rgb(189, 195, 199);
+}
