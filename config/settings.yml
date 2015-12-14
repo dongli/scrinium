@@ -34,6 +34,6 @@ test:
 ######################################################################################
 production:
   <<: *defaults
-  domain: 'www.scrinp.com'
+  domain: 'www.scrinium.cn'
 
 
