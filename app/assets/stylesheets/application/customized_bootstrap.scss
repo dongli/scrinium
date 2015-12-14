@@ -56,30 +56,6 @@ a.button:visited {
 .breadcrumb-no-border {
   @extend .breadcrumb;
   border: none;
-  margin-bottom: 0;
-}
-
-.carousel {
-  height: 300px;
-  overflow: hidden;
-
-  .item img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-// Safari有BUG！只能关掉梯度。
-.carousel-control.left, .carousel-control.right {
-  background-image: none
-}
-
-.radio,
-.checkbox {
   margin-top: 0;
-}
-
-.navbar-nav > li > a {
-  line-height: 30px;
-  font-size: 16px;
+  margin-bottom: 0;
 }

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
-  get 'news/index'
+  get 'news/show'
   get 'library/index'
   get 'about' => 'home#about'
 

@@ -16,6 +16,7 @@ zh-CN:
         doi: DOI号
         abstract: 摘要
         cite_key: 引用编号
+        publisher: 发行商
 
   simple_form:
     placeholders:

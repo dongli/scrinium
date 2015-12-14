@@ -22,6 +22,15 @@ zh-CN:
             title:
               blank: 请指明您现在的职位！谢谢哈~
 
+  simple_form:
+    placeholders:
+      profile:
+        country: 国籍
+        city: 城市
+        qq: QQ账号
+        weibo: 微博账号
+        wechat: 微信账号
+
   enumerize:
     profile:
       gender:

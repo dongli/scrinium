@@ -1,11 +1,11 @@
 <% content_for :title, @article.title %>
 <% add_breadcrumb @article.title, @article %>
 
-<% content_for :left_side do %>
+<% content_for :left_column do %>
   <%= render 'profile_left', show_versions: true %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <dl>
     <dt><%= t('versions') %></dt>
     <dd>

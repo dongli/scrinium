@@ -7,6 +7,7 @@ $(document).on 'page:change', ->
     crop_image '#user_profile_attributes_avatar', 'user[profile_attributes]'
   else if /\/users\/\d+/.test(location)
     turnOnTab
-      activities: []
+      columns: []
+      publications: []
       collections: []
       resources: []

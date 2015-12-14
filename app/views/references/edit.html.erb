@@ -1,7 +1,7 @@
 <% content_for :title, t('action.edit')+t('activerecord.models.reference') %>
 <% add_breadcrumb @reference.cite_key, @reference %>
 
-<% content_for :main_block do %>
+<% content_for :center_column do %>
   <div class='reference-form'>
     <%= simple_form_for @reference do |f| %>
       <%= render "#{@reference.reference_type}_form", f: f %>

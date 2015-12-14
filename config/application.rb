@@ -31,7 +31,7 @@ module Scrinium
     config.paths.add 'app/api', glob: '**/*.rb'
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
 
-    #跨域操作
+    # 跨域操作
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
