@@ -30,7 +30,8 @@
 #= require jasny-bootstrap.min
 #= require froala_editor/froala_editor_require
 #= require application/custom
-
+#= require nprogress
+#= require nprogress-turbolinks
 # ============================= Common Functions ===============================
 @mathjax = (id = null) ->
   if id
