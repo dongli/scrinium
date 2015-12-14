@@ -1,6 +1,7 @@
-//= require startup/css/flat-ui
-//= require startup/css/bootstrap
-//= require startup/css/sample-02
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'startup/css/flat-ui';
+@import 'startup/css/sample-02';
 
 // 橙色
 // $base-color-1: #FD6A58;

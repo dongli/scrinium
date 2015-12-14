@@ -1,6 +1,8 @@
 <% content_for :title, t('devise.views.sign_up') %>
 
-<% content_for :center_column do %>
+<!--这里调整一下布局 -->
+<div class="col-md-6 col-md-offset-3">
+
   <div class='devise-form' style='margin-top: 10%'>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "users_sign_up"}) do |f| %>
       <%= f.input :name %>
@@ -26,4 +28,4 @@
       </div>
     <% end %>
   </div>
-<% end %>
+</div>
