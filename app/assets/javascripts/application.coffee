@@ -260,7 +260,7 @@ $(document).on 'page:change', ->
            <i class='fa fa-sort'></i>
           </a>
           <div class='collapse' id='left-column-content'>
-            <div class='well' style='margin-left: 5em; margin-right: 5em;'>
+            <div class='well' style='margin-left: 10%; margin-right: 10%;'>
               #{$('.left-column').html()}
             </div>
           </div>
