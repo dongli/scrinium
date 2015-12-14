@@ -10,8 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
- *= require plugins/flat-ui/css/flat-ui-pro.css
+ *= require startup/css/flat-ui-pro
  *= require commen_style.css
  */
 
@@ -56,4 +55,3 @@ body.boxed #wrapper {
     border-radius: 0;
   }
 }
-

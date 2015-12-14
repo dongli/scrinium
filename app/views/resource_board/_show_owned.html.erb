@@ -2,7 +2,7 @@
   data-folderable-type='<%= current_folder.folderable_type %>'
   data-folderable-id='<%= current_folder.folderable_id %>'>
   <!-- 文件夹导航栏 -->
-  <div id='folder-nav-column' class='float-left' style='display: table;'>
+  <div id='folder-nav-column' class='pull-left' style='display: table;'>
     <ol class='breadcrumb-no-border'>
       <% folder = current_folder %>
       <% parent_folders = [] %>
@@ -25,7 +25,7 @@
     </ol>
   </div>
   <!-- 资源操作按钮 -->
-  <div id='resource-board-actions' class='float-right' style='display: table;'>
+  <div id='resource-board-actions' class='pull-right' style='display: table;'>
     <ul>
       <li>
         <%=

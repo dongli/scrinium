@@ -1,5 +1,5 @@
 //// require plugins/flat-ui/js/flat-ui-pro.js
-//= require plugins/jquery.backstretch.js
+//= require jquery.backstretch
 
 $(function(){
   // 后面背景图替换

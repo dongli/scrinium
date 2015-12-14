@@ -1,5 +1,5 @@
 ## kill `cat tmp/pids/unicorn.pid`
-## start unicorn_rails -c config/unicorn.rb -E production -D
+## start:  bundle exec unicorn_rails -c config/unicorn.rb -E production -D
 ## if any error,please check log/unicorn_stderr.log
 
 app_root = File.expand_path(File.dirname(__FILE__) + '/..')

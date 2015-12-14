@@ -1,6 +1,6 @@
 <% if @user == current_user %>
   <% if policy(Article).create? %>
-    <div class='float-right'>
+    <div class='pull-right'>
       <%=
         link_to fa_icon('plus-square-o', text: t('activerecord.models.article')),
         new_article_path, id: 'add-article'

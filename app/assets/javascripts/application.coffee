@@ -28,7 +28,7 @@
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js
 #= require jasny-bootstrap.min
-#= require plugins/froala_editor/froala_editor_require
+#= require froala_editor/froala_editor_require
 #= require application/custom
 
 # ============================= Common Functions ===============================

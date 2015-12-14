@@ -19,10 +19,10 @@
       </div>
     <% end %>
   <% when :invited %>
-    <%= f.input :user_id, label: false, as: :select, input_html: {style: 'width: 100%;', class: "choose_user" } %>
-    <%= f.input :role, collection: [:assist_admin, :member], as: :radio_buttons %>
+    <%= f.input :user_id, as: :select, input_html: { style: 'width: 100%;', class: 'choose_user' } %>
+    <%= f.input :role %>
     <div class='center'>
-      <%= f.button :submit, t('membership.action.invite'), class: 'btn btn-primary btn-xs' %>
+      <%= f.button :submit, t('membership.action.invite'), class: 'btn btn-primary' %>
     </div>
   <% end %>
 <% end %>

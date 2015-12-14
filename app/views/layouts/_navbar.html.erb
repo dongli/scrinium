@@ -9,19 +9,19 @@
       </button>
       <%=
         link_to raw("S<span style='font-size: 80%'>CRINIUM</span>"),
-        root_url(subdomain: false), class: 'navbar-brand'
+        root_url(subdomain: false), class: 'navbar-brand', style: 'padding-top: 17px;'
       %>
     </div>
 
     <div class='collapse navbar-collapse'>
       <ul class='nav navbar-nav navbar-right'>
-        <li>
+        <li style='padding-top: 5px'>
           <%=
             link_to t('activerecord.models.organization'),
             organizations_path, class: 'navbar-link'
           %>
         </li>
-        <li>
+        <li style='padding-top: 5px'>
           <%=
             link_to t('activerecord.models.group'),
             groups_path, class: 'navbar-link'
