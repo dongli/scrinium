@@ -1,5 +1,5 @@
 class Users::PasswordsController < Devise::PasswordsController
-  layout 'home_page'
+  layout 'slim_page'
   # GET /resource/password/new
   # def new
   #   super

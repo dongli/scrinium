@@ -3,11 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .devise-form {
-  max-width: 320px;
+  font-size: 15px;
+  width: 300px;
   margin: 0 auto;
-  #upload-avatar {
-    padding-bottom: 1em;
-  }
   #user_remember_me {
     margin-left: 0;
   }
