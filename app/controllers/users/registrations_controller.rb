@@ -1,7 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  layout 'home_page'
+  layout :choose_layout
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -37,6 +38,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
+  def choose_layout
+    params[:action] == 'new' ? 'slim_page' : 'application'
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
