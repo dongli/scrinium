@@ -1,0 +1,43 @@
+//= require startup/css/bootstrap
+//= require startup/css/flat-ui
+
+html body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+// 将登录和注册元素垂直置中，参考https://css-tricks.com/centering-in-the-unknown/。
+.block {
+  text-align: center;
+  white-space: nowrap;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+.vertical-centered {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.devise-form {
+  font-size: 15px;
+  width: 300px;
+  margin: 0 auto;
+  #user_remember_me {
+    margin-left: 0;
+  }
+}
