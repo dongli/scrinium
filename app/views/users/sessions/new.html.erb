@@ -1,25 +1,39 @@
-<% content_for :title, t('devise.views.sign_in') %>
-
-<% content_for :center_column do %>
-  <div class='devise-form' style='margin-top: 10%'>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form') do |f| %>
-      <%= f.input :email, autofocus: true %>
-      <%= f.input :password  %>
+<div class='block'>
+  <div class='vertical-centered'>
+    <div class='devise-form'>
+      <div class='center'>
+        <h3 style='font-family: Lato; font-weight: bold;'>
+          <%= link_to 'SCRINIUM', root_url(subdomain: false) %>
+        </h3>
+        <p>
+          与世界分享精彩的科研成果
+        </p>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form') do |f| %>
+      <%= f.input :email, autofocus: true, input_html: {
+      style: 'border-bottom-width: 1px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;'
+    }, wrapper_html: {
+      style: 'margin-bottom: 0px'
+    } %>
+      <%= f.input :password, input_html: {
+      style: 'border-top-width: 1px; border-top-left-radius: 0; border-top-right-radius: 0;'
+    } %>
 
       <%= f.button :submit, t('devise.views.sign_in'), class: 'btn btn-success btn-block',  data: { disable_with: t('devise.views.verify') } %>
 
       <div class="pull-left">
         <% if devise_mapping.rememberable? %>
-          <%= f.input :remember_me, as: :boolean, boolean_style: :inline %>
+        <%= f.input :remember_me, as: :boolean, boolean_style: :inline %>
         <% end %>
       </div>
 
-      <div class="pull-right" style='margin-top: 1em;'>
+      <div class="pull-right" style='margin-top: 15px;'>
         <%= link_to new_user_password_path do %>
-          <%= t('devise.views.forget_password') %>？
+        <%= t('devise.views.forget_password') %>？
         <% end %>
         <%= link_to t('devise.views.sign_up'), new_user_registration_path %>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

@@ -16,8 +16,7 @@
   </script>
 
   <%= stylesheet_link_tag 'home_page', media: 'all', 'data-turbolinks-track' => true %>
-
-    <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>
 </head>
 
 <body>
@@ -33,9 +32,6 @@
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav pull-right">
-                <li>
-                  <a href="#">特性</a>
-                </li>
                 <li>
                   <%= link_to '关于', about_path %>
                 </li>
@@ -79,7 +75,6 @@
     </section>
 
     <%= yield %>
-
   </div>
 
   <!-- 页脚 -->

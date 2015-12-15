@@ -16,7 +16,6 @@ zh-CN:
         remember_me: 记住我
         created_at: 注册时间
         updated_at: 更新时间
-        current_password: 当前密码
     placeholders:
       user:
         email: 邮箱
@@ -48,6 +47,7 @@ zh-CN:
       user:
         name: 真实姓名
         email: 邮箱
+        current_password: 当前密码
         password: 密码 | 不少于6个字符
         password_confirmation: 确认密码
 
