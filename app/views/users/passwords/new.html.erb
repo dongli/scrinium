@@ -1,12 +1,16 @@
-<% content_for :title, t('devise.views.forget_password') %>
-
-<% content_for :center_column do %>
-  <div class='devise-form'>
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'forget-form', method: :post }) do |f| %>
+<div class='block'>
+  <div class='vertical-centered'>
+    <div class='devise-form'>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'forget-form', method: :post }) do |f| %>
       <%= f.input :email, label: false, autofocus: true %>
       <div class='center'>
-        <%= f.button :submit, '找回密码', class: "btn btn-success uppercase" %>
+        <%= f.button :submit, '找回密码', class: "btn btn-success uppercase btn-block" %>
       </div>
-    <% end %>
+      <div class='pull-right' style='margin-top: 10px;'>
+        <%= link_to t('devise.views.sign_in'), new_user_session_path %>
+        <%= link_to t('devise.views.sign_up'), new_user_registration_path %>
+      </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

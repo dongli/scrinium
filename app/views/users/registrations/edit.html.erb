@@ -7,9 +7,19 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :current_password, required: true %>
-    <%= f.input :password, autocomplete: "off", required: false %>
-    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :current_password, input_html: {
+        style: 'border-top-width: 1px; border-bottom-width: 1px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;'
+      }, wrapper_html: {
+        style: 'margin-bottom: 0px'
+      } %>
+    <%= f.input :password, input_html: {
+        style: 'border-top-width: 1px; border-bottom-width: 1px; border-radius: 0; border-radius: 0;'
+      }, wrapper_html: {
+        style: 'margin-bottom: 0px'
+      } %>
+    <%= f.input :password_confirmation, input_html: {
+        style: 'border-top-width: 1px; border-top-left-radius: 0; border-top-right-radius: 0;'
+      } %>
 
     <%= f.button :submit, t('devise.views.change_password'), class: 'btn btn-success uppercase btn-block' %>
   <% end %>

@@ -1,5 +1,5 @@
-//= require startup/css/flat-ui
 //= require startup/css/bootstrap
+//= require startup/css/flat-ui
 //= require startup/css/sample-02
 
 // 橙色
@@ -41,9 +41,9 @@ $base-color-2: #23CD76;
 .header-2-sub .btn.btn-signup {
   opacity: 10;
   color: #FFF9FF;
-  height: 36px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  height: 42px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: 3px solid #FFF9FF
 }
 
@@ -62,4 +62,8 @@ img.avatar {
   color: inherit;
   border-top: 1px solid;
   background: #EFEFEF
+}
+
+.center {
+  text-align: center;
 }

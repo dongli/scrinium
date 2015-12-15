@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for resource
-    session[:previous_url] ? session[:previous_url].last : root_path
+    user_path(current_user)
   end
 
   def user_not_authorized(exception)
