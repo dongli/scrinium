@@ -6,8 +6,8 @@ defaults: &defaults
     address: 'smtpcloud.sohu.com'
     port: 25
     domain: 'R6sJVHCZfkBvjKNXmwh9GyhgpTecaErX.sendcloud.org'
-    user_name: 'tianlu1677_test_2Sep5d@scrinium'
-    display_name: 'scrinium@scrinium'
+    user_name: 'tianlu1677_test_2Sep5'
+    display_name: 'scrinium@scrinium.cn'
     password: 'dcwSRsFFMavqrfjZ'
     authentication: 'login'
     enable_starttls_auto: true
