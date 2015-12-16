@@ -1,6 +1,1 @@
-<dl>
-  <dt><%= t('activerecord.models.publication') %></dt>
-  <dd>
-    <%= render 'publications/table_list', publications: user.publications.sort_by { |p| p.reference.year }.reverse %>
-  </dd>
-</dl>
+<%= render 'publications/table_list', publications: user.publications.sort_by { |p| p.reference.year }.reverse %>
