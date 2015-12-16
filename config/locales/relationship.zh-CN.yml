@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      relationship: 用户关系
+    attributes:
+      relationship:
+        follower: 关注者
+        following: 关注了
+
+  relationship:
+    follow: 关注
+    unfollow: 取消关注

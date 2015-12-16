@@ -1,0 +1,28 @@
+// Place all the styles related to the relationships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.follower-count {
+  text-align: center;
+  padding: 1em;
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.following-count {
+  text-align: center;
+  padding: 1em;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+ul.follower-list {
+  list-style-type: none;
+  padding-left: 0;
+  li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EEEEEE;
+  }
+}

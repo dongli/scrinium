@@ -1,6 +1,6 @@
 $('li#new-comment').html("<%=
   j render partial: 'comments/form',
-  locals: { app: @app, commentable: @commentable, comment: @comment }
+  locals: { commentable: @commentable, comment: @comment }
 %>");
 $('html, body').animate({
   scrollTop: $('textarea#comment_content').offset().top

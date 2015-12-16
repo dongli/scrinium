@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :organizations, through: :memberships, source: :host, source_type: 'Organization'
   has_many :groups, through: :memberships, source: :host, source_type: 'Group'
+  has_many :active_relationships, class_name: 'Relationship', dependent: :destroy, foreign_key: :follower_id
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :passiv_relationships, class_name: 'Relationship', dependent: :destroy, foreign_key: :followed_id
+  has_many :followers, through: :passiv_relationships, source: :follower
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -71,8 +75,8 @@ class User < ActiveRecord::Base
   end
 
   private
+
   def generate_authentication_token
     self.authentication_token = SecureRandom.uuid
   end
-
 end

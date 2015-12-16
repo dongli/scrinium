@@ -1,8 +1,31 @@
 <div class='panel panel-default'>
   <div class='panel-body center'>
     <ul class="left-side-list">
-      <li><%= avatar @user, size: "100x100" %></li>
+      <li>
+        <a href='<%= user_path(@user) %>'>
+          <%= avatar @user, size: "100x100" %>
+        </a>
+      </li>
       <li><%= @user.name %></li>
+      <% if user_signed_in? and current_user != @user %>
+        <li><%= render 'relationships/follow_button', followed: @user %></li>
+      <% end %>
+      <li>
+        <div class='row'>
+          <a href='<%= user_following_path(@user) %>'>
+            <div class='col-md-6 col-sm-6 col-xs-6 following-count'>
+              <%= t('activerecord.attributes.relationship.following') %><br/>
+              <%= @user.following.size %>
+            </div>
+          </a>
+          <a href='<%= user_followers_path(@user) %>'>
+            <div class='col-md-6 col-sm-6 col-xs-6 follower-count'>
+              <%= t('activerecord.attributes.relationship.follower') %><br/>
+              <%= @user.followers.size %>
+            </div>
+          </a>
+        </div>
+      </li>
       <li><%= render 'memberships/organization_logos', user: @user %></li>
       <li><%= @user.role.text %></li>
       <li>
@@ -13,5 +36,10 @@
         <li><%= link_to fa_icon('key', text: t('devise.password.reset')), edit_user_registration_path %></li>
       <% end %>
     </ul>
+  </div>
+</div>
+<div class='panel panel-default'>
+  <div class='panel-body center' style='height: 200px;'>
+    事件提醒
   </div>
 </div>

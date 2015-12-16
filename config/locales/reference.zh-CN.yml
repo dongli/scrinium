@@ -22,7 +22,18 @@ zh-CN:
     placeholders:
       reference:
         authors: 中文名称如：张三，英文名称如：San Zhang
-        pages: 如：100-120
+        title: 题目
+        reference_type: 文献类型
+        year: 年份
+        volume: 卷号
+        issue: 发行号
+        pages: 页码 | 100-120
+        citation: 引用
+        journal: 杂志名称
+        doi: DOI号
+        abstract: 摘要
+        cite_key: 引用编号
+        publisher: 发行商
 
   enumerize:
     reference:

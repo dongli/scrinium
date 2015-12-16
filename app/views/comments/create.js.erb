@@ -1,5 +1,5 @@
 <% comment = @commentable.comments.last %>
-$('#comment-placeholder').before("<li id='comment-<%= comment.id %>'><%= j render partial: 'comments/show', locals: { app: @app, comment: comment } %></li>");
+$('#comment-placeholder').before("<li id='comment-<%= comment.id %>'><%= j render partial: 'comments/show', locals: { comment: comment } %></li>");
 
 $('li#comment-<%= @comment.id %> .markdown').each(function () {
   markdown($(this).html(), $(this));
@@ -7,5 +7,5 @@ $('li#comment-<%= @comment.id %> .markdown').each(function () {
 
 $('li#new-comment').html("<%=
   j render partial: 'comments/form',
-  locals: { app: @app, commentable: @commentable, comment: @commentable.comments.new }
+  locals: { commentable: @commentable, comment: @commentable.comments.new }
 %>");

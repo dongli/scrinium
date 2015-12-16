@@ -1,0 +1,28 @@
+<% content_for :left_column do %>
+  <%= render 'users/profile_left' %>
+<% end %>
+
+<% content_for :center_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= @user.name %>关注了<%= @following.size %>人
+    </div>
+    <div class='panel-body'>
+      <ul class='follower-list'>
+        <% @following.each do |followed| %>
+          <li>
+            <a href='<%= user_path(followed) %>'>
+              <%= avatar followed, size: :thumb %>
+            </a>
+            <div style='margin-left: 1em; display: inline-block'>
+              <%= followed.name %>
+            </div>
+            <div class='pull-right'>
+              <%= render 'follow_button', followed: followed %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

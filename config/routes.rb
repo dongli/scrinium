@@ -47,7 +47,11 @@ Rails.application.routes.draw do
     get 'mailbox/delete_notification/:id' => 'mailbox#delete_notification', as: :delete_notification
     get 'mailbox/empty_trash' => 'mailbox#empty_trash', as: :empty_trash
     get 'mailbox/restore_message/:id' => 'mailbox#restore_message', as: :restore_message
+    get 'following' => 'relationships#following', as: :following
+    get 'followers' => 'relationships#followers', as: :followers
   end
+  get '/follow/:followed_id' => 'relationships#follow', as: :follow_user
+  get '/unfollow/:followed_id' => 'relationships#unfollow', as: :unfollow_user
   # 文章
   resources :articles, concerns: [ :commentable, :collectable ]
   get '/articles/:id/versions' => 'articles#versions', as: :article_versions
