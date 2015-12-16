@@ -21,7 +21,7 @@
         <%=
           link_to t('action.reply'),
           app.url_for([ commentable, :reply, comment ]),
-          class: 'button btn-xs reply-comment',
+          class: 'btn btn-primary btn-xs reply-comment',
           remote: true
         %>
       <% end %>
@@ -39,7 +39,7 @@
           app.url_for([ commentable, comment ]),
           method: :delete,
           data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
-          class: 'button btn-xs btn-danger delete-comment',
+          class: 'btn btn-xs btn-danger delete-comment',
           remote: true
         %>
       <% end %>

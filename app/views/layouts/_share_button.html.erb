@@ -21,9 +21,10 @@
         <h4 class='modal-title' id='select-groups-label'>选择要分享的群组</h4>
       </div>
       <div class='modal-body'>
-        <% if current_user.groups.size < 20 %>
+        <% groups = get_valid_groups_of current_user %>
+        <% if groups.size < 20 %>
           <ul class='clean-list'>
-            <% current_user.groups.each do |group| %>
+            <% groups.each do |group| %>
               <li>
                 <% if group.has_post? postable %>
                   <%= check_box_tag "group-#{group.id}", '', true, disabled: true %> <%= group.name %>
@@ -38,9 +39,10 @@
               </li>
             <% end %>
           </ul>
+        <!-- TODO: 这里要显示超过20个群组，如何显示好？ -->
         <% end %>
         <div class='center'>
-          <%= link_to t('action.submit'), post_to_groups_path, class: 'button btn-xs', remote: true %>
+          <%= link_to t('action.submit'), post_to_groups_path, class: 'btn btn-primary btn-xs', remote: true %>
         </div>
       </div>
     </div>

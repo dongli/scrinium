@@ -101,9 +101,10 @@
       </div>
       <div class='modal-body'>
         <div class='well'>
-          <% if current_user.groups.size < 20 %>
+          <% groups = get_valid_groups_of current_user %>
+          <% if groups.size < 20 %>
             <ul class='clean-list'>
-              <% current_user.groups.each do |group| %>
+              <% groups.each do |group| %>
                 <li>
                   <%= check_box_tag "share-files-group-#{group.id}" %> <%= group.name %>
                 </li>

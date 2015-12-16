@@ -7,7 +7,7 @@
           link_to t('action.delete'),
           user_delete_version_path(current_user, article, previous_version.id),
           data: { confirm: t('message.are_you_sure_to_delete?', thing: t('article.version')) },
-          class: 'button btn-xs btn-danger delete-comment',
+          class: 'btn btn-xs btn-danger delete-comment',
           remote: true
         %>
       <% end %>

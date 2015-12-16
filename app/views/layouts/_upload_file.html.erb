@@ -3,7 +3,7 @@
     <i class='fa fa-file-o fileinput-exists'></i>
     <span class='fileinput-filename'></span>
   </div>
-  <span class='input-group-addon btn btn-default btn-file'>
+  <span class='input-group-addon btn btn-primary btn-file'>
     <span class='fileinput-new'>
       <%= t("action.select_#{file_attribute_name}") %>
     </span>
@@ -12,7 +12,7 @@
     </span>
     <%= form.file_field file_attribute_name %>
   </span>
-  <a href='#' class='input-group-addon btn btn-default fileinput-exists' data-dismiss='fileinput'>
+  <a href='#' class='input-group-addon btn btn-danger fileinput-exists' data-dismiss='fileinput'>
     <%= t("action.delete_#{file_attribute_name}") %>
   </a>
 </div>
