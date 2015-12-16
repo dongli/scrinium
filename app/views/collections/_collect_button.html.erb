@@ -1,4 +1,4 @@
-<% if current_user and current_user != collectable.user %>
+<% if user_signed_in? and current_user != collectable.user %>
   <li>
     <% collected = is_collected? current_user, collectable %>
     <%=
