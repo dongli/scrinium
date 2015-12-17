@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     get 'mailbox/restore_message/:id' => 'mailbox#restore_message', as: :restore_message
     get 'following' => 'relationships#following', as: :following
     get 'followers' => 'relationships#followers', as: :followers
+    get :change_password, on: :collection
+    put :update_password, on: :collection
   end
   get '/follow/:followed_id' => 'relationships#follow', as: :follow_user
   get '/unfollow/:followed_id' => 'relationships#unfollow', as: :unfollow_user

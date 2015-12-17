@@ -1,5 +1,5 @@
-<!-- TODO: 这个页面似乎没有被使用，等待清理。 -->
-<% content_for :center_column do %>
+<!-- 这个是通过找回密码的时候用的 -->
+
   <div class='devise-form'>
     <%= simple_form_for(resource, as: resource_name, url: user_password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
@@ -13,4 +13,4 @@
       </div>
     <% end %>
   </div>
-<% end %>
+
