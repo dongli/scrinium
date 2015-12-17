@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_associated :profile
 
+  before_create :create_default_profile
   before_save :ensure_authentication_token
 
   def ensure_authentication_token
@@ -75,6 +76,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def create_default_profile
+    self.build_profile
+  end
 
   def generate_authentication_token
     self.authentication_token = SecureRandom.uuid
