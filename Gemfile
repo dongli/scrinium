@@ -6,31 +6,31 @@ end
 
 gem 'rails', '4.2.4'
 
-## 服务器部署
+# 服务器部署
 gem 'unicorn'
 gem 'thin'
 
-## 数据库
+# 数据库
 gem 'pg'
 gem 'redis-rails'
 
-## 视图和JavaScript
+# 视图和JavaScript
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-## 用户验证与权限设置
+# 用户验证与权限设置
 gem 'devise'
 gem 'pundit'
 
-## 异步
+# 异步
 gem "devise-async"
 gem 'sidekiq'
 gem 'sinatra', '>= 1.4.6', :require => nil
 
-## UI
+# UI
 gem 'bootstrap-sass'
 gem 'jasny-bootstrap-rails'
 gem 'country_select'
@@ -45,7 +45,7 @@ gem 'jstree-rails-4'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 
-## API
+# API
 gem 'grape'
 gem 'jbuilder', '~> 2.0'
 gem 'grape-kaminari'
@@ -55,15 +55,14 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
 
-## 文件上传
+# 文件上传
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-qiniu', '0.1.8'
 gem 'file_validators'
 gem 'remotipart'
 
-## 编辑器
-
+# 编辑器
 gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
 source 'https://rails-assets.org' do
@@ -72,15 +71,14 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jcrop'
 end
 
-## 全局设定
+# 全局设定
 gem 'settingslogic'
 
-## 其它
+# 其它
 gem 'simple_form'
 gem 'paper_trail', '~> 4.0.0'
 gem 'closure_tree'
 gem 'responders'
-
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'mailboxer'
 gem 'message_bus'
@@ -93,24 +91,21 @@ gem 'acts_as_tenant'
 gem 'public_activity'
 gem 'ffaker', require: false
 
-## 搜索
+# 搜索
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'ransack'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
-  gem 'quiet_assets' # don't show assets log
+  gem 'quiet_assets'
   gem 'byebug'
   gem 'bullet'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring.
   gem 'spring'
   gem 'annotate'
-  # Refresh browser auto.
   gem 'rack-livereload'
   gem 'guard-livereload'
 
-  # Use Capistrano for deployment.
+  # 部署
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
