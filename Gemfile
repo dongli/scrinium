@@ -66,7 +66,6 @@ gem 'remotipart'
 gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-marked'
   gem 'rails-assets-highlightjs'
 end
 

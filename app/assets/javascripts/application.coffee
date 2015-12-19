@@ -15,10 +15,10 @@
 #= require turbolinks
 #= require bootstrap-sprockets
 #= require cropper/cropper.min
+#= require marked/marked.min
 #= require moment
 #= require moment/zh-cn.js
 #= require select2
-#= require marked
 #= require highlightjs
 #= require i18n/translations
 #= require message-bus
