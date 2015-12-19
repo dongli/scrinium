@@ -19,7 +19,6 @@
 #= require moment
 #= require moment/zh-cn.js
 #= require select2
-#= require highlightjs
 #= require i18n/translations
 #= require message-bus
 #= require dropzone
@@ -45,9 +44,9 @@
       ['Typeset', MathJax.Hub]
     )
 
-marked.setOptions
-  highlight: (code) ->
-    hljs.highlightAuto(code).value
+# marked.setOptions
+#   highlight: (code) ->
+#     hljs.highlightAuto(code).value
 
 @markdown = (content = null, element = null, options = {}) ->
   if element == null

@@ -65,9 +65,9 @@ gem 'remotipart'
 # 编辑器
 gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-highlightjs'
-end
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-highlightjs'
+# end
 
 # 全局设定
 gem 'settingslogic'
