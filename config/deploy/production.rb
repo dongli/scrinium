@@ -1,19 +1,12 @@
-ask(:answer, 'server ips(production?)')
+set :server, ask('Server IP', ENV['SCRINIUM_SERVER_IP'])
 
-case fetch(:answer)
-  when 'production'
-    set :servers, '123.57.149.150'
-  else
-    set :servers, '123.57.149.150'
-end
+role :app, fetch(:server)
+role :web, fetch(:server)
+role :db,  fetch(:server)
 
-role :app, fetch(:servers)
-role :web, fetch(:servers)
-role :db, fetch(:servers)
+set :user, ask('User name for deploying', 'scrinium')
 
-server fetch(:servers), user: 'scrinium', roles: %w{web app}, my_property: :my_value
-
-
+server fetch(:server), user: fetch(:user), roles: %w{web app}, my_property: :my_value
 
 
 
