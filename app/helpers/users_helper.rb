@@ -1,6 +1,14 @@
 module UsersHelper
   def avatar user, options = {}
     size = options[:size] || :thumb
+    # 处理内部数据不一致问题，应该很少出现。
+    if not user or not user.profile
+      if size.class == Symbol
+        return image_tag "#{size}/default_avatar.png"
+      elsif size.class == String
+        return image_tag "logos/default_avatar.png", size: size
+      end
+    end
     if user.profile.avatar.url
       klass = options[:class] || 'avatar'
       if size.class == Symbol

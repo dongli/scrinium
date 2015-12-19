@@ -1,6 +1,5 @@
 GEM
   remote: https://ruby.taobao.org/
-  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.4)
       actionpack (= 4.2.4)
@@ -74,12 +73,11 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
     capistrano-rails (1.1.5)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
     capistrano-scm-copy (0.7.0)
       capistrano (~> 3.0)
     capistrano-sidekiq (0.5.4)
@@ -340,9 +338,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.4)
       sprockets-rails
-    rails-assets-highlightjs (8.9.1)
-    rails-assets-jcrop (2.0.4)
-    rails-assets-marked (0.3.5)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -502,8 +497,8 @@ DEPENDENCIES
   bullet
   byebug
   capistrano (~> 3.4.0)
+  capistrano-passenger
   capistrano-rails
-  capistrano-rvm
   capistrano-scm-copy
   capistrano-sidekiq
   carrierwave
@@ -553,9 +548,6 @@ DEPENDENCIES
   rack-cors
   rack-livereload
   rails (= 4.2.4)
-  rails-assets-highlightjs!
-  rails-assets-jcrop!
-  rails-assets-marked!
   ransack
   redis-rails
   remotipart
@@ -574,3 +566,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   wysiwyg-rails (= 2.0.0.pre.rc.3)
+
+BUNDLED WITH
+   1.10.6

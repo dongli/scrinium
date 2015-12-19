@@ -57,6 +57,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :mobile,
                                  profile_attributes: [
+                                   :id,
                                    :avatar,
                                    :crop_x,
                                    :crop_y,
