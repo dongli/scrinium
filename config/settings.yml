@@ -35,5 +35,3 @@ test:
 production:
   <<: *defaults
   domain: 'www.scrinium.cn'
-
-

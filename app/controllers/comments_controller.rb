@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     respond_to do |format|
-      if @comment.save!
+      if @comment.save
         MessageBus.publish "/comment-#{@commentable.class.to_s}-#{@commentable.id}", user_id: @comment.user_id
         format.js
       end
