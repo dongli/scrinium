@@ -106,9 +106,9 @@ group :development, :test do
   # 部署
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
-  gem 'capistrano-rvm'
-  gem "capistrano-scm-copy"
+  gem 'capistrano-scm-copy'
   gem 'net-ssh', '~> 2.8.0'
+  gem 'capistrano-passenger'
   gem 'capistrano-sidekiq'
 
   # 生成假数据，faker重构版本
