@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   def subdomian_organization
     subdomain = request.subdomain
     if subdomain.present? and @organization = Organization.find_by(subdomain: subdomain)
-      render "organizations/show"
+      render "organizations/show", layout: 'application'
     end
   end
 end
