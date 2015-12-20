@@ -31,6 +31,10 @@ body {
   background-color: #ffffff
 }
 
+p {
+  font-size: 15px;
+}
+
 .navbar-default .navbar-brand {
   color: #34495e;
   font-size: 23px;
@@ -181,7 +185,6 @@ table {
 
 .block {
   text-align: center;
-  white-space: nowrap;
   position: fixed;
   left: 0;
   right: 0;

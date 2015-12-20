@@ -31,19 +31,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_password
-    @user = current_user
-  end
-
-  def update_password
-    @user = current_user
-    if @user.update(password_params)
-      redirect_to root_path
-    else
-      redirect_to "users/change_password"
-    end
-  end
-
   private
 
   def set_user
