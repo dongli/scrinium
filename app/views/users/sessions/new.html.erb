@@ -10,15 +10,10 @@
         </p>
       </div>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form') do |f| %>
-      <%= f.input :email, autofocus: true, input_html: {
-      style: 'border-bottom-width: 1px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;'
-    }, wrapper_html: {
-      style: 'margin-bottom: 0px'
-    } %>
-      <%= f.input :password, input_html: {
-      style: 'border-top-width: 1px; border-top-left-radius: 0; border-top-right-radius: 0;'
-    } %>
-
+      <ul class='combined-inputs'>
+        <li><%= f.input :email, autofocus: true %></li>
+        <li><%= f.input :password %></li>
+      </ul>
       <%= f.button :submit, t('devise.views.sign_in'), class: 'btn btn-success btn-block',  data: { disable_with: t('devise.views.verify') } %>
 
       <div class="pull-left">
