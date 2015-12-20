@@ -64,6 +64,8 @@ zh-CN:
       verify: 验证中...
       change_password: 更改密码
       submit: 提交中...
+      resend_confirmation: 重新发送确认邮件
+      retrieve_password: 找回密码
     sign_out: 登出
 
   errors:

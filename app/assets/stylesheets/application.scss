@@ -20,6 +20,7 @@
  *= require froala_editor/froala_editor_require
  *= require application/custom
  *= require startup/css/flat-ui
+ *= require common
  *= require_self
  */
 
@@ -29,6 +30,10 @@ body {
   line-height: 1.72222;
   color: #34495e;
   background-color: #ffffff
+}
+
+p {
+  font-size: 15px;
 }
 
 .navbar-default .navbar-brand {
@@ -177,27 +182,4 @@ table {
 .select2-container--bootstrap .select2-selection {
   border: 2px solid rgb(189, 195, 199);
   height: 42px;
-}
-
-.block {
-  text-align: center;
-  white-space: nowrap;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.block:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em;
-}
-
-.vertical-centered {
-  display: inline-block;
-  vertical-align: middle;
 }

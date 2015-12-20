@@ -1,5 +1,6 @@
 class Users::PasswordsController < Devise::PasswordsController
-  layout 'slim_page'
+  layout :choose_layout
+
   # GET /resource/password/new
   # def new
   #   super
@@ -20,7 +21,11 @@ class Users::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def choose_layout
+    user_signed_in? ? 'application' : 'slim_page'
+  end
 
   # def after_resetting_password_path_for(resource)
   #   super(resource)

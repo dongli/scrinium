@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  layout 'slim_page'
+  layout :choose_layout
 
   # GET /resource/sign_up
   # def new
@@ -39,9 +39,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # def choose_layout
-  #   params[:action] == 'new' ? 'slim_page' : 'application'
-  # end
+  def choose_layout
+    case params[:action]
+    when 'edit'
+      'application'
+    else
+      'slim_page'
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -53,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_update_path_for resource
-    session[:previous_url] ? session[:previous_url].last : root_path
+    user_path(current_user)
   end
 
   def sign_up_params
@@ -78,7 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    new_user_registration_path
+  end
 end

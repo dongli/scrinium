@@ -1,0 +1,46 @@
+// 将若干输入框合并在一起，使得显示紧凑
+ul.combined-inputs {
+  padding: 0;
+  list-style-type: none;
+  li:not(:last-child) div.form-group {
+    margin-bottom: 0;
+  }
+  li:first-child input {
+    border-bottom-width: 1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  li:not(:first-child):not(:last-child) input {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-radius: 0;
+  }
+  li:last-child input {
+    border-top-width: 1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+// 元素的垂直置中（参考https://css-tricks.com/centering-in-the-unknown/）
+.block {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+.vertical-centered {
+  display: inline-block;
+  vertical-align: middle;
+}

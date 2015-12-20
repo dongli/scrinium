@@ -1,32 +1,23 @@
 <% content_for :title, t('devise.views.change_password') %>
 <!--可去掉-->
 <% content_for :center_column do %>
-<div class='block'>
-  <div class='vertical-centered'>
-    <div class='devise-form' style='margin-top: 10%'>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for:
-            <%= resource.unconfirmed_email %></p>
+  <div class='block'>
+    <div class='vertical-centered'>
+      <div class='devise-form' style='margin-top: 10%'>
+        <h4><%= t('devise.views.change_password') %></h4>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for:
+              <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <ul class='combined-inputs'>
+            <li><%= f.input :current_password %></li>
+            <li><%= f.input :password %></li>
+            <li><%= f.input :password_confirmation %></li>
+          </ul>
+          <%= f.button :submit, t('action.submit'), class: 'btn btn-success btn-block' %>
         <% end %>
-
-        <%= f.input :current_password, input_html: {
-            style: 'border-top-width: 1px; border-bottom-width: 1px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;'
-          }, wrapper_html: {
-            style: 'margin-bottom: 0px'
-          } %>
-        <%= f.input :password, input_html: {
-            style: 'border-top-width: 1px; border-bottom-width: 1px; border-radius: 0; border-radius: 0;'
-          }, wrapper_html: {
-            style: 'margin-bottom: 0px'
-          } %>
-        <%= f.input :password_confirmation, input_html: {
-            style: 'border-top-width: 1px; border-top-left-radius: 0; border-top-right-radius: 0;'
-          } %>
-
-        <%= f.button :submit, t('devise.views.change_password'), class: 'btn btn-success uppercase btn-block' %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
