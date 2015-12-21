@@ -2,12 +2,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
-      t.string  :name,               null: false  # 用户名（只做显示用途）
-      t.string  :email,              null: false  # 邮箱
-      t.string  :mobile                           # 手机
-      t.string  :encrypted_password, null: false
-      t.string  :role,               null: false  # 角色：admin，assist_admin，user。默认是user
-      t.integer :position                         # 位置（预留字段）
+      t.string   :name,               null: false  # 用户名（只做显示用途）
+      t.string   :email,              null: false  # 邮箱
+      t.string   :mobile                           # 手机
+      t.string   :encrypted_password, null: false
+      t.string   :role,               null: false  # 角色：admin，assist_admin，user。默认是user
+      t.datetime :deleted_at                       # 软删除时间
 
       ## Recoverable
       t.string   :reset_password_token

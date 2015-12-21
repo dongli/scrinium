@@ -21,8 +21,11 @@ class Article < ActiveRecord::Base
   include PublicActivity::Model
   tracked
 
-  validates :title, uniqueness: { scope: :user_id }
-  validates :title, presence: true
+  enumerize :status, in: [
+    :public,
+    :draft,
+    :trashed
+  ], default: :public, predicates: true
 
   has_paper_trail on: [:update, :destroy],
     if: Proc.new { |article| article.finished? },
@@ -33,15 +36,8 @@ class Article < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy
 
-  enumerize :privacy, in: [
-    :public,
-    :private
-  ], default: :public, predicates: true
-
-  enumerize :status, in: [
-    :draft,
-    :finished
-  ], predicates: true
+  validates :title, uniqueness: { scope: :user_id }
+  validates :title, presence: true
 
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
 end

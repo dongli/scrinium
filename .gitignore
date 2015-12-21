@@ -25,3 +25,4 @@ nginx.conf
 /test/*
 /db/schema.rb
 Gemfile.lock
+.byebug_history

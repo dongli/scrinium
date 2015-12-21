@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Group Options</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Front cover</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_options.each do |group_option| %>
+      <tr>
+        <td><%= group_option.group_id %></td>
+        <td><%= group_option.front_cover %></td>
+        <td><%= link_to 'Show', group_option %></td>
+        <td><%= link_to 'Edit', edit_group_option_path(group_option) %></td>
+        <td><%= link_to 'Destroy', group_option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group option', new_group_option_path %>

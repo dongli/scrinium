@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_option.user_id %>
+</p>
+
+<p>
+  <strong>Front cover:</strong>
+  <%= @user_option.front_cover %>
+</p>
+
+<%= link_to 'Edit', edit_user_option_path(@user_option) %> |
+<%= link_to 'Back', user_options_path %>

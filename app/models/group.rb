@@ -16,7 +16,7 @@ class Group < ActiveRecord::Base
   include Resourceable
   extend Enumerize
 
-  enumerize :privacy, in: [ :public, :private ], default: :public, predicates: true
+  enumerize :status, in: [ :public, :private ], default: :public, predicates: true
 
   mount_uploader :logo, ImageUploader
 

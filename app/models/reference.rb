@@ -58,6 +58,7 @@ class Reference < ActiveRecord::Base
   has_many :publications, dependent: :destroy
   has_many :users, through: :publications
 
+  # TODO：如果填写link，其它可以不填。
   validates :title, uniqueness: { cope: :year }
   validates :title, :authors, :year, :pages, :reference_type, :publisher_id, presence: true
   validates :file, file_size: { less_than_or_equal_to: 100.megabytes },

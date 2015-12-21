@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_option.group_id %>
+</p>
+
+<p>
+  <strong>Front cover:</strong>
+  <%= @group_option.front_cover %>
+</p>
+
+<%= link_to 'Edit', edit_group_option_path(@group_option) %> |
+<%= link_to 'Back', group_options_path %>

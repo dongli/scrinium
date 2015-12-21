@@ -77,7 +77,7 @@ Article.create(
   user_id: 1,
   title: '云滴谱的数值求解',
   content: '\\[ \\frac{\\partial n}{\\partial t} = - \\frac{\\partial}{\\partial r} \\frac{d r}{d t} n \\]',
-  privacy: 'public'
+  status: 'public'
 )
 
 User.create(
@@ -98,7 +98,7 @@ Group.create(
   name: '测试群组',
   short_name: '测试群组',
   admin_id: 1,
-  privacy: 'public'
+  status: 'public'
 )
 
 Membership.create(
