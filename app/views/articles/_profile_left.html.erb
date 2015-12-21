@@ -1,11 +1,11 @@
 <div class='panel panel-default'>
   <div class='panel-body center'>
-    <ul class='left-side-list'>
+    <ul class='vertical-clean-list'>
       <li>
         <%= link_to avatar(@article.user, size: :medium), @article.user %>
       </li>
       <li>
-        <ul class='left-side-list'>
+        <ul class='vertical-clean-list'>
           <% @article.categories.each do |tag| %>
           <li>
             <span class='label label-default'>

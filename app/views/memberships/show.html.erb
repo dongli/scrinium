@@ -27,7 +27,7 @@
               <%=
                 link_to t('membership.action.approve'),
                 [ @membership, membership: { status: 'approved' } ],
-                method: :patch, class: 'button btn-xs'
+                method: :patch, class: 'btn btn-primary btn-xs'
               %>
               <%=
                 link_to t('membership.action.reject'),
@@ -38,7 +38,7 @@
               <%=
                 link_to t('membership.action.ban'),
                 [ @membership, membership: { status: 'banned' } ],
-                method: :patch, class: 'button btn-danger btn-xs'
+                method: :patch, class: 'btn btn-danger btn-xs'
               %>
             <% end %>
           <% end %>
@@ -48,7 +48,7 @@
               <%=
                 link_to t('membership.action.agree'),
                 [ @membership, membership: { status: 'approved' } ],
-                method: :patch, class: 'button'
+                method: :patch, class: 'btn btn-primary'
               %>
             <% end %>
           <% end %>

@@ -1,12 +1,12 @@
 <div class='panel panel-default'>
   <div class='panel-body' style='text-align: center;'>
-    <ul class='left-side-list'>
+    <ul class='vertical-clean-list'>
       <li><%= logo @group, size: :medium %></li>
       <li><%= @group.name %></li>
       <li><%= t('activerecord.attributes.group.admin') %>: <%= link_to @group.admin.name, @group.admin %></li>
       <li><%= @group.privacy.text %></li>
       <li>
-        <ul class='left-side-list'>
+        <ul class='vertical-clean-list'>
           <% @group.categories.each do |tag| %>
             <li><span class='label label-default'>
               <%= tag.name %>

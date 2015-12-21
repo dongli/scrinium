@@ -68,28 +68,6 @@ ul.clean-list {
   list-style-type: none;
 }
 
-ul.left-side-list {
-  @extend ul.clean-list;
-  margin: 0px;
-  li {
-    margin-top: 1em;
-  }
-}
-
-ul.tag-cloud {
-  @extend ul.clean-list;
-  li {
-    display: inline-block;
-  }
-}
-
-ul.inline {
-  @extend ul.tag-cloud;
-  li {
-    margin-left: 1em;
-  }
-}
-
 ul.spacing-1-em {
   li {
     margin-top: 1em;

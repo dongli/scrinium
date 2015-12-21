@@ -22,6 +22,27 @@ ul.combined-inputs {
   }
 }
 
+ul.horizontal-clean-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  li:not(:first-child) {
+    margin-left: 10px;
+  }
+  li {
+    display: inline-block;
+  }
+}
+
+ul.vertical-clean-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  li:not(:first-child) {
+    margin-top: 10px;
+  }
+}
+
 // 元素的垂直置中（参考https://css-tricks.com/centering-in-the-unknown/）
 .block {
   text-align: center;

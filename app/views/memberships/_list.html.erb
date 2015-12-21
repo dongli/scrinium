@@ -4,6 +4,7 @@
       <div class='btn-group' role='group' aria-label='membership-group'>
         <button type='button' class='btn btn-primary' id='show-unapproved-membership-list'><%= t('enumerize.membership.status.unapproved') %></button>
         <button type='button' class='btn btn-primary' id='show-approved-membership-list'><%= t('enumerize.membership.status.approved') %></button>
+        <button type='button' class='btn btn-primary' id='show-banned-membership-list'><%= t('enumerize.membership.status.banned') %></button>
       </div>
     </div>
   </dt>
@@ -13,6 +14,9 @@
     </div>
     <div id='approved-membership-list' style='display: none;'>
       <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status == 'approved' } %>
+    </div>
+    <div id='banned-membership-list' style='display: none;'>
+      <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status != 'unapproved' } %>
     </div>
   </dd>
 </dl>

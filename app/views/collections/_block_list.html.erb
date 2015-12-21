@@ -30,7 +30,7 @@
             <ul class='clean-list'>
               <li><%= t('owner')+': '+collection.collectable.user.name %></li>
               <li>
-                <ul class='tag-cloud'>
+                <ul class='horizontal-clean-list'>
                   <% collection.collectable.categories.each do |tag| %>
                     <li><span class='label label-default'>
                       <%= tag.name %>

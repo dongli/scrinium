@@ -2,7 +2,7 @@
   <% posts.select { |x| x.sticky }.each do |post| %>
     <div class='panel panel-danger' id="post-<%= post.id %>">
       <div class='panel-heading'>
-        <%= link_to avatar(post.user, size: :small), post.user %> 
+        <%= link_to avatar(post.user, size: :small), post.user %>
         <%= timeago post.created_at %>
         <% if policy(post).manage? %>
           <div class='pull-right'>
@@ -14,7 +14,7 @@
       <div class='panel-body'>
         <%= link_to post.postable.title, post.postable %>
         <div class='pull-right'>
-          <ul class='inline'>
+          <ul class='horizontal-clean-list'>
             <li><%= fa_icon('comment-o') %> <%= post.postable.comments.size %></li>
             <li><%= fa_icon('star-o') %> <%= post.postable.collections.size %></li>
         </div>
@@ -37,7 +37,7 @@
       <div class='panel-body'>
         <%= link_to post.postable.title, post.postable %>
         <div class='pull-right'>
-          <ul class='inline'>
+          <ul class='horizontal-clean-list'>
             <li><%= fa_icon('comment-o') %> <%= post.postable.comments.size %></li>
             <li><%= fa_icon('star-o') %> <%= post.postable.collections.size %></li>
         </div>
