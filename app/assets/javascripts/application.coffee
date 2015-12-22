@@ -31,6 +31,7 @@
 #= require application/custom
 #= require nprogress
 #= require nprogress-turbolinks
+#= require plugins/jquery.backstretch
 # ============================= Common Functions ===============================
 @mathjax = (id = null) ->
   if id
