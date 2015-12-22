@@ -28,7 +28,7 @@
         <td>
           <%= link_to t('action.edit'), edit_group_node_path(@group, node), remote: true %> |
           <%= link_to t('action.delete'), group_node_path(@group, node), method: :delete,
-                      data: { confirm: t('message.are_you_sure_to_delete?', thing: t("#{node.name}")) } %>
+                      data: { confirm: t('message.are_you_sure_to_delete?', thing: ("#{node.name}")) } %>
         </td>
       </tr>
     <% end %>

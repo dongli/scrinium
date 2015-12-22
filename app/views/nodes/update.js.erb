@@ -2,9 +2,11 @@ $error_message = $("#group_node .alert-info");
 $error_message.html("");
 <% if @node.errors.any? %>
   <% @node.errors.full_messages.each do |message| %>
-    $error_message.append($("<li />").html("<%= message.html_safe %>"))
+    $error_message.append($("<li />").html("<%= message.html_safe %>"));
+    toastr.warning("<%= message.html_safe %>");
   <% end %>
 <% else %>
+  toastr.success("good");
   $("#group_node_list").html("<%= escape_javascript(render 'nodes/index') %>");
-  $('body').find('#group_node').remove();
+  $('body').find('#group_node').modal('hide');
 <% end %>

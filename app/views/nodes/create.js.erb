@@ -6,7 +6,7 @@ $error_message.html("");
     $error_message.append($("<li />").html("<%= message.html_safe %>"))
   <% end %>
 <% else %>
+  toastr.success("good");
   $("#group_node_list").html("<%= escape_javascript(render 'nodes/index') %>");
   $('body').find('#group_node').modal("hide");
-  toastr.warning("good");
 <% end %>
