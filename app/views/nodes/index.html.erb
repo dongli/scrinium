@@ -6,45 +6,11 @@
       <%= render 'groups/group_left', group: @group %>
     </div>
     <div class="col-md-9">
-      <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">修改节点信息</div>
-        <div class="panel-body">
-          <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </div>
-
-        <!-- Table -->
-        <table class="table">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>名称</th>
-            <th>状态</th>
-            <th>话题数</th>
-            <th>是否出现在主页</th>
-            <th>操作</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @nodes.each do |node| %>
-          <tr>
-            <td>1</td>
-            <td><%= node.name %></td>
-            <td><%= node.status %></td>
-            <td><%= node.topics.count %></td>
-            <td><%= node.on_group_page %></td>
-            <td>
-              <%= link_to edit_group_node_path(@group, node) do %>编辑 <% end %>|
-              <%= link_to t('action.edit'), group_node_path(@group, node), method: :delete,
-                          data: { confirm: t('message.are_you_sure_to_delete?', thing: t("#{node.name}")) } %>
-              </td>
-          </tr>
-          <% end %>
-
-          </tbody>
-        </table>
+      <div id="group_node_list">
+        <%= render 'nodes/index' %>
       </div>
 
+      <%= link_to t('action.add'), new_group_node_path(@group), remote: true, class: 'btn btn-default' %>
     </div>
   </div>
 

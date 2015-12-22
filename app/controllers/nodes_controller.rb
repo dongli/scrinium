@@ -18,27 +18,25 @@ class NodesController < ApplicationController
   end
 
   def create
+    @nodes = @group.nodes.all
     @node = @group.nodes.new(node_params)
 
     respond_to do |format|
       if @node.save
-        format.html { redirect_to group_nodes_path(@group), notice: 'Node was successfully created.' }
-        format.json { render :show, status: :created, location: @node }
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @node.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
   def update
+    @nodes = @group.nodes.all
     respond_to do |format|
       if @node.update(node_params)
-        format.html { redirect_to @node, notice: 'Node was successfully updated.' }
-        format.json { render :show, status: :ok, location: @node }
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @node.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

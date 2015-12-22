@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   before_action :set_group
 
   def index
-    @topics = @group.topics.all
+    @q = @group.topics.search(params[:q])
+    @topics = @q.result.includes(:node, :user).page(params[:page] || 1)
   end
 
   def show

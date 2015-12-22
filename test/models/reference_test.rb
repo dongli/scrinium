@@ -25,6 +25,7 @@
 #  doi            :string
 #  abstract       :text
 #  file           :string
+#  link           :string
 #  status         :string
 #  position       :integer
 #  created_at     :datetime         not null

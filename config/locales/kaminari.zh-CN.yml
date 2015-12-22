@@ -11,7 +11,7 @@ zh-CN:
       one_page:
         display_entries:
           zero: "没有发现"
-          one: "显示<b>1</b>个"
+          one: "<b>1</b>个"
           other: "总共 <b>%{count}</b> 条记录"
       more_pages:
         display_entries: "总共<strong>%{total}</strong>条记录，<b>%{first}&nbsp;-&nbsp;%{last}</b>"

@@ -1,0 +1,7 @@
+$('body').find('#group_node').remove();
+$('body').append(<%=  raw render("form", group: @group, node: @node).inspect %> );
+$('#group_node').modal('show');
+
+//$('body').find('#edit_membership_form').remove();
+//$('body').append(<%#=  raw render("edit", manageable: @manageable, remote: true).inspect %> );
+//$('#edit_membership_form').modal('show');

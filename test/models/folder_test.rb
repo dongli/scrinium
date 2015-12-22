@@ -10,6 +10,7 @@
 #  parent_id       :integer
 #  folderable_id   :integer
 #  folderable_type :string
+#  share_ids       :integer          default([]), is an Array
 #  status          :string
 #  position        :integer
 #  created_at      :datetime         not null

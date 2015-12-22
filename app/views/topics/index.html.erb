@@ -1,42 +1,57 @@
+<% content_for :title, t('action.edit')+t('activerecord.models.group') %>
+
+<% expose_attribute = %w(title user_name node_name sticky status essential created_at) %>
 <% content_for :center_column do %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'groups/group_left', group: @group %>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">管理话题</div>
+        <div class="panel-body">
+          <%= simple_form_for [@q], url: group_topics_path(@group), method: :get do |f| %>
+            <%= f.input :title_cont, label: false, required: false, placeholder: '搜索文章的标题' %>
+          <% end %>
+          <%= page_entries_info @topics %>
+        </div>
 
-  <p id="notice"><%= notice %></p>
+        <!-- Table -->
+        <table class="table">
+          <thead>
+          <tr>
+            <% expose_attribute.each do |attr| %>
+              <%= content_tag :th, sort_link(@q, attr) %>
+            <% end %>
+            <td>操作</td>
+          </tr>
+          </thead>
+          <tbody>
+            <% @topics.each do |topic| %>
+            <tr>
+              <% expose_attribute.each do |attr| %>
+                <% if respond_to?( "#{attr}_text".to_sym ) %>
+                    <td><%= self.send( "#{attr}_text".to_sym ) %></td>
+                <% else %>
+                    <td><%= topic.send(attr).to_s.truncate(20) %></td>
+                <% end %>
+              <% end %>
+              <td>
+                <%= link_to t('action.edit'), edit_group_topic_path(@group, topic) %> |
+                <%= link_to t('action.delete'), group_topic_path(@group, topic), method: :delete,
+                            data: { confirm: t('message.are_you_sure_to_delete?', thing: ("#{topic.title}")) } %>
+              </td>
+            </tr>
+          <% end %>
 
-<h1>Listing Topics</h1>
+          </tbody>
+        </table>
+      </div>
+      <%= link_to t('action.add'), new_group_topic_path(@group), class: 'btn btn-default' %>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Views count</th>
-      <th>Comments count</th>
-      <th>Status</th>
-      <th>Position</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% end %>
 
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.user_name %></td>
-        <td><%= topic.title %></td>
-        <td><%= topic.content %></td>
-        <td><%= topic.views_count %></td>
-        <td><%= topic.comments_count %></td>
-        <td><%= topic.status %></td>
-        <td><%= topic.position %></td>
-        <td><%= link_to 'Show', group_topic_path(@group, topic) %></td>
-        <td><%= link_to 'Edit', edit_group_topic_path(@group, topic) %></td>
-        <td><%= link_to 'Destroy', group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Topic', new_group_topic_path(@group) %>
-  <% end %>

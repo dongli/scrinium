@@ -1,0 +1,41 @@
+zh-CN:
+  activerecord:
+    models:
+      topic: 话题
+    attributes:
+      topic:
+        id:                 ID
+        group_id:           群组ID
+        node_id:            节点ID
+        user_id:            用户ID
+        node_name:          节点名称
+        title:              标题
+        content:            内容
+        views_count:        阅读数
+        comments_count:     评论数
+        sticky:             置顶
+        essential:          精华
+        status:             状态
+        position:           位置
+        last_edited_at:     最后修改时间
+        last_commented_at:  最后评论时间
+        deleted_at:         删除时间
+        created_at:         创建时间
+        updated_at:         更新时间
+    errors:
+      models:
+        topic:
+          attributes:
+            title:
+
+  simple_form:
+    placeholders:
+      topic:
+
+  pundit:
+    topic_policy:
+      update?: 您无权求改该文章！
+      create?: 您无权创建文章！
+
+  enumerize:
+    topic:

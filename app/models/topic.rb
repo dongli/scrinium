@@ -28,4 +28,5 @@ class Topic < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
+  delegate :name, to: :node, prefix: :node, allow_nil: true
 end

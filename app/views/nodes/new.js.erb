@@ -1,0 +1,3 @@
+$('body').find('#group_node').remove();
+$('body').append(<%=  raw render("form", group: @group, node: @node).inspect %> );
+$('#group_node').modal('show');

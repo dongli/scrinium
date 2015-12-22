@@ -7,7 +7,7 @@
 #  engine_name     :string           not null
 #  expired_at      :string           not null
 #  max_num_seats   :integer          default(5)
-#  status          :string           default("unapproved")
+#  status          :string
 #  position        :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
