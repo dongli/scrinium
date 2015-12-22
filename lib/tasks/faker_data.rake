@@ -50,11 +50,8 @@ class Fakeout
           avatar:     FFaker::Avatar.image,
           gender:     'male',
           title:      'freeman',
-          city:       FFaker::Address.city,
-          country:    FFaker::Address.city,
-          qq:         '32132323232',
-          weibo:      FFaker::Internet.http_url,
-          wechat:     FFaker::Internet.user_name
+          country:       FFaker::Address.city,
+          location:   FFaker::Address.city
       }
     )
     User.create(

@@ -4,10 +4,10 @@ class CreateGroups < ActiveRecord::Migration
       t.string     :logo                      # 图标
       t.references :admin, class_name: 'User' # 群组的超级管理员
       t.string     :status                    # 状态：public, private
-      t.integer    :members_count             # 成员计数
-      t.integer    :topics_count              # 话题计数
-      t.integer    :nodes_count               # 节点计数
-      t.integer    :position                  # 位置（预留字段）
+      t.integer    :members_count, default: 0 # 成员计数
+      t.integer    :topics_count, default: 0  # 话题计数
+      t.integer    :nodes_count, default: 0   # 节点计数
+      t.integer    :position, default: 0      # 位置（预留字段）
       t.datetime   :deleted_at                # 软删除时间
       t.timestamps null: false
     end

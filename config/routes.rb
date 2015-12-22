@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   # 群组
   resources :groups do
     get :feed, on: :collection
+    get :broadcast
     resources :topics
     resources :nodes
     resources :group_options

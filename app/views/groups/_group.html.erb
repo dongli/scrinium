@@ -1,0 +1,12 @@
+
+  <div class="thumbnail">
+    <%= image_tag group.logo, height: '150', width: '100%', display: 'block' %>
+    <!--<img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzQ4IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDM0OCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMzQ4IiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzMi40ODQzNzUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxNnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjM0OHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="height: 150px; width: 100%; ">-->
+    <div class="caption">
+      <h4><%= group.name %></h4>
+      <p><a role="button" class="btn btn-primary" href="#">人数<%= group.members_count || 0 %>人</a>
+        <a role="button" class="btn btn-default" href="#">话题<%= group.topics_count || 0 %>个</a>
+      </p>
+    </div>
+  </div>
+

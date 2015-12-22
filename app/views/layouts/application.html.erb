@@ -24,7 +24,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="boxed">
   <!-- 由于Turbolink导致我们无法在<head>中yield如下content -->
   <%= yield :javascript %>
 

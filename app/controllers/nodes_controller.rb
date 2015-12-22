@@ -19,7 +19,6 @@ class NodesController < ApplicationController
 
   def create
     @node = @group.nodes.new(node_params)
-    @node.user_id = current_user.id
 
     respond_to do |format|
       if @node.save
@@ -47,7 +46,7 @@ class NodesController < ApplicationController
   def destroy
     @node.destroy
     respond_to do |format|
-      format.html { redirect_to nodes_url, notice: 'Node was successfully destroyed.' }
+      format.html { redirect_to group_nodes_url(@group), notice: 'Node was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

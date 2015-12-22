@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page] || 1)
   end
 
   def show
@@ -16,6 +16,10 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def broadcast
+
+  end
+
   def create
     @group = Group.new(group_params)
     set_crop_params
@@ -23,7 +27,6 @@ class GroupsController < ApplicationController
     @group.admin_id = current_user.id
     respond_to do |format|
       if @group.save
-        @membership = current_user.memberships.create(host_type: 'Group', host_id: @group.id, role: "admin", status: "approved")
         format.html { redirect_to @group, notice: t('message.create_success', thing: t('activerecord.models.group')) }
       else
         format.html { render :new }

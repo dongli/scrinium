@@ -16,6 +16,7 @@
 class Node < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
+  has_many :topics, dependent: :nullify
 
   validates :name, presence: true,  uniqueness: {scope: :group_id}
 end

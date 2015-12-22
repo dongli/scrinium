@@ -1,5 +1,13 @@
 <% content_for :title, t('action.edit')+t('activerecord.models.group') %>
 
 <% content_for :center_column do %>
-  <%= render 'form' %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'groups/group_left', group: @group %>
+    </div>
+    <div class="col-md-9">
+      <%= render 'form' %>
+    </div>
+  </div>
+
 <% end %>

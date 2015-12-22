@@ -1,19 +1,50 @@
 <% content_for :title, t('activerecord.models.group') %>
 
 <% content_for :center_column do %>
-  <div class="alert alert-info" role="alert">
-    在这里添加群组检索功能。
+
+
+  <div class="col-md-9">
+    <h4>浏览群组</h4>
   </div>
-  <%= render 'block_list', groups: Group.all %>
+
+  <div class="col-md-3">
+    <%= link_to new_group_path do  %>
+      <button type="button" class="btn btn-info">新建群组</button>
+    <% end %>
+  </div>
+
+  <hr/>
+  <% @groups.each do |group| %>
+    <div class="col-md-4">
+      <%= render 'groups/group', group: group %>
+    </div>
+  <% end %>
+
+  <%= paginate @groups %>
+
 <% end %>
 
 <% content_for :right_column do %>
-  <div class='panel panel-default'>
-    <div class='panel-body center'>
-      <%= render 'block_list', groups: @groups, only_logo: true %>
-      <% if policy(Group).create? %>
-        <%= link_to fa_icon('plus-square-o', text: t('action.add')), new_group_path %>
-      <% end %>
+
+  <% if current_user %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">我加入的群组</h3>
+      </div>
+      <div class="panel-body">
+        <%= render 'groups/group', group: @groups.last %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">推荐群组</h3>
+      </div>
+      <div class="panel-body">
+        <%= render 'groups/group', group: @groups.last(2) %>
+      </div>
+    </div>
+
+  <% end %>
+
 <% end %>
