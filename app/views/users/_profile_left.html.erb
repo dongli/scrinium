@@ -6,7 +6,10 @@
           <%= avatar @user, size: "100x100" %>
         </a>
       </li>
-      <li><%= @user.name %></li>
+      <% if user_signed_in? and current_user != @user %>
+        <li><%= @user.name %></li>
+      <% end %>
+      <li><%= @user.profile.signature %></li>
       <% if user_signed_in? and current_user != @user %>
         <li><%= render 'relationships/follow_button', followed: @user %></li>
       <% end %>
@@ -28,13 +31,13 @@
       </li>
       <li><%= render 'memberships/organization_logos', user: @user %></li>
       <li><%= @user.role.text %></li>
-      <li>
-        <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
-      </li>
       <% if policy(@user).update? %>
         <li><%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @user ] %></li>
         <li><%= link_to fa_icon('key', text: t('devise.views.change_password')), edit_user_registration_path %></li>
       <% end %>
+      <li>
+        <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
+      </li>
     </ul>
   </div>
 </div>

@@ -9,7 +9,7 @@
       <% end %>
     </div>
     <div>
-      <span class='btn btn-primary btn-file'>
+      <span class='btn btn-success btn-file'>
         <span class='fileinput-new'>
           <%= t("action.upload_#{image_attribute_name}") %>
         </span>
@@ -18,7 +18,7 @@
         </span>
         <%= form.file_field image_attribute_name %>
       </span>
-      <a href='#' class='btn btn-danger fileinput-exists' data-dismiss='fileinput'>
+      <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>
         <%= t("action.delete_#{image_attribute_name}") %>
       </a>
     </div>

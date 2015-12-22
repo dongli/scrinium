@@ -2,13 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.devise-form {
+.devise-edit-form {
+  font-size: 15px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.change-password-form {
   font-size: 15px;
   width: 300px;
   margin: 0 auto;
-  #user_remember_me {
-    margin-left: 0;
-  }
+}
+
+#user_profile_attributes_bio {
+  height: 200px;
 }
 
 .user-profile {

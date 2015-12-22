@@ -150,7 +150,7 @@ table {
 
 .select {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .select2-container--default .select2-selection--multiple {
@@ -160,4 +160,8 @@ table {
 .select2-container--bootstrap .select2-selection {
   border: 2px solid rgb(189, 195, 199);
   height: 42px;
+}
+
+.form-group {
+  margin-bottom: 10px;
 }

@@ -1,4 +1,4 @@
-<div class='block'>
+<div class='vertical-centered-block'>
   <div class='vertical-centered'>
     <div class='devise-form'>
       <div class='center'>
@@ -11,8 +11,8 @@
       </div>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form') do |f| %>
       <ul class='combined-inputs'>
-        <li><%= f.input :email, autofocus: true %></li>
-        <li><%= f.input :password %></li>
+        <li><%= f.input :email, label: false, autofocus: true %></li>
+        <li><%= f.input :password, label: false %></li>
       </ul>
       <%= f.button :submit, t('devise.views.sign_in'), class: 'btn btn-success btn-block',  data: { disable_with: t('devise.views.verify') } %>
 

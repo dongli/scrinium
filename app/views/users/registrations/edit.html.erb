@@ -1,9 +1,9 @@
 <% content_for :title, t('devise.views.change_password') %>
 <!--可去掉-->
 <% content_for :center_column do %>
-  <div class='block'>
+  <div class='vertical-centered-block'>
     <div class='vertical-centered'>
-      <div class='devise-form' style='margin-top: 10%'>
+      <div class='change-password-form'>
         <h4><%= t('devise.views.change_password') %></h4>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -11,9 +11,9 @@
               <%= resource.unconfirmed_email %></p>
           <% end %>
           <ul class='combined-inputs'>
-            <li><%= f.input :current_password %></li>
-            <li><%= f.input :password %></li>
-            <li><%= f.input :password_confirmation %></li>
+            <li><%= f.input :current_password, label: false %></li>
+            <li><%= f.input :password, label: false %></li>
+            <li><%= f.input :password_confirmation, label: false %></li>
           </ul>
           <%= f.button :submit, t('action.submit'), class: 'btn btn-success btn-block' %>
         <% end %>

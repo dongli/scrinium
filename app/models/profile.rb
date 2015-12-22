@@ -2,18 +2,19 @@
 #
 # Table name: profiles
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  avatar     :string
-#  gender     :string
-#  title      :string
-#  city       :string
-#  country    :string
-#  qq         :string
-#  weibo      :string
-#  wechat     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  avatar      :string
+#  gender      :string
+#  affiliation :string
+#  title       :string
+#  location    :string
+#  country     :string
+#  signature   :string
+#  bio         :text
+#  contact     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class Profile < ActiveRecord::Base

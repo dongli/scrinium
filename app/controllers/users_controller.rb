@@ -50,15 +50,11 @@ class UsersController < ApplicationController
                                    :crop_y,
                                    :crop_w,
                                    :crop_h,
-                                   :string,
                                    :gender,
-                                   :string,
                                    :title,
-                                   :city,
                                    :country,
-                                   :qq,
-                                   :weibo,
-                                   :wechat
+                                   :signature,
+                                   :bio
                                  ],
                                  group_ids: [])
   end

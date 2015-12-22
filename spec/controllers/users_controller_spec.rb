@@ -1,40 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  describe "GET index" do
-    it "get all users" do
+  describe '创建用户' do
+    it '默认是角色是user' do
       user = User.create!(
-          name: '董理',
-          role: 'admin',
-          email: 'dongli3@qq.com',
-          password: '12345678',
-          password_confirmation: '12345678',
-          profile_attributes: {
-              gender: 'male',
-              title: 'freeman'
-          }
+        name: '张三',
+        email: 'zhangsan@foobar.com',
+        password: '123456',
+        password_confirmation: '123456'
       )
-      get :index
-      puts "#{assigns(:users)}"
-      expect(assigns(:users)).to eq([user])
-    end
-
-    it "renders the index template" do
-
-      @user = User.create!(
-          name: '董理',
-          role: 'admin',
-          email: 'dongli3@qq.com',
-          password: '12345678',
-          password_confirmation: '12345678',
-          profile_attributes: {
-              gender: 'male',
-              title: 'freeman'
-          }
-      )
-      sign_in :user, @user
-      get :index
-      expect(response).to render_template("index")
+      expect(User.all.size).to eq(1)
+      expect(User.first.name).to eq('张三')
+      expect(User.first.role).to eq('user')
     end
   end
 end

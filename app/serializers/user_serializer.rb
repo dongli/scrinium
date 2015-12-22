@@ -8,7 +8,7 @@
 #  mobile                 :string
 #  encrypted_password     :string           not null
 #  role                   :string           not null
-#  position               :integer
+#  deleted_at             :datetime
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime

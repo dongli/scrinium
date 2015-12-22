@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <% articles.each do |article| %>
-      <% next if article.private? and ( ( current_user and current_user != article.user ) or show_author ) %>
+      <% next if not article.public? and ( ( current_user and current_user != article.user ) or show_author ) %>
       <tr class='clickable-row' data-href='<%= article_path(article) %>'>
         <td><%= "《#{article.title}》" %></td>
         <% if show_author %>

@@ -1,40 +1,40 @@
 <% content_for :title, t('action.edit')+t('activerecord.models.profile') %>
 
 <% content_for :center_column do %>
-  <div class='devise-form'>
+  <div class='devise-edit-form'>
     <%= simple_form_for @user do |f| %>
-      <%= f.simple_fields_for :profile do |profile_form| %>
-        <%=
-          render 'layouts/upload_image', form: profile_form,
-          object: @user.profile, image_attribute_name: :avatar,
-          default_image: 'logos/default_avatar.png'
-        %>
-      <% end %>
-      <%= f.input :name %>
-      <%= f.simple_fields_for :profile do |profile_form| %>
-        <div class='row'>
-          <div class='col-md-6'>
-            <%= profile_form.input :gender %>
-          </div>
-          <div class='col-md-6'>
-            <%= profile_form.input :title %>
+      <div class='row'>
+        <div class='col-md-4'>
+          <%= f.simple_fields_for :profile do |profile_form| %>
+            <%=
+              render 'layouts/upload_image', form: profile_form,
+              object: @user.profile, image_attribute_name: :avatar,
+              default_image: 'logos/default_avatar.png'
+            %>
+          <% end %>
+        </div>
+        <div class='col-md-8'>
+          <%= f.input :name, required: false %>
+          <%= f.simple_fields_for :profile do |profile_form| %>
+            <div class='row'>
+              <div class='col-md-4'>
+                <%= profile_form.input :gender, required: false %>
+              </div>
+              <div class='col-md-4'>
+                <%= profile_form.input :title, required: false %>
+              </div>
+              <div class='col-md-4'>
+                <%= profile_form.input :country %>
+              </div>
+            </div>
+            <%= profile_form.input :signature %>
+            <%= profile_form.input :bio %>
+          <% end %>
+          <div class='center'>
+            <%= f.button :submit, t('action.submit'), class: 'btn btn-success' %>
           </div>
         </div>
-        <div class='row'>
-          <div class='col-md-6'>
-            <%= profile_form.input :country %>
-          </div>
-          <div class='col-md-6'>
-            <%= profile_form.input :city %>
-          </div>
-        </div>
-        <div class='center'>
-          <%= profile_form.input :qq, label: fa_icon('qq') %>
-          <%= profile_form.input :weibo, label: fa_icon('weibo') %>
-          <%= profile_form.input :wechat, label: fa_icon('wechat') %>
-        </div>
-      <% end %>
-      <%= f.button :submit, t('action.submit'), class: 'btn btn-success uppercase btn-block' %>
+      </div>
     <% end %>
   </div>
 <% end %>

@@ -8,7 +8,7 @@
 #  mobile                 :string
 #  encrypted_password     :string           not null
 #  role                   :string           not null
-#  position               :integer
+#  deleted_at             :datetime
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -23,8 +23,8 @@
 
 class User < ActiveRecord::Base
   include Resourceable
-  extend Enumerize
   include UserSearchable
+  extend Enumerize
   enumerize :role, in: [:admin, :assist_admin, :user], default: :user, predicates: true
 
   # Include default devise modules. Others available are:
@@ -49,13 +49,16 @@ class User < ActiveRecord::Base
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
   has_one  :profile, dependent: :destroy
+  has_one  :experience, dependent: :destroy
+  has_one  :achievement, dependent: :destroy
+  has_one  :user_option, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   validates_associated :profile
 
-  before_create :create_default_profile
+  before_create :create_default_associated_models
   before_save :ensure_authentication_token
 
   def ensure_authentication_token
@@ -77,8 +80,11 @@ class User < ActiveRecord::Base
 
   private
 
-  def create_default_profile
+  def create_default_associated_models
     self.build_profile
+    self.build_experience
+    self.build_achievement
+    self.build_user_option
   end
 
   def generate_authentication_token

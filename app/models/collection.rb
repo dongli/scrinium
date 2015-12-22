@@ -6,8 +6,7 @@
 #  user_id          :integer
 #  collectable_id   :integer
 #  collectable_type :string
-#  watched          :boolean          default(FALSE)
-#  updated          :boolean          default(FALSE)
+#  status           :string
 #  position         :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

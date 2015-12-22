@@ -1,4 +1,4 @@
-<div class='block'>
+<div class='vertical-centered-block'>
   <div class='vertical-centered'>
     <div class='devise-form'>
       <div class='center'>
@@ -11,10 +11,10 @@
       </div>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "users_sign_up"}) do |f| %>
         <ul class='combined-inputs'>
-          <li><%= f.input :name %></li>
-          <li><%= f.input :email %></li>
-          <li><%= f.input :password %></li>
-          <li><%= f.input :password_confirmation %></li>
+          <li><%= f.input :name, label: false %></li>
+          <li><%= f.input :email, label: false %></li>
+          <li><%= f.input :password, label: false %></li>
+          <li><%= f.input :password_confirmation, label: false %></li>
         </ul>
         <%= f.button :submit, t('devise.views.sign_up'),
           class: 'btn btn-success uppercase btn-block',

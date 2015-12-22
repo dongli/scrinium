@@ -44,7 +44,7 @@ ul.vertical-clean-list {
 }
 
 // 元素的垂直置中（参考https://css-tricks.com/centering-in-the-unknown/）
-.block {
+.vertical-centered-block {
   text-align: center;
   position: fixed;
   left: 0;
@@ -53,7 +53,7 @@ ul.vertical-clean-list {
   bottom: 0;
 }
 
-.block:before {
+.vertical-centered-block:before {
   content: '';
   display: inline-block;
   height: 100%;
