@@ -1,8 +1,10 @@
 <div class='article-form'>
   <%= simple_form_for @article do |f| %>
-    <%= f.input :title %>
     <div class='row'>
-      <div class='col-md-4'>
+      <div class='col-md-8 col-sm-7 col-xs-12'>
+        <%= f.input :title, required: false %>
+      </div>
+      <div class='col-md-4 col-sm-5 col-xs-12'>
         <%=
           f.input :category_list,
           collection: @article.categories.map { |t| t.name },
@@ -11,9 +13,6 @@
             multiple: 'multiple'
           }
         %>
-      </div>
-      <div class='col-md-2'>
-        <%= f.input :privacy %>
       </div>
     </div>
     <div>
@@ -41,7 +40,7 @@
       </div>
     </div>
     <ul class='list-inline right'>
-      <li><%= f.button :submit, t('action.save'), class: 'btn btn-warning' %></li>
+      <li><%= f.button :submit, t('action.save'), class: 'btn btn-default' %></li>
       <li><%= f.button :submit, t('action.submit'), class: 'btn btn-success' %></li>
     </ul>
   <% end %>

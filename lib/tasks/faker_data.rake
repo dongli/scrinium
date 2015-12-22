@@ -107,7 +107,7 @@ class Fakeout
       description: (rand(2) == 0 ? FFaker::Lorem.paragraphs : FFaker::LoremCN.paragraphs),
       admin_id: pick_random(User, true),
       locale: 'zh-CN',
-      privacy: :public
+      status: :public
     )
   end
 
@@ -152,7 +152,7 @@ class Fakeout
       user_id: pick_random(User, true),
       title: FFaker::LoremCN.paragraph,
       content: FFaker::HTMLIpsum.body,
-      privacy: 'public'
+      status: 'public'
     )
   end
 

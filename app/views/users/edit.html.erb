@@ -4,7 +4,7 @@
   <div class='devise-edit-form'>
     <%= simple_form_for @user do |f| %>
       <div class='row'>
-        <div class='col-md-4'>
+        <div class='col-md-4 col-sm-6'>
           <%= f.simple_fields_for :profile do |profile_form| %>
             <%=
               render 'layouts/upload_image', form: profile_form,
@@ -13,7 +13,7 @@
             %>
           <% end %>
         </div>
-        <div class='col-md-8'>
+        <div class='col-md-8 col-sm-6'>
           <%= f.input :name, required: false %>
           <%= f.simple_fields_for :profile do |profile_form| %>
             <div class='row'>

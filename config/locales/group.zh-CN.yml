@@ -10,7 +10,6 @@ zh-CN:
         logo:           群组Logo
         admin_id:       超级管理员ID
         category_list:  分类标签
-        privacy:        隐私度
         admin:          管理员
         users:          成员
         status:         状态
@@ -34,7 +33,7 @@ zh-CN:
 
   enumerize:
     group:
-      privacy:
+      status:
         public: 公开
         private: 不公开
 

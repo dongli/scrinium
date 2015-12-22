@@ -13,11 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require select2
+//= require select2/select2.min
 //= require bootstrap-sprockets
 //= require nprogress
 //= require nprogress-turbolinks
-
-
-
-

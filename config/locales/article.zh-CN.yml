@@ -7,7 +7,6 @@ zh-CN:
         title: 题目
         user: 作者
         category_list: 分类标签
-        privacy: 隐私度
         created_at: 动笔时间
         content: 内容
         impressionist_count: 浏览次数
@@ -28,10 +27,3 @@ zh-CN:
     article_policy:
       update?: 您无权求改该文章！
       create?: 您无权创建文章！
-
-  enumerize:
-    article:
-      privacy:
-        public: 公开
-        private: 不公开
-        group_public: 群组公开

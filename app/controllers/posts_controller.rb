@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       @postable = Article.new({
         title: "#{@post.group.short_name} - #{t('activerecord.models.post')} ##{@post.group.posts.size}",
         user_id: current_user.id,
-        privacy: 'public'
+        status: 'public'
       })
       @postable.save!
       @post.postable_id = @postable.id

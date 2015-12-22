@@ -18,7 +18,7 @@
 #= require marked/marked.min
 #= require moment
 #= require moment/zh-cn.js
-#= require select2
+#= require select2/select2.min
 #= require i18n/translations
 #= require message-bus
 #= require dropzone

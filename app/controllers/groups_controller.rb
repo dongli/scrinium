@@ -80,7 +80,6 @@ class GroupsController < ApplicationController
                                   { article_ids: [] },
                                   :tag_list,
                                   { category_list: [] },
-                                  :privacy,
                                   :status)
   end
 end
