@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_user, only: [:show, :update, :destroy, :edit_profile, :edit_home_page]
+  before_action :set_user, only: [:show, :update, :destroy, :edit_profile, :edit_home_page, :show_home_page]
+  layout :choose_layout
 
   def show
   end
 
   def update
-    if params[:user][:profile_attributes].present? and [:user][:profile_attributes][:crop_x].present?
+    if params[:user][:profile_attributes].present? and params[:user][:profile_attributes][:crop_x].present?
       @user.profile.crop_x = params[:user][:profile_attributes][:crop_x]
       @user.profile.crop_y = params[:user][:profile_attributes][:crop_y]
       @user.profile.crop_w = params[:user][:profile_attributes][:crop_w]
@@ -34,7 +35,14 @@ class UsersController < ApplicationController
   def edit_home_page
   end
 
+  def show_home_page
+  end
+
   private
+
+  def choose_layout
+    params[:action] == 'show_home_page' ? 'slim_page' : 'application'
+  end
 
   def set_user
     @user = User.find(params[:id])

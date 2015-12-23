@@ -12,9 +12,11 @@
 
 <body>
   <div class="page-wrapper">
-    <div class='container' style='margin-top: 44px;'>
-      <%= render 'layouts/message' %>
-    </div>
+    <% if not flash.empty? %>
+      <div class='container' style='margin-top: 44px;'>
+        <%= render 'layouts/message' %>
+      </div>
+    <% end %>
     <%= yield %>
   </div>
 </body>

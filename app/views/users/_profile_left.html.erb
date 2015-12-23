@@ -2,9 +2,11 @@
   <div class='panel-body center'>
     <ul class="vertical-clean-list">
       <li>
-        <a href='<%= user_path(@user) %>'>
-          <%= avatar @user, size: "100x100" %>
-        </a>
+        <% if current_user == @user %>
+          <%= link_to avatar(@user, size: '100x100'), show_home_page_user_path(@user) %>
+        <% else %>
+          <%= avatar(@user, size: '100x100') %>
+        <% end %>
       </li>
       <% if user_signed_in? and current_user != @user %>
         <li><%= @user.name %></li>

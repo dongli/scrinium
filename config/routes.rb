@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     member do
       get 'edit_profile'
       get 'edit_home_page'
+      get 'show_home_page'
     end
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message

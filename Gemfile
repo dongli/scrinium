@@ -42,6 +42,7 @@ gem 'bower-rails'
 gem 'momentjs-rails'
 gem 'nprogress-rails'
 gem 'jstree-rails-4'
+gem 'geo_pattern'
 # ActiveRecord model/data translation.
 gem 'globalize', '~> 5.0.0'
 

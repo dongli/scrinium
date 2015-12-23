@@ -46,11 +46,7 @@ ul.vertical-clean-list {
 // 元素的垂直置中（参考https://css-tricks.com/centering-in-the-unknown/）
 .vertical-centered-block {
   text-align: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  height: inherit;
 }
 
 .vertical-centered-block:before {
@@ -61,7 +57,33 @@ ul.vertical-clean-list {
   margin-right: -0.25em;
 }
 
+.vertical-centered-window-block {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.vertical-centered-window-block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
 .vertical-centered {
   display: inline-block;
   vertical-align: middle;
+}
+
+.horizontal-centered {
+  text-align: center;
+}
+
+img.avatar {
+  border-radius: 100px;
+  border: 2px solid #EBF0F1;
 }
