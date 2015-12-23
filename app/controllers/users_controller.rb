@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [ :show ]
-  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_user, only: [:show, :update, :destroy, :edit_profile, :edit_home_page]
 
   def show
   end
 
-  def edit
-  end
-
   def update
-    if params[:user][:profile_attributes][:crop_x].present?
+    if params[:user][:profile_attributes].present? and [:user][:profile_attributes][:crop_x].present?
       @user.profile.crop_x = params[:user][:profile_attributes][:crop_x]
       @user.profile.crop_y = params[:user][:profile_attributes][:crop_y]
       @user.profile.crop_w = params[:user][:profile_attributes][:crop_w]
@@ -29,6 +26,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to session[:previous_url].last, notice: t('message.destroy_success', thing: t('activerecord.models.user')) }
     end
+  end
+
+  def edit_profile
+  end
+
+  def edit_home_page
   end
 
   private
@@ -55,6 +58,10 @@ class UsersController < ApplicationController
                                    :country,
                                    :signature,
                                    :bio
+                                 ],
+                                 user_option_attributes: [
+                                   :id,
+                                   :front_cover
                                  ],
                                  group_ids: [])
   end

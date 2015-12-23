@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    models:
+      user_option: 用户选项
+    attributes:
+      user_option:
+        front_cover: 主页封面

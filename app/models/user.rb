@@ -49,10 +49,11 @@ class User < ActiveRecord::Base
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
   has_one  :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile, allow_destroy: true
   has_one  :experience, dependent: :destroy
   has_one  :achievement, dependent: :destroy
   has_one  :user_option, dependent: :destroy
-  accepts_nested_attributes_for :profile, allow_destroy: true
+  accepts_nested_attributes_for :user_option, allow_destroy: true
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true

@@ -25,7 +25,7 @@ class ImageUploader < BaseUploader
   protected
 
   def crop
-    if model.crop_x.present?
+    if model.respond_to?(:crop_x) and model.crop_x.present?
       manipulate! do |img|
         x = model.crop_x
         y = model.crop_y

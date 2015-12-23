@@ -62,6 +62,9 @@ zh-CN:
     columns: 专栏
     publications: 发表刊物
     affiliation: 所属机构
+    edit:
+      profile: 个人信息
+      home_page: 主页设置
 
   action:
     upload_avatar: 上传头像

@@ -16,3 +16,7 @@
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background: #00D66C;
+}

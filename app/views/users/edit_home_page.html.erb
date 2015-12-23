@@ -1,0 +1,35 @@
+<% content_for :title, t('action.edit')+t('activerecord.models.profile') %>
+
+<% content_for :left_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-body'>
+      <ul class='nav nav-pills nav-stacked'>
+        <li role='presentation'>
+          <%= link_to t('user.edit.profile'), edit_profile_user_path(@user) %>
+        </li>
+        <li role='presentation' class='active'>
+          <%= link_to t('user.edit.home_page'), '#' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :center_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= t('user.edit.home_page') %>
+    </div>
+    <div class='panel-body'>
+      <%= simple_form_for @user do |f| %>
+        <%= image_tag @user.user_option.front_cover_url %>
+        <%= f.simple_fields_for :user_option do |user_option_form| %>
+          <%= user_option_form.input :front_cover %>
+        <% end %>
+        <div class='center'>
+          <%= f.button :submit, t('action.submit'), class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

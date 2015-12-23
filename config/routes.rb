@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # Concerns
   concern :commentable do
-    resources :comments, except: [ :new, :show ]
+    resources :comments, except: [:new, :show]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
   end
   concern :collectable do
@@ -38,7 +38,11 @@ Rails.application.routes.draw do
       passwords:     'users/passwords',
       emails:        'users/emails'
     }
-  resources :users do
+  resources :users, except: :edit do
+    member do
+      get 'edit_profile'
+      get 'edit_home_page'
+    end
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message
     get 'mailbox/write_message' => 'mailbox#write_message', as: :write_message
@@ -56,13 +60,13 @@ Rails.application.routes.draw do
   get '/follow/:followed_id' => 'relationships#follow', as: :follow_user
   get '/unfollow/:followed_id' => 'relationships#unfollow', as: :unfollow_user
   # 文章
-  resources :articles, concerns: [ :commentable, :collectable ]
+  resources :articles, concerns: [:commentable, :collectable]
   get '/articles/:id/versions' => 'articles#versions', as: :article_versions
   get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version # 目前没什么用。
   # 资源
-  resources :resources, concerns: [ :commentable, :collectable ]
+  resources :resources, concerns: [:commentable, :collectable]
   resources :folders
-  [ :delete_files, :rename_file, :move_files, :share_files ].each do |action|
+  [:delete_files, :rename_file, :move_files, :share_files].each do |action|
     get "#{action}/:folderable_type/:folderable_id" => "resource_board##{action}", as: action
   end
   resources :shares do
@@ -71,7 +75,7 @@ Rails.application.routes.draw do
     end
   end
   # 参考文献
-  resources :publications, except: [ :index, :new, :edit, :show ]
+  resources :publications, except: [:index, :new, :edit, :show]
   resources :references
   resources :publishers
   # 资格
