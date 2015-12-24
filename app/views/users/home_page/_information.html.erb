@@ -1,0 +1,22 @@
+<div class='home-page-content active' id='content-information'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      基本信息
+    </div>
+    <div class='panel-body'>
+      <%= @user.profile.bio %>
+    </div>
+  </div>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= t('activerecord.models.experience') %>
+    </div>
+    <div class='panel-body'>
+      <ul>
+        <% @user.experiences.each do |experience| %>
+          <li><%= experience.content %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

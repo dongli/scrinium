@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_user, only: [:show, :update, :destroy, :edit_profile, :edit_home_page, :show_home_page]
+  before_action :set_user
   layout :choose_layout
 
   def show
@@ -35,6 +35,9 @@ class UsersController < ApplicationController
   def edit_home_page
   end
 
+  def edit_experience
+  end
+
   def show_home_page
   end
 
@@ -66,6 +69,10 @@ class UsersController < ApplicationController
                                    :country,
                                    :signature,
                                    :bio
+                                 ],
+                                 experiences_attributes: [
+                                   :id,
+                                   :content
                                  ],
                                  user_option_attributes: [
                                    :id,

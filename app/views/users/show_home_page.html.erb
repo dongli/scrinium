@@ -1,13 +1,26 @@
+<style type='text/css'>
+  .home-page-content {
+    display: none;
+    margin: 1em !important;
+  }
+  .active {
+    display: block;
+  }
+</style>
+
 <div class='home-page-header' style='background-image: <%= GeoPattern.generate(@user.email).to_data_uri %>; height: 300px;'>
   <div class='vertical-centered-block'>
     <div class='vertical-centered horizontal-centered'>
       <% if current_user == @user %>
-        <%= link_to avatar(@user, size: :medium), @user %>
-      <% else %>
-        <%= avatar(@user, size: :medium) %>
+      <%= link_to avatar(@user, size: :medium), @user %>
+    <% else %>
+      <%= avatar(@user, size: :medium) %>
       <% end %>
       <div style='color: white; margin-top: 1em;'>
-        <%= @user.profile.signature %>
+        <ul class='vertical-clean-list'>
+          <li><%= @user.name %></li>
+          <li><%= @user.profile.signature %></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -15,16 +28,22 @@
 <div class='home-page-body'>
   <div class='home-page-nav horizontal-centered' style='margin-top: 1em;'>
     <div class='btn-group'>
-      <%= link_to '信息', '#', class: 'btn btn-default active' %>
-      <%= link_to '成果', '#', class: 'btn btn-default' %>
-      <%= link_to '专栏', '#', class: 'btn btn-default' %>
+      <%= link_to '信息', '#', class: 'btn btn-default btn-wide active', id: 'nav-information' %>
+      <%= link_to '成果', '#', class: 'btn btn-default btn-wide', id: 'nav-achievements' %>
+      <%= link_to '专栏', '#', class: 'btn btn-default btn-wide', id: 'nav-column' %>
     </div>
   </div>
-  <div class='home-page-profile active' style='margin: 1em;'>
-    <div class='panel panel-default'>
-      <div class='panel-body'>
-        <%= @user.profile.bio %>
-      </div>
-    </div>
-  </div>
+  <%= render 'users/home_page/information' %>
+  <%= render 'users/home_page/achievements' %>
+  <%= render 'users/home_page/column' %>
 </div>
+
+<script type='text/javascript'>
+  $('[id^="nav-"]').click(function() {
+    var name = $(this).attr('id').split('-')[1]
+    $('[id^="nav-"]').removeClass('active')
+    $(this).addClass('active');
+    $('[id^="content-"]').removeClass('active')
+    $('#content-' + name).addClass('active')
+  })
+</script>

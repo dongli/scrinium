@@ -7,11 +7,11 @@
         <li role='presentation'>
           <%= link_to t('user.edit.profile'), edit_profile_user_path(@user) %>
         </li>
-        <li role='presentation'>
-          <%= link_to t('user.edit.experience'), edit_experience_user_path(@user) %>
-        </li>
         <li role='presentation' class='active'>
-          <%= link_to t('user.edit.home_page'), '#' %>
+          <%= link_to t('user.edit.experience'), '#' %>
+        </li>
+        <li role='presentation'>
+          <%= link_to t('user.edit.home_page'), edit_home_page_user_path(@user) %>
         </li>
       </ul>
     </div>
@@ -21,17 +21,16 @@
 <% content_for :center_column do %>
   <div class='panel panel-default'>
     <div class='panel-heading'>
-      <%= t('user.edit.home_page') %>
+      <%= t('user.edit.experience') %>
     </div>
     <div class='panel-body'>
       <%= simple_form_for @user do |f| %>
-        <%= image_tag @user.user_option.front_cover_url %>
-        <%= f.simple_fields_for :user_option do |user_option_form| %>
-          <%= user_option_form.input :front_cover %>
+        <%= f.simple_fields_for :experiences, @user.experiences do |g| %>
+          <%= render 'experiences/form', f: g %>
         <% end %>
-        <div class='center'>
-          <%= f.button :submit, t('action.submit'), class: 'btn btn-success' %>
-        </div>
+        <%= link_to_add_field t('action.add'), f, :experiences,
+          partial: 'experiences/form', class: 'btn btn-default pull-left' %>
+        <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
       <% end %>
     </div>
   </div>

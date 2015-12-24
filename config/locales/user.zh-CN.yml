@@ -59,11 +59,14 @@ zh-CN:
         user: 用户
 
   user:
+    worktable: 您的工作台
+    home_page: 您的主页
     columns: 专栏
     publications: 发表刊物
     affiliation: 所属机构
     edit:
       profile: 个人信息
+      experience: 科研经历
       home_page: 主页设置
 
   action:

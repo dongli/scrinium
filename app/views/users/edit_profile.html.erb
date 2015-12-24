@@ -8,6 +8,9 @@
           <%= link_to t('user.edit.profile'), '#' %>
         </li>
         <li role='presentation'>
+          <%= link_to t('user.edit.experience'), edit_experience_user_path(@user) %>
+        </li>
+        <li role='presentation'>
           <%= link_to t('user.edit.home_page'), edit_home_page_user_path(@user) %>
         </li>
       </ul>

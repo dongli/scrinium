@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    models:
+      experience: 科研经历
+    attributes:
+      experience:
+        content: 经历内容

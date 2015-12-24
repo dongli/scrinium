@@ -7,7 +7,10 @@
     </a>
     <ul class='dropdown-menu'>
       <li>
-        <%= link_to fa_icon('user', text: t('activerecord.models.profile')), current_user %>
+        <%= link_to fa_icon('object-group', text: t('user.worktable')), current_user %>
+      </li>
+      <li>
+        <%= link_to fa_icon('home', text: t('user.home_page')), show_home_page_user_path(current_user) %>
       </li>
       <li>
         <a href='<%= user_mailbox_index_path(current_user) %>'
