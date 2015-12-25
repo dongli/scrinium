@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      achievement: 研究成果
+    attributes:
+      achievement:
+        content: 成果内容
+
+  simple_form:
+    placeholders:
+      achievement:
+        content: 您可以在这里描述您的研究成果，这些内容将显示在您的个人主页，请尽量描述得精彩些。

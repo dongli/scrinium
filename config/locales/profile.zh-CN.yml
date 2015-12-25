@@ -9,6 +9,7 @@ zh-CN:
         gender: 性别
         title: 职位
         country: 国籍
+        affiliation: 所属单位或就读院校
         signature: 签名
         bio: 简介
         created_at: 创建时间

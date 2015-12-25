@@ -61,14 +61,8 @@
             <div class="hero-unit">
               <h1>您的科研工作台</h1>
             </div>
-            <% if current_user %>
-              <a href='<%= user_path(current_user) %>'>
-                <%= avatar(current_user, size: '80x80') %>
-              </a>
-              <% else %>
-                <%= link_to '登录', new_user_session_path, class: 'btn btn-signin btn-wide' %>
-                <%= link_to '注册', new_user_registration_path, class: 'btn btn-signup btn-wide' %>
-              <% end %>
+            <%= link_to '登录', new_user_session_path, class: 'btn btn-signin btn-wide' %>
+            <%= link_to '注册', new_user_registration_path, class: 'btn btn-signup btn-wide' %>
           </div>
         </div>
       </div>

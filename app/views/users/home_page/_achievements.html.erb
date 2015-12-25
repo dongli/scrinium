@@ -1,3 +1,19 @@
 <div class='home-page-content' id='content-achievements'>
-  用户成果
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= t('activerecord.models.achievement') %>
+    </div>
+    <div class='panel-body'>
+      <%= raw @user.achievement.content %>
+    </div>
+  </div>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= t('activerecord.models.publication') %>
+    </div>
+    <div class='panel-body'>
+      <%= render 'publications/table_list',
+        publications: @user.publications.sort_by { |p| p.reference.year }.reverse %>
+    </div>
+  </div>
 </div>

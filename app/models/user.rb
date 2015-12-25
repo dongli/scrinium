@@ -50,10 +50,10 @@ class User < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true
-  has_many  :experiences, dependent: :destroy
-  accepts_nested_attributes_for :experiences, allow_destroy: true
-  has_many  :achievements, dependent: :destroy
-  accepts_nested_attributes_for :achievements, allow_destroy: true
+  has_one  :experience, dependent: :destroy
+  accepts_nested_attributes_for :experience, allow_destroy: true
+  has_one  :achievement, dependent: :destroy
+  accepts_nested_attributes_for :achievement, allow_destroy: true
   has_one  :user_option, dependent: :destroy
   accepts_nested_attributes_for :user_option, allow_destroy: true
 
@@ -85,6 +85,8 @@ class User < ActiveRecord::Base
 
   def create_default_associated_models
     self.build_profile
+    self.build_experience
+    self.build_achievement
     self.build_user_option
   end
 

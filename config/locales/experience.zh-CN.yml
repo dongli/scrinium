@@ -5,3 +5,8 @@ zh-CN:
     attributes:
       experience:
         content: 经历内容
+
+  simple_form:
+    placeholders:
+      experience:
+        content: 您可以在这里描述您的科研经历，这些内容将显示在您的个人主页。

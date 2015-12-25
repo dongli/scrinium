@@ -43,6 +43,19 @@ ul.vertical-clean-list {
   }
 }
 
+ul.horizontal-line-list {
+  list-style-type: none;
+  padding-left: 0;
+  li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EEEEEE;
+  }
+  li:last-child {
+    border-bottom: none;
+  }
+}
+
 // 元素的垂直置中（参考https://css-tricks.com/centering-in-the-unknown/）
 .vertical-centered-block {
   text-align: center;

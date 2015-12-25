@@ -38,6 +38,9 @@ class UsersController < ApplicationController
   def edit_experience
   end
 
+  def edit_achievement
+  end
+
   def show_home_page
   end
 
@@ -66,11 +69,16 @@ class UsersController < ApplicationController
                                    :crop_h,
                                    :gender,
                                    :title,
+                                   :affiliation,
                                    :country,
                                    :signature,
                                    :bio
                                  ],
-                                 experiences_attributes: [
+                                 experience_attributes: [
+                                   :id,
+                                   :content
+                                 ],
+                                 achievement_attributes: [
                                    :id,
                                    :content
                                  ],

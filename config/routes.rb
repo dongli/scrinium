@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       get 'edit_profile'
       get 'edit_home_page'
       get 'edit_experience'
+      get 'edit_achievement'
       get 'show_home_page'
     end
     get 'mailbox/index'

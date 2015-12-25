@@ -1,3 +1,16 @@
 <div class='home-page-content' id='content-column'>
-  用户专栏
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= t('activerecord.models.article') %>
+    </div>
+    <div class='panel-body'>
+      <% @user.articles.each do |article| %>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+            <%= link_to article.title, article %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

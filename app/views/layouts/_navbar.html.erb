@@ -7,10 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%=
-        link_to raw("S<span style='font-size: 80%'>CRINIUM</span>"),
-        root_url(subdomain: false), class: 'navbar-brand', style: 'padding-top: 17px;'
-      %>
+      <% if user_signed_in? %>
+        <%= link_to raw("S<span style='font-size: 80%'>CRINIUM</span>"),
+          current_user, class: 'navbar-brand', style: 'padding-top: 17px;' %>
+      <% else %>
+        <%= link_to raw("S<span style='font-size: 80%'>CRINIUM</span>"),
+          root_url(subdomain: false), class: 'navbar-brand', style: 'padding-top: 17px;' %>
+      <% end %>
     </div>
 
     <div class='collapse navbar-collapse'>
