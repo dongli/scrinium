@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to session[:previous_url].last, notice: t('message.update_success', thing: t('activerecord.models.user')) }
+        format.html { redirect_to session[:previous_url].last }
       else
         format.html { render :edit }
       end

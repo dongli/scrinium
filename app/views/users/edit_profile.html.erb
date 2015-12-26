@@ -28,9 +28,8 @@
     </div>
     <div class='panel-body'>
       <%= simple_form_for @user do |f| %>
-        <%= image_tag @user.profile.avatar_url(:medium), style: 'border-radius: 5px; display: inline;' %>
         <%= f.simple_fields_for :profile do |profile_form| %>
-          <%= profile_form.input :avatar %>
+          <%= render 'layouts/upload_image', form: profile_form, object: @user.profile, image_attribute_name: :avatar %>
         <% end %>
         <%= f.input :name, required: false %>
         <%= f.simple_fields_for :profile do |profile_form| %>
@@ -60,6 +59,6 @@
       $('#user_profile_attributes_bio').froalaEditor({
         height: '300'
       })
-    });
+    })
   </script>
 <% end %>

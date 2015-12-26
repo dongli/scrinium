@@ -1,9 +1,9 @@
 <div class='center'>
   <div class='fileinput fileinput-new' data-provides='fileinput'>
-    <div class='fileinput-preview thumbnail'>
+    <div class='fileinput-preview thumbnail' style='width: 150px; height: 150px;'>
       <% image = object.send(image_attribute_name) %>
       <% if image.url %>
-        <%= image_tag image.url %>
+        <%= image_tag image.url, id: 'uploaded-img' %>
       <% else %>
         <%= image_tag default_image %>
       <% end %>
@@ -21,6 +21,22 @@
       <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>
         <%= t("action.delete_#{image_attribute_name}") %>
       </a>
+    </div>
+  </div>
+</div>
+
+<div class='modal fade' id='crop-image-modal' tabindex='-1' role='dialog' aria-labelledby='crop-image-modal'>
+  <div class='modal-dialog'>
+    <div class='modal-content center' style='padding: 10px;'>
+      <ul class='vertical-clean-list'>
+        <li><img src='' id='crop-image-modal-img'></li>
+        <li>
+          <ul class='horizontal-clean-list'>
+            <li><button class='btn btn-success' id='crop-image-submit'><%= t('action.submit') %></button></li>
+            <li><button class='btn btn-default' id='crop-image-cancel'><%= t('action.cancel') %></button></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
