@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     self.profile.try(:avatar)
   end
 
+  def display_name
+    self.name || self.email
+  end
+
   def reset_authentication_token
     self.authentication_token = SecureRandom.uuid
     self.save
