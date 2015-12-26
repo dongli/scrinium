@@ -41,4 +41,6 @@ class Membership < ActiveRecord::Base
 
   belongs_to :host, polymorphic: true
   belongs_to :user
+  validates :user, presence: true
+  validates_uniqueness_of :user_id, scope: [:host_id, :host_type]
 end

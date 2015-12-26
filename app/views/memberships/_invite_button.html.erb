@@ -1,3 +1,12 @@
 <% if policy(Membership).create? %>
-  <%= render 'memberships/form', membership: Membership.new, host: host, join_type: :invited %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">邀请用户</h3>
+    </div>
+    <div class="panel-body">
+      <%= render 'memberships/form', membership: Membership.new, host: host, join_type: :invited %>
+    </div>
+  </div>
+
+
 <% end %>

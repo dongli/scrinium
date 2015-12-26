@@ -4,10 +4,13 @@
 
 
   <div class="row">
+    <div id="invite_memberships" class="col-md-9 pull-right">
+      <%= render 'memberships/invite_button', host: @host %>
+    </div>
     <div class="col-md-3">
       <%= render 'groups/group_left', group: @host %>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 col-md-offset-3">
       <%=  render 'memberships/list', memberships: @memberships %>
     </div>
   </div>

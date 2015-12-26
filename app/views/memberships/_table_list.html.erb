@@ -9,47 +9,9 @@
   </thead>
   <tbody>
     <% memberships.each do |membership| %>
-      <tr>
-        <td><%= link_to membership.user.name, membership.user %></td>
-        <td><%= membership.role.text %></td>
-        <td><%= membership.status.text %></td>
-        <td>
-          <% case membership.status %>
-          <% when 'unapproved' %>
-            <ul class='horizontal-clean-list'>
-              <li>
-                <%=
-                  link_to t('membership.action.approve'),
-                  [ membership, membership: { status: 'approved' } ],
-                  method: :patch, class: 'btn btn-primary btn-xs'
-                %>
-              </li>
-              <li>
-                <%=
-                  link_to t('membership.action.reject'),
-                  [ :reject, membership ], remote: true, class: 'btn btn-danger btn-xs'
-                %>
-              </li>
-            </ul>
-          <% when 'approved' %>
-            <ul class='horizontal-clean-list'>
-              <li>
-                <%=
-                  link_to t('membership.action.ban'),
-                  [ membership, membership: { status: 'banned' } ],
-                  method: :patch, class: 'btn btn-danger btn-xs'
-                %>
-              </li>
-            </ul>
-          <% end %>
-          <ul class='horizontal-clean-list'>
-            <li>
-              <%= link_to t('action.edit'), edit_membership_path(membership), remote: true, class: 'btn btn-danger btn-xs'  %>
-            </li>
-          </ul>
-
-        </td>
-      </tr>
-    <% end %>
+    <tr id="membership_<%= membership.id %>">
+      <%= render "memberships/membership", membership: membership %>
+    </tr>
+  <% end %>
   </tbody>
 </table>

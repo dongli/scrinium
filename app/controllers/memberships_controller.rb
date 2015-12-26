@@ -1,9 +1,10 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_membership, only: [:show, :edit, :update, :destroy, :reject]
+  before_action :set_host
 
   def index
-    @memberships = current_user.memberships
+    @memberships = @host.memberships.includes(:user)
   end
 
   def show
@@ -14,11 +15,12 @@ class MembershipsController < ApplicationController
   end
 
   def edit
+    @membership = Membership.find(params[:id])
   end
 
   def create
     # TODO 不能邀请同一个用户参加群组/机构两次,同时也不可邀请自己
-    @membership = User.find(params[:membership][:user_id]).memberships.new(membership_params)
+    @membership = Membership.new(membership_params)
 
     respond_to do |format|
       if @membership.save
@@ -33,6 +35,7 @@ class MembershipsController < ApplicationController
           @membership.host.admin.notify subject, body
           MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
           format.html { redirect_to session[:previous_url].last, notice: t('membership.message.wait_for_approval') }
+          format.js
         elsif @membership.join_type.invited?
           # 通知新用户被加入到某组织。
           subject = t('membership.notification.subject.new_user_has_been_invited_to_join_in', host: host.short_name)
@@ -41,9 +44,11 @@ class MembershipsController < ApplicationController
           @membership.user.notify subject, body
           MessageBus.publish "/mailbox-#{@membership.user_id}", { user_id: current_user.id }
           format.html { redirect_to session[:previous_url].last, notice: t('membership.message.wait_for_agreement') }
+          format.js
         end
       else
         format.html { render :new }
+        format.js
       end
     end
   end
@@ -83,8 +88,10 @@ class MembershipsController < ApplicationController
           MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
         end
         format.html { redirect_to @membership, notice: t('message.update_success', thing: t('activerecord.models.membership')) }
+        format.js
       else
         format.html { render :edit }
+        format.js
       end
     end
   end
@@ -107,6 +114,10 @@ class MembershipsController < ApplicationController
 
   def set_membership
     @membership = Membership.find(params[:id])
+  end
+
+  def set_host
+    @host = Group.find_by(id: params[:group_id]) || Organization.find_by(id: params[:organization_id])
   end
 
   def membership_params

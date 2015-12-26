@@ -7,6 +7,6 @@ $error_message.html("");
   <% end %>
 <% else %>
   toastr.success("good");
-  $("#membership_#{membership.id}").html("<%= escape_javascript(render 'memberships/table_list/index') %>");
-  $('body').find('#group_node').modal('hide');
+  $("#membership_<%= @membership.id %>").html("<%= escape_javascript(render 'memberships/membership', membership: @membership) %>");
+  $('body').find('#edit_membership').modal('hide');
 <% end %>
