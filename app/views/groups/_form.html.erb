@@ -1,24 +1,12 @@
-  <%= simple_form_for(@group) do |f| %>
-    <%#=
-      render 'layouts/upload_image', form: f,
-      object: @group, image_attribute_name: :logo,
-      default_image: 'logos/default_group_logo.png'
-    %>
-    <div class='row'>
-      <div class="col-md-3">
-        <%=
-          render 'layouts/upload_image', form: f,
-          object: @group, image_attribute_name: :logo,
-          default_image: 'logos/default_group_logo.png'
-        %>
-      </div>
-      <div class='col-md-9'>
-        <%= f.input :name, autofocus: true %>
-        <%= f.input :short_name %>
-        <%= f.input :description, as: :text %>
-        <%= f.button :submit, t('action.submit'), class: 'btn btn-success uppercase btn-block' %>
-      </div>
-    </div>
-
-  <% end %>
+<%= simple_form_for(@group) do |f| %>
+  <%=
+    render 'layouts/upload_image', form: f,
+    object: @group, image_attribute_name: :logo,
+    default_image: 'logos/default_group_logo.png'
+  %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :short_name %>
+  <%= f.input :description, as: :text %>
+  <%= f.button :submit, t('action.submit'), class: 'btn btn-success uppercase btn-block' %>
+<% end %>
 
