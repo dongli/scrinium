@@ -1,2 +1,4 @@
 $('#follow-button-' + '<%= @followed_id %>').show()
 $('#unfollow-button-' + '<%= @followed_id %>').hide()
+// 递减「关注者」计数。
+$('span#follower-count').text(parseInt($('span#follower-count').text()) - 1)

@@ -12,26 +12,24 @@
         <li><%= @user.name %></li>
       <% end %>
       <li><%= @user.profile.signature %></li>
-      <% if user_signed_in? and current_user != @user %>
-        <li><%= render 'relationships/follow_button', followed: @user %></li>
-      <% end %>
+      <li><%= render 'relationships/follow_button', followed: @user %></li>
       <li>
         <div class='row'>
           <a href='<%= user_following_path(@user) %>'>
-            <div class='col-md-6 col-sm-6 col-xs-6 following-count'>
+            <div class='col-md-6 col-sm-6 col-xs-6 following-count-block'>
               <%= t('activerecord.attributes.relationship.following') %><br/>
-              <%= @user.following.size %>
+              <span id='following-count'><%= @user.following.size %></span>
             </div>
           </a>
           <a href='<%= user_followers_path(@user) %>'>
-            <div class='col-md-6 col-sm-6 col-xs-6 follower-count'>
+            <div class='col-md-6 col-sm-6 col-xs-6 follower-count-block'>
               <%= t('activerecord.attributes.relationship.follower') %><br/>
-              <%= @user.followers.size %>
+              <span id='follower-count'><%= @user.followers.size %></span>
             </div>
           </a>
         </div>
       </li>
-      <li><%= render 'memberships/organization_logos', user: @user %></li>
+      <!-- <li><%= render 'memberships/organization_logos', user: @user %></li> -->
       <li><%= @user.role.text %></li>
       <% if policy(@user).update? %>
         <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_profile_user_path(@user) %></li>

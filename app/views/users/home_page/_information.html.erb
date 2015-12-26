@@ -4,9 +4,28 @@
       <div class='panel panel-default'>
         <div class='panel-heading'>
           基本信息
+          <div class='pull-right'>
+            <%= render 'relationships/follow_button', followed: @user %>
+          </div>
         </div>
         <div class='panel-body'>
           <ul class='horizontal-line-list'>
+            <li>
+              <div class='row horizontal-centered'>
+                <a href='<%= user_following_path(@user) %>'>
+                  <div class='col-md-6 col-sm-6 col-xs-6 following-count-block'>
+                    <%= t('activerecord.attributes.relationship.following') %>
+                    <span id='following-count'><%= @user.following.size %></span>
+                  </div>
+                </a>
+                <a href='<%= user_followers_path(@user) %>'>
+                  <div class='col-md-6 col-sm-6 col-xs-6 follower-count-block'>
+                    <%= t('activerecord.attributes.relationship.follower') %>
+                    <span id='follower-count'><%= @user.followers.size %></span>
+                  </div>
+                </a>
+              </div>
+            </li>
             <li><%= @user.profile.affiliation %> - <%= @user.profile.title.text %></li>
             <li><%= raw @user.profile.bio %></li>
           </ul>

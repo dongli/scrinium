@@ -1,8 +1,10 @@
-<% following = following? followed %>
-<%= link_to t('relationship.follow'), [:follow, followed],
-  id: "follow-button-#{followed.id}", class: 'btn btn-primary btn-xs', remote: true,
-  style: "display: #{following ? 'none' : 'inline-block'}" %>
+<% if user_signed_in? and current_user != @user %>
+  <% following = following? followed %>
+  <%= link_to t('relationship.follow'), [:follow, followed],
+    id: "follow-button-#{followed.id}", class: 'btn btn-success btn-xs', remote: true,
+    style: "display: #{following ? 'none' : 'inline-block'}" %>
 
-<%= link_to t('relationship.unfollow'), [:unfollow, followed],
-  id: "unfollow-button-#{followed.id}", class: 'btn btn-default btn-xs', remote: true,
-  style: "display: #{following ? 'inline-block' : 'none'}" %>
+  <%= link_to t('relationship.unfollow'), [:unfollow, followed],
+    id: "unfollow-button-#{followed.id}", class: 'btn btn-default btn-xs', remote: true,
+    style: "display: #{following ? 'inline-block' : 'none'}" %>
+<% end %>
