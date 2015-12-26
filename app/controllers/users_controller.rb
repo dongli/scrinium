@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   layout :choose_layout
 
   def show
+    if current_user != @user
+      redirect_to show_home_page_user_path(@user)
+    end
   end
 
   def update
