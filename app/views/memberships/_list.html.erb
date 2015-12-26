@@ -1,22 +1,26 @@
-<dl class='clean'>
-  <dt>
-    <div class='center'>
-      <div class='btn-group' role='group' aria-label='membership-group'>
-        <button type='button' class='btn btn-primary' id='show-unapproved-membership-list'><%= t('enumerize.membership.status.unapproved') %></button>
-        <button type='button' class='btn btn-primary' id='show-approved-membership-list'><%= t('enumerize.membership.status.approved') %></button>
-        <button type='button' class='btn btn-primary' id='show-banned-membership-list'><%= t('enumerize.membership.status.banned') %></button>
-      </div>
-    </div>
-  </dt>
-  <dd>
-    <div id='unapproved-membership-list'>
-      <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status == 'unapproved' } %>
-    </div>
-    <div id='approved-membership-list' style='display: none;'>
-      <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status == 'approved' } %>
-    </div>
-    <div id='banned-membership-list' style='display: none;'>
-      <%= render 'memberships/table_list', memberships: host.memberships.select { |x| x.status != 'unapproved' } %>
-    </div>
-  </dd>
-</dl>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab" aria-expanded="true"><%= t('enumerize.membership.status.all') %></a></li>
+  <li role="presentation"><a href="#unapproved" aria-controls="unapproved" role="tab" data-toggle="tab"><%= t('enumerize.membership.status.unapproved') %></a></li>
+  <li role="presentation"><a href="#approved" aria-controls="approved" role="tab" data-toggle="tab"><%= t('enumerize.membership.status.approved') %></a></li>
+  <li role="presentation"><a href="#rejected" aria-controls="rejected" role="tab" data-toggle="tab"><%= t('enumerize.membership.status.rejected') %></a></li>
+  <li role="presentation"><a href="#banned" aria-controls="banned" role="tab" data-toggle="tab"><%= t('enumerize.membership.status.banned') %></a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="all">
+    <%= render 'memberships/table_list', memberships: memberships %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="unapproved">
+    <%= render 'memberships/table_list', memberships: memberships.select { |x| x.status == 'unapproved' } %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="approved">
+    <%= render 'memberships/table_list', memberships: memberships.select { |x| x.status == 'approved' } %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="rejected">
+    <%= render 'memberships/table_list', memberships: memberships.select { |x| x.status == 'rejected' } %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="banned">
+    <%= render 'memberships/table_list', memberships: memberships.select { |x| x.status == 'banned' } %>
+  </div>
+</div>

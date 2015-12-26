@@ -1,0 +1,2 @@
+$('body').append(<%=  raw render("edit_form", host: @host, membership: @membership).inspect %> );
+$('#edit_membership').modal('show');

@@ -42,6 +42,12 @@
               </li>
             </ul>
           <% end %>
+          <ul class='horizontal-clean-list'>
+            <li>
+              <%= link_to t('action.edit'), edit_membership_path(membership), remote: true, class: 'btn btn-danger btn-xs'  %>
+            </li>
+          </ul>
+
         </td>
       </tr>
     <% end %>

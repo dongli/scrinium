@@ -90,6 +90,7 @@ Rails.application.routes.draw do
     resources :topics
     resources :nodes
     resources :group_options
+    resources :memberships
   end
   resources :activities
   resources :posts do

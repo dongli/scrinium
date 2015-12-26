@@ -1,0 +1,29 @@
+<div class="modal fade" id="edit_membership" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close fui-cross" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title"><%= t("action.#{action_name}") %></h4>
+      </div>
+      <%= simple_form_for [host, membership], remote: true do |f| %>
+        <div class="modal-body">
+          <div class="alert alert-info"></div>
+          <%= f.error_notification %>
+          <%= f.input :join_type, disabled: true %>
+          <%= f.input :description, disabled: true %>
+          <%= f.input :expired_at, as: :string, disabled: true %>
+          <%= f.input :rejected_reason, disabled: true %>
+          <%= f.input :rejected_at, as: :string, disabled: true %>
+          <%= f.input :status %>
+          <%= f.input :role %>
+
+        </div>
+        <div class="modal-footer">
+          <%= f.submit t('action.save'), class: "btn btn-wide btn-primary"%>
+          <a href="#" class="btn btn-default btn-wide " data-dismiss="modal">取消</a>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

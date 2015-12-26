@@ -36,6 +36,7 @@ zh-CN:
         approved: 已核准
         rejected: 被拒绝
         banned: 封存
+        all: 全部
 
   membership:
     action:

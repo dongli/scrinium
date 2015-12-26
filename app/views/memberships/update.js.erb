@@ -1,0 +1,12 @@
+$error_message = $("#edit_membership .alert-info");
+$error_message.html("");
+<% if @membership.errors.any? %>
+  <% @membership.errors.full_messages.each do |message| %>
+    $error_message.append($("<li />").html("<%= message.html_safe %>"));
+    toastr.warning("<%= message.html_safe %>");
+  <% end %>
+<% else %>
+  toastr.success("good");
+  $("#membership_#{membership.id}").html("<%= escape_javascript(render 'memberships/table_list/index') %>");
+  $('body').find('#group_node').modal('hide');
+<% end %>

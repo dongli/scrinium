@@ -1,0 +1,16 @@
+<% content_for :title, t('action.edit')+t('activerecord.models.group') %>
+
+<% content_for :center_column do %>
+
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'groups/group_left', group: @host %>
+    </div>
+    <div class="col-md-9">
+      <%=  render 'memberships/list', memberships: @memberships %>
+    </div>
+  </div>
+
+
+<% end %>
