@@ -13,9 +13,7 @@
             <%= follower.name %>
           </div>
           <div class='pull-right'>
-            <% if current_user != follower %>
-              <%= render 'relationships/follow_button', followed: follower %>
-            <% end %>
+            <%= render 'relationships/follow_button', followed: follower %>
           </div>
         </li>
       <% end %>

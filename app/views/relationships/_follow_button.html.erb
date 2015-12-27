@@ -1,4 +1,4 @@
-<% if user_signed_in? and current_user != @user %>
+<% if user_signed_in? and current_user != followed %>
   <% following = following? followed %>
   <%= link_to t('relationship.follow'), [:follow, followed],
     id: "follow-button-#{followed.id}", class: 'btn btn-success btn-xs', remote: true,
