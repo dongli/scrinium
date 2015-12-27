@@ -1,5 +1,5 @@
 module BreadcrumbHelper
-  @@breadcrumbs ||= [ { title: I18n.t('home'), url: '/'} ]
+  @@breadcrumbs ||= []
 
   def add_breadcrumb title, url, options = {}
     title_ = title.to_sym

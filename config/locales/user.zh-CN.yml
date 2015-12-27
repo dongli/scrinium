@@ -59,8 +59,8 @@ zh-CN:
         user: 用户
 
   user:
-    worktable: 您的工作台
-    home_page: 您的主页
+    worktable: 工作台
+    home_page: 主页
     columns: 专栏
     publications: 发表刊物
     affiliation: 所属机构
