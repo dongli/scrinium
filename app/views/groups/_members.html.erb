@@ -1,1 +1,2 @@
+<!--未用到-->
 <%= render 'users/list', users: @group.memberships.select { |x| x.status == 'approved' }.map { |x| x.user } %>
