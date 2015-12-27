@@ -27,7 +27,7 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to publications_url, notice: t('message.destroy_success', thing: t('activerecord.models.publication')) }
+      format.html { redirect_to session[:previous_url].last, notice: t('message.destroy_success', thing: t('activerecord.models.publication')) }
     end
   end
 

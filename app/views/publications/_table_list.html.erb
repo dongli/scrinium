@@ -1,9 +1,25 @@
-<ul style='margin-left: 10px; margin-right: 10px'>
-  <% publications.each do |publication| %>
-    <li>
-      <a href='<%= reference_path(publication.reference) %>'>
-        <%= render inline: citation(publication.reference).gsub(publication.matched_author, "<b>#{publication.matched_author}</b>") %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width='100'><%= t('activerecord.models.publication') %></th>
+      <th width='10'><%= t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% publications.each do |publication| %>
+      <tr>
+        <td>
+          <a href='<%= reference_path(publication.reference) %>'>
+            <%= render inline: citation(publication.reference).gsub(publication.matched_author,
+              "<b>#{publication.matched_author}</b>") %>
+          </a>
+        </td>
+        <td>
+          <%= link_to t('action.delete'), publication, method: :delete,
+            class: 'btn btn-default btn-xs',
+            data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.publication')) }%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
