@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @topics = @group.topics
   end
 
   def new

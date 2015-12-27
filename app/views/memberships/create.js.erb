@@ -2,8 +2,8 @@
   <% @membership.errors.full_messages.each do |message| %>
     toastr.warning("<%= message.html_safe %>");
   <% end %>
-toastr.warning("bad");
 <% else %>
-  toastr.success("good");
-  $("#invite_memberships").html("<%= escape_javascript(render 'memberships/invite_button', host: @host) %>");
+  toastr.success("已邀请成功，您可以继续邀请");
+//  $("#invite_memberships").html("<%#= escape_javascript(render 'memberships/invite_button', host: @host) %>");
+  window.location.reload();
 <% end %>

@@ -1,12 +1,15 @@
 <% content_for :title, @group.name %>
 <% add_breadcrumb @group.short_name, @group %>
 
-<% content_for :left_column do %>
-  <%= render 'profile_left' %>
-<% end %>
-
 <% content_for :center_column do %>
-  <% if policy(@group).update? %>
+  <div class="row">
+      <ul class="nav nav-pills row">
+        <li class="active col-md-4 text-center"><a href="#fakelink">话题</a></li>
+        <li class="col-md-3 text-center"><a href="#fakelink">资源</a></li>
+        <li class="col-md-4 text-center"><a href="#fakelink">文件</a></li>
+      </ul>
+    </div>
+  <% if false and policy(@group).update? %>
     <%=
       render 'layouts/navtab',
       tabs: {
@@ -19,7 +22,7 @@
         admin: [ t('tab.admin'), render('admin') ]
       }
     %>
-  <% else %>
+  <% elsif false %>
     <%=
       render 'layouts/navtab',
       tabs: {
@@ -32,4 +35,8 @@
       }
     %>
   <% end %>
+<% end %>
+
+<% content_for :right_column do %>
+  <%= render 'groups/group_right' %>
 <% end %>

@@ -7,15 +7,20 @@
       </div>
       <%= simple_form_for [host, membership], remote: true do |f| %>
         <div class="modal-body">
-          <div class="alert alert-info"></div>
+          <div class="alert alert-info">
+            <%= membership.user.display_name %>
+            <%= membership.join_type %>
+            <%= membership.description %>
+            <%= membership.expired_at %>
+          </div>
           <%= f.error_notification %>
-          <%= f.input :join_type, disabled: true %>
-          <%= f.input :description, disabled: true %>
-          <%= f.input :expired_at, as: :string, disabled: true %>
-          <%= f.input :rejected_reason, disabled: true %>
-          <%= f.input :rejected_at, as: :string, disabled: true %>
+          <%#= f.input :join_type, disabled: true %>
+          <%#= f.input :description, disabled: true %>
+          <%#= f.input :expired_at, as: :string, disabled: true %>
+          <%#= f.input :rejected_reason, disabled: true %>
+          <%#= f.input :rejected_at, as: :string, disabled: true %>
           <%= f.input :status %>
-          <%= f.input :role %>
+          <%= f.input :role, as: :select, collection: %w(assist_admin member) %>
 
         </div>
         <div class="modal-footer">

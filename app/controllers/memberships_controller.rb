@@ -24,23 +24,23 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        host = @membership.host
+        @host = @membership.host
         if @membership.join_type.self?
           # 通知管理员新用户的加入。
-          subject = t('membership.notification.subject.new_user_applies_to_join_in', host: host.short_name)
+          subject = t('membership.notification.subject.new_user_applies_to_join_in', host: @host.short_name)
           body = t('membership.notification.body.new_user_applies_to_join_in',
                    user: current_user.name,
                    host: host.short_name,
                    page: membership_path(@membership))
-          @membership.host.admin.notify subject, body
-          MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
+          @host.admin.notify subject, body
+          MessageBus.publish "/mailbox-#{@host.admin.id}", { user_id: current_user.id }
           format.html { redirect_to session[:previous_url].last, notice: t('membership.message.wait_for_approval') }
           format.js
         elsif @membership.join_type.invited?
           # 通知新用户被加入到某组织。
-          subject = t('membership.notification.subject.new_user_has_been_invited_to_join_in', host: host.short_name)
+          subject = t('membership.notification.subject.new_user_has_been_invited_to_join_in', host: @host.short_name)
           body = t('membership.notification.body.new_user_has_been_invited_to_join_in',
-                 host: host.short_name, page: membership_path(@membership))
+                 host: @host.short_name, page: membership_path(@membership))
           @membership.user.notify subject, body
           MessageBus.publish "/mailbox-#{@membership.user_id}", { user_id: current_user.id }
           format.html { redirect_to session[:previous_url].last, notice: t('membership.message.wait_for_agreement') }

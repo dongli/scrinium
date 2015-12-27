@@ -25,26 +25,5 @@
 <% end %>
 
 <% content_for :right_column do %>
-
-  <% if current_user %>
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">我加入的群组</h3>
-      </div>
-      <div class="panel-body">
-        <%= render 'groups/group', group: @groups.last %>
-      </div>
-    </div>
-  <% else %>
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">推荐群组</h3>
-      </div>
-      <div class="panel-body">
-        <%= render 'groups/group', group: @groups.last(2) %>
-      </div>
-    </div>
-
-  <% end %>
-
+  <%= render 'groups/group_right' %>
 <% end %>
