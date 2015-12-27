@@ -12,13 +12,13 @@
           <ul class='horizontal-line-list'>
             <li>
               <div class='row horizontal-centered'>
-                <a href='<%= user_following_path(@user) %>'>
+                <a data-toggle='modal' data-target='#show-following-modal'>
                   <div class='col-md-6 col-sm-6 col-xs-6 following-count-block'>
                     <%= t('activerecord.attributes.relationship.following') %>
                     <span id='following-count'><%= @user.following.size %></span>
                   </div>
                 </a>
-                <a href='<%= user_followers_path(@user) %>'>
+                <a data-toggle='modal' data-target='#show-followers-modal'>
                   <div class='col-md-6 col-sm-6 col-xs-6 follower-count-block'>
                     <%= t('activerecord.attributes.relationship.follower') %>
                     <span id='follower-count'><%= @user.followers.size %></span>
@@ -41,6 +41,22 @@
           <%= raw @user.experience.content %>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class='modal fade' id='show-followers-modal' tabindex='-1' role='dialog' aria-labelledby='show-followers-modal'>
+  <div class='modal-dialog'>
+    <div class='modal-content' style='padding: 10px;'>
+      <%= render 'relationships/followers_list' %>
+    </div>
+  </div>
+</div>
+
+<div class='modal fade' id='show-following-modal' tabindex='-1' role='dialog' aria-labelledby='show-following-modal'>
+  <div class='modal-dialog'>
+    <div class='modal-content' style='padding: 10px;'>
+      <%= render 'relationships/following_list' %>
     </div>
   </div>
 </div>

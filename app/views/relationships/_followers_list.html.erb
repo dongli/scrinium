@@ -1,0 +1,24 @@
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <%= @user.name %>被<%= @user.followers.size %>人关注
+  </div>
+  <div class='panel-body'>
+    <ul class='horizontal-line-list'>
+      <% @user.followers.each do |follower| %>
+        <li>
+          <a href='<%= user_path(follower) %>'>
+            <%= avatar follower, size: :thumb %>
+          </a>
+          <div style='margin-left: 1em; display: inline-block'>
+            <%= follower.name %>
+          </div>
+          <div class='pull-right'>
+            <% if current_user != follower %>
+              <%= render 'relationships/follow_button', followed: follower %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
