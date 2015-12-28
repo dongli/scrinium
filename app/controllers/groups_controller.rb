@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @category = params[:category]
   end
 
   def create
@@ -35,7 +36,7 @@ class GroupsController < ApplicationController
     set_crop_params
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: t('message.update_success', thing: t('activerecord.models.group')) }
+        format.html { redirect_to session[:previous_url].last }
       else
         format.html { render :edit }
       end

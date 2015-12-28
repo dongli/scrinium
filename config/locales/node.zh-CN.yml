@@ -1,0 +1,14 @@
+zh-CN:
+  activerecord:
+    models:
+      node: 节点
+    attributes:
+      node:
+        name: 节点名称
+        topics_count: 话题数量
+        created_at: 创建时间
+
+  node:
+    defaults:
+      elite: 精华
+      news: 动态

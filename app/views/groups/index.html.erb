@@ -9,6 +9,9 @@
 
 <% content_for :right_column do %>
   <div class='panel panel-default'>
+    <div class='panel-heading'>
+      您加入的群组
+    </div>
     <div class='panel-body center'>
       <%= render 'block_list', groups: @groups, only_logo: true %>
       <% if policy(Group).create? %>

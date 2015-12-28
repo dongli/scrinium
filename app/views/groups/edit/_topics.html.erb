@@ -1,0 +1,19 @@
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <%= t('action.edit')+t('activerecord.models.node') %>
+  </div>
+  <div class='panel-body'>
+    <a data-toggle='modal' data-target='#add-node-modal' class='pull-right'>
+      <%= fa_icon('plus-square-o', text: t('action.add')) %>
+    </a>
+    <%= render 'nodes/table_list', nodes: @group.nodes %>
+  </div>
+</div>
+
+<div class='modal fade' id='add-node-modal' tabindex='-1' role='dialog' aria-labelledby='add-node-modal'>
+  <div class='modal-dialog modal-sm'>
+    <div class='modal-content' style='padding: 10px;'>
+      <%= render 'nodes/form', group: @group, node: @group.nodes.new %>
+    </div>
+  </div>
+</div>

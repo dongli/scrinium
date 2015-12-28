@@ -17,5 +17,5 @@ class Node < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 
-  validates :name, presence: true,  uniqueness: {scope: :group_id}
+  validates :name, presence: true,  uniqueness: { scope: :group_id }
 end

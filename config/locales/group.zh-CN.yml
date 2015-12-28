@@ -42,6 +42,10 @@ zh-CN:
     members: 成员
     member_number: 成员数量
     posts: 帖子
+    edit:
+      profile: 群组信息
+      topics: 话题设置
+      home_page: 主页设置
 
   action:
     upload_logo: 上传图标

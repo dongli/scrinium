@@ -17,7 +17,7 @@
       <li><%= t('activerecord.attributes.group.created_at')+': '+@group.created_at.strftime("%Y-%-m") %></li>
       <% if policy(@group).update? %>
         <li>
-          <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @group ] %>
+          <%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group, :profile) %>
         </li>
       <% end %>
       <% if policy(@group).create_post? %>

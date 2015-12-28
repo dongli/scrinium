@@ -42,6 +42,8 @@ class Group < ActiveRecord::Base
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 
+  after_create :create_default_associated_models
+
   def admin
     if not defined? @admin or @admin.id != self.admin_id
       @admin = User.find(self.admin_id)
@@ -52,5 +54,15 @@ class Group < ActiveRecord::Base
 
   def has_post? postable
     not self.posts.select { |x| x.postable_id == postable.id and x.postable_type == postable.class.to_s }.empty?
+  end
+
+  private
+
+  def create_default_associated_models
+    # 创建默认节点。
+    [:elite, :news].each do |node|
+      node = Node.create name: I18n.t("node.defaults.#{node}"), group_id: self.id
+      self.nodes << node
+    end
   end
 end
