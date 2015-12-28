@@ -32,7 +32,7 @@
       <!-- <li><%= render 'memberships/organization_logos', user: @user %></li> -->
       <li><%= @user.role.text %></li>
       <% if policy(@user).update? %>
-        <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_profile_user_path(@user) %></li>
+        <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_user_path(@user, :profile) %></li>
         <li><%= link_to fa_icon('key', text: t('devise.views.change_password')), edit_user_registration_path %></li>
       <% end %>
       <li>

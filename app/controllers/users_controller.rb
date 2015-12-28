@@ -9,6 +9,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_home_page
+  end
+
+  def edit
+    @category = params[:category]
+  end
+
   def update
     if params[:user][:profile_attributes].present? and params[:user][:profile_attributes][:crop_x].present?
       @user.profile.crop_x = params[:user][:profile_attributes][:crop_x]
@@ -30,21 +37,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to session[:previous_url].last, notice: t('message.destroy_success', thing: t('activerecord.models.user')) }
     end
-  end
-
-  def edit_profile
-  end
-
-  def edit_home_page
-  end
-
-  def edit_experience
-  end
-
-  def edit_achievement
-  end
-
-  def show_home_page
   end
 
   private

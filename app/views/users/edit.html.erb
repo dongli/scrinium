@@ -1,0 +1,26 @@
+<% content_for :title, t('action.edit')+t("activerecord.models.#{@category}") %>
+
+<% content_for :left_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-body'>
+      <ul class='nav nav-pills nav-stacked'>
+        <li role='presentation' class='<%= @category == 'profile' ? 'active' : '' %>'>
+          <%= link_to t('user.edit.profile'), edit_user_path(@user, :profile) %>
+        </li>
+        <li role='presentation' class='<%= @category == 'experience' ? 'active' : '' %>'>
+          <%= link_to t('user.edit.experience'), edit_user_path(@user, :experience) %>
+        </li>
+        <li role='presentation' class='<%= @category == 'achievement' ? 'active' : '' %>'>
+          <%= link_to t('user.edit.achievement'), edit_user_path(@user, :achievement) %>
+        </li>
+        <li role='presentation' class='<%= @category == 'home_page' ? 'active' : '' %>'>
+          <%= link_to t('user.edit.home_page'), edit_user_path(@user, :home_page) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :center_column do %>
+  <%= render "users/edit/#{@category}" %>
+<% end %>
