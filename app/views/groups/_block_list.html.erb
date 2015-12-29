@@ -9,9 +9,10 @@
       <div class='col-md-3 col-sm-4 col-xs-6'>
         <div class='panel panel-default'>
           <div class='panel-body center'>
-            <a href='<%= group_path(group) %>'>
-              <%= logo group, size: :medium %>
-            </a>
+            <%= link_to logo(group, size: :medium), group %><br/>
+            <%= fa_icon 'group', text: group.members_count, style: 'margin-top: 10px;' %>
+            <%= fa_icon 'tags', text: group.nodes_count, style: 'margin-left: 5px;' %>
+            <%= fa_icon 'comments-o', text: group.topics_count, style: 'margin-left: 5px;' %>
           </div>
         </div>
       </div>

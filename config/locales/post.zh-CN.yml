@@ -1,7 +1,7 @@
 zh-CN:
   activerecord:
     models:
-      post: 帖子
+      post: 文章分享
     attributes:
       post:
         id:      帖子ID
@@ -14,6 +14,3 @@ zh-CN:
         user: 发布人
         created_at: 发布时间
         sticky: 置顶
-
-  post:
-    create: 发布帖子

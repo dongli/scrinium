@@ -10,5 +10,6 @@ zh-CN:
 
   node:
     defaults:
-      elite: 精华
       news: 动态
+      achievements: 成果
+      chat: 闲谈

@@ -60,7 +60,7 @@ class Group < ActiveRecord::Base
 
   def create_default_associated_models
     # 创建默认节点。
-    [:elite, :news].each do |node|
+    [:news, :achievements, :chat].each do |node|
       node = Node.create name: I18n.t("node.defaults.#{node}"), group_id: self.id
       self.nodes << node
     end

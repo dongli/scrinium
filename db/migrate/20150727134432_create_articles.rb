@@ -1,11 +1,11 @@
 class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
-      t.integer  :user_id                # 所属用户的ID
-      t.string   :title,     null: false # 标题
-      t.text     :content,   default: '' # 内容
-      t.integer  :views_count            # 浏览计数
-      t.integer  :comments_count         # 评论计数
+      t.integer  :user_id,        null: false             # 所属用户的ID
+      t.string   :title,          null: false             # 标题
+      t.text     :content,        null: false             # 内容
+      t.integer  :views_count,    null: false, default: 0 # 浏览计数
+      t.integer  :comments_count, null: false, default: 0 # 评论计数
       t.string   :status                 # 状态：public, draft, trashed
       t.integer  :position               # 位置（预留字段）
       t.datetime :last_edited_at         # 最后修改时间

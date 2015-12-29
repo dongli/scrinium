@@ -29,6 +29,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
+        @commentable.increment!(:comments_count)
         MessageBus.publish "/comment-#{@commentable.class.to_s}-#{@commentable.id}", user_id: @comment.user_id
         format.js
       end

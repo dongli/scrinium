@@ -88,13 +88,14 @@ Rails.application.routes.draw do
   resources :organizations
   resources :addresses
   # 群组
+  resources :topics, concerns: [:commentable, :collectable]
   resources :groups, except: :edit do
     get :feed, on: :collection
     resources :topics
-    resources :nodes
-    resources :group_options
   end
   get '/groups/:id/edit/:category' => 'groups#edit', as: :edit_group
+  resources :nodes
+  resources :group_options
   resources :activities
   resources :posts do
     member do

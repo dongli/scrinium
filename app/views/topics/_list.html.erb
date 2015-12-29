@@ -1,0 +1,14 @@
+<ul class='horizontal-line-list'>
+  <% topics.each do |topic| %>
+    <li>
+      <%= avatar topic.user, size: '50x50' %>
+      <span style='display: inline-block; vertical-align: middle; margin-left: 1em;'>
+        <%= link_to topic.title, [group, topic] %><br/>
+        <span class='label label-default'><%= topic.node.name %></span>
+        <%= fa_icon 'comment-o', text: topic.comments_count, style: 'margin-left: 1em;' %>
+        <%= fa_icon 'eye', text: topic.views_count, style: 'margin-left: 1em;' %>
+      </span>
+      </li>
+    </li>
+  <% end %>
+</ul>

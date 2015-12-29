@@ -1,42 +1,14 @@
+<% content_for :left_column do %>
+  <%= render 'profile_left' %>
+<% end %>
+
 <% content_for :center_column do %>
-
-<p>
-  <strong>User:</strong>
-  <%= @topic.user_name %>
-</p>
-<p>
-
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @topic.content %>
-</p>
-
-<p>
-  <strong>Views count:</strong>
-  <%= @topic.views_count %>
-</p>
-
-<p>
-  <strong>Comments count:</strong>
-  <%= @topic.comments_count %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @topic.status %>
-</p>
-
-<p>
-  <strong>Position:</strong>
-  <%= @topic.position %>
-</p>
-
-<%= link_to 'Edit', edit_group_topic_path(@group, @topic) %> |
-<%= link_to 'Back', group_topics_path(@group) %>
+  <dl class='article-show'>
+    <dt><%= @topic.title %></dt>
+    <dd class='content mathjax'><%= raw @topic.content %></dd>
+  </dl>
+  <dl>
+    <dt></dt>
+    <dd><%= render 'comments/list', commentable: @topic %></dd>
+  </dl>
 <% end %>

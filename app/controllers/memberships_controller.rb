@@ -23,6 +23,7 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       if @membership.save
         host = @membership.host
+        host.increment! :members_count
         if @membership.join_type.self?
           # 通知管理员新用户的加入。
           subject = t('membership.notification.subject.new_user_applies_to_join_in', host: host.short_name)

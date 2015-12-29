@@ -22,6 +22,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save
+        @group.increment! :nodes_count
         format.html { redirect_to session[:previous_url].last }
       else
         format.html { render :new }

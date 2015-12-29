@@ -22,10 +22,16 @@
 #
 
 class Topic < ActiveRecord::Base
+  extend Enumerize
+  enumerize :status, in: [:public, :private, :closed], default: :public, predicates: true
+
   belongs_to :user
   belongs_to :group
   belongs_to :node
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :collections, as: :collectable, dependent: :destroy
 
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
+
+  validates :node_id, :title, :content, presence: true
 end

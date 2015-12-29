@@ -21,7 +21,7 @@ class AchievementsController < ApplicationController
 
     respond_to do |format|
       if @achievement.save
-        format.html { redirect_to @achievement, notice: 'User achievement was successfully created.' }
+        format.html { redirect_to @achievement }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class AchievementsController < ApplicationController
   def update
     respond_to do |format|
       if @achievement.update(achievement_params)
-        format.html { redirect_to @achievement, notice: 'User achievement was successfully updated.' }
+        format.html { redirect_to @achievement }
       else
         format.html { render :edit }
       end
@@ -41,7 +41,7 @@ class AchievementsController < ApplicationController
   def destroy
     @achievement.destroy
     respond_to do |format|
-      format.html { redirect_to achievements_url, notice: 'User achievement was successfully destroyed.' }
+      format.html { redirect_to achievements_url }
     end
   end
 
@@ -52,6 +52,6 @@ class AchievementsController < ApplicationController
   end
 
   def achievement_params
-    params.require(:achievement).permit(:user_id, :title, :content, :status, :position)
+    params.require(:achievement).permit(:user_id, :content, :status, :position)
   end
 end

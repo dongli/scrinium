@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: t('message.create_success', thing: t('activerecord.models.article')) }
+        format.html { redirect_to @article }
       else
         format.html { render :new }
       end
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
           collectable_type: 'Article',
           collectable_id: @article.id
         }
-        format.html { redirect_to @article, notice: t('message.update_success', thing: t('activerecord.models.article')) }
+        format.html { redirect_to @article }
       else
         format.html { render :edit }
       end
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: t('message.destroy_success', thing: t('activerecord.models.article')) }
+      format.html { redirect_to user_path(current_user) }
     end
   end
 

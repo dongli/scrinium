@@ -1,0 +1,20 @@
+zh-CN:
+  activerecord:
+    models:
+      topic: 话题
+    attributes:
+      topic:
+        title: 题目
+        node: 发布节点
+        content: 内容
+        status: 状态
+
+  enumerize:
+    topic:
+      status:
+        public: 公开
+        private: 隐私
+        closed: 完结
+
+  topic:
+    create: 发表话题

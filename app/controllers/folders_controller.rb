@@ -74,7 +74,7 @@ class FoldersController < ApplicationController
     params.require(:folder).permit(:user_id,
                                    :name,
                                    :description,
-                                   :item_count,
+                                   :items_count,
                                    :parent_id,
                                    :folderable_id,
                                    :folderable_type,

@@ -1,17 +1,22 @@
-<% content_for :center_column do %>
-
+<div class='article-form'>
   <%= simple_form_for([@group, @topic]) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :node, collection: @group.nodes %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.input :status %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
-<% end %>
+    <%= f.input :title, required: false %>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= f.association :node, collection: @group.nodes, required: false %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.input :status %>
+      </div>
+    </div>
+    <%= f.input :content, required: false %>
+    <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
+  <% end %>
+</div>
+<script>
+  $(function() {
+    $('#topic_content').froalaEditor({
+      height: '300'
+    })
+  });
+</script>

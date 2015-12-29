@@ -20,9 +20,9 @@
           <%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group, :profile) %>
         </li>
       <% end %>
-      <% if policy(@group).create_post? %>
+      <% if policy(@group).create_topic? %>
         <li>
-          <%= link_to fa_icon('comments', text: t('post.create')), new_post_path(group_id: @group.id) %>
+          <%= link_to fa_icon('comments', text: t('topic.create')), new_group_topic_path(group_id: @group.id) %>
         </li>
       <% end %>
       <li><%= render 'memberships/apply_button', host: @group %></li>

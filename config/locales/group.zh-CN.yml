@@ -41,7 +41,8 @@ zh-CN:
     member: 成员
     members: 成员
     member_number: 成员数量
-    posts: 帖子
+    posts: 文章分享
+    topics: 话题
     edit:
       profile: 群组信息
       topics: 话题设置

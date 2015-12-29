@@ -16,6 +16,10 @@ class GroupPolicy < ApplicationPolicy
     login? and user.groups.include? record
   end
 
+  def create_topic?
+    login? and user.groups.include? record
+  end
+
   class Scope < Scope
     def resolve
       scope
