@@ -42,7 +42,32 @@
   </div>
 </div>
 <div class='panel panel-default'>
-  <div class='panel-body center' style='height: 200px;'>
-    事件提醒
+  <div class='panel-heading'>
+    <%= t('activerecord.models.user_quotum') %>
+  </div>
+  <div class='panel-body center'>
+    <ul class='vertical-clean-list'>
+      <li>
+        <%= t('activerecord.attributes.user_quotum.resources_size') %><br/>
+        <div class='progress'>
+          <% resource_percentage = 100 * @user.quotum.resources_size.to_f / @user.quotum.max_resources_size %>
+          <div class='progress-bar <%= 'progress-bar-danger' if resource_percentage > 80 %>' style='width: <%= resource_percentage %>%'></div>
+        </div>
+      </li>
+      <li>
+        <%= t('activerecord.attributes.user_quotum.articles_count') %> <%= @user.quotum.articles_count %><br/>
+        <div class='progress'>
+          <% article_percentage = 100 * @user.quotum.articles_count.to_f / @user.quotum.max_articles_count %>
+          <div class='progress-bar <%= 'progress-bar-danger' if article_percentage > 80 %>' style='width: <%= article_percentage %>%'></div>
+        </div>
+      </li>
+      <li>
+        <%= t('activerecord.attributes.user_quotum.groups_count') %> <%= @user.quotum.groups_count %><br/>
+        <div class='progress'>
+          <% group_percentage = 100 * @user.quotum.groups_count.to_f / @user.quotum.max_groups_count %>
+          <div class='progress-bar <%= 'progress-bar-danger' if group_percentage > 80 %>' style='width: <%= group_percentage %>%'></div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

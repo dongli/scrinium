@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      user_quotum: 使用配额
+    attributes:
+      user_quotum:
+        max_resources_size: 资源最大容量
+        resources_size: 资源总量
+        max_articles_count: 文章最多篇数
+        articles_count: 文章篇数
+        max_groups_count: 参与群组最多个数
+        groups_count: 群组个数

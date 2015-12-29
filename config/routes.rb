@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     resources :achievements
     resources :experiences
     resources :user_options
+    resources :user_quota
   end
   get '/users/:id/edit/:category' => 'users#edit', as: :edit_user
   get '/follow/:followed_id' => 'relationships#follow', as: :follow_user

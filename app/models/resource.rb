@@ -43,6 +43,9 @@ class Resource < ActiveRecord::Base
   validates :file, :name, presence: true
   validates :name, uniqueness: { scope: :folder_id }
 
+  after_create :increase_size
+  after_destroy :decrease_size
+
   def user
     begin
       User.find(self.user_id)
@@ -57,5 +60,17 @@ class Resource < ActiveRecord::Base
 
   def image?
     self.file.file.content_type =~ /\Aimage\/.*\Z/
+  end
+
+  private
+
+  def increase_size
+    # 单位是MB。
+    self.user.quotum.update(resources_size: self.user.quotum.resources_size + self.file.file.size / 1000.0 / 1000.0)
+  end
+
+  def decrease_size
+    # 单位是MB。
+    self.user.quotum.update(resources_size: self.user.quotum.resources_size - self.file.file.size / 1000.0 / 1000.0)
   end
 end

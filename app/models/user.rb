@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :achievement, allow_destroy: true
   has_one  :user_option, dependent: :destroy
   accepts_nested_attributes_for :user_option, allow_destroy: true
+  has_one  :quotum, class_name: 'UserQuotum', dependent: :destroy
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
@@ -88,6 +89,7 @@ class User < ActiveRecord::Base
     self.build_experience
     self.build_achievement
     self.build_user_option
+    self.build_quotum
   end
 
   def generate_authentication_token

@@ -41,4 +41,19 @@ class Membership < ActiveRecord::Base
 
   belongs_to :host, polymorphic: true
   belongs_to :user
+
+  after_create :increase_counts
+  after_destroy :decrease_counts
+
+  private
+
+  def increase_counts
+    self.host.increment! :members_count
+    self.user.quotum.increment! :groups_count
+  end
+
+  def decrease_counts
+    self.host.decrement! :members_count
+    self.user.quotum.decrement! :groups_count
+  end
 end

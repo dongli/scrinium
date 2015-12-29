@@ -4,6 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string     :logo                                  # 头像
       t.references :admin,  class_name: 'User'            # 机构超级管理员的ID
       t.references :parent, class_name: 'Organization'    # 父机构的ID
+      t.integer    :members_count, null: false, default: 1 # 成员计数（默认包含创建者或超级管理员）
       t.string     :website                               # 网址
       t.string     :subdomain                             # 二级域名
       t.string     :status                                # 状态， 新建，上线，下线

@@ -42,4 +42,17 @@ class Article < ActiveRecord::Base
   validates :title, presence: true
 
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
+
+  after_create :increase_counts
+  after_destroy :decrease_counts
+
+  private
+
+  def increase_counts
+    self.user.quotum.increment! :articles_count
+  end
+
+  def decrease_counts
+    self.user.quotum.decrement! :articles_count
+  end
 end
