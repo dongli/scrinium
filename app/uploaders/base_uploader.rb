@@ -1,7 +1,7 @@
 class BaseUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  if ENV['SCRINIUM_USE_QINIU']
+  if Rails.env.production?
     storage :qiniu
   else
     storage :file
