@@ -13,6 +13,7 @@ gem 'thin'
 # 数据库
 gem 'pg'
 gem 'redis-rails'
+gem 'redis-namespace'
 
 # 视图和JavaScript
 gem 'sass-rails', '~> 5.0'
