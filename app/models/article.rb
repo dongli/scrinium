@@ -30,7 +30,6 @@ class Article < ActiveRecord::Base
   ], default: :public, predicates: true
 
   has_paper_trail on: [:update, :destroy],
-    if: Proc.new { |article| article.finished? },
     only: [:title, :content]
   acts_as_taggable
   acts_as_taggable_on :categories

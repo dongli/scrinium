@@ -126,3 +126,5 @@ group :test do
   gem 'database_cleaner'    # 测试数据库清理
   gem 'shoulda'
 end
+
+gem 'oneapm_rpm'

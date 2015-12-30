@@ -1,7 +1,7 @@
 set :application, 'scrinium'
 
 # 仓库设定
-set :github_user, ask('GitHub user', 'tianlu1677')
+set :github_user, ask('GitHub user', 'dongli')
 set :repo_url, "git@github.com:#{fetch(:github_user)}/scrinium.git"
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_collectable, except: [ :toggle_watched, :view ]
+  before_action :load_collectable, except: [:view]
 
   def collect
     @collection = current_user.collections.new(collection_params)
@@ -12,7 +12,6 @@ class CollectionsController < ApplicationController
           collection = current_user.collections.find_by_collectable_id_and_collectable_type(
             collectable_id.to_i, collectable_type
           )
-          collection.updated = true
           collection.save!
         end
         format.js
@@ -31,22 +30,8 @@ class CollectionsController < ApplicationController
     end
   end
 
-  def toggle_watched
-    @collection = Collection.find(params[:id])
-    @collection.watched = !@collection.watched
-    respond_to do |format|
-      if @collection.save
-        format.js
-      end
-    end
-  end
-
   def view
     @collection = Collection.find(params[:id])
-    if @collection.updated
-      @collection.updated = false
-      @collection.save!
-    end
     respond_to do |format|
       format.html { redirect_to @collection.collectable }
     end
