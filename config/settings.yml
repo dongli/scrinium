@@ -1,4 +1,3 @@
-# config/settings.yml
 defaults: &defaults
   domain: 'localhost:3000'
   website_name: 'scrinium'
@@ -12,8 +11,8 @@ defaults: &defaults
     authentication: 'login'
     enable_starttls_auto: true
   qiniu:
-    access_key: 'vg0UPNZ_jAQZ5ZBowG0prHStsF5AtdBOklnYVN0B'
-    secret_key: 'OSNFPVby7dq7NC0zw1pZZ5hDPj5laH0jxM1PS_O6'
+    access_key: 'IHhEVasL8n_ZWSTYmoKlyyrT7hJIBmrwt3fR4XiJ'
+    secret_key: 'yW3h_ZLrwBasec8H3u0QGYR5xZ5Ci9vGsIIKewTF'
     default_bucket: 'scrinium'
     default_bucket_domain: '7xllma.com1.z0.glb.clouddn.com'
     image_bucket: 'scrinium'
@@ -21,17 +20,12 @@ defaults: &defaults
   redis_server_host: '127.0.0.1'
   redis_server_port: '6379'
 
-######################################################################################
 development:
   <<: *defaults
 
-
-######################################################################################
 test:
   <<: *defaults
 
-
-######################################################################################
 production:
   <<: *defaults
   domain: 'www.scrinium.cn'
