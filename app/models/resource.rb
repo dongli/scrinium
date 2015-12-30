@@ -40,8 +40,12 @@ class Resource < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy
 
-  validates :file, :name, presence: true
+  validates :name, presence: true
   validates :name, uniqueness: { scope: :folder_id }
+  validates :file, presence: true,
+    file_size: {
+      less_than_or_equal_to: 20.megabytes
+    }
 
   after_create :increase_size
   after_destroy :decrease_size

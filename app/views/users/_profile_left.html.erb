@@ -44,25 +44,40 @@
 <div class='panel panel-default'>
   <div class='panel-heading'>
     <%= t('activerecord.models.user_quotum') %>
+    <span id='show-apology' data-toggle='tooltip' data-placement='right' title='十分抱歉！目前SCRINIUM的资源有限！'>
+      <%= fa_icon 'info-circle' %>
+    </span>
   </div>
-  <div class='panel-body center'>
+  <div class='panel-body'>
     <ul class='vertical-clean-list'>
       <li>
-        <%= t('activerecord.attributes.user_quotum.resources_size') %><br/>
+        <%= t('activerecord.attributes.user_quotum.resources_size') %>
+        <span class='pull-right'>
+          <%= @user.quotum.resources_size.round(2) %>MB
+        </span>
+        <br/>
         <div class='progress'>
           <% resource_percentage = 100 * @user.quotum.resources_size.to_f / @user.quotum.max_resources_size %>
           <div class='progress-bar <%= 'progress-bar-danger' if resource_percentage > 80 %>' style='width: <%= resource_percentage %>%'></div>
         </div>
       </li>
       <li>
-        <%= t('activerecord.attributes.user_quotum.articles_count') %> <%= @user.quotum.articles_count %><br/>
+        <%= t('activerecord.attributes.user_quotum.articles_count') %>
+        <span class='pull-right'>
+          <%= @user.quotum.articles_count %>
+        </span>
+        <br/>
         <div class='progress'>
           <% article_percentage = 100 * @user.quotum.articles_count.to_f / @user.quotum.max_articles_count %>
           <div class='progress-bar <%= 'progress-bar-danger' if article_percentage > 80 %>' style='width: <%= article_percentage %>%'></div>
         </div>
       </li>
       <li>
-        <%= t('activerecord.attributes.user_quotum.groups_count') %> <%= @user.quotum.groups_count %><br/>
+        <%= t('activerecord.attributes.user_quotum.groups_count') %>
+        <span class='pull-right'>
+          <%= @user.quotum.groups_count %>
+        </span>
+        <br/>
         <div class='progress'>
           <% group_percentage = 100 * @user.quotum.groups_count.to_f / @user.quotum.max_groups_count %>
           <div class='progress-bar <%= 'progress-bar-danger' if group_percentage > 80 %>' style='width: <%= group_percentage %>%'></div>
@@ -71,3 +86,7 @@
     </ul>
   </div>
 </div>
+
+<script>
+  $('#show-apology').tooltip()
+</script>

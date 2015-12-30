@@ -18,6 +18,7 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = @resourceable.resources.new(resource_params)
+    authorize @resource, :create? # TODO: 现在还不能抛出资源配额已满的错误提示。
     @resource.name = @resource.file.file.filename if @resource.file.file
     @resource.save
     respond_to do |format|

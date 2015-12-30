@@ -20,6 +20,12 @@ zh-CN:
         updated_at: 更新时间
         user: 拥有者
         category_list: 分类标签
+    errors:
+      models:
+        resource:
+          attributes:
+            file:
+              file_size_is_less_than_or_equal_to: 文件大小不能超过20MB！
 
   dropzone:
     drag_file_here: 请将文件拖至这里。
