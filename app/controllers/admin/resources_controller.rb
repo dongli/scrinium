@@ -1,7 +1,19 @@
-class Admin::ResourcesController < Admin::ApplicationController
+module Admin
+  class ResourcesController < Admin::ApplicationController
+    # To customize the behavior of this controller,
+    # simply overwrite any of the RESTful actions. For example:
+    #
+    # def index
+    #   super
+    #   @resources = Resource.all.paginate(10, params[:page])
+    # end
 
+    # Define a custom finder by overriding the `find_resource` method:
+    # def find_resource(param)
+    #   Resource.find_by!(slug: param)
+    # end
 
-  def permitted_attributes
-    %w(user_id resourceable_id name description file resourceable_type status)
+    # See https://administrate-docs.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end

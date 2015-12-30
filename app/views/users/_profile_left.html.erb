@@ -53,33 +53,33 @@
       <li>
         <%= t('activerecord.attributes.user_quotum.resources_size') %>
         <span class='pull-right'>
-          <%= @user.quotum.resources_size.round(2) %>MB
+          <%= @user.user_quotum.resources_size.round(2) %>MB
         </span>
         <br/>
         <div class='progress'>
-          <% resource_percentage = 100 * @user.quotum.resources_size.to_f / @user.quotum.max_resources_size %>
+          <% resource_percentage = 100 * @user.user_quotum.resources_size.to_f / @user.user_quotum.max_resources_size %>
           <div class='progress-bar <%= 'progress-bar-danger' if resource_percentage > 80 %>' style='width: <%= resource_percentage %>%'></div>
         </div>
       </li>
       <li>
         <%= t('activerecord.attributes.user_quotum.articles_count') %>
         <span class='pull-right'>
-          <%= @user.quotum.articles_count %>
+          <%= @user.user_quotum.articles_count %>
         </span>
         <br/>
         <div class='progress'>
-          <% article_percentage = 100 * @user.quotum.articles_count.to_f / @user.quotum.max_articles_count %>
+          <% article_percentage = 100 * @user.user_quotum.articles_count.to_f / @user.user_quotum.max_articles_count %>
           <div class='progress-bar <%= 'progress-bar-danger' if article_percentage > 80 %>' style='width: <%= article_percentage %>%'></div>
         </div>
       </li>
       <li>
         <%= t('activerecord.attributes.user_quotum.groups_count') %>
         <span class='pull-right'>
-          <%= @user.quotum.groups_count %>
+          <%= @user.user_quotum.groups_count %>
         </span>
         <br/>
         <div class='progress'>
-          <% group_percentage = 100 * @user.quotum.groups_count.to_f / @user.quotum.max_groups_count %>
+          <% group_percentage = 100 * @user.user_quotum.groups_count.to_f / @user.user_quotum.max_groups_count %>
           <div class='progress-bar <%= 'progress-bar-danger' if group_percentage > 80 %>' style='width: <%= group_percentage %>%'></div>
         </div>
       </li>

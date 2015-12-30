@@ -48,10 +48,10 @@ class Article < ActiveRecord::Base
   private
 
   def increase_counts
-    self.user.quotum.increment! :articles_count
+    self.user.user_quotum.increment! :articles_count
   end
 
   def decrease_counts
-    self.user.quotum.decrement! :articles_count
+    self.user.user_quotum.decrement! :articles_count
   end
 end

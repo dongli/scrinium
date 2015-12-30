@@ -19,6 +19,7 @@ class FoldersController < ApplicationController
 
   def create
     @folder = @folderable.folders.new(folder_params)
+    @folder.user_id = current_user.id
     @folder.save
     respond_to do |format|
       format.js
@@ -71,8 +72,7 @@ class FoldersController < ApplicationController
     params.each do |key, value|
       params[:folder][key] = value
     end
-    params.require(:folder).permit(:user_id,
-                                   :name,
+    params.require(:folder).permit(:name,
                                    :description,
                                    :items_count,
                                    :parent_id,

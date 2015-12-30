@@ -8,6 +8,13 @@
   }
 </style>
 
+<% if user_signed_in? %>
+  <div class='back-to-worktable'>
+    <%= link_to '返回工作台', current_user, class: 'btn btn-default',
+      style: 'position: fixed; bottom: 10px; right: 10px;' %>
+  </div>
+<% end %>
+
 <div class='home-page-header' style='background-image: <%= GeoPattern.generate(@user.email).to_data_uri %>; height: 300px;'>
   <div class='vertical-centered-block'>
     <div class='vertical-centered horizontal-centered'>

@@ -1,14 +1,14 @@
 class CreateOrganizations < ActiveRecord::Migration
   def up
     create_table :organizations do |t|
-      t.string     :logo                                  # 头像
-      t.references :admin,  class_name: 'User'            # 机构超级管理员的ID
-      t.references :parent, class_name: 'Organization'    # 父机构的ID
-      t.integer    :members_count, null: false, default: 1 # 成员计数（默认包含创建者或超级管理员）
-      t.string     :website                               # 网址
-      t.string     :subdomain                             # 二级域名
-      t.string     :status                                # 状态， 新建，上线，下线
-      t.integer    :position                              # 位置（预留字段）
+      t.string     :logo                                   # 头像
+      t.references :admin,  class_name: 'User'             # 机构超级管理员的ID
+      t.references :parent, class_name: 'Organization'     # 父机构的ID
+      t.integer    :members_count, null: false, default: 0 # 成员计数
+      t.string     :website                                # 网址
+      t.string     :subdomain                              # 二级域名
+      t.string     :status                                 # 状态， 新建，上线，下线
+      t.integer    :position                               # 位置（预留字段）
       t.timestamps null: false
     end
     Organization.create_translation_table!({

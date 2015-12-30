@@ -41,7 +41,6 @@ gem 'dropzonejs-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'bower-rails'
 gem 'momentjs-rails'
-gem 'nprogress-rails'
 gem 'jstree-rails-4'
 gem 'geo_pattern'
 # ActiveRecord model/data translation.
@@ -116,9 +115,6 @@ group :development, :test do
   # 生成假数据，faker重构版本
   gem 'guard-rails', require: false
   gem 'factory_girl_rails'  # 测试数据
-
-  # 插件
-  # gem 'scrinium_esm', '0.0.1', path: '../scrinium_esm'
 end
 
 group :test do
@@ -129,3 +125,4 @@ group :test do
 end
 
 gem 'oneapm_rpm'
+gem 'administrate'

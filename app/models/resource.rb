@@ -70,11 +70,11 @@ class Resource < ActiveRecord::Base
 
   def increase_size
     # 单位是MB。
-    self.user.quotum.update(resources_size: self.user.quotum.resources_size + self.file.file.size / 1000.0 / 1000.0)
+    self.user.user_quotum.update(resources_size: self.user.user_quotum.resources_size + self.file.file.size / 1000.0 / 1000.0)
   end
 
   def decrease_size
     # 单位是MB。
-    self.user.quotum.update(resources_size: self.user.quotum.resources_size - self.file.file.size / 1000.0 / 1000.0)
+    self.user.user_quotum.update(resources_size: self.user.user_quotum.resources_size - self.file.file.size / 1000.0 / 1000.0)
   end
 end

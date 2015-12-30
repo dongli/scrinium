@@ -1,88 +1,21 @@
-class Admin::ApplicationController < ActionController::Base
+# All Administrate controllers inherit from this `Admin::ApplicationController`,
+# making it the ideal place to put authentication logic or other
+# before_filters.
+#
+# If you want to add pagination or other controller-level concerns,
+# you're free to overwrite the RESTful controller actions.
+module Admin
+  class ApplicationController < Administrate::ApplicationController
+    before_filter :authenticate_admin
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
-  inherit_resources
-
-  layout "admin"
-
-  before_action :authenticate_user!, except: [:logout]
-
-
-  def index
-    @q = resource_class.ransack(params[:q])
-  end
-
-  def create
-    create! do |success, failure|
-      success.html do
-        flash[:notice] = t('message.create_success', thing: thing)
-        redirect_to(resource_url)
-      end
-
-      failure.html do
-        flash[:error] =  t('message.create_fail', thing: thing)
-        render :action => :new
-      end
+    def authenticate_admin
+      # TODO Add authentication logic here.
     end
+
+    # Override this value to specify the number of elements to display at a time
+    # on index pages. Defaults to 20.
+    # def records_per_page
+    #   params[:per_page] || 20
+    # end
   end
-
-
-  def update
-    update! do |success, failure|
-      success.html do
-        flash[:notice] = t('message.update_success', thing: thing)
-        redirect_to(resource_url)
-      end
-
-      failure.html do
-        flash[:error] = t('message.update_fail', thing: thing)
-        render :action => :edit
-      end
-    end
-  end
-
-  def destroy
-    destroy! do |success, failure|
-      success.html do
-        flash[:notice] = t('message.destroy_success', thing: thing)
-        redirect_to(resource_url)
-      end
-
-      failure.html do
-        flash[:error] = t('message.destroy_fail', thing: thing)
-        render :action => :edit
-      end
-    end
-  end
-
-  helper_method :attributes, :permitted_attributes
-  respond_to :js, :json, :html
-
-  protected
-
-  def collection
-    get_collection_ivar || set_collection_ivar(end_of_association_chain.
-                                                   ransack(params[:q]).result.page(params[:page] || 1).per(params[:per_page]))
-  end
-
-  def permitted_params
-    params_keys = (resource_class.attribute_names - %w(id created_at updated_at )).map(&:to_sym)
-    params.permit(resource_class.to_s.downcase.to_sym => params_keys)
-  end
-
-  def permitted_attributes
-    resource_class.attribute_names - %w(id created_at updated_at )
-  end
-
-  def attributes
-    resource_class.attribute_names - %w(id created_at updated_at )
-  end
-
-  def thing
-    t("activerecord.models.#{resource_class.to_s.underscore}")
-  end
-
-
 end

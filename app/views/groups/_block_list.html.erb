@@ -10,6 +10,7 @@
         <div class='panel panel-default'>
           <div class='panel-body center'>
             <%= link_to logo(group, size: :medium), group %><br/>
+            <%= group.name %><br/>
             <%= fa_icon 'group', text: group.members_count, style: 'margin-top: 10px;' %>
             <%= fa_icon 'tags', text: group.nodes_count, style: 'margin-left: 5px;' %>
             <%= fa_icon 'comments-o', text: group.topics_count, style: 'margin-left: 5px;' %>

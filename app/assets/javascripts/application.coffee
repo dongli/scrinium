@@ -29,9 +29,7 @@
 #= require jasny-bootstrap.min
 #= require froala_editor/froala_editor_require
 #= require application/custom
-#= require nprogress
-#= require nprogress-turbolinks
-# ============================= Common Functions ===============================
+
 @mathjax = (id = null) ->
   if id
     MathJax.Hub.Queue(
@@ -43,10 +41,6 @@
       (-> MathJax.InputJax.TeX.resetEquationNumbers() if MathJax.InputJax.TeX.resetEquationNumbers()),
       ['Typeset', MathJax.Hub]
     )
-
-# marked.setOptions
-#   highlight: (code) ->
-#     hljs.highlightAuto(code).value
 
 @markdown = (content = null, element = null, options = {}) ->
   if element == null
@@ -76,43 +70,6 @@
     $(this).attr('style', 'border-color: #CCCCCC;')
     $("##{inputName}-error-message").remove()
 
-selectByGET = (id, api_url) ->
-  $('select[id='+id+']').select2(
-    ajax:
-      url: ROOT_PATH+api_url
-      dataType: 'json'
-      delay: 250
-      processResults: (data) ->
-        {
-          results: $.map( data, (d, i) ->
-            { id: d[0], text: d[1] }
-          )
-        }
-      results: (data, page) ->
-        results: data
-  )
-
-selectByPOST = (id, api_url, post_data) ->
-  $('select[id='+id+']').select2(
-    ajax:
-      type: 'POST'
-      url: ROOT_PATH+api_url
-      params: {
-        contentType: 'application/json; charset=utf-8'
-      }
-      dataType: 'json'
-      data: -> post_data
-      delay: 250
-      processResults: (data) ->
-        {
-          results: $.map( data, (d, i) ->
-            { id: d[0], text: d[1] }
-          )
-        }
-      results: (data, page) ->
-        results: data
-  )
-
 @typeIsArray = (value) ->
   value and
     typeof value is 'object' and
@@ -122,35 +79,6 @@ selectByPOST = (id, api_url, post_data) ->
     not ( value.propertyIsEnumerable 'length' )
 
 $(document).on 'page:change', ->
-  # Using Select2 to enhance select element.
-  selectByGET 'input-user-name', 'api/v1/users/names'
-  selectByGET 'input-group-name', 'api/v1/groups/names'
-  selectByGET 'input-organization-name', 'api/v1/organizations/names'
-  selectByGET 'input-publisher-abbreviation', 'api/v1/publishers/abbreviations'
-  # TODO: Function call is not working!
-  # selectByPOST 'input-group-name-for-user', 'api/v1/groups/for_user', {
-  #   user_id: $('select[id=input-group-name-for-user]').data('user-id')
-  # }
-  $('select[id=input-group-name-for-user]').select2(
-    ajax:
-      type: 'POST'
-      url: ROOT_PATH+'api/v1/groups/for_user'
-      params: {
-        contentType: 'application/json; charset=utf-8'
-      }
-      dataType: 'json'
-      data: -> {
-        user_id: $('select[id=input-group-name-for-user]').data('user-id')
-      }
-      delay: 250
-      processResults: (data) -> {
-        results: $.map( data, (d, i) ->
-          { id: d[0], text: d[1] }
-        )
-      }
-      results: (data, page) ->
-        results: data
-  )
   $('[id$=_category_list]').select2
     tags: true
     multiple: true
@@ -205,7 +133,7 @@ $(document).on 'page:change', ->
     date = moment($(this).attr('title'))
     $(this).html(date.fromNow())
 
-  # 是table的整行可点击。
+  # 使table的整行可点击。
   $('.clickable-row').click ->
     window.document.location = $(this).data('href')
 

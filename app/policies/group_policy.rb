@@ -1,7 +1,7 @@
 class GroupPolicy < ApplicationPolicy
   def create?
     # 应该限制一下用户可以创建群组的数量。
-    login? and user.role != 'guest'
+    login? and user.role != 'guest' and user.user_quotum.groups_count < user.user_quotum.max_groups_count
   end
 
   def update?

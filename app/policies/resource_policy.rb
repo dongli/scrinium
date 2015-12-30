@@ -1,6 +1,6 @@
 class ResourcePolicy < ApplicationPolicy
   def create?
-    login? and user.role != 'guest' and user.quotum.resources_size + record.file.file.size / 1000.0 / 1000.0 < user.quotum.max_resources_size
+    login? and user.role != 'guest' and user.user_quotum.resources_size + record.file.file.size / 1000.0 / 1000.0 < user.user_quotum.max_resources_size
   end
 
   def update?

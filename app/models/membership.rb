@@ -49,11 +49,11 @@ class Membership < ActiveRecord::Base
 
   def increase_counts
     self.host.increment! :members_count
-    self.user.quotum.increment! :groups_count
+    self.user.user_quotum.increment!(:groups_count) if self.host.instance_of? Group
   end
 
   def decrease_counts
     self.host.decrement! :members_count
-    self.user.quotum.decrement! :groups_count
+    self.user.user_quotum.decrement!(:groups_count) if self.host.instance_of? Group
   end
 end

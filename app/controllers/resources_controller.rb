@@ -18,6 +18,7 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = @resourceable.resources.new(resource_params)
+    @resource.user_id = current_user.id
     authorize @resource, :create? # TODO: 现在还不能抛出资源配额已满的错误提示。
     @resource.name = @resource.file.file.filename if @resource.file.file
     @resource.save
@@ -79,7 +80,6 @@ class ResourcesController < ApplicationController
                                      :resourceable_type,
                                      :resourceable_id,
                                      :file,
-                                     :user_id,
                                      :tag_list,
                                      { category_list: [] },
                                      :status)

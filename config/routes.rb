@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  class ActionDispatch::Routing::Mapper
-    def draw(routes_name)
-      instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
+  namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
     end
-  end
 
-  mount API => '/'
-  mount GrapeSwaggerRails::Engine => '/apidoc' unless Rails.env.production?
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  end
 
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
@@ -108,6 +107,4 @@ Rails.application.routes.draw do
   if File.exist? "#{Rails.root}/config/engine_routes.rb"
     instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
   end
-  # 后台管理
-  draw :admin
 end
