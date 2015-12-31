@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 
   def create
     @commentable.comments.transaction do
-      floor = @commentable.comments.last.floor + 1
+      floor = @commentable.comments.empty? ? 1 : @commentable.comments.last.floor + 1
       @comment = @commentable.comments.new(comment_params)
       @comment.floor = floor
       respond_to do |format|
