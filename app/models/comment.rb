@@ -15,8 +15,11 @@
 #
 
 class Comment < ActiveRecord::Base
-  validates :content, presence: true
+  acts_as_tree dependent: :destroy
+
   belongs_to :commentable, polymorphic: true
   belongs_to :user
-  acts_as_tree dependent: :destroy
+
+  validates :content, presence: true
+  validates :floor, uniqueness: { scope: [:commentable_type, :commentable_id] }
 end

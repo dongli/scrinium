@@ -1,9 +1,8 @@
-<% app ||= main_app %>
-<% user = User.find(comment.user_id) %>
+<% user = comment.user %>
 <% commentable = comment.commentable %>
 <% if comment.parent_id %>
-  <% parent_comment = Comment.find(comment.parent_id) %>
-  <% parent_user = User.find(parent_comment.user_id) %>
+  <% parent_comment = comment.parent %>
+  <% parent_user = parent_comment.user %>
 <% end %>
 <div class='panel panel-default'>
   <div class='panel-heading'>
@@ -12,38 +11,30 @@
     <%= user.name %>
     <% if parent_comment %>
       <%= t('action.reply') %>
-      <%= link_to "##{parent_comment.floor}", "#comment-#{comment.parent_id}" %>
-      <%= link_to avatar(parent_comment.user, size: :small), parent_comment.user %>
-      <%= parent_comment.user.name %>
+      <%= link_to "##{parent_comment.floor}", show_parent_comment_path(comment),
+        class: 'show-parent-comment', remote: true %>
     <% end %>
-    <div class='pull-right'>
+    <ul class='horizontal-clean-list pull-right'>
       <% if policy(comment).reply? %>
-        <%=
-          link_to t('action.reply'),
-          app.url_for([ commentable, :reply, comment ]),
-          class: 'btn btn-primary btn-xs reply-comment',
-          remote: true
-        %>
+        <li>
+          <%= link_to fa_icon('mail-reply'), [commentable, :reply, comment],
+            class: 'reply-comment', remote: true %>
+        </li>
       <% end %>
       <% if policy(comment).update? %>
-        <%=
-          link_to t('action.edit'),
-          app.url_for([ :edit, commentable, comment ]),
-          class: 'btn btn-primary btn-xs edit-comment',
-          remote: true
-        %>
+        <li>
+          <%= link_to fa_icon('edit'), [:edit, commentable, comment],
+            class: 'edit-comment', remote: true %>
+        </li>
       <% end %>
       <% if policy(comment).destroy? %>
-        <%=
-          link_to t('action.delete'),
-          app.url_for([ commentable, comment ]),
-          method: :delete,
-          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium.comment')) },
-          class: 'btn btn-xs btn-danger delete-comment',
-          remote: true
-        %>
+        <li>
+          <%= link_to fa_icon('times-circle'), [commentable, comment],
+            method: :delete, class: 'delete-comment', remote: true,
+            data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.comment')) } %>
+        </li>
       <% end %>
-    </div>
+    </ul>
   </div>
   <div class='panel-body markdown'><%= comment.content %></div>
 </div>

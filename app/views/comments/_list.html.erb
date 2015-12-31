@@ -1,15 +1,9 @@
-<% app ||= main_app %>
 <div id='message-bus-comment-<%= commentable.class %>-<%= commentable.id %>'></div>
 <ul class='comment-list'>
-  <% per_page = 20 %>
-  <% if commentable.comments.size <= per_page %>
-    <% comments = commentable.comments.reverse %>
-  <% else %>
-    <% comments = Kaminari.paginate_array(commentable.comments.reverse).page(params[:page]).per(per_page) %>
-  <% end %>
+  <% comments = commentable.comments.reverse %>
   <% comments.each do |comment| %>
     <li id='comment-<%= comment.id %>'>
-      <%= render 'comments/show', app: app, comment: comment %>
+      <%= render 'comments/show', comment: comment %>
     </li>
   <% end %>
   <div id='comment-placeholder'>
@@ -17,12 +11,9 @@
       <%= t('comment.has_new_comments', number: 0) %>
     </div>
   </div>
-  <div style='text-align: center;'>
-    <%= paginate comments if commentable.comments.size > per_page %>
-  </div>
   <% if policy(Comment).create? %>
     <li id='new-comment'>
-      <%= render 'comments/form', app: app, commentable: commentable, comment: Comment.new %>
+      <%= render 'comments/form', commentable: commentable, comment: Comment.new %>
     </li>
   <% end %>
 </ul>

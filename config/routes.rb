@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :comments, except: [:new, :show]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
   end
+  get '/comments/:id/show_parent' => 'comments#show_parent', as: :show_parent_comment
   concern :collectable do
     get '/collect' => 'collections#collect', as: :collect
     get '/uncollect' => 'collections#uncollect', as: :uncollect

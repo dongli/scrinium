@@ -1,13 +1,20 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :load_commentable
-  before_action :set_comment, only: [ :show, :edit, :update, :destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :load_commentable, except: [:show_parent]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
     @comments = @commentable.comments
   end
 
   def show
+  end
+
+  def show_parent
+    @comment = Comment.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
@@ -26,12 +33,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @commentable.comments.new(comment_params)
-    respond_to do |format|
-      if @comment.save
-        @commentable.increment!(:comments_count)
-        MessageBus.publish "/comment-#{@commentable.class.to_s}-#{@commentable.id}", user_id: @comment.user_id
-        format.js
+    @commentable.comments.transaction do
+      floor = @commentable.comments.last.floor + 1
+      @comment = @commentable.comments.new(comment_params)
+      @comment.floor = floor
+      respond_to do |format|
+        if @comment.save
+          @commentable.increment!(:comments_count)
+          format.js
+        end
       end
     end
   end

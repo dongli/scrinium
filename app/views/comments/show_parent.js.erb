@@ -1,0 +1,11 @@
+$('[id^=comment-] .panel-body').css('background-color', '')
+$('#comment-' + '<%= @comment.parent_id %> .panel-body')
+  .css('background-color', '#2ECC71')
+  .css('transition', 'background-color 1s ease')
+$('html, body').animate({
+  scrollTop: $('#comment-' + '<%= @comment.parent_id %>').offset().top - 100
+}, 1000);
+$('#comment-' + '<%= @comment.parent_id %> .panel-body').click(function() {
+  $(this).css('transition', 'background-color 0.5s ease')
+  $(this).css('background-color', '')
+})

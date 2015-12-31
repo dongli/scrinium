@@ -1,7 +1,4 @@
-$('li#new-comment').html("<%=
-  j render partial: 'comments/form',
-  locals: { commentable: @commentable, comment: @comment }
-%>");
+$('li#new-comment').html("<%= j render 'comments/form', commentable: @commentable, comment: @comment %>");
 $('html, body').animate({
   scrollTop: $('textarea#comment_content').offset().top
 }, 1000);
