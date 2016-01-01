@@ -24,11 +24,6 @@ change_unread = ->
     if message_body.attr('data-read') == 'false'
       message_body.attr('data-read', 'true')
       message_head.children('i').remove()
-      # Update message status in ActiveRecord.
-      $.post ROOT_PATH+'api/v1/mailbox/mark_message_as_read', {
-        user_id: user_id
-        message_id: message_id
-      }
       change_unread()
 
 @expand_notification = ->
@@ -47,11 +42,6 @@ change_unread = ->
     if notification_body.attr('data-read') == 'false'
       notification_body.attr('data-read', 'true')
       notification_head.children('i').remove()
-      # Update notifications status in ActiveRecord.
-      $.post ROOT_PATH+'api/v1/mailbox/mark_notification_as_read', {
-        user_id: user_id
-        notification_id: notification_id
-      }
       change_unread()
 
 $(document).on 'page:change', ->
