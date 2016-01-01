@@ -18,24 +18,21 @@
 
     <div class='collapse navbar-collapse'>
       <ul class='nav navbar-nav navbar-right'>
-        <li style='padding-top: 5px'>
-          <%=
-            link_to t('activerecord.models.organization'),
-            organizations_path, class: 'navbar-link'
-          %>
+        <li class='dropdown' style='padding-top: 5px'>
+          <a class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
+            <%= t('activerecord.models.group') %>
+          </a>
+          <ul class='dropdown-menu'>
+            <li style='border-bottom: 1px solid #ddd;'>
+              <%= link_to fa_icon('search', text: t('action.explore') + t('activerecord.models.group')), groups_path %>
+            </li>
+            <% if user_signed_in? %>
+              <% current_user.groups.each do |group| %>
+                <li><%= link_to logo(group, size: '30x30') + '  '+ group.short_name, group %></li>
+              <% end %>
+            <% end %>
+          </ul>
         </li>
-        <li style='padding-top: 5px'>
-          <%=
-            link_to t('activerecord.models.group'),
-            groups_path, class: 'navbar-link'
-          %>
-        </li>
-        <!-- <li>
-          <%=
-            link_to t('news'),
-            news_show_path, class: 'navbar-link'
-          %>
-        </li> -->
         <%= render 'layouts/navbar_library' %>
         <%= render 'layouts/navbar_user' %>
       </ul>
