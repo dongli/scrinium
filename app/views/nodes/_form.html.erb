@@ -1,7 +1,6 @@
 <div class='horizontal-centered'>
   <%= simple_form_for [group, node] do |f| %>
     <%= f.input :name, required: false %>
-    <%= f.input :position %>
     <%= f.submit t('action.submit'), class: 'btn btn-success' %>
   <% end %>
 </div>

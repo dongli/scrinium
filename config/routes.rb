@@ -94,10 +94,10 @@ Rails.application.routes.draw do
     member do
       get :members
     end
+    resources :nodes
     resources :topics
   end
   get '/groups/:id/edit/:category' => 'groups#edit', as: :edit_group
-  resources :nodes
   resources :group_options
   resources :activities
   resources :posts do
