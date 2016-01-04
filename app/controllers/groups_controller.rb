@@ -3,7 +3,8 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @groups = Group.all
+    @search = Group.with_translations(I18n.locale).ransack(params[:q])
+    @groups = @search.result.includes(:taggings)
   end
 
   def show

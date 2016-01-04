@@ -1,10 +1,21 @@
 <% content_for :title, t('activerecord.models.group') %>
 
 <% content_for :center_column do %>
-  <div class="alert alert-info" role="alert">
-    在这里添加群组检索功能。
+  <div class='search-form'>
+    <%= simple_form_for @search, url: groups_path, method: :get do |f| %>
+      <%= f.input :translations_name_or_translations_name_cont, label: false, placeholder: '搜索名称',
+        wrapper_html: { style: 'display: inline-block;' }, required: false %>
+      <%= f.input :taggings_tag_name_in, label: false, placeholder: '搜索标签',
+        collection: Group.all_tags, value_method: :name,
+        wrapper_html: { style: 'display: inline-block;' },
+        input_html: { class: 'use-select2-multiple-tags', multiple: 'multiple' } %>
+      <%= f.submit t('action.search'), class: 'btn btn-success', style: 'height: 42px;' %>
+      <% if request.params[:q] %>
+        <%= link_to t('action.cancel'), groups_path, class: 'btn btn-default', style: 'height: 42px;' %>
+      <% end %>
+    <% end %>
   </div>
-  <%= render 'block_list', groups: Group.all %>
+  <%= render 'block_list', groups: @groups %>
 <% end %>
 
 <% content_for :right_column do %>
