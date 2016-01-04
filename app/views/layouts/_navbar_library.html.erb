@@ -5,8 +5,8 @@
   <ul class='dropdown-menu'>
     <li><%= link_to '进入文献库', library_index_path %></li>
     <% if policy(Publisher).create? %>
-      <li><%= link_to '添加文献', new_reference_path %></li>
-      <li><%= link_to '添加出版社', new_publisher_path %></li>
+      <li><%#= link_to '添加文献', new_reference_path, disable: true %></li>
+      <li><%#= link_to '添加出版社', new_publisher_path, disable: true %></li>
     <% end %>
   </ul>
 </li>
