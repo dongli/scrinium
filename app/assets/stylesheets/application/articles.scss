@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'customized_bootstrap';
-
 .article-form {
   padding-top: 30px;
   max-width: 100%;
@@ -19,19 +17,6 @@
 
 div.tab-pane {
   padding-top: 1em;
-}
-
-table.articles {
-  @extend .table;
-  @extend .table-striped;
-  border-collapse: collapse;
-  tr.article-draft {
-    background-color: rgba(203, 35, 46, 0.50);
-    color: red;
-    a {
-      color: red;
-    }
-  }
 }
 
 ul.versions {

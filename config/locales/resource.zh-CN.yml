@@ -27,9 +27,6 @@ zh-CN:
             file:
               file_size_is_less_than_or_equal_to: 文件大小不能超过20MB！
 
-  dropzone:
-    drag_file_here: 请将文件拖至这里。
-
   action:
     select_file: 选取
     change_file: 改变

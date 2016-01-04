@@ -21,7 +21,6 @@
 #= require select2/select2.min
 #= require i18n/translations
 #= require message-bus
-#= require dropzone
 #= require jquery.remotipart
 #= require jstree
 #= require bootstrap-datepicker/core
