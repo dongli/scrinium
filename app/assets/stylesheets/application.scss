@@ -20,20 +20,26 @@
  *= require application/custom
  *= require startup/css/flat-ui
  *= require startup/css/flat-ui-select2
- *= require common
  *= require_self
  */
+
+@import 'common';
 
 body {
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.72222;
   color: #34495e;
-  background-color: #ffffff
+  background-color: #EBF0F1;
 }
 
 p {
   font-size: 15px;
+}
+
+.navbar {
+  @extend .box-shadow;
+  height: 60px;
 }
 
 .navbar-default .navbar-brand {
@@ -99,14 +105,6 @@ dl.clean {
   dt {
     border-bottom: none;
   }
-}
-
-.center {
-  text-align: center;
-}
-
-.right {
-  text-align: right;
 }
 
 img.logo {

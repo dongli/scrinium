@@ -5,5 +5,9 @@
 <% else %>
   <div class='col-sm-12 center-column'>
 <% end %>
-  <%= yield :center_column %>
+  <div class='panel panel-default box-shadow'>
+    <div class='panel-body'>
+      <%= yield :center_column %>
+    </div>
+  </div>
 </div>

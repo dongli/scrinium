@@ -19,11 +19,11 @@
 <% end %>
 
 <% content_for :right_column do %>
-  <div class='panel panel-default'>
+  <div class='panel panel-default box-shadow'>
     <div class='panel-heading'>
       您加入的群组
     </div>
-    <div class='panel-body center'>
+    <div class='panel-body horizontal-centered'>
       <%= render 'block_list', groups: @groups, only_logo: true %>
       <% if policy(Group).create? %>
         <%= link_to fa_icon('plus-square-o', text: t('action.add')), new_group_path %>
