@@ -28,7 +28,7 @@
             </li>
             <% if user_signed_in? %>
               <% current_user.groups.each do |group| %>
-                <li><%= link_to logo(group, size: '30x30') + '  '+ group.short_name, group %></li>
+                <li><%= link_to group.short_name, group %></li>
               <% end %>
             <% end %>
           </ul>

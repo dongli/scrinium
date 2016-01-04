@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   before_action :subdomian_organization
 
   def index
+    redirect_to current_user if user_signed_in?
   end
 
   def about
