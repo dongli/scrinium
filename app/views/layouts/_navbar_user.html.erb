@@ -6,6 +6,9 @@
       <%= avatar(current_user, size: '30x30') %>
     </a>
     <ul class='dropdown-menu'>
+      <li style='border-bottom: 1px solid #ddd;'>
+        <%= link_to fa_icon('search', text: t('action.explore') + t('activerecord.models.user')), users_path %>
+      </li>
       <li>
         <%= link_to fa_icon('object-group', text: t('user.worktable')), current_user %>
       </li>
