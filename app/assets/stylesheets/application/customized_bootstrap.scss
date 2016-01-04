@@ -20,3 +20,20 @@
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   background: #00D66C;
 }
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background-color: #04A186;
+  border-color: #04A186;
+}
+
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > a,
+.pagination > li > span:hover,
+.pagination > li > span:focus,
+.pagination > li > span {
+  color: #04A186;
+}

@@ -3,7 +3,7 @@
     <tr>
       <th width="30"><%= t('activerecord.attributes.user.name') %></th>
       <th width="100"><%= t('activerecord.attributes.user.email') %></th>
-      <th width="50"><%= t('user.affiliation') %></th>
+      <!-- <th width="50"><%= t('user.affiliation') %></th> -->
       <th width="50"><%= t('activerecord.attributes.user.role') %></th>
     </tr>
   </thead>
@@ -14,7 +14,7 @@
           <a href="<%= user_path(user) %>"><%= user.name %></a>
         </td>
         <td><%= user.email %></td>
-        <td><%= render 'memberships/organization_logos', user: user, size: :small %></td>
+        <!-- <td><%#= render 'memberships/organization_logos', user: user, size: :small %></td> -->
         <%# TODO 这里显示的用户在群组里的角色，而不是系统角色  %>
         <td><%= user.role.text %></td>
       </tr>

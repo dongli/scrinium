@@ -31,6 +31,8 @@ class Group < ActiveRecord::Base
 
   translates :name, :short_name, :description
 
+  paginates_per 10
+
   has_many :memberships, as: :host, dependent: :destroy
   has_many :users, class_name: 'User', through: :memberships
   has_many :posts, dependent: :destroy

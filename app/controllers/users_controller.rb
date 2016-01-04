@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @search = User.ransack(params[:q])
-    @users = @search.result
+    @users = @search.result.order(:id).page(params[:page])
   end
 
   def show

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     @search = Group.with_translations(I18n.locale).ransack(params[:q])
-    @groups = @search.result.includes(:taggings)
+    @groups = @search.result.includes(:taggings).order(:id).page(params[:page])
   end
 
   def show
