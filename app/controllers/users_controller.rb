@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
-  before_action :set_user
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_user, except: [:index]
   layout :choose_layout
+
+  def index
+    @search = User.ransack(params[:q])
+    @users = @search.result
+  end
 
   def show
     if current_user != @user

@@ -1,5 +1,17 @@
 <% content_for :title, t('activerecord.models.user') %>
 
 <% content_for :center_column do %>
-  <%= render 'users/table_list', users: User.all %>
+  <div class='search-form'>
+    <%= simple_form_for @search, url: users_path, method: :get do |f| %>
+      <%= f.input :name_cont, label: false, placeholder: '搜索姓名',
+        wrapper_html: { style: 'display: inline-block;' }, required: false %>
+      <%= f.input :email_cont, label: false, placeholder: '搜索邮箱',
+        wrapper_html: { style: 'display: inline-block;' }, required: false %>
+      <%= f.submit t('action.search'), class: 'btn btn-success', style: 'height: 42px;' %>
+      <% if request.params[:q] %>
+        <%= link_to t('action.cancel'), users_path, class: 'btn btn-default', style: 'height: 42px;' %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= render 'users/list', users: @users %>
 <% end %>
