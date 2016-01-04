@@ -9,6 +9,5 @@ $(document).on 'page:change', ->
   crop_image '#group_logo', 'group'
   turnOnTab
     info: []
-    members: []
     resources: []
     admin: []

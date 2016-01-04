@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_group, only: [ :show, :edit, :update, :destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :members]
 
   def index
     @search = Group.with_translations(I18n.locale).ransack(params[:q])
@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @membership = current_user.memberships.create(host_type: 'Group', host_id: @group.id, role: "admin", status: "approved")
-        format.html { redirect_to @group, notice: t('message.create_success', thing: t('activerecord.models.group')) }
+        format.html { redirect_to @group }
       else
         format.html { render :new }
       end
@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: t('message.destroy_success', thing: t('activerecord.models.group')) }
+      format.html { redirect_to groups_url }
       format.json { head :no_content }
     end
   end
@@ -56,6 +56,10 @@ class GroupsController < ApplicationController
     group_ids = Membership.where(user_id: current_user.id, host_type: "Group", status: "approved").pluck(:host_id)
     @topics = Topic.includes(:user).where(group_id: group_ids).order('updated_at desc')
     @posts = Post.includes(:postable).where(group_id: group_ids).order('updated_at desc')
+  end
+
+  def members
+    @members = Kaminari.paginate_array(@group.memberships.where(status: 'approved').map { |x| x.user }).page(params[:page])
   end
 
   private

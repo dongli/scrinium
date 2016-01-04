@@ -1,7 +1,7 @@
 <div class='panel panel-default'>
   <div class='panel-body' style='text-align: center;'>
     <ul class='vertical-clean-list'>
-      <li><%= logo @group, size: :medium %></li>
+      <li><%= link_to logo(@group, size: :medium), @group %></li>
       <li><%= @group.name %></li>
       <li><%= t('activerecord.attributes.group.admin') %>: <%= link_to @group.admin.name, @group.admin %></li>
       <li><%= @group.status.text %></li>
@@ -15,6 +15,9 @@
         </ul>
       </li>
       <li><%= t('activerecord.attributes.group.created_at')+': '+@group.created_at.strftime("%Y-%-m") %></li>
+      <li>
+        <%= link_to fa_icon('users', text: t('group.member')), members_group_path(@group) %>
+      </li>
       <% if policy(@group).update? %>
         <li>
           <%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group, :profile) %>

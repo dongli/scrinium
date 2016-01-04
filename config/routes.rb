@@ -91,6 +91,9 @@ Rails.application.routes.draw do
   resources :topics, concerns: [:commentable, :collectable]
   resources :groups, except: :edit do
     get :feed, on: :collection
+    member do
+      get :members
+    end
     resources :topics
   end
   get '/groups/:id/edit/:category' => 'groups#edit', as: :edit_group
