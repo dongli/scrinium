@@ -1,3 +1,8 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require turbolinks
+//= require startup/js/flatui-checkbox
+
+$(document).on('page:change', function() {
+  $('input[type=checkbox]').checkbox()
+})

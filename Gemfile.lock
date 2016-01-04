@@ -75,7 +75,6 @@ GEM
     bourbon (4.2.6)
       sass (~> 3.4)
       thor (~> 0.19)
-    bower-rails (0.10.0)
     builder (3.2.2)
     bullet (4.14.10)
       activesupport (>= 3.0.0)
@@ -525,7 +524,6 @@ DEPENDENCIES
   annotate
   bootstrap-datepicker-rails
   bootstrap-sass
-  bower-rails
   bullet
   byebug
   capistrano (~> 3.4.0)
@@ -602,4 +600,4 @@ DEPENDENCIES
   wysiwyg-rails (= 2.0.0.pre.rc.3)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

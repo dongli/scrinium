@@ -10,13 +10,17 @@ Link : http://techhysahil.com
   min-width: 200px;
 }
 
+.select2-container--default .select2-selection--multiple {
+  border-radius: 6px;
+}
+
 /*Theme Color override*/
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background: #23CD76 !important;
+  background: #16a085 !important;
 }
 .select2-container--default .select2-results__option[aria-selected=true] {
-  background: #23CD76;
+  background: #16a085;
   color: #fff;
   opacity: 0.8;
 }
@@ -37,6 +41,9 @@ Link : http://techhysahil.com
 }
 .select2-container--default .select2-selection--single {
   border-radius: 0px;
+}
+.select2-container--default .select2-selection--multiple {
+  height: 42px;
 }
 .select2-container.select2-drop-above .select2-choice {
   border-bottom-color: #dce4ec;
@@ -137,7 +144,7 @@ Link : http://techhysahil.com
 /*New Changes*/
 
 .select2-container--default .select2-selection--single {
-  background: #48c9b0;
+  background: #00D0B1;
   border: 0px;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
@@ -158,17 +165,18 @@ Link : http://techhysahil.com
   border-color: transparent transparent #fff transparent;
 }
 .select2-container--open .select2-dropdown--below, .select2-container--open .select2-dropdown--above {
-  background: #48c9b0;
+  background: #00D0B1;
 }
 
 /*Tags Style*/
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #23CD76;
+  background-color: #00D0B1;
   color: #fff;
-  border: 1px solid #48c9b0;
-  margin: 4px;
+  border: 0px solid #00D0B1;
+  border-radius: 6px;
   padding: 3px 5px;
+  height: 30px;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
   color: #16a085;
@@ -182,14 +190,15 @@ Link : http://techhysahil.com
 /*tags Outer border*/
 
 .select2-container--default .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--multiple {
-  border: 2px solid #16a085;
+  border: 2px solid #bdc3c7;
+}
+
+.select2-container--focus > .selection > .select2-selection--multiple {
+  border: 2px solid #00B18E;
 }
 
 /*Placeholder Text Color */
 
 .select2-container--default .select2-selection--single .select2-selection__placeholder {
   color: #fff;
-}
-.select2-selection.select2-selection--multiple {
-  height: 42px;
 }

@@ -5,8 +5,8 @@
 .devise-form {
   font-size: 15px;
   width: 300px;
-  margin: 0 auto;
-  #user_remember_me {
-    margin-left: 0;
-  }
+}
+
+.checkbox .icons, .radio .icons {
+  margin-top: 8px;
 }
