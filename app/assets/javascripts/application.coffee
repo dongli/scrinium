@@ -142,7 +142,7 @@ $(document).on 'page:change', ->
     if $('.left-column').is(':hidden')
       return if $('a[href=#left-column-content]').length > 0
       $('div.center-column').before -> """
-        <div class='center' id='show-left-column-content'>
+        <div class='horizontal-centered' id='show-left-column-content'>
           <a href='#left-column-content' class='show-left-column-content'
            data-toggle='collapse' data-target='#left-column-content'
            aria-expanded='false' aria-controls='left-column-content'>

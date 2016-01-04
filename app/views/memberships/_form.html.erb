@@ -6,7 +6,7 @@
   <% case join_type %>
   <% when :self %>
     <% if membership.status == 'rejected' %>
-      <div class='center'>
+      <div class='horizontal-centered'>
         <%= f.input :rejected_reason, as: :text %>
         <%= f.hidden_field :status, value: 'rejected' %>
         <%= f.hidden_field :rejected_at, value: Time.now %>
@@ -14,14 +14,14 @@
       </div>
     <% else %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <div class='center'>
+      <div class='horizontal-centered'>
         <%= f.button :submit, t('membership.action.apply'), class: 'button btn-xs' %>
       </div>
     <% end %>
   <% when :invited %>
     <%= f.input :user_id, as: :select, input_html: { style: 'width: 100%;', class: 'choose_user' } %>
     <%= f.input :role %>
-    <div class='center'>
+    <div class='horizontal-centered'>
       <%= f.button :submit, t('membership.action.invite'), class: 'btn btn-primary' %>
     </div>
   <% end %>

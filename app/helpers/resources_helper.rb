@@ -7,7 +7,7 @@ module ResourcesHelper
 
   def preview resource
     if @resource.image?
-      image_tag @resource.file.url, class: 'center resizable', id: 'resource-preview'
+      image_tag @resource.file.url, class: 'horizontal-centered resizable', id: 'resource-preview'
     elsif @resource.file_type == :docx
       link_to fa_icon('file-word-o', style: 'font-size: 100px;'), @resource.file.url, id: 'resource-preview'
     elsif @resource.file_type == :pdf

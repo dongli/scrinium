@@ -12,7 +12,7 @@
         <li><%= t('activerecord.attributes.license.expired_at') %>: <%= @license.expired_at %></li>
       </ul>
       <% if policy(@license).update? %>
-        <div class='center'>
+        <div class='horizontal-centered'>
           <%= link_to t('action.edit'), [ :edit, @license ], class: 'button' %>
         </div>
       <% end %>

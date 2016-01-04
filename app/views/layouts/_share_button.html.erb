@@ -17,7 +17,7 @@
 <div class='modal fade' id='select-groups' tabindex='-1' role='dialog' aria-labelledby='select-groups-label'>
   <div class='modal-dialog modal-sm' role='document'>
     <div class='modal-content'>
-      <div class='modal-header center'>
+      <div class='modal-header horizontal-centered'>
         <h4 class='modal-title' id='select-groups-label'>选择要分享的群组</h4>
       </div>
       <div class='modal-body'>
@@ -41,7 +41,7 @@
           </ul>
         <!-- TODO: 这里要显示超过20个群组，如何显示好？ -->
         <% end %>
-        <div class='center'>
+        <div class='horizontal-centered'>
           <%= link_to t('action.submit'), post_to_groups_path, class: 'btn btn-primary btn-xs', remote: true %>
         </div>
       </div>
