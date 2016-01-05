@@ -10,7 +10,7 @@
     data-read='<%= notification.is_read? current_user %>'
     style='display:none'>
     <div id='content' data-marked='false'><%= notification.body %></div>
-    <div class='right'>
+    <div class='pull-right'>
       <%=
         link_to t('action.delete'),
         user_delete_notification_path(current_user, notification),

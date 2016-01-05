@@ -13,7 +13,7 @@
     data-read='<%= message.is_read? current_user %>'
     style='display:none'>
     <div id='content' data-marked='false'><%= message.body %></div>
-    <div class='right'>
+    <div class='pull-right'>
       <% if message.is_trashed? current_user %>
         <%=
           link_to t('action.restore'),

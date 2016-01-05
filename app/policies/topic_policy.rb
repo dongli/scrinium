@@ -8,7 +8,7 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def destroy?
-    login? and user.id == record.user_id
+    login? and ( user.id == record.user_id or user.admin? )
   end
 
   class Scope < Scope

@@ -1,9 +1,29 @@
-<% content_for :left_column do %>
-  <%= render 'profile_left' %>
-<% end %>
+<% content_for :title, @topic.title %>
 
 <% content_for :center_column do %>
-  <dl class='article-show'>
+  <div style='margin-bottom: 10px;'>
+    <ul class='horizontal-clean-list' style='display: inline-block;'>
+      <li><%= link_to avatar(@topic.user, size: :thumb), @topic.user %></li>
+      <li>更新于<%= timeago @topic.updated_at %></li>
+    </ul>
+    <div class='pull-right'>
+      <ul class='horizontal-clean-list'>
+        <% if policy(@topic).update? %>
+          <li><%= link_to fa_icon('edit'), edit_group_topic_path(@group, @topic) %></li>
+        <% end %>
+        <% if policy(@topic).destroy? %>
+          <li>
+            <%= link_to fa_icon('trash'), group_topic_path(@group, @topic), method: :delete,
+              data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.topic')) } %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li><%= render 'collections/collect_button', collectable: @topic %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <dl class='topic-show'>
     <dt><%= @topic.title %></dt>
     <dd class='content mathjax'><%= raw @topic.content %></dd>
   </dl>

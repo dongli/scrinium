@@ -28,12 +28,9 @@ class UsersController < ApplicationController
       @user.profile.crop_w = params[:user][:profile_attributes][:crop_w]
       @user.profile.crop_h = params[:user][:profile_attributes][:crop_h]
     end
+    @user.update(user_params)
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to session[:previous_url].last }
-      else
-        format.html { render :edit }
-      end
+      format.html { redirect_to session[:previous_url].last }
     end
   end
 

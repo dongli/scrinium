@@ -8,7 +8,7 @@
       <%= f.simple_fields_for :user_option do |user_option_form| %>
         <%= user_option_form.input :front_cover %>
       <% end %>
-      <div class='center'>
+      <div class='horizontal-centered'>
         <%= f.button :submit, t('action.submit'), class: 'btn btn-success' %>
       </div>
     <% end %>

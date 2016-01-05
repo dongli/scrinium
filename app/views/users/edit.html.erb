@@ -11,9 +11,6 @@
         <li role='presentation' class='<%= @category == 'achievement' ? 'active' : '' %>'>
           <%= link_to t('user.edit.achievement'), edit_user_path(@user, :achievement) %>
         </li>
-        <li role='presentation' class='<%= @category == 'home_page' ? 'active' : '' %>'>
-          <%= link_to t('user.edit.home_page'), edit_user_path(@user, :home_page) %>
-        </li>
       </ul>
     </div>
   </div>

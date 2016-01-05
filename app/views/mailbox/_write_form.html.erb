@@ -30,12 +30,9 @@
     </div>
     <div class='panel-body'>
       <%= text_area_tag :body %>
-      <div style='text-align:right'>
-        <%= button_tag t('action.send'), class: 'button btn-xs', id: 'send-wroten-message' %>
-        <%=
-          link_to t('action.cancel'), '#',
-          class: 'button btn-xs btn-warning', remote: true
-        %>
+      <div class='pull-right'>
+        <%= button_tag t('action.send'), class: 'btn btn-success btn-xs', id: 'send-wroten-message' %>
+        <%= link_to t('action.cancel'), '#', class: 'btn btn-default btn-xs', remote: true %>
       </div>
     </div>
   </div>
