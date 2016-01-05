@@ -27,7 +27,7 @@
               </div>
             </li>
             <li>
-              <% if not @user.profile.affiliation.empty? %>
+              <% if @user.profile.affiliation and not @user.profile.affiliation.empty? %>
                 <%= @user.profile.affiliation %> - <%= @user.profile.title.text %>
               <% elsif policy(@user).update? %>
                 <div class='horizontal-centered'>
