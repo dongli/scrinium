@@ -29,7 +29,15 @@
       <div style='color: white; margin-top: 1em;'>
         <ul class='vertical-clean-list'>
           <li><%= @user.name %></li>
-          <li><%= @user.profile.signature %></li>
+          <li>
+            <% if not @user.profile.signature.empty? %>
+              <%= @user.profile.signature %>
+            <% elsif policy(@user).update? %>
+              <div class='horizontal-centered'>
+                <%= link_to '请写一个简短的签名表示自己！', edit_user_path(@user, :profile), style: 'color: white;' %>
+              </div>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

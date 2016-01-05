@@ -53,7 +53,7 @@
       <li>
         <%= t('activerecord.attributes.user_quotum.resources_size') %>
         <span class='pull-right'>
-          <%= @user.user_quotum.resources_size.round(2) %>MB
+          <%= @user.user_quotum.resources_size.round(2) %>MB / <%= @user.user_quotum.max_resources_size.round(2) %>MB
         </span>
         <br/>
         <div class='progress'>
@@ -64,7 +64,7 @@
       <li>
         <%= t('activerecord.attributes.user_quotum.articles_count') %>
         <span class='pull-right'>
-          <%= @user.user_quotum.articles_count %>
+          <%= @user.user_quotum.articles_count %> / <%= @user.user_quotum.max_articles_count %>
         </span>
         <br/>
         <div class='progress'>
@@ -75,7 +75,7 @@
       <li>
         <%= t('activerecord.attributes.user_quotum.groups_count') %>
         <span class='pull-right'>
-          <%= @user.user_quotum.groups_count %>
+          <%= @user.user_quotum.groups_count %> / <%= @user.user_quotum.max_groups_count %>
         </span>
         <br/>
         <div class='progress'>

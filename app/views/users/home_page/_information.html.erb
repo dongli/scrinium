@@ -26,8 +26,22 @@
                 </a>
               </div>
             </li>
-            <li><%= @user.profile.affiliation %> - <%= @user.profile.title.text %></li>
-            <li><%= raw @user.profile.bio %></li>
+            <li>
+              <% if not @user.profile.affiliation.empty? %>
+                <%= @user.profile.affiliation %> - <%= @user.profile.title.text %>
+              <% elsif policy(@user).update? %>
+                <div class='horizontal-centered'>
+                  <%= link_to '请添加您的所属机构', edit_user_path(@user, :profile) %>
+                </div>
+              <% else %>
+                <div class='horizontal-centered'>
+                  这个家伙很懒，什么也没填~
+                </div>
+              <% end %>
+            </li>
+            <li>
+              <%= raw @user.profile.bio %>
+            </li>
           </ul>
         </div>
       </div>
@@ -38,7 +52,17 @@
           <%= t('activerecord.models.experience') %>
         </div>
         <div class='panel-body'>
-          <%= raw @user.experience.content %>
+          <% if @user.experience.content %>
+            <%= raw @user.experience.content %>
+          <% elsif policy(@user).update? %>
+            <div class='horizontal-centered'>
+              <%= link_to '快去填下您的科研经历吧，方便他人了解您！', edit_user_path(@user, :experience) %>
+            </div>
+          <% else %>
+            <div class='horizontal-centered'>
+              这个家伙很懒，什么也没填~
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
