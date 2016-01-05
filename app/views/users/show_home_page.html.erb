@@ -30,7 +30,7 @@
         <ul class='vertical-clean-list'>
           <li><%= @user.name %></li>
           <li>
-            <% if not @user.profile.signature.empty? %>
+            <% if @user.profile.signature and not @user.profile.signature.empty? %>
               <%= @user.profile.signature %>
             <% elsif policy(@user).update? %>
               <div class='horizontal-centered'>
