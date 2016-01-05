@@ -1,15 +1,11 @@
 <% if user_signed_in? and current_user != collectable.user %>
   <li>
     <% collected = is_collected? current_user, collectable %>
-    <%=
-      link_to fa_icon('star', text: t('action.uncollect')),
-      [ collectable, :uncollect ],
+    <%= link_to fa_icon('star'), [ collectable, :uncollect ],
       remote: true, id: "uncollect-#{class_escape collectable}",
       style: "display: #{collected ? 'block' : 'none'}"
     %>
-    <%=
-      link_to fa_icon('star-o', text: t('action.collect')),
-      [ collectable, :collect ],
+    <%= link_to fa_icon('star-o'), [ collectable, :collect ],
       remote: true, id: "collect-#{class_escape collectable}",
       style: "display: #{collected ? 'none' : 'block'}"
     %>

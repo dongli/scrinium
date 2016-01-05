@@ -1,11 +1,29 @@
 <% content_for :title, @article.title %>
-<% add_breadcrumb @article.title, @article %>
-
-<% content_for :left_column do %>
-  <%= render 'profile_left' %>
-<% end %>
 
 <% content_for :center_column do %>
+  <div style='margin-bottom: 10px;'>
+    <ul class='horizontal-clean-list' style='display: inline-block;'>
+      <li><%= link_to avatar(@article.user, size: :thumb), @article.user %></li>
+      <li>更新于<%= timeago @article.updated_at %></li>
+    </ul>
+    <div class='pull-right'>
+      <ul class='horizontal-clean-list'>
+        <% if policy(@article).update? %>
+          <li><%= link_to fa_icon('edit'), edit_article_path(@article) %></li>
+        <% end %>
+        <% if policy(@article).destroy? %>
+          <li>
+            <%= link_to fa_icon('trash'), @article, method: :delete,
+              data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.article')) } %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li><%= render 'layouts/share_button', postable: @article %></li>
+          <li><%= render 'collections/collect_button', collectable: @article %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
   <dl class='article-show'>
     <dt><%= @article.title %></dt>
     <dd class='content mathjax'><%= raw @article.content %></dd>

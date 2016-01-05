@@ -1,50 +1,52 @@
-<a href='#select-share-places' data-toggle='collapse' aria-expanded='false' aria-controls='select-share-places'>
-  <%= fa_icon('share-alt', text: t('action.share_to')) %>
-</a>
+<% if user_signed_in? %>
+  <a href='#select-share-places' data-toggle='collapse' aria-expanded='false' aria-controls='select-share-places'>
+    <%= fa_icon('share-alt') %>
+  </a>
 
-<div class='collapse' id='select-share-places'>
-  <ul class='horizontal-clean-list'>
-    <li>
-      <a data-toggle='modal' data-target='#select-groups'>
-        <%= fa_icon('users') %>
-      </a>
-    </li>
-    <li style='color: gray;'><%= fa_icon('wechat') %></li>
-    <li style='color: gray;'><%= fa_icon('weibo') %></li>
-  </ul>
-</div>
+  <div class='collapse' id='select-share-places'>
+    <ul class='horizontal-clean-list'>
+      <li>
+        <a data-toggle='modal' data-target='#select-groups'>
+          <%= fa_icon('users') %>
+        </a>
+      </li>
+      <li style='color: gray;'><%= fa_icon('wechat') %></li>
+      <li style='color: gray;'><%= fa_icon('weibo') %></li>
+    </ul>
+  </div>
 
-<div class='modal fade' id='select-groups' tabindex='-1' role='dialog' aria-labelledby='select-groups-label'>
-  <div class='modal-dialog modal-sm' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header horizontal-centered'>
-        <h4 class='modal-title' id='select-groups-label'>选择要分享的群组</h4>
-      </div>
-      <div class='modal-body'>
-        <% groups = get_valid_groups_of current_user %>
-        <% if groups.size < 20 %>
-          <ul class='clean-list'>
-            <% groups.each do |group| %>
-              <li>
-                <% if group.has_post? postable %>
-                  <%= check_box_tag "group-#{group.id}", '', true, disabled: true %> <%= group.name %>
-                <% else %>
-                  <%= check_box_tag "group-#{group.id}" %> <%= group.name %>
-                  <%=
-                    link_to '',
-                    new_post_path(group_id: group.id, postable_id: postable.id, postable_type: postable.class),
-                    id: "new-post-for-group-#{group.id}", remote: true
-                  %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        <!-- TODO: 这里要显示超过20个群组，如何显示好？ -->
-        <% end %>
-        <div class='horizontal-centered'>
-          <%= link_to t('action.submit'), post_to_groups_path, class: 'btn btn-primary btn-xs', remote: true %>
+  <div class='modal fade' id='select-groups' tabindex='-1' role='dialog' aria-labelledby='select-groups-label'>
+    <div class='modal-dialog modal-sm' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          选择要分享的群组
+        </div>
+        <div class='modal-body'>
+          <% groups = get_valid_groups_of current_user %>
+          <% if groups.size < 20 %>
+            <ul class='vertical-clean-list'>
+              <% groups.each do |group| %>
+                <li>
+                  <% if group.has_post? postable %>
+                    <%= check_box_tag "group-#{group.id}", '', true, disabled: true %> <%= group.name %>
+                  <% else %>
+                    <%= check_box_tag "group-#{group.id}" %> <%= group.name %>
+                    <%=
+                      link_to '',
+                      new_post_path(group_id: group.id, postable_id: postable.id, postable_type: postable.class),
+                      id: "new-post-for-group-#{group.id}", remote: true
+                    %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          <!-- TODO: 这里要显示超过20个群组，如何显示好？ -->
+          <% end %>
+        </div>
+        <div class='modal-footer'>
+          <%= link_to t('action.submit'), post_to_groups_path, class: 'btn btn-success', remote: true %>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
