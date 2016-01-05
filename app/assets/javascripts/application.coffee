@@ -161,3 +161,11 @@ $(document).on 'page:change', ->
   $(window).resize ->
     clearTimeout(resizeID);
     resizeID = setTimeout(collapseLeftSide, 50)
+
+  # 增加返回顶部的按钮。
+  if $(window).height() + 100 < $(document).height()
+    $('#move-to-window-top').removeClass('hide')
+  $('#move-to-window-top').click ->
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1000);
