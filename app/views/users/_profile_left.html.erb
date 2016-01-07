@@ -36,6 +36,9 @@
         <li><%= link_to fa_icon('key', text: t('devise.views.change_password')), edit_user_registration_path %></li>
       <% end %>
       <li>
+        <%= link_to fa_icon('newspaper-o', text: t('activerecord.models.activity')), activities_path %>
+      </li>
+      <li>
         <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
       </li>
     </ul>

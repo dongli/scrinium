@@ -17,7 +17,7 @@
  *= require cropper/cropper.min
  *= require jstree-default
  *= require froala_editor/froala_editor_require
- *= require application/custom
+ *= require_tree ./application
  *= require startup/css/flat-ui
  *= require startup/css/flat-ui-select2
  *= require_self

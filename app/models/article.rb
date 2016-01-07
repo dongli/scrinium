@@ -20,8 +20,7 @@
 class Article < ActiveRecord::Base
   extend Enumerize
   include ArticleSearchable
-  include PublicActivity::Model
-  tracked
+  include PublicActivity::Common
 
   enumerize :status, in: [
     :public,

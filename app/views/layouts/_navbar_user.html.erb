@@ -16,6 +16,9 @@
         <%= link_to fa_icon('home', text: t('user.home_page')), show_home_page_user_path(current_user) %>
       </li>
       <li>
+        <%= link_to fa_icon('newspaper-o', text: t('activerecord.models.activity')), activities_path %>
+      </li>
+      <li>
         <a href='<%= user_mailbox_index_path(current_user) %>'
           id='mailbox-menu-item'>
           <%= fa_icon('envelope', text: t('mailbox')) %>

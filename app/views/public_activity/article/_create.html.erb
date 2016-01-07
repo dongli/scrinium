@@ -1,6 +1,6 @@
-<%= fa_icon('refresh', style: 'margin-right: 10px;') %>
+<%= fa_icon('plus', style: 'margin-right: 10px;') %>
 <%= link_to activity.owner.name, activity.owner if activity.owner %>
-更新文章
+发表文章
 <% if activity.trackable %>
   《<%= link_to activity.trackable.title, activity.trackable %>》
 <% else %>

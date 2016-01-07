@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        @article.create_activity :create, owner: current_user
         format.html { redirect_to @article }
       else
         format.html { render :new }
@@ -33,10 +34,7 @@ class ArticlesController < ApplicationController
     set_status
     respond_to do |format|
       if @article.update(article_params)
-        MessageBus.publish "/update-Article-#{@article.id}", {
-          collectable_type: 'Article',
-          collectable_id: @article.id
-        }
+        @article.create_activity :update, owner: current_user
         format.html { redirect_to @article }
       else
         format.html { render :edit }
