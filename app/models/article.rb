@@ -25,7 +25,8 @@ class Article < ActiveRecord::Base
   enumerize :status, in: [
     :public,
     :draft,
-    :trashed
+    :trashed,
+    :hidden  # 这个是为了存储文章中的图片。
   ], default: :public, predicates: true
 
   has_paper_trail on: [:update, :destroy],

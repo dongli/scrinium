@@ -66,6 +66,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def upload_image
+    file = params[:file]
+    image = current_user.resources.new(name: SecureRandom.hex,
+                                       resourceable_type: 'User',
+                                       resourceable_id: current_user.id,
+                                       user_id: current_user.id,
+                                       status: 'hidden',
+                                       file: file)
+    image.save!
+    respond_to do |format|
+      format.json { render json: { link: image.file.url } }
+    end
+  end
+
   private
 
   def set_status

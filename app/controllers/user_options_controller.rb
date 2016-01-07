@@ -42,7 +42,6 @@ class UserOptionsController < ApplicationController
     @user_option.destroy
     respond_to do |format|
       format.html { redirect_to user_options_url, notice: 'User option was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
