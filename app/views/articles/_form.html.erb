@@ -50,7 +50,7 @@
   $(function() {
     $('#article_content').froalaEditor({
       height: '300',
-      imageUploadURL: '<%= article_upload_image_path(@article) %>',
+      imageUploadURL: '<%= article_upload_image_path %>',
       imageUploadParams: {
         authenticity_token: '<%= form_authenticity_token %>',
         return_to: window.location.href

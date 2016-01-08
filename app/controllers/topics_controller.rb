@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  before_action :set_group
+  before_action :set_group, except: [:upload_image]
 
   def index
     @topics = @group.topics.all
@@ -46,6 +46,20 @@ class TopicsController < ApplicationController
     @topic.destroy
     respond_to do |format|
       format.html { redirect_to @group }
+    end
+  end
+
+  def upload_image
+    file = params[:file]
+    image = current_user.resources.new(name: SecureRandom.hex,
+                                       resourceable_type: 'User',
+                                       resourceable_id: current_user.id,
+                                       user_id: current_user.id,
+                                       status: 'hidden',
+                                       file: file)
+    image.save!
+    respond_to do |format|
+      format.json { render json: { link: image.file.url } }
     end
   end
 

@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   resources :articles, concerns: [:commentable, :collectable]
   get '/articles/:id/versions' => 'articles#versions', as: :article_versions
   get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version # 目前没什么用。
-  post 'articles/:id/upload_image' => 'articles#upload_image', as: :article_upload_image
+  post 'articles/upload_image' => 'articles#upload_image', as: :article_upload_image
   # 资源
   resources :resources, concerns: [:commentable, :collectable]
   resources :folders
@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   resources :addresses
   # 群组
   resources :topics, concerns: [:commentable, :collectable]
+  post 'topics/upload_image' => 'topics#upload_image', as: :topic_upload_image
   resources :groups, except: :edit do
     get :feed, on: :collection
     member do
