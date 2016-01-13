@@ -8,21 +8,8 @@
         <%= f.input :short_name %>
       </div>
     </div>
-    <div class='row'>
-      <div class='col-md-8'>
-        <%=
-          f.input :category_list,
-          collection: @group.categories.map { |t| t.name },
-          input_html: {
-            class: 'use-select2-multiple-tags',
-            multiple: 'multiple'
-          }
-        %>
-      </div>
-      <div class='col-md-4'>
-        <%= f.input :status %>
-      </div>
-    </div>
+    <%= f.input :category_list, collection: @group.categories.map { |t| t.name },
+      input_html: { class: 'use-select2-multiple-tags', multiple: 'multiple' } %>
     <%= f.input :description, as: :text %>
 
     <%= f.button :submit, t('action.submit'), class: 'btn btn-success uppercase btn-block' %>

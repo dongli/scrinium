@@ -1,5 +1,7 @@
+<% is_in_group = is_in_group? group %>
 <ul class='horizontal-line-list'>
   <% topics.each do |topic| %>
+    <% next if not is_in_group and topic.private? %>
     <li>
       <%= avatar topic.user, size: '50x50' %>
       <span style='display: inline-block; vertical-align: middle; margin-left: 1em;'>
