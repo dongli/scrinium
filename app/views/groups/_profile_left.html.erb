@@ -4,7 +4,6 @@
       <li><%= link_to logo(@group, size: :medium), @group %></li>
       <li><%= @group.name %></li>
       <li><%= t('activerecord.attributes.group.admin') %>: <%= link_to @group.admin.name, @group.admin %></li>
-      <li><%= @group.status.text %></li>
       <li>
         <ul class='vertical-clean-list'>
           <% @group.categories.each do |tag| %>
