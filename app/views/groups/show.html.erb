@@ -7,8 +7,7 @@
 
 <% content_for :center_column do %>
   <% if policy(@group).update? %>
-    <%=
-      render 'layouts/navtab',
+    <%= render 'layouts/navtab',
       tabs: {
         info: [ t('tab.info'), render('info') ],
         resources: [
@@ -18,9 +17,8 @@
         admin: [ t('tab.admin'), render('admin') ]
       }
     %>
-  <% else %>
-    <%=
-      render 'layouts/navtab',
+  <% elsif user_signed_in? and is_in_group? @group %>
+    <%= render 'layouts/navtab',
       tabs: {
         info: [ t('tab.info'), render('info') ],
         resources: [
@@ -29,5 +27,7 @@
         ]
       }
     %>
+  <% else %>
+    <%= render 'info' %>
   <% end %>
 <% end %>

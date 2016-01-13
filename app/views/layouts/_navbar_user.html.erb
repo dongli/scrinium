@@ -35,4 +35,11 @@
       </li>
     </ul>
   </li>
+<% else %>
+  <li style='padding-top: 5px'>
+    <%= link_to t('devise.views.sign_in'), new_user_session_path %>
+  </li>
+  <li style='padding-top: 5px'>
+    <%= link_to t('devise.views.sign_up'), new_user_registration_path %>
+  </li>
 <% end %>
