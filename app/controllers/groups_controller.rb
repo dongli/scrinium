@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :members]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :members, :upload_image]
 
   def index
     @search = Group.with_translations(I18n.locale).ransack(params[:q])
@@ -60,6 +60,20 @@ class GroupsController < ApplicationController
 
   def members
     @members = Kaminari.paginate_array(@group.memberships.where(status: 'approved').map { |x| x.user }).page(params[:page])
+  end
+
+  def upload_image
+    file = params[:file]
+    image = current_user.resources.new(name: SecureRandom.hex,
+                                       resourceable_type: 'Group',
+                                       resourceable_id: @group.id,
+                                       user_id: current_user.id,
+                                       status: 'hidden',
+                                       file: file)
+    image.save!
+    respond_to do |format|
+      format.json { render json: { link: image.file.url } }
+    end
   end
 
   private

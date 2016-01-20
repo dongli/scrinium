@@ -40,7 +40,13 @@
 <script>
   $(function() {
     $('#group_description').froalaEditor({
-      height: '300'
+      height: '300',
+      imageUploadURL: '<%= upload_image_group_path(@group) %>',
+      imageUploadParams: {
+        authenticity_token: '<%= form_authenticity_token %>',
+        return_to: window.location.href
+      },
+      imageAllowedTypes: ['jpeg', 'jpg', 'png']
     })
   })
 </script>

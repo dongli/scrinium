@@ -95,6 +95,7 @@ Rails.application.routes.draw do
     get :feed, on: :collection
     member do
       get :members
+      post :upload_image
     end
     resources :nodes
     resources :topics
