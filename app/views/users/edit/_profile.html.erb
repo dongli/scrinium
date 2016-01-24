@@ -1,36 +1,29 @@
-<div class='panel panel-default'>
-  <div class='panel-heading'>
-    <%= t('user.edit.profile') %>
-  </div>
-  <div class='panel-body'>
-    <%= simple_form_for @user do |f| %>
-      <%= f.simple_fields_for :profile do |profile_form| %>
-        <%= render 'layouts/upload_image', form: profile_form,
-          object: @user.profile, image_attribute_name: :avatar, default_image: 'logos/default_avatar.png' %>
-      <% end %>
-      <%= f.input :name, required: false %>
-      <%= f.simple_fields_for :profile do |profile_form| %>
-        <div class='row'>
-          <div class='col-md-4'>
-            <%= profile_form.input :gender, required: false %>
-          </div>
-          <div class='col-md-4'>
-            <%= profile_form.input :country %>
-          </div>
-          <div class='col-md-4'>
-            <%= profile_form.input :title, required: false %>
-          </div>
-        </div>
-        <%= profile_form.input :affiliation %>
-        <%= profile_form.input :signature %>
-        <%= profile_form.input :bio %>
-      <% end %>
-      <div class='center'>
-        <%= f.button :submit, t('action.submit'), class: 'btn btn-success' %>
+<%= simple_form_for @user do |f| %>
+  <%= f.simple_fields_for :profile do |profile_form| %>
+    <%= render 'layouts/upload_image', form: profile_form,
+      object: @user.profile, image_attribute_name: :avatar, default_image: 'logos/default_avatar.png' %>
+  <% end %>
+  <%= f.input :name, required: false %>
+  <%= f.simple_fields_for :profile do |profile_form| %>
+    <div class='row'>
+      <div class='col-md-4'>
+        <%= profile_form.input :gender, required: false %>
       </div>
-    <% end %>
+      <div class='col-md-4'>
+        <%= profile_form.input :country %>
+      </div>
+      <div class='col-md-4'>
+        <%= profile_form.input :title, required: false %>
+      </div>
+    </div>
+    <%= profile_form.input :affiliation %>
+    <%= profile_form.input :signature %>
+    <%= profile_form.input :bio %>
+  <% end %>
+  <div class='center'>
+    <%= f.button :submit, t('action.submit'), class: 'btn btn-success' %>
   </div>
-</div>
+<% end %>
 <script>
   $(function() {
     $('#user_profile_attributes_bio').froalaEditor({

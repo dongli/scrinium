@@ -1,33 +1,13 @@
 <% content_for :title, @group.name %>
-<% add_breadcrumb @group.short_name, @group %>
 
 <% content_for :left_column do %>
   <%= render 'profile_left' %>
 <% end %>
 
 <% content_for :center_column do %>
-  <% if policy(@group).update? %>
-    <%= render 'layouts/navtab',
-      tabs: {
-        info: [ t('tab.info'), render('info') ],
-        resources: [
-          t('activerecord.models.resource'),
-          render('resource_board/show', folderable: @group)
-        ],
-        admin: [ t('tab.admin'), render('admin') ]
-      }
-    %>
-  <% elsif user_signed_in? and is_in_group? @group %>
-    <%= render 'layouts/navtab',
-      tabs: {
-        info: [ t('tab.info'), render('info') ],
-        resources: [
-          t('activerecord.models.resource'),
-          render('resource_board/show', folderable: @group)
-        ]
-      }
-    %>
+  <% if @group.description.empty? %>
+    <div class='horizontal-centered'>管理员很懒，什么也没有写！</div>
   <% else %>
-    <%= render 'info' %>
+    <%= sanitize @group.description %>
   <% end %>
 <% end %>

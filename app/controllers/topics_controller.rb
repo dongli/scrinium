@@ -4,7 +4,14 @@ class TopicsController < ApplicationController
   before_action :set_group, except: [:upload_image]
 
   def index
-    @topics = @group.topics.all
+    if params[:node]
+      @node = params[:node]
+      node_id = @group.nodes.where(name: @node)
+      @topics = @group.topics.where(node_id: node_id).page(params[:page])
+    else
+      @search = @group.topics.search(params[:q])
+      @topics = @search.result.page(params[:page])
+    end
   end
 
   def show
@@ -25,7 +32,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         @group.increment! :topics_count
-        format.html { redirect_to @group }
+        format.html { redirect_to topics_path(group_id: @group.id, node: @topic.node.name) }
       else
         format.html { render :new }
       end

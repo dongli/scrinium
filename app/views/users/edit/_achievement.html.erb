@@ -1,16 +1,9 @@
-<div class='panel panel-default'>
-  <div class='panel-heading'>
-    <%= t('user.edit.achievement') %>
-  </div>
-  <div class='panel-body'>
-    <%= simple_form_for @user do |f| %>
-      <%= f.simple_fields_for :achievement do |achievement_form| %>
-        <%= achievement_form.input :content, label: false %>
-      <% end %>
-      <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
-    <% end %>
-  </div>
-</div>
+<%= simple_form_for @user do |f| %>
+  <%= f.simple_fields_for :achievement do |achievement_form| %>
+    <%= achievement_form.input :content, label: false %>
+  <% end %>
+  <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
+<% end %>
 <script>
   $(function() {
     $('#user_achievement_attributes_content').froalaEditor({

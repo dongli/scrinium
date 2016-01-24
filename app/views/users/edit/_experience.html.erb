@@ -1,16 +1,9 @@
-<div class='panel panel-default'>
-  <div class='panel-heading'>
-    <%= t('user.edit.experience') %>
-  </div>
-  <div class='panel-body'>
-    <%= simple_form_for @user do |f| %>
-      <%= f.simple_fields_for :experience do |experience_form| %>
-        <%= experience_form.input :content, label: false %>
-      <% end %>
-      <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
-    <% end %>
-  </div>
-</div>
+<%= simple_form_for @user do |f| %>
+  <%= f.simple_fields_for :experience do |experience_form| %>
+    <%= experience_form.input :content, label: false %>
+  <% end %>
+  <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
+<% end %>
 <script>
   $(function() {
     $('#user_experience_attributes_content').froalaEditor({

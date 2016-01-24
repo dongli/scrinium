@@ -1,6 +1,6 @@
 <% content_for :left_column do %>
-  <div class='panel panel-default'>
-    <div class='panel-body'>
+  <div class='panel panel-default box-shadow'>
+    <div class='panel-body sidenav'>
       <ul class='nav nav-pills nav-stacked'>
         <li role='presentation' class='<%= @category == 'profile' ? 'active' : '' %>'>
           <%= link_to t('user.edit.profile'), edit_user_path(@user, :profile) %>

@@ -31,3 +31,18 @@
     </ul>
   </div>
 </div>
+
+<div class='panel panel-default box-shadow'>
+  <div class='panel-heading'>
+    <%= fa_icon('compass', text: t('activerecord.models.node')) %>
+  </div>
+  <div class='panel-body horizontal-centered sidenav'>
+    <ul class='nav nav-pills nav-stacked'>
+      <% @group.nodes.order(:id).each do |node| %>
+        <li role='presentation' class='<%= @node == node.name ? "active" : "" %>'>
+          <%= link_to node.name, topics_path(group_id: @group.id, node: node.name) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

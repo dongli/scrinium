@@ -45,6 +45,7 @@ zh-CN:
     topics: 话题
     edit:
       profile: 群组信息
+      members:  成员管理
       topics: 话题设置
       home_page: 主页设置
 

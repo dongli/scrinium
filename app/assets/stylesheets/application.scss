@@ -33,6 +33,10 @@ body {
   background-color: #EBF0F1;
 }
 
+.center-column > .panel {
+  padding: 30px;
+}
+
 p {
   font-size: 15px;
 }
@@ -171,4 +175,22 @@ table {
   height: 50px;
   border-radius: 100px;
   background-color: #16A085;
+}
+
+.sidenav {
+  padding: 0;
+  .nav-pills > li:first-child.active > a,
+  .nav-pills > li:first-child.active > a:hover {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .nav-pills > li.active > a,
+  .nav-pills > li.active > a:hover {
+    border-radius: 0;
+  }
+  .nav-pills > li:last-child.active > a,
+  .nav-pills > li:last-child.active > a:hover {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
