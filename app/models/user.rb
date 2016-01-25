@@ -35,8 +35,6 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
-  paginates_per 10
-
   has_many :memberships, dependent: :destroy
   has_many :organizations, through: :memberships, source: :host, source_type: 'Organization'
   has_many :groups, through: :memberships, source: :host, source_type: 'Group'
@@ -61,7 +59,7 @@ class User < ActiveRecord::Base
   has_one  :user_quotum, dependent: :destroy
 
   validates :name, :email, presence: true
-  validates :email, uniqueness: true
+  validates :email, :subdomain, uniqueness: true
   validates_associated :profile
 
   before_create :create_default_associated_models

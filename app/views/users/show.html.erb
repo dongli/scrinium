@@ -1,7 +1,7 @@
 <% content_for :title, t('user.worktable') %>
 
 <% content_for :left_column do %>
-  <%= render 'profile_left' %>
+  <%= render 'users/profile_left' %>
 <% end %>
 
 <% content_for :center_column do %>
@@ -10,19 +10,19 @@
     tabs: {
       columns: [
         t('user.columns'),
-        render('articles', user: @user)
+        render('users/articles', user: @user)
       ],
       publications: [
         t('user.publications'),
-        render('publications', user: @user)
+        render('users/publications', user: @user)
       ],
       collections: [
         t('collection'),
-        render('collections', user: @user)
+        render('users/collections', user: @user)
       ],
       resources: [
         t('activerecord.models.resource'),
-        render('resource_board/show', folderable: @user)
+        render('resource_board/show', folderable: @user, user: @user)
       ]
     }
   %>

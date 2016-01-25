@@ -1,7 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  before_action :set_group, except: [:upload_image]
 
   def index
     if params[:node]
@@ -32,7 +31,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         @group.increment! :topics_count
-        format.html { redirect_to topics_path(group_id: @group.id, node: @topic.node.name) }
+        format.html { redirect_to topics_path(node: @topic.node.name) }
       else
         format.html { render :new }
       end
@@ -42,7 +41,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to [@group, @topic] }
+        format.html { redirect_to @topic }
       else
         format.html { render :edit }
       end
@@ -71,10 +70,6 @@ class TopicsController < ApplicationController
   end
 
   private
-
-  def set_group
-    @group = Group.find(params[:group_id])
-  end
 
   def set_topic
     @topic = Topic.find(params[:id])

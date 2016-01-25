@@ -4,7 +4,7 @@
   <% if folderable.folders.empty? %>
     <% folderable.folders.create(
       name: 'root',
-      user_id: current_user.id,
+      user_id: user.id,
       folderable_id: folderable.id,
       folderable_type: folderable.class.to_s
     ) %>
@@ -101,7 +101,7 @@
       </div>
       <div class='modal-body'>
         <div class='well'>
-          <% groups = get_valid_groups_of current_user %>
+          <% groups = get_valid_groups_of user %>
           <% if groups.size < 20 %>
             <ul class='clean-list'>
               <% groups.each do |group| %>

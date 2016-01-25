@@ -1,6 +1,5 @@
 class NodesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_group
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -48,10 +47,6 @@ class NodesController < ApplicationController
   end
 
   private
-
-  def set_group
-    @group = Group.find(params[:group_id])
-  end
 
   def set_node
     @node = Node.find(params[:id])

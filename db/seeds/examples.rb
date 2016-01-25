@@ -16,6 +16,7 @@ User.create(
   name: '董理',
   role: 'admin',
   email: 'dongli@lasg.iap.ac.cn',
+  subdomain: 'dongli',
   password: '12345678',
   password_confirmation: '12345678',
 )
@@ -97,6 +98,7 @@ Profile.create(
 Group.create(
   name: '测试群组',
   short_name: '测试群组',
+  subdomain: 'test_group',
   admin_id: 1,
   status: 'public'
 )

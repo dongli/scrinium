@@ -1,4 +1,6 @@
 class UserQuotum < ActiveRecord::Base
+  acts_as_tenant :user
+
   belongs_to :user
 
   before_create :set_defaults

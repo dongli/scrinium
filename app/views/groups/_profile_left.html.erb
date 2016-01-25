@@ -24,7 +24,7 @@
       <% end %>
       <% if policy(@group).create_topic? %>
         <li>
-          <%= link_to fa_icon('comments', text: t('topic.create')), new_group_topic_path(group_id: @group.id) %>
+          <%= link_to fa_icon('comments', text: t('topic.create')), new_topic_path %>
         </li>
       <% end %>
       <li><%= render 'memberships/apply_button', host: @group %></li>
@@ -40,7 +40,7 @@
     <ul class='nav nav-pills nav-stacked'>
       <% @group.nodes.order(:id).each do |node| %>
         <li role='presentation' class='<%= @node == node.name ? "active" : "" %>'>
-          <%= link_to node.name, topics_path(group_id: @group.id, node: node.name) %>
+          <%= link_to node.name, topics_path(node: node.name) %>
         </li>
       <% end %>
     </ul>

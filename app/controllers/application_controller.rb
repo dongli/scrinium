@@ -1,10 +1,8 @@
-require "application_responder"
-
 class ApplicationController < ActionController::Base
-  self.responder = ApplicationResponder
-  respond_to :html
-
   include Pundit
+
+  set_current_tenant_through_filter
+  before_filter :choose_tenant
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -15,6 +13,17 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
+
+  def choose_tenant
+    object = current_tenant
+    if request.subdomain.present?
+      if not current_tenant or current_tenant.subdomain != request.subdomain
+        object = Group.find_by(subdomain: request.subdomain) ||
+                 User.find_by(subdomain: request.subdomain)
+      end
+    end
+    set_current_tenant object
+  end
 
   def store_location
     session[:previous_url] = [] if not session[:previous_url] or session[:previous_url].class != Array

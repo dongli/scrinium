@@ -13,6 +13,8 @@
 #
 
 class Publication < ActiveRecord::Base
+  acts_as_tenant :user
+
   belongs_to :user
   belongs_to :reference
   validates :user_id, uniqueness: { scope: :reference_id }

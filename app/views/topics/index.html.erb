@@ -17,7 +17,7 @@
             </div>
             <div class='col-xs-11'>
               <span style='display: inline-block; margin-left: 1em;'>
-                <%= link_to topic.title, [@group, topic] %><br/>
+                <%= link_to topic.title, topic %><br/>
                 <span class='label label-default'><%= topic.node.name %></span>
                 <%= fa_icon 'comment-o', text: topic.comments_count, style: 'margin-left: 1em;' %>
                 <%= fa_icon 'eye', text: topic.views_count, style: 'margin-left: 1em;' %>

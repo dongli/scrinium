@@ -40,6 +40,8 @@ class Profile < ActiveRecord::Base
   # 使用Jcrop裁剪头像，下面这四个变量是存储裁剪参数。
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
+  acts_as_tenant :user
+
   belongs_to :user
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },

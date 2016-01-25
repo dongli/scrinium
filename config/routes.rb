@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
-  get 'news/show'
-  get 'library/index'
   get 'about' => 'home#about'
 
   # Concerns
@@ -92,14 +90,13 @@ Rails.application.routes.draw do
   resources :topics, concerns: [:commentable, :collectable]
   post 'topics/upload_image' => 'topics#upload_image', as: :topic_upload_image
   resources :groups, except: :edit do
-    get :feed, on: :collection
     member do
       get :members
       post :upload_image
     end
-    resources :nodes
-    resources :topics
   end
+  resources :nodes
+  resources :topics
   get '/groups/:id/edit/:category' => 'groups#edit', as: :edit_group
   resources :group_options
   resources :activities

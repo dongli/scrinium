@@ -9,11 +9,11 @@
     <div class='pull-right'>
       <ul class='horizontal-clean-list'>
         <% if policy(@topic).update? %>
-          <li><%= link_to fa_icon('edit'), edit_group_topic_path(@group, @topic) %></li>
+          <li><%= link_to fa_icon('edit'), edit_topic_path(@topic) %></li>
         <% end %>
         <% if policy(@topic).destroy? %>
           <li>
-            <%= link_to fa_icon('trash'), group_topic_path(@group, @topic), method: :delete,
+            <%= link_to fa_icon('trash'), topic_path(@topic), method: :delete,
               data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.topic')) } %>
           </li>
         <% end %>

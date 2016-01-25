@@ -29,10 +29,13 @@ class Article < ActiveRecord::Base
     :hidden  # 这个是为了存储文章中的图片。
   ], default: :public, predicates: true
 
-  has_paper_trail on: [:update, :destroy],
-    only: [:title, :content]
+  has_paper_trail on: [:update, :destroy], only: [:title, :content]
+
   acts_as_taggable
   acts_as_taggable_on :categories
+
+  acts_as_tenant :user
+
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :collections, as: :collectable, dependent: :destroy

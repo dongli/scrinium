@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   layout 'home_page'
-  before_action :subdomian_organization
+  before_action :dispatch_subdomain
 
   def index
     redirect_to current_user if user_signed_in?
@@ -9,10 +9,13 @@ class HomeController < ApplicationController
   def about
   end
 
-  def subdomian_organization
-    subdomain = request.subdomain
-    if subdomain.present? and @organization = Organization.find_by(subdomain: subdomain)
-      render "organizations/show", layout: 'application'
+  protected
+
+  def dispatch_subdomain
+    if current_tenant
+      tenant_type = current_tenant.class.name.downcase
+      eval "@#{tenant_type} = current_tenant"
+      render "#{tenant_type.pluralize}/show", layout: 'application'
     end
   end
 end

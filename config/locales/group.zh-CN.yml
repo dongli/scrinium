@@ -7,7 +7,8 @@ zh-CN:
         name:           名称
         short_name:     简称
         description:    简介
-        logo:           群组Logo
+        logo:           群组图标
+        subdomain:      子域名
         admin_id:       超级管理员ID
         category_list:  分类标签
         admin:          管理员
@@ -23,6 +24,8 @@ zh-CN:
               blank: 请给群组起个响当当的名称！
             short_name:
               blank: 请给群组起个便于识别的简称！
+            subdomain:
+              blank: 请给群组起个简单易记的子域名！
 
   simple_form:
     placeholders:
@@ -30,6 +33,7 @@ zh-CN:
         name: 名称
         short_name: 简称
         description: 简介
+        subdomain: 子域名（全部小写字母）
 
   enumerize:
     group:

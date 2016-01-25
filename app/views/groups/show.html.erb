@@ -1,11 +1,11 @@
 <% content_for :title, @group.name %>
 
 <% content_for :left_column do %>
-  <%= render 'profile_left' %>
+  <%= render 'groups/profile_left' %>
 <% end %>
 
 <% content_for :center_column do %>
-  <% if @group.description.empty? %>
+  <% if not @group.description or @group.description.empty? %>
     <div class='horizontal-centered'>管理员很懒，什么也没有写！</div>
   <% else %>
     <%= sanitize @group.description %>

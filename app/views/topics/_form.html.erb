@@ -1,5 +1,5 @@
 <div class='article-form'>
-  <%= simple_form_for([@group, @topic]) do |f| %>
+  <%= simple_form_for @topic do |f| %>
     <%= f.input :title, required: false %>
     <div class='row'>
       <div class='col-md-6'>
