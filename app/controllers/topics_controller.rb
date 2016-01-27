@@ -1,24 +1,14 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_group, only: [:new, :create]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-
-  def index
-    if params[:node]
-      @node = params[:node]
-      node_id = @group.nodes.where(name: @node)
-      @topics = @group.topics.where(node_id: node_id).page(params[:page])
-    else
-      @search = @group.topics.search(params[:q])
-      @topics = @search.result.page(params[:page])
-    end
-  end
 
   def show
     @topic.increment!(:views_count)
   end
 
   def new
-    @topic = Topic.new
+    @topic = @group.topics.new
   end
 
   def edit
@@ -31,7 +21,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         @group.increment! :topics_count
-        format.html { redirect_to topics_path(node: @topic.node.name) }
+        format.html { redirect_to show_group_path(@group, :topics, node: @topic.node.name) }
       else
         format.html { render :new }
       end
@@ -70,6 +60,10 @@ class TopicsController < ApplicationController
   end
 
   private
+
+  def set_group
+    @group = Group.friendly.find(params[:group_id])
+  end
 
   def set_topic
     @topic = Topic.find(params[:id])

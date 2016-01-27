@@ -1,26 +1,17 @@
 class Users::SessionsController < Devise::SessionsController
   layout 'slim_page'
-# before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  protected
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def after_sign_out_path_for user
+    "http://#{request.domain}#{":#{request.port}" if request.port}"
+  end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.for(:sign_in) << :attribute
-  # end
+  def after_sign_in_path_for resource
+    if session[:previous_url].last != '/'
+      session[:previous_url].last
+    else
+      user_path(resource)
+    end
+  end
 end

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :versions, :delete_version]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.search(params[:q], options= {}).records.page(params[:page]).per(params[:per_page] || 10)
@@ -46,23 +46,6 @@ class ArticlesController < ApplicationController
     @article.destroy
     respond_to do |format|
       format.html { redirect_to user_path(current_user) }
-    end
-  end
-
-  def versions
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  def delete_version
-    if params[:version_id] == '-1'
-      @article.versions.destroy_all
-    else
-      PaperTrail::Version.find(params[:version_id]).destroy
-    end
-    respond_to do |format|
-      format.js
     end
   end
 

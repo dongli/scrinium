@@ -13,8 +13,6 @@
 #
 
 class Collection < ActiveRecord::Base
-  acts_as_tenant :user
-
   belongs_to :user
   belongs_to :collectable, polymorphic: true
   validates :user_id, uniqueness: { cope: [ :collectable_id, :collectable_type ] }

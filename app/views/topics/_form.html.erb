@@ -1,17 +1,19 @@
-<div class='article-form'>
-  <%= simple_form_for @topic do |f| %>
-    <%= f.input :title, required: false %>
-    <div class='row'>
-      <div class='col-md-6'>
-        <%= f.association :node, collection: @group.nodes, required: false %>
+<div class='panel panel-default box-shadow'>
+  <div class='panel-body'>
+    <%= simple_form_for [@group, @topic] do |f| %>
+      <%= f.input :title, required: false %>
+      <div class='row'>
+        <div class='col-md-6'>
+          <%= f.association :node, collection: @group.nodes, required: false %>
+        </div>
+        <div class='col-md-6'>
+          <%= f.input :status %>
+        </div>
       </div>
-      <div class='col-md-6'>
-        <%= f.input :status %>
-      </div>
-    </div>
-    <%= f.input :content, required: false %>
-    <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
-  <% end %>
+      <%= f.input :content, required: false %>
+      <%= f.button :submit, t('action.submit'), class: 'btn btn-success pull-right' %>
+    <% end %>
+  </div>
 </div>
 <script>
   $(function() {

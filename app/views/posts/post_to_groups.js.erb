@@ -1,9 +1,0 @@
-$('input[id^=group-]').each(function () {
-  // 只有当群组被选中，并且还没有贴出该对象时才执行发布操作。
-  if ($(this).prop('checked') && ! $(this).prop('disabled')) {
-    group_id = $(this).attr('id').split('-')[1];
-    $('#new-post-for-group-' + group_id).trigger('click');
-  }
-});
-// 关闭弹出框。
-$('#select-groups').modal('hide');

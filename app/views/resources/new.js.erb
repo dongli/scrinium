@@ -1,5 +1,4 @@
 // 清空表单。
-$('div#resource-form-container').html("<%= j render 'resources/form', resource: Resource.new %>");
 $('input#resource_folder_id').attr('value', '<%= @resource.folder_id %>');
 $('input#resource_resourceable_type').attr('value', '<%= @resource.resourceable_type %>');
 $('input#resource_resourceable_id').attr('value', '<%= @resource.resourceable_id %>');

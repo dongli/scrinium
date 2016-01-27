@@ -1,15 +1,21 @@
 <% content_for :center_column do %>
-  <% if @activities.empty? %>
-    暂时没有新闻，快去关注一些<%= link_to '用户', users_path %>以获取他们的动态！
-  <% else %>
-    <% @activities.each do |activity| %>
-      <div class='activity'>
-        <%= render_activity activity %>
-        <%= timeago activity.created_at %>
-      </div>
-    <% end %>
-    <div class='horizontal-centered'>
-      <%= paginate @activities %>
+  <div class='panel panel-default box-shadow'>
+    <div class='panel-body'>
+      <% if @activities.empty? %>
+        <div class='horizontal-centered'>
+          暂时没有新闻，快去关注一些<%= link_to '用户', users_path %>以获取他们的动态！
+        </div>
+      <% else %>
+        <% @activities.each do |activity| %>
+          <div class='activity'>
+            <%= render_activity activity %>
+            <%= timeago activity.created_at %>
+          </div>
+        <% end %>
+        <div class='horizontal-centered'>
+          <%= paginate @activities %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 <% end %>

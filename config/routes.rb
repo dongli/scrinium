@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
-      resources dashboard_resource
-    end
-
-    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
-  end
-
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
@@ -35,10 +27,7 @@ Rails.application.routes.draw do
       passwords:     'users/passwords',
       emails:        'users/emails'
     }
-  resources :users, except: :edit do
-    member do
-      get 'show_home_page'
-    end
+  resources :users, except: [:show, :edit] do
     get 'mailbox/index'
     get 'mailbox/reply_message/:id' => 'mailbox#reply_message', as: :reply_message
     get 'mailbox/write_message' => 'mailbox#write_message', as: :write_message
@@ -54,13 +43,13 @@ Rails.application.routes.draw do
     resources :user_options
     resources :user_quota
   end
-  get '/users/:id/edit/:category' => 'users#edit', as: :edit_user
-  get '/follow/:followed_id' => 'relationships#follow', as: :follow_user
-  get '/unfollow/:followed_id' => 'relationships#unfollow', as: :unfollow_user
+  get 'users/:id/home_page' => 'users#show_home_page', as: :show_user_home_page
+  get 'users/:id/(:category)' => 'users#show', as: :show_user
+  get 'users/:id/edit/:category' => 'users#edit', as: :edit_user
+  get 'follow/:followed_id' => 'relationships#follow', as: :follow_user
+  get 'unfollow/:followed_id' => 'relationships#unfollow', as: :unfollow_user
   # 文章
   resources :articles, concerns: [:commentable, :collectable]
-  get '/articles/:id/versions' => 'articles#versions', as: :article_versions
-  get '/articles/:id/versions/:version_id' => 'articles#delete_version', as: :delete_version # 目前没什么用。
   post 'articles/upload_image' => 'articles#upload_image', as: :article_upload_image
   # 资源
   resources :resources, concerns: [:commentable, :collectable]
@@ -87,28 +76,18 @@ Rails.application.routes.draw do
   resources :organizations
   resources :addresses
   # 群组
-  resources :topics, concerns: [:commentable, :collectable]
-  post 'topics/upload_image' => 'topics#upload_image', as: :topic_upload_image
-  resources :groups, except: :edit do
+  resources :nodes
+  resources :topics, except: [:index, :new, :create], concerns: [:commentable, :collectable]
+  post 'topics/upload_image' => 'topics#upload_image', as: :topic_upload_image # TODO: 放到concerns中。
+  resources :groups, except: [:show, :edit] do
     member do
-      get :members
       post :upload_image
     end
+    resources :topics, only: [:new, :create]
   end
-  resources :nodes
-  resources :topics
-  get '/groups/:id/edit/:category' => 'groups#edit', as: :edit_group
+  get 'groups/:id/home_page' => 'groups#show_home_page', as: :show_group_home_page
+  get 'groups/:id/(:category)' => 'groups#show', as: :show_group
+  get 'groups/:id/edit/:category' => 'groups#edit', as: :edit_group
   resources :group_options
   resources :activities
-  resources :posts do
-    member do
-      get :change_sticky
-    end
-  end
-  get '/post_to_groups' => 'posts#post_to_groups'
-  # 插件
-  resources :licenses
-  if File.exist? "#{Rails.root}/config/engine_routes.rb"
-    instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
-  end
 end

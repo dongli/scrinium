@@ -17,9 +17,12 @@
 
 class Group < ActiveRecord::Base
   include Resourceable
-  extend Enumerize
 
+  extend Enumerize
   enumerize :status, in: [ :public, :private ], default: :public, predicates: true
+
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
 
   mount_uploader :logo, ImageUploader
 
@@ -31,17 +34,13 @@ class Group < ActiveRecord::Base
 
   translates :name, :short_name, :description
 
-  paginates_per 10
-
   has_many :memberships, as: :host, dependent: :destroy
   has_many :users, class_name: 'User', through: :memberships
-  has_many :posts, dependent: :destroy
-
   has_many :topics, dependent: :destroy
   has_many :nodes, dependent: :destroy
 
-  validates :name, :short_name, :subdomain, presence: true
-  validates :subdomain, uniqueness: true
+  validates :name, :short_name, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true, format: { with: /[a-z0-9_]+/ }
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 
@@ -53,10 +52,6 @@ class Group < ActiveRecord::Base
     else
       @admin
     end
-  end
-
-  def has_post? postable
-    not self.posts.select { |x| x.postable_id == postable.id and x.postable_type == postable.class.to_s }.empty?
   end
 
   private

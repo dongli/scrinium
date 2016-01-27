@@ -5,25 +5,5 @@
 <% end %>
 
 <% content_for :center_column do %>
-  <%=
-    render 'layouts/navtab',
-    tabs: {
-      columns: [
-        t('user.columns'),
-        render('users/articles', user: @user)
-      ],
-      publications: [
-        t('user.publications'),
-        render('users/publications', user: @user)
-      ],
-      collections: [
-        t('collection'),
-        render('users/collections', user: @user)
-      ],
-      resources: [
-        t('activerecord.models.resource'),
-        render('resource_board/show', folderable: @user, user: @user)
-      ]
-    }
-  %>
+  <%= render "users/show/#{@category}" %>
 <% end %>

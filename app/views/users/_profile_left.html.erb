@@ -3,7 +3,7 @@
     <ul class="vertical-clean-list">
       <li>
         <% if current_user == @user %>
-          <%= link_to avatar(@user, size: '100x100'), show_home_page_user_path(@user) %>
+          <%= link_to avatar(@user, size: '100x100'), show_user_home_page_path(@user) %>
         <% else %>
           <%= avatar(@user, size: '100x100') %>
         <% end %>
@@ -44,6 +44,22 @@
     </ul>
   </div>
 </div>
+
+<div class='panel panel-default box-shadow'>
+  <div class='panel-heading'>
+    工作台导航
+  </div>
+  <div class='panel-body sidenav'>
+    <ul class='nav nav-pills nav-stacked'>
+      <% ['articles', 'collections', 'resources'].each do |category| %>
+        <li role='presentation' class='<%= @category == category ? 'active' : '' %>'>
+          <%= link_to t("user.show.#{category}"), show_user_path(@user, category) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <div class='panel panel-default box-shadow'>
   <div class='panel-heading'>
     <%= t('activerecord.models.user_quotum') %>

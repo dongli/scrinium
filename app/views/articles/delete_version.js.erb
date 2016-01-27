@@ -1,6 +1,0 @@
-if (<%= params[:version_id] %> == -1) {
-  window.location.replace('<%= user_article_path(current_user, @article) %>');
-} else {
-  $('#version-<%= params[:version_id] %>').remove();
-}
-$('#version-number').text(<%= @article.versions.size %>);

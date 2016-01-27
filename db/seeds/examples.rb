@@ -16,7 +16,7 @@ User.create(
   name: '董理',
   role: 'admin',
   email: 'dongli@lasg.iap.ac.cn',
-  subdomain: 'dongli',
+  slug: 'dongli',
   password: '12345678',
   password_confirmation: '12345678',
 )
@@ -31,6 +31,7 @@ User.create(
   name: '田鲁',
   role: 'admin',
   email: 'tianlu1677@gmail.com',
+  slug: 'tianlu',
   password: '12345678',
   password_confirmation: '12345678',
 )
@@ -85,6 +86,7 @@ User.create(
   name: '张三',
   role: 'user',
   email: 'zhangsan@lasg.iap.ac.cn',
+  slug: 'zhangsan',
   password: '12345678',
   password_confirmation: '12345678',
 )
@@ -98,7 +100,7 @@ Profile.create(
 Group.create(
   name: '测试群组',
   short_name: '测试群组',
-  subdomain: 'test_group',
+  slug: 'test_group',
   admin_id: 1,
   status: 'public'
 )

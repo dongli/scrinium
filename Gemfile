@@ -4,7 +4,7 @@ else
   source 'https://ruby.taobao.org'
 end
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 
 # 服务器部署
 gem 'unicorn'
@@ -79,13 +79,10 @@ gem 'kaminari-bootstrap'
 gem 'lograge'
 gem 'enumerize'
 gem 'inherited_resources'
-gem 'acts_as_tenant'
 gem 'public_activity'
-gem 'ffaker', require: false
+gem 'friendly_id', '~> 5.0.0'
 
 # 搜索
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 gem 'ransack'
 
 group :development, :test do
@@ -117,5 +114,4 @@ group :test do
   gem 'shoulda'
 end
 
-gem 'oneapm_rpm'
-gem 'administrate'
+# gem 'oneapm_rpm'

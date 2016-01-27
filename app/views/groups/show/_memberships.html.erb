@@ -1,0 +1,4 @@
+<%= render 'users/table_list', users: @memberships.where(status: 'approved').map { |x| x.user } %>
+<div class='horizontal-centered'>
+  <%= paginate @memberships %>
+</div>

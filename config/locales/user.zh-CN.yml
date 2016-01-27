@@ -6,6 +6,7 @@ zh-CN:
       user:
         id: ID
         name: 姓名
+        slug: URL简称
         email: 邮箱
         mobile: 手机号
         role: 角色
@@ -61,7 +62,6 @@ zh-CN:
   user:
     worktable: 工作台
     home_page: 主页
-    columns: 专栏
     publications: 发表刊物
     affiliation: 所属机构
     edit:
@@ -69,6 +69,10 @@ zh-CN:
       experience: 科研经历
       achievement: 研究成果
       home_page: 主页设置
+    show:
+      articles: 专栏
+      collections: 收藏
+      resources: 资源
 
   action:
     upload_avatar: 上传头像

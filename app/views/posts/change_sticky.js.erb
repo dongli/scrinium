@@ -1,8 +1,0 @@
-<% @post.sticky ^= true; @post.save! %>
-<% if @post.sticky %>
-  $("#post-<%= @post.id %>").removeClass('panel-default').addClass('panel-danger');
-  $("#post-<%= @post.id %>").prependTo('.sticky-posts');
-<% else %>
-  $("#post-<%= @post.id %>").removeClass('panel-danger').addClass('panel-default');
-  $("#post-<%= @post.id %>").prependTo('.normal-posts');
-<% end %>

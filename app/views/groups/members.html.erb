@@ -1,9 +1,0 @@
-<% content_for :title, @group.name + t('group.member') %>
-
-<% content_for :left_column do %>
-  <%= render 'profile_left' %>
-<% end %>
-
-<% content_for :center_column do %>
-  <%= render 'users/list', users: @members %>
-<% end %>

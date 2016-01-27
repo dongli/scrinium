@@ -1,23 +1,26 @@
-<table class='table'>
-  <thead>
-    <tr>
-      <th width="30"><%= t('activerecord.attributes.user.name') %></th>
-      <th width="100"><%= t('activerecord.attributes.user.email') %></th>
-      <!-- <th width="50"><%= t('user.affiliation') %></th> -->
-      <th width="50"><%= t('activerecord.attributes.user.role') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td>
-          <a href="<%= user_path(user) %>"><%= user.name %></a>
-        </td>
-        <td><%= user.email %></td>
-        <!-- <td><%#= render 'memberships/organization_logos', user: user, size: :small %></td> -->
-        <%# TODO 这里显示的用户在群组里的角色，而不是系统角色  %>
-        <td><%= user.role.text %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='panel panel-default box-shadow'>
+  <div class='panel-body'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th width="30"><%= t('activerecord.attributes.user.name') %></th>
+          <th width="100"><%= t('activerecord.attributes.user.email') %></th>
+          <!-- <th width="50"><%= t('user.affiliation') %></th> -->
+          <th width="50"><%= t('activerecord.attributes.user.role') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each do |user| %>
+          <tr>
+            <td>
+              <a href="<%= user_path(user) %>"><%= user.name %></a>
+            </td>
+            <td><%= user.email %></td>
+            <%# TODO 这里显示的用户在群组里的角色，而不是系统角色  %>
+            <td><%= user.role.text %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

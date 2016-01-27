@@ -1,13 +1,45 @@
 <% content_for :title, @group.name %>
 
 <% content_for :left_column do %>
-  <%= render 'groups/profile_left' %>
+  <div class='panel panel-default box-shadow'>
+    <div class='panel-body horizontal-centered'>
+      <ul class='vertical-clean-list'>
+        <li><%= link_to logo(@group, size: :medium), @group %></li>
+        <li><%= @group.name %></li>
+        <li><%= t('activerecord.attributes.group.admin') %>: <%= link_to @group.admin.name, @group.admin %></li>
+        <li>
+          <ul class='vertical-clean-list'>
+            <% @group.categories.each do |tag| %>
+              <li><span class='label label-default'>
+                <%= tag.name %>
+              </span></li>
+            <% end %>
+          </ul>
+        </li>
+        <li><%= t('activerecord.attributes.group.created_at')+': '+@group.created_at.strftime("%Y-%-m") %></li>
+        <% if policy(@group).update? %>
+          <li>
+            <%= link_to fa_icon('edit', text: t('action.edit')), edit_group_path(@group, :profile) %>
+          </li>
+        <% end %>
+        <li><%= render 'memberships/apply_button', host: @group %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='panel panel-default box-shadow'>
+    <div class='panel-body sidenav'>
+      <ul class='nav nav-pills nav-stacked'>
+        <% ['profile', 'memberships', 'topics'].each do |category| %>
+          <li role='presentation' class='<%= @category == category ? 'active' : '' %>'>
+            <%= link_to t("group.show.#{category}"), show_group_path(@group, category) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 <% end %>
 
 <% content_for :center_column do %>
-  <% if not @group.description or @group.description.empty? %>
-    <div class='horizontal-centered'>管理员很懒，什么也没有写！</div>
-  <% else %>
-    <%= sanitize @group.description %>
-  <% end %>
+  <%= render "groups/show/#{@category}" %>
 <% end %>

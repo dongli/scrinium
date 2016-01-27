@@ -3,7 +3,14 @@
     <%= render 'layouts/upload_image', form: profile_form,
       object: @user.profile, image_attribute_name: :avatar, default_image: 'logos/default_avatar.png' %>
   <% end %>
-  <%= f.input :name, required: false %>
+  <div class='row'>
+    <div class='col-md-6'>
+      <%= f.input :name, required: false %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.input :slug, required: false %>
+    </div>
+  </div>
   <%= f.simple_fields_for :profile do |profile_form| %>
     <div class='row'>
       <div class='col-md-4'>

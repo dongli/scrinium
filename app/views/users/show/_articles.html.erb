@@ -1,0 +1,18 @@
+<% content_for :center_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-body'>
+      <% if policy(Article).create? %>
+        <div class='pull-right'>
+          <%=
+            link_to fa_icon('plus-square-o', text: t('activerecord.models.article')),
+            new_article_path, id: 'add-article'
+          %>
+        </div>
+      <% end %>
+      <%= render 'articles/table_list', articles: @articles %>
+      <div class='horizontal-centered'>
+        <%= paginate @articles %>
+      </div>
+    </div>
+  </div>
+<% end %>

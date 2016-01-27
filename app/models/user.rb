@@ -23,9 +23,12 @@
 
 class User < ActiveRecord::Base
   include Resourceable
-  include UserSearchable
+
   extend Enumerize
   enumerize :role, in: [:admin, :assist_admin, :user], default: :user, predicates: true
+
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :trackable,
@@ -44,7 +47,6 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :posts, dependent: :destroy
   has_many :publications, dependent: :destroy
   has_many :references, through: :publications
   has_many :collections, dependent: :destroy
@@ -59,7 +61,8 @@ class User < ActiveRecord::Base
   has_one  :user_quotum, dependent: :destroy
 
   validates :name, :email, presence: true
-  validates :email, :subdomain, uniqueness: true
+  validates :email, uniqueness: true
+  validates :slug, presence: true, uniqueness: true, format: { with: /[a-z0-9_]+/ }
   validates_associated :profile
 
   before_create :create_default_associated_models

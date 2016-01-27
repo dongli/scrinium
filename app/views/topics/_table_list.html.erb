@@ -1,0 +1,18 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width='100'><%= t('activerecord.attributes.topic.title') %></th>
+      <th width='50'><%= t('activerecord.attributes.topic.user') %></th>
+      <th width='50'><%= t('activerecord.attributes.topic.created_at') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% topics.each do |topic| %>
+      <tr class='clickable-row' data-href='<%= topic_path(topic) %>'>
+        <td><%= "《#{topic.title}》" %></td>
+        <td><%= link_to topic.user.name, topic.user %></td>
+        <td><%= timeago topic.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

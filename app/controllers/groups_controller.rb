@@ -8,6 +8,21 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @category = params[:category] || 'profile'
+    case @category
+    when 'topics'
+      if params[:node]
+        @node = params[:node]
+        node_id = @group.nodes.where(name: @node)
+        @topics = @group.topics.where(node_id: node_id).page(params[:page])
+      else
+        @search = @group.topics.search(params[:q])
+        @topics = @search.result.page(params[:page])
+      end
+    when 'memberships'
+      @search = @group.memberships.search(params[:q])
+      @memberships = @search.result.page(params[:page])
+    end
   end
 
   def new
@@ -88,7 +103,7 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:id])
+    @group = Group.friendly.find(params[:id])
   end
 
   def group_params

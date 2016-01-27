@@ -1,0 +1,7 @@
+<% content_for :center_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-body'>
+      <%= render('resource_board/show', folderable: @user, user: @user) %>
+    </div>
+  </div>
+<% end %>

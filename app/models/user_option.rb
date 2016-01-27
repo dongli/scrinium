@@ -12,7 +12,5 @@
 class UserOption < ActiveRecord::Base
   mount_uploader :front_cover, ImageUploader
 
-  acts_as_tenant :user
-
   belongs_to :user
 end

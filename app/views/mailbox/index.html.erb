@@ -4,29 +4,27 @@
 
 <% content_for :left_column do %>
   <div class='panel panel-default box-shadow'>
-    <div class='panel-body'>
-      <nav>
-        <ul class='nav nav-stacked nav-pills' id='left-side' data-user-id='<%= current_user.id %>'>
-          <li role='presentation' class='active' id='nav-inbox'>
-            <a id='show-inbox'>
-              <%= fa_icon('inbox', text: t('mailbox_inbox')) %>
-              <% if has_unread? %>
-                <span class='badge unread-mail-badge'><%= num_unread %></span>
-              <% end %>
-            </a>
-          </li>
-          <li role='presentation' id='nav-sentbox'>
-            <a id='show-sentbox'>
-              <%= fa_icon('paper-plane', text: t('mailbox_sentbox')) %>
-            </a>
-          </li>
-          <li role='presentation' id='nav-trash'>
-            <a id='show-trash'>
-              <%= fa_icon('trash', text: t('mailbox_trash')) %>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <div class='panel-body sidenav'>
+      <ul class='nav nav-stacked nav-pills' id='left-side' data-user-id='<%= current_user.id %>'>
+        <li role='presentation' class='active' id='nav-inbox'>
+          <a id='show-inbox'>
+            <%= fa_icon('inbox', text: t('mailbox_inbox')) %>
+            <% if has_unread? %>
+              <span class='badge unread-mail-badge'><%= num_unread %></span>
+            <% end %>
+          </a>
+        </li>
+        <li role='presentation' id='nav-sentbox'>
+          <a id='show-sentbox'>
+            <%= fa_icon('paper-plane', text: t('mailbox_sentbox')) %>
+          </a>
+        </li>
+        <li role='presentation' id='nav-trash'>
+          <a id='show-trash'>
+            <%= fa_icon('trash', text: t('mailbox_trash')) %>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 <% end %>

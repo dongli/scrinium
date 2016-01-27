@@ -5,9 +5,11 @@ zh-CN:
     attributes:
       topic:
         title: 题目
+        user: 作者
         node: 发布节点
         content: 内容
         status: 状态
+        created_at: 创建时间
 
   enumerize:
     topic:

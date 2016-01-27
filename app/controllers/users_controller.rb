@@ -9,8 +9,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user != @user
-      redirect_to show_home_page_user_path(@user)
+    if not current_user or current_user != @user
+      redirect_to show_user_home_page_path(@user)
+    else
+      @category = params[:category] || 'articles'
+      eval "@#{@category} = @user.#{@category}.order('id DESC').page(params[:page])"
     end
   end
 
@@ -48,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   def password_params

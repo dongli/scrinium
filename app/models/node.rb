@@ -14,8 +14,6 @@
 #
 
 class Node < ActiveRecord::Base
-  acts_as_tenant :group
-
   belongs_to :user
   belongs_to :group
 

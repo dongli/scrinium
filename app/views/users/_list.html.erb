@@ -1,22 +1,13 @@
-<dl>
-  <dt>
-    <div class='center'>
-      <ul class='clean-list'>
-        <li style='display: inline;'><a id='use-user-table-list'><%= fa_icon 'list' %></a></li>
-        <li style='display: inline;'><a id='use-user-block-list'><%= fa_icon 'th' %></a></li>
-      </ul>
-    </div>
-  </dt>
-  <dd>
-    <div id='user-table-list'>
-      <%= render 'users/table_list', users: users %>
-    </div>
-    <div id='user-block-list' style='display: none;'>
-      <%= render 'users/block_list', users: users %>
-    </div>
-  </dd>
-</dl>
-
 <div class='horizontal-centered'>
-  <%= paginate users %>
+  <ul class='clean-list'>
+    <li style='display: inline;'><a id='use-user-table-list'><%= fa_icon 'list' %></a></li>
+    <li style='display: inline;'><a id='use-user-block-list'><%= fa_icon 'th' %></a></li>
+  </ul>
+</div>
+
+<div id='user-table-list'>
+  <%= render 'users/table_list', users: users %>
+</div>
+<div id='user-block-list' style='display: none;'>
+  <%= render 'users/block_list', users: users %>
 </div>

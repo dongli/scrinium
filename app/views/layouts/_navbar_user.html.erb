@@ -13,7 +13,7 @@
         <%= link_to fa_icon('object-group', text: t('user.worktable')), current_user %>
       </li>
       <li>
-        <%= link_to fa_icon('home', text: t('user.home_page')), show_home_page_user_path(current_user) %>
+        <%= link_to fa_icon('home', text: t('user.home_page')), show_user_home_page_path(current_user) %>
       </li>
       <li>
         <%= link_to fa_icon('newspaper-o', text: t('activerecord.models.activity')), activities_path %>

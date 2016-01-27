@@ -18,7 +18,6 @@
           </li>
         <% end %>
         <% if user_signed_in? %>
-          <li><%= render 'layouts/share_button', postable: @article %></li>
           <li><%= render 'collections/collect_button', collectable: @article %></li>
         <% end %>
       </ul>

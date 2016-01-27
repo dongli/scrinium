@@ -1,34 +1,36 @@
 <% content_for :title, @topic.title %>
 
 <% content_for :center_column do %>
-  <div style='margin-bottom: 10px;'>
-    <ul class='horizontal-clean-list' style='display: inline-block;'>
-      <li><%= link_to avatar(@topic.user, size: :thumb), @topic.user %></li>
-      <li>更新于<%= timeago @topic.updated_at %></li>
-    </ul>
-    <div class='pull-right'>
-      <ul class='horizontal-clean-list'>
-        <% if policy(@topic).update? %>
-          <li><%= link_to fa_icon('edit'), edit_topic_path(@topic) %></li>
-        <% end %>
-        <% if policy(@topic).destroy? %>
-          <li>
-            <%= link_to fa_icon('trash'), topic_path(@topic), method: :delete,
-              data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.topic')) } %>
-          </li>
-        <% end %>
-        <% if user_signed_in? %>
-          <li><%= render 'collections/collect_button', collectable: @topic %></li>
-        <% end %>
+<div class='panel panel-default box-shadow'>
+  <div class='panel-body'>
+    <div style='margin-bottom: 10px;'>
+      <ul class='horizontal-clean-list' style='display: inline-block;'>
+        <li><%= link_to avatar(@topic.user, size: :thumb), @topic.user %></li>
+        <li>更新于<%= timeago @topic.updated_at %></li>
       </ul>
+      <div class='pull-right' style='padding-top: 10px;'>
+        <ul class='horizontal-clean-list'>
+          <% if policy(@topic).update? %>
+            <li><%= link_to fa_icon('edit'), edit_topic_path(@topic) %></li>
+          <% end %>
+          <% if policy(@topic).destroy? %>
+            <li>
+              <%= link_to fa_icon('trash'), topic_path(@topic), method: :delete,
+                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.topic')) } %>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li><%= render 'collections/collect_button', collectable: @topic %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+    <h6 class='horizontal-centered'><%= @topic.title %></h6>
+    <p class='content mathjax'><%= raw @topic.content %></p>
+    <dl>
+      <dt></dt>
+      <dd><%= render 'comments/list', commentable: @topic %></dd>
+    </dl>
   </div>
-  <dl class='topic-show'>
-    <dt><%= @topic.title %></dt>
-    <dd class='content mathjax'><%= raw @topic.content %></dd>
-  </dl>
-  <dl>
-    <dt></dt>
-    <dd><%= render 'comments/list', commentable: @topic %></dd>
-  </dl>
+</div>
 <% end %>

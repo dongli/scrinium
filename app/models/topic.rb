@@ -25,8 +25,6 @@ class Topic < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:public, :private, :closed], default: :public, predicates: true
 
-  acts_as_tenant :user
-
   belongs_to :user
   belongs_to :group
   belongs_to :node

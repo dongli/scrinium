@@ -7,11 +7,6 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    if request.port
-      redirect_to "http://#{@organization.subdomain}.#{request.domain}:#{request.port}"
-    else
-      redirect_to "http://#{@organization.subdomain}.#{request.domain}"
-    end
   end
 
   def new

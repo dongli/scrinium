@@ -14,4 +14,7 @@
     <% end %>
   </div>
   <%= render 'users/list', users: @users %>
+  <div class='horizontal-centered'>
+    <%= paginate @users %>
+  </div>
 <% end %>
