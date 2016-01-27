@@ -113,14 +113,6 @@ $(document).on 'page:change', ->
     $('#user-table-list').hide()
     $('#user-block-list').show()
 
-  # 切换资格列表。
-  $('#show-unapproved-membership-list').click ->
-    $('#unapproved-membership-list').show()
-    $('#approved-membership-list').hide()
-  $('#show-approved-membership-list').click ->
-    $('#unapproved-membership-list').hide()
-    $('#approved-membership-list').show()
-
   # 使用Select2做标签输入。
   $('.use-select2-multiple-tags').select2
     tags: true
@@ -136,35 +128,15 @@ $(document).on 'page:change', ->
   $('.clickable-row').click ->
     window.document.location = $(this).data('href')
 
-  # 窗口改变大小后，检查left-column元素是否要收缩。
-  resizeID = 0
-  collapseLeftSide = ->
-    if $('.left-column').is(':hidden')
-      return if $('a[href=#left-column-content]').length > 0
-      $('div.center-column').before -> """
-        <div class='horizontal-centered' id='show-left-column-content'>
-          <a href='#left-column-content' class='show-left-column-content'
-           data-toggle='collapse' data-target='#left-column-content'
-           aria-expanded='false' aria-controls='left-column-content'>
-           <i class='fa fa-sort'></i>
-          </a>
-          <div class='collapse' id='left-column-content'>
-            <div class='well' style='margin-left: 10%; margin-right: 10%;'>
-              #{$('.left-column').html()}
-            </div>
-          </div>
-        </div>
-      """
-    else
-      $('div#show-left-column-content').remove()
-  collapseLeftSide()
-  $(window).resize ->
-    clearTimeout(resizeID);
-    resizeID = setTimeout(collapseLeftSide, 50)
-
   # 增加返回顶部的按钮。
+  $('#move-to-window-top').hide()
   if $(window).height() + 100 < $(document).height()
-    $('#move-to-window-top').removeClass('hide')
+    $(document).scroll ->
+      if $('body').scrollTop() <= 0
+        $('#move-to-window-top').css('transform', 'scale(0.0)')
+      else
+        $('#move-to-window-top').show()
+        $('#move-to-window-top').css('transform', 'scale(1.0)')
   $('#move-to-window-top').click ->
     $('html, body').animate({
       scrollTop: 0

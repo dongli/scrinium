@@ -40,12 +40,12 @@ module ApplicationHelper
     request.path == '/' and request.host.split('.').first == 'scrinium'
   end
 
-  def link_to_trackable(object, object_type)
-    if object
-      link_to object_type.downcase, object
-    else
-      "a #{object_type.downcase} which does not exist anymore"
-    end
+  def slug_caution edited
+    caution = edited ? '为了确保URL有效，您目前无法修改！' : '显示于浏览器地址栏，仅能修改一次，请仔细确认！'
+    raw t('activerecord.attributes.user.slug') + <<-EOT
+      <span data-toggle='tooltip' data-placement='bottom' title='#{caution}'>
+        #{fa_icon 'info-circle'}
+      </span>
+    EOT
   end
-
 end

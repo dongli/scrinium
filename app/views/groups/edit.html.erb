@@ -2,15 +2,11 @@
   <div class='panel panel-default box-shadow'>
     <div class='panel-body sidenav'>
       <ul class='nav nav-pills nav-stacked'>
-        <li role='presentation' class='<%= @category == 'profile' ? 'active' : '' %>'>
-          <%= link_to t('group.edit.profile'), edit_group_path(@group, :profile) %>
-        </li>
-        <li role='presentation' class='<%= @category == 'members' ? 'active' : '' %>'>
-          <%= link_to t('group.edit.members'), edit_group_path(@group, :members) %>
-        </li>
-        <li role='presentation' class='<%= @category == 'topics' ? 'active' : '' %>'>
-          <%= link_to t('group.edit.topics'), edit_group_path(@group, :topics) %>
-        </li>
+        <% ['profile', 'memberships', 'topics'].each do |category| %>
+          <li role='presentation' class='<%= @category == category ? 'active' : '' %>'>
+            <%= link_to t("group.show.#{category}"), edit_group_path(@group, category) %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

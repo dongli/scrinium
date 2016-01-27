@@ -1,0 +1,36 @@
+<% content_for :left_column do %>
+  <div class='panel panel-default box-shadow'>
+    <div class='panel-heading'>
+      成员状态
+    </div>
+    <div class='panel-body sidenav'>
+      <ul class='nav nav-pills nav-stacked'>
+        <% Membership.status.values.each do |status| %>
+          <li role='presentation' class="<%= @status == status ? 'active' : '' %>">
+            <%= link_to t("enumerize.membership.status.#{status}"), edit_group_path(@group, :memberships, status: status) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class='panel panel-default box-shadow'>
+  <div class='panel-body'>
+    <a data-toggle='modal' data-target='#invite-user-modal' class='pull-right'>
+      <%= fa_icon('plus-square-o', text: t('action.invite')) %>
+    </a>
+    <%= render 'memberships/table_list', memberships: @memberships %>
+    <div class='horizontal-centered'>
+      <%= paginate @memberships %>
+    </div>
+  </div>
+</div>
+
+<div class='modal fade' id='invite-user-modal' tabindex='-1' role='dialog' aria-labelledby='invite-user-modal'>
+  <div class='modal-dialog modal-sm'>
+    <div class='modal-content' style='padding: 10px;'>
+      <%= render 'memberships/invite_button', host: @group %>
+    </div>
+  </div>
+</div>

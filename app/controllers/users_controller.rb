@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :mobile,
+    params.require(:user).permit(:name, :mobile, :slug,
                                  profile_attributes: [
                                    :id,
                                    :avatar,

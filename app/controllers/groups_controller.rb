@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @category = params[:category] || 'profile'
     case @category
     when 'topics'
-      if params[:node]
+      if params[:node].present?
         @node = params[:node]
         node_id = @group.nodes.where(name: @node)
         @topics = @group.topics.where(node_id: node_id).page(params[:page])
@@ -31,6 +31,16 @@ class GroupsController < ApplicationController
 
   def edit
     @category = params[:category]
+    case @category
+    when 'memberships'
+      if params[:status].present?
+        @status = params[:status] || 'unapproved'
+        @memberships = @group.memberships.where(status: @status).page(params[:page])
+      else
+        @search = @group.memberships.search(params[:q])
+        @memberships = @search.result.page(params[:page])
+      end
+    end
   end
 
   def create
@@ -110,6 +120,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name,
                                   :short_name,
                                   :logo,
+                                  :slug,
                                   :description,
                                   :admin_id,
                                   { article_ids: [] },

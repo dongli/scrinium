@@ -15,18 +15,16 @@
   </div>
 <% end %>
 
-<% content_for :center_column do %>
-  <div class='panel panel-default box-shadow'>
-    <div class='panel-body'>
-      <% if policy(@group).create_topic? %>
-        <div class='pull-right'>
-          <%= link_to fa_icon('plus-square-o', text: t('topic.create')), new_group_topic_path(@group) %>
-        </div>
-      <% end %>
-      <%= render 'topics/table_list', topics: @topics %>
-      <div class='horizontal-centered'>
-        <%= paginate @topics %>
+<div class='panel panel-default box-shadow'>
+  <div class='panel-body'>
+    <% if policy(@group).create_topic? %>
+      <div class='pull-right'>
+        <%= link_to fa_icon('plus-square-o', text: t('topic.create')), new_group_topic_path(@group) %>
       </div>
+    <% end %>
+    <%= render 'topics/table_list', topics: @topics %>
+    <div class='horizontal-centered'>
+      <%= paginate @topics %>
     </div>
   </div>
-<% end %>
+</div>

@@ -1,0 +1,20 @@
+// 绿色
+$main-color: #00D66C;
+$dark-color: #2F4860;
+
+a {
+  color: $dark-color;
+}
+
+.progress-bar,
+.select2-container--open .select2-dropdown--below, .select2-container--open .select2-dropdown--above,
+#move-to-window-top {
+  background: $main-color;
+}
+
+.pagination > .active > a,
+.select2-container--focus > .selection > .select2-selection--multiple,
+.form-group.focus .form-control,
+.form-control:focus {
+  border-color: $main-color;
+}
