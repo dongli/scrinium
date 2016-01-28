@@ -3,7 +3,7 @@
 <%= simple_form_for :comment, url: [commentable, comment], method: method, remote: true do |f| %>
   <div class='panel panel-default'>
     <div class='panel-heading'>
-      <%= link_to avatar(current_user, size: :small), current_user %>
+      <%= link_to image_tag(current_user.profile.avatar_url(:small), class: 'avatar'), current_user %>
       <%= current_user.name %>
       <% if comment.parent_id %>
         <%= t('action.reply') %>#<%= link_to comment.parent.user.name, [commentable, comment.parent] %>

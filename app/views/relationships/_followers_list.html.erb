@@ -1,13 +1,17 @@
 <div class='panel panel-default'>
   <div class='panel-heading'>
-    <%= @user.name %>被<%= @user.followers.size %>人关注
+    <% if user_signed_in? and current_user == @user %>
+      您被<%= @user.followers.size %>人关注
+    <% else %>
+      <%= @user.name %>被<%= @user.followers.size %>人关注
+    <% end %>
   </div>
   <div class='panel-body'>
     <ul class='horizontal-line-list'>
-      <% @user.followers.each do |follower| %>
+      <% followers.each do |follower| %>
         <li>
           <a href='<%= user_path(follower) %>'>
-            <%= avatar follower, size: :thumb %>
+            <%= image_tag follower.profile.avatar_url(:thumb), class: 'avatar' %>
           </a>
           <div style='margin-left: 1em; display: inline-block'>
             <%= follower.name %>
@@ -18,5 +22,10 @@
         </li>
       <% end %>
     </ul>
+    <% if followers.respond_to? :total_pages %>
+      <div class='horizontal-centered'>
+        <%= paginate followers %>
+      </div>
+    <% end %>
   </div>
 </div>

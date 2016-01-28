@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :show_home_page]
   before_action :set_user, except: [:index]
   layout :choose_layout
 
@@ -31,9 +31,10 @@ class UsersController < ApplicationController
       @user.profile.crop_w = params[:user][:profile_attributes][:crop_w]
       @user.profile.crop_h = params[:user][:profile_attributes][:crop_h]
     end
+    @category = params[:user][:category]
     @user.update(user_params)
     respond_to do |format|
-      format.html { redirect_to session[:previous_url].last }
+      format.js
     end
   end
 

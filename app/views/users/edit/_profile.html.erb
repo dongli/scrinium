@@ -1,9 +1,10 @@
 <div class='panel panel-default box-shadow'>
   <div class='panel-body'>
-    <%= simple_form_for @user do |f| %>
+    <%= simple_form_for @user, remote: true do |f| %>
+      <%= f.hidden_field :category, value: :profile %>
       <%= f.simple_fields_for :profile do |profile_form| %>
         <%= render 'layouts/upload_image', form: profile_form,
-          object: @user.profile, image_attribute_name: :avatar, default_image: 'logos/default_avatar.png' %>
+          object: @user.profile, image_attribute_name: :avatar %>
       <% end %>
       <div class='row'>
         <div class='col-md-6'>

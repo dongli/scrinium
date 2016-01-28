@@ -1,6 +1,7 @@
 <div class='panel panel-default box-shadow'>
   <div class='panel-body'>
-    <%= simple_form_for @user do |f| %>
+    <%= simple_form_for @user, remote: true do |f| %>
+      <%= f.hidden_field :category, value: :experience %>
       <%= f.simple_fields_for :experience do |experience_form| %>
         <%= experience_form.input :content, label: false %>
       <% end %>

@@ -7,7 +7,7 @@
 <div class='panel panel-default'>
   <div class='panel-heading'>
     #<%= comment.floor %>
-    <%= link_to avatar(user, size: :small), user %>
+    <%= link_to image_tag(user.profile.avatar_url(:small), class: 'avatar'), user %>
     <%= user.name %>
     <% if parent_comment %>
       <%= t('action.reply') %>

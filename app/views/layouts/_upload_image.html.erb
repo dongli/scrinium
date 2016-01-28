@@ -2,11 +2,7 @@
   <div class='fileinput fileinput-new' data-provides='fileinput'>
     <div class='fileinput-preview thumbnail' style='width: 150px; height: 150px;'>
       <% image = object.send(image_attribute_name) %>
-      <% if image.url %>
-        <%= image_tag image.url, id: 'uploaded-img' %>
-      <% else %>
-        <%= image_tag default_image %>
-      <% end %>
+      <%= image_tag image.url(:medium), id: 'uploaded-img', style: 'width: 100%;' %>
     </div>
     <div>
       <span class='btn btn-success btn-file'>

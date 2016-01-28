@@ -69,6 +69,23 @@
     $(this).attr('style', 'border-color: #CCCCCC;')
     $("##{inputName}-error-message").remove()
 
+@handleValidationErrors = (options) ->
+  obj = JSON.parse(options['messages'])
+  $.each obj, (key, value) ->
+    elem = if options['anchorElem'] then $(options['anchorElem']) else $('input#' + options['formName'] + '_' + key)
+    elem.data 'toggle', 'popover'
+    elem.data 'placement', 'bottom'
+    elem.popover
+      html: true
+      content: '<span style="color: red;">' + value[0] + '</span>'
+    elem.popover 'show'
+    dismissElem = if options['dismissElem'] then $(options['dismissElem']) else elem
+    dismissElem.bind 'click keypress', ->
+      elem.popover 'destroy'
+      return
+    return
+  return
+
 @typeIsArray = (value) ->
   value and
     typeof value is 'object' and
@@ -140,4 +157,4 @@ $(document).on 'page:change', ->
   $('#move-to-window-top').click ->
     $('html, body').animate({
       scrollTop: 0
-    }, 1000);
+    }, 500);

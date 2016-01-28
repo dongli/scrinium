@@ -11,13 +11,6 @@ class BaseUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # self.qiniu_bucket = "avatars"
-  # self.qiniu_bucket_domain = "avatars.files.example.com"
-  # self.qiniu_protocal = 'http'
-  # self.qiniu_can_overwrite = true
-  # self.qiniu_bucket_private= true #default is false
-
-
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -46,7 +39,10 @@ class BaseUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    if original_filename
+      @name ||= Digest::MD5.hexdigest(File.dirname(current_path))
+      "#{@name}.#{file.extension}"
+    end
+  end
 end

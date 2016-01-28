@@ -1,6 +1,7 @@
 <div class='panel panel-default box-shadow'>
   <div class='panel-body'>
-    <%= simple_form_for(@group) do |f| %>
+    <%= simple_form_for @group, remote: true do |f| %>
+      <%= f.hidden_field :category, value: :profile %>
       <%= render 'layouts/upload_image', form: f,
         object: @group, image_attribute_name: :logo, default_image: 'logos/default_group_logo.png' %>
       <div class='row'>

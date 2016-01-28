@@ -2,8 +2,8 @@ class RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
   def follow
-    @followed_id = params[:followed_id]
-    @relationship = Relationship.new(followed_id: params[:followed_id], follower_id: current_user.id)
+    @followed = User.friendly.find(params[:followed_id])
+    @relationship = Relationship.new(followed_id: @followed.id, follower_id: current_user.id)
     respond_to do |format|
       if @relationship.save
         format.js
@@ -12,8 +12,8 @@ class RelationshipsController < ApplicationController
   end
 
   def unfollow
-    @followed_id = params[:followed_id]
-    @relationship = Relationship.find_by(followed_id: params[:followed_id], follower_id: current_user.id)
+    @followed = User.friendly.find(params[:followed_id])
+    @relationship = Relationship.find_by(followed_id: @followed.id, follower_id: current_user.id)
     @relationship.destroy
     respond_to do |format|
       format.js
@@ -22,7 +22,8 @@ class RelationshipsController < ApplicationController
 
   def followers
     @user = User.find(params[:user_id])
-    @followers = @user.followers
+    debugger
+    @followers = @user.followers.page(params[:page])
     respond_to do |format|
       format.html
     end
@@ -30,7 +31,7 @@ class RelationshipsController < ApplicationController
 
   def following
     @user = User.find(params[:user_id])
-    @following = @user.following
+    @following = @user.following.page(params[:page]).per(2)
     respond_to do |format|
       format.html
     end

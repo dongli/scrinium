@@ -60,12 +60,10 @@ class GroupsController < ApplicationController
 
   def update
     set_crop_params
+    @category = params[:group][:category]
+    @group.update(group_params)
     respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to session[:previous_url].last }
-      else
-        format.html { render :edit }
-      end
+      format.js
     end
   end
 

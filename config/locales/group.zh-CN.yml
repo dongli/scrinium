@@ -25,7 +25,7 @@ zh-CN:
             short_name:
               blank: 请给群组起个便于识别的简称！
             slug:
-              blank: 请给群组起个简单易记的URL简称！
+              invalid: 格式无效，正确格式是仅包含字母、数字和下划线，且不能仅含数字！
 
   simple_form:
     placeholders:
@@ -33,7 +33,7 @@ zh-CN:
         name: 名称
         short_name: 简称
         description: 简介
-        slug: URL简称（全部小写字母或数字）
+        slug: 有效格式为字母、数字、下划线
 
   enumerize:
     group:

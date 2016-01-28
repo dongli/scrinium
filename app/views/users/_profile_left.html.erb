@@ -2,11 +2,7 @@
   <div class='panel-body horizontal-centered'>
     <ul class="vertical-clean-list">
       <li>
-        <% if current_user == @user %>
-          <%= link_to avatar(@user, size: '100x100'), show_user_home_page_path(@user) %>
-        <% else %>
-          <%= avatar(@user, size: '100x100') %>
-        <% end %>
+        <%= link_to image_tag(@user.profile.avatar.url(:medium), class: 'avatar'), show_user_home_page_path(@user) %>
       </li>
       <% if user_signed_in? and current_user != @user %>
         <li><%= @user.name %></li>
@@ -29,7 +25,6 @@
           </a>
         </div>
       </li>
-      <!-- <li><%= render 'memberships/organization_logos', user: @user %></li> -->
       <li><%= @user.role.text %></li>
       <% if policy(@user).update? %>
         <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_user_path(@user, :profile) %></li>
@@ -63,7 +58,7 @@
 <div class='panel panel-default box-shadow'>
   <div class='panel-heading'>
     <%= t('activerecord.models.user_quotum') %>
-    <span id='show-apology' data-toggle='tooltip' data-placement='right' title='十分抱歉！目前SCRINIUM的资源有限！'>
+    <span data-toggle='tooltip' data-placement='right' title='十分抱歉！目前SCRINIUM的资源有限！'>
       <%= fa_icon 'info-circle' %>
     </span>
   </div>
@@ -105,7 +100,3 @@
     </ul>
   </div>
 </div>
-
-<script>
-  $('#show-apology').tooltip()
-</script>

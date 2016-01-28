@@ -22,9 +22,9 @@
   <div class='vertical-centered-block'>
     <div class='vertical-centered horizontal-centered'>
       <% if current_user == @user %>
-      <%= link_to avatar(@user, size: :medium), @user %>
+      <%= link_to image_tag(@user.profile.avatar_url(:medium), class: 'avatar'), @user %>
     <% else %>
-      <%= avatar(@user, size: :medium) %>
+      <%= link_to image_tag(@user.profile.avatar_url(:medium), class: 'avatar') %>
       <% end %>
       <div style='color: white; margin-top: 1em;'>
         <ul class='vertical-clean-list'>

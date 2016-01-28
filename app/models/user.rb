@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
-  validates :slug, presence: true, uniqueness: true, format: { with: /[a-z0-9_]+/ }
+  validates :slug, uniqueness: true, format: { with: /[a-zA-Z_][a-zA-Z0-9_]+/, allow_blank: true }
   validates_associated :profile
 
   before_create :create_default_associated_models
@@ -74,10 +74,6 @@ class User < ActiveRecord::Base
 
   def mailboxer_email object
     object.class == Mailboxer::Notification ? email : nil
-  end
-
-  def avatar_url
-    self.profile.try(:avatar)
   end
 
   def reset_authentication_token

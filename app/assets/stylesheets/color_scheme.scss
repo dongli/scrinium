@@ -6,6 +6,10 @@ a {
   color: $dark-color;
 }
 
+a:hover {
+  color: $main-color;
+}
+
 .progress-bar,
 .select2-container--open .select2-dropdown--below, .select2-container--open .select2-dropdown--above,
 #move-to-window-top {

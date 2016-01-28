@@ -72,7 +72,7 @@
 <div class='modal fade' id='show-followers-modal' tabindex='-1' role='dialog' aria-labelledby='show-followers-modal'>
   <div class='modal-dialog'>
     <div class='modal-content' style='padding: 10px;'>
-      <%= render 'relationships/followers_list' %>
+      <%= render 'relationships/followers_list', followers: @user.followers %>
     </div>
   </div>
 </div>
@@ -80,7 +80,7 @@
 <div class='modal fade' id='show-following-modal' tabindex='-1' role='dialog' aria-labelledby='show-following-modal'>
   <div class='modal-dialog'>
     <div class='modal-content' style='padding: 10px;'>
-      <%= render 'relationships/following_list' %>
+      <%= render 'relationships/following_list', following: @user.following %>
     </div>
   </div>
 </div>
