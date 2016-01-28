@@ -10,6 +10,7 @@ zh-CN:
         logo:          群组图标
         slug:          URL简称
         admin_id:      超级管理员ID
+        members_count: 成员数量
         category_list: 分类标签
         admin:         管理员
         users:         成员

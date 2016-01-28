@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authenticate_admin!
+    authenticate_user! and current_user.role.admin?
+  end
+
   def store_location
     session[:previous_url] = [] if not session[:previous_url] or session[:previous_url].class != Array
     # Store last url except for Devise urls.

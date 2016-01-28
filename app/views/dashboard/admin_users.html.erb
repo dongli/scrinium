@@ -1,0 +1,10 @@
+<%= render 'dashboard/sidenav' %>
+
+<% content_for :center_column do %>
+  <div class='panel panel-default'>
+    <div class='panel-body narrow-padding'>
+      <%= render html: control_buttons('user').html_safe %>
+      <%= render html: table_list('user', @users, [:name, :email]).html_safe %>
+    </div>
+  </div>
+<% end %>

@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
   get 'users/:id/home_page' => 'users#show_home_page', as: :show_user_home_page
   get 'users/:id/(:category)' => 'users#show', as: :show_user
-  get 'users/:id/edit/:category' => 'users#edit', as: :edit_user
+  get 'users/:id/edit/(:category)' => 'users#edit', as: :edit_user
   get 'follow/:followed_id' => 'relationships#follow', as: :follow_user
   get 'unfollow/:followed_id' => 'relationships#unfollow', as: :unfollow_user
   # 文章
@@ -87,7 +87,12 @@ Rails.application.routes.draw do
   end
   get 'groups/:id/home_page' => 'groups#show_home_page', as: :show_group_home_page
   get 'groups/:id/(:category)' => 'groups#show', as: :show_group
-  get 'groups/:id/edit/:category' => 'groups#edit', as: :edit_group
+  get 'groups/:id/edit/(:category)' => 'groups#edit', as: :edit_group
   resources :group_options
   resources :activities
+
+  # 控制台
+  DashboardController::AdminModels.each do |category|
+    get "dashboard/admin/#{category}" => "dashboard#admin_#{category}", as: "admin_#{category}"
+  end
 end
