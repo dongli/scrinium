@@ -40,7 +40,8 @@ class Group < ActiveRecord::Base
   has_many :nodes, dependent: :destroy
 
   validates :name, :short_name, presence: true, uniqueness: true
-  validates :slug, uniqueness: true, format: { with: /[a-zA-Z_][a-z0-9_]+/, allow_blank: true }
+  validates :slug, uniqueness: true, if: :slug?
+  validates :slug, format: { with: /[a-zA-Z_][a-zA-Z0-9_]+/, allow_blank: true }
   validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
                    file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 

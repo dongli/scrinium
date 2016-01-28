@@ -62,7 +62,8 @@ class User < ActiveRecord::Base
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
-  validates :slug, uniqueness: true, format: { with: /[a-zA-Z_][a-zA-Z0-9_]+/, allow_blank: true }
+  validates :slug, uniqueness: true, if: :slug?
+  validates :slug, format: { with: /[a-zA-Z_][a-zA-Z0-9_]+/, allow_blank: true }
   validates_associated :profile
 
   before_create :create_default_associated_models
