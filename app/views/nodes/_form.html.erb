@@ -1,5 +1,5 @@
 <div class='horizontal-centered'>
-  <%= simple_form_for node do |f| %>
+  <%= simple_form_for [group, node], remote: true do |f| %>
     <%= f.input :name, required: false %>
     <%= f.submit t('action.submit'), class: 'btn btn-success' %>
   <% end %>

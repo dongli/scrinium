@@ -3,7 +3,7 @@
     <% if not @group.description or @group.description.empty? %>
       <div class='horizontal-centered'>管理员很懒，什么也没有写！</div>
     <% else %>
-      <%= sanitize @group.description %>
+      <%= raw @group.description.html_safe %>
     <% end %>
   </div>
 </div>

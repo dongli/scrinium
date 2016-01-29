@@ -1,49 +1,51 @@
-<div class='article-form'>
-  <%= simple_form_for @article do |f| %>
-    <div class='row'>
-      <div class='col-md-8 col-sm-7 col-xs-12'>
-        <%= f.input :title, required: false %>
+<div class='panel panel-default'>
+  <div class='panel-body'>
+    <%= simple_form_for @article do |f| %>
+      <div class='row'>
+        <div class='col-md-8 col-sm-7 col-xs-12'>
+          <%= f.input :title, required: false %>
+        </div>
+        <div class='col-md-4 col-sm-5 col-xs-12'>
+          <%=
+            f.input :category_list,
+            collection: @article.categories.map { |t| t.name },
+            input_html: {
+              class: 'use-select2-multiple-tags',
+              multiple: 'multiple'
+            }
+          %>
+        </div>
       </div>
-      <div class='col-md-4 col-sm-5 col-xs-12'>
-        <%=
-          f.input :category_list,
-          collection: @article.categories.map { |t| t.name },
-          input_html: {
-            class: 'use-select2-multiple-tags',
-            multiple: 'multiple'
-          }
-        %>
+      <div>
+        <ul class='nav nav-tabs' role='tablist'>
+          <li role='presentation' class='active' id='edit-content'>
+            <a href='#edit-content' aria-controls='edit-content'
+              role='tab' data-toggle='tab' id='edit-content'>
+              <%= t('action.edit') %>
+            </a>
+          </li>
+          <li role='presentation' id='preview-content'>
+            <a href='#preview-content' aria-controls='preview-content'
+              role='tab' data-toggle='tab' id='preview-content'>
+              <%= t('action.preview') %>
+            </a>
+          </li>
+        </ul>
+        <div class='tab-content'>
+          <div role='tabpanel' class='tab-pane active' id='edit-content'>
+            <%= f.input :content, label: false, as: :text %>
+          </div>
+          <div role='tabpanel' class='tab-pane' id='preview-content'>
+            <div id='preview-content-placeholder'></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div>
-      <ul class='nav nav-tabs' role='tablist'>
-        <li role='presentation' class='active' id='edit-content'>
-          <a href='#edit-content' aria-controls='edit-content'
-            role='tab' data-toggle='tab' id='edit-content'>
-            <%= t('action.edit') %>
-          </a>
-        </li>
-        <li role='presentation' id='preview-content'>
-          <a href='#preview-content' aria-controls='preview-content'
-            role='tab' data-toggle='tab' id='preview-content'>
-            <%= t('action.preview') %>
-          </a>
-        </li>
+      <ul class='horizontal-clean-list pull-right'>
+        <li><%= f.button :submit, t('action.save'), class: 'btn btn-default' %></li>
+        <li><%= f.button :submit, t('action.submit'), class: 'btn btn-success' %></li>
       </ul>
-      <div class='tab-content'>
-        <div role='tabpanel' class='tab-pane active' id='edit-content'>
-          <%= f.input :content, label: false, as: :text %>
-        </div>
-        <div role='tabpanel' class='tab-pane' id='preview-content'>
-          <div id='preview-content-placeholder'></div>
-        </div>
-      </div>
-    </div>
-    <ul class='list-inline right'>
-      <li><%= f.button :submit, t('action.save'), class: 'btn btn-default' %></li>
-      <li><%= f.button :submit, t('action.submit'), class: 'btn btn-success' %></li>
-    </ul>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <script>

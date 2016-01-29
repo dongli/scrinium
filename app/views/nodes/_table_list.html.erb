@@ -17,6 +17,10 @@
           <% if policy(node).manage? %>
             <ul class='horizontal-clean-list'>
               <li>
+                <%= link_to t('action.edit'), edit_group_node_path(@group, node),
+                  class: 'btn btn-default btn-xs', remote: true %>
+              </li>
+              <li>
                 <%= link_to t('action.delete'), node,
                   method: :delete, class: 'btn btn-default btn-xs',
                   data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.node')) } %>

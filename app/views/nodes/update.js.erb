@@ -1,0 +1,8 @@
+<% if @node.errors.empty? %>
+  window.location.replace('<%= session[:previous_url].last %>')
+<% else %>
+  handleValidationErrors({
+    formName: 'node',
+    messages: '<%= j raw @node.errors.messages.to_json %>'
+  })
+<% end %>

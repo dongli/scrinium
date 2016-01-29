@@ -1,5 +1,6 @@
 class NodesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_group, only: [:create]
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,24 +19,16 @@ class NodesController < ApplicationController
 
   def create
     @node = @group.nodes.new(node_params)
-
+    @group.increment! :nodes_count if @node.save
     respond_to do |format|
-      if @node.save
-        @group.increment! :nodes_count
-        format.html { redirect_to session[:previous_url].last }
-      else
-        format.html { render :new }
-      end
+      format.js
     end
   end
 
   def update
+    @node.update(node_params)
     respond_to do |format|
-      if @node.update(node_params)
-        format.html { redirect_to session[:previous_url].last }
-      else
-        format.html { render :edit }
-      end
+      format.js
     end
   end
 
@@ -47,6 +40,10 @@ class NodesController < ApplicationController
   end
 
   private
+
+  def set_group
+    @group = Group.friendly.find(params[:group_id])
+  end
 
   def set_node
     @node = Node.find(params[:id])

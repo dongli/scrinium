@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_group, only: [:new, :create]
+  before_action :set_group, only: [:new, :edit, :create]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
