@@ -97,4 +97,11 @@ Rails.application.routes.draw do
   DashboardController::AdminModels.each do |category|
     get "dashboard/admin/#{category}" => "dashboard#admin_#{category}", as: "admin_#{category}"
   end
+
+  # API
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index]
+    end
+  end
 end

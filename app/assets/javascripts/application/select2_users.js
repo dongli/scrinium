@@ -14,9 +14,8 @@ function formatRepoSelection(user) {
   return user.name
 }
 
-$(function() {
+$(document).on('page:change', function() {
   var users_url = "/api/v1/users";
-
   $(".choose_user").select2({
     language: "zh-CN",
     placeholder: "请选择一个用户",
@@ -27,7 +26,7 @@ $(function() {
       delay: 300,
       data: function (params) {
         return {
-          q: params.term // search term
+          q: { 'name_cont': params.term }
         };
       },
       processResults: function (data, params) {
@@ -46,4 +45,4 @@ $(function() {
     templateSelection: formatRepoSelection, // omitted for brevity, see the source of this page
     minimumInputLength: 2
   });
-});
+})

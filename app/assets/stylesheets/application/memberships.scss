@@ -1,6 +1,11 @@
 .membership-card {
   padding-top: 30px;
-  max-width: 40%;
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+  @media (min-width: 992px) {
+    width: 50%;
+  }
   margin: 0 auto;
   #reject-form-placeholder {
     margin-top: 1em;

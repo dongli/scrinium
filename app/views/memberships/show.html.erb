@@ -1,58 +1,60 @@
 <% content_for :center_column do %>
   <div class='membership-card'>
-    <div class='well'>
-      <div class='row'>
-        <div class='col-md-4'>
-          <%= image_tag @membership.user.profile.avatar.url(:medium), class: 'avatar' %>
+    <div class='panel panel-default box-shadow'>
+      <div class='panel-body'>
+        <div class='row'>
+          <div class='col-sm-3 col-sm-offset-1 col-xs-4'>
+            <%= image_tag @membership.user.profile.avatar.url(:medium), class: 'avatar' %>
+          </div>
+          <div class='col-xs-7 col-xs-offset-1'>
+              <ul class='clean-list'>
+                <li><%= t('activerecord.attributes.membership.user') %>: <%= @membership.user.name %></li>
+                <li><%= t('activerecord.attributes.membership.host_type') %>: <%= @membership.host_type %></li>
+                <li><%= t('activerecord.attributes.membership.host') %>: <%= @membership.host.short_name %></li>
+                <li><%= t('activerecord.attributes.membership.role') %>: <%= @membership.role.text %></li>
+                <li><%= t('activerecord.attributes.membership.status') %>: <%= @membership.status.text %></li>
+                <% if @membership.status == 'rejected' %>
+                  <li><%= t('activerecord.attributes.membership.rejected_reason') %>: <%= @membership.rejected_reason %></li>
+                <% end %>
+              </ul>
+          </div>
         </div>
-        <div class='col-md-7 col-md-offset-1'>
-            <ul class='clean-list'>
-              <li><%= t('activerecord.attributes.membership.user') %>: <%= @membership.user.name %></li>
-              <li><%= t('activerecord.attributes.membership.host_type') %>: <%= @membership.host_type %></li>
-              <li><%= t('activerecord.attributes.membership.host') %>: <%= @membership.host.short_name %></li>
-              <li><%= t('activerecord.attributes.membership.role') %>: <%= @membership.role.text %></li>
-              <li><%= t('activerecord.attributes.membership.status') %>: <%= @membership.status.text %></li>
-              <% if @membership.status == 'rejected' %>
-                <li><%= t('activerecord.attributes.membership.rejected_reason') %>: <%= @membership.rejected_reason %></li>
+        <div class='horizontal-centered'>
+          <% case @membership.join_type %>
+          <% when 'self' %>
+            <% if policy(@membership).update? %>
+              <% case @membership.status %>
+              <% when 'unapproved', 'banned' %>
+                <%=
+                  link_to t('membership.action.approve'),
+                  [ @membership, membership: { status: 'approved' } ],
+                  method: :patch, class: 'btn btn-primary btn-xs'
+                %>
+                <%=
+                  link_to t('membership.action.reject'),
+                  [ :reject, @membership ], remote: true, class: 'button btn-danger btn-xs'
+                %>
+                <div id='reject-form-placeholder'></div>
+              <% when 'approved' %>
+                <%=
+                  link_to t('membership.action.ban'),
+                  [ @membership, membership: { status: 'banned' } ],
+                  method: :patch, class: 'btn btn-danger btn-xs'
+                %>
               <% end %>
-            </ul>
+            <% end %>
+          <% when 'invited' %>
+            <% if policy(@membership).update? %>
+              <% if @membership.status.unapproved? %>
+                <%=
+                  link_to t('membership.action.agree'),
+                  [ @membership, membership: { status: 'approved' } ],
+                  method: :patch, class: 'btn btn-primary'
+                %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
-      </div>
-      <div class='horizontal-centered'>
-        <% case @membership.join_type %>
-        <% when 'self' %>
-          <% if policy(@membership).update? %>
-            <% case @membership.status %>
-            <% when 'unapproved', 'banned' %>
-              <%=
-                link_to t('membership.action.approve'),
-                [ @membership, membership: { status: 'approved' } ],
-                method: :patch, class: 'btn btn-primary btn-xs'
-              %>
-              <%=
-                link_to t('membership.action.reject'),
-                [ :reject, @membership ], remote: true, class: 'button btn-danger btn-xs'
-              %>
-              <div id='reject-form-placeholder'></div>
-            <% when 'approved' %>
-              <%=
-                link_to t('membership.action.ban'),
-                [ @membership, membership: { status: 'banned' } ],
-                method: :patch, class: 'btn btn-danger btn-xs'
-              %>
-            <% end %>
-          <% end %>
-        <% when 'invited' %>
-          <% if policy(@membership).update? %>
-            <% if @membership.status.unapproved? %>
-              <%=
-                link_to t('membership.action.agree'),
-                [ @membership, membership: { status: 'approved' } ],
-                method: :patch, class: 'btn btn-primary'
-              %>
-            <% end %>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>
