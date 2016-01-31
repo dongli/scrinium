@@ -24,6 +24,12 @@ zh-CN:
         status:          审核状态
         created_at:      创建时间
         updated_at:      更新时间
+    errors:
+      models:
+        membership:
+          attributes:
+            user_id:
+              taken: 该用户已经在成员列表中，看看是否核准了？
 
   enumerize:
     membership:

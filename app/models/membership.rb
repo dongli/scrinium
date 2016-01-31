@@ -42,6 +42,8 @@ class Membership < ActiveRecord::Base
   belongs_to :host, polymorphic: true
   belongs_to :user
 
+  validates :user_id, uniqueness: { scope: [:host_id, :host_type] }
+
   after_create :increase_counts
   after_destroy :decrease_counts
 

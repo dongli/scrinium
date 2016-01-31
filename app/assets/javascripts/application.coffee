@@ -72,7 +72,10 @@
 @handleValidationErrors = (options) ->
   obj = JSON.parse(options['messages'])
   $.each obj, (key, value) ->
-    elem = if options['anchorElem'] then $(options['anchorElem']) else $('input#' + options['formName'] + '_' + key)
+    elem = options['anchorElem']
+    elem = $('input#' + options['formName'] + '_' + key) if not elem
+    elem = $('#select2-' + options['formName'] + '_' + key + '-container') if elem.empty?
+    elem = $('select#' + options['formName'] + '_' + key) if not elem
     elem.data 'toggle', 'popover'
     elem.data 'placement', 'bottom'
     elem.popover

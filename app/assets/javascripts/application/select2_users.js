@@ -26,7 +26,7 @@ $(document).on('page:change', function() {
       delay: 300,
       data: function (params) {
         return {
-          q: { 'name_cont': params.term }
+          q: { 'name_cont': params.term, 'email_cont': params.term, 'm': 'or' }
         };
       },
       processResults: function (data, params) {
