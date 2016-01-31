@@ -45,43 +45,41 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @membership.update(membership_params)
-        host = @membership.host
-        if @membership.join_type.self?
-          case @membership.status
-          when 'rejected'
-            subject = t('membership.notification.subject.membership_rejected',
-                        host: host.short_name)
-            body = t('membership.notification.body.membership_rejected',
-                     host: host.short_name,
-                     reason: @membership.rejected_reason,
-                     page: membership_path(@membership))
-          else
-            # 通知用户资格的更新。
-            subject = t('membership.notification.subject.membership_updated',
-                        host: host.short_name)
-            body = t('membership.notification.body.membership_updated',
-                     host: host.short_name,
-                     page: membership_path(@membership))
-          end
-          @membership.user.notify subject, body
-          MessageBus.publish "/mailbox-#{@membership.user.id}", { user_id: current_user.id }
-        elsif @membership.join_type.invited?
-          # 通知管理员用户同意加入。
-          subject = t('membership.notification.subject.user_agreed_to_join_in',
-                      user: @membership.user.name, host: host.short_name)
-          body = t('membership.notification.body.user_agreed_to_join_in',
-                   user: @membership.user.name,
+    if @membership.update(membership_params)
+      host = @membership.host
+      if @membership.join_type.self?
+        case @membership.status
+        when 'rejected'
+          subject = t('membership.notification.subject.membership_rejected',
+                      host: host.short_name)
+          body = t('membership.notification.body.membership_rejected',
+                   host: host.short_name,
+                   reason: @membership.rejected_reason,
+                   page: membership_path(@membership))
+        else
+          # 通知用户资格的更新。
+          subject = t('membership.notification.subject.membership_updated',
+                      host: host.short_name)
+          body = t('membership.notification.body.membership_updated',
                    host: host.short_name,
                    page: membership_path(@membership))
-          @membership.host.admin.notify subject, body
-          MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
         end
-        format.html { redirect_to @membership, notice: t('message.update_success', thing: t('activerecord.models.membership')) }
-      else
-        format.html { render :edit }
+        @membership.user.notify subject, body
+        MessageBus.publish "/mailbox-#{@membership.user.id}", { user_id: current_user.id }
+      elsif @membership.join_type.invited?
+        # 通知管理员用户同意加入。
+        subject = t('membership.notification.subject.user_agreed_to_join_in',
+                    user: @membership.user.name, host: host.short_name)
+        body = t('membership.notification.body.user_agreed_to_join_in',
+                 user: @membership.user.name,
+                 host: host.short_name,
+                 page: membership_path(@membership))
+        @membership.host.admin.notify subject, body
+        MessageBus.publish "/mailbox-#{@membership.host.admin.id}", { user_id: current_user.id }
       end
+    end
+    respond_to do |format|
+      format.js
     end
   end
 

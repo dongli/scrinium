@@ -1,0 +1,8 @@
+<% if @membership.errors.empty? %>
+  window.location.replace('<%= session[:previous_url].last %>')
+<% else %>
+  handleValidationErrors({
+    formName: 'membership',
+    messages: '<%= j raw @membership.errors.messages.to_json %>'
+  })
+<% end %>

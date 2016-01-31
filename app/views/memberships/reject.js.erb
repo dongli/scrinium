@@ -1,1 +1,2 @@
-$('#reject-form-placeholder').html("<%= j render 'memberships/form', host: @membership.host, membership: @membership, join_type: :self %>");
+$('#update-membership-modal-content').html("<%= j render 'memberships/form', host: @membership.host, membership: @membership, join_type: :self %>")
+$('#update-membership-modal').modal()

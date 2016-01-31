@@ -34,7 +34,6 @@
                   link_to t('membership.action.reject'),
                   [ :reject, @membership ], remote: true, class: 'button btn-danger btn-xs'
                 %>
-                <div id='reject-form-placeholder'></div>
               <% when 'approved' %>
                 <%=
                   link_to t('membership.action.ban'),
