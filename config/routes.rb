@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   resources :activities
 
   # 控制台
+  get 'dashboard' => 'dashboard#index', as: :dashboard
   DashboardController::AdminModels.each do |category|
     get "dashboard/admin/#{category}" => "dashboard#admin_#{category}", as: "admin_#{category}"
   end

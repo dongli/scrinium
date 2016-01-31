@@ -27,12 +27,19 @@
       </li>
       <li><%= @user.role.text %></li>
       <% if policy(@user).update? %>
-        <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_user_path(@user, :profile) %></li>
-        <li><%= link_to fa_icon('key', text: t('devise.views.change_password')), edit_user_registration_path %></li>
+        <li>
+          <ul class='horizontal-clean-list'>
+            <li><%= link_to fa_icon('edit', text: t('action.edit')), edit_user_path(@user, :profile) %></li>
+            <li><%= link_to fa_icon('key', text: t('devise.views.change_password')), edit_user_registration_path %></li>
+          </ul>
+        </li>
       <% end %>
       <li>
         <%= link_to fa_icon('newspaper-o', text: t('activerecord.models.activity')), activities_path %>
       </li>
+      <% if @user.admin? %>
+        <li><%= link_to fa_icon('dashboard', text: '控制台'), dashboard_path %></li>
+      <% end %>
       <li>
         <%= fa_icon('clock-o', text: t('activerecord.attributes.user.created_at')) %>: <%= @user.created_at.strftime("%Y-%-m") %>
       </li>

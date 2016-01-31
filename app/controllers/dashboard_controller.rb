@@ -3,6 +3,10 @@ class DashboardController < ApplicationController
 
   AdminModels = %w[users articles groups topics].freeze
 
+  def index
+    redirect_to admin_users_path
+  end
+
   AdminModels.each do |category|
     self.class_eval <<-EOT
       def admin_#{category}
