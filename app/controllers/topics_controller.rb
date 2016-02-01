@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_group, only: [:new, :edit, :create]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -8,13 +7,16 @@ class TopicsController < ApplicationController
   end
 
   def new
+    @group = Group.friendly.find(params[:group_id])
     @topic = @group.topics.new
   end
 
   def edit
+    @group = @topic.group
   end
 
   def create
+    @group = Group.friendly.find(params[:topic][:group_id])
     @topic = @group.topics.new(topic_params)
     @topic.user_id = current_user.id
 
@@ -41,7 +43,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to @group }
+      format.html { redirect_to show_group_path(@topic.group, :topics) }
     end
   end
 
@@ -60,10 +62,6 @@ class TopicsController < ApplicationController
   end
 
   private
-
-  def set_group
-    @group = Group.friendly.find(params[:group_id])
-  end
 
   def set_topic
     @topic = Topic.find(params[:id])

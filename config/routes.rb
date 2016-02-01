@@ -77,14 +77,14 @@ Rails.application.routes.draw do
   resources :addresses
   # 群组
   resources :nodes
-  resources :topics, only: [:show, :destroy], concerns: [:commentable, :collectable]
+  resources :topics, except: [:new], concerns: [:commentable, :collectable]
   post 'topics/upload_image' => 'topics#upload_image', as: :topic_upload_image # TODO: 放到concerns中。
   resources :groups, except: [:show, :edit] do
     member do
       post :upload_image
     end
     resources :nodes, only: [:edit, :create, :update]
-    resources :topics, only: [:new, :edit, :create, :update]
+    resources :topics, only: [:new]
   end
   get 'groups/:id/home_page' => 'groups#show_home_page', as: :show_group_home_page
   get 'groups/:id/(:category)' => 'groups#show', as: :show_group

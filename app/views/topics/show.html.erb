@@ -11,7 +11,7 @@
       <div class='pull-right' style='padding-top: 10px;'>
         <ul class='horizontal-clean-list'>
           <% if policy(@topic).update? %>
-            <li><%= link_to fa_icon('edit'), [:edit, @topic.group, @topic] %></li>
+            <li><%= link_to fa_icon('edit'), edit_topic_path(@topic) %></li>
           <% end %>
           <% if policy(@topic).destroy? %>
             <li>
