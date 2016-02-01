@@ -26,7 +26,11 @@
         </div>
       </div>
       <h6 class='horizontal-centered'><%= @article.title %></h6>
-      <p class='readability mathjax'><%= raw @article.content %></p>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <div class='mathjax'><%= raw @article.content %></div>
+        </div>
+      </div>
       <dl>
         <dt></dt>
         <dd><%= render 'comments/list', commentable: @article %></dd>
