@@ -22,7 +22,6 @@ class RelationshipsController < ApplicationController
 
   def followers
     @user = User.friendly.find(params[:user_id])
-    debugger
     @followers = @user.followers.page(params[:page])
     respond_to do |format|
       format.html
@@ -31,7 +30,7 @@ class RelationshipsController < ApplicationController
 
   def following
     @user = User.friendly.find(params[:user_id])
-    @following = @user.following.page(params[:page]).per(2)
+    @following = @user.following.page(params[:page])
     respond_to do |format|
       format.html
     end

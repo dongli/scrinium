@@ -3,6 +3,14 @@
 <% content_for :center_column do %>
   <div class='panel panel-default'>
     <div class='panel-body narrow-padding'>
+      <%= render inline: search_fields('article',
+          { name: 'title', term: 'cont' },
+          { name: 'taggings_tag_name', term: 'in', options: 'Article.all_tags', use: 'select2', value_method: 'name' }
+        ) %>
+    </div>
+  </div>
+  <div class='panel panel-default'>
+    <div class='panel-body narrow-padding'>
       <%= render html: control_buttons('article').html_safe %>
       <%= render html: table_list('article', @articles, [:title]).html_safe %>
     </div>
