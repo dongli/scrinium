@@ -9,12 +9,22 @@
   .active {
     display: block;
   }
+  @media (min-width: 768px) {
+    .btn-group > a {
+      width: 120px;
+    }
+  }
+  @media (min-width: 992px) {
+    .btn-group > a {
+      width: 180px;
+    }
+  }
 </style>
 
 <% if user_signed_in? %>
   <div class='back-to-worktable'>
     <%= link_to '返回工作台', current_user, class: 'btn btn-default',
-      style: 'position: fixed; bottom: 10px; right: 10px;' %>
+      style: 'position: fixed; bottom: 10px; right: 18px; z-index: 1000;' %>
   </div>
 <% end %>
 
@@ -46,9 +56,9 @@
 <div class='home-page-body'>
   <div class='home-page-nav horizontal-centered' style='margin-top: 1em;'>
     <div class='btn-group'>
-      <%= link_to '信息', '#', class: 'btn btn-default btn-wide active', id: 'nav-information' %>
-      <%= link_to '成果', '#', class: 'btn btn-default btn-wide', id: 'nav-achievements' %>
-      <%= link_to '专栏', '#', class: 'btn btn-default btn-wide', id: 'nav-column' %>
+      <%= link_to '信息', '#', class: 'btn btn-default active', id: 'nav-information' %>
+      <%= link_to '成果', '#', class: 'btn btn-default', id: 'nav-achievements' %>
+      <%= link_to '专栏', '#', class: 'btn btn-default', id: 'nav-column' %>
     </div>
   </div>
   <%= render 'users/home_page/information' %>

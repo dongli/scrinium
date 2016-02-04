@@ -39,7 +39,6 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   has_many :memberships, dependent: :destroy
-  has_many :organizations, through: :memberships, source: :host, source_type: 'Organization'
   has_many :groups, through: :memberships, source: :host, source_type: 'Group'
   has_many :active_relationships, class_name: 'Relationship', dependent: :destroy, foreign_key: :follower_id
   has_many :following, through: :active_relationships, source: :followed

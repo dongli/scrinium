@@ -24,6 +24,11 @@ module DashboardHelper
 
   def search_fields class_name, *items
     fields = <<-EOT
+      <style>
+        .form-group {
+          margin-bottom: 0;
+        }
+      </style>
       <div class='pull-left'>
         <%= simple_form_for @search, url: admin_#{class_name.pluralize}_path, method: :get do |f| %>
     EOT

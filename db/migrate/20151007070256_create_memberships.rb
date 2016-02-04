@@ -2,7 +2,7 @@ class CreateMemberships < ActiveRecord::Migration
   def change
     create_table :memberships do |t|
       t.text       :description
-      t.belongs_to :host, polymorphic: true, null: false # host可能是organization或group。
+      t.belongs_to :host, polymorphic: true, null: false # host可能是group或？？。
       t.integer    :user_id,                 null: false # 加入到机构或者 讨论组人的ID
       t.string     :role                                 # 加入到讨论组中的角色，admin,admin, :assist_admin, :member
       t.datetime   :expired_at                           # 可以设置membership的过期时间

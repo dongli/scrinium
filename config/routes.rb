@@ -72,9 +72,6 @@ Rails.application.routes.draw do
       get :reject
     end
   end
-  # 机构
-  resources :organizations
-  resources :addresses
   # 群组
   resources :nodes
   resources :topics, except: [:new], concerns: [:commentable, :collectable]
